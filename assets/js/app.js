@@ -188,11 +188,13 @@
 
     $$("[data-result]").forEach(function (el) { el.textContent = matchedTotal; });
     syncURL();
+    if (typeof fitBoard === "function") fitBoard();
   }
 
   /* ---------------------- 热榜板：今日最新 / 高价值榜 / 抽奖·高上限 三个 tab */
   var hotTabs = $("[data-hot-tabs]");
   var hotDesc = $("[data-hot-desc]");
+  var hotBoard = $("[data-hot-board]");
   var hotSections = ["today", "rank", "lottery"]
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
@@ -219,7 +221,25 @@
         if (cur && cur.dataset.desc) hotDesc.textContent = cur.dataset.desc;
       }
     }
+    fitBoard();
     syncRail();
+  }
+
+  /* 底板高度 = 最高那一页的高度：切 tab 时下方内容一格都不动 */
+  function fitBoard() {
+    if (!hotBoard) return;
+    var mobile = mqMobile.matches;
+    var tallest = 0;
+    hotSections.forEach(function (sec) {
+      if (mobile && sec.id === "lottery") return;
+      var wasHidden = sec.hidden;
+      sec.hidden = false;
+      var h = sec.offsetHeight;
+      sec.hidden = wasHidden;
+      if (h > tallest) tallest = h;
+    });
+    hotBoard.style.height = tallest ? tallest + "px" : "";
+    hotBoard.scrollTop = 0;
   }
 
   function scrollToBoard() {
@@ -485,6 +505,12 @@
   var onMQ = function () { render(); applyHotTabs(); };
   if (mqMobile.addEventListener) mqMobile.addEventListener("change", onMQ);
   else if (mqMobile.addListener) mqMobile.addListener(onMQ);
+
+  var boardResize = null;
+  window.addEventListener("resize", function () {
+    clearTimeout(boardResize);
+    boardResize = setTimeout(fitBoard, 150);
+  });
 
   /* ----------------------------------------------------------------- ads */
   $$(".ad-slot").forEach(function (slot) {

@@ -605,7 +605,7 @@ def main() -> None:
         "<span>顶部</span></a>"
     )
 
-    modules = "".join(
+    board_modules = "".join(
         [
             module_html(
                 "today", "A", "今日最新优惠",
@@ -622,6 +622,11 @@ def main() -> None:
                 "上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。",
                 lottery, today, ranked=True, jump=True, strip=True, value_mode="strip",
             ),
+        ]
+    )
+
+    modules = "".join(
+        [
             module_html(
                 "ai", "C", "AI 工具免费与折扣",
                 "ChatGPT、Gemini、Claude、Copilot、Cursor 等免费额度与限时赠送，含学生专属。",
@@ -809,7 +814,7 @@ def main() -> None:
     <div class="ad-slot" data-ad="top" aria-hidden="true"><!-- AdSense：顶部 / 桌面横幅 --></div>
   </div>
 
-  <div class="shell">{hot_tabs}{modules}</div>
+  <div class="shell">{hot_tabs}<div class="hot-board" data-hot-board>{board_modules}</div>{modules}</div>
 
   <div class="shell">
     <div class="ad-slot" data-ad="bottom" aria-hidden="true"><!-- AdSense：底部 --></div>

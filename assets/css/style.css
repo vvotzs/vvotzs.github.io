@@ -865,12 +865,24 @@ main{ padding-bottom: 40px; }
 }
 /* 分区标题由 tab 承担，省掉重复的一行 */
 .module.hot-strip .module-head{ display: none; }
-.module.hot-strip{ padding-top: 10px; }
+.module.hot-strip{ padding-top: 10px; content-visibility: visible; }
 .module.hot-strip .track > .grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
+
+/* 切换 tab 时底板高度不跳：高度由 app.js 按最高的一页锁住，超高就内部滑动 */
+.hot-board{
+  position: relative;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(28,25,23,.18) transparent;
+}
+.hot-board::-webkit-scrollbar{ width: 6px; }
+.hot-board::-webkit-scrollbar-thumb{ background: rgba(28,25,23,.16); border-radius: 3px; }
+.hot-board::-webkit-scrollbar-track{ background: transparent; }
 
 @media (max-width: 768px){
   .hot-tabs{ margin: 0 0 8px; gap: 0; }
