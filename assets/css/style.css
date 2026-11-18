@@ -787,6 +787,9 @@ main{ padding-bottom: 40px; }
 .jump-arrow{ width: 10px; height: 10px; flex: none; color: var(--ink-4); }
 .jump:hover .jump-arrow{ color: var(--terra); }
 
+/* 深链接首次展开不做 0.3s 动画，定位一次到位 */
+.deep-link .detail{ transition: none; }
+
 /* 从跳转卡落到详情卡时轻轻亮一下，确认位置 */
 .card.flash{ animation: cardFlash 1.1s ease; }
 @keyframes cardFlash{
@@ -1181,7 +1184,13 @@ footer{
   .card.open{ grid-column: auto; }
 
   .jump{ padding: 7px 9px; gap: 7px; }
-  .jump-title{ font-size: 12.2px; }
+  .jump-title{
+    font-size: 12.2px;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
   .jump-meta{ font-size: 10.1px; }
 
   .rail{

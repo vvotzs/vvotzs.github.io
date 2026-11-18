@@ -212,6 +212,16 @@
     else openCard(card);
   });
 
+  /* 把某张卡带到视野中央：移动端先横向翻到它所在的那一页 */
+  function revealDeal(target, behavior, offset) {
+    var track = target.closest("[data-track]");
+    var page = target.closest(".page");
+    if (track && page && mqMobile.matches) track.scrollLeft = page.offsetLeft;
+    var rect = target.getBoundingClientRect();
+    var top = window.scrollY + rect.top - (offset == null ? 80 : offset);
+    window.scrollTo({ top: Math.max(top, 0), behavior: behavior || "auto" });
+  }
+
   /* 跳转卡：滚到分类区对应的唯一详情卡并展开 */
   document.addEventListener("click", function (ev) {
     var jump = ev.target.closest("[data-jump]");
@@ -221,7 +231,7 @@
     if (!target) return;
     ev.preventDefault();
     openCard(target);
-    target.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    revealDeal(target, "smooth", 90);
     target.classList.remove("flash");
     void target.offsetWidth;
     target.classList.add("flash");
@@ -415,8 +425,24 @@
     if (slot.children.length > 0) slot.style.display = "block";
   });
 
+  /* ------------------------------------------- 深链接：/ #deal-<id> 直接展开 */
+  function openFromHash() {
+    var m = /^#deal-(.+)$/.exec(location.hash || "");
+    if (!m) return;
+    var target = document.getElementById("deal-" + m[1]);
+    if (!target) return;
+    document.documentElement.classList.add("deep-link");
+    openCard(target);
+    revealDeal(target, "auto", 80);
+    requestAnimationFrame(function () {
+      revealDeal(target, "auto", 80);
+      setTimeout(function () { document.documentElement.classList.remove("deep-link"); }, 80);
+    });
+  }
+
   /* ---------------------------------------------------------------- init */
   restoreFromURL();
   render();
+  openFromHash();
   syncRail();
 })();
