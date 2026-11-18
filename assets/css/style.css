@@ -339,8 +339,9 @@ main{ padding-bottom: 40px; }
   font-size: 12.2px;
   line-height: 1.5;
   color: var(--ink-3);
+  flex: 0 1 auto;
   min-width: 0;
-  max-width: 52ch;
+  max-width: 540px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
