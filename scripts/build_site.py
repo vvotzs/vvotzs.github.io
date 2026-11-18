@@ -39,19 +39,43 @@ COST_CLASS = {
 
 # ---------------------------------------------------------------- svg icons
 _ICON_PATHS = {
-    "today": '<path d="M13 2 4.5 13.2h6L10 22l8.7-11.4h-6L13 2Z"/>',
-    "rank": '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
-    "ai": '<path d="M12 3.2 13.7 8.3 18.8 10l-5.1 1.7L12 16.8l-1.7-5.1L5.2 10l5.1-1.7L12 3.2Z"/><path d="M18.4 15.2l.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7.7-2.1Z"/>',
-    "crypto": '<path d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4l8-4.6Z"/><path d="M12 7.4v9.2M8 9.6l8 4.6M16 9.6l-8 4.6"/>',
-    "bank": '<path d="M3 9.5 12 4l9 5.5"/><path d="M5.5 11v7M10 11v7M14 11v7M18.5 11v7"/><path d="M3 20.5h18"/>',
-    "cloud": '<path d="M7.2 18.5h9.6a3.7 3.7 0 0 0 .5-7.36 5.4 5.4 0 0 0-10.4-.6A3.88 3.88 0 0 0 7.2 18.5Z"/>',
-    "clock": '<circle cx="12" cy="12" r="8.4"/><path d="M12 7.6V12l3 2"/>',
-    "software": '<rect x="3.6" y="3.6" width="7" height="7" rx="1.8"/><rect x="13.4" y="3.6" width="7" height="7" rx="1.8"/><rect x="3.6" y="13.4" width="7" height="7" rx="1.8"/><rect x="13.4" y="13.4" width="7" height="7" rx="1.8"/>',
-    "archive": '<rect x="3.4" y="4.2" width="17.2" height="4.2" rx="1.4"/><path d="M5.2 8.4v10a1.6 1.6 0 0 0 1.6 1.6h10.4a1.6 1.6 0 0 0 1.6-1.6v-10"/><path d="M9.6 12.4h4.8"/>',
+    "today": '<path d="M12 3.6 13.9 8.3 18.6 10.2 13.9 12.1 12 16.8 10.1 12.1 5.4 10.2 10.1 8.3 12 3.6Z" fill="#FDE68A"/>'
+             '<path d="M17.7 15.3l.75 1.9 1.9.75-1.9.75-.75 1.9-.75-1.9-1.9-.75 1.9-.75.75-1.9Z" fill="#FED7AA"/>',
+    "rank": '<path d="M8 4.2h8v5.1a4 4 0 0 1-8 0V4.2Z" fill="#FDE68A"/>'
+            '<path d="M8 5.4H5.7a2.4 2.4 0 0 0 2.4 4.2"/>'
+            '<path d="M16 5.4h2.3a2.4 2.4 0 0 1-2.4 4.2"/>'
+            '<path d="M12 13.3v2.6"/>'
+            '<path d="M8.6 19.8h6.8a1.3 1.3 0 0 0-1.3-1.3h-4.2a1.3 1.3 0 0 0-1.3 1.3Z" fill="#FED7AA"/>',
+    "ai": '<rect x="4.7" y="7.7" width="14.6" height="10.8" rx="4.2" fill="#BFDBFE"/>'
+          '<path d="M12 3.9v3.2"/><circle cx="12" cy="3.2" r="1.2" fill="#FDE68A"/>'
+          '<circle cx="9.3" cy="12.3" r="1.05" fill="currentColor" stroke="none"/>'
+          '<circle cx="14.7" cy="12.3" r="1.05" fill="currentColor" stroke="none"/>'
+          '<path d="M9.9 15.4h4.2"/>',
+    "crypto": '<circle cx="12" cy="12" r="8.2" fill="#FDE68A"/>'
+              '<path d="M12 7.2 15.4 10.8 12 14.4 8.6 10.8 12 7.2Z" fill="#FFFDF9"/>'
+              '<path d="M9.4 16.6h5.2"/>',
+    "bank": '<rect x="3.3" y="5.9" width="17.4" height="12.2" rx="3.2" fill="#BBF7D0"/>'
+            '<path d="M3.3 10.1h17.4"/>'
+            '<path d="M6.6 14.7h4.2"/>',
+    "cloud": '<path d="M7.5 17.6h9.1a3.6 3.6 0 0 0 .4-7.2 5.2 5.2 0 0 0-9.9-.5 3.9 3.9 0 0 0 .4 7.7Z" fill="#BFDBFE"/>',
+    "esim": '<path d="M6.9 3.4h6.5l4.3 4.3v11.5a2.1 2.1 0 0 1-2.1 2.1H6.9a2.1 2.1 0 0 1-2.1-2.1V5.5a2.1 2.1 0 0 1 2.1-2.1Z" fill="#FED7AA"/>'
+            '<rect x="8.2" y="11.4" width="6.4" height="5.6" rx="1.6" fill="#FFFDF9"/>'
+            '<path d="M9.7 8.7a4.3 4.3 0 0 1 3.6 0"/>',
+    "clock": '<circle cx="12" cy="13.3" r="6.9" fill="#FECDD3"/>'
+             '<path d="M12 9.7v3.6l2.4 1.6"/>'
+             '<path d="M4.7 6.7 6.9 4.5M19.3 6.7 17.1 4.5"/>',
+    "software": '<rect x="3.8" y="9.1" width="16.4" height="10.3" rx="2.3" fill="#DDD6FE"/>'
+                '<path d="M2.9 6.1h18.2v3.3H2.9z" fill="#C7D2FE"/>'
+                '<path d="M12 6.1v13.3"/>'
+                '<path d="M12 6.1c-1.5-2.6-4.5-2-4.5 0"/>'
+                '<path d="M12 6.1c1.5-2.6 4.5-2 4.5 0"/>',
+    "archive": '<rect x="3.9" y="8.9" width="16.2" height="10.2" rx="2.3" fill="#E7E5E4"/>'
+               '<path d="M5.3 5.5h13.4a1.6 1.6 0 0 1 1.6 1.6v1.5H3.7V7.1a1.6 1.6 0 0 1 1.6-1.6Z" fill="#FED7AA"/>'
+               '<path d="M9.5 12.7h5"/>',
 }
 ICONS = {
     key: (
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" '
         'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
         + path
         + "</svg>"
@@ -59,15 +83,9 @@ ICONS = {
     for key, path in _ICON_PATHS.items()
 }
 
-ESIM_ICON = (
-    '<svg class="esim-icon" viewBox="0 0 44 30" aria-hidden="true">'
-    '<text x="0" y="22" font-family="-apple-system,Segoe UI,PingFang SC,sans-serif" '
-    'font-size="21" font-weight="700" fill="currentColor" letter-spacing="-1">eSi</text>'
-    '<rect x="27" y="17.5" width="4" height="6.5" rx="1" fill="#FFC24B"/>'
-    '<rect x="32.6" y="12.5" width="4" height="11.5" rx="1" fill="#FF7A45"/>'
-    '<rect x="38.2" y="7" width="4" height="17" rx="1" fill="#E5005F"/>'
-    "</svg>"
-)
+ESIM_ICON = ICONS["esim"]
+
+ESIM_ICON = ESIM_ICON.replace('class="', 'class="esim-icon ', 1) if 'class="' in ESIM_ICON else ESIM_ICON.replace("<svg ", '<svg class="esim-icon" ', 1)
 
 NAV = [
     ("today", "今日", ICONS["today"]),
