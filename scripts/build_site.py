@@ -472,7 +472,7 @@ def main() -> None:
       </span>
       <span>
         <span class="brand-name">羊毛情报局</span>
-        <span class="brand-sub">Pickle 自动巡检整理 · 更新 {e(last_updated)}</span>
+        <span class="brand-sub">更新 {e(last_updated)}</span>
       </span>
     </a>
     <div class="topbar-stats">
@@ -607,9 +607,9 @@ def main() -> None:
       </div>
     </div>
     <div class="foot-meta">
-      <span>Pickle 每天巡检 · 更新 {e(last_updated)}</span>
+      <span>更新 {e(last_updated)}</span>
       <span>已核验 {counts['active']} 条进行中 · 归档 {counts['expired']} 条</span>
-      <span>Pickle 自动巡检整理 · © {today.year} 羊毛情报局</span>
+      <span>© {today.year} 羊毛情报局</span>
     </div>
   </div>
 </footer>
