@@ -463,6 +463,35 @@
     "status": "active"
   },
   {
+    "id": "deepgram-200-free-credit",
+    "title": "[全球] Deepgram $200 免费额度：免绑卡、不过期（约 700 小时转写）",
+    "brand": "Deepgram",
+    "domain": "deepgram.com",
+    "category": "ai",
+    "value": "$200",
+    "value_num": 200,
+    "cost": "真正免费",
+    "highlight": "注册即得 $200 额度，不用信用卡、无最低消费、不按日期过期；约合 43,000 分钟（700+ 小时）Nova-3 语音转写",
+    "regions": "[全球] Deepgram 官网注册即可（提供 EU 专用端点 api.eu.deepgram.com）",
+    "start": "",
+    "end": "",
+    "verified": true,
+    "last_verified": "2026-11-19",
+    "added": "2026-11-19",
+    "content": "Deepgram 的 Pay as you go 档对新账号送 $200 免费额度：官方写明无需信用卡、没有最低消费、额度不过期，适合搭语音 Agent、会议转写或做原型测试。按官方 FAQ，$200 约等于 43,000 分钟（700 多小时）Nova-3 语音转写；若调用 TTS（Flux/Aura 按字符计费）或 Voice Agent（按连接分钟计费），消耗速度会完全不同。",
+    "conditions": "需注册 Deepgram 账号并创建 API Key；$200 一次性赠送，用完后转按量付费（需绑卡）；转写按秒计费、无取整，流式 Nova-3 单语 $0.0048/分钟（促销价）；Voice Agent 标准档 $0.075/分钟，消耗远快于纯转写。",
+    "steps": [
+      "在 deepgram.com 注册并进入 Console",
+      "创建 API Key（可只给需要的项目权限）",
+      "用官方 SDK 或 REST 接口调用 /v1/listen 转写音频",
+      "在 Console 里看余额，$200 用完前决定是否绑卡续用"
+    ],
+    "url": "https://deepgram.com/pricing",
+    "source": "Deepgram 官方定价页 Pay as you go 档与 FAQ（Free $200 credit，no credit card，does not expire）",
+    "risk": "$200 是按 Nova-3 转写估算的量，用 TTS / Voice Agent / 音频智能类接口会成倍消耗；额度用完后若已绑卡会自动按量计费，建议先不绑卡做原型。",
+    "status": "active"
+  },
+  {
     "id": "bybit-eu-card-welcome-120",
     "title": "[欧区] Bybit EU 卡新客：€120 返现 + 订阅实付返还最高 €50",
     "brand": "Bybit EU",
