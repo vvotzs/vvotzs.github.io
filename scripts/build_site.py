@@ -256,7 +256,6 @@ def card(deal: dict, today: date, rank: int | None = None) -> str:
 def module_html(
     anchor: str,
     letter: str,
-    kicker: str,
     title: str,
     desc: str,
     deals: list[dict],
@@ -275,7 +274,7 @@ def module_html(
     return f"""
   <section class="module" id="{anchor}" data-mod="{anchor}" data-limit="{count}">
     <header class="module-head">
-      <div class="module-kicker"><span class="num">{letter}</span><span>{kicker}</span><span class="rule"></span></div>
+      <span class="module-badge" aria-hidden="true">{letter}</span>
       <h2>{title} <span class="count" data-count>{count}</span></h2>
       <p class="module-desc">{desc}</p>
     </header>
@@ -351,52 +350,52 @@ def main() -> None:
     modules = "".join(
         [
             module_html(
-                "today", "A", "Today", "今日最新优惠",
+                "today", "A", "今日最新优惠",
                 f"最近 48 小时新收录、且仍在进行的优惠。今天重点看这 {len(todays)} 条，其余按分类往下翻。",
                 todays, today,
             ),
             module_html(
-                "rank", "B", "Ranking", "高价值优惠排行榜",
+                "rank", "B", "高价值优惠排行榜",
                 "按实际价值（现金奖励 / 额度 / 年费）排序，先挑最值钱的。金额为官方标注上限，达标条件见详情。",
                 active_sorted[:10], today, ranked=True,
             ),
             module_html(
-                "ai", "C", "AI Tools", "AI 工具免费与折扣",
+                "ai", "C", "AI 工具免费与折扣",
                 "ChatGPT、Gemini、Claude、Copilot、Cursor 等免费额度与限时赠送，含学生专属。",
                 by_cat["ai"], today,
             ),
             module_html(
-                "crypto", "D", "Crypto", "Crypto 空投与积分",
+                "crypto", "D", "Crypto 空投与积分",
                 "交易所新人奖励、任务空投与积分计划；奖励多为返佣券或代币，注意可提现条件。",
                 by_cat["crypto"], today,
             ),
             module_html(
-                "bank", "E", "Banks & Remittance", "海外银行 · U 卡 · 跨境汇款",
+                "bank", "E", "海外银行 · U 卡 · 跨境汇款",
                 "开户奖励、虚拟卡返现、可双向叠加的邀请奖励（Wise / Sendwave / Taptap Send / Remitly 等）。",
                 by_cat["bank"], today,
             ),
             module_html(
-                "cloud", "F", "VPS & Cloud", "VPS 及云服务",
+                "cloud", "F", "VPS 及云服务",
                 "永久免费实例、新人体验金与黑五主机折扣，部署前先看清到期与回收规则。",
                 by_cat["cloud"], today,
             ),
             module_html(
-                "esim", "I", "eSIM", "eSIM 全球流量",
+                "esim", "I", "eSIM 全球流量",
                 "免费试用与首单折扣，每条都标出可用国家或地区与注册限制——先试网，再买大套餐。",
                 by_cat["esim"], today,
             ),
             module_html(
-                "closing", "G", "Closing Soon", "即将截止",
+                "closing", "G", "即将截止",
                 "30 天内到期的活动，按截止时间排序；标「剩 N 天」的请优先处理。",
                 closing, today,
             ),
             module_html(
-                "software", "J", "Software", "软件与数字服务",
+                "software", "J", "软件与数字服务",
                 "学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠。",
                 by_cat["software"], today,
             ),
             module_html(
-                "archive", "H", "Archive", "已结束活动档案",
+                "archive", "H", "已结束活动档案",
                 "已过期活动保留 30 天供查档，随后自动清理，避免陈旧信息占版面。",
                 sorted(expired, key=lambda d: d.get("end") or "", reverse=True), today,
             ),

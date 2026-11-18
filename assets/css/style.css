@@ -282,57 +282,69 @@ button{ font-family: inherit; }
 main{ padding-bottom: 40px; }
 
 .module{
-  padding: 42px 0 6px;
+  padding: 18px 0 4px;
   content-visibility: auto;
   contain-intrinsic-size: auto 420px;
 }
-.module + .module{ border-top: 1px solid rgba(28,25,23,.06); }
+.module + .module{ border-top: 1px solid rgba(28,25,23,.055); }
 
-.module-head{ margin-bottom: 16px; }
-.module-kicker{
+.module-head{
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
+  margin-bottom: 8px;
+  min-width: 0;
+}
+.module-badge{
+  flex: none;
+  width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--amber-soft);
+  border: 1px solid var(--amber-line);
+  color: var(--terra);
   font-family: var(--mono);
   font-size: 10.5px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--ink-4);
-}
-.module-kicker .num{ color: var(--terra); font-weight: 600; }
-.module-kicker .rule{
-  flex: 1;
-  height: 1px;
-  max-width: 90px;
-  background: linear-gradient(90deg, rgba(28,25,23,.16), transparent);
+  font-weight: 600;
+  letter-spacing: .02em;
+  line-height: 1;
 }
 .module h2{
-  margin: 9px 0 0;
-  font-size: 19px;
+  margin: 0;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: -.015em;
   display: flex;
   align-items: center;
-  gap: 9px;
-  flex-wrap: wrap;
+  gap: 8px;
+  flex: none;
+  white-space: nowrap;
   color: var(--ink);
 }
 .module h2 .count{
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 500;
   color: var(--ink-3);
-  padding: 2px 8px;
+  padding: 1px 7px;
   border-radius: 20px;
   border: 1px solid var(--line);
   background: #FFFFFF;
   letter-spacing: 0;
 }
 .module-desc{
-  margin: 7px 0 0;
-  font-size: 12.8px;
+  margin: 0 0 0 auto;
+  font-size: 12.2px;
+  line-height: 1.5;
   color: var(--ink-3);
-  max-width: 60em;
+  min-width: 0;
+  max-width: 52ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
 }
 .module-empty{
   display: none;
@@ -941,12 +953,13 @@ footer{
     letter-spacing: .01em;
   }
   .hero-mini b{ color: var(--ink); font-family: var(--mono); font-weight: 600; }
-  .hero + .module{ padding-top: 6px; }
+  .hero + .module{ padding-top: 8px; }
 
-  .module{ padding: 24px 0 2px; }
-  .module h2{ font-size: 17px; margin-top: 5px; }
-  .module-head{ margin-bottom: 11px; }
-  .module-desc{ font-size: 11.9px; }
+  .module{ padding: 14px 0 2px; }
+  .module-head{ margin-bottom: 8px; gap: 8px; }
+  .module h2{ font-size: 16px; }
+  .module h2 .count{ font-size: 10px; padding: 1px 6px; }
+  .module-desc{ display: none; }
 
   .grid{ grid-template-columns: 1fr; gap: 9px; }
   .card-head{ padding: 12px 12px 11px; gap: 9px; }
