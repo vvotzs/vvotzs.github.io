@@ -239,7 +239,7 @@ button{ font-family: inherit; }
 @media (min-width: 769px){
   .hero{ display: none; }
   main{ padding-top: 0; }
-  .hero + .module{ padding-top: 12px; }
+  #today{ padding-top: 12px; }
   .search-btn{ min-width: 250px; justify-content: flex-start; }
   .search-btn .ph{ flex: 1; text-align: left; }
 }

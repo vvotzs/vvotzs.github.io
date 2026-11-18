@@ -478,7 +478,7 @@ def main() -> None:
 {jsonld}
 </script>
 </head>
-<body id="top">
+<body>
 
 <header class="topbar">
   <div class="shell topbar-in">
