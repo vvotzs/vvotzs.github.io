@@ -52,7 +52,7 @@ _ICON_PATHS = {
     # AI：圆角徽标 + 粗体 AI
     "ai": '<rect x="2.4" y="5.2" width="19.2" height="13.6" rx="4.8" fill="#DBEAFE"/>'
           '<text x="11.2" y="15.6" text-anchor="middle" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif"'
-          ' font-size="9.6" font-weight="800" fill="#1D4ED8" stroke="none">AI</text>'
+          ' font-size="10.2" font-weight="800" fill="#1E40AF" stroke="none">AI</text>'
           '<path d="M19.4 3.1l.55 1.35 1.35.55-1.35.55-.55 1.35-.55-1.35-1.35-.55 1.35-.55.55-1.35Z" fill="#F59E0B"/>',
     # 币：金币 + ₿
     "crypto": '<circle cx="12" cy="12" r="8.5" fill="#FCD34D"/>'
@@ -76,10 +76,10 @@ _ICON_PATHS = {
              '<path d="M4.9 6.9 7 4.8M19.1 6.9 17 4.8"/>'
              '<path d="M9 20.4l-1.1 1.2M15 20.4l1.1 1.2"/>',
     # 软件：2×2 应用宫格
-    "software": '<rect x="3.9" y="3.9" width="7" height="7" rx="2.1" fill="#DDD6FE" stroke="none"/>'
-                '<rect x="13.1" y="3.9" width="7" height="7" rx="2.1" fill="#C7D2FE" stroke="none"/>'
-                '<rect x="3.9" y="13.1" width="7" height="7" rx="2.1" fill="#C7D2FE" stroke="none"/>'
-                '<rect x="13.1" y="13.1" width="7" height="7" rx="2.1" fill="#DDD6FE" stroke="none"/>',
+    "software": '<rect x="3.6" y="3.6" width="7.2" height="7.2" rx="2.1" fill="#C4B5FD" stroke="none"/>'
+                '<rect x="13.2" y="3.6" width="7.2" height="7.2" rx="2.1" fill="#A5B4FC" stroke="none"/>'
+                '<rect x="3.6" y="13.2" width="7.2" height="7.2" rx="2.1" fill="#A5B4FC" stroke="none"/>'
+                '<rect x="13.2" y="13.2" width="7.2" height="7.2" rx="2.1" fill="#C4B5FD" stroke="none"/>',
     # 归档：档案盒
     "archive": '<rect x="3.4" y="4.2" width="17.2" height="4.4" rx="1.7" fill="#FED7AA"/>'
                '<path d="M4.9 8.6h14.2v9.6a1.8 1.8 0 0 1-1.8 1.8H6.7a1.8 1.8 0 0 1-1.8-1.8V8.6Z" fill="#E7E5E4"/>'
