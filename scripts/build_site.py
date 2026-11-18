@@ -562,11 +562,26 @@ def main() -> None:
     )[:10]
 
     since = (today - timedelta(days=TODAY_WINDOW_DAYS)).isoformat()
+    today_str = today.isoformat()
+    # 左板「今日优惠」：今天（北京时间）新收录、按价值排
     todays = sorted(
+        [d for d in active if (d.get("added") or "") == today_str],
+        key=lambda d: d.get("value_num") or 0,
+        reverse=True,
+    )[:8]
+    # 今天还没上新时退回 48 小时窗口，避免空板
+    if not todays:
+        todays = sorted(
+            [d for d in active if (d.get("added") or "") >= since],
+            key=lambda d: d.get("value_num") or 0,
+            reverse=True,
+        )[:8]
+    # 右板「48h 新收录」：最近 48 小时，按收录时间倒序
+    fresh = sorted(
         [d for d in active if (d.get("added") or "") >= since],
         key=lambda d: ((d.get("added") or ""), d.get("value_num") or 0),
         reverse=True,
-    )[:8]
+    )[:12]
 
     closing = sorted(
         [
@@ -605,25 +620,52 @@ def main() -> None:
         "<span>顶部</span></a>"
     )
 
-    board_modules = "".join(
-        [
-            module_html(
-                "today", "A", "今日最新优惠",
-                f"最近 {TODAY_WINDOW_DAYS * 24} 小时新收录、且仍在进行的优惠。点一条即可跳到分类里的完整详情。",
-                todays, today, jump=True, strip=True, value_mode="strip",
-            ),
-            module_html(
-                "rank", "B", "高价值优惠排行榜",
-                "按可预期价值（实际到手金额）排序，抽奖类按期望值折算，先挑最值钱的。",
-                leaderboard, today, ranked=True, jump=True, strip=True, value_mode="expected",
-            ),
-            module_html(
-                "lottery", "K", "抽奖 / 高上限类",
-                "上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。",
-                lottery, today, ranked=True, jump=True, strip=True, value_mode="strip",
-            ),
-        ]
-    )
+    board_modules = {
+        "today": module_html(
+            "today", "A", "今日优惠",
+            "今天（北京时间）新收录、且仍在进行的优惠，按价值从高到低。点一条即可跳到分类里的完整详情。",
+            todays, today, jump=True, strip=True, value_mode="strip",
+        ),
+        "rank": module_html(
+            "rank", "B", "高价值优惠排行榜",
+            "按可预期价值（实际到手金额）排序，抽奖类按期望值折算，先挑最值钱的。",
+            leaderboard, today, ranked=True, jump=True, strip=True, value_mode="expected",
+        ),
+        "fresh": module_html(
+            "fresh", "N", "48h 新收录",
+            f"最近 {TODAY_WINDOW_DAYS * 24} 小时新收录、且仍在进行的优惠，按收录时间倒序。",
+            fresh, today, jump=True, strip=True, value_mode="strip",
+        ),
+        "lottery": module_html(
+            "lottery", "K", "抽奖 / 高上限类",
+            "上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。",
+            lottery, today, ranked=True, jump=True, strip=True, value_mode="strip",
+        ),
+    }
+
+    hot_board = f"""
+  <div class="hot-board" data-hot-board>
+    <div class="hot-panel hot-panel-main">
+      <div class="hot-tablist">
+        <a class="hot-tab on" href="#today" data-tab="today" aria-current="true">今日优惠 <b data-tabcount="today">{len(todays)}</b></a>
+        <a class="hot-tab" href="#rank" data-tab="rank">高价值榜 <b data-tabcount="rank">{len(leaderboard)}</b></a>
+      </div>
+      <div class="hot-panel-body" data-panel-body>
+        {board_modules["today"]}
+        {board_modules["rank"]}
+      </div>
+    </div>
+    <div class="hot-panel hot-panel-alt">
+      <div class="hot-tablist">
+        <a class="hot-tab on" href="#fresh" data-tab="fresh" aria-current="true">48h 新收录 <b data-tabcount="fresh">{len(fresh)}</b></a>
+        <a class="hot-tab" href="#lottery" data-tab="lottery">抽奖 / 高上限 <b data-tabcount="lottery">{len(lottery)}</b></a>
+      </div>
+      <div class="hot-panel-body" data-panel-body>
+        {board_modules["fresh"]}
+        {board_modules["lottery"]}
+      </div>
+    </div>
+  </div>"""
 
     modules = "".join(
         [
@@ -669,19 +711,6 @@ def main() -> None:
             ),
         ]
     )
-
-    today_desc = f"最近 {TODAY_WINDOW_DAYS * 24} 小时新收录、且仍在进行的优惠。点一条即可跳到分类里的完整详情。"
-    rank_desc = "按可预期价值（实际到手金额）排序，抽奖类按期望值折算，先挑最值钱的。"
-    lottery_desc = "上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。"
-    hot_tabs = f"""
-  <div class="hot-tabs" data-hot-tabs>
-    <div class="hot-tablist">
-      <a class="hot-tab on" href="#today" data-tab="today" aria-current="true" data-desc="{e(today_desc)}"><span class="lbl-long">今日最新</span><span class="lbl-short">今日优惠</span> <b data-tabcount="today">{len(todays)}</b></a>
-      <a class="hot-tab" href="#rank" data-tab="rank" data-desc="{e(rank_desc)}">高价值榜 <b data-tabcount="rank">{len(leaderboard)}</b></a>
-      <a class="hot-tab" href="#lottery" data-tab="lottery" data-desc="{e(lottery_desc)}">抽奖 / 高上限 <b data-tabcount="lottery">{len(lottery)}</b></a>
-    </div>
-    <p class="hot-desc" data-hot-desc>{e(today_desc)}</p>
-  </div>"""
 
     item_list = []
     for i, deal in enumerate(leaderboard, start=1):
@@ -814,7 +843,7 @@ def main() -> None:
     <div class="ad-slot" data-ad="top" aria-hidden="true"><!-- AdSense：顶部 / 桌面横幅 --></div>
   </div>
 
-  <div class="shell">{hot_tabs}<div class="hot-board" data-hot-board>{board_modules}</div>{modules}</div>
+  <div class="shell">{hot_board}{modules}</div>
 
   <div class="shell">
     <div class="ad-slot" data-ad="bottom" aria-hidden="true"><!-- AdSense：底部 --></div>

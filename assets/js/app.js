@@ -188,75 +188,83 @@
 
     $$("[data-result]").forEach(function (el) { el.textContent = matchedTotal; });
     syncURL();
-    if (typeof fitBoard === "function") fitBoard();
   }
 
-  /* ---------------------- 热榜板：今日最新 / 高价值榜 / 抽奖·高上限 三个 tab */
-  var hotTabs = $("[data-hot-tabs]");
-  var hotDesc = $("[data-hot-desc]");
+  /* ------- 热榜板：左「今日优惠 / 高价值榜」· 右「48h 新收录 / 抽奖」（桌面） ------- */
   var hotBoard = $("[data-hot-board]");
-  var hotSections = ["today", "rank", "lottery"]
-    .map(function (id) { return document.getElementById(id); })
-    .filter(Boolean);
-  var hotActive = "today";
+  var hotPanels = [];
 
-  function applyHotTabs(active) {
-    if (active) hotActive = active;
-    var mobile = mqMobile.matches;
-    // 抽奖分区只在桌面端存在；手机宽度切回来时回到第一个 tab
-    if (mobile && hotActive === "lottery") hotActive = "today";
-    hotSections.forEach(function (sec) {
-      var allowed = !(mobile && sec.id === "lottery");
-      sec.hidden = !allowed || sec.id !== hotActive;
+  if (hotBoard) {
+    $$(".hot-panel", hotBoard).forEach(function (panel) {
+      var tabs = $$(".hot-tab", panel);
+      var current = null;
+      tabs.forEach(function (t) { if (!current && t.classList.contains("on")) current = t; });
+      current = current || tabs[0];
+      hotPanels.push({
+        el: panel,
+        alt: panel.classList.contains("hot-panel-alt"),
+        body: $("[data-panel-body]", panel),
+        tabs: tabs,
+        ids: tabs.map(function (t) { return t.dataset.tab; }),
+        active: current ? current.dataset.tab : null
+      });
     });
-    if (hotTabs) {
-      $$(".hot-tab", hotTabs).forEach(function (tab) {
-        var on = tab.dataset.tab === hotActive;
+  }
+
+  function panelOf(id) {
+    for (var i = 0; i < hotPanels.length; i++) {
+      if (hotPanels[i].ids.indexOf(id) >= 0) return hotPanels[i];
+    }
+    return null;
+  }
+
+  /* 每块板只看自己当前那个 tab；手机上没有右板 */
+  function applyBoard() {
+    var mobile = mqMobile.matches;
+    hotPanels.forEach(function (panel) {
+      var usable = !(mobile && panel.alt);
+      if (panel.alt) panel.el.hidden = mobile;
+      panel.ids.forEach(function (id) {
+        var sec = document.getElementById(id);
+        if (sec) sec.hidden = !usable || id !== panel.active;
+      });
+      panel.tabs.forEach(function (tab) {
+        var on = tab.dataset.tab === panel.active;
         tab.classList.toggle("on", on);
         if (on) tab.setAttribute("aria-current", "true");
         else tab.removeAttribute("aria-current");
       });
-      if (hotDesc) {
-        var cur = $('.hot-tab[data-tab="' + hotActive + '"]', hotTabs);
-        if (cur && cur.dataset.desc) hotDesc.textContent = cur.dataset.desc;
-      }
-    }
-    fitBoard();
+    });
     syncRail();
   }
 
-  /* 底板高度 = 最高那一页的高度：切 tab 时下方内容一格都不动 */
-  function fitBoard() {
-    if (!hotBoard) return;
-    var mobile = mqMobile.matches;
-    var tallest = 0;
-    hotSections.forEach(function (sec) {
-      if (mobile && sec.id === "lottery") return;
-      var wasHidden = sec.hidden;
-      sec.hidden = false;
-      var h = sec.offsetHeight;
-      sec.hidden = wasHidden;
-      if (h > tallest) tallest = h;
-    });
-    hotBoard.style.height = tallest ? tallest + "px" : "";
-    hotBoard.scrollTop = 0;
+  function showTab(id) {
+    var panel = panelOf(id);
+    if (!panel) return false;
+    if (mqMobile.matches && panel.alt) return false;   // 手机上没有右板
+    panel.active = id;
+    if (panel.body) panel.body.scrollTop = 0;
+    applyBoard();
+    return true;
   }
 
   function scrollToBoard() {
-    if (!hotTabs) return;
-    var top = window.scrollY + hotTabs.getBoundingClientRect().top - 64;
+    if (!hotBoard) return;
+    var top = window.scrollY + hotBoard.getBoundingClientRect().top - 64;
     window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
   }
 
   /* 顶部 tab、右侧滑轨的「今日 / 榜单」、首屏「进行中」胶囊都落到同一块热榜板 */
   document.addEventListener("click", function (ev) {
     if (!ev.target.closest) return;
-    var link = ev.target.closest('a[href="#today"], a[href="#rank"], a[href="#lottery"]');
+    var link = ev.target.closest(
+      '.hot-tab, a[href="#today"], a[href="#rank"], a[href="#fresh"], a[href="#lottery"]'
+    );
     if (!link) return;
-    var id = (link.getAttribute("href") || "").slice(1);
-    if (id !== "today" && id !== "rank" && id !== "lottery") return;
+    var id = link.dataset.tab || (link.getAttribute("href") || "").slice(1);
+    if (!panelOf(id)) return;
+    if (!showTab(id)) return;
     ev.preventDefault();
-    applyHotTabs(id);
     scrollToBoard();
     if (history.replaceState) history.replaceState(null, "", "#" + id);
   });
@@ -352,6 +360,8 @@
 
   /* --------------------------------------------------------------- rail */
   var railLinks = $$(".rail a");
+  var railTargets = {};
+  railLinks.forEach(function (a) { if (a.dataset.target) railTargets[a.dataset.target] = 1; });
   var sections = $$(".module");
   var railRaf = null;
 
@@ -359,7 +369,7 @@
     var y = window.scrollY + 120;
     var current = null;
     sections.forEach(function (sec) {
-      if (sec.hidden) return;
+      if (sec.hidden || !railTargets[sec.id]) return;
       if (!current) current = sec;
       if (sec.offsetTop <= y) current = sec;
     });
@@ -502,15 +512,10 @@
   }
 
   /* ---------------------------------------------------------- responsive */
-  var onMQ = function () { render(); applyHotTabs(); };
+  var onMQ = function () { render(); applyBoard(); };
   if (mqMobile.addEventListener) mqMobile.addEventListener("change", onMQ);
   else if (mqMobile.addListener) mqMobile.addListener(onMQ);
 
-  var boardResize = null;
-  window.addEventListener("resize", function () {
-    clearTimeout(boardResize);
-    boardResize = setTimeout(fitBoard, 150);
-  });
 
   /* ----------------------------------------------------------------- ads */
   $$(".ad-slot").forEach(function (slot) {
@@ -535,11 +540,7 @@
   /* ---------------------------------------------------------------- init */
   restoreFromURL();
   render();
-  if (/^#(today|rank|lottery)$/.test(location.hash || "")) {
-    applyHotTabs(location.hash.slice(1));
-  } else {
-    applyHotTabs();
-  }
+  if (!showTab((location.hash || "").slice(1))) applyBoard();
   openFromHash();
   syncRail();
 })();

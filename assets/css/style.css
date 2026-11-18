@@ -798,28 +798,29 @@ main{ padding-bottom: 40px; }
 }
 
 /* ------------------------------------------------------- hot board（热榜板） */
-/* 今日 / 榜单 / 抽奖 三个分区合成一块可切换的热榜板：桌面 3 个 tab 并排，
-   手机 2 个 tab（抽奖只在桌面出现）。手机里每条是 34–38px 的单行热点条。 */
+/* 桌面：左右两块可切换的榜单并排——左「今日优惠 / 高价值榜」，右「48h 新收录 / 抽奖·高上限」。
+   手机：只留左板，条目变成 34–38px 的单行热点条。两块板都锁死高度，切 tab 下方内容不动。 */
 
-.hot-tabs{
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 8px 0 0;
-  border-bottom: 1px solid rgba(28,25,23,.08);
+.hot-board{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin: 10px 0 4px;
 }
+.hot-panel{ min-width: 0; }
+
 .hot-tablist{
   display: flex;
   align-items: stretch;
-  gap: 20px;
-  min-width: 0;
+  gap: 18px;
+  border-bottom: 1px solid rgba(28,25,23,.08);
 }
 .hot-tab{
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 8px 0 10px;
+  padding: 7px 0 9px;
   font-size: 13.5px;
   font-weight: 600;
   letter-spacing: -.01em;
@@ -850,43 +851,38 @@ main{ padding-bottom: 40px; }
   border-radius: 2px;
   background: linear-gradient(90deg, #FBBF24, #EA580C);
 }
-.hot-tab .lbl-short{ display: none; }
-.hot-desc{
-  margin: 0 0 2px auto;
-  min-width: 0;
-  max-width: 560px;
-  font-size: 12.2px;
-  line-height: 1.5;
-  color: var(--ink-3);
-  text-align: right;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+/* 固定高度 + 板内滚动：切 tab 时整块板的高度不变 */
+.hot-panel-body{
+  height: 300px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: 2px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(28,25,23,.18) transparent;
 }
+.hot-panel-body::-webkit-scrollbar{ width: 6px; }
+.hot-panel-body::-webkit-scrollbar-thumb{ background: rgba(28,25,23,.16); border-radius: 3px; }
+.hot-panel-body::-webkit-scrollbar-track{ background: transparent; }
+
 /* 分区标题由 tab 承担，省掉重复的一行 */
 .module.hot-strip .module-head{ display: none; }
-.module.hot-strip{ padding-top: 10px; content-visibility: visible; }
+.module.hot-strip{ padding: 8px 0 4px; content-visibility: visible; }
 .module.hot-strip .track > .grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
+#today.hot-strip{ padding-top: 8px; }
 
-/* 切换 tab 时底板高度不跳：高度由 app.js 按最高的一页锁住，超高就内部滑动 */
-.hot-board{
-  position: relative;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(28,25,23,.18) transparent;
+@media (min-width: 769px){
+  .hot-board{ grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
 }
-.hot-board::-webkit-scrollbar{ width: 6px; }
-.hot-board::-webkit-scrollbar-thumb{ background: rgba(28,25,23,.16); border-radius: 3px; }
-.hot-board::-webkit-scrollbar-track{ background: transparent; }
 
 @media (max-width: 768px){
-  .hot-tabs{ margin: 0 0 8px; gap: 0; }
-  .hot-tablist{ flex: 1 1 auto; gap: 16px; }
+  .hot-board{ gap: 0; margin: 0 0 8px; }
+  .hot-panel-alt{ display: none; }
+  .hot-tablist{ gap: 16px; }
   .hot-tab{
     flex: 1 1 0;
     justify-content: center;
@@ -899,11 +895,7 @@ main{ padding-bottom: 40px; }
     transform: translateX(-50%);
     width: 34px;
   }
-  .hot-tab .lbl-long{ display: none; }
-  .hot-tab .lbl-short{ display: inline; }
-  .hot-tab[data-tab="lottery"]{ display: none; }
-  .hot-desc{ display: none; }
-
+  .hot-panel-body{ height: 200px; }
   .module.hot-strip{ padding-top: 2px; }
   .module.hot-strip .track{
     display: block;
