@@ -854,12 +854,28 @@ footer{
 
   .grid{ grid-template-columns: 1fr; gap: 8px; }
   .card-head{ padding: 11px 12px 10px; gap: 9px; }
-  .row1 h3{ font-size: 13.8px; }
-  .row2{ font-size: 11.9px; }
-  .row3{ font-size: 10.8px; gap: 6px; }
+  .row1{ align-items: flex-start; }
+  .row1 h3{
+    font-size: 13.8px;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.38;
+  }
+  .value{ font-size: 10.4px; padding: 0 5px; margin-top: 1px; }
+  .row2{ font-size: 11.9px; margin-top: 4px; }
+  .row2 .tag{ font-size: 9.2px; padding: 0 4px; margin-right: 4px; }
+  .row3{
+    font-size: 10.8px;
+    gap: 3px 6px;
+    flex-wrap: wrap;
+    margin-top: 7px;
+  }
+  .row3 .region{ flex: 1 1 100%; max-width: none; font-size: 10.4px; color: #6f7a86; }
+  .row3 .sep{ display: none; }
   .go{ font-size: 10.8px; }
   .toggle{ font-size: 10.8px; }
-  .value{ font-size: 11px; }
 
   /* horizontal snap paging */
   .track{
