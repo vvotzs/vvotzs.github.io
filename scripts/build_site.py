@@ -356,7 +356,7 @@ def main() -> None:
             ),
             module_html(
                 "rank", "B", "高价值优惠排行榜",
-                "按实际价值（现金奖励 / 额度 / 年费）排序，先挑最值钱的。金额为官方标注上限，达标条件见详情。",
+                "按实际价值（现金奖励 / 额度 / 年费）排序，先挑最值钱的。",
                 active_sorted[:10], today, ranked=True,
             ),
             module_html(
