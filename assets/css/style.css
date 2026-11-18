@@ -480,6 +480,21 @@ main{ padding-bottom: 40px; }
   white-space: nowrap;
   color: var(--ink);
 }
+.row1 h3 .rtag{
+  display: inline-block;
+  margin-right: 5px;
+  padding: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #E7E5E1;
+  background: #F4F4F0;
+  color: #52525B;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
 .value{
   flex: none;
   font-family: var(--mono);

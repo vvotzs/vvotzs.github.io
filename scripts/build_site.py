@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import re
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
@@ -207,6 +208,13 @@ def card(deal: dict, today: date, rank: int | None = None) -> str:
 
     value_cls = "value gold" if (deal.get("value_num") or 0) >= 100 else "value"
 
+    raw_title = deal.get("title", "")
+    m = re.match(r"^\[([^\]]{1,24})\]\s*(.*)$", raw_title)
+    if m:
+        title_html = f'<span class="rtag">{e(m.group(1))}</span>{e(m.group(2))}'
+    else:
+        title_html = e(raw_title)
+
     return f"""<article class="{classes}" data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
     data-added="{e(deal.get('added', ''))}" data-val="{int(deal.get('value_num') or 0)}"
@@ -219,7 +227,7 @@ def card(deal: dict, today: date, rank: int | None = None) -> str:
       <span class="fav-fallback" style="display:none">{e((deal.get('brand') or '?')[:1].upper())}</span>
       <div class="card-body">
         <div class="row1">
-          <h3>{e(deal['title'])}</h3>
+          <h3>{title_html}</h3>
           {badges}
           <span class="{value_cls}">{e(deal['value'])}</span>
         </div>
