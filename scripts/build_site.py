@@ -597,20 +597,15 @@ def main() -> None:
 </div>
 
 <footer>
-  <div class="shell foot-in">
-    <div>
-      <div class="foot-brand">
-        <span class="brand-mark" aria-hidden="true">
-          {MASCOT_SVG}
-        </span>
-        羊毛情报局
-      </div>
-    </div>
-    <div class="foot-meta">
-      <span>更新 {e(last_updated)}</span>
-      <span>已核验 {counts['active']} 条进行中 · 归档 {counts['expired']} 条</span>
-      <span>© {today.year} 羊毛情报局</span>
-    </div>
+  <div class="shell foot-line">
+    <span class="foot-brand">
+      <span class="brand-mark" aria-hidden="true">
+        {MASCOT_SVG}
+      </span>
+      羊毛情报局 · © {today.year}
+    </span>
+    <span class="foot-up">更新 {e(last_updated)}</span>
+    <a class="foot-top" href="#top">回到顶部 ↑</a>
   </div>
 </footer>
 
