@@ -235,6 +235,13 @@ button{ font-family: inherit; }
 .stat.hot b{ color: var(--amber-deep); }
 .stat.live b{ color: var(--mint); }
 
+/* desktop: 不再重复顶栏已有的信息，直接把模块顶上来 */
+@media (min-width: 769px){
+  .hero{ display: none; }
+  main{ padding-top: 4px; }
+  .module{ padding-top: 26px; }
+}
+
 /* ---------------------------------------------------------------- modules */
 
 main{ padding-bottom: 40px; }
