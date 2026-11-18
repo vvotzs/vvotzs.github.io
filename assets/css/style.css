@@ -139,6 +139,7 @@ button{ font-family: inherit; }
 .spacer{ flex: 1 1 auto; }
 
 .search-btn{
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -858,9 +859,9 @@ footer{
   .shell{ padding: 0 16px 4px; }
   .topbar-in{ height: 56px; gap: 10px; }
   .brand-name{ font-size: 14px; }
-  .brand-sub{ font-size: 9.6px; }
+  .brand-sub{ display: none; }
   .topbar-stats{ display: none; }
-  .search-btn{ padding: 0 10px; height: 32px; }
+  .search-btn{ padding: 0 11px; height: 32px; font-size: 12px; }
   .search-btn kbd{ display: none; }
 
   .hero{ padding: 30px 0 4px; }
