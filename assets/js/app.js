@@ -1,16 +1,19 @@
 /* 羊毛情报局 — interaction layer
-   1. 单开手风琴（手机端整卡可点）          2. 搜索 / 筛选 / 排序（读 JSON 索引）
-   3. 分类内「显示更多」折叠（不再横滑翻页） 4. 热榜板 tab（桌面双板 / 手机单板）
-   5. 顶部横滑分类条 + 右侧竖版滑轨高亮      6. 图标兜底
-   7. 跳转卡落到分类详情                    8. 筛选状态同步到 URL
+   1. 单开手风琴（手机端整卡可点）              2. 搜索 / 筛选 / 排序（读 JSON 索引）
+   3. 手机端分类内每页 4 张左右横滑翻页          4. 热榜板 tab（桌面双板 / 手机单板）
+   5. 右侧竖版滑轨高亮（桌面 + 手机）            6. 图标兜底
+   7. 跳转卡落到分类详情（自动翻到所在页）       8. 筛选状态同步到 URL
    静态卡片已在 HTML 里，脚本只做增强，禁用 JS 也能正常阅读。 */
 (function () {
   "use strict";
 
+  document.documentElement.classList.add("js");
+
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
 
-  var MORE_LIMIT = 8;           // 分类内先展示 8 条，其余折叠
+  var PAGE_SIZE = 4;            // 手机端分类卡一页 4 条
+  var MORE_LIMIT = 8;           // 桌面端分类内先展示 8 条，其余「显示更多」
   var TODAY_WINDOW_DAYS = 2;    // 与 scripts/common.py 的 TODAY_WINDOW_DAYS 保持一致
   var mqMobile = window.matchMedia("(max-width: 768px)");
 
@@ -44,10 +47,13 @@
       el: sec,
       anchor: sec.id,
       isJump: sec.dataset.kind === "jump",
-      grid: $("[data-grid]", sec),
+      track: $("[data-track]", sec),
+      bar: $("[data-bar]", sec),
+      label: $("[data-label]", sec),
       countEl: $("[data-count]", sec),
       empty: $(".module-empty", sec),
       more: $("[data-more]", sec),
+      per: parseInt(sec.dataset.per, 10) || PAGE_SIZE,
       items: $$(sec.dataset.kind === "jump" ? ".jump" : ".card", sec),
       expanded: false,
       total: 0
@@ -116,7 +122,54 @@
   }
 
   /* ------------------------------------------------------------ rendering */
+  /* 手机端非热榜分区：按 per 张一页切成 .page，横向吸附滑动；
+     桌面端（或热榜跳转卡）：所有卡片平铺进 .track，桌面用网格、超 8 条折叠。 */
+  function buildTrack(m, visible, paged) {
+    var track = m.track;
+    if (!track) return;
+    track.textContent = "";
+    if (paged) {
+      for (var i = 0; i < visible.length; i += m.per) {
+        var page = document.createElement("div");
+        page.className = "page";
+        visible.slice(i, i + m.per).forEach(function (el) {
+          el.classList.remove("is-extra");
+          page.appendChild(el);
+        });
+        track.appendChild(page);
+      }
+    } else {
+      var limit = m.isJump ? visible.length : MORE_LIMIT;
+      visible.forEach(function (el, i) {
+        el.classList.toggle("is-extra", i >= limit);
+        track.appendChild(el);
+      });
+    }
+    track.scrollLeft = 0;
+  }
+
+  function pageCount(m) {
+    return Math.max(1, Math.ceil(m.total / m.per));
+  }
+
+  /* 页码 1 / N 与左右按钮的可用状态，跟着横滑位置走 */
+  function updateBar(m) {
+    if (!m.bar) return;
+    var pages = pageCount(m);
+    var show = mqMobile.matches && !m.isJump && m.total > 0 && pages > 1;
+    m.bar.style.display = show ? "flex" : "none";
+    if (!show) return;
+    var w = m.track.clientWidth || 1;
+    var idx = Math.min(Math.max(Math.round(m.track.scrollLeft / w), 0), pages - 1);
+    if (m.label) m.label.textContent = (idx + 1) + " / " + pages;
+    var prev = $("[data-prev]", m.bar);
+    var next = $("[data-next]", m.bar);
+    if (prev) prev.disabled = idx <= 0;
+    if (next) next.disabled = idx >= pages - 1;
+  }
+
   function render() {
+    var mobile = mqMobile.matches;
     var seen = {};
     var matchedTotal = 0;
 
@@ -142,22 +195,15 @@
       });
       if (m.empty) m.empty.style.display = visible.length ? "none" : "block";
 
-      var limit = m.isJump ? visible.length : MORE_LIMIT;
-      if (m.grid) {
-        m.grid.textContent = "";
-        visible.forEach(function (el, i) {
-          if (i >= limit) el.classList.add("is-extra");
-          else el.classList.remove("is-extra");
-          m.grid.appendChild(el);
-        });
-        m.grid.style.display = visible.length ? "" : "none";
-      }
+      var paged = mobile && !m.isJump;
+      buildTrack(m, visible, paged);
+      if (m.track) m.track.style.display = visible.length ? "" : "none";
 
-      var collapsed = !m.isJump && visible.length > MORE_LIMIT && !m.expanded;
+      var collapsed = !paged && !m.isJump && visible.length > MORE_LIMIT && !m.expanded;
       m.el.dataset.collapsed = collapsed ? "1" : "0";
 
       if (m.more) {
-        if (!m.isJump && visible.length > MORE_LIMIT) {
+        if (!m.isJump && !paged && visible.length > MORE_LIMIT) {
           m.more.hidden = false;
           m.more.textContent = m.expanded
             ? "收起（只看前 " + MORE_LIMIT + " 条）"
@@ -166,6 +212,8 @@
           m.more.hidden = true;
         }
       }
+
+      updateBar(m);
     });
 
     $$("[data-result]").forEach(function (el) { el.textContent = matchedTotal; });
@@ -173,7 +221,7 @@
     syncURL();
   }
 
-  /* 各分类的「显示更多 / 收起」 */
+  /* 桌面端各分类的「显示更多 / 收起」（手机端不折叠，直接翻页） */
   document.addEventListener("click", function (ev) {
     var btn = ev.target.closest("[data-more]");
     if (!btn) return;
@@ -182,6 +230,32 @@
     m.expanded = !m.expanded;
     render();
   });
+
+  /* ------------------------------------------------------- 手机横滑翻页条 */
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest("[data-prev], [data-next]");
+    if (!btn) return;
+    var m = modules.filter(function (x) { return x.bar && x.bar.contains(btn); })[0];
+    if (!m || !m.track) return;
+    ev.preventDefault();
+    var dir = btn.hasAttribute("data-prev") ? -1 : 1;
+    m.track.scrollBy({ left: dir * m.track.clientWidth, behavior: "smooth" });
+    // 平滑滚动期间先按目标页刷新页码，手指直接滑动时再由 scroll 事件接管
+    var pages = pageCount(m);
+    var idx = Math.min(Math.max(Math.round(m.track.scrollLeft / (m.track.clientWidth || 1)) + dir, 0), pages - 1);
+    if (m.label) m.label.textContent = (idx + 1) + " / " + pages;
+    clearTimeout(m._tick);
+    m._tick = setTimeout(function () { updateBar(m); }, 380);
+  });
+
+  document.addEventListener("scroll", function (ev) {
+    var track = ev.target;
+    if (!track || !track.hasAttribute || !track.hasAttribute("data-track")) return;
+    var m = modules.filter(function (x) { return x.track === track; })[0];
+    if (!m || !mqMobile.matches) return;
+    clearTimeout(m._tick);
+    m._tick = setTimeout(function () { updateBar(m); }, 80);
+  }, true);
 
   /* ------- 热榜板：桌面左「新收录 / 高价值榜」· 右「即将截止 / 抽奖」，手机合成一块 ------- */
   var hotBoard = $("[data-hot-board]");
@@ -253,13 +327,13 @@
   function scrollToBoard() {
     if (!hotBoard) return;
     var rect = hotBoard.getBoundingClientRect();
-    var barH = mqMobile.matches ? 104 : 56;
+    var barH = mqMobile.matches ? 64 : 68;
     if (rect.top >= barH && rect.top <= window.innerHeight - 140) return;
     var top = window.scrollY + rect.top - barH;
     window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
   }
 
-  /* 顶部 tab、手机分类条、右侧滑轨里指向热榜的入口都落到同一块板 */
+  /* 顶部 tab、右侧滑轨里指向热榜的入口都落到同一块板 */
   document.addEventListener("click", function (ev) {
     if (!ev.target.closest) return;
     var link = ev.target.closest(
@@ -313,13 +387,21 @@
     else openCard(card);
   });
 
+  /* 把某张卡带到视野中央：手机端先横向翻到它所在的那一页 */
   function revealDeal(target, behavior, offset) {
+    var track = target.closest("[data-track]");
+    var page = target.closest(".page");
+    if (track && page && mqMobile.matches) {
+      track.scrollLeft = page.offsetLeft;
+      var m = modules.filter(function (x) { return x.track === track; })[0];
+      if (m) updateBar(m);
+    }
     var rect = target.getBoundingClientRect();
     var top = window.scrollY + rect.top - (offset == null ? 80 : offset);
     window.scrollTo({ top: Math.max(top, 0), behavior: behavior || "auto" });
   }
 
-  /* 跳转卡：滚到分类区对应的唯一详情卡并展开（被「显示更多」收起来的先展开） */
+  /* 跳转卡：翻到卡片所在页、滚到它并展开（桌面端被「显示更多」收起的先展开） */
   document.addEventListener("click", function (ev) {
     var jump = ev.target.closest("[data-jump]");
     if (!jump) return;
@@ -349,14 +431,14 @@
     closeAll(null);
   });
 
-  /* ------------------------------------------------------ rail / catbar 高亮 */
-  var navLinks = $$(".rail a[data-target], .catbar a[data-target]");
+  /* ------------------------------------------------------------ 滑轨高亮 */
+  var navLinks = $$(".rail a[data-target]");
   var sections = $$(".module");
   var navRaf = null;
 
   function syncNav() {
     if (!navLinks.length) return;
-    var probe = window.scrollY + (mqMobile.matches ? 150 : 120);
+    var probe = window.scrollY + (mqMobile.matches ? 72 : 76);
     var visible = sections.filter(function (sec) { return !sec.hidden; });
     if (!visible.length) return;
     var current = null;
@@ -378,6 +460,7 @@
     if (navRaf) return;
     navRaf = requestAnimationFrame(function () { navRaf = null; syncNav(); });
   }, { passive: true });
+  window.addEventListener("resize", function () { syncNav(); }, { passive: true });
 
   navLinks.forEach(function (a) {
     a.addEventListener("click", function (ev) {

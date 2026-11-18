@@ -545,15 +545,23 @@ def module_html(
     else:
         cards = [card(deal, today) for deal in deals]
     count = len(deals)
+    # 手机端分类内每页 4 张左右横滑；热榜跳转卡不翻页，2 列网格
+    per_page = 6 if jump else 4
+    pages = max(1, -(-count // per_page))
     return f"""
-  <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}"{' data-kind="jump"' if jump else ''}>
+  <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-per="{per_page}"{' data-kind="jump"' if jump else ''}>
     <header class="module-head">
       <span class="module-badge" aria-hidden="true">{icon(icon_key)}</span>
       <h2>{title} <span class="count" data-count>{count}</span></h2>
       <p class="module-desc">{desc}</p>
     </header>
-    <div class="grid" data-grid>
+    <div class="track" data-track>
       {''.join(cards)}
+    </div>
+    <div class="pager-bar" data-bar>
+      <button class="pg" type="button" data-prev aria-label="上一页">‹</button>
+      <span class="pager-label" data-label>1 / {pages}</span>
+      <button class="pg" type="button" data-next aria-label="下一页">›</button>
     </div>
     <p class="module-empty" style="display:none">该分类暂无符合条件的优惠</p>
     <button class="more" type="button" data-more hidden></button>
@@ -620,6 +628,8 @@ def main() -> None:
 
     last_updated = meta.get("last_updated_human") or now_local().strftime("%Y-%m-%d %H:%M")
     beijing_time = last_updated if re.match(r"^\d{4}-\d{2}-\d{2}", last_updated) else now_local().strftime("%Y-%m-%d %H:%M")
+    # 手机首屏只放一行：更新时间的短写法（11-19 03:20）免得挤占卡片宽度
+    beijing_short = beijing_time[5:] if re.match(r"^\d{4}-\d{2}-\d{2}", beijing_time) else beijing_time
     counts = {
         "active": len(active),
         "expiring": len(closing),
@@ -637,11 +647,6 @@ def main() -> None:
         f'<a class="rail-top" href="#top" aria-label="回到顶部">{icon("rocket")}'
         "<span>顶部</span></a>"
     )
-    catbar = "".join(
-        f'<a href="#{anchor}" data-target="{anchor}">{icon(icon_key)}<span>{label}</span></a>'
-        for anchor, label, icon_key in NAV
-    )
-
     board = {
         "fresh": module_html(
             "fresh", "today", "新收录",
@@ -861,16 +866,12 @@ def main() -> None:
   </div>
 </header>
 
-<nav class="catbar" aria-label="分类导航">
-  <div class="catbar-in">{catbar}</div>
-</nav>
-
 <main id="top">
   <div class="shell">
     <section class="hero">
       <h1>羊毛情报局</h1>
       <p class="hero-tag">全球免费额度与限时奖励，先看值得点的。</p>
-      <p class="hero-meta"><span class="dot" aria-hidden="true"></span>北京时间 {e(beijing_time)} 更新</p>
+      <p class="hero-meta"><span class="dot" aria-hidden="true"></span><span class="hm-long">北京时间 {e(beijing_time)} 更新</span><span class="hm-short">{e(beijing_short)} 更新</span></p>
     </section>
 
     <div class="ad-slot" data-ad="top" aria-hidden="true"><!-- AdSense：顶部 / 桌面横幅 --></div>

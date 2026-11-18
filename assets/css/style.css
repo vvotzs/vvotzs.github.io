@@ -4,15 +4,16 @@
 
    结构：
      1 token / 基础
-     2 顶栏 + 手机横滑分类条
-     3 紧凑首屏（h1 ≤ 80px）
+     2 顶栏（品牌标题 + 搜索 + 统计）
+     3 紧凑首屏（一行）
      4 分区标题（分类图标徽标）
      5 卡片 + 折叠详情
      6 跳转卡（热榜板）
      7 热榜双板（桌面）/ 单板（手机）
-     8 右侧竖版滑轨（仅桌面）
-     9 搜索弹层 / 广告位 / 页脚
-    10 响应式
+     8 右侧竖版滑轨（桌面 + 手机）
+     9 分类内横滑翻页（手机）
+    10 搜索弹层 / 广告位 / 页脚
+    11 响应式
    ========================================================================== */
 
 :root{
@@ -54,7 +55,7 @@
 
 html{
   scroll-behavior: smooth;
-  scroll-padding-top: 84px;
+  scroll-padding-top: 72px;
   -webkit-text-size-adjust: 100%;
 }
 html, body{ overflow-x: hidden; }
@@ -220,8 +221,8 @@ a.stats-pill:active{ transform: translateY(0); }
   color: var(--ink-4);
 }
 
-/* --------------------------------------------- 手机横滑分类条（<=768px） */
-/* 桌面端不渲染，改由右侧竖版滑轨承担同样的导航。 */
+/* --------------------------------------------- 手机横滑分类条已取消 */
+/* 手机端改由右侧竖版滑轨承担分类导航，顶栏下方不再有吸顶横滑条。 */
 .catbar{ display: none; }
 
 /* ------------------------------------------------------------------- hero */
@@ -265,6 +266,7 @@ a.stats-pill:active{ transform: translateY(0); }
   background: var(--amber);
   box-shadow: 0 0 0 3px rgba(245,158,11,.18);
 }
+.hm-short{ display: none; }
 
 main{ padding-bottom: 40px; }
 
@@ -340,7 +342,7 @@ main{ padding-bottom: 40px; }
   background: rgba(255,255,255,.6);
 }
 
-/* 分类内不再横滑翻页：> 8 条先收起来，底部一个「显示更多」往下展开 */
+/* 桌面端：> 8 条先收起来，底部一个「显示更多」往下展开（手机端则是横滑翻页） */
 .more{
   display: block;
   width: 100%;
@@ -356,14 +358,46 @@ main{ padding-bottom: 40px; }
 }
 .more:hover{ border-color: rgba(245,158,11,.5); color: var(--terra); background: #FFFCF6; }
 .more[hidden]{ display: none; }
-[data-collapsed="1"] .grid > .is-extra{ display: none; }
+[data-collapsed="1"] .track > .is-extra{ display: none; }
+
+/* ------------------------------------------------------------- 手机翻页条 */
+.pager-bar{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 9px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .02em;
+  color: var(--ink-3);
+}
+.pager-label{ min-width: 46px; text-align: center; font-feature-settings: "tnum"; }
+.pager-bar .pg{
+  width: 30px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+  background: #FFFFFF;
+  color: var(--ink-2);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  box-shadow: var(--shadow-1);
+}
+.pager-bar .pg:disabled{ opacity: .3; cursor: default; box-shadow: none; }
+.pager-bar .pg:active:not(:disabled){ background: var(--amber-soft); border-color: var(--amber-line); }
 
 /* ------------------------------------------------------------------ cards */
 
-.grid{
+.track{
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  min-width: 0;
 }
 
 .card{
@@ -858,7 +892,7 @@ main{ padding-bottom: 40px; }
 .module.hot-strip .module-empty{ margin-top: 8px; }
 .module.hot-strip{ padding: 8px 0 4px; }
 .module.hot-strip .more{ display: none; }
-.module.hot-strip .grid{
+.module.hot-strip .track{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
@@ -868,7 +902,7 @@ main{ padding-bottom: 40px; }
   .hot-board{ grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
 }
 
-/* ---------------------------------------------------------- rail (desktop) */
+/* ---------------------------------------------------------- rail (desktop + mobile) */
 
 .rail{
   position: fixed;
@@ -1128,88 +1162,76 @@ footer{
 }
 
 @media (max-width: 768px){
-  :root{ --topbar: 56px; }
-  html{ scroll-padding-top: 104px; }
-  .shell{ padding: 0 16px 4px; }
+  :root{ --topbar: 54px; }
+  html{ scroll-padding-top: 66px; }
+  /* 右侧竖版滑轨占 44px：正文右留白同步收紧，卡片不钻到导轨下面 */
+  .shell{ padding: 0 50px 4px 14px; }
 
-  /* ---- 顶栏：品牌名 + 搜索图标 + 三枚统计胶囊，一行放下 ---- */
-  .topbar-in{ height: var(--topbar); gap: 8px; }
-  .brand{ gap: 0; min-width: 0; }
-  /* 首屏 h1 就是站名，顶栏手机端只留小怪兽标记，不重复一遍 */
-  .brand-name{ display: none; }
+  /* ---- 顶栏：🥒 羊毛情报局 + 搜索图标 + 三枚统计胶囊，一行放下 ---- */
+  .topbar-in{ height: var(--topbar); gap: 6px; }
+  .brand{ gap: 6px; min-width: 0; flex: 0 1 auto; }
+  .brand-mark{ width: 26px; height: 26px; border-radius: 9px; }
+  .brand-mark svg{ width: 20px; height: 20px; }
+  .brand-name{
+    display: block;
+    font-size: 14px;
+    letter-spacing: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .brand-sub{ display: none; }
   .search-btn{
-    width: 34px; height: 34px;
+    width: 30px; height: 30px;
     padding: 0;
     justify-content: center;
-    flex: 0 0 34px;
-    margin-left: auto;
+    flex: 0 0 30px;
     border-radius: 999px;
   }
   .search-btn kbd{ display: none; }
   .search-btn .sb-text{ display: none; }
   .search-btn .sb-q{ gap: 0; }
-  .topbar-stats{ display: flex; gap: 4px; }
+  .topbar-stats{ display: flex; gap: 3px; flex: 0 0 auto; }
   .topbar-stats .stats-pill{
-    padding: 2px 7px;
-    font-size: 10px;
-    gap: 3px;
+    padding: 1px 5px;
+    font-size: 9.5px;
+    gap: 2px;
   }
-  .topbar-stats .stats-pill b{ font-size: 10.5px; }
+  .topbar-stats .stats-pill b{ font-size: 10px; }
 
-  /* ---- 横滑分类条：吸在顶栏下方 ---- */
-  .catbar{
-    display: block;
-    position: sticky;
-    top: var(--topbar);
-    z-index: 59;
-    background: rgba(250,247,242,.94);
-    backdrop-filter: blur(12px) saturate(120%);
-    -webkit-backdrop-filter: blur(12px) saturate(120%);
-    border-bottom: 1px solid rgba(28,25,23,.07);
-  }
-  .catbar-in{
+  /* ---- 首屏：顶栏已有站名，这里只留一行标语 + 更新时间 ---- */
+  .hero{
     display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    padding: 7px 16px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .catbar-in::-webkit-scrollbar{ display: none; }
-  .catbar a{
-    flex: 0 0 auto;
-    display: inline-flex;
     align-items: center;
-    gap: 5px;
-    height: 30px;
-    padding: 0 10px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    background: #FFFFFF;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--ink-2);
+    gap: 8px;
+    padding: 5px 0 6px;
+    flex-wrap: nowrap;
+  }
+  .hero h1{
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
     white-space: nowrap;
   }
-  .catbar a svg{ width: 14px; height: 14px; }
-  .catbar a.active{
-    color: #065F46;
-    background: var(--mint-soft);
-    border-color: var(--mint-line);
+  .hero-tag{
+    margin: 0;
+    font-size: 11.8px;
+    line-height: 1.35;
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--ink-2);
   }
-
-  /* ---- 紧凑首屏（手机） ---- */
-  .hero{
-    display: block;
-    padding: 4px 0 6px;
-  }
-  .hero h1{ font-size: 19px; }
-  .hero-tag{ margin-top: 1px; font-size: 12px; }
-  .hero-meta{ margin: 2px 0 0; font-size: 10.5px; }
+  .hero-meta{ margin: 0; flex: 0 0 auto; font-size: 10px; gap: 4px; }
+  .hero-meta .dot{ width: 5px; height: 5px; }
+  .hm-long{ display: none; }
+  .hm-short{ display: inline; }
 
   /* ---- 分区 ---- */
-  .module{ padding: 14px 0 2px; }
+  .module{ padding: 12px 0 2px; }
   .module-head{ margin-bottom: 8px; gap: 8px; }
   .module-badge{ width: 22px; height: 22px; border-radius: 7px; }
   .module-badge svg{ width: 15px; height: 15px; }
@@ -1217,7 +1239,32 @@ footer{
   .module h2 .count{ font-size: 10px; padding: 1px 6px; }
   .module-desc{ display: none; }
 
-  .grid{ grid-template-columns: 1fr; gap: 9px; }
+  /* ---- 分类内左右横滑翻页：每页 4 张 ---- */
+  .track{
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+    gap: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .track::-webkit-scrollbar{ display: none; }
+  .page{
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 9px;
+  }
+  .more{ display: none !important; }
+  html.js .pager-bar{ display: flex; }
+
   .card-head{ padding: 12px 12px 11px; gap: 9px; }
   .row1{ align-items: flex-start; }
   .row1 h3{
@@ -1316,9 +1363,12 @@ footer{
   .hot-panel-body:empty{ display: none; }
 
   .module.hot-strip{ padding: 0; }
-  .module.hot-strip .grid{
+  .module.hot-strip .track{
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
+    overflow: visible;
+    scroll-snap-type: none;
   }
   /* 榜单条只用名次徽标（抖音式），把宽度留给标题 */
   #rank .jump .fav,
@@ -1406,11 +1456,40 @@ footer{
   .module.hot-strip .jump .jump-meta,
   .module.hot-strip .jump .jump-arrow{ display: none; }
 
-  /* ---- 收起右侧竖版滑轨，把宽度还给卡片 ---- */
-  .rail{ display: none !important; }
+  /* ---- 右侧竖版滑轨：图标 + 小标签 + 底部小火箭回顶，总宽 44px ---- */
+  .rail{
+    right: 2px;
+    gap: 0;
+    padding: 5px 2px;
+    border-radius: 13px;
+    background: rgba(252,250,246,.92);
+    box-shadow: 0 14px 30px -22px rgba(60,40,10,.5), 0 1px 2px rgba(28,25,23,.05);
+  }
+  .rail a{
+    width: 38px;
+    height: 32px;
+    gap: 1px;
+    border-radius: 9px;
+  }
+  .rail a svg{ width: 14px; height: 14px; }
+  .rail a span{
+    display: block;
+    font-size: 8px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+  .rail a.active span{ font-weight: 600; }
+  .rail a.rail-top{ height: 34px; }
+  .rail a.rail-top svg{ width: 15px; height: 15px; }
+  .rail-sep{ margin: 3px 5px; }
 
   .foot-line{ gap: 10px; font-size: 11px; }
   .foot-up{ display: none; }
+}
+
+/* 窄屏（iPhone SE / 360 级）：先舍「已归档」胶囊，保证 🥒 羊毛情报局 完整不截断 */
+@media (max-width: 379px){
+  .topbar-stats .stats-pill.stone{ display: none; }
 }
 
 @media (prefers-reduced-motion: reduce){
