@@ -6,6 +6,7 @@
 """
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 from datetime import date, datetime, timedelta
@@ -80,6 +81,14 @@ NAV = [
     ("software", "软件", ICONS["software"]),
     ("archive", "归档", ICONS["archive"]),
 ]
+
+
+def asset_ver(rel: str) -> str:
+    """给静态资源带上内容哈希，避免 GitHub Pages CDN 缓存旧样式。"""
+    path = ROOT / rel
+    if not path.exists():
+        return "1"
+    return hashlib.sha1(path.read_bytes()).hexdigest()[:8]
 
 
 def e(value: object) -> str:
@@ -406,7 +415,7 @@ def main() -> None:
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/favicon.svg">
 <link rel="preconnect" href="https://www.google.com" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 
 <!-- Google AdSense：开通后把脚本放在这里，并给 .ad-slot 容器填入广告单元
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
@@ -572,7 +581,7 @@ def main() -> None:
   </div>
 </footer>
 
-<script src="assets/js/app.js" defer></script>
+<script src="assets/js/app.js?v={asset_ver('assets/js/app.js')}" defer></script>
 </body>
 </html>
 """
