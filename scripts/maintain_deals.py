@@ -15,35 +15,26 @@ import argparse
 import json
 import re
 import sys
-from datetime import date, datetime, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data" / "deals.json"
-META = ROOT / "data" / "meta.json"
-SITEMAP = ROOT / "sitemap.xml"
+if str(ROOT / "scripts") not in sys.path:
+    sys.path.insert(0, str(ROOT / "scripts"))
 
-SITE_URL = "https://vvotzs.github.io/"
-ARCHIVE_DAYS = 30
-EXPIRING_DAYS = 7
-
-CATEGORIES = {
-    "ai": "AI 工具",
-    "crypto": "Crypto",
-    "bank": "海外银行 / U 卡 / 汇款",
-    "cloud": "VPS 与云服务",
-    "esim": "eSIM",
-    "software": "软件与数字服务",
-}
-
-
-def parse_date(value: str | None) -> date | None:
-    if not value:
-        return None
-    try:
-        return datetime.strptime(value, "%Y-%m-%d").date()
-    except ValueError:
-        return None
+from common import (  # noqa: E402
+    ARCHIVE_DAYS,
+    CAT_META,
+    CLOSING_WINDOW_DAYS,
+    DATA,
+    EXPIRING_DAYS,
+    META,
+    SITE_URL,
+    SITEMAP,
+    compute_status,
+    now_local,
+    parse_date,
+    today_local,
+)
 
 
 def norm_title(title: str) -> str:
@@ -134,7 +125,7 @@ def main() -> int:
         print(f"missing {DATA}", file=sys.stderr)
         return 1
 
-    today = date.today()
+    today = today_local()
     deals = json.loads(DATA.read_text(encoding="utf-8"))
     before = len(deals)
 
@@ -142,16 +133,12 @@ def main() -> int:
 
     archived, pruned = 0, []
     for deal in deals:
+        deal["status"] = compute_status(deal, today)
         end = parse_date(deal.get("end", ""))
-        if end and end < today:
-            deal["status"] = "expired"
+        if deal["status"] == "expired":
             archived += 1
-            if (today - end).days > ARCHIVE_DAYS:
+            if end and (today - end).days > ARCHIVE_DAYS:
                 pruned.append(deal["id"])
-        elif end and (end - today).days <= EXPIRING_DAYS:
-            deal["status"] = "expiring_soon"
-        else:
-            deal["status"] = "active"
 
     deals = [d for d in deals if d["id"] not in pruned]
 
@@ -166,7 +153,7 @@ def main() -> int:
     closing_30d = [
         d
         for d in active + expiring
-        if parse_date(d.get("end", "")) and 0 <= (parse_date(d["end"]) - today).days <= 30
+        if parse_date(d.get("end", "")) and 0 <= (parse_date(d["end"]) - today).days <= CLOSING_WINDOW_DAYS
     ]
 
     # 排序：进行中按价值降序，即将截止紧随其后，过期按结束日期降序
@@ -178,10 +165,11 @@ def main() -> int:
         )
     )
 
-    now = datetime.now()
+    now = now_local()
     meta = {
         "last_updated": now.isoformat(timespec="seconds"),
         "last_updated_human": now.strftime("%Y-%m-%d %H:%M"),
+        "timezone": "Asia/Shanghai",
         "counts": {
             "total": len(deals),
             "active": len(active) + len(expiring),
@@ -191,7 +179,7 @@ def main() -> int:
         },
         "categories": {
             key: len([d for d in active + expiring if d.get("category") == key])
-            for key in CATEGORIES
+            for key in CAT_META
         },
         "archive_retention_days": ARCHIVE_DAYS,
         "expiring_threshold_days": EXPIRING_DAYS,
@@ -203,7 +191,7 @@ def main() -> int:
         "  <url>\n"
         f"    <loc>{SITE_URL}</loc>\n"
         f"    <lastmod>{today.isoformat()}</lastmod>\n"
-        "    <changefreq>hourly</changefreq>\n"
+        "    <changefreq>daily</changefreq>\n"
         "    <priority>1.0</priority>\n"
         "  </url>\n"
         "</urlset>\n"

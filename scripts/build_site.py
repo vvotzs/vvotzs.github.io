@@ -3,40 +3,56 @@
 
 读取 data/deals.json 与 data/meta.json，生成纯静态 index.html
 （卡片全部是真实 HTML，方便搜索引擎抓取；筛选 / 手风琴 / 移动端分页由 app.js 增强）。
+
+工程要点：
+  · 时区统一北京时间（见 scripts/common.py）；
+  · 分类区（C/D/E/F/I/J）渲染完整 12 字段卡片，每个活动只出现一次（#deal-<id>）；
+  · 今日 / 榜单 / 截止三个分区渲染精简跳转卡，点一下滚到分类区那张卡片并展开，
+    这样 index.html 不重复三遍详情，搜索计数也不会重复；
+  · 图标在构建时下载到 assets/fav/<domain>.png，境内用户直连 GitHub Pages 即可显示。
 """
 from __future__ import annotations
 
 import hashlib
 import html
+import io
 import json
 import re
-from datetime import date, datetime, timedelta
+import sys
+import urllib.parse
+import urllib.request
+from datetime import timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data" / "deals.json"
-META = ROOT / "data" / "meta.json"
-OUT = ROOT / "index.html"
+if str(ROOT / "scripts") not in sys.path:
+    sys.path.insert(0, str(ROOT / "scripts"))
 
-SITE_URL = "https://vvotzs.github.io/"
-LAST_UPDATED_FALLBACK = "2026-11-19 01:30"
+from common import (  # noqa: E402
+    CAT_META,
+    CLOSING_WINDOW_DAYS,
+    DATA,
+    FAV_DIR,
+    META,
+    OG_IMAGE,
+    OUT,
+    SITE_URL,
+    TODAY_WINDOW_DAYS,
+    compute_status,
+    now_local,
+    parse_date,
+    short_date,
+    today_local,
+    value_expected,
+)
 
-CATEGORY_LABEL = {
-    "ai": "AI 工具",
-    "crypto": "Crypto",
-    "bank": "海外银行 / U 卡 / 汇款",
-    "cloud": "VPS 与云服务",
-    "esim": "eSIM",
-    "software": "软件与数字服务",
-}
+try:
+    from PIL import Image
+except ImportError:  # Pillow 缺失时图标退化为字母块，不阻塞构建
+    Image = None  # type: ignore[assignment]
 
-COST_CLASS = {
-    "真正免费": "cost-free",
-    "免费试用": "cost-trial",
-    "需要充值": "cost-deposit",
-    "需要交易量": "cost-volume",
-    "需要邀请条件": "cost-invite",
-}
+FAV_UA = "Mozilla/5.0 (compatible; YangMaoBot/1.0; +https://vvotzs.github.io/)"
+FAV_SIZE = 64
 
 # ---------------------------------------------------------------- svg icons
 _ICON_PATHS = {
@@ -96,10 +112,6 @@ ICONS = {
     for key, path in _ICON_PATHS.items()
 }
 
-ESIM_ICON = ICONS["esim"]
-
-ESIM_ICON = ESIM_ICON.replace('class="', 'class="esim-icon ', 1) if 'class="' in ESIM_ICON else ESIM_ICON.replace("<svg ", '<svg class="esim-icon" ', 1)
-
 ROCKET_ICON = (
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" '
     'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
@@ -118,31 +130,42 @@ NAV = [
     ("crypto", "币", ICONS["crypto"]),
     ("bank", "卡", ICONS["bank"]),
     ("cloud", "云", ICONS["cloud"]),
-    ("esim", "eSIM", ESIM_ICON),
+    ("esim", "eSIM", ICONS["esim"]),
     ("closing", "截止", ICONS["clock"]),
     ("software", "软件", ICONS["software"]),
     ("archive", "归档", ICONS["archive"]),
 ]
 
+COST_CLASS = {
+    "真正免费": "cost-free",
+    "免费试用": "cost-trial",
+    "需要充值": "cost-deposit",
+    "需要交易量": "cost-volume",
+    "需要邀请条件": "cost-invite",
+}
 
-MASCOT_SVG = (
-    '<svg viewBox="0 0 40 40" aria-hidden="true">'
-    '<defs><linearGradient id="mintBody" x1="0" y1="0" x2="0.4" y2="1">'
-    '<stop offset="0" stop-color="#B7F5DA"/><stop offset="1" stop-color="#7FE3B8"/>'
-    '</linearGradient></defs>'
-    '<path d="M20 3.6c8.6 0 13.1 5.9 13.1 14.2 0 9.6-5.4 18.6-13.1 18.6S6.9 27.4 6.9 17.8C6.9 9.5 11.4 3.6 20 3.6Z" fill="url(#mintBody)"/>'
-    '<path d="M20 3.6c-2.6 0-4.9.6-6.8 1.7 2.4 2 8.9 2.1 12.9.2-1.8-1.2-3.9-1.9-6.1-1.9Z" fill="#5FD3A6" opacity=".55"/>'
-    '<ellipse cx="20" cy="20.4" rx="9.1" ry="8.4" fill="#F3FFF9"/>'
-    '<circle cx="16.8" cy="19.3" r="1.35" fill="#14532D"/>'
-    '<circle cx="23.2" cy="19.3" r="1.35" fill="#14532D"/>'
-    '<circle cx="15.9" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9"/>'
-    '<circle cx="22.3" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9"/>'
-    '<ellipse cx="13.6" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5"/>'
-    '<ellipse cx="26.4" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5"/>'
-    '<path d="M18.3 22.7c.5.85 2.9.85 3.4 0" fill="none" stroke="#14532D" stroke-width="1.25" stroke-linecap="round"/>'
-    '<path d="M20 3.9c.1-1.5.9-2.5 2.3-2.9-.1 1.5-.9 2.5-2.3 2.9Z" fill="#34D399"/>'
-    '</svg>'
-)
+
+def mascot_svg(gradient_id: str = "mintBody") -> str:
+    """页面里的薄荷小怪兽。页头 / 页脚各一份，渐变 id 必须唯一。"""
+    return (
+        '<svg viewBox="0 0 40 40" aria-hidden="true">'
+        f'<defs><linearGradient id="{gradient_id}" x1="0" y1="0" x2="0.4" y2="1">'
+        '<stop offset="0" stop-color="#B7F5DA"/><stop offset="1" stop-color="#7FE3B8"/>'
+        "</linearGradient></defs>"
+        f'<path d="M20 3.6c8.6 0 13.1 5.9 13.1 14.2 0 9.6-5.4 18.6-13.1 18.6S6.9 27.4 6.9 17.8C6.9 9.5 11.4 3.6 20 3.6Z" fill="url(#{gradient_id})"/>'
+        '<path d="M20 3.6c-2.6 0-4.9.6-6.8 1.7 2.4 2 8.9 2.1 12.9.2-1.8-1.2-3.9-1.9-6.1-1.9Z" fill="#5FD3A6" opacity=".55"/>'
+        '<ellipse cx="20" cy="20.4" rx="9.1" ry="8.4" fill="#F3FFF9"/>'
+        '<circle cx="16.8" cy="19.3" r="1.35" fill="#14532D"/>'
+        '<circle cx="23.2" cy="19.3" r="1.35" fill="#14532D"/>'
+        '<circle cx="15.9" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9"/>'
+        '<circle cx="22.3" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9"/>'
+        '<ellipse cx="13.6" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5"/>'
+        '<ellipse cx="26.4" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5"/>'
+        '<path d="M18.3 22.7c.5.85 2.9.85 3.4 0" fill="none" stroke="#14532D" stroke-width="1.25" stroke-linecap="round"/>'
+        '<path d="M20 3.9c.1-1.5.9-2.5 2.3-2.9-.1 1.5-.9 2.5-2.3 2.9Z" fill="#34D399"/>'
+        "</svg>"
+    )
+
 
 def asset_ver(rel: str) -> str:
     """给静态资源带上内容哈希，避免 GitHub Pages CDN 缓存旧样式。"""
@@ -156,21 +179,7 @@ def e(value: object) -> str:
     return html.escape("" if value is None else str(value), quote=True)
 
 
-def parse_date(value: str) -> date | None:
-    if not value:
-        return None
-    try:
-        return datetime.strptime(value, "%Y-%m-%d").date()
-    except ValueError:
-        return None
-
-
-def short_date(value: str) -> str:
-    d = parse_date(value)
-    return f"{d.month}月{d.day}日" if d else ""
-
-
-def deadline_html(deal: dict, today: date) -> str:
+def deadline_html(deal: dict, today) -> str:
     end = parse_date(deal.get("end", ""))
     if not end:
         return '<span class="deadline">长期有效</span>'
@@ -178,62 +187,168 @@ def deadline_html(deal: dict, today: date) -> str:
         return f'<span class="deadline">{short_date(deal["end"])} 结束</span>'
     left = (end - today).days
     if left <= 1:
-        return f'<span class="deadline hot">今天截止</span>'
+        return '<span class="deadline hot">今天截止</span>'
     if left <= 30:
         return f'<span class="deadline hot">剩 {left} 天 · {short_date(deal["end"])}</span>'
     return f'<span class="deadline">{short_date(deal["end"])} 截止</span>'
 
 
-def card(deal: dict, today: date, rank: int | None = None) -> str:
+# ------------------------------------------------------------------ favicons
+def fav_name(domain: str) -> str:
+    return re.sub(r"[^a-z0-9.-]+", "_", (domain or "").lower()).strip("._") or "site"
+
+
+def _download(url: str, timeout: float = 8.0) -> bytes | None:
+    req = urllib.request.Request(url, headers={"User-Agent": FAV_UA, "Accept": "image/*,*/*;q=0.8"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            data = resp.read(2_000_000)
+        return data or None
+    except Exception:
+        return None
+
+
+def _save_icon(raw: bytes, dest: Path) -> bool:
+    """把任意格式（png / ico / svg 转出的位图）统一成 64×64 PNG。"""
+    if Image is None or not raw:
+        return False
+    try:
+        icon = Image.open(io.BytesIO(raw))
+        icon.load()
+    except Exception:
+        return False
+    if icon.width < 8 or icon.height < 8:
+        return False
+    icon = icon.convert("RGBA")
+    side = max(icon.size)
+    canvas = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    canvas.paste(icon, ((side - icon.width) // 2, (side - icon.height) // 2), icon)
+    resample = Image.LANCZOS if side >= FAV_SIZE else Image.BICUBIC
+    canvas.resize((FAV_SIZE, FAV_SIZE), resample).save(dest, "PNG", optimize=True)
+    return True
+
+
+def _icon_from_homepage(domain: str) -> bytes | None:
+    """兜底：读首页 <link rel="...icon..."> 指到的图标（有些站点不在 /favicon.ico）。"""
+    for base in (f"https://{domain}/", f"https://www.{domain}/"):
+        page = _download(base)
+        if not page:
+            continue
+        text = page.decode("utf-8", "ignore")
+        for tag in re.findall(r"<link[^>]+>", text, re.I):
+            if not re.search(r"rel=[\"'][^\"']*icon[^\"']*[\"']", tag, re.I):
+                continue
+            href = re.search(r"href=[\"']([^\"']+)[\"']", tag, re.I)
+            if not href:
+                continue
+            url = urllib.parse.urljoin(base, href.group(1))
+            raw = _download(url)
+            if raw:
+                return raw
+    return None
+
+
+def ensure_favicon(domain: str) -> bool:
+    """把域名图标缓存成 assets/fav/<domain>.png；有缓存就直接复用。"""
+    if not domain:
+        return False
+    FAV_DIR.mkdir(parents=True, exist_ok=True)
+    dest = FAV_DIR / f"{fav_name(domain)}.png"
+    if dest.exists() and dest.stat().st_size > 200:
+        return True
+    if Image is None:
+        return False
+
+    candidates = [
+        f"https://www.google.com/s2/favicons?domain={domain}&sz=64",
+        f"https://icons.duckduckgo.com/ip3/{domain}.ico",
+        f"https://{domain}/favicon.ico",
+    ]
+    if not domain.startswith("www."):
+        # 有些站点裸域不解析（例如 www.antbank.mo），补一轮 www 变体
+        candidates += [
+            f"https://www.google.com/s2/favicons?domain=www.{domain}&sz=64",
+            f"https://www.{domain}/favicon.ico",
+        ]
+    for url in candidates:
+        if _save_icon(_download(url) or b"", dest):
+            return True
+
+    raw = _icon_from_homepage(domain)
+    return _save_icon(raw or b"", dest)
+
+
+# --------------------------------------------------------------------- cards
+def detail_tags(deal: dict) -> str:
+    cat = CAT_META.get(deal.get("category", ""), {"label": deal.get("category", "")})["label"]
+    cost = deal.get("cost", "")
+    cost_cls = COST_CLASS.get(cost, "cost-invite")
+    if deal.get("verified"):
+        check = '<span class="dcheck ok">✓ 已核验</span>'
+    else:
+        check = '<span class="dcheck wait">待核实</span>'
+    return (
+        '<div class="detail-tags">'
+        f'<span class="dtag cat">{e(cat)}</span>'
+        f'<span class="dval"><span class="dval-k">实际价值</span><strong>{e(deal["value"])}</strong></span>'
+        f'<span class="dtag {cost_cls}">{e(cost)}</span>'
+        f"{check}"
+        "</div>"
+    )
+
+
+def title_parts(raw_title: str) -> tuple[str, str]:
+    """拆出标题前的 [地区] 标签与正文。"""
+    m = re.match(r"^\[([^\]]{1,24})\]\s*(.*)$", raw_title)
+    return (m.group(1), m.group(2)) if m else ("", raw_title)
+
+
+def card(deal: dict, today, rank: int | None = None) -> str:
     cost = deal.get("cost", "")
     cost_cls = COST_CLASS.get(cost, "cost-invite")
     expired = bool(deal.get("status") == "expired")
-    classes = "card"
-    if expired:
-        classes += " is-expired"
+    classes = "card is-expired" if expired else "card"
+    cat_meta = CAT_META.get(deal.get("category", ""), {"label": "", "search": ""})
 
-    badges = ""
-    if rank is not None:
-        badges = f'<span class="badge rank">#{rank}</span>'
+    badges = f'<span class="badge rank">#{rank}</span>' if rank is not None else ""
 
     steps = "".join(f"<li>{e(s)}</li>" for s in deal.get("steps", []))
     if not steps:
         steps = "<li>见官方活动页</li>"
 
-    marks = ""
-    if deal.get("verified"):
-        marks = '<span class="verified">✓ 已核验</span>'
-    else:
-        marks = '<span>待核实</span>'
-
     value_cls = "value gold" if (deal.get("value_num") or 0) >= 100 else "value"
 
-    raw_title = deal.get("title", "")
-    m = re.match(r"^\[([^\]]{1,24})\]\s*(.*)$", raw_title)
-    if m:
-        title_html = f'<span class="rtag">{e(m.group(1))}</span>{e(m.group(2))}'
+    region_tag, title_text = title_parts(deal.get("title", ""))
+    if region_tag:
+        title_html = f'<span class="rtag">{e(region_tag)}</span>{e(title_text)}'
     else:
-        title_html = e(raw_title)
+        title_html = e(title_text)
 
-    cat_zh = {
-        "ai": "AI 工具",
-        "crypto": "Crypto 加密货币",
-        "finance": "银行 银行卡 汇款 U卡",
-        "cloud": "云 VPS 云服务",
-        "esim": "eSIM 流量",
-        "software": "软件 数字服务",
-    }.get(deal.get("category", ""), "")
+    hay = " ".join(
+        [
+            deal.get("title", ""),
+            deal.get("highlight", ""),
+            deal.get("regions", ""),
+            deal.get("brand", ""),
+            cost,
+            cat_meta["label"],
+            cat_meta["search"],
+        ]
+    )
+    fav = f"assets/fav/{fav_name(deal.get('domain', ''))}.png"
+    monogram = (deal.get("brand") or "?")[:1].upper()
+    deal_id = e(deal["id"])
 
-    return f"""<article class="{classes}" data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
+    return f"""<article class="{classes}" id="deal-{deal_id}" data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
     data-added="{e(deal.get('added', ''))}" data-val="{int(deal.get('value_num') or 0)}"
-    data-key="{e(deal['id'])}" data-hay="{e(' '.join([deal.get('title',''), deal.get('highlight',''), deal.get('regions',''), deal.get('brand',''), cost, cat_zh]))}">
-    <div class="card-head" role="button" tabindex="0" aria-expanded="false">
-      <img class="fav" src="https://www.google.com/s2/favicons?domain={e(deal['domain'])}&amp;sz=64" alt=""
-           loading="lazy" decoding="async" referrerpolicy="no-referrer"
-           data-fallback="{e((deal.get('brand') or '?')[:1].upper())}"
+    data-val-exp="{value_expected(deal):g}" data-key="{deal_id}"
+    data-hay="{e(hay)}">
+    <div class="card-head">
+      <img class="fav" src="{fav}" width="24" height="24" alt=""
+           loading="lazy" decoding="async" data-fallback="{e(monogram)}"
            onerror="window.__favFallback&&window.__favFallback(this)">
-      <span class="fav-fallback" style="display:none">{e((deal.get('brand') or '?')[:1].upper())}</span>
+      <span class="fav-fallback" style="display:none" aria-hidden="true">{e(monogram)}</span>
       <div class="card-body">
         <div class="row1">
           <h3>{title_html}</h3>
@@ -250,30 +365,29 @@ def card(deal: dict, today: date, rank: int | None = None) -> str:
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                  stroke-linejoin="round" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5"/></svg>
           </a>
-          <button class="toggle" type="button" aria-label="展开详情">详情
+          <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-{deal_id}"
+                  aria-label="展开详情">详情
             <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                  stroke-linejoin="round" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5"/></svg>
           </button>
         </div>
       </div>
     </div>
-    <div class="detail"><div class="detail-in"><div class="detail-body">
+    <div class="detail" id="detail-{deal_id}"><div class="detail-in"><div class="detail-body">
+      {detail_tags(deal)}
       <div class="field wide"><dt>优惠内容</dt><dd>{e(deal['content'])}</dd></div>
-      <div class="field"><dt>实际价值</dt><dd><strong>{e(deal['value'])}</strong></dd></div>
-      <div class="field"><dt>所属类别</dt><dd>{e(CATEGORY_LABEL.get(deal['category'], deal['category']))}</dd></div>
       <div class="field wide"><dt>参与条件</dt><dd>{e(deal['conditions'])}</dd></div>
       <div class="field"><dt>适用国家或地区</dt><dd>{e(deal['regions'])}</dd></div>
       <div class="field"><dt>开始及截止时间</dt><dd>{e(deal.get('start') or '官方未公布')} → {e(deal.get('end') or '长期 / 官方未公布')}</dd></div>
       <div class="field wide"><dt>参与步骤</dt><ol>{steps}</ol></div>
       <div class="field wide"><dt>官方活动链接</dt>
-        <dd><a class="go" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow">{e(deal['url'])}</a></dd></div>
+        <dd><a class="url-link" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow">{e(deal['url'])}</a></dd></div>
       <div class="risk">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
           <path d="M8 2.6 14.2 13H1.8L8 2.6Z"/><path d="M8 6.6v3.1M8 11.6v.1"/></svg>
         <span>{e(deal['risk'])}</span>
       </div>
       <div class="detail-foot">
-        <span>{marks}</span>
         <span>来源 · {e(deal['source'])}</span>
         <span>最后验证 · {e(deal['last_verified'])}</span>
         <span>收录 · {e(deal.get('added', ''))}</span>
@@ -282,19 +396,64 @@ def card(deal: dict, today: date, rank: int | None = None) -> str:
   </article>"""
 
 
+def jump_card(deal: dict, today, rank: int | None = None) -> str:
+    """精简跳转卡：点一下滚到 #deal-<id> 并展开，详情只存一份。"""
+    region_tag, title_text = title_parts(deal.get("title", ""))
+    cat_meta = CAT_META.get(deal.get("category", ""), {"label": "", "search": ""})
+    cost = deal.get("cost", "")
+    hay = " ".join(
+        [
+            deal.get("title", ""),
+            deal.get("highlight", ""),
+            deal.get("regions", ""),
+            deal.get("brand", ""),
+            cost,
+            cat_meta["label"],
+            cat_meta["search"],
+        ]
+    )
+    fav = f"assets/fav/{fav_name(deal.get('domain', ''))}.png"
+    monogram = (deal.get("brand") or "?")[:1].upper()
+    deal_id = e(deal["id"])
+    rank_html = f'<span class="jump-rank">#{rank}</span>' if rank is not None else ""
+    meta = (f"{e(region_tag)} · " if region_tag else "") + deadline_html(deal, today)
+    value_cls = "value gold" if (deal.get("value_num") or 0) >= 100 else "value"
+
+    return f"""<a class="jump" href="#deal-{deal_id}" data-jump="deal-{deal_id}"
+    data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
+    data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
+    data-added="{e(deal.get('added', ''))}" data-key="{deal_id}" data-hay="{e(hay)}">
+      {rank_html}
+      <img class="fav" src="{fav}" width="22" height="22" alt="" loading="lazy" decoding="async"
+           data-fallback="{e(monogram)}" onerror="window.__favFallback&&window.__favFallback(this)">
+      <span class="fav-fallback" style="display:none" aria-hidden="true">{e(monogram)}</span>
+      <span class="jump-main">
+        <span class="jump-title">{e(title_text)}</span>
+        <span class="jump-meta">{meta}</span>
+      </span>
+      <span class="{value_cls}">{e(deal['value'])}</span>
+      <svg class="jump-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5"/></svg>
+    </a>"""
+
+
 def module_html(
     anchor: str,
     letter: str,
     title: str,
     desc: str,
     deals: list[dict],
-    today: date,
+    today,
     ranked: bool = False,
     alias: str | None = None,
+    jump: bool = False,
 ) -> str:
-    cards = []
-    for i, deal in enumerate(deals, start=1):
-        cards.append(card(deal, today, rank=i if ranked else None))
+    if jump:
+        cards = [jump_card(deal, today, rank=i if ranked else None) for i, deal in enumerate(deals, start=1)]
+        per_page = 6
+    else:
+        cards = [card(deal, today, rank=i if ranked else None) for i, deal in enumerate(deals, start=1)]
+        per_page = 4
     count = len(deals)
     empty = (
         '<p class="module-empty" style="display:none">该分类暂无符合条件的优惠</p>'
@@ -302,7 +461,7 @@ def module_html(
         else '<p class="module-empty" style="display:block">该分类暂无符合条件的优惠</p>'
     )
     return f"""
-  {f'<span class="anchor-alias" id="{alias}" aria-hidden="true"></span>' if alias else ''}<section class="module" id="{anchor}" data-mod="{anchor}" data-limit="{count}">
+  {f'<span class="anchor-alias" id="{alias}" aria-hidden="true"></span>' if alias else ''}<section class="module" id="{anchor}" data-mod="{anchor}" data-limit="{count}" data-per="{per_page}"{' data-kind="jump"' if jump else ''}>
     <header class="module-head">
       <span class="module-badge" aria-hidden="true">{letter}</span>
       <h2>{title} <span class="count" data-count>{count}</span></h2>
@@ -315,7 +474,7 @@ def module_html(
         </div>
       </div>
       <div class="pager-bar" data-bar>
-        <span class="pager-label" data-label>1–{min(4, count) if count else 0} / {count}</span>
+        <span class="pager-label" data-label>1–{min(per_page, count) if count else 0} / {count}</span>
         <div class="pager-nav">
           <button type="button" data-prev aria-label="上一页">‹</button>
           <button type="button" data-next aria-label="下一页">›</button>
@@ -329,22 +488,27 @@ def module_html(
 def main() -> None:
     deals = json.loads(DATA.read_text(encoding="utf-8"))
     meta = json.loads(META.read_text(encoding="utf-8")) if META.exists() else {}
-    today = date.today()
+    today = today_local()
 
     for deal in deals:
-        end = parse_date(deal.get("end", ""))
-        if end and end < today:
-            deal["status"] = "expired"
-        elif end and (end - today).days <= 7:
-            deal["status"] = "expiring_soon"
-        else:
-            deal["status"] = "active"
+        deal["status"] = compute_status(deal, today)
+
+    # 图标：构建时落地到 assets/fav/，页面不再请求 google.com
+    missing = []
+    for deal in deals:
+        if not ensure_favicon(deal.get("domain", "")):
+            missing.append(deal.get("domain", "?"))
 
     active = [d for d in deals if d["status"] != "expired"]
     expired = [d for d in deals if d["status"] == "expired"]
     active_sorted = sorted(active, key=lambda d: (d.get("value_num") or 0), reverse=True)
+    leaderboard = sorted(
+        active,
+        key=lambda d: (value_expected(d), d.get("value_num") or 0),
+        reverse=True,
+    )[:10]
 
-    since = (today - timedelta(days=2)).isoformat()
+    since = (today - timedelta(days=TODAY_WINDOW_DAYS)).isoformat()
     todays = sorted(
         [d for d in active if (d.get("added") or "") >= since],
         key=lambda d: ((d.get("added") or ""), d.get("value_num") or 0),
@@ -352,13 +516,17 @@ def main() -> None:
     )[:8]
 
     closing = sorted(
-        [d for d in active if parse_date(d.get("end", "")) and 0 <= (parse_date(d["end"]) - today).days <= 30],
+        [
+            d
+            for d in active
+            if parse_date(d.get("end", "")) and 0 <= (parse_date(d["end"]) - today).days <= CLOSING_WINDOW_DAYS
+        ],
         key=lambda d: parse_date(d["end"]),
     )
 
-    by_cat = {k: [d for d in active_sorted if d["category"] == k] for k in CATEGORY_LABEL}
+    by_cat = {k: [d for d in active_sorted if d["category"] == k] for k in CAT_META}
 
-    last_updated = meta.get("last_updated_human") or LAST_UPDATED_FALLBACK
+    last_updated = meta.get("last_updated_human") or now_local().strftime("%Y-%m-%d %H:%M")
     counts = {
         "active": len(active),
         "expiring": len(closing),
@@ -368,7 +536,7 @@ def main() -> None:
 
     rail = "".join(
         f'<a href="#{anchor}" data-target="{anchor}" aria-label="{label}">{icon}'
-        f'<span>{label}</span></a>'
+        f"<span>{label}</span></a>"
         for anchor, label, icon in NAV
     )
     rail += (
@@ -381,13 +549,13 @@ def main() -> None:
         [
             module_html(
                 "today", "A", "今日最新优惠",
-                f"最近 48 小时新收录、且仍在进行的优惠。今天重点看这 {len(todays)} 条，其余按分类往下翻。",
-                todays, today,
+                f"最近 {TODAY_WINDOW_DAYS * 24} 小时新收录、且仍在进行的优惠。点一条即可跳到分类里的完整详情。",
+                todays, today, jump=True,
             ),
             module_html(
                 "rank", "B", "高价值优惠排行榜",
-                "按实际价值（现金奖励 / 额度 / 年费）排序，先挑最值钱的。",
-                active_sorted[:10], today, ranked=True,
+                "按可预期价值（实际到手金额）排序，抽奖类按期望值折算，先挑最值钱的。",
+                leaderboard, today, ranked=True, jump=True,
             ),
             module_html(
                 "ai", "C", "AI 工具免费与折扣",
@@ -417,7 +585,7 @@ def main() -> None:
             module_html(
                 "closing", "G", "即将截止",
                 "30 天内到期的活动，按截止时间排序；标「剩 N 天」的请优先处理。",
-                closing, today, alias="expiring",
+                closing, today, alias="expiring", jump=True,
             ),
             module_html(
                 "software", "J", "软件与数字服务",
@@ -433,7 +601,7 @@ def main() -> None:
     )
 
     item_list = []
-    for i, deal in enumerate(active_sorted[:10], start=1):
+    for i, deal in enumerate(leaderboard, start=1):
         item_list.append(
             {
                 "@type": "ListItem",
@@ -478,7 +646,6 @@ def main() -> None:
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>羊毛情报局 · 全球优惠 / 免费额度 / 限时活动情报</title>
 <meta name="description" content="羊毛情报局：每日核验的全球优惠情报导航。AI 工具免费额度、Crypto 空投与交易奖励、海外银行开户与跨境汇款邀请、VPS 云服务体验金、eSIM 免费流量、软件学生福利——一屏看清价值、门槛与截止时间，点击直达官方活动页。">
-<meta name="keywords" content="羊毛,优惠情报,免费额度,AI 免费,eSIM 免费流量,海外银行开户奖励,跨境汇款邀请奖励,VPS 免费,云服务额度,空投,积分计划,学生优惠,黑五优惠">
 <meta name="author" content="羊毛情报局">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2">
@@ -490,13 +657,17 @@ def main() -> None:
 <meta property="og:title" content="羊毛情报局 · 全球优惠与免费额度情报">
 <meta property="og:description" content="每日核验的全球优惠导航：AI、Crypto、海外银行与汇款、云服务、eSIM、软件学生福利。价值、门槛、截止时间一眼看清，直达官方链接。">
 <meta property="og:url" content="{SITE_URL}">
+<meta property="og:image" content="{OG_IMAGE}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="羊毛情报局 · 每日核验的全球优惠情报">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="羊毛情报局 · 全球优惠与免费额度情报">
 <meta name="twitter:description" content="每日核验的全球优惠导航：AI、Crypto、海外银行与汇款、云服务、eSIM、软件学生福利。">
+<meta name="twitter:image" content="{OG_IMAGE}">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/favicon.svg">
-<link rel="preconnect" href="https://www.google.com" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 
 <!-- Google AdSense：开通后把脚本放在这里，并给 .ad-slot 容器填入广告单元
@@ -513,7 +684,7 @@ def main() -> None:
   <div class="shell topbar-in">
     <a class="brand" href="{SITE_URL}" aria-label="羊毛情报局 首页">
       <span class="brand-mark" aria-hidden="true">
-        {MASCOT_SVG}
+        {mascot_svg("mintBody")}
       </span>
       <span>
         <span class="brand-name">羊毛情报局</span>
@@ -590,6 +761,7 @@ def main() -> None:
       <div class="chips" data-group="time">
         <button class="chip on" type="button" data-value="all">全部时间</button>
         <button class="chip" type="button" data-value="24h">近 24 小时</button>
+        <button class="chip" type="button" data-value="48h">近 48 小时</button>
         <button class="chip" type="button" data-value="7d">近 7 天</button>
         <button class="chip" type="button" data-value="past">7 天前往期</button>
       </div>
@@ -651,7 +823,7 @@ def main() -> None:
   <div class="shell foot-line">
     <span class="foot-brand">
       <span class="brand-mark" aria-hidden="true">
-        {MASCOT_SVG}
+        {mascot_svg("mintBodyFoot")}
       </span>
       羊毛情报局 · © {today.year}
     </span>
@@ -666,6 +838,10 @@ def main() -> None:
 """
     OUT.write_text(page, encoding="utf-8")
     print(f"index.html written · {len(active)} active / {len(expired)} expired / {len(todays)} today")
+    if missing:
+        print(f"  ! 图标下载失败 {len(missing)} 个（回退字母块）：{', '.join(missing)}")
+    else:
+        print(f"  图标：{len(deals)} 个域名全部就绪（assets/fav/）")
 
 
 if __name__ == "__main__":

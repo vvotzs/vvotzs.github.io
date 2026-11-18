@@ -1,6 +1,7 @@
 {
-  "last_updated": "2026-11-19T02:20:21",
-  "last_updated_human": "2026-11-19 02:20",
+  "last_updated": "2026-11-19T02:25:12+08:00",
+  "last_updated_human": "2026-11-19 02:25",
+  "timezone": "Asia/Shanghai",
   "counts": {
     "total": 46,
     "active": 44,
