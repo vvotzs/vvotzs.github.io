@@ -854,7 +854,7 @@ main{ padding-bottom: 40px; }
 
 /* 固定高度 + 板内滚动：切 tab 时整块板的高度不变 */
 .hot-panel-body{
-  height: 300px;
+  height: 304px;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-bottom: 2px;
