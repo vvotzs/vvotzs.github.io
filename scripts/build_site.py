@@ -744,7 +744,7 @@ def main() -> None:
             ),
             module_html(
                 "archive", "archive", "已结束活动档案",
-                "已过期活动保留 30 天供查档，随后自动清理，避免陈旧信息占版面。",
+                "已过期活动全部保留供查档，可按截止时间翻看历史优惠。",
                 sorted(expired, key=lambda d: d.get("end") or "", reverse=True), today,
             ),
         ]

@@ -15,7 +15,7 @@ assets/og-cover.png     # 1200×630 社交分享封面（scripts/make_og_cover.p
 data/deals.json         # 优惠条目（12 项标准字段；抽奖 / 阶梯类另有 value_expected）
 data/meta.json          # 统计与最后更新时间
 scripts/common.py          # 共用常量与函数（北京时间、类别、状态、value_expected）
-scripts/maintain_deals.py  # 去重、状态标记、过期清理、meta 与 sitemap
+scripts/maintain_deals.py  # 去重、状态标记、归档、meta 与 sitemap
 scripts/build_site.py      # 由 deals.json 生成 index.html（含图标下载）
 scripts/make_og_cover.py   # 生成分享封面图
 docs/workflows-reference/daily-rebuild.yml  # 每日重建工作流模板（不放进 .github/workflows）
@@ -25,7 +25,7 @@ robots.txt / sitemap.xml
 ## 日常维护
 
 ```bash
-python3 scripts/maintain_deals.py   # 先维护数据（去重 / 标记到期 / 清理 30 天前的过期条目）
+python3 scripts/maintain_deals.py   # 先维护数据（去重 / 标记到期 / 归档，过期条目永久保留）
 python3 scripts/build_site.py       # 再生成页面（会顺便把新域名图标下载到 assets/fav/）
 ```
 
@@ -36,4 +36,4 @@ python3 scripts/build_site.py       # 再生成页面（会顺便把新域名图
 
 - 只收录能在官方页面核实的优惠；不确定的字段写「待核实」，并放进风险提示。
 - 参与门槛分五类：真正免费 / 免费试用 / 需要充值 / 需要交易量 / 需要邀请条件。
-- 过期活动保留 30 天后自动清理，避免陈旧信息堆积。
+- 过期活动全部保留进归档，不再自动清理：历史条目是 SEO 长尾流量的落地页，也方便对照往年同期活动。

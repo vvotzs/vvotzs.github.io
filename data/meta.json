@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-11-19T03:32:40+08:00",
-  "last_updated_human": "2026-11-19 03:32",
+  "last_updated": "2026-11-19T03:34:01+08:00",
+  "last_updated_human": "2026-11-19 03:34",
   "timezone": "Asia/Shanghai",
   "counts": {
     "total": 87,
@@ -17,6 +17,6 @@
     "esim": 31,
     "software": 6
   },
-  "archive_retention_days": 30,
+  "archive_retention_days": "permanent",
   "expiring_threshold_days": 7
 }

@@ -18,7 +18,8 @@ TZ = ZoneInfo("Asia/Shanghai")
 TODAY_WINDOW_DAYS = 2      # 「今日最新」= 最近 48 小时
 EXPIRING_DAYS = 7          # 「即将截止」标记阈值（<= 7 天）
 CLOSING_WINDOW_DAYS = 30   # 「即将截止」分区展示 30 天内到期的活动
-ARCHIVE_DAYS = 30          # 过期活动保留天数，超过即清理
+# 过期活动永久保留：作为 SEO 长尾落地页与查档页持续沉淀，任何条目都不再被删除。
+ARCHIVE_RETENTION = "permanent"   # 写入 meta.json 的 archive_retention_days
 
 # ---------------------------------------------------------------- 路径
 ROOT = Path(__file__).resolve().parent.parent

@@ -4,7 +4,7 @@
 做四件事：
   1. 去重：同一活动（同标题或同链接）只保留信息更全 / 更新更近的一条；
   2. 状态：按截止时间标记 active / expiring_soon(<=7 天) / expired；
-  3. 归档与清理：已过期超过 30 天的条目自动删除（保留短档期）；
+  3. 归档：过期条目全部归入档案并永久保留（供 SEO 长尾收录与查档，不再按天数清理）；
   4. 输出：回写 data/deals.json、更新 data/meta.json 与 sitemap.xml。
 
 用法：python3 scripts/maintain_deals.py [--dry-run]
@@ -22,7 +22,7 @@ if str(ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(ROOT / "scripts"))
 
 from common import (  # noqa: E402
-    ARCHIVE_DAYS,
+    ARCHIVE_RETENTION,
     CAT_META,
     CLOSING_WINDOW_DAYS,
     DATA,
@@ -134,11 +134,9 @@ def main() -> int:
     archived, pruned = 0, []
     for deal in deals:
         deal["status"] = compute_status(deal, today)
-        end = parse_date(deal.get("end", ""))
         if deal["status"] == "expired":
             archived += 1
-            if end and (today - end).days > ARCHIVE_DAYS:
-                pruned.append(deal["id"])
+        # 过期条目一律保留：pruned 恒为空，不做任何删除（SEO 长尾需要长期收录）。
 
     deals = [d for d in deals if d["id"] not in pruned]
 
@@ -181,7 +179,7 @@ def main() -> int:
             key: len([d for d in active + expiring if d.get("category") == key])
             for key in CAT_META
         },
-        "archive_retention_days": ARCHIVE_DAYS,
+        "archive_retention_days": ARCHIVE_RETENTION,
         "expiring_threshold_days": EXPIRING_DAYS,
     }
 
@@ -203,9 +201,9 @@ def main() -> int:
     print(f"  状态：进行中 {meta['counts']['active']}（其中 7 天内截止 {len(expiring)}）· 已归档 {len(expired)}")
     if pruned:
         for pid in pruned:
-            print(f"  - 清理：{pid}（过期超过 {ARCHIVE_DAYS} 天）")
+            print(f"  - 清理：{pid}")
     else:
-        print(f"  - 清理：无（过期超过 {ARCHIVE_DAYS} 天的条目才会删除）")
+        print("  - 清理：无（过期条目永久保留，不再删除）")
 
     if args.dry_run:
         print("dry-run：未写入任何文件")
