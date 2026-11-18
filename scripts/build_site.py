@@ -454,7 +454,7 @@ def main() -> None:
       </span>
       <span>
         <span class="brand-name">羊毛情报局</span>
-        <span class="brand-sub">最后更新 {e(last_updated)}</span>
+        <span class="brand-sub">Pickle 自动巡检整理 · 更新 {e(last_updated)}</span>
       </span>
     </a>
     <div class="topbar-stats">
@@ -589,7 +589,7 @@ def main() -> None:
       <p class="foot-note">所有优惠均来自各活动官方页面，具体条款、名额与到账时间以官方为准。部分活动涉及入金、开户或交易，请量力参与；本站不提供投资建议，也不代收任何费用。</p>
     </div>
     <div class="foot-meta">
-      <span>最后更新 · {e(last_updated)}</span>
+      <span>Pickle 每天巡检 · 更新 {e(last_updated)}</span>
       <span>已核验 {counts['active']} 条进行中 · 归档 {counts['expired']} 条</span>
       <span>Pickle 自动巡检整理 · © {today.year} 羊毛情报局</span>
     </div>
