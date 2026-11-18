@@ -87,6 +87,17 @@ ESIM_ICON = ICONS["esim"]
 
 ESIM_ICON = ESIM_ICON.replace('class="', 'class="esim-icon ', 1) if 'class="' in ESIM_ICON else ESIM_ICON.replace("<svg ", '<svg class="esim-icon" ', 1)
 
+ROCKET_ICON = (
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" '
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+    '<path d="M12 2.7c3 2.3 4.6 5.7 4.6 9.3 0 2.1-.6 4-1.7 5.5H9.1c-1.1-1.5-1.7-3.4-1.7-5.5 0-3.6 1.6-7 4.6-9.3Z" fill="#FED7AA"/>'
+    '<circle cx="12" cy="10.1" r="1.9" fill="#BFDBFE"/>'
+    '<path d="M9.1 17.1 6.5 19.8c.1-1.9.6-3.3 1.5-4.3"/>'
+    '<path d="M14.9 17.1l2.6 2.7c-.1-1.9-.6-3.3-1.5-4.3"/>'
+    '<path d="M12 20.9c-.9 0-1.6-.9-1.6-2.1h3.2c0 1.2-.7 2.1-1.6 2.1Z" fill="#FDE68A"/>'
+    "</svg>"
+)
+
 NAV = [
     ("today", "今日", ICONS["today"]),
     ("rank", "榜单", ICONS["rank"]),
@@ -331,6 +342,11 @@ def main() -> None:
         f'<span>{label}</span></a>'
         for anchor, label, icon in NAV
     )
+    rail += (
+        '<div class="rail-sep" aria-hidden="true"></div>'
+        f'<a class="rail-top" href="#top" aria-label="回到顶部">{ROCKET_ICON}'
+        "<span>顶部</span></a>"
+    )
 
     modules = "".join(
         [
@@ -462,7 +478,7 @@ def main() -> None:
 {jsonld}
 </script>
 </head>
-<body>
+<body id="top">
 
 <header class="topbar">
   <div class="shell topbar-in">

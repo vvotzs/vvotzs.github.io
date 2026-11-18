@@ -679,6 +679,15 @@ main{ padding-bottom: 40px; }
 
 .esim-glyph{ display: block; overflow: visible; }
 
+.rail-sep{
+  height: 1px;
+  margin: 5px 6px 4px;
+  background: linear-gradient(90deg, transparent, rgba(28,25,23,.14), transparent);
+}
+.rail a.rail-top{ color: var(--ink-3); }
+.rail a.rail-top svg{ width: 17px; height: 17px; }
+.rail a.rail-top:hover{ color: var(--terra); background: rgba(234,88,12,.08); }
+
 /* ------------------------------------------------------------------ modal */
 
 .modal{
