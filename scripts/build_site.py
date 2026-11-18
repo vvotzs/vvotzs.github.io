@@ -415,7 +415,25 @@ def card(deal: dict, today, rank: int | None = None) -> str:
   </article>"""
 
 
-def jump_card(deal: dict, today, rank: int | None = None, strip: bool = False) -> str:
+def is_high_cap(deal: dict) -> bool:
+    """上限远高于可预期到手金额：抽奖 / 随机 / 阶梯类。
+
+    数据里这类条目单独填了 value_expected（期望值）；榜单按期望值排，
+    它们另有自己的「高上限」分区，按上限金额排。
+    """
+    exp = deal.get("value_expected")
+    vn = float(deal.get("value_num") or 0)
+    return isinstance(exp, (int, float)) and vn > 0 and float(exp) < vn * 0.9
+
+
+def rank_value(deal: dict) -> str:
+    """榜单里显示的价值：抽奖类显示期望值（≈$25），其余用短的确定价值。"""
+    if is_high_cap(deal):
+        return f"≈${value_expected(deal):,.0f}"
+    return strip_value(deal["value"])
+
+
+def jump_card(deal: dict, today, rank: int | None = None, value_mode: str = "raw") -> str:
     """精简跳转卡：点一下滚到 #deal-<id> 并展开，详情只存一份。"""
     region_tag, title_text = title_parts(deal.get("title", ""))
     cat_meta = CAT_META.get(deal.get("category", ""), {"label": "", "search": ""})
@@ -441,7 +459,12 @@ def jump_card(deal: dict, today, rank: int | None = None, strip: bool = False) -
         rank_html = f'<span class="{rank_cls}"><i>#</i>{rank}</span>'
     meta = (f"{e(region_tag)} · " if region_tag else "") + deadline_html(deal, today)
     value_cls = "value gold" if (deal.get("value_num") or 0) >= 100 else "value"
-    value_text = strip_value(deal["value"]) if strip else deal["value"]
+    if value_mode == "expected":
+        value_text = rank_value(deal)
+    elif value_mode == "strip":
+        value_text = strip_value(deal["value"])
+    else:
+        value_text = deal["value"]
 
     return f"""<a class="jump" href="#deal-{deal_id}" data-jump="deal-{deal_id}"
     data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
@@ -472,10 +495,11 @@ def module_html(
     alias: str | None = None,
     jump: bool = False,
     strip: bool = False,
+    value_mode: str = "raw",
 ) -> str:
     if jump:
         cards = [
-            jump_card(deal, today, rank=i if ranked else None, strip=strip)
+            jump_card(deal, today, rank=i if ranked else None, value_mode=value_mode)
             for i, deal in enumerate(deals, start=1)
         ]
         per_page = 6
@@ -530,6 +554,7 @@ def main() -> None:
     active = [d for d in deals if d["status"] != "expired"]
     expired = [d for d in deals if d["status"] == "expired"]
     active_sorted = sorted(active, key=lambda d: (d.get("value_num") or 0), reverse=True)
+    # 榜单严格按「可预期实际到手金额」排（抽奖类用 value_expected，不用上限）
     leaderboard = sorted(
         active,
         key=lambda d: (value_expected(d), d.get("value_num") or 0),
@@ -551,6 +576,13 @@ def main() -> None:
         ],
         key=lambda d: parse_date(d["end"]),
     )
+
+    # 抽奖 / 随机 / 阶梯：上限很高但到手看运气，按上限金额排
+    lottery = sorted(
+        [d for d in active if is_high_cap(d)],
+        key=lambda d: (d.get("value_num") or 0, value_expected(d)),
+        reverse=True,
+    )[:8]
 
     by_cat = {k: [d for d in active_sorted if d["category"] == k] for k in CAT_META}
 
@@ -578,12 +610,17 @@ def main() -> None:
             module_html(
                 "today", "A", "今日最新优惠",
                 f"最近 {TODAY_WINDOW_DAYS * 24} 小时新收录、且仍在进行的优惠。点一条即可跳到分类里的完整详情。",
-                todays, today, jump=True, strip=True,
+                todays, today, jump=True, strip=True, value_mode="strip",
             ),
             module_html(
                 "rank", "B", "高价值优惠排行榜",
                 "按可预期价值（实际到手金额）排序，抽奖类按期望值折算，先挑最值钱的。",
-                leaderboard, today, ranked=True, jump=True, strip=True,
+                leaderboard, today, ranked=True, jump=True, strip=True, value_mode="expected",
+            ),
+            module_html(
+                "lottery", "K", "抽奖 / 高上限类",
+                "上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。",
+                lottery, today, ranked=True, jump=True, strip=True, value_mode="strip",
             ),
             module_html(
                 "ai", "C", "AI 工具免费与折扣",
@@ -628,10 +665,17 @@ def main() -> None:
         ]
     )
 
+    today_desc = f"最近 {TODAY_WINDOW_DAYS * 24} 小时新收录、且仍在进行的优惠。点一条即可跳到分类里的完整详情。"
+    rank_desc = "按可预期价值（实际到手金额）排序，抽奖类按期望值折算，先挑最值钱的。"
+    lottery_desc = "上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。"
     hot_tabs = f"""
   <div class="hot-tabs" data-hot-tabs>
-    <a class="hot-tab on" href="#today" data-tab="today" aria-current="true">今日优惠 <b data-tabcount="today">{len(todays)}</b></a>
-    <a class="hot-tab" href="#rank" data-tab="rank">高价值榜 <b data-tabcount="rank">{len(leaderboard)}</b></a>
+    <div class="hot-tablist">
+      <a class="hot-tab on" href="#today" data-tab="today" aria-current="true" data-desc="{e(today_desc)}"><span class="lbl-long">今日最新</span><span class="lbl-short">今日优惠</span> <b data-tabcount="today">{len(todays)}</b></a>
+      <a class="hot-tab" href="#rank" data-tab="rank" data-desc="{e(rank_desc)}">高价值榜 <b data-tabcount="rank">{len(leaderboard)}</b></a>
+      <a class="hot-tab" href="#lottery" data-tab="lottery" data-desc="{e(lottery_desc)}">抽奖 / 高上限 <b data-tabcount="lottery">{len(lottery)}</b></a>
+    </div>
+    <p class="hot-desc" data-hot-desc>{e(today_desc)}</p>
   </div>"""
 
     item_list = []

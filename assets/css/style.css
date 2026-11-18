@@ -797,65 +797,102 @@ main{ padding-bottom: 40px; }
   100%{ box-shadow: 0 0 0 0 rgba(245,158,11,0); }
 }
 
-/* ------------------------------------------------- 移动端热点榜（今日 / 榜单） */
-/* 两张「热点条」榜单在手机上是同一个双 tab 热榜板：只显示当前 tab，
-   每条是 36px 高、双列、单行的 strip；桌面 (>768px) 完全不受影响。 */
+/* ------------------------------------------------------- hot board（热榜板） */
+/* 今日 / 榜单 / 抽奖 三个分区合成一块可切换的热榜板：桌面 3 个 tab 并排，
+   手机 2 个 tab（抽奖只在桌面出现）。手机里每条是 34–38px 的单行热点条。 */
 
-.hot-tabs{ display: none; }
+.hot-tabs{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 8px 0 0;
+  border-bottom: 1px solid rgba(28,25,23,.08);
+}
+.hot-tablist{
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  min-width: 0;
+}
+.hot-tab{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 0 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--ink-3);
+  white-space: nowrap;
+  transition: color .16s ease;
+}
+.hot-tab b{
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--ink-4);
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #F1EFE8;
+  line-height: 1.6;
+}
+.hot-tab:hover{ color: var(--ink-2); }
+.hot-tab.on{ color: var(--ink); }
+.hot-tab.on b{ color: #92400E; background: #FEF3C7; }
+.hot-tab.on::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #FBBF24, #EA580C);
+}
+.hot-tab .lbl-short{ display: none; }
+.hot-desc{
+  margin: 0 0 2px auto;
+  min-width: 0;
+  max-width: 560px;
+  font-size: 12.2px;
+  line-height: 1.5;
+  color: var(--ink-3);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 分区标题由 tab 承担，省掉重复的一行 */
+.module.hot-strip .module-head{ display: none; }
+.module.hot-strip{ padding-top: 10px; }
+.module.hot-strip .track > .grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
 
 @media (max-width: 768px){
-  .hot-tabs{
-    display: flex;
-    align-items: stretch;
-    gap: 18px;
-    margin: 0 0 8px;
-    border-bottom: 1px solid rgba(28,25,23,.07);
-  }
+  .hot-tabs{ margin: 0 0 8px; gap: 0; }
+  .hot-tablist{ flex: 1 1 auto; gap: 16px; }
   .hot-tab{
-    position: relative;
     flex: 1 1 0;
-    min-width: 0;
-    display: inline-flex;
-    align-items: center;
     justify-content: center;
-    gap: 4px;
     padding: 6px 2px 9px;
     font-size: 13px;
-    font-weight: 600;
-    letter-spacing: -.01em;
-    color: var(--ink-3);
-    white-space: nowrap;
-    transition: color .16s ease;
   }
-  .hot-tab b{
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--ink-4);
-    padding: 0 4px;
-    border-radius: 999px;
-    background: #F1EFE8;
-    line-height: 1.6;
-  }
-  .hot-tab.on{ color: var(--ink); }
-  .hot-tab.on b{ color: #92400E; background: #FEF3C7; }
   .hot-tab.on::after{
-    content: "";
-    position: absolute;
     left: 50%;
-    bottom: -1px;
+    right: auto;
     transform: translateX(-50%);
     width: 34px;
-    height: 2.5px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #FBBF24, #EA580C);
   }
-  .hot-tab:active{ color: var(--ink-2); }
+  .hot-tab .lbl-long{ display: none; }
+  .hot-tab .lbl-short{ display: inline; }
+  .hot-tab[data-tab="lottery"]{ display: none; }
+  .hot-desc{ display: none; }
 
-  /* 两个分区的标题由 tab 承担，省下重复的一行 */
-  .module.hot-strip .module-head{ display: none; }
   .module.hot-strip{ padding-top: 2px; }
-
   .module.hot-strip .track{
     display: block;
     overflow: visible;

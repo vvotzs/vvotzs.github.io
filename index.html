@@ -27,7 +27,7 @@
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/favicon.svg">
-<link rel="stylesheet" href="assets/css/style.css?v=29c153de">
+<link rel="stylesheet" href="assets/css/style.css?v=88620c76">
 
 <!-- Google AdSense：开通后把脚本放在这里，并给 .ad-slot 容器填入广告单元
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
@@ -184,8 +184,12 @@
 
   <div class="shell">
   <div class="hot-tabs" data-hot-tabs>
-    <a class="hot-tab on" href="#today" data-tab="today" aria-current="true">今日优惠 <b data-tabcount="today">8</b></a>
-    <a class="hot-tab" href="#rank" data-tab="rank">高价值榜 <b data-tabcount="rank">10</b></a>
+    <div class="hot-tablist">
+      <a class="hot-tab on" href="#today" data-tab="today" aria-current="true" data-desc="最近 48 小时新收录、且仍在进行的优惠。点一条即可跳到分类里的完整详情。"><span class="lbl-long">今日最新</span><span class="lbl-short">今日优惠</span> <b data-tabcount="today">8</b></a>
+      <a class="hot-tab" href="#rank" data-tab="rank" data-desc="按可预期价值（实际到手金额）排序，抽奖类按期望值折算，先挑最值钱的。">高价值榜 <b data-tabcount="rank">10</b></a>
+      <a class="hot-tab" href="#lottery" data-tab="lottery" data-desc="上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。">抽奖 / 高上限 <b data-tabcount="lottery">7</b></a>
+    </div>
+    <p class="hot-desc" data-hot-desc>最近 48 小时新收录、且仍在进行的优惠。点一条即可跳到分类里的完整详情。</p>
   </div>
   <section class="module hot-strip" id="today" data-mod="today" data-limit="8" data-per="6" data-kind="jump" data-board="1">
     <header class="module-head">
@@ -493,6 +497,133 @@
       </div>
       <div class="pager-bar" data-bar>
         <span class="pager-label" data-label>1–6 / 10</span>
+        <div class="pager-nav">
+          <button type="button" data-prev aria-label="上一页">‹</button>
+          <button type="button" data-next aria-label="下一页">›</button>
+        </div>
+      </div>
+    </div>
+    <p class="module-empty" style="display:none">该分类暂无符合条件的优惠</p>
+  </section>
+  <section class="module hot-strip" id="lottery" data-mod="lottery" data-limit="7" data-per="6" data-kind="jump" data-board="1">
+    <header class="module-head">
+      <span class="module-badge" aria-hidden="true">K</span>
+      <h2>抽奖 / 高上限类 <span class="count" data-count>7</span></h2>
+      <p class="module-desc">上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。</p>
+    </header>
+    <div class="pager">
+      <div class="track" data-track>
+        <div class="grid" data-grid>
+          <a class="jump" href="#deal-coinbase-new-user-bonus" data-jump="deal-coinbase-new-user-bonus"
+    data-cat="crypto" data-cost="需要充值"
+    data-verified="1" data-end=""
+    data-added="2026-11-19" data-key="coinbase-new-user-bonus" data-hay="[美区] Coinbase 新用户首购随机 BTC 奖励 注册后首笔买入满 $50，随机发放 $3–$2,000 比特币，平均约 $25 [美区] 美国及 Coinbase 支持开户的国家/地区（以注册页为准） Coinbase 需要充值 Crypto Crypto 加密货币">
+      <span class="jump-rank r1"><i>#</i>1</span>
+      <img class="fav" src="assets/fav/coinbase.com.png" width="22" height="22" alt="" loading="lazy" decoding="async"
+           data-fallback="C" onerror="window.__favFallback&&window.__favFallback(this)">
+      <span class="fav-fallback" style="display:none" aria-hidden="true">C</span>
+      <span class="jump-main">
+        <span class="jump-title">Coinbase 新用户首购随机 BTC 奖励</span>
+        <span class="jump-meta">美区 · <span class="deadline">长期有效</span></span>
+      </span>
+      <span class="value gold">$2,000</span>
+      <svg class="jump-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5"/></svg>
+    </a><a class="jump" href="#deal-binance-lite-vouchers" data-jump="deal-binance-lite-vouchers"
+    data-cat="crypto" data-cost="需要交易量"
+    data-verified="1" data-end=""
+    data-added="2026-11-18" data-key="binance-lite-vouchers" data-hay="[全球站] Binance 新手任务：最高 $1,100 手续费券 首笔 $50 法币/卡/P2P 买入 + $100 现货交易量，换两档返佣券 [全球站] Binance 全球站支持地区（各地实体条款不同） Binance 需要交易量 Crypto Crypto 加密货币">
+      <span class="jump-rank r2"><i>#</i>2</span>
+      <img class="fav" src="assets/fav/binance.com.png" width="22" height="22" alt="" loading="lazy" decoding="async"
+           data-fallback="B" onerror="window.__favFallback&&window.__favFallback(this)">
+      <span class="fav-fallback" style="display:none" aria-hidden="true">B</span>
+      <span class="jump-main">
+        <span class="jump-title">Binance 新手任务：最高 $1,100 手续费券</span>
+        <span class="jump-meta">全球站 · <span class="deadline">长期有效</span></span>
+      </span>
+      <span class="value gold">$1,100</span>
+      <svg class="jump-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5"/></svg>
+    </a><a class="jump" href="#deal-bybit-referral-tasks" data-jump="deal-bybit-referral-tasks"
+    data-cat="crypto" data-cost="需要交易量"
+    data-verified="1" data-end=""
+    data-added="2026-11-19" data-key="bybit-referral-tasks" data-hay="[全球站] Bybit 推荐任务：双方各得最高 250 USDT 首笔 $50 交易起，按 $500/$10,000 交易量分档发 50+100+100 USDT [全球站] Bybit Global 支持的国家/地区（部分地区受限） Bybit 需要交易量 Crypto Crypto 加密货币">
+      <span class="jump-rank r3"><i>#</i>3</span>
+      <img class="fav" src="assets/fav/bybit.com.png" width="22" height="22" alt="" loading="lazy" decoding="async"
+           data-fallback="B" onerror="window.__favFallback&&window.__favFallback(this)">
+      <span class="fav-fallback" style="display:none" aria-hidden="true">B</span>
+      <span class="jump-main">
+        <span class="jump-title">Bybit 推荐任务：双方各得最高 250 USDT</span>
+        <span class="jump-meta">全球站 · <span class="deadline">长期有效</span></span>
+      </span>
+      <span class="value gold">500 USDT</span>
+      <svg class="jump-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5"/></svg>
+    </a><a class="jump" href="#deal-okx-new-user-bonus" data-jump="deal-okx-new-user-bonus"
+    data-cat="crypto" data-cost="需要交易量"
+    data-verified="1" data-end=""
+    data-added="2026-11-13" data-key="okx-new-user-bonus" data-hay="[EEA 欧区] OKX 新用户礼包（分档任务制） 验证 + 入金 €100 + 逐档交易量，按任务发券，地区差异大 [EEA 欧区] 欧洲经济区示例为 €400；其他地区档位不同，以 App 内「Welcome Rewards」为准 OKX 需要交易量 Crypto Crypto 加密货币">
+      <span class="jump-rank"><i>#</i>4</span>
+      <img class="fav" src="assets/fav/okx.com.png" width="22" height="22" alt="" loading="lazy" decoding="async"
+           data-fallback="O" onerror="window.__favFallback&&window.__favFallback(this)">
+      <span class="fav-fallback" style="display:none" aria-hidden="true">O</span>
+      <span class="jump-main">
+        <span class="jump-title">OKX 新用户礼包（分档任务制）</span>
+        <span class="jump-meta">EEA 欧区 · <span class="deadline">长期有效</span></span>
+      </span>
+      <span class="value gold">€400</span>
+      <svg class="jump-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5"/></svg>
+    </a><a class="jump" href="#deal-revolut-referral" data-jump="deal-revolut-referral"
+    data-cat="bank" data-cost="需要邀请条件"
+    data-verified="1" data-end=""
+    data-added="2026-11-10" data-key="revolut-referral" data-hay="[多区] Revolut 邀请好友（金额因地区浮动） 好友完成开户+入金+实体卡+3 笔消费，邀请人拿现金奖励 [多区] 英区 / EEA 欧区 / 美区 / 新加坡 / 澳洲等落地市场，各区奖励金额与门槛不同 Revolut 需要邀请条件 海外银行 / U 卡 / 汇款 银行 银行卡 汇款 U卡">
+      <span class="jump-rank"><i>#</i>5</span>
+      <img class="fav" src="assets/fav/revolut.com.png" width="22" height="22" alt="" loading="lazy" decoding="async"
+           data-fallback="R" onerror="window.__favFallback&&window.__favFallback(this)">
+      <span class="fav-fallback" style="display:none" aria-hidden="true">R</span>
+      <span class="jump-main">
+        <span class="jump-title">Revolut 邀请好友（金额因地区浮动）</span>
+        <span class="jump-meta">多区 · <span class="deadline">长期有效</span></span>
+      </span>
+      <span class="value">£10–£200</span>
+      <svg class="jump-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5"/></svg>
+    </a><a class="jump" href="#deal-bitget-wallet-card-usdc" data-jump="deal-bitget-wallet-card-usdc"
+    data-cat="crypto" data-cost="需要充值"
+    data-verified="1" data-end="2026-11-30"
+    data-added="2026-11-19" data-key="bitget-wallet-card-usdc" data-hay="[多区] Bitget Wallet Card 开卡礼：消费 $5 得 5 USDC（最高累计 $25） 11/12–11/30 用邀请码 Bitget2026 首次申领 Bitget Wallet Card 并累计消费满 $5，得 5 USDC，可叠加原有最高 $20 新客奖励；另有 500 USDC 抽奖 [多区] 覆盖 50+ 国家和地区（欧洲、拉美、亚太、非洲、南亚等）；以申卡页支持地区为准，美国、中国大陆等受限地区不可用 Bitget Wallet 需要充值 Crypto Crypto 加密货币">
+      <span class="jump-rank"><i>#</i>6</span>
+      <img class="fav" src="assets/fav/bitget.com.png" width="22" height="22" alt="" loading="lazy" decoding="async"
+           data-fallback="B" onerror="window.__favFallback&&window.__favFallback(this)">
+      <span class="fav-fallback" style="display:none" aria-hidden="true">B</span>
+      <span class="jump-main">
+        <span class="jump-title">Bitget Wallet Card 开卡礼：消费 $5 得 5 USDC（最高累计 $25）</span>
+        <span class="jump-meta">多区 · <span class="deadline hot">剩 11 天 · 11月30日</span></span>
+      </span>
+      <span class="value">$25</span>
+      <svg class="jump-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5"/></svg>
+    </a><a class="jump" href="#deal-gigsky-free-esim" data-jump="deal-gigsky-free-esim"
+    data-cat="esim" data-cost="真正免费"
+    data-verified="1" data-end=""
+    data-added="2026-11-17" data-key="gigsky-free-esim" data-hay="[多区] GigSky 免费 eSIM：100MB / 7 天 / 125 国 不绑卡领 100MB；印度 500MB；Visa 卡最高 5GB / 15 天 [多区] 125 国基础额度；印度 500MB；欧区最高 500MB；Visa 持卡人 175+ 目的地；邮轮 290+ 艘 GigSky 真正免费 eSIM eSIM 流量">
+      <span class="jump-rank"><i>#</i>7</span>
+      <img class="fav" src="assets/fav/gigsky.com.png" width="22" height="22" alt="" loading="lazy" decoding="async"
+           data-fallback="G" onerror="window.__favFallback&&window.__favFallback(this)">
+      <span class="fav-fallback" style="display:none" aria-hidden="true">G</span>
+      <span class="jump-main">
+        <span class="jump-title">GigSky 免费 eSIM：100MB / 7 天 / 125 国</span>
+        <span class="jump-meta">多区 · <span class="deadline">长期有效</span></span>
+      </span>
+      <span class="value">5GB</span>
+      <svg class="jump-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5"/></svg>
+    </a>
+        </div>
+      </div>
+      <div class="pager-bar" data-bar>
+        <span class="pager-label" data-label>1–6 / 7</span>
         <div class="pager-nav">
           <button type="button" data-prev aria-label="上一页">‹</button>
           <button type="button" data-next aria-label="下一页">›</button>
@@ -3396,6 +3527,6 @@
   </div>
 </footer>
 
-<script src="assets/js/app.js?v=dab3a9db" defer></script>
+<script src="assets/js/app.js?v=182546f5" defer></script>
 </body>
 </html>

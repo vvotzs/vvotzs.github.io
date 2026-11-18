@@ -90,7 +90,7 @@
   }
 
   function sortCards(list, anchor) {
-    if (anchor === "rank" || anchor === "archive") return;
+    if (anchor === "rank" || anchor === "archive" || anchor === "lottery") return;
     var by = state.sort;
     list.sort(function (a, b) {
       if (by === "new") {
@@ -190,9 +190,10 @@
     syncURL();
   }
 
-  /* ---------------------------------- 移动端热榜：今日优惠 / 高价值榜 双 tab */
+  /* ---------------------- 热榜板：今日最新 / 高价值榜 / 抽奖·高上限 三个 tab */
   var hotTabs = $("[data-hot-tabs]");
-  var hotSections = ["today", "rank"]
+  var hotDesc = $("[data-hot-desc]");
+  var hotSections = ["today", "rank", "lottery"]
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
   var hotActive = "today";
@@ -200,8 +201,11 @@
   function applyHotTabs(active) {
     if (active) hotActive = active;
     var mobile = mqMobile.matches;
+    // 抽奖分区只在桌面端存在；手机宽度切回来时回到第一个 tab
+    if (mobile && hotActive === "lottery") hotActive = "today";
     hotSections.forEach(function (sec) {
-      sec.hidden = mobile && sec.id !== hotActive;
+      var allowed = !(mobile && sec.id === "lottery");
+      sec.hidden = !allowed || sec.id !== hotActive;
     });
     if (hotTabs) {
       $$(".hot-tab", hotTabs).forEach(function (tab) {
@@ -210,12 +214,16 @@
         if (on) tab.setAttribute("aria-current", "true");
         else tab.removeAttribute("aria-current");
       });
+      if (hotDesc) {
+        var cur = $('.hot-tab[data-tab="' + hotActive + '"]', hotTabs);
+        if (cur && cur.dataset.desc) hotDesc.textContent = cur.dataset.desc;
+      }
     }
     syncRail();
   }
 
   function scrollToBoard() {
-    if (!hotTabs || !mqMobile.matches) return;
+    if (!hotTabs) return;
     var top = window.scrollY + hotTabs.getBoundingClientRect().top - 64;
     window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
   }
@@ -223,10 +231,10 @@
   /* 顶部 tab、右侧滑轨的「今日 / 榜单」、首屏「进行中」胶囊都落到同一块热榜板 */
   document.addEventListener("click", function (ev) {
     if (!ev.target.closest) return;
-    var link = ev.target.closest('a[href="#today"], a[href="#rank"]');
-    if (!link || !mqMobile.matches) return;
+    var link = ev.target.closest('a[href="#today"], a[href="#rank"], a[href="#lottery"]');
+    if (!link) return;
     var id = (link.getAttribute("href") || "").slice(1);
-    if (id !== "today" && id !== "rank") return;
+    if (id !== "today" && id !== "rank" && id !== "lottery") return;
     ev.preventDefault();
     applyHotTabs(id);
     scrollToBoard();
@@ -501,7 +509,7 @@
   /* ---------------------------------------------------------------- init */
   restoreFromURL();
   render();
-  if (mqMobile.matches && /^#(today|rank)$/.test(location.hash || "")) {
+  if (/^#(today|rank|lottery)$/.test(location.hash || "")) {
     applyHotTabs(location.hash.slice(1));
   } else {
     applyHotTabs();
