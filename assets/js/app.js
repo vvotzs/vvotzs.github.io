@@ -1,8 +1,8 @@
 /* 羊毛情报局 — interaction layer
-   1. 单开手风琴    2. 搜索 / 筛选（改 DOM，不重新请求数据）
-   3. 移动端横向分页 4. 竖版滑轨高亮          5. 图标兜底
-   6. 今日 / 榜单 / 截止的跳转卡落到分类详情
-   7. 筛选状态同步到 URL（?q=&cat=…），刷新 / 分享后还原
+   1. 单开手风琴（手机端整卡可点）          2. 搜索 / 筛选 / 排序（读 JSON 索引）
+   3. 分类内「显示更多」折叠（不再横滑翻页） 4. 热榜板 tab（桌面双板 / 手机单板）
+   5. 顶部横滑分类条 + 右侧竖版滑轨高亮      6. 图标兜底
+   7. 跳转卡落到分类详情                    8. 筛选状态同步到 URL
    静态卡片已在 HTML 里，脚本只做增强，禁用 JS 也能正常阅读。 */
 (function () {
   "use strict";
@@ -10,7 +10,7 @@
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
 
-  var PAGE_SIZE = 4;            // 分类卡一页 4 条
+  var MORE_LIMIT = 8;           // 分类内先展示 8 条，其余折叠
   var TODAY_WINDOW_DAYS = 2;    // 与 scripts/common.py 的 TODAY_WINDOW_DAYS 保持一致
   var mqMobile = window.matchMedia("(max-width: 768px)");
 
@@ -26,21 +26,30 @@
     if (img.complete && img.naturalWidth === 0) window.__favFallback(img);
   });
 
+  /* ------------------------------------------------------- 搜索索引（JSON） */
+  var SEARCH = {};
+  var indexEl = $("#search-index");
+  if (indexEl) {
+    try {
+      SEARCH = JSON.parse(indexEl.textContent) || {};
+      Object.keys(SEARCH).forEach(function (k) {
+        SEARCH[k] = String(SEARCH[k]).toLowerCase();
+      });
+    } catch (err) { SEARCH = {}; }
+  }
+
   /* ------------------------------------------------------------- modules */
   var modules = $$(".module").map(function (sec) {
-    var isJump = sec.dataset.kind === "jump";
     return {
       el: sec,
       anchor: sec.id,
-      isJump: isJump,
-      strip: sec.classList.contains("hot-strip"),
-      per: parseInt(sec.dataset.per, 10) || PAGE_SIZE,
-      track: $("[data-track]", sec),
-      bar: $("[data-bar]", sec),
-      label: $("[data-label]", sec),
+      isJump: sec.dataset.kind === "jump",
+      grid: $("[data-grid]", sec),
       countEl: $("[data-count]", sec),
       empty: $(".module-empty", sec),
-      items: $$(isJump ? ".jump" : ".card", sec),
+      more: $("[data-more]", sec),
+      items: $$(sec.dataset.kind === "jump" ? ".jump" : ".card", sec),
+      expanded: false,
       total: 0
     };
   });
@@ -65,10 +74,10 @@
     if (state.verify !== "all" && card.dataset.verified !== state.verify) return false;
 
     if (state.q) {
-      var hay = ((card.dataset.hay || "") + " " + (card.dataset.cat || "")).toLowerCase();
+      var hay = (SEARCH[card.dataset.key] || "") + " " + (card.dataset.cat || "");
       var terms = state.q.toLowerCase().split(/\s+/).filter(Boolean);
       for (var i = 0; i < terms.length; i++) {
-        if (hay.indexOf(terms[i]) === -1) return false;
+        if (hay.indexOf(terms[i]) === -1) return false;   // 空格分词，全部命中才算
       }
     }
 
@@ -95,64 +104,19 @@
     list.sort(function (a, b) {
       if (by === "new") {
         return (b.dataset.added || "").localeCompare(a.dataset.added || "") ||
-               (+b.dataset.val || 0) - (+a.dataset.val || 0);
+               (+b.dataset.valExp || 0) - (+a.dataset.valExp || 0);
       }
       if (by === "end") {
         var ea = a.dataset.end || "9999-12-31";
         var eb = b.dataset.end || "9999-12-31";
         return ea.localeCompare(eb);
       }
-      return (+b.dataset.valExp || +b.dataset.val || 0) - (+a.dataset.valExp || +a.dataset.val || 0);
+      return (+b.dataset.valExp || 0) - (+a.dataset.valExp || 0);
     });
   }
 
   /* ------------------------------------------------------------ rendering */
-  function buildDesktop(m, list) {
-    var grid = document.createElement("div");
-    grid.className = "grid";
-    list.forEach(function (c) { grid.appendChild(c); });
-    m.track.textContent = "";
-    m.track.appendChild(grid);
-  }
-
-  function buildMobile(m, list) {
-    m.track.textContent = "";
-    if (!list.length) return;
-    // 热点条榜单：不翻页，所有条直接排成一个 2 列网格
-    if (m.strip) {
-      var board = document.createElement("div");
-      board.className = "page";
-      list.forEach(function (c) { board.appendChild(c); });
-      m.track.appendChild(board);
-      m.track.scrollLeft = 0;
-      return;
-    }
-    for (var i = 0; i < list.length; i += m.per) {
-      var page = document.createElement("div");
-      page.className = "page";
-      list.slice(i, i + m.per).forEach(function (c) { page.appendChild(c); });
-      m.track.appendChild(page);
-    }
-    m.track.scrollLeft = 0;
-  }
-
-  function updateBar(m) {
-    if (!m.bar) return;
-    var per = m.per;
-    var scroll = m.track.scrollLeft;
-    var w = m.track.clientWidth || 1;
-    var idx = Math.min(Math.max(Math.round(scroll / w), 0), Math.max(Math.ceil(m.total / per) - 1, 0));
-    var start = m.total ? idx * per + 1 : 0;
-    var end = Math.min(m.total, (idx + 1) * per);
-    if (m.label) m.label.textContent = start + "–" + end + " / " + m.total;
-    var prev = $("[data-prev]", m.bar);
-    var next = $("[data-next]", m.bar);
-    if (prev) prev.disabled = idx <= 0;
-    if (next) next.disabled = (idx + 1) * per >= m.total;
-  }
-
   function render() {
-    var mobile = mqMobile.matches;
     var seen = {};
     var matchedTotal = 0;
 
@@ -162,7 +126,7 @@
       m.total = visible.length;
 
       // 只数分类区里的完整卡：每个 data-key 只算一次，
-      // 今日 / 榜单 / 截止里的跳转卡不参与计数，避免「匹配 N 条」翻倍。
+      // 热榜的跳转卡不参与计数，避免「匹配 N 条」翻倍。
       if (!m.isJump) {
         visible.forEach(function (el) {
           var key = el.dataset.key;
@@ -173,28 +137,60 @@
       }
 
       if (m.countEl) m.countEl.textContent = visible.length;
-      // 顶部 tab 上的条数跟着筛选一起变
-      var tabCount = m.strip ? $('[data-tabcount="' + m.anchor + '"]') : null;
-      if (tabCount) tabCount.textContent = visible.length;
+      $$('[data-tabcount="' + m.anchor + '"]').forEach(function (el) {
+        el.textContent = visible.length;
+      });
       if (m.empty) m.empty.style.display = visible.length ? "none" : "block";
-      m.track.style.display = visible.length ? "" : "none";
-      if (m.bar) m.bar.style.display = visible.length && mobile && !m.strip ? "flex" : "none";
 
-      if (mobile) buildMobile(m, visible);
-      else buildDesktop(m, visible);
+      var limit = m.isJump ? visible.length : MORE_LIMIT;
+      if (m.grid) {
+        m.grid.textContent = "";
+        visible.forEach(function (el, i) {
+          if (i >= limit) el.classList.add("is-extra");
+          else el.classList.remove("is-extra");
+          m.grid.appendChild(el);
+        });
+        m.grid.style.display = visible.length ? "" : "none";
+      }
 
-      if (mobile) updateBar(m);
+      var collapsed = !m.isJump && visible.length > MORE_LIMIT && !m.expanded;
+      m.el.dataset.collapsed = collapsed ? "1" : "0";
+
+      if (m.more) {
+        if (!m.isJump && visible.length > MORE_LIMIT) {
+          m.more.hidden = false;
+          m.more.textContent = m.expanded
+            ? "收起（只看前 " + MORE_LIMIT + " 条）"
+            : "显示更多（剩余 " + (visible.length - MORE_LIMIT) + " 条）";
+        } else {
+          m.more.hidden = true;
+        }
+      }
     });
 
     $$("[data-result]").forEach(function (el) { el.textContent = matchedTotal; });
+    syncNav();
     syncURL();
   }
 
-  /* ------- 热榜板：左「今日优惠 / 高价值榜」· 右「48h 新收录 / 抽奖」（桌面） ------- */
+  /* 各分类的「显示更多 / 收起」 */
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest("[data-more]");
+    if (!btn) return;
+    var m = modules.filter(function (x) { return x.el.contains(btn); })[0];
+    if (!m) return;
+    m.expanded = !m.expanded;
+    render();
+  });
+
+  /* ------- 热榜板：桌面左「新收录 / 高价值榜」· 右「即将截止 / 抽奖」，手机合成一块 ------- */
   var hotBoard = $("[data-hot-board]");
   var hotPanels = [];
+  var mobileTabs = [];
+  var mobileActive = "fresh";
 
   if (hotBoard) {
+    mobileTabs = $$(".hot-tabs-mobile .hot-tab", hotBoard);
     $$(".hot-panel", hotBoard).forEach(function (panel) {
       var tabs = $$(".hot-tab", panel);
       var current = null;
@@ -202,7 +198,6 @@
       current = current || tabs[0];
       hotPanels.push({
         el: panel,
-        alt: panel.classList.contains("hot-panel-alt"),
         body: $("[data-panel-body]", panel),
         tabs: tabs,
         ids: tabs.map(function (t) { return t.dataset.tab; }),
@@ -218,32 +213,38 @@
     return null;
   }
 
-  /* 每块板只看自己当前那个 tab；手机上没有右板 */
+  function markTab(tab, on) {
+    tab.classList.toggle("on", !!on);
+    if (on) tab.setAttribute("aria-current", "true");
+    else tab.removeAttribute("aria-current");
+  }
+
+  /* 手机：4 个 tab 共用一个 active；桌面：两块板各看各的 */
   function applyBoard() {
     var mobile = mqMobile.matches;
+    var active = mobile ? mobileActive : null;
+
     hotPanels.forEach(function (panel) {
-      var usable = !(mobile && panel.alt);
-      if (panel.alt) panel.el.hidden = mobile;
       panel.ids.forEach(function (id) {
         var sec = document.getElementById(id);
-        if (sec) sec.hidden = !usable || id !== panel.active;
+        if (!sec) return;
+        sec.hidden = mobile ? id !== active : id !== panel.active;
       });
       panel.tabs.forEach(function (tab) {
-        var on = tab.dataset.tab === panel.active;
-        tab.classList.toggle("on", on);
-        if (on) tab.setAttribute("aria-current", "true");
-        else tab.removeAttribute("aria-current");
+        markTab(tab, mobile ? tab.dataset.tab === active : tab.dataset.tab === panel.active);
       });
     });
-    syncRail();
+    mobileTabs.forEach(function (tab) {
+      markTab(tab, mobile ? tab.dataset.tab === active : false);
+    });
+
+    syncNav();
   }
 
   function showTab(id) {
-    var panel = panelOf(id);
-    if (!panel) return false;
-    if (mqMobile.matches && panel.alt) return false;   // 手机上没有右板
-    panel.active = id;
-    if (panel.body) panel.body.scrollTop = 0;
+    if (!panelOf(id)) return false;
+    if (mqMobile.matches) mobileActive = id;
+    else panelOf(id).active = id;
     applyBoard();
     return true;
   }
@@ -252,19 +253,21 @@
   function scrollToBoard() {
     if (!hotBoard) return;
     var rect = hotBoard.getBoundingClientRect();
-    if (rect.top >= 56 && rect.top <= window.innerHeight - 140) return;
-    var top = window.scrollY + rect.top - 64;
+    var barH = mqMobile.matches ? 104 : 56;
+    if (rect.top >= barH && rect.top <= window.innerHeight - 140) return;
+    var top = window.scrollY + rect.top - barH;
     window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
   }
 
-  /* 顶部 tab、右侧滑轨的「今日 / 榜单」、首屏「进行中」胶囊都落到同一块热榜板 */
+  /* 顶部 tab、手机分类条、右侧滑轨里指向热榜的入口都落到同一块板 */
   document.addEventListener("click", function (ev) {
     if (!ev.target.closest) return;
     var link = ev.target.closest(
-      '.hot-tab, a[href="#today"], a[href="#rank"], a[href="#fresh"], a[href="#lottery"]'
+      '[data-tab], a[href="#fresh"], a[href="#rank"], a[href="#closing"], a[href="#lottery"], a[href="#expiring"]'
     );
-    if (!link) return;
+    if (!link || link.closest("[data-jump]")) return;
     var id = link.dataset.tab || (link.getAttribute("href") || "").slice(1);
+    if (id === "expiring") id = "closing";
     if (!panelOf(id)) return;
     if (!showTab(id)) return;
     ev.preventDefault();
@@ -291,33 +294,32 @@
   function openCard(card) {
     closeAll(card);
     setOpen(card, true);
+    syncNav();
   }
 
-  /* 点卡片头部（链接以外的地方）或「详情」按钮都能开合 */
+  /* 点卡片头部或「详情」按钮开合；手机端整张卡都能点开 */
   document.addEventListener("click", function (ev) {
     var card = ev.target.closest(".card");
     if (!card) return;
     if (ev.target.closest(".go") || ev.target.closest(".url-link")) return; // 直达链接不触发折叠
     var head = ev.target.closest(".card-head");
     var toggle = ev.target.closest(".toggle");
-    if (!head && !toggle) return;
-
+    if (!head && !toggle) {
+      // 手机端：没有「详情」按钮了，点卡片任意位置就展开（收起仍走头部，避免误触）
+      if (!(mqMobile.matches && !card.classList.contains("open"))) return;
+    }
     ev.preventDefault();
     if (card.classList.contains("open")) setOpen(card, false);
     else openCard(card);
   });
 
-  /* 把某张卡带到视野中央：移动端先横向翻到它所在的那一页 */
   function revealDeal(target, behavior, offset) {
-    var track = target.closest("[data-track]");
-    var page = target.closest(".page");
-    if (track && page && mqMobile.matches) track.scrollLeft = page.offsetLeft;
     var rect = target.getBoundingClientRect();
     var top = window.scrollY + rect.top - (offset == null ? 80 : offset);
     window.scrollTo({ top: Math.max(top, 0), behavior: behavior || "auto" });
   }
 
-  /* 跳转卡：滚到分类区对应的唯一详情卡并展开 */
+  /* 跳转卡：滚到分类区对应的唯一详情卡并展开（被「显示更多」收起来的先展开） */
   document.addEventListener("click", function (ev) {
     var jump = ev.target.closest("[data-jump]");
     if (!jump) return;
@@ -325,6 +327,12 @@
     var target = document.getElementById(key);
     if (!target) return;
     ev.preventDefault();
+
+    var host = modules.filter(function (m) { return m.el.contains(target); })[0];
+    if (host && host.el.dataset.collapsed === "1") {
+      host.expanded = true;
+      render();
+    }
     openCard(target);
     revealDeal(target, "smooth", 90);
     target.classList.remove("flash");
@@ -341,55 +349,46 @@
     closeAll(null);
   });
 
-  /* -------------------------------------------------------------- pager */
-  document.addEventListener("click", function (ev) {
-    var btn = ev.target.closest("[data-prev], [data-next]");
-    if (!btn) return;
-    var m = modules.filter(function (x) { return x.bar && x.bar.contains(btn); })[0];
-    if (!m) return;
-    var dir = btn.hasAttribute("data-prev") ? -1 : 1;
-    m.track.scrollBy({ left: dir * m.track.clientWidth, behavior: "smooth" });
-  });
-
-  var scrollTick = {};
-  document.addEventListener("scroll", function (ev) {
-    var track = ev.target;
-    if (!track || !track.hasAttribute || !track.hasAttribute("data-track")) return;
-    var m = modules.filter(function (x) { return x.track === track; })[0];
-    if (!m || !mqMobile.matches) return;
-    clearTimeout(scrollTick[m.anchor]);
-    scrollTick[m.anchor] = setTimeout(function () { updateBar(m); }, 90);
-  }, true);
-
-  /* --------------------------------------------------------------- rail */
-  var railLinks = $$(".rail a");
-  var railTargets = {};
-  railLinks.forEach(function (a) { if (a.dataset.target) railTargets[a.dataset.target] = 1; });
+  /* ------------------------------------------------------ rail / catbar 高亮 */
+  var navLinks = $$(".rail a[data-target], .catbar a[data-target]");
   var sections = $$(".module");
-  var railRaf = null;
+  var navRaf = null;
 
-  function syncRail() {
-    var y = window.scrollY + 120;
+  function syncNav() {
+    if (!navLinks.length) return;
+    var probe = window.scrollY + (mqMobile.matches ? 150 : 120);
+    var visible = sections.filter(function (sec) { return !sec.hidden; });
+    if (!visible.length) return;
     var current = null;
-    sections.forEach(function (sec) {
-      if (sec.hidden || !railTargets[sec.id]) return;
-      if (!current) current = sec;
-      if (sec.offsetTop <= y) current = sec;
+    visible.forEach(function (sec) {
+      var top = sec.getBoundingClientRect().top + window.scrollY;
+      if (top <= probe) current = sec.id;
     });
-    if (!current) return;
-    railLinks.forEach(function (a) {
-      a.classList.toggle("active", a.dataset.target === current.id);
+    // 站在页面最顶端时，取第一个分区；滑到底部时，直接归到最后一个分区
+    if (!current) current = visible[0].id;
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) {
+      current = visible[visible.length - 1].id;
+    }
+    navLinks.forEach(function (a) {
+      a.classList.toggle("active", a.dataset.target === current);
     });
   }
 
   window.addEventListener("scroll", function () {
-    if (railRaf) return;
-    railRaf = requestAnimationFrame(function () { railRaf = null; syncRail(); });
+    if (navRaf) return;
+    navRaf = requestAnimationFrame(function () { navRaf = null; syncNav(); });
   }, { passive: true });
 
-  railLinks.forEach(function (a) {
-    a.addEventListener("click", function () {
-      railLinks.forEach(function (x) { x.classList.remove("active"); });
+  navLinks.forEach(function (a) {
+    a.addEventListener("click", function (ev) {
+      var id = a.dataset.target;
+      if (panelOf(id)) {
+        ev.preventDefault();
+        showTab(id);
+        scrollToBoard();
+        if (history.replaceState) history.replaceState(null, "", "#" + id);
+      }
+      navLinks.forEach(function (x) { x.classList.remove("active"); });
       a.classList.add("active");
     });
   });
@@ -519,7 +518,6 @@
   if (mqMobile.addEventListener) mqMobile.addEventListener("change", onMQ);
   else if (mqMobile.addListener) mqMobile.addListener(onMQ);
 
-
   /* ----------------------------------------------------------------- ads */
   $$(".ad-slot").forEach(function (slot) {
     if (slot.children.length > 0) slot.style.display = "block";
@@ -532,6 +530,11 @@
     var target = document.getElementById("deal-" + m[1]);
     if (!target) return;
     document.documentElement.classList.add("deep-link");
+    var host = modules.filter(function (mod) { return mod.el.contains(target); })[0];
+    if (host && host.el.dataset.collapsed === "1") {
+      host.expanded = true;
+      render();
+    }
     openCard(target);
     revealDeal(target, "auto", 80);
     requestAnimationFrame(function () {
@@ -543,7 +546,9 @@
   /* ---------------------------------------------------------------- init */
   restoreFromURL();
   render();
-  if (!showTab((location.hash || "").slice(1))) applyBoard();
+  var hash = (location.hash || "").slice(1);
+  if (hash === "expiring") hash = "closing";
+  if (!showTab(hash)) applyBoard();
   openFromHash();
-  syncRail();
+  syncNav();
 })();
