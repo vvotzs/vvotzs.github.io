@@ -83,19 +83,22 @@ NAV = [
 ]
 
 
-SHEEP_SVG = (
+MASCOT_SVG = (
     '<svg viewBox="0 0 40 40" aria-hidden="true">'
-    '<g fill="#FFFDF7" stroke="#E8DCC5" stroke-width="1.4">'
-    '<circle cx="12.6" cy="17" r="6"/><circle cx="20" cy="12.4" r="6.4"/>'
-    '<circle cx="27.4" cy="17" r="6"/><circle cx="24.6" cy="23.2" r="5.6"/>'
-    '<circle cx="15.4" cy="23.2" r="5.6"/></g>'
-    '<ellipse cx="13.6" cy="15.2" rx="2.7" ry="1.9" fill="#EFC79C" transform="rotate(-26 13.6 15.2)"/>'
-    '<ellipse cx="26.4" cy="15.2" rx="2.7" ry="1.9" fill="#EFC79C" transform="rotate(26 26.4 15.2)"/>'
-    '<ellipse cx="20" cy="20" rx="7.1" ry="6.6" fill="#F8DFB9"/>'
-    '<circle cx="17.1" cy="19.1" r="1.3" fill="#3F2A1A"/><circle cx="22.9" cy="19.1" r="1.3" fill="#3F2A1A"/>'
-    '<circle cx="14.4" cy="22.3" r="1.5" fill="#F6A98F" opacity=".7"/>'
-    '<circle cx="25.6" cy="22.3" r="1.5" fill="#F6A98F" opacity=".7"/>'
-    '<path d="M18.2 22.8c.55.8 3.05.8 3.6 0" fill="none" stroke="#3F2A1A" stroke-width="1.2" stroke-linecap="round"/>'
+    '<defs><linearGradient id="mintBody" x1="0" y1="0" x2="0.4" y2="1">'
+    '<stop offset="0" stop-color="#B7F5DA"/><stop offset="1" stop-color="#7FE3B8"/>'
+    '</linearGradient></defs>'
+    '<path d="M20 3.6c8.6 0 13.1 5.9 13.1 14.2 0 9.6-5.4 18.6-13.1 18.6S6.9 27.4 6.9 17.8C6.9 9.5 11.4 3.6 20 3.6Z" fill="url(#mintBody)"/>'
+    '<path d="M20 3.6c-2.6 0-4.9.6-6.8 1.7 2.4 2 8.9 2.1 12.9.2-1.8-1.2-3.9-1.9-6.1-1.9Z" fill="#5FD3A6" opacity=".55"/>'
+    '<ellipse cx="20" cy="20.4" rx="9.1" ry="8.4" fill="#F3FFF9"/>'
+    '<circle cx="16.8" cy="19.3" r="1.35" fill="#14532D"/>'
+    '<circle cx="23.2" cy="19.3" r="1.35" fill="#14532D"/>'
+    '<circle cx="15.9" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9"/>'
+    '<circle cx="22.3" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9"/>'
+    '<ellipse cx="13.6" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5"/>'
+    '<ellipse cx="26.4" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5"/>'
+    '<path d="M18.3 22.7c.5.85 2.9.85 3.4 0" fill="none" stroke="#14532D" stroke-width="1.25" stroke-linecap="round"/>'
+    '<path d="M20 3.9c.1-1.5.9-2.5 2.3-2.9-.1 1.5-.9 2.5-2.3 2.9Z" fill="#34D399"/>'
     '</svg>'
 )
 
@@ -447,7 +450,7 @@ def main() -> None:
   <div class="shell topbar-in">
     <a class="brand" href="{SITE_URL}" aria-label="羊毛情报局 首页">
       <span class="brand-mark" aria-hidden="true">
-        {SHEEP_SVG}
+        {MASCOT_SVG}
       </span>
       <span>
         <span class="brand-name">羊毛情报局</span>
@@ -579,7 +582,7 @@ def main() -> None:
     <div>
       <div class="foot-brand">
         <span class="brand-mark" aria-hidden="true">
-          {SHEEP_SVG}
+          {MASCOT_SVG}
         </span>
         羊毛情报局
       </div>
@@ -588,7 +591,7 @@ def main() -> None:
     <div class="foot-meta">
       <span>最后更新 · {e(last_updated)}</span>
       <span>已核验 {counts['active']} 条进行中 · 归档 {counts['expired']} 条</span>
-      <span>© {today.year} 羊毛情报局</span>
+      <span>Pickle 自动巡检整理 · © {today.year} 羊毛情报局</span>
     </div>
   </div>
 </footer>
