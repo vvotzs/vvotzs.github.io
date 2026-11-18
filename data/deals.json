@@ -1867,6 +1867,36 @@
     "status": "active"
   },
   {
+    "id": "keepgo-free-trial-100mb",
+    "title": "[全球] Keepgo 免费试用 eSIM：100MB / 7 天（终身流量同一张卡）",
+    "brand": "Keepgo",
+    "domain": "keepgo.com",
+    "category": "esim",
+    "value": "100MB / 7 天",
+    "value_num": 1,
+    "cost": "真正免费",
+    "highlight": "新用户在 App 里下 $0 试用单，100MB 用 7 天，之后充值同一张卡流量不过期",
+    "regions": "[全球] 150+ 国家 / 500+ 网络；试用按套餐分（如 Chitra 覆盖美国、Corvus 覆盖 30+ 欧洲国家），以 App 内可选套餐为准",
+    "start": "2026-11-18",
+    "end": "",
+    "verified": true,
+    "last_verified": "2026-11-19",
+    "added": "2026-11-19",
+    "content": "Keepgo 给新用户的免费试用 eSIM：100MB 流量、7 天有效，走的是真实的 Keepgo 线路（不是一次性演示卡），用完可以直接在同一张 eSIM 上充值，充值后流量变为永不过期、只要余额为正就一直有效。领取要在 Keepgo App 里选带 Free trial 标记的套餐，结算金额显示 $0.00，需要绑一张银行卡确认订单（不会扣款，也不支持 Apple Pay / Google Pay），领到后 24 小时内必须安装，否则试用作废。",
+    "conditions": "仅限 Keepgo 新用户，一个账号一次；必须下载 Keepgo App；$0 结算需绑卡确认（不扣费）；领取后 24 小时内安装；试用套餐有指定的地区范围，需选覆盖目的地的那个。",
+    "steps": [
+      "从 App Store / Google Play 下载 Keepgo App 并注册新账号",
+      "在套餐列表里找带 Free trial 标记、覆盖目的地的套餐，加入购物车（不要同时加付费套餐）",
+      "结算页勾选确认项并绑卡，总价显示 $0.00 后下单",
+      "24 小时内在 Wi-Fi 下安装 eSIM",
+      "把移动数据切到这张 eSIM，7 天内用完 100MB"
+    ],
+    "url": "https://www.keepgo.com/blogs/articles/esim-free-trial",
+    "source": "Keepgo 官方博客（2026-11-18《Try a Keepgo eSIM for Free: 100MB for 7 Days》）+ Keepgo FAQ",
+    "risk": "100MB 只够装卡测试、开地图和报平安；要绑卡才能下 $0 单，介意绑卡的人跳过；领了不装 24 小时就失效。",
+    "status": "active"
+  },
+  {
     "id": "github-copilot-free",
     "title": "[全球] GitHub Copilot 免费版",
     "brand": "GitHub",
