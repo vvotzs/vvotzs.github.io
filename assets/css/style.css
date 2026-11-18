@@ -255,10 +255,8 @@ button{ font-family: inherit; }
   /* 顶栏：左品牌 · 中间拉宽的搜索胶囊 · 右侧统计胶囊 */
   .search-btn{
     flex: 1 1 auto;
-    width: 100%;
     max-width: 420px;
     min-width: 0;
-    margin-inline: auto;
     justify-content: space-between;
     gap: 12px;
     padding: 0 8px 0 14px;
