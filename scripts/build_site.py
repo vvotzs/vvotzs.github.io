@@ -478,7 +478,8 @@ def main() -> None:
     <section class="hero">
       <div class="hero-kicker"><span class="dot"></span>情报更新 · {e(today.isoformat())}</div>
       <h1>全球的免费额度与限时奖励，<br><em>先看值得点的。</em></h1>
-      <p>每条都回到官方页面核对过：值多少、门槛、截止日。想细看就展开，不想就直接点原链接。</p>
+      <p class="hero-desc">每条都回到官方页面核对过：值多少、门槛、截止日。想细看就展开，不想就直接点原链接。</p>
+      <p class="hero-mini"><b>进行中 {counts['active']}</b> · 即将截止 {counts['expiring']} · 已归档 {counts['expired']}</p>
       <div class="hero-stats">
         <span class="stat live">进行中 <b>{counts['active']}</b></span>
         <span class="stat hot">即将截止 <b>{counts['expiring']}</b></span>
@@ -586,7 +587,6 @@ def main() -> None:
         </span>
         羊毛情报局
       </div>
-      <p class="foot-note">所有优惠均来自各活动官方页面，具体条款、名额与到账时间以官方为准。部分活动涉及入金、开户或交易，请量力参与；本站不提供投资建议，也不代收任何费用。</p>
     </div>
     <div class="foot-meta">
       <span>Pickle 每天巡检 · 更新 {e(last_updated)}</span>
