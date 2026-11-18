@@ -248,9 +248,12 @@
     return true;
   }
 
+  /* 板子已经好好在屏幕里就别滚：点 tab 不该让页面自己动 */
   function scrollToBoard() {
     if (!hotBoard) return;
-    var top = window.scrollY + hotBoard.getBoundingClientRect().top - 64;
+    var rect = hotBoard.getBoundingClientRect();
+    if (rect.top >= 56 && rect.top <= window.innerHeight - 140) return;
+    var top = window.scrollY + rect.top - 64;
     window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
   }
 

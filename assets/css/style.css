@@ -895,7 +895,7 @@ main{ padding-bottom: 40px; }
     transform: translateX(-50%);
     width: 34px;
   }
-  .hot-panel-body{ height: 200px; }
+  .hot-panel-body{ height: 206px; }
   .module.hot-strip{ padding-top: 2px; }
   .module.hot-strip .track{
     display: block;
