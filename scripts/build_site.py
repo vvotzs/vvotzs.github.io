@@ -123,28 +123,31 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
     "search": (16, '<circle cx="7" cy="7" r="4.4"/><path d="m10.4 10.4 3 3"/>', 1.6),
     # 风险提示
     "warn": (16, '<path d="M8 2.6 14.2 13H1.8L8 2.6Z"/><path d="M8 6.6v3.1M8 11.6v.1"/>', 1.4),
-    # 薄荷小怪兽（页头 / 页脚共用，渐变在 sprite 的 defs 里只定义一次）
-    "mascot": (40, '<path d="M20 3.6c8.6 0 13.1 5.9 13.1 14.2 0 9.6-5.4 18.6-13.1 18.6S6.9 27.4 6.9 17.8C6.9 9.5 11.4 3.6 20 3.6Z" fill="url(#mintBody)" stroke="none"/>'
-                  '<path d="M20 3.6c-2.6 0-4.9.6-6.8 1.7 2.4 2 8.9 2.1 12.9.2-1.8-1.2-3.9-1.9-6.1-1.9Z" fill="#5FD3A6" opacity=".55" stroke="none"/>'
-                  '<ellipse cx="20" cy="20.4" rx="9.1" ry="8.4" fill="#F3FFF9" stroke="none"/>'
-                  '<circle cx="16.8" cy="19.3" r="1.35" fill="#14532D" stroke="none"/>'
-                  '<circle cx="23.2" cy="19.3" r="1.35" fill="#14532D" stroke="none"/>'
-                  '<circle cx="15.9" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9" stroke="none"/>'
-                  '<circle cx="22.3" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9" stroke="none"/>'
-                  '<ellipse cx="13.6" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5" stroke="none"/>'
-                  '<ellipse cx="26.4" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5" stroke="none"/>'
-                  '<path d="M18.3 22.7c.5.85 2.9.85 3.4 0" fill="none" stroke="#14532D" stroke-width="1.25" stroke-linecap="round"/>'
-                  '<path d="M20 3.9c.1-1.5.9-2.5 2.3-2.9-.1 1.5-.9 2.5-2.3 2.9Z" fill="#34D399" stroke="none"/>', 1.9),
 }
+
+# 薄荷绿 Pickle 小精灵（页头 / 页脚直接内联，不走 sprite）。
+# 渐变必须写在可见的 <svg> 自己的 <defs> 里：放进 display:none 的 sprite 后，
+# Chrome/Android 的 <use> 会让 url(#id) 失效，身体变透明只剩一张白脸。
+# 每处内联用一个独立的渐变 id，避免同一页出现重复 id。
+_MASCOT_BODY = (
+    '<path d="M20 3.6c8.6 0 13.1 5.9 13.1 14.2 0 9.6-5.4 18.6-13.1 18.6S6.9 27.4 6.9 17.8C6.9 9.5 11.4 3.6 20 3.6Z" fill="url(#{gid})"/>'
+    '<path d="M20 3.6c-2.6 0-4.9.6-6.8 1.7 2.4 2 8.9 2.1 12.9.2-1.8-1.2-3.9-1.9-6.1-1.9Z" fill="#5FD3A6" opacity=".55"/>'
+    '<ellipse cx="20" cy="20.4" rx="9.1" ry="8.4" fill="#F3FFF9"/>'
+    '<circle cx="16.8" cy="19.3" r="1.35" fill="#14532D"/>'
+    '<circle cx="23.2" cy="19.3" r="1.35" fill="#14532D"/>'
+    '<circle cx="15.9" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9"/>'
+    '<circle cx="22.3" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9"/>'
+    '<ellipse cx="13.6" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5"/>'
+    '<ellipse cx="26.4" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5"/>'
+    '<path d="M18.3 22.7c.5.85 2.9.85 3.4 0" fill="none" stroke="#14532D" stroke-width="1.25" stroke-linecap="round"/>'
+    '<path d="M20 3.9c.1-1.5.9-2.5 2.3-2.9-.1 1.5-.9 2.5-2.3 2.9Z" fill="#34D399"/>'
+)
 
 
 def sprite_svg() -> str:
     """整页共用的一份图标 sprite：<symbol> 定义一次，各处 <use> 引用。"""
     parts = [
         '<svg class="sprite" style="display:none" aria-hidden="true" focusable="false">',
-        '<defs><linearGradient id="mintBody" x1="0" y1="0" x2="0.4" y2="1">'
-        '<stop offset="0" stop-color="#B7F5DA"/><stop offset="1" stop-color="#7FE3B8"/>'
-        "</linearGradient></defs>",
     ]
     for key, (size, inner, sw) in _SYMBOLS.items():
         parts.append(
@@ -159,8 +162,15 @@ def icon(key: str, cls: str = "") -> str:
     return f'<svg class="i{" " + cls if cls else ""}" aria-hidden="true"><use href="#i-{key}"/></svg>'
 
 
-def mascot_svg(cls: str = "") -> str:
-    return icon("mascot", cls)
+def mascot_svg(cls: str = "", gid: str = "mintBody") -> str:
+    """内联完整的小精灵：渐变、腮红、高光都在，直接画在页面上（不走 <use>）。"""
+    body = _MASCOT_BODY.replace("{gid}", gid)
+    return (
+        f'<svg class="i{" " + cls if cls else ""}" viewBox="0 0 40 40" aria-hidden="true">'
+        f'<defs><linearGradient id="{gid}" x1="0" y1="0" x2="0.4" y2="1">'
+        '<stop offset="0" stop-color="#B7F5DA"/><stop offset="1" stop-color="#7FE3B8"/>'
+        f"</linearGradient></defs>{body}</svg>"
+    )
 
 
 NAV = [
@@ -844,7 +854,7 @@ def main() -> None:
   <div class="shell topbar-in">
     <a class="brand" href="{SITE_URL}" aria-label="羊毛情报局 首页">
       <span class="brand-mark" aria-hidden="true">
-        {mascot_svg()}
+        {mascot_svg(gid='mintBodyHead')}
       </span>
       <span class="brand-text">
         <span class="brand-name">羊毛情报局</span>
@@ -967,7 +977,7 @@ def main() -> None:
   <div class="shell foot-line">
     <span class="foot-brand">
       <span class="brand-mark" aria-hidden="true">
-        {mascot_svg()}
+        {mascot_svg(gid='mintBodyFoot')}
       </span>
       羊毛情报局 · © {today.year}
     </span>
