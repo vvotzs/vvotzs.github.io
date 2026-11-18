@@ -1093,6 +1093,35 @@
     "status": "active"
   },
   {
+    "id": "teleagent-free-cloud-pc",
+    "title": "[中国区] 中国电信 TeleAgent 星辰：免费版内置 Windows 云电脑",
+    "brand": "TeleAgent（中国电信 星辰）",
+    "domain": "ta.teleai.com.cn",
+    "category": "ai",
+    "value": "免费版（含云电脑，约 $8）",
+    "value_num": 8,
+    "cost": "真正免费",
+    "highlight": "网页端登录即可用内置 Windows 云电脑（社区实测 4 核），免费体验版 0 元/月：3 个任务并行、长期记忆、安全沙箱、定时任务与技能广场",
+    "regions": "[中国区] 中电信 TeleAgent 网页端/客户端；需中国手机号注册",
+    "start": "",
+    "end": "",
+    "verified": true,
+    "last_verified": "2026-11-19",
+    "added": "2026-11-19",
+    "content": "中国电信自研的 TeleAgent（星辰超级智能体）提供免费体验版：0 元/月，支持同时运行 3 个任务、长期记忆、安全沙箱、定时任务、多模态能力与官方技能广场，并可通过「积分福利社」领免费积分。官网写明网页端内置 Windows 云电脑，打开网页即可使用，社区实测为 4 核配置，适合临时跑 Windows 软件或当轻量云桌面。付费个人版 ¥34/月起（限时 7 折）。",
+    "conditions": "需注册账号（中国手机号）；免费版每月有积分额度，积分用完需参加福利社或购买加油包；云电脑规格与单次时长官方未在定价页公示，以实际登录页为准；并发任务上限 3 个。",
+    "steps": [
+      "打开 ta.teleai.com.cn 注册/登录",
+      "进入网页端，点右上角进入「云电脑」",
+      "按需在云电脑里装 Windows 软件或跑任务",
+      "积分不够时到「积分福利社」领免费积分"
+    ],
+    "url": "https://ta.teleai.com.cn/pricing",
+    "source": "TeleAgent 官方定价页与首页（免费体验版 ¥0/月、内置 Windows 云电脑）+ NodeLoc 2026-11-18 实测帖",
+    "risk": "待核实：云电脑具体规格（社区称 4 核）与免费额度时长未在官方定价页写明；免费版积分有限；国内产品需实名手机号，注意数据合规。",
+    "status": "active"
+  },
+  {
     "id": "simular-box-free",
     "title": "[全球] box by Simular：免费云端 Linux 桌面（5,000 credits ≈ 50 小时 / 90 天）",
     "brand": "box by Simular",
