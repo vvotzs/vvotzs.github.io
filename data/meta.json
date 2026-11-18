@@ -1,0 +1,21 @@
+{
+  "last_updated": "2026-11-19T01:20:26",
+  "last_updated_human": "2026-11-19 01:20",
+  "counts": {
+    "total": 32,
+    "active": 30,
+    "expiring_soon": 0,
+    "closing_30d": 5,
+    "expired": 2
+  },
+  "categories": {
+    "ai": 4,
+    "crypto": 4,
+    "bank": 7,
+    "cloud": 5,
+    "esim": 6,
+    "software": 4
+  },
+  "archive_retention_days": 30,
+  "expiring_threshold_days": 7
+}
