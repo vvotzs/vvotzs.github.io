@@ -192,6 +192,13 @@
     }
   });
 
+  /* 点空白处（卡片之外）收起已展开的卡片 */
+  document.addEventListener("click", function (ev) {
+    if (ev.target.closest && ev.target.closest(".card.open")) return;
+    if (ev.target.closest && ev.target.closest(".modal.on")) return;
+    closeAll(null);
+  });
+
   document.addEventListener("keydown", function (ev) {
     if (ev.key !== "Enter" && ev.key !== " ") return;
     var head = ev.target.closest && ev.target.closest(".card-head");
