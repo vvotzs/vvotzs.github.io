@@ -28,6 +28,35 @@
     "status": "active"
   },
   {
+    "id": "usbank-business-checking-1500",
+    "title": "[美区] U.S. Bank 商业银行账户：开户奖最高 $1,500 + Bill Pay $250",
+    "brand": "U.S. Bank",
+    "domain": "usbank.com",
+    "category": "bank",
+    "value": "最高 $1,500（+$250）",
+    "value_num": 1500,
+    "cost": "需要充值",
+    "highlight": "Platinum Business Checking 存 $25k 新资金、保持到第 60 天并完成 6 笔合格交易，官方页 $1,200，用码 Q4BUS26 为 $1,500；另有 Bill Pay for Business 叠加 $250",
+    "regions": "[美区] 美国；需有企业实体（SSN/EIN）与 U.S. Bank 网点所在州，或已有该行关系",
+    "start": "2026-09-28",
+    "end": "2027-01-13",
+    "verified": true,
+    "last_verified": "2026-11-19",
+    "added": "2026-11-19",
+    "content": "U.S. Bank 商业支票账户开户奖（活动期 2026-09-28 至 2027-01-13）：在线开户最低存入 $25，开 Platinum Business Checking 并在 30 天内存入 $25,000 新资金、保持每日余额到开户第 60 天、60 天内完成 6 笔合格交易，即可获奖。官方活动页基准为 Platinum $1,200 / Essentials $400（码 Q4DIG26）；社区与 Doctor of Credit 实测用码 Q4BUS26 为 Platinum $1,500、Gold $900（存 $10k）、Essentials $500（存 $5k）。另可叠加 Bill Pay for Business $250：在 2026-09-28 至 2027-01-13 之间注册，注册后 60 天内完成 5 笔合格账单支付。奖励在达标当月月末后 30 天内入账，按利息申报 1099-INT。",
+    "conditions": "需为美国企业（SSN/EIN）；开户后 30 天内注册 Business Online Banking（与个人网银分开）；30 天内入账新资金、保持到第 60 天并完成 6 笔合格交易；每个企业一次；过去 12 个月内在 U.S. Bank 有商业支票账户或刚销户的不符合；Platinum 月费 $30，$25k 平均余额可免。",
+    "steps": [
+      "在 U.S. Bank 商业开户页用码 Q4BUS26（或页面默认码）在线开 Platinum Business Checking，最低存 $25",
+      "30 天内从行外转入 $25,000 新资金（行内转账不算）",
+      "保持每日余额至开户第 60 天，并完成 6 笔合格交易（ACH/Zelle/借记卡/支票等）",
+      "30 天内注册 Business Online Banking；想拿 $250 再按路径注册 Bill Pay for Business 并完成 5 笔账单支付"
+    ],
+    "url": "https://www.usbank.com/splash/business-checking/business-checking-promo.html",
+    "source": "U.S. Bank 官方 Business Checking and Online Banking Bonus 页（条款至 2027-01-13）+ Doctor of Credit 2026-09-29 更新 + 美卡论坛 2026-11-18 实测 DP",
+    "risk": "需占用 $25,000 资金约 60 天，且必须是美国企业主体；$1,500 档来自 Q4BUS26 邀请码（官方页面标价 $1,200，码不同金额不同）；月费 $30 需靠余额豁免；奖励按利息报税。",
+    "status": "active"
+  },
+  {
     "id": "binance-lite-vouchers",
     "title": "[全球站] Binance 新手任务：最高 $1,100 手续费券",
     "brand": "Binance",
@@ -1031,6 +1060,36 @@
     "url": "https://www.ubigi.com/",
     "source": "Ubigi 官方帮助中心 + 2026-11 第三方比价（邀请 20% 为待核实项）",
     "risk": "邀请 20% 的具体比例待核实，官方页面只保证 WELCOME10 的 10%；月付订阅不参与任何折扣。",
+    "status": "active"
+  },
+  {
+    "id": "redbull-mobile-free-esim",
+    "title": "[全球] Red Bull MOBILE 免费 1.1GB 全球 eSIM（约 1 年有效 / 奥地利号段）",
+    "brand": "Red Bull MOBILE",
+    "domain": "redbullmobile.com",
+    "category": "esim",
+    "value": "1.1GB（约 $10）",
+    "value_num": 10,
+    "cost": "真正免费",
+    "highlight": "注册即送 100MB 全球流量，在 App 设置里输入活动码 TRAVELDEALZ 再免费领 1GB，合计 1.1GB，有效期约 1 年、无需信用卡与 KYC",
+    "regions": "[全球] 全球漫游数据（奥地利运营商，海外需开数据漫游）；中国大陆实测可激活使用",
+    "start": "",
+    "end": "",
+    "verified": false,
+    "last_verified": "2026-11-19",
+    "added": "2026-11-19",
+    "content": "Red Bull MOBILE 的数据 eSIM 注册即送 100MB 全球流量；在 App 的优惠码入口输入 TRAVELDEALZ，可再免费下单 1GB 全球流量包，合计 1.1GB，社区实测有效期约 1 年。注册只需邮箱 + 密码验证，不需要信用卡、不做 KYC；附一个奥地利号段（只能上网，不能收短信）。累计流量用完后需自费购买套餐。",
+    "conditions": "需支持 eSIM 的手机；仅需邮箱注册；优惠码 TRAVELDEALZ 在 App 设置里添加；流量为纯数据、不含通话与短信；连续约 6 个月不使用会失效；每个账号/设备一次。",
+    "steps": [
+      "在 App Store / Google Play 下载 Red Bull MOBILE 应用",
+      "用邮箱注册并完成邮箱验证",
+      "点首页「+」激活 eSIM（可先不安装），拿到 100MB",
+      "到 App 设置里添加优惠码 TRAVELDEALZ，回首页再免费购买 1GB 全球流量",
+      "出国后开启该 eSIM 的数据与数据漫游"
+    ],
+    "url": "https://www.redbullmobile.com/",
+    "source": "美卡论坛 2026-09 实测帖（含安装步骤与多国 DP）；官方 App 内优惠码入口",
+    "risk": "待核实：TRAVELDEALZ 为社区流传的活动码，官方网页未公示，是否仍可用以 App 内下单结果为准；纯数据卡不能收验证码；长期不用会失效。",
     "status": "active"
   },
   {
