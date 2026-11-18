@@ -130,14 +130,38 @@ button{ font-family: inherit; }
 .topbar-stats{
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   flex: 0 0 auto;
-  font-size: 11.5px;
-  color: var(--ink-3);
 }
-.topbar-stats .k{ color: var(--ink-2); white-space: nowrap; }
-.topbar-stats .sep{ opacity: .5; }
 .spacer{ flex: 1 1 auto; }
+
+/* 统计徽标：软萌粉彩胶囊，桌面顶栏与移动端首屏共用 */
+.stats-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 11px;
+  line-height: 1.45;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: filter .16s ease, transform .16s ease;
+}
+.stats-pill b{
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 11.5px;
+  letter-spacing: -.01em;
+}
+.stats-pill.mint{ background: #ECFDF5; border-color: #BBF7D0; color: #065F46; }
+.stats-pill.mint b{ color: #047857; }
+.stats-pill.amber{ background: #FEF3C7; border-color: #FDE68A; color: #92400E; }
+.stats-pill.amber b{ color: #B45309; }
+.stats-pill.stone{ background: #F4F4F0; border-color: #E7E5E1; color: #52525B; }
+.stats-pill.stone b{ color: #3F3F46; }
+a.stats-pill:hover{ filter: brightness(.985); transform: translateY(-1px); }
 
 .search-btn{
   white-space: nowrap;
@@ -266,15 +290,13 @@ button{ font-family: inherit; }
   .search-btn .sb-text-short{ display: none; }
   .search-btn .sb-text{ display: inline; }
 
-  .topbar-stats{
-    height: 34px;
-    padding: 0 13px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    background: #FFFFFF;
-    box-shadow: var(--shadow-1);
-    color: var(--ink-3);
+  .topbar-stats{ gap: 6px; }
+  .topbar-stats .stats-pill{
+    padding: 5px 11px;
+    font-size: 11.5px;
+    box-shadow: 0 1px 2px rgba(28,25,23,.03);
   }
+  .topbar-stats .stats-pill b{ font-size: 12px; }
 }
 
 /* ---------------------------------------------------------------- modules */
@@ -947,13 +969,18 @@ footer{
   .hero{ padding: 6px 0 0; }
   .hero h1, .hero-desc, .hero-stats, .hero-kicker{ display: none; }
   .hero-mini{
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    flex-wrap: nowrap;
     margin: 0;
-    font-size: 11.6px;
-    color: var(--ink-3);
-    letter-spacing: .01em;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
-  .hero-mini b{ color: var(--ink); font-family: var(--mono); font-weight: 600; }
+  .hero-mini::-webkit-scrollbar{ display: none; }
+  .hero-mini .stats-pill{ flex: 0 0 auto; }
   .hero + .module{ padding-top: 8px; }
 
   .module{ padding: 14px 0 2px; }

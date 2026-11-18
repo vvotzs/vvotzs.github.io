@@ -501,9 +501,8 @@ def main() -> None:
       <kbd>⌘K</kbd>
     </button>
     <div class="topbar-stats">
-      <span class="k">进行中 <b style="color:#059669">{counts['active']}</b></span>
-      <span class="sep">·</span>
-      <span class="k">即将截止 <b style="color:#B45309">{counts['expiring']}</b></span>
+      <span class="stats-pill mint">进行中 <b>{counts['active']}</b></span>
+      <span class="stats-pill amber">即将截止 <b>{counts['expiring']}</b></span>
     </div>
   </div>
 </header>
@@ -514,7 +513,11 @@ def main() -> None:
       <div class="hero-kicker"><span class="dot"></span>情报更新 · {e(today.isoformat())}</div>
       <h1>全球的免费额度与限时奖励，<br><em>先看值得点的。</em></h1>
       <p class="hero-desc">每条都回到官方页面核对过：值多少、门槛、截止日。想细看就展开，不想就直接点原链接。</p>
-      <p class="hero-mini"><b>进行中 {counts['active']}</b> · 即将截止 {counts['expiring']} · 已归档 {counts['expired']}</p>
+      <p class="hero-mini">
+        <a class="stats-pill mint" href="#today">进行中 <b>{counts['active']}</b></a>
+        <a class="stats-pill amber" href="#closing">即将截止 <b>{counts['expiring']}</b></a>
+        <a class="stats-pill stone" href="#archive">已归档 <b>{counts['expired']}</b></a>
+      </p>
       <div class="hero-stats">
         <span class="stat live">进行中 <b>{counts['active']}</b></span>
         <span class="stat hot">即将截止 <b>{counts['expiring']}</b></span>
