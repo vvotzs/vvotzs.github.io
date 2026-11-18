@@ -24,7 +24,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/favicon.svg">
 <link rel="preconnect" href="https://www.google.com" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=d6eac25b">
+<link rel="stylesheet" href="assets/css/style.css?v=da9ea76d">
 
 <!-- Google AdSense：开通后把脚本放在这里，并给 .ad-slot 容器填入广告单元
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
@@ -150,8 +150,9 @@
       <kbd>⌘K</kbd>
     </button>
     <div class="topbar-stats">
-      <span class="stats-pill mint">进行中 <b>30</b></span>
-      <span class="stats-pill amber">即将截止 <b>5</b></span>
+      <a class="stats-pill mint" href="#today">进行中 <b>30</b></a>
+      <a class="stats-pill amber" href="#expiring">即将截止 <b>5</b></a>
+      <a class="stats-pill stone" href="#archive">已归档 <b>2</b></a>
     </div>
   </div>
 </header>
@@ -164,7 +165,7 @@
       <p class="hero-desc">每条都回到官方页面核对过：值多少、门槛、截止日。想细看就展开，不想就直接点原链接。</p>
       <p class="hero-mini">
         <a class="stats-pill mint" href="#today">进行中 <b>30</b></a>
-        <a class="stats-pill amber" href="#closing">即将截止 <b>5</b></a>
+        <a class="stats-pill amber" href="#expiring">即将截止 <b>5</b></a>
         <a class="stats-pill stone" href="#archive">已归档 <b>2</b></a>
       </p>
       <div class="hero-stats">
@@ -2753,7 +2754,7 @@
     </div>
     <p class="module-empty" style="display:none">该分类暂无符合条件的优惠</p>
   </section>
-  <section class="module" id="closing" data-mod="closing" data-limit="5">
+  <span class="anchor-alias" id="expiring" aria-hidden="true"></span><section class="module" id="closing" data-mod="closing" data-limit="5">
     <header class="module-head">
       <span class="module-badge" aria-hidden="true">G</span>
       <h2>即将截止 <span class="count" data-count>5</span></h2>

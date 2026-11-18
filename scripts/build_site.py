@@ -273,6 +273,7 @@ def module_html(
     deals: list[dict],
     today: date,
     ranked: bool = False,
+    alias: str | None = None,
 ) -> str:
     cards = []
     for i, deal in enumerate(deals, start=1):
@@ -284,7 +285,7 @@ def module_html(
         else '<p class="module-empty" style="display:block">该分类暂无符合条件的优惠</p>'
     )
     return f"""
-  <section class="module" id="{anchor}" data-mod="{anchor}" data-limit="{count}">
+  {f'<span class="anchor-alias" id="{alias}" aria-hidden="true"></span>' if alias else ''}<section class="module" id="{anchor}" data-mod="{anchor}" data-limit="{count}">
     <header class="module-head">
       <span class="module-badge" aria-hidden="true">{letter}</span>
       <h2>{title} <span class="count" data-count>{count}</span></h2>
@@ -399,7 +400,7 @@ def main() -> None:
             module_html(
                 "closing", "G", "即将截止",
                 "30 天内到期的活动，按截止时间排序；标「剩 N 天」的请优先处理。",
-                closing, today,
+                closing, today, alias="expiring",
             ),
             module_html(
                 "software", "J", "软件与数字服务",
@@ -513,8 +514,9 @@ def main() -> None:
       <kbd>⌘K</kbd>
     </button>
     <div class="topbar-stats">
-      <span class="stats-pill mint">进行中 <b>{counts['active']}</b></span>
-      <span class="stats-pill amber">即将截止 <b>{counts['expiring']}</b></span>
+      <a class="stats-pill mint" href="#today">进行中 <b>{counts['active']}</b></a>
+      <a class="stats-pill amber" href="#expiring">即将截止 <b>{counts['expiring']}</b></a>
+      <a class="stats-pill stone" href="#archive">已归档 <b>{counts['expired']}</b></a>
     </div>
   </div>
 </header>
@@ -527,7 +529,7 @@ def main() -> None:
       <p class="hero-desc">每条都回到官方页面核对过：值多少、门槛、截止日。想细看就展开，不想就直接点原链接。</p>
       <p class="hero-mini">
         <a class="stats-pill mint" href="#today">进行中 <b>{counts['active']}</b></a>
-        <a class="stats-pill amber" href="#closing">即将截止 <b>{counts['expiring']}</b></a>
+        <a class="stats-pill amber" href="#expiring">即将截止 <b>{counts['expiring']}</b></a>
         <a class="stats-pill stone" href="#archive">已归档 <b>{counts['expired']}</b></a>
       </p>
       <div class="hero-stats">

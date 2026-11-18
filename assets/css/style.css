@@ -161,7 +161,12 @@ button{ font-family: inherit; }
 .stats-pill.amber b{ color: #B45309; }
 .stats-pill.stone{ background: #F4F4F0; border-color: #E7E5E1; color: #52525B; }
 .stats-pill.stone b{ color: #3F3F46; }
+a.stats-pill{ cursor: pointer; }
 a.stats-pill:hover{ filter: brightness(.985); transform: translateY(-1px); }
+a.stats-pill:active{ transform: translateY(0); }
+
+/* 供统计徽标跳转的备用锚点（不占高度） */
+.anchor-alias{ display: block; height: 0; overflow: hidden; }
 
 .search-btn{
   white-space: nowrap;
@@ -297,6 +302,11 @@ a.stats-pill:hover{ filter: brightness(.985); transform: translateY(-1px); }
     box-shadow: 0 1px 2px rgba(28,25,23,.03);
   }
   .topbar-stats .stats-pill b{ font-size: 12px; }
+}
+
+@media (min-width: 769px) and (max-width: 1000px){
+  .topbar-stats .stats-pill{ padding: 4px 8px; font-size: 11px; }
+  .topbar-stats .stats-pill b{ font-size: 11.5px; }
 }
 
 /* ---------------------------------------------------------------- modules */
