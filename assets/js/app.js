@@ -33,6 +33,7 @@
       el: sec,
       anchor: sec.id,
       isJump: isJump,
+      strip: sec.classList.contains("hot-strip"),
       per: parseInt(sec.dataset.per, 10) || PAGE_SIZE,
       track: $("[data-track]", sec),
       bar: $("[data-bar]", sec),
@@ -117,6 +118,15 @@
   function buildMobile(m, list) {
     m.track.textContent = "";
     if (!list.length) return;
+    // 热点条榜单：不翻页，所有条直接排成一个 2 列网格
+    if (m.strip) {
+      var board = document.createElement("div");
+      board.className = "page";
+      list.forEach(function (c) { board.appendChild(c); });
+      m.track.appendChild(board);
+      m.track.scrollLeft = 0;
+      return;
+    }
     for (var i = 0; i < list.length; i += m.per) {
       var page = document.createElement("div");
       page.className = "page";
@@ -163,9 +173,12 @@
       }
 
       if (m.countEl) m.countEl.textContent = visible.length;
+      // 顶部 tab 上的条数跟着筛选一起变
+      var tabCount = m.strip ? $('[data-tabcount="' + m.anchor + '"]') : null;
+      if (tabCount) tabCount.textContent = visible.length;
       if (m.empty) m.empty.style.display = visible.length ? "none" : "block";
       m.track.style.display = visible.length ? "" : "none";
-      if (m.bar) m.bar.style.display = visible.length && mobile ? "flex" : "none";
+      if (m.bar) m.bar.style.display = visible.length && mobile && !m.strip ? "flex" : "none";
 
       if (mobile) buildMobile(m, visible);
       else buildDesktop(m, visible);
@@ -176,6 +189,49 @@
     $$("[data-result]").forEach(function (el) { el.textContent = matchedTotal; });
     syncURL();
   }
+
+  /* ---------------------------------- 移动端热榜：今日优惠 / 高价值榜 双 tab */
+  var hotTabs = $("[data-hot-tabs]");
+  var hotSections = ["today", "rank"]
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+  var hotActive = "today";
+
+  function applyHotTabs(active) {
+    if (active) hotActive = active;
+    var mobile = mqMobile.matches;
+    hotSections.forEach(function (sec) {
+      sec.hidden = mobile && sec.id !== hotActive;
+    });
+    if (hotTabs) {
+      $$(".hot-tab", hotTabs).forEach(function (tab) {
+        var on = tab.dataset.tab === hotActive;
+        tab.classList.toggle("on", on);
+        if (on) tab.setAttribute("aria-current", "true");
+        else tab.removeAttribute("aria-current");
+      });
+    }
+    syncRail();
+  }
+
+  function scrollToBoard() {
+    if (!hotTabs || !mqMobile.matches) return;
+    var top = window.scrollY + hotTabs.getBoundingClientRect().top - 64;
+    window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+  }
+
+  /* 顶部 tab、右侧滑轨的「今日 / 榜单」、首屏「进行中」胶囊都落到同一块热榜板 */
+  document.addEventListener("click", function (ev) {
+    if (!ev.target.closest) return;
+    var link = ev.target.closest('a[href="#today"], a[href="#rank"]');
+    if (!link || !mqMobile.matches) return;
+    var id = (link.getAttribute("href") || "").slice(1);
+    if (id !== "today" && id !== "rank") return;
+    ev.preventDefault();
+    applyHotTabs(id);
+    scrollToBoard();
+    if (history.replaceState) history.replaceState(null, "", "#" + id);
+  });
 
   /* ------------------------------------------------------------ accordion */
   function setOpen(card, open) {
@@ -273,8 +329,10 @@
 
   function syncRail() {
     var y = window.scrollY + 120;
-    var current = sections[0];
+    var current = null;
     sections.forEach(function (sec) {
+      if (sec.hidden) return;
+      if (!current) current = sec;
       if (sec.offsetTop <= y) current = sec;
     });
     if (!current) return;
@@ -416,7 +474,7 @@
   }
 
   /* ---------------------------------------------------------- responsive */
-  var onMQ = function () { render(); };
+  var onMQ = function () { render(); applyHotTabs(); };
   if (mqMobile.addEventListener) mqMobile.addEventListener("change", onMQ);
   else if (mqMobile.addListener) mqMobile.addListener(onMQ);
 
@@ -443,6 +501,11 @@
   /* ---------------------------------------------------------------- init */
   restoreFromURL();
   render();
+  if (mqMobile.matches && /^#(today|rank)$/.test(location.hash || "")) {
+    applyHotTabs(location.hash.slice(1));
+  } else {
+    applyHotTabs();
+  }
   openFromHash();
   syncRail();
 })();

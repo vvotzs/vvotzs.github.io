@@ -303,6 +303,25 @@ def title_parts(raw_title: str) -> tuple[str, str]:
     return (m.group(1), m.group(2)) if m else ("", raw_title)
 
 
+def strip_value(raw: str) -> str:
+    """移动端热点条右侧只放一个极短的价值片段，避免挤掉标题。
+
+    规则：
+      1. 本身够短（≤9 字）就原样用，一个字都不改；
+      2. 括号里已经给了折算值（「≈$42」「约 $10」）就直接用那个折算值；
+      3. 否则去掉「最高 / 约」等修饰与尾部括号，保留原来的金额写法。
+    完整价值始终留在这张卡的详情面板里。
+    """
+    v = (raw or "").strip()
+    short = re.sub(r"^(最高|最低|约|大约)\s*", "", v)
+    if len(short) <= 9:
+        return short
+    m = re.search(r"[（(][^）)]*?[≈约]\s*([$€£¥₹])\s?([\d,]+(?:\.\d+)?)", v)
+    if m:
+        return f"≈{m.group(1)}{m.group(2)}"
+    return re.sub(r"[（(][^）)]*[）)]", "", short).strip()
+
+
 def card(deal: dict, today, rank: int | None = None) -> str:
     cost = deal.get("cost", "")
     cost_cls = COST_CLASS.get(cost, "cost-invite")
@@ -396,7 +415,7 @@ def card(deal: dict, today, rank: int | None = None) -> str:
   </article>"""
 
 
-def jump_card(deal: dict, today, rank: int | None = None) -> str:
+def jump_card(deal: dict, today, rank: int | None = None, strip: bool = False) -> str:
     """精简跳转卡：点一下滚到 #deal-<id> 并展开，详情只存一份。"""
     region_tag, title_text = title_parts(deal.get("title", ""))
     cat_meta = CAT_META.get(deal.get("category", ""), {"label": "", "search": ""})
@@ -415,9 +434,14 @@ def jump_card(deal: dict, today, rank: int | None = None) -> str:
     fav = f"assets/fav/{fav_name(deal.get('domain', ''))}.png"
     monogram = (deal.get("brand") or "?")[:1].upper()
     deal_id = e(deal["id"])
-    rank_html = f'<span class="jump-rank">#{rank}</span>' if rank is not None else ""
+    if rank is None:
+        rank_html = ""
+    else:
+        rank_cls = "jump-rank" + (f" r{rank}" if rank <= 3 else "")
+        rank_html = f'<span class="{rank_cls}"><i>#</i>{rank}</span>'
     meta = (f"{e(region_tag)} · " if region_tag else "") + deadline_html(deal, today)
     value_cls = "value gold" if (deal.get("value_num") or 0) >= 100 else "value"
+    value_text = strip_value(deal["value"]) if strip else deal["value"]
 
     return f"""<a class="jump" href="#deal-{deal_id}" data-jump="deal-{deal_id}"
     data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
@@ -431,7 +455,7 @@ def jump_card(deal: dict, today, rank: int | None = None) -> str:
         <span class="jump-title">{e(title_text)}</span>
         <span class="jump-meta">{meta}</span>
       </span>
-      <span class="{value_cls}">{e(deal['value'])}</span>
+      <span class="{value_cls}">{e(value_text)}</span>
       <svg class="jump-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 9 3M4.5 3H9v4.5"/></svg>
     </a>"""
@@ -447,9 +471,13 @@ def module_html(
     ranked: bool = False,
     alias: str | None = None,
     jump: bool = False,
+    strip: bool = False,
 ) -> str:
     if jump:
-        cards = [jump_card(deal, today, rank=i if ranked else None) for i, deal in enumerate(deals, start=1)]
+        cards = [
+            jump_card(deal, today, rank=i if ranked else None, strip=strip)
+            for i, deal in enumerate(deals, start=1)
+        ]
         per_page = 6
     else:
         cards = [card(deal, today, rank=i if ranked else None) for i, deal in enumerate(deals, start=1)]
@@ -461,7 +489,7 @@ def module_html(
         else '<p class="module-empty" style="display:block">该分类暂无符合条件的优惠</p>'
     )
     return f"""
-  {f'<span class="anchor-alias" id="{alias}" aria-hidden="true"></span>' if alias else ''}<section class="module" id="{anchor}" data-mod="{anchor}" data-limit="{count}" data-per="{per_page}"{' data-kind="jump"' if jump else ''}>
+  {f'<span class="anchor-alias" id="{alias}" aria-hidden="true"></span>' if alias else ''}<section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-limit="{count}" data-per="{per_page}"{' data-kind="jump"' if jump else ''}{' data-board="1"' if strip else ''}>
     <header class="module-head">
       <span class="module-badge" aria-hidden="true">{letter}</span>
       <h2>{title} <span class="count" data-count>{count}</span></h2>
@@ -550,12 +578,12 @@ def main() -> None:
             module_html(
                 "today", "A", "今日最新优惠",
                 f"最近 {TODAY_WINDOW_DAYS * 24} 小时新收录、且仍在进行的优惠。点一条即可跳到分类里的完整详情。",
-                todays, today, jump=True,
+                todays, today, jump=True, strip=True,
             ),
             module_html(
                 "rank", "B", "高价值优惠排行榜",
                 "按可预期价值（实际到手金额）排序，抽奖类按期望值折算，先挑最值钱的。",
-                leaderboard, today, ranked=True, jump=True,
+                leaderboard, today, ranked=True, jump=True, strip=True,
             ),
             module_html(
                 "ai", "C", "AI 工具免费与折扣",
@@ -599,6 +627,12 @@ def main() -> None:
             ),
         ]
     )
+
+    hot_tabs = f"""
+  <div class="hot-tabs" data-hot-tabs>
+    <a class="hot-tab on" href="#today" data-tab="today" aria-current="true">今日优惠 <b data-tabcount="today">{len(todays)}</b></a>
+    <a class="hot-tab" href="#rank" data-tab="rank">高价值榜 <b data-tabcount="rank">{len(leaderboard)}</b></a>
+  </div>"""
 
     item_list = []
     for i, deal in enumerate(leaderboard, start=1):
@@ -731,7 +765,7 @@ def main() -> None:
     <div class="ad-slot" data-ad="top" aria-hidden="true"><!-- AdSense：顶部 / 桌面横幅 --></div>
   </div>
 
-  <div class="shell">{modules}</div>
+  <div class="shell">{hot_tabs}{modules}</div>
 
   <div class="shell">
     <div class="ad-slot" data-ad="bottom" aria-hidden="true"><!-- AdSense：底部 --></div>

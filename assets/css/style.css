@@ -797,6 +797,161 @@ main{ padding-bottom: 40px; }
   100%{ box-shadow: 0 0 0 0 rgba(245,158,11,0); }
 }
 
+/* ------------------------------------------------- 移动端热点榜（今日 / 榜单） */
+/* 两张「热点条」榜单在手机上是同一个双 tab 热榜板：只显示当前 tab，
+   每条是 36px 高、双列、单行的 strip；桌面 (>768px) 完全不受影响。 */
+
+.hot-tabs{ display: none; }
+
+@media (max-width: 768px){
+  .hot-tabs{
+    display: flex;
+    align-items: stretch;
+    gap: 18px;
+    margin: 0 0 8px;
+    border-bottom: 1px solid rgba(28,25,23,.07);
+  }
+  .hot-tab{
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 2px 9px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    color: var(--ink-3);
+    white-space: nowrap;
+    transition: color .16s ease;
+  }
+  .hot-tab b{
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--ink-4);
+    padding: 0 4px;
+    border-radius: 999px;
+    background: #F1EFE8;
+    line-height: 1.6;
+  }
+  .hot-tab.on{ color: var(--ink); }
+  .hot-tab.on b{ color: #92400E; background: #FEF3C7; }
+  .hot-tab.on::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    transform: translateX(-50%);
+    width: 34px;
+    height: 2.5px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #FBBF24, #EA580C);
+  }
+  .hot-tab:active{ color: var(--ink-2); }
+
+  /* 两个分区的标题由 tab 承担，省下重复的一行 */
+  .module.hot-strip .module-head{ display: none; }
+  .module.hot-strip{ padding-top: 2px; }
+
+  .module.hot-strip .track{
+    display: block;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+  .module.hot-strip .page,
+  .module.hot-strip .track > .grid{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding-right: 0;
+  }
+  .module.hot-strip .pager-bar{ display: none !important; }
+
+  /* 单行热点条：34–38px 高 */
+  .module.hot-strip .jump{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 34px;
+    max-height: 38px;
+    padding: 5px 7px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #FFFFFF;
+    box-shadow: none;
+    overflow: hidden;
+  }
+  .module.hot-strip .jump:hover{
+    border-color: rgba(245,158,11,.45);
+    background: #FFFCF6;
+    box-shadow: none;
+    transform: none;
+  }
+  .module.hot-strip .jump:active{ background: #FFF7ED; }
+
+  .module.hot-strip .jump .fav,
+  .module.hot-strip .jump .fav-fallback{
+    width: 13px;
+    height: 13px;
+    border-radius: 4px;
+    flex: 0 0 13px;
+    margin-top: 0;
+  }
+  .module.hot-strip .jump .fav{ padding: 1px; }
+  .module.hot-strip .jump .fav-fallback{ font-size: 7.5px; line-height: 1; }
+
+  .module.hot-strip .jump .jump-rank{
+    flex: 0 0 15px;
+    width: 15px;
+    height: 15px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    line-height: 1;
+    color: #52525B;
+    background: #F1F0EA;
+  }
+  .module.hot-strip .jump .jump-rank i{ display: none; font-style: normal; }
+  .module.hot-strip .jump .jump-rank.r1{ color: #FFFFFF; background: linear-gradient(180deg, #F8C862, #EDA229); }
+  .module.hot-strip .jump .jump-rank.r2{ color: #FFFFFF; background: linear-gradient(180deg, #CDD5DE, #A7B2BE); }
+  .module.hot-strip .jump .jump-rank.r3{ color: #FFFFFF; background: linear-gradient(180deg, #E2B189, #C9884F); }
+
+  .module.hot-strip .jump .jump-main{ flex: 1 1 auto; min-width: 0; gap: 0; }
+  .module.hot-strip .jump .jump-title{
+    font-size: 11px;
+    line-height: 1.28;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    -webkit-line-clamp: unset;
+  }
+  .module.hot-strip .jump .jump-meta,
+  .module.hot-strip .jump .jump-arrow{ display: none; }
+
+  .module.hot-strip .jump .value{
+    flex: 0 0 auto;
+    font-size: 10px;
+    line-height: 1.4;
+    font-weight: 600;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #EA580C;
+    white-space: nowrap;
+    align-self: center;
+  }
+}
+
 /* ---------------------------------------------------------- pager (mobile) */
 
 .pager-bar{
