@@ -342,25 +342,10 @@ main{ padding-bottom: 40px; }
   background: rgba(255,255,255,.6);
 }
 
-/* 桌面端：> 8 条先收起来，底部一个「显示更多」往下展开（手机端则是横滑翻页） */
-.more{
-  display: block;
-  width: 100%;
-  margin: 10px 0 2px;
-  height: 36px;
-  border: 1px dashed rgba(28,25,23,.16);
-  border-radius: 12px;
-  background: #FFFFFF;
-  color: var(--ink-2);
-  font-size: 12.4px;
-  cursor: pointer;
-  transition: border-color .16s ease, color .16s ease, background .16s ease;
-}
-.more:hover{ border-color: rgba(245,158,11,.5); color: var(--terra); background: #FFFCF6; }
-.more[hidden]{ display: none; }
-[data-collapsed="1"] .track > .is-extra{ display: none; }
+/* 分类内翻页：手机 / 桌面同一套，卡片一律切成 .page 横向滑，页码条在底部 */
+.more{ display: none !important; }
 
-/* ------------------------------------------------------------- 手机翻页条 */
+/* 手机 + 桌面共用的翻页条 */
 .pager-bar{
   display: none;
   align-items: center;
@@ -392,6 +377,7 @@ main{ padding-bottom: 40px; }
 
 /* ------------------------------------------------------------------ cards */
 
+/* 无 JS 时退化为双列网格平铺；有 JS 时同一 .track 变成横向吸附翻页 */
 .track{
   position: relative;
   display: grid;
@@ -399,6 +385,30 @@ main{ padding-bottom: 40px; }
   gap: 12px;
   min-width: 0;
 }
+
+/* 有 JS：分类内改为横向吸附翻页（手机 5 张/页、桌面双列 8 张/页） */
+html.js .module:not(.hot-strip) .track{
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  gap: 0;
+  scrollbar-width: none;
+}
+html.js .module:not(.hot-strip) .track::-webkit-scrollbar{ display: none; }
+html.js .page{
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 12px;
+}
+html.js .pager-bar{ display: flex; }
 
 .card{
   position: relative;
@@ -431,8 +441,8 @@ main{ padding-bottom: 40px; }
 
 .card-head{
   display: flex;
-  gap: 10px;
-  padding: 13px 14px 12px;
+  gap: 9px;
+  padding: 11px 13px 10px;
   cursor: pointer;
   align-items: flex-start;
 }
@@ -517,7 +527,7 @@ main{ padding-bottom: 40px; }
 .value.gold{ color: #92400E; background: #FEF3C7; border-color: #F8DFA5; }
 
 .row2{
-  margin: 6px 0 0;
+  margin: 5px 0 0;
   font-size: 12.4px;
   line-height: 1.55;
   color: var(--ink-2);
@@ -543,7 +553,7 @@ main{ padding-bottom: 40px; }
 .tag.cost-invite{ color: #6B6560; background: #F7F4EE; border-color: rgba(28,25,23,.09); }
 
 .row3{
-  margin-top: 9px;
+  margin-top: 7px;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -575,6 +585,7 @@ main{ padding-bottom: 40px; }
 }
 .go:hover{ color: #C2410C; text-decoration: underline; text-underline-offset: 3px; }
 .go svg{ width: 10px; height: 10px; }
+.go-short{ display: none; }
 
 .toggle{
   display: inline-flex;
@@ -710,6 +721,26 @@ main{ padding-bottom: 40px; }
   color: #9A3412;
 }
 .risk svg{ width: 12px; height: 12px; flex: none; margin-top: 2px; opacity: .75; }
+
+/* 展开态里的完整直达按钮（收起时在折叠面板内，不占高度） */
+.detail-cta{
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 38px;
+  margin-top: 2px;
+  border-radius: 10px;
+  border: 1px solid var(--amber-line);
+  background: #FFF7ED;
+  color: #C2410C;
+  font-size: 12.5px;
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+.detail-cta:hover{ background: #FFF1E6; border-color: #F8C98A; }
+.detail-cta svg{ width: 12px; height: 12px; }
 .detail-foot{
   grid-column: 1 / -1;
   display: flex;
@@ -1239,20 +1270,11 @@ footer{
   .module h2 .count{ font-size: 10px; padding: 1px 6px; }
   .module-desc{ display: none; }
 
-  /* ---- 分类内左右横滑翻页：每页 4 张 ---- */
+  /* ---- 分类内左右横滑翻页：手机单列一页 5 张 ---- */
   .track{
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    overscroll-behavior-x: contain;
-    gap: 0;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
   }
-  .track::-webkit-scrollbar{ display: none; }
-  .page{
+  html.js .page{
     flex: 0 0 100%;
     width: 100%;
     scroll-snap-align: start;
@@ -1260,56 +1282,67 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 9px;
+    gap: 6px;
   }
-  .more{ display: none !important; }
   html.js .pager-bar{ display: flex; }
+  .more{ display: none !important; }
 
-  .card-head{ padding: 12px 12px 11px; gap: 9px; }
-  .row1{ align-items: flex-start; }
+  .card-head{ padding: 9px 10px; gap: 8px; }
+  .card-head .fav,
+  .card-head .fav-fallback{ width: 22px; height: 22px; border-radius: 6px; margin-top: 0; }
+  .row1{ align-items: center; gap: 6px; }
+  /* 未展开：标题单行 + 右侧价值徽标；展开后恢复完整多行标题 */
   .row1 h3{
-    font-size: 13.9px;
-    white-space: normal;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    line-height: 1.38;
+    font-size: 13px;
+    line-height: 1.3;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .value{ font-size: 10.4px; padding: 0 6px; margin-top: 1px; max-width: 54%; }
-  .row2{ font-size: 12px; margin-top: 4px; }
-  .row2 .tag{ font-size: 9.2px; padding: 0 4px; margin-right: 4px; }
+  .card.open .row1 h3{ white-space: normal; }
+  .value{ font-size: 10px; padding: 0 5px; margin-top: 0; max-width: 46%; }
+  .row2{ font-size: 11.5px; line-height: 1.4; margin-top: 2px; }
+  .row2 .tag{ font-size: 9px; padding: 0 4px; margin-right: 4px; }
   .row3{
-    font-size: 10.9px;
-    gap: 4px 6px;
-    flex-wrap: wrap;
-    margin-top: 7px;
-  }
-  .row3 .region{
-    flex: 1 1 100%;
-    max-width: none;
     font-size: 10.4px;
+    gap: 4px;
+    flex-wrap: nowrap;
+    margin-top: 5px;
+  }
+  /* 截止时间在前、地区在后，并一行；左侧长文本省略，右侧胶囊不被挤 */
+  .row3 .region{
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: none;
+    font-size: 10.2px;
     color: var(--ink-4);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .row3 .sep{ display: none; }
+  .row3 .sep{ display: inline; }
+  .deadline{ flex: none; }
+  .row3 .grow{ flex: 1 1 auto; min-width: 2px; }
 
-  /* 手机端：整卡点击展开，「直达原链接」是唯一按钮，触控面积做大 */
+  /* 手机端：整卡点击展开；底部只留「直达 ↗」紧凑胶囊，不占整行 */
   .toggle{ display: none; }
+  .go-full{ display: none; }
+  .go-short{ display: inline; }
   .row3 .go{
-    flex: 1 1 100%;
+    flex: 0 0 auto;
     justify-content: center;
-    gap: 5px;
-    height: 36px;
-    margin-top: 5px;
+    gap: 2px;
+    height: 24px;
+    margin: 0;
+    padding: 0 8px;
     border: 1px solid var(--amber-line);
     background: #FFF7ED;
-    border-radius: 10px;
-    font-size: 12.5px;
+    border-radius: 999px;
+    font-size: 10.8px;
     color: #C2410C;
   }
-  .row3 .go svg{ width: 12px; height: 12px; }
+  .row3 .go svg{ width: 9px; height: 9px; }
   .row3 .go:hover{ text-decoration: none; background: #FFF1E6; }
 
   /* 展开态：地区 / 时间并排，正文与步骤整行 */

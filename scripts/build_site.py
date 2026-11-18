@@ -444,6 +444,9 @@ def card(deal: dict, today) -> str:
 
     value_cls = "value gold" if (deal.get("value_num") or 0) >= 100 else "value"
 
+    region_text = strip_region_bracket(deal["regions"])
+    region_html = f'<span class="sep">·</span><span class="region">{e(region_text)}</span>' if region_text else ""
+
     region_tag, title_text = title_parts(deal.get("title", ""))
     if region_tag:
         title_html = f'<span class="rtag">{e(region_tag)}</span>{e(title_text)}'
@@ -469,12 +472,11 @@ def card(deal: dict, today) -> str:
         </div>
         <p class="row2"><span class="tag {cost_cls}">{e(cost)}</span>{e(deal['highlight'])}</p>
         <div class="row3">
-          <span class="region">{e(strip_region_bracket(deal['regions']))}</span>
-          <span class="sep">·</span>
           {deadline_html(deal, today)}
+          {region_html}
           <span class="grow"></span>
-          <a class="go" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow">直达原链接
-            {icon('external')}</a>
+          <a class="go" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow"
+             aria-label="直达原链接"><span class="go-full">直达原链接</span><span class="go-short">直达</span>{icon('external')}</a>
           <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-{deal_id}"
                   aria-label="展开详情">详情
             {icon('chevron')}
@@ -495,6 +497,8 @@ def card(deal: dict, today) -> str:
         {icon('warn')}
         <span>{e(deal['risk'])}</span>
       </div>
+      <a class="detail-cta" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow">
+        直达原链接{icon('external')}</a>
       <div class="detail-foot">
         <span>来源 · {e(deal['source'])}</span>
         <span>最后验证 · {e(deal['last_verified'])}</span>
@@ -555,11 +559,12 @@ def module_html(
     else:
         cards = [card(deal, today) for deal in deals]
     count = len(deals)
-    # 手机端分类内每页 4 张左右横滑；热榜跳转卡不翻页，2 列网格
-    per_page = 6 if jump else 4
+    # 分类内左右横滑翻页：手机一页 5 张（一屏装得下）、桌面双列一页 8 张；热榜跳转卡不翻页
+    per_page = 6 if jump else 5
+    per_page_lg = 6 if jump else 8
     pages = max(1, -(-count // per_page))
     return f"""
-  <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-per="{per_page}"{' data-kind="jump"' if jump else ''}>
+  <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-per="{per_page}" data-per-lg="{per_page_lg}"{' data-kind="jump"' if jump else ''}>
     <header class="module-head">
       <span class="module-badge" aria-hidden="true">{icon(icon_key)}</span>
       <h2>{title} <span class="count" data-count>{count}</span></h2>

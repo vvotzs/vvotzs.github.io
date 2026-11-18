@@ -1,6 +1,6 @@
 /* 羊毛情报局 — interaction layer
    1. 单开手风琴（手机端整卡可点）              2. 搜索 / 筛选 / 排序（读 JSON 索引）
-   3. 手机端分类内每页 4 张左右横滑翻页          4. 热榜板 tab（桌面双板 / 手机单板）
+   3. 分类内左右横滑翻页（手机 5 张/页 · 桌面 8 张/页） 4. 热榜板 tab（桌面双板 / 手机单板）
    5. 右侧竖版滑轨高亮（桌面 + 手机）            6. 图标兜底
    7. 跳转卡落到分类详情（自动翻到所在页）       8. 筛选状态同步到 URL
    静态卡片已在 HTML 里，脚本只做增强，禁用 JS 也能正常阅读。 */
@@ -12,8 +12,8 @@
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
 
-  var PAGE_SIZE = 4;            // 手机端分类卡一页 4 条
-  var MORE_LIMIT = 8;           // 桌面端分类内先展示 8 条，其余「显示更多」
+  var PAGE_SIZE = 5;            // 手机端分类卡一页 5 条
+  var PAGE_SIZE_LG = 8;         // 桌面端双列网格一页 8 条
   var TODAY_WINDOW_DAYS = 2;    // 与 scripts/common.py 的 TODAY_WINDOW_DAYS 保持一致
   var mqMobile = window.matchMedia("(max-width: 768px)");
 
@@ -54,8 +54,8 @@
       empty: $(".module-empty", sec),
       more: $("[data-more]", sec),
       per: parseInt(sec.dataset.per, 10) || PAGE_SIZE,
+      perLg: parseInt(sec.dataset.perLg, 10) || PAGE_SIZE_LG,
       items: $$(sec.dataset.kind === "jump" ? ".jump" : ".card", sec),
-      expanded: false,
       total: 0
     };
   });
@@ -122,26 +122,30 @@
   }
 
   /* ------------------------------------------------------------ rendering */
-  /* 手机端非热榜分区：按 per 张一页切成 .page，横向吸附滑动；
-     桌面端（或热榜跳转卡）：所有卡片平铺进 .track，桌面用网格、超 8 条折叠。 */
+  /* 分类内一律按页切：手机单列一页 5 张（一屏装得下），桌面双列一页 8 张，
+     左右横滑 + 页码条翻页；热榜跳转卡不平铺翻页，2 列网格全部展开。 */
+  function perOf(m) {
+    return mqMobile.matches ? m.per : m.perLg;
+  }
+
   function buildTrack(m, visible, paged) {
     var track = m.track;
     if (!track) return;
     track.textContent = "";
     if (paged) {
-      for (var i = 0; i < visible.length; i += m.per) {
+      var per = perOf(m);
+      for (var i = 0; i < visible.length; i += per) {
         var page = document.createElement("div");
         page.className = "page";
-        visible.slice(i, i + m.per).forEach(function (el) {
+        visible.slice(i, i + per).forEach(function (el) {
           el.classList.remove("is-extra");
           page.appendChild(el);
         });
         track.appendChild(page);
       }
     } else {
-      var limit = m.isJump ? visible.length : MORE_LIMIT;
-      visible.forEach(function (el, i) {
-        el.classList.toggle("is-extra", i >= limit);
+      visible.forEach(function (el) {
+        el.classList.remove("is-extra");
         track.appendChild(el);
       });
     }
@@ -149,14 +153,14 @@
   }
 
   function pageCount(m) {
-    return Math.max(1, Math.ceil(m.total / m.per));
+    return Math.max(1, Math.ceil(m.total / perOf(m)));
   }
 
   /* 页码 1 / N 与左右按钮的可用状态，跟着横滑位置走 */
   function updateBar(m) {
     if (!m.bar) return;
     var pages = pageCount(m);
-    var show = mqMobile.matches && !m.isJump && m.total > 0 && pages > 1;
+    var show = !m.isJump && m.total > 0 && pages > 1;
     m.bar.style.display = show ? "flex" : "none";
     if (!show) return;
     var w = m.track.clientWidth || 1;
@@ -169,7 +173,6 @@
   }
 
   function render() {
-    var mobile = mqMobile.matches;
     var seen = {};
     var matchedTotal = 0;
 
@@ -195,23 +198,13 @@
       });
       if (m.empty) m.empty.style.display = visible.length ? "none" : "block";
 
-      var paged = mobile && !m.isJump;
+      var paged = !m.isJump;
       buildTrack(m, visible, paged);
       if (m.track) m.track.style.display = visible.length ? "" : "none";
 
-      var collapsed = !paged && !m.isJump && visible.length > MORE_LIMIT && !m.expanded;
-      m.el.dataset.collapsed = collapsed ? "1" : "0";
-
-      if (m.more) {
-        if (!m.isJump && !paged && visible.length > MORE_LIMIT) {
-          m.more.hidden = false;
-          m.more.textContent = m.expanded
-            ? "收起（只看前 " + MORE_LIMIT + " 条）"
-            : "显示更多（剩余 " + (visible.length - MORE_LIMIT) + " 条）";
-        } else {
-          m.more.hidden = true;
-        }
-      }
+      // 桌面端也不再折叠：分类内一律翻页
+      m.el.dataset.collapsed = "0";
+      if (m.more) m.more.hidden = true;
 
       updateBar(m);
     });
@@ -221,17 +214,7 @@
     syncURL();
   }
 
-  /* 桌面端各分类的「显示更多 / 收起」（手机端不折叠，直接翻页） */
-  document.addEventListener("click", function (ev) {
-    var btn = ev.target.closest("[data-more]");
-    if (!btn) return;
-    var m = modules.filter(function (x) { return x.el.contains(btn); })[0];
-    if (!m) return;
-    m.expanded = !m.expanded;
-    render();
-  });
-
-  /* ------------------------------------------------------- 手机横滑翻页条 */
+  /* 分类内左右翻页按钮（手机 / 桌面同一套） */
   document.addEventListener("click", function (ev) {
     var btn = ev.target.closest("[data-prev], [data-next]");
     if (!btn) return;
@@ -252,7 +235,7 @@
     var track = ev.target;
     if (!track || !track.hasAttribute || !track.hasAttribute("data-track")) return;
     var m = modules.filter(function (x) { return x.track === track; })[0];
-    if (!m || !mqMobile.matches) return;
+    if (!m) return;
     clearTimeout(m._tick);
     m._tick = setTimeout(function () { updateBar(m); }, 80);
   }, true);
@@ -387,11 +370,11 @@
     else openCard(card);
   });
 
-  /* 把某张卡带到视野中央：手机端先横向翻到它所在的那一页 */
+  /* 把某张卡带到视野中央：先横向翻到它所在的那一页（手机 / 桌面） */
   function revealDeal(target, behavior, offset) {
     var track = target.closest("[data-track]");
     var page = target.closest(".page");
-    if (track && page && mqMobile.matches) {
+    if (track && page) {
       track.scrollLeft = page.offsetLeft;
       var m = modules.filter(function (x) { return x.track === track; })[0];
       if (m) updateBar(m);
@@ -401,7 +384,7 @@
     window.scrollTo({ top: Math.max(top, 0), behavior: behavior || "auto" });
   }
 
-  /* 跳转卡：翻到卡片所在页、滚到它并展开（桌面端被「显示更多」收起的先展开） */
+  /* 跳转卡：翻到卡片所在页、滚到它并展开 */
   document.addEventListener("click", function (ev) {
     var jump = ev.target.closest("[data-jump]");
     if (!jump) return;
@@ -410,11 +393,6 @@
     if (!target) return;
     ev.preventDefault();
 
-    var host = modules.filter(function (m) { return m.el.contains(target); })[0];
-    if (host && host.el.dataset.collapsed === "1") {
-      host.expanded = true;
-      render();
-    }
     openCard(target);
     revealDeal(target, "smooth", 90);
     target.classList.remove("flash");
@@ -613,11 +591,6 @@
     var target = document.getElementById("deal-" + m[1]);
     if (!target) return;
     document.documentElement.classList.add("deep-link");
-    var host = modules.filter(function (mod) { return mod.el.contains(target); })[0];
-    if (host && host.el.dataset.collapsed === "1") {
-      host.expanded = true;
-      render();
-    }
     openCard(target);
     revealDeal(target, "auto", 80);
     requestAnimationFrame(function () {
