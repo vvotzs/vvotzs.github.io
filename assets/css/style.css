@@ -896,6 +896,9 @@ main{ padding-bottom: 40px; }
     width: 34px;
   }
   .hot-panel-body{ height: 206px; }
+  /* 榜单条只用名次徽标（抖音式），把宽度留给标题 */
+  #rank .jump .fav,
+  #rank .jump .fav-fallback{ display: none !important; }
   .module.hot-strip{ padding-top: 2px; }
   .module.hot-strip .track{
     display: block;
