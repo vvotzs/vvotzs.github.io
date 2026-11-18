@@ -39,39 +39,51 @@ COST_CLASS = {
 
 # ---------------------------------------------------------------- svg icons
 _ICON_PATHS = {
-    "today": '<path d="M12 3.6 13.9 8.3 18.6 10.2 13.9 12.1 12 16.8 10.1 12.1 5.4 10.2 10.1 8.3 12 3.6Z" fill="#FDE68A"/>'
-             '<path d="M17.7 15.3l.75 1.9 1.9.75-1.9.75-.75 1.9-.75-1.9-1.9-.75 1.9-.75.75-1.9Z" fill="#FED7AA"/>',
-    "rank": '<path d="M8 4.2h8v5.1a4 4 0 0 1-8 0V4.2Z" fill="#FDE68A"/>'
-            '<path d="M8 5.4H5.7a2.4 2.4 0 0 0 2.4 4.2"/>'
-            '<path d="M16 5.4h2.3a2.4 2.4 0 0 1-2.4 4.2"/>'
-            '<path d="M12 13.3v2.6"/>'
-            '<path d="M8.6 19.8h6.8a1.3 1.3 0 0 0-1.3-1.3h-4.2a1.3 1.3 0 0 0-1.3 1.3Z" fill="#FED7AA"/>',
-    "ai": '<rect x="4.7" y="7.7" width="14.6" height="10.8" rx="4.2" fill="#BFDBFE"/>'
-          '<path d="M12 3.9v3.2"/><circle cx="12" cy="3.2" r="1.2" fill="#FDE68A"/>'
-          '<circle cx="9.3" cy="12.3" r="1.05" fill="currentColor" stroke="none"/>'
-          '<circle cx="14.7" cy="12.3" r="1.05" fill="currentColor" stroke="none"/>'
-          '<path d="M9.9 15.4h4.2"/>',
-    "crypto": '<circle cx="12" cy="12" r="8.2" fill="#FDE68A"/>'
-              '<path d="M12 7.2 15.4 10.8 12 14.4 8.6 10.8 12 7.2Z" fill="#FFFDF9"/>'
-              '<path d="M9.4 16.6h5.2"/>',
-    "bank": '<rect x="3.3" y="5.9" width="17.4" height="12.2" rx="3.2" fill="#BBF7D0"/>'
-            '<path d="M3.3 10.1h17.4"/>'
-            '<path d="M6.6 14.7h4.2"/>',
-    "cloud": '<path d="M7.5 17.6h9.1a3.6 3.6 0 0 0 .4-7.2 5.2 5.2 0 0 0-9.9-.5 3.9 3.9 0 0 0 .4 7.7Z" fill="#BFDBFE"/>',
-    "esim": '<path d="M6.9 3.4h6.5l4.3 4.3v11.5a2.1 2.1 0 0 1-2.1 2.1H6.9a2.1 2.1 0 0 1-2.1-2.1V5.5a2.1 2.1 0 0 1 2.1-2.1Z" fill="#FED7AA"/>'
-            '<rect x="8.2" y="11.4" width="6.4" height="5.6" rx="1.6" fill="#FFFDF9"/>'
-            '<path d="M9.7 8.7a4.3 4.3 0 0 1 3.6 0"/>',
-    "clock": '<circle cx="12" cy="13.3" r="6.9" fill="#FECDD3"/>'
-             '<path d="M12 9.7v3.6l2.4 1.6"/>'
-             '<path d="M4.7 6.7 6.9 4.5M19.3 6.7 17.1 4.5"/>',
-    "software": '<rect x="3.8" y="9.1" width="16.4" height="10.3" rx="2.3" fill="#DDD6FE"/>'
-                '<path d="M2.9 6.1h18.2v3.3H2.9z" fill="#C7D2FE"/>'
-                '<path d="M12 6.1v13.3"/>'
-                '<path d="M12 6.1c-1.5-2.6-4.5-2-4.5 0"/>'
-                '<path d="M12 6.1c1.5-2.6 4.5-2 4.5 0"/>',
-    "archive": '<rect x="3.9" y="8.9" width="16.2" height="10.2" rx="2.3" fill="#E7E5E4"/>'
-               '<path d="M5.3 5.5h13.4a1.6 1.6 0 0 1 1.6 1.6v1.5H3.7V7.1a1.6 1.6 0 0 1 1.6-1.6Z" fill="#FED7AA"/>'
-               '<path d="M9.5 12.7h5"/>',
+    # 今日：暖色火苗
+    "today": '<path d="M12 2.9c2.9 3.1 4.6 5.7 4.6 8.5a4.6 4.6 0 1 1-9.2 0c0-2.8 1.7-5.4 4.6-8.5Z" fill="#FDBA74"/>'
+             '<path d="M12 9.4c1.3 1.5 2 2.7 2 4a2 2 0 1 1-4 0c0-1.3.7-2.5 2-4Z" fill="#FEF3C7"/>',
+    # 榜单：奖杯
+    "rank": '<path d="M7.6 3.5h8.8v4.9a4.4 4.4 0 0 1-8.8 0V3.5Z" fill="#FCD34D"/>'
+            '<path d="M7.6 5.1H5.1a2.6 2.6 0 0 0 2.6 4.6"/>'
+            '<path d="M16.4 5.1h2.5a2.6 2.6 0 0 1-2.6 4.6"/>'
+            '<path d="M12 12.8v2.4"/>'
+            '<path d="M9.2 15.2h5.6v3.3H9.2z" fill="#FED7AA"/>'
+            '<path d="M7.8 18.5h8.4"/>',
+    # AI：圆角徽标 + 粗体 AI
+    "ai": '<rect x="2.4" y="5.2" width="19.2" height="13.6" rx="4.8" fill="#DBEAFE"/>'
+          '<text x="11.2" y="15.6" text-anchor="middle" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif"'
+          ' font-size="9.6" font-weight="800" fill="#1D4ED8" stroke="none">AI</text>'
+          '<path d="M19.4 3.1l.55 1.35 1.35.55-1.35.55-.55 1.35-.55-1.35-1.35-.55 1.35-.55.55-1.35Z" fill="#F59E0B"/>',
+    # 币：金币 + ₿
+    "crypto": '<circle cx="12" cy="12" r="8.5" fill="#FCD34D"/>'
+              '<path d="M10.6 7.1v9.8M12.4 7.1v9.8" stroke="#92400E" stroke-width="1.15"/>'
+              '<path d="M10.6 8.9h3.1a1.6 1.6 0 0 1 0 3.2h-3.1z" fill="#92400E"/>'
+              '<path d="M10.6 12.1h3.5a1.75 1.75 0 0 1 0 3.5h-3.5z" fill="#92400E"/>',
+    # 卡：银行卡（磁条 + 芯片）
+    "bank": '<rect x="2.4" y="5.4" width="19.2" height="13.2" rx="3.2" fill="#BBF7D0"/>'
+            '<path d="M2.4 9.2h19.2" stroke-width="2.4"/>'
+            '<rect x="4.9" y="12.2" width="4.1" height="3.3" rx="1" fill="#FDE68A" stroke="none"/>'
+            '<path d="M11.4 14.4h6.4"/>',
+    # 云：云朵
+    "cloud": '<path d="M7.4 17.9h9.2a3.5 3.5 0 0 0 .4-7A5.3 5.3 0 0 0 7 10.3a3.8 3.8 0 0 0 .4 7.6Z" fill="#BFDBFE"/>',
+    # eSIM：SIM 卡（切角 + 信号弧）
+    "esim": '<path d="M7.4 3.4h5.9l4.1 4.1v12.1a1.9 1.9 0 0 1-1.9 1.9H7.4a1.9 1.9 0 0 1-1.9-1.9V5.3a1.9 1.9 0 0 1 1.9-1.9Z" fill="#FED7AA"/>'
+            '<rect x="8.3" y="11.3" width="6.2" height="5.5" rx="1.2" fill="#FFFDF9" stroke="none"/>'
+            '<path d="M9.7 8.6a4.2 4.2 0 0 1 3.4 0"/>',
+    # 截止：闹钟
+    "clock": '<circle cx="12" cy="13.6" r="6.8" fill="#FECDD3"/>'
+             '<path d="M12 10.1v3.6l2.3 1.5"/>'
+             '<path d="M4.9 6.9 7 4.8M19.1 6.9 17 4.8"/>'
+             '<path d="M9 20.4l-1.1 1.2M15 20.4l1.1 1.2"/>',
+    # 软件：2×2 应用宫格
+    "software": '<rect x="3.9" y="3.9" width="7" height="7" rx="2.1" fill="#DDD6FE" stroke="none"/>'
+                '<rect x="13.1" y="3.9" width="7" height="7" rx="2.1" fill="#C7D2FE" stroke="none"/>'
+                '<rect x="3.9" y="13.1" width="7" height="7" rx="2.1" fill="#C7D2FE" stroke="none"/>'
+                '<rect x="13.1" y="13.1" width="7" height="7" rx="2.1" fill="#DDD6FE" stroke="none"/>',
+    # 归档：档案盒
+    "archive": '<rect x="3.4" y="4.2" width="17.2" height="4.4" rx="1.7" fill="#FED7AA"/>'
+               '<path d="M4.9 8.6h14.2v9.6a1.8 1.8 0 0 1-1.8 1.8H6.7a1.8 1.8 0 0 1-1.8-1.8V8.6Z" fill="#E7E5E4"/>'
+               '<path d="M9.6 12.3h4.8"/>',
 }
 ICONS = {
     key: (
@@ -102,8 +114,8 @@ NAV = [
     ("today", "今日", ICONS["today"]),
     ("rank", "榜单", ICONS["rank"]),
     ("ai", "AI", ICONS["ai"]),
-    ("crypto", "Crypto", ICONS["crypto"]),
-    ("bank", "银行", ICONS["bank"]),
+    ("crypto", "币", ICONS["crypto"]),
+    ("bank", "卡", ICONS["bank"]),
     ("cloud", "云", ICONS["cloud"]),
     ("esim", "eSIM", ESIM_ICON),
     ("closing", "截止", ICONS["clock"]),
