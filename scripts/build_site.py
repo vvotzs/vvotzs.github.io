@@ -83,6 +83,22 @@ NAV = [
 ]
 
 
+SHEEP_SVG = (
+    '<svg viewBox="0 0 40 40" aria-hidden="true">'
+    '<g fill="#FFFDF7" stroke="#E8DCC5" stroke-width="1.4">'
+    '<circle cx="12.6" cy="17" r="6"/><circle cx="20" cy="12.4" r="6.4"/>'
+    '<circle cx="27.4" cy="17" r="6"/><circle cx="24.6" cy="23.2" r="5.6"/>'
+    '<circle cx="15.4" cy="23.2" r="5.6"/></g>'
+    '<ellipse cx="13.6" cy="15.2" rx="2.7" ry="1.9" fill="#EFC79C" transform="rotate(-26 13.6 15.2)"/>'
+    '<ellipse cx="26.4" cy="15.2" rx="2.7" ry="1.9" fill="#EFC79C" transform="rotate(26 26.4 15.2)"/>'
+    '<ellipse cx="20" cy="20" rx="7.1" ry="6.6" fill="#F8DFB9"/>'
+    '<circle cx="17.1" cy="19.1" r="1.3" fill="#3F2A1A"/><circle cx="22.9" cy="19.1" r="1.3" fill="#3F2A1A"/>'
+    '<circle cx="14.4" cy="22.3" r="1.5" fill="#F6A98F" opacity=".7"/>'
+    '<circle cx="25.6" cy="22.3" r="1.5" fill="#F6A98F" opacity=".7"/>'
+    '<path d="M18.2 22.8c.55.8 3.05.8 3.6 0" fill="none" stroke="#3F2A1A" stroke-width="1.2" stroke-linecap="round"/>'
+    '</svg>'
+)
+
 def asset_ver(rel: str) -> str:
     """给静态资源带上内容哈希，避免 GitHub Pages CDN 缓存旧样式。"""
     path = ROOT / rel
@@ -399,7 +415,7 @@ def main() -> None:
 <meta name="keywords" content="羊毛,优惠情报,免费额度,AI 免费,eSIM 免费流量,海外银行开户奖励,跨境汇款邀请奖励,VPS 免费,云服务额度,空投,积分计划,学生优惠,黑五优惠">
 <meta name="author" content="羊毛情报局">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#07090b">
+<meta name="theme-color" content="#FAF7F2">
 <link rel="canonical" href="{SITE_URL}">
 
 <meta property="og:type" content="website">
@@ -431,9 +447,7 @@ def main() -> None:
   <div class="shell topbar-in">
     <a class="brand" href="{SITE_URL}" aria-label="羊毛情报局 首页">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#04140d" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M13 2.6 5.2 13h5.4L10.4 21.4 18.8 10h-5.4L13 2.6Z"/>
-        </svg>
+        {SHEEP_SVG}
       </span>
       <span>
         <span class="brand-name">羊毛情报局</span>
@@ -441,9 +455,9 @@ def main() -> None:
       </span>
     </a>
     <div class="topbar-stats">
-      <span class="k">进行中 <b style="color:#7bf0bd">{counts['active']}</b></span>
+      <span class="k">进行中 <b style="color:#059669">{counts['active']}</b></span>
       <span class="sep">·</span>
-      <span class="k">即将截止 <b style="color:#e6b45f">{counts['expiring']}</b></span>
+      <span class="k">即将截止 <b style="color:#B45309">{counts['expiring']}</b></span>
     </div>
     <span class="spacer"></span>
     <button class="search-btn" id="open-search" type="button" aria-haspopup="dialog">
@@ -565,9 +579,7 @@ def main() -> None:
     <div>
       <div class="foot-brand">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#04140d" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M13 2.6 5.2 13h5.4L10.4 21.4 18.8 10h-5.4L13 2.6Z"/>
-          </svg>
+          {SHEEP_SVG}
         </span>
         羊毛情报局
       </div>
