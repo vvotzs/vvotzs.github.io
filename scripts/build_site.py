@@ -581,7 +581,7 @@ def main() -> None:
         [d for d in active if (d.get("added") or "") >= since],
         key=lambda d: ((d.get("added") or ""), d.get("value_num") or 0),
         reverse=True,
-    )[:12]
+    )[:10]
 
     closing = sorted(
         [
