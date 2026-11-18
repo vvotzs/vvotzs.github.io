@@ -37,7 +37,7 @@ COST_CLASS = {
 }
 
 # ---------------------------------------------------------------- svg icons
-ICONS = {
+_ICON_PATHS = {
     "today": '<path d="M13 2 4.5 13.2h6L10 22l8.7-11.4h-6L13 2Z"/>',
     "rank": '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
     "ai": '<path d="M12 3.2 13.7 8.3 18.8 10l-5.1 1.7L12 16.8l-1.7-5.1L5.2 10l5.1-1.7L12 3.2Z"/><path d="M18.4 15.2l.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7.7-2.1Z"/>',
@@ -47,6 +47,15 @@ ICONS = {
     "clock": '<circle cx="12" cy="12" r="8.4"/><path d="M12 7.6V12l3 2"/>',
     "software": '<rect x="3.6" y="3.6" width="7" height="7" rx="1.8"/><rect x="13.4" y="3.6" width="7" height="7" rx="1.8"/><rect x="3.6" y="13.4" width="7" height="7" rx="1.8"/><rect x="13.4" y="13.4" width="7" height="7" rx="1.8"/>',
     "archive": '<rect x="3.4" y="4.2" width="17.2" height="4.2" rx="1.4"/><path d="M5.2 8.4v10a1.6 1.6 0 0 0 1.6 1.6h10.4a1.6 1.6 0 0 0 1.6-1.6v-10"/><path d="M9.6 12.4h4.8"/>',
+}
+ICONS = {
+    key: (
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
+        'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        + path
+        + "</svg>"
+    )
+    for key, path in _ICON_PATHS.items()
 }
 
 ESIM_ICON = (
