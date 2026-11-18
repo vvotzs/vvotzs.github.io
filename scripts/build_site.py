@@ -215,10 +215,19 @@ def card(deal: dict, today: date, rank: int | None = None) -> str:
     else:
         title_html = e(raw_title)
 
+    cat_zh = {
+        "ai": "AI 工具",
+        "crypto": "Crypto 加密货币",
+        "finance": "银行 银行卡 汇款 U卡",
+        "cloud": "云 VPS 云服务",
+        "esim": "eSIM 流量",
+        "software": "软件 数字服务",
+    }.get(deal.get("category", ""), "")
+
     return f"""<article class="{classes}" data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
     data-added="{e(deal.get('added', ''))}" data-val="{int(deal.get('value_num') or 0)}"
-    data-key="{e(deal['id'])}" data-hay="{e(' '.join([deal.get('title',''), deal.get('highlight',''), deal.get('regions',''), deal.get('brand',''), cost]))}">
+    data-key="{e(deal['id'])}" data-hay="{e(' '.join([deal.get('title',''), deal.get('highlight',''), deal.get('regions',''), deal.get('brand',''), cost, cat_zh]))}">
     <div class="card-head" role="button" tabindex="0" aria-expanded="false">
       <img class="fav" src="https://www.google.com/s2/favicons?domain={e(deal['domain'])}&amp;sz=64" alt=""
            loading="lazy" decoding="async" referrerpolicy="no-referrer"

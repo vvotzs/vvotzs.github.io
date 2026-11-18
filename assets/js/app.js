@@ -63,8 +63,11 @@
     if (state.verify !== "all" && card.dataset.verified !== state.verify) return false;
 
     if (state.q) {
-      var hay = (card.dataset.hay || "") + " " + (card.dataset.cat || "");
-      if (hay.toLowerCase().indexOf(state.q.toLowerCase()) === -1) return false;
+      var hay = ((card.dataset.hay || "") + " " + (card.dataset.cat || "")).toLowerCase();
+      var terms = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+      for (var i = 0; i < terms.length; i++) {
+        if (hay.indexOf(terms[i]) === -1) return false;
+      }
     }
 
     var added = cardDate(card, "added");
@@ -202,7 +205,7 @@
   document.addEventListener("keydown", function (ev) {
     if (ev.key !== "Enter" && ev.key !== " ") return;
     var head = ev.target.closest && ev.target.closest(".card-head");
-    if (!head) return;
+    if (!head || ev.target !== head) return;
     ev.preventDefault();
     head.click();
   });

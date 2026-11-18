@@ -156,7 +156,7 @@ def main() -> int:
     deals = [d for d in deals if d["id"] not in pruned]
 
     for deal in deals:
-        deal.setdefault("last_verified", today.isoformat())
+        deal.setdefault("last_verified", "待核实")
         if deal["status"] == "expired":
             deal["value_num"] = 0
 
