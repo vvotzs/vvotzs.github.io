@@ -53,6 +53,19 @@ def norm_title(title: str) -> str:
     return text
 
 
+def region_signature(deal: dict) -> str:
+    """同品牌不同区（美区 / 英区 / EEA 欧区 / 全球站 …）不得视为同一条。
+
+    优先取标题开头的 [区域] 标签；没有标签时退回 regions 字段前段文字，
+    保证旧数据与新增条目都不会把两个地区版本合并掉。
+    """
+    match = re.match(r"^\s*[\[【]([^\]】]{1,24})[\]】]", deal.get("title") or "")
+    tag = match.group(1) if match else ""
+    tag = re.sub(r"[\s·,，。;；:：/|()（）\-—]+", "", tag.lower())
+    body = re.sub(r"[\s·,，。;；:：/|()（）\-—]+", "", (deal.get("regions") or "").lower())[:60]
+    return tag or body
+
+
 def completeness(deal: dict) -> int:
     score = 0
     for key in ("content", "conditions", "regions", "url", "source", "risk", "highlight"):
@@ -65,19 +78,25 @@ def completeness(deal: dict) -> int:
 
 
 def dedupe(deals: list[dict]) -> tuple[list[dict], list[str]]:
-    """同标题或同官方链接视为重复，保留更完整的一条。"""
+    """同标题 + 同区域，或同官方链接 + 同区域才算重复，保留更完整的一条。
+
+    区域参与判重：TopCashback 美区/英区/德区、Sendwave 美区/欧区这类同名活动
+    必须各自保留。
+    """
     kept: list[dict] = []
     dropped: list[str] = []
     seen_title: dict[str, int] = {}
     seen_url: dict[str, int] = {}
 
     for deal in deals:
-        title_key = norm_title(deal.get("title", ""))
+        region = region_signature(deal)
+        title_key = f"{norm_title(deal.get('title', ''))}@@{region}"
         url_key = "|".join(
             [
                 (deal.get("url") or "").rstrip("/").lower(),
                 deal.get("category", ""),
                 deal.get("value", ""),
+                region,
             ]
         )
         existing_idx = None
