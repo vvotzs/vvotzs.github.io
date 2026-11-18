@@ -491,19 +491,21 @@ def main() -> None:
         <span class="brand-sub">更新 {e(last_updated)}</span>
       </span>
     </a>
+    <button class="search-btn" id="open-search" type="button" aria-haspopup="dialog" aria-label="搜索优惠、可用地区、类别">
+      <span class="sb-q">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <circle cx="7" cy="7" r="4.4"/><path d="m10.4 10.4 3 3"/>
+        </svg>
+        <span class="sb-text">搜索优惠、可用地区、类别…</span>
+        <span class="sb-text-short">搜索 / 筛选</span>
+      </span>
+      <kbd>⌘K</kbd>
+    </button>
     <div class="topbar-stats">
       <span class="k">进行中 <b style="color:#059669">{counts['active']}</b></span>
       <span class="sep">·</span>
       <span class="k">即将截止 <b style="color:#B45309">{counts['expiring']}</b></span>
     </div>
-    <span class="spacer"></span>
-    <button class="search-btn" id="open-search" type="button" aria-haspopup="dialog">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
-        <circle cx="7" cy="7" r="4.4"/><path d="m10.4 10.4 3 3"/>
-      </svg>
-      搜索 / 筛选
-      <kbd>⌘K</kbd>
-    </button>
   </div>
 </header>
 
