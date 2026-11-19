@@ -29,65 +29,31 @@
     if (img.complete && img.naturalWidth === 0) window.__favFallback(img);
   });
 
-  /* ------------------------------------------------------- 语言（中文 / EN） */
-  /* 语言已在 <head> 的引导脚本里定好（?lang= → /en/ 路径 → localStorage → 中文），
-     这里只负责：切语言、同步 URL / 标题 / 无障碍标签、按语言换搜索索引。 */
+  /* ------------------------------------------------------- 语言（中文 / English）*/
+  /* 页面是单语的：/ 只有中文、/en/ 只有英文，DOM 里没有成对的中英节点。
+     LANG 只用于 JS 自己生成的少量文案（aria-label、提交表单的 lang 字段）；
+     切换语言是整页跳转（/ ↔ /en/），保留 #hash 与 ?q= 等参数。 */
   var IS_EN_PAGE = /^\/en(\/|$)/.test(location.pathname);
-  var HEAD_I18N = {};
-  var headEl = $("#i18n-head");
-  if (headEl) {
-    try { HEAD_I18N = JSON.parse(headEl.textContent) || {}; } catch (err) { HEAD_I18N = {}; }
-  }
+  var LANG = document.documentElement.getAttribute("data-lang") === "en" ? "en" : "zh";
 
-  function currentLang() {
-    return document.documentElement.getAttribute("data-lang") === "en" ? "en" : "zh";
-  }
-  var LANG = currentLang();
-
-  function applyAria() {
-    $$("[data-al-zh]").forEach(function (el) {
-      var v = el.getAttribute(LANG === "en" ? "data-al-en" : "data-al-zh");
-      if (v) el.setAttribute("aria-label", v);
-    });
+  /* 另一语言版本的地址：同一套查询参数（去掉 lang）+ 当前 hash */
+  function otherLangHref() {
+    var params = new URLSearchParams(location.search);
+    params.delete("lang");
+    var qs = params.toString();
+    return (IS_EN_PAGE ? "/" : "/en/") + (qs ? "?" + qs : "") + (location.hash || "");
   }
 
   /* ------------------------------------------------------- 搜索索引（JSON） */
-  var SEARCH_MAP = { zh: {}, en: {} };
+  /* 每页只带自己语言的索引（扁平 {id: 文本}）；旧的双语嵌套格式也能读。 */
+  var SEARCH = {};
   var indexEl = $("#search-index");
   if (indexEl) {
     try {
       var rawIndex = JSON.parse(indexEl.textContent) || {};
-      ["zh", "en"].forEach(function (k) {
-        var m = rawIndex[k] || {};
-        Object.keys(m).forEach(function (id) { SEARCH_MAP[k][id] = String(m[id]).toLowerCase(); });
-      });
-    } catch (err) { SEARCH_MAP = { zh: {}, en: {} }; }
-  }
-  var SEARCH = SEARCH_MAP[LANG] || SEARCH_MAP.zh;
-
-  /* 切语言：只改 <html data-lang>，文案由 CSS 成对切换；再刷新标题 / 索引 / 结果 */
-  function applyLang(lang, persist) {
-    LANG = lang === "en" ? "en" : "zh";
-    var root = document.documentElement;
-    root.setAttribute("data-lang", LANG);
-    root.lang = LANG === "en" ? "en" : "zh-CN";
-    var pack = HEAD_I18N[LANG] || {};
-    if (pack.title) document.title = pack.title;
-    var md = document.querySelector('meta[name="description"]');
-    if (md && pack.description) md.setAttribute("content", pack.description);
-    var q = $("#q");
-    if (q && pack.placeholder) q.placeholder = pack.placeholder;
-    applyAria();
-    /* 已展开卡片的按钮标签是「收起详情 / Collapse details」，跟着语言重设一遍 */
-    $$(".card.open").forEach(function (card) { setOpen(card, true); });
-    /* placeholder 只能是一个字符串：成对存在 data-ph-zh / data-ph-en 上，这里同步 */
-    $$("[data-ph-zh]").forEach(function (el) {
-      var v = el.getAttribute(LANG === "en" ? "data-ph-en" : "data-ph-zh");
-      if (v) el.setAttribute("placeholder", v);
-    });
-    SEARCH = SEARCH_MAP[LANG] || SEARCH_MAP.zh;
-    if (persist) { try { localStorage.setItem("ydj-lang", LANG); } catch (err) {} }
-    render();
+      var flat = rawIndex.zh || rawIndex.en ? (rawIndex[LANG] || rawIndex.zh || {}) : rawIndex;
+      Object.keys(flat).forEach(function (id) { SEARCH[id] = String(flat[id]).toLowerCase(); });
+    } catch (err) { SEARCH = {}; }
   }
 
   /* ------------------------------------------------------------- modules */
@@ -599,7 +565,6 @@
   function syncURL() {
     if (!history.replaceState) return;
     var params = new URLSearchParams();
-    if (LANG === "en" && !IS_EN_PAGE) params.set("lang", "en");
     if (state.q) params.set("q", state.q);
     URL_KEYS.forEach(function (k) {
       if (state[k] && state[k] !== DEFAULTS[k]) params.set(k, state[k]);
@@ -609,6 +574,8 @@
     if (next !== location.pathname + location.search + location.hash) {
       history.replaceState(null, "", next);
     }
+    /* 语言徽标的 href 跟着当前筛选 / hash 走：中键或新标签页打开也不会丢参数 */
+    if (langBtn) langBtn.setAttribute("href", otherLangHref());
   }
 
   function restoreFromURL() {
@@ -652,24 +619,14 @@
   }
 
   /* ---------------------------------------------------------------- init */
-  /* 从 ?lang=en/zh 进站的人记住选择；没参数时保持“默认中文”，不看 localStorage */
-  try {
-    var bootLang = new URLSearchParams(location.search).get("lang");
-    if ((bootLang === "en" || bootLang === "zh") && !IS_EN_PAGE) {
-      localStorage.setItem("ydj-lang", bootLang);
-    }
-  } catch (err) { /* 隐私模式禁用 localStorage 时忽略 */ }
-
+  /* 语言切换：整页跳到另一语言版本（/ ↔ /en/），带上当前查询参数与 #hash。
+     链接的 href 在 syncURL 里同步维护，禁用 JS 时也能直接跳到默认的对应语言首页。 */
   var langBtn = $("#lang-switch");
   if (langBtn) {
-    langBtn.addEventListener("click", function () {
-      var toEn = LANG !== "en";
-      if (!toEn && IS_EN_PAGE) {
-        try { localStorage.setItem("ydj-lang", "zh"); } catch (err) {}
-        location.href = "/";
-        return;
-      }
-      applyLang(toEn ? "en" : "zh", true);
+    langBtn.setAttribute("href", otherLangHref());
+    langBtn.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      location.href = otherLangHref();
     });
   }
 
@@ -728,10 +685,9 @@
       });
     });
 
-    /* 提示文案：弹窗上按语言各存一份（data-msg-<key>-zh / -en），出错时按当前语言取 */
+    /* 提示文案：构建时已按页面语言写在 data-msg-<key> 上 */
     var msg = function (key) {
-      return submitDialog.getAttribute("data-msg-" + key + "-" + LANG) ||
-             submitDialog.getAttribute("data-msg-" + key + "-zh") || "";
+      return submitDialog.getAttribute("data-msg-" + key) || "";
     };
 
     var clearBad = function () {
@@ -829,8 +785,8 @@
   }
 
   restoreFromURL();
-  /* 初始就按当前语言把标题 / 描述 / 占位符 / 无障碍标签对齐，再渲染一次 */
-  applyLang(LANG, false);
+  if (langBtn) langBtn.setAttribute("href", otherLangHref());
+  render();   /* 首次渲染：分页、计数、语言徽标链接（页面已是单语，无需再切文案） */
   var hash = (location.hash || "").slice(1);
   if (hash === "expiring") hash = "closing";
   if (!showTab(hash)) applyBoard();

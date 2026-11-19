@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""羊毛情报局 — 双语文案。
+"""羊毛情报局 — 界面文案（中英成对维护，构建时按页面语言取一侧）。
 
-界面文案全部以 (中文, English) 成对存放，由 build_site.py 渲染成
-<span class="t-zh">…</span><span class="t-en">…</span>，靠 <html data-lang> 切换显示。
+界面文案全部以 (中文, English) 成对存放，build_site.py 渲染 `/` 时只取中文、
+渲染 `/en/` 时只取英文（经 `bi()` / `ui()`），页面里只有一份 DOM，不再成对内联。
 优惠条目本身的英文放在 data/deals_en.json（与 deals.json 用 id 对应）。
 """
 from __future__ import annotations

@@ -11,11 +11,11 @@
 ## 结构
 
 ```
-index.html              # 中文静态页面（由脚本生成，卡片全部是真 HTML，利于 SEO）
-en/index.html           # 英文静态页面（同一套数据与样式，英文 title / description / OG，方便分享到英文社区）
-assets/css/style.css    # 视觉与交互样式（含中英双语 .t-zh / .t-en 切换规则）
-assets/js/app.js        # 手风琴 / 搜索筛选 / 移动端分页 / 滑轨高亮 / URL 状态同步 / 语言切换
-assets/fav/<domain>.png # 构建时缓存到本地的站点图标（境内直连即可显示，不依赖 google.com）
+index.html              # 中文静态页面（纯中文 DOM，由脚本生成，卡片全部是真 HTML，利于 SEO）
+en/index.html           # 英文静态页面（纯英文 DOM，英文 title / description / OG，方便分享到英文社区）
+assets/css/style.css    # 视觉与交互样式
+assets/js/app.js        # 手风琴 / 搜索筛选 / 移动端分页 / 滑轨高亮 / URL 状态同步 / 语言跳转
+assets/fav/<domain>.webp # 构建时缓存到本地的站点图标（48×48 WebP，境内直连即可显示，不依赖 google.com）
 assets/og-cover.png     # 1200×630 社交分享封面（scripts/make_og_cover.py 生成）
 data/deals.json         # 优惠条目（中文 12 项标准字段；抽奖 / 阶梯类另有 value_expected）
 data/deals_en.json      # 124 条英文翻译，按 id 对应 deals.json（title / highlight / regions / value / content / conditions / steps / risk / source）
@@ -51,10 +51,11 @@ robots.txt / sitemap.xml
 
 ## 中英双语
 
-- **切换**：左下角悬浮小胶囊（中文页显示 `EN`，英文页显示 `中文`），不占顶栏任何空间，也不挡右侧滑轨和卡片按钮。
-- **显示机制**：每段文案在 HTML 里同时存在 `<span class="t-zh">` 与 `<span class="t-en">`，由 `<html data-lang>` + CSS 决定显示哪一个。语言在 `<head>` 的引导脚本里就定好，所以不会闪一下另一种语言，JS 关掉时默认中文。
-- **语言判定顺序**：`/en/` 路径 → `?lang=en` / `?lang=zh` → `localStorage["ydj-lang"]` → 中文。
-- **搜索**：搜索索引同时包含两种语言，英文模式用英文关键词、中文模式用中文关键词。
+- **切换**：右下角悬浮小胶囊（中文页显示 `EN`，英文页显示 `中文`），点一下整页跳到另一语言版本，保留当前 `#hash` 与 `?q=` 等筛选参数。
+- **渲染方式**：两页各自只输出一种语言。文案仍以 `(中文, English)` 成对维护在 `scripts/i18n.py`，`build_site.py` 渲染 `/` 时取中文、渲染 `/en/` 时取英文，HTML 里不再有 `<span class="t-zh"> / <span class="t-en">` 双份节点。
+- **老链接兼容**：`<head>` 最前面有一段极短脚本，`/?lang=en` 立即 `location.replace` 到 `/en/`（`/en/?lang=zh` 跳回 `/`），此前发到 X / Dev.to / Hashnode / Medium 的外链照旧直达。
+- **SEO**：两页都带 `hreflang="zh-CN" / "en" / "x-default"`，`x-default` 指向中文首页。
+- **搜索**：每页只带自己语言的搜索索引（体积减半），中文页用中文关键词、英文页用英文关键词。
 - **新增条目记得补翻译**：英文缺字段时页面会回退中文，但 `build_site.py` 会打印“缺少英文翻译”清单，请补齐 `data/deals_en.json`。
 
 ## 「直达」按钮指向哪
@@ -67,7 +68,7 @@ robots.txt / sitemap.xml
 
 ```bash
 python3 scripts/maintain_deals.py   # 先维护数据（去重 / 标记到期 / 归档，过期条目永久保留）
-python3 scripts/build_site.py       # 再生成中英两个页面（会顺便把新域名图标下载到 assets/fav/）
+python3 scripts/build_site.py       # 再生成中英两个页面（会顺便把新域名图标下载成 assets/fav/*.webp）
 ```
 
 新增一条优惠：往 `data/deals.json` 里追加一个对象（字段说明见现有条目），再往 `data/deals_en.json` 补同样的英文，两条命令跑一遍即可。

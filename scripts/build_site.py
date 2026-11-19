@@ -11,7 +11,9 @@
     点一下滚到分类区那张卡片并展开，这样 index.html 不重复三遍详情；
   · 所有图标抽成一份 <svg> sprite，卡片里只剩 <use href="#i-xxx">；
   · 搜索文本放进 <script id="search-index"> JSON，不再挂在每张 DOM 上；
-  · 图标在构建时下载到 assets/fav/<domain>.png，境内用户直连 GitHub Pages 即可显示。
+  · 单语渲染：`/` 只输出中文、`/en/` 只输出英文，不再内联 <span class="t-zh">/…t-en> 双份文案；
+    文案仍以 (中文, English) 成对维护在 scripts/i18n.py，构建时按页面语言取一侧；
+  · 图标在构建时下载成 assets/fav/<domain>.webp（48×48，透明通道），境内直连 GitHub Pages 即可显示。
 """
 from __future__ import annotations
 
@@ -57,7 +59,8 @@ from i18n import (  # noqa: E402
     upair,
 )
 
-# 英文版页面：/en/index.html（英文 OG 预览 + 英文收录），中文首页用 ?lang=en 原地切换
+# 英文版页面：/en/index.html（纯英文 DOM），中文首页 /index.html（纯中文 DOM）。
+# 两页各自独立，语言切换直接跳转；老外链 /?lang=en 由 <head> 里的极短脚本转到 /en/。
 EN_OUT = ROOT / "en" / "index.html"
 
 try:
@@ -66,7 +69,9 @@ except ImportError:  # Pillow 缺失时图标退化为字母块，不阻塞构�
     Image = None  # type: ignore[assignment]
 
 FAV_UA = "Mozilla/5.0 (compatible; YangMaoBot/1.0; +https://vvotzs.github.io/)"
-FAV_SIZE = 64
+FAV_SIZE = 48
+FAV_QUALITY = 82
+FAV_METHOD = 6
 
 # ---------------------------------------------------------------- svg sprite
 # (viewBox 边长, 内部图形, stroke-width)。所有图标统一 currentColor 描边，
@@ -236,22 +241,15 @@ EN_OG_DESC = (
     "student software — value, requirements and deadline at a glance."
 )
 
-# 语言引导：在样式表之前跑，按 ?lang= → /en/ 路径 → localStorage 的顺序定语言，
-# 避免英文用户看到一闪而过的中文（默认仍是中文）。
+# 老外链兼容：页面上只有一种语言，语言由 URL 决定。之前发到 X / Dev.to / Hashnode / Medium
+# 的 `/?lang=en` 链接会在 <head> 最前面立刻跳到 /en/（反之 /en/?lang=zh 跳回 /），
+# 保留 #hash 与 ?q= 等其他参数；脚本失败时页面照常按自己的语言渲染。
 LANG_BOOT = (
-    "<script>!function(){try{var d=document.documentElement,"
-    'p=new URLSearchParams(location.search),q=p.get("lang"),'
-    's=localStorage.getItem("ydj-lang"),l;'
-    'if(/^\\/en(\\/|$)/.test(location.pathname))l="en";'
-    'else if(q==="en"||q==="zh")l=q;'
-    'else if(s==="en"||s==="zh")l=s;'
-    'else l="zh";'
-    'd.setAttribute("data-lang",l);d.lang=l==="en"?"en":"zh-CN";'
-    'var j=document.getElementById("i18n-head"),p2=j?JSON.parse(j.textContent)[l]:null;'
-    "if(p2){document.title=p2.title;"
-    'var m=document.querySelector(\'meta[name="description"]\');'
-    "if(m)m.setAttribute(\"content\",p2.description);}"
-    "}catch(e){}}();</script>"
+    "<script>!function(){try{var p=new URLSearchParams(location.search),l=p.get('lang'),to='';"
+    "if(/^\\/en(\\/|$)/.test(location.pathname)){if(l==='zh')to='/';}"
+    "else if(l==='en'){to='/en/';}"
+    "if(to){p.delete('lang');var q=p.toString();"
+    "location.replace(to+(q?'?'+q:'')+location.hash);}}catch(e){}}();</script>"
 )
 
 
@@ -267,25 +265,37 @@ def e(value: object) -> str:
     return html.escape("" if value is None else str(value), quote=True)
 
 
-def bi(zh: str, en: str, cls: str = "") -> str:
-    """中英双语内联片段（zh / en 都已转义）。
+# 当前正在渲染的页面语言。main() 里每个页面渲染前设置一次，`bi()` / `ui()` 据此只取一侧文案，
+# 页面里不再同时存在中英两份 DOM。
+CUR_LANG = "zh"
 
-    CSS 按 <html data-lang> 只显示一种，因此不用 JS 改 DOM 文本，切换零闪烁；
-    两段文字各带正确的 lang，读屏和搜索引擎都能分清语言。
+
+def set_lang(lang: str) -> None:
+    global CUR_LANG
+    CUR_LANG = "en" if lang == "en" else "zh"
+
+
+def bi(zh: str, en: str, cls: str = "") -> str:
+    """单语片段：只输出当前页面语言的一份文案（zh / en 都已转义）。
+
+    文案仍在调用处成对书写，方便一处维护两种语言；构建时按页面语言取一侧，
+    不再生成 <span class="t-zh"> + <span class="t-en"> 的双份 DOM（体积与节点数减半）。
+    cls 参数保留给旧调用点，单语输出下已无需要。
     """
-    c = " " + cls if cls else ""
-    return (
-        f'<span class="t-zh{c}">{zh}</span>'
-        f'<span class="t-en{c}" lang="en">{en}</span>'
-    )
+    return en if CUR_LANG == "en" else zh
 
 
 def ui(key: str, **fmt) -> str:
-    """界面文案的双语片段；带占位符的 key 用 fmt 填。"""
+    """界面文案的单语片段；带占位符的 key 用 fmt 填。"""
     zh, en = U[key]
     if fmt:
         return bi(zh.format(**fmt), en.format(**fmt))
     return bi(zh, en)
+
+
+def al(zh: str, en: str) -> str:
+    """无障碍标签：构建时按当前语言直接写成 aria-label，不用再在 DOM 上挂 data-al-zh/-en 让 JS 回填。"""
+    return f'aria-label="{e(en if CUR_LANG == "en" else zh)}"'
 
 
 def deadline_html(deal: dict, today) -> str:
@@ -450,7 +460,7 @@ def _download(url: str, timeout: float = 8.0) -> bytes | None:
 
 
 def _save_icon(raw: bytes, dest: Path) -> bool:
-    """把任意格式（png / ico / svg 转出的位图）统一成 64×64 PNG。"""
+    """把任意格式（png / ico / svg 转出的位图）统一成 48×48 WebP（保留透明通道）。"""
     if Image is None or not raw:
         return False
     try:
@@ -465,7 +475,9 @@ def _save_icon(raw: bytes, dest: Path) -> bool:
     canvas = Image.new("RGBA", (side, side), (0, 0, 0, 0))
     canvas.paste(icon, ((side - icon.width) // 2, (side - icon.height) // 2), icon)
     resample = Image.LANCZOS if side >= FAV_SIZE else Image.BICUBIC
-    canvas.resize((FAV_SIZE, FAV_SIZE), resample).save(dest, "PNG", optimize=True)
+    canvas.resize((FAV_SIZE, FAV_SIZE), resample).save(
+        dest, "WEBP", quality=FAV_QUALITY, method=FAV_METHOD
+    )
     return True
 
 
@@ -490,12 +502,12 @@ def _icon_from_homepage(domain: str) -> bytes | None:
 
 
 def ensure_favicon(domain: str) -> bool:
-    """把域名图标缓存成 assets/fav/<domain>.png；有缓存就直接复用。"""
+    """把域名图标缓存成 assets/fav/<domain>.webp；有缓存就直接复用。"""
     if not domain:
         return False
     FAV_DIR.mkdir(parents=True, exist_ok=True)
-    dest = FAV_DIR / f"{fav_name(domain)}.png"
-    if dest.exists() and dest.stat().st_size > 200:
+    dest = FAV_DIR / f"{fav_name(domain)}.webp"
+    if dest.exists() and dest.stat().st_size > 100:
         return True
     if Image is None:
         return False
@@ -549,12 +561,12 @@ _SRC_URL_RE = re.compile(r"https?://[^\s）)，,；;】]+")
 
 
 def fav_html(deal: dict, size: int) -> str:
-    """站点图标：构建时已落地的用 <img>；个别域名下载不到就直接给字母块，避免页面上出现 404。"""
+    """站点图标：构建时已落地的用 <img>（WebP）；个别域名下载不到就直接给字母块，避免页面上出现 404。"""
     name = fav_name(deal.get("domain", ""))
     monogram = e((deal.get("brand") or "?")[:1].upper())
-    if (FAV_DIR / f"{name}.png").exists():
+    if (FAV_DIR / f"{name}.webp").exists():
         return (
-            f'<img class="fav" src="/assets/fav/{name}.png" width="{size}" height="{size}" alt="" '
+            f'<img class="fav" src="/assets/fav/{name}.webp" width="{size}" height="{size}" alt="" '
             f'loading="lazy" decoding="async" data-fallback="{monogram}" '
             f'onerror="window.__favFallback&&window.__favFallback(this)">'
             f'<span class="fav-fallback" style="display:none" aria-hidden="true">{monogram}</span>'
@@ -584,11 +596,10 @@ def card(deal: dict, en: dict, today) -> str:
     expired = bool(deal.get("status") == "expired")
     classes = "card is-expired" if expired else "card"
 
-    steps_zh = "".join(f"<li>{e(s)}</li>" for s in deal.get("steps", []))
-    steps_en = "".join(f"<li>{e(s)}</li>" for s in (en.get("steps") or []))
-    if not steps_zh:
-        steps_zh = f"<li>{e(U['see_official'][0])}</li>"
-        steps_en = f"<li>{e(U['see_official'][1])}</li>"
+    steps_src = (en.get("steps") or []) if CUR_LANG == "en" else deal.get("steps", [])
+    steps = "".join(f"<li>{e(s)}</li>" for s in steps_src)
+    if not steps:
+        steps = f"<li>{e(U['see_official'][1] if CUR_LANG == 'en' else U['see_official'][0])}</li>"
 
     value_cls = "value gold" if (deal.get("value_num") or 0) >= 100 else "value"
     v_zh, v_en = value_pair(deal, en)
@@ -602,14 +613,11 @@ def card(deal: dict, en: dict, today) -> str:
             f"{bi(e(region_text_zh), e(region_text_en))}</span>"
         )
 
-    rtag_zh, title_zh = title_parts(deal.get("title", ""))
-    rtag_en, title_en = title_parts(en.get("title") or deal.get("title", ""))
-    title_html = ""
-    if rtag_zh:
-        title_html += f'<span class="rtag t-zh">{e(rtag_zh)}</span>'
-    if rtag_en:
-        title_html += f'<span class="rtag t-en" lang="en">{e(rtag_en)}</span>'
-    title_html += f'<span class="t-zh">{e(title_zh)}</span><span class="t-en" lang="en">{e(title_en)}</span>'
+    rtag, title_text = title_parts(
+        (en.get("title") or deal.get("title", "")) if CUR_LANG == "en" else deal.get("title", "")
+    )
+    title_html = f'<span class="rtag">{e(rtag)}</span>' if rtag else ""
+    title_html += e(title_text)
 
     hl_zh = e(deal.get("highlight", ""))
     hl_en = e(en.get("highlight") or deal.get("highlight", ""))
@@ -637,9 +645,9 @@ def card(deal: dict, en: dict, today) -> str:
           {region_html}
           <span class="grow"></span>
           <a class="go" href="{e(main_link(deal))}" target="_blank" rel="noopener nofollow"
-             data-al-zh="原文链接" data-al-en="Open the source link"><span class="go-full">{ui("go_full")}</span><span class="go-short">{ui("go_short")}</span>{icon('external')}</a>
+             {al('原文链接', 'Open the source link')}><span class="go-full">{ui("go_full")}</span><span class="go-short">{ui("go_short")}</span>{icon('external')}</a>
           <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-{deal_id}"
-                  data-al-zh="展开详情" data-al-en="Expand details">{ui("detail_open")}
+                  {al('展开详情', 'Expand details')}>{ui("detail_open")}
             {icon('chevron')}
           </button>
         </div>
@@ -651,7 +659,7 @@ def card(deal: dict, en: dict, today) -> str:
       <div class="field wide"><dt>{ui("f_conditions")}</dt><dd>{bi(e(deal['conditions']), e(en.get('conditions') or deal['conditions']))}</dd></div>
       <div class="field"><dt>{ui("f_regions")}</dt><dd>{bi(e(deal['regions']), e(en.get('regions') or deal['regions']))}</dd></div>
       <div class="field"><dt>{ui("f_period")}</dt><dd>{period}</dd></div>
-      <div class="field wide"><dt>{ui("f_steps")}</dt><ol class="t-zh">{steps_zh}</ol><ol class="t-en" lang="en">{steps_en}</ol></div>
+      <div class="field wide"><dt>{ui("f_steps")}</dt><ol>{steps}</ol></div>
       <div class="field wide"><dt>{ui("f_link")}</dt>
         <dd><a class="url-link" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow">{e(deal['url'])}</a></dd></div>
       <div class="risk">
@@ -737,9 +745,9 @@ def module_html(
       {''.join(cards)}
     </div>
     <div class="pager-bar" data-bar>
-      <button class="pg" type="button" data-prev data-al-zh="上一页" data-al-en="Previous page">‹</button>
+      <button class="pg" type="button" data-prev {al('上一页', 'Previous page')}>‹</button>
       <span class="pager-label" data-label>1 / {pages}</span>
-      <button class="pg" type="button" data-next data-al-zh="下一页" data-al-en="Next page">›</button>
+      <button class="pg" type="button" data-next {al('下一页', 'Next page')}>›</button>
     </div>
     <p class="module-empty" style="display:none">{ui("mod_empty")}</p>
     <button class="more" type="button" data-more hidden></button>
@@ -833,148 +841,134 @@ def main() -> None:
     en_map = load_en()
     missing_en = [d["id"] for d in deals if d["id"] not in en_map]
 
-    rail = "".join(
-        f'<a href="#{anchor}" data-target="{anchor}" data-al-zh="{U[key][0]}" data-al-en="{U[key][1]}">{icon(icon_key)}'
-        f"<span>{ui(key)}</span></a>"
-        for anchor, key, icon_key in NAV
-    )
-    rail += (
-        '<div class="rail-sep" aria-hidden="true"></div>'
-        f'<a class="rail-top" href="#top" data-al-zh="回到顶部" data-al-en="Back to top">{icon("rocket")}'
-        f"<span>{ui('nav_top')}</span></a>"
-    )
-    board = {
-        "fresh": module_html(
-            "fresh", "today", U["mod_fresh"], upair("mod_fresh_desc", h=TODAY_WINDOW_DAYS * 24),
-            fresh, en_map, today, jump=True, strip=True,
-        ),
-        "rank": module_html(
-            "rank", "rank", U["mod_rank"], U["mod_rank_desc"],
-            leaderboard, en_map, today, ranked=True, jump=True, strip=True,
-        ),
-        "closing": module_html(
-            "closing", "clock", U["mod_closing"], upair("mod_closing_desc", d=CLOSING_WINDOW_DAYS),
-            closing, en_map, today, jump=True, strip=True,
-        ),
-        "lottery": module_html(
-            "lottery", "gift", U["mod_lottery"], U["mod_lottery_desc"],
-            lottery, en_map, today, ranked=True, jump=True, strip=True,
-        ),
-    }
-
-    tab_counts = {
-        "fresh": len(fresh),
-        "rank": len(leaderboard),
-        "closing": len(closing),
-        "lottery": len(lottery),
-    }
-
-    def hot_tab(anchor: str, key: str, on: bool) -> str:
-        cls = "hot-tab on" if on else "hot-tab"
-        cur = ' aria-current="true"' if on else ""
-        return (
-            f'<a class="{cls}" href="#{anchor}" data-tab="{anchor}"{cur}>'
-            f'{ui(key)} <b data-tabcount="{anchor}">{tab_counts[anchor]}</b></a>'
-        )
-
-    hot_board = f"""
-  <div class="hot-board" data-hot-board>
-    <div class="hot-tabs-mobile" role="tablist" aria-label="__HOT_ARIA__"
-         data-al-zh="{U['hot_aria'][0]}" data-al-en="{U['hot_aria'][1]}">
-      {hot_tab('fresh', 'tab_fresh', True)}
-      {hot_tab('rank', 'tab_rank', False)}
-      {hot_tab('closing', 'tab_closing', False)}
-      {hot_tab('lottery', 'tab_lottery', False)}
-    </div>
-    <div class="hot-panel hot-panel-main">
-      <div class="hot-tablist">
-        {hot_tab('fresh', 'tab_fresh_long', True)}
-        {hot_tab('rank', 'tab_rank_long', False)}
-      </div>
-      <div class="hot-panel-body" data-panel-body>
-        {board["fresh"]}
-        {board["rank"]}
-      </div>
-    </div>
-    <div class="hot-panel hot-panel-alt">
-      <div class="hot-tablist">
-        {hot_tab('closing', 'tab_closing_long', True)}
-        {hot_tab('lottery', 'tab_lottery_long', False)}
-      </div>
-      <div class="hot-panel-body" data-panel-body>
-        {board["closing"]}
-        {board["lottery"]}
-      </div>
-    </div>
-  </div>"""
-
-    modules = "".join(
-        [
-            module_html("ai", "ai", U["mod_ai"], U["mod_ai_desc"], by_cat["ai"], en_map, today),
-            module_html("crypto", "crypto", U["mod_crypto"], U["mod_crypto_desc"], by_cat["crypto"], en_map, today),
-            module_html("bank", "bank", U["mod_bank"], U["mod_bank_desc"], by_cat["bank"], en_map, today),
-            module_html("cloud", "cloud", U["mod_cloud"], U["mod_cloud_desc"], by_cat["cloud"], en_map, today),
-            module_html("esim", "esim", U["mod_esim"], U["mod_esim_desc"], by_cat["esim"], en_map, today),
-            module_html("software", "software", U["mod_software"], U["mod_software_desc"], by_cat["software"], en_map, today),
-            module_html(
-                "archive", "archive", U["mod_archive"], U["mod_archive_desc"],
-                sorted(expired, key=lambda d: d.get("end") or "", reverse=True), en_map, today,
-            ),
-        ]
-    )
-
-    # 搜索索引：每张卡只留 data-key，搜索文本统一放在这段 JSON 里（中英各一份）
-    search_zh: dict[str, str] = {}
-    search_en: dict[str, str] = {}
-    for deal in deals:
-        cat_meta = CAT_META.get(deal.get("category", ""), {"label": "", "search": ""})
-        cat_en = CAT_EN.get(deal.get("category", ""), ("", ""))
-        en = en_map.get(deal["id"], {})
-        hay_zh = " ".join(
-            [
-                deal.get("title", ""),
-                deal.get("highlight", ""),
-                deal.get("regions", ""),
-                deal.get("brand", ""),
-                deal.get("cost", ""),
-                cat_meta.get("label", ""),
-                cat_meta.get("search", ""),
-            ]
-        )
-        hay_en = " ".join(
-            [
-                en.get("title", ""),
-                en.get("highlight", ""),
-                en.get("regions", ""),
-                deal.get("brand", ""),
-                COST_EN.get(deal.get("cost", ""), ""),
-                cat_en[0],
-                cat_en[1],
-            ]
-        )
-        search_zh[deal["id"]] = re.sub(r"\s+", " ", hay_zh).strip()
-        search_en[deal["id"]] = re.sub(r"\s+", " ", hay_en).strip()
-    search_json = json.dumps({"zh": search_zh, "en": search_en}, ensure_ascii=False, separators=(",", ":")).replace(
-        "</", "<\\/"
-    )
-
-    def head_json(lang_en: bool) -> str:
-        data = {
-            "zh": {
-                "title": "羊毛情报局 · 全球优惠 / 免费额度 / 限时活动情报",
-                "description": ZH_DESC,
-                "placeholder": U["search_ph"][0],
-            },
-            "en": {
-                "title": EN_TITLE,
-                "description": EN_DESC,
-                "placeholder": U["search_ph"][1],
-            },
-        }
-        return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-
-    def page_html(lang: str) -> str:
+    def render_page(lang: str) -> str:
+        """整页渲染：先定语言，rail / 热榜 / 分区 / 搜索索引 / head 全部只出这一页的语言。"""
+        set_lang(lang)
         is_en = lang == "en"
+
+        rail = "".join(
+            f'<a href="#{anchor}" data-target="{anchor}" {al(U[key][0], U[key][1])}>{icon(icon_key)}'
+            f"<span>{ui(key)}</span></a>"
+            for anchor, key, icon_key in NAV
+        )
+        rail += (
+            '<div class="rail-sep" aria-hidden="true"></div>'
+            f'<a class="rail-top" href="#top" {al("回到顶部", "Back to top")}>{icon("rocket")}'
+            f"<span>{ui('nav_top')}</span></a>"
+        )
+        board = {
+            "fresh": module_html(
+                "fresh", "today", U["mod_fresh"], upair("mod_fresh_desc", h=TODAY_WINDOW_DAYS * 24),
+                fresh, en_map, today, jump=True, strip=True,
+            ),
+            "rank": module_html(
+                "rank", "rank", U["mod_rank"], U["mod_rank_desc"],
+                leaderboard, en_map, today, ranked=True, jump=True, strip=True,
+            ),
+            "closing": module_html(
+                "closing", "clock", U["mod_closing"], upair("mod_closing_desc", d=CLOSING_WINDOW_DAYS),
+                closing, en_map, today, jump=True, strip=True,
+            ),
+            "lottery": module_html(
+                "lottery", "gift", U["mod_lottery"], U["mod_lottery_desc"],
+                lottery, en_map, today, ranked=True, jump=True, strip=True,
+            ),
+        }
+
+        tab_counts = {
+            "fresh": len(fresh),
+            "rank": len(leaderboard),
+            "closing": len(closing),
+            "lottery": len(lottery),
+        }
+
+        def hot_tab(anchor: str, key: str, on: bool) -> str:
+            cls = "hot-tab on" if on else "hot-tab"
+            cur = ' aria-current="true"' if on else ""
+            return (
+                f'<a class="{cls}" href="#{anchor}" data-tab="{anchor}"{cur}>'
+                f'{ui(key)} <b data-tabcount="{anchor}">{tab_counts[anchor]}</b></a>'
+            )
+
+        hot_board = f"""
+      <div class="hot-board" data-hot-board>
+        <div class="hot-tabs-mobile" role="tablist" {al(*U['hot_aria'])}>
+          {hot_tab('fresh', 'tab_fresh', True)}
+          {hot_tab('rank', 'tab_rank', False)}
+          {hot_tab('closing', 'tab_closing', False)}
+          {hot_tab('lottery', 'tab_lottery', False)}
+        </div>
+        <div class="hot-panel hot-panel-main">
+          <div class="hot-tablist">
+            {hot_tab('fresh', 'tab_fresh_long', True)}
+            {hot_tab('rank', 'tab_rank_long', False)}
+          </div>
+          <div class="hot-panel-body" data-panel-body>
+            {board["fresh"]}
+            {board["rank"]}
+          </div>
+        </div>
+        <div class="hot-panel hot-panel-alt">
+          <div class="hot-tablist">
+            {hot_tab('closing', 'tab_closing_long', True)}
+            {hot_tab('lottery', 'tab_lottery_long', False)}
+          </div>
+          <div class="hot-panel-body" data-panel-body>
+            {board["closing"]}
+            {board["lottery"]}
+          </div>
+        </div>
+      </div>"""
+
+        modules = "".join(
+            [
+                module_html("ai", "ai", U["mod_ai"], U["mod_ai_desc"], by_cat["ai"], en_map, today),
+                module_html("crypto", "crypto", U["mod_crypto"], U["mod_crypto_desc"], by_cat["crypto"], en_map, today),
+                module_html("bank", "bank", U["mod_bank"], U["mod_bank_desc"], by_cat["bank"], en_map, today),
+                module_html("cloud", "cloud", U["mod_cloud"], U["mod_cloud_desc"], by_cat["cloud"], en_map, today),
+                module_html("esim", "esim", U["mod_esim"], U["mod_esim_desc"], by_cat["esim"], en_map, today),
+                module_html("software", "software", U["mod_software"], U["mod_software_desc"], by_cat["software"], en_map, today),
+                module_html(
+                    "archive", "archive", U["mod_archive"], U["mod_archive_desc"],
+                    sorted(expired, key=lambda d: d.get("end") or "", reverse=True), en_map, today,
+                ),
+            ]
+        )
+
+        # 搜索索引：每张卡只留 data-key，搜索文本统一放在这段 JSON 里（只存当前页面的语言）
+        search_map: dict[str, str] = {}
+        for deal in deals:
+            cat_meta = CAT_META.get(deal.get("category", ""), {"label": "", "search": ""})
+            cat_en = CAT_EN.get(deal.get("category", ""), ("", ""))
+            en = en_map.get(deal["id"], {})
+            if is_en:
+                haystack = " ".join(
+                    [
+                        en.get("title", ""),
+                        en.get("highlight", ""),
+                        en.get("regions", ""),
+                        deal.get("brand", ""),
+                        COST_EN.get(deal.get("cost", ""), ""),
+                        cat_en[0],
+                        cat_en[1],
+                    ]
+                )
+            else:
+                haystack = " ".join(
+                    [
+                        deal.get("title", ""),
+                        deal.get("highlight", ""),
+                        deal.get("regions", ""),
+                        deal.get("brand", ""),
+                        deal.get("cost", ""),
+                        cat_meta.get("label", ""),
+                        cat_meta.get("search", ""),
+                    ]
+                )
+            search_map[deal["id"]] = re.sub(r"\s+", " ", haystack).strip()
+        search_json = json.dumps(search_map, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
         title = EN_TITLE if is_en else "羊毛情报局 · 全球优惠 / 免费额度 / 限时活动情报"
         desc = EN_DESC if is_en else ZH_DESC
         og_title = "Deal Hunter · Global deals & free credits" if is_en else "羊毛情报局 · 全球优惠与免费额度情报"
@@ -1024,7 +1018,7 @@ def main() -> None:
         )
 
         def pht(key: str) -> str:
-            """placeholder 只能是一个字符串：按当前页面语言取，切语言时 app.js 再同步。"""
+            """placeholder 只能是一个字符串：按当前页面语言取。"""
             return e(U[key][1] if is_en else U[key][0])
 
         head = f"""<!DOCTYPE html>
@@ -1032,6 +1026,7 @@ def main() -> None:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+{LANG_BOOT}
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="author" content="{site_name}">
@@ -1064,8 +1059,6 @@ def main() -> None:
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 
-{LANG_BOOT}
-
 <!-- Google AdSense：开通后把脚本放在这里，并给 .ad-slot 容器填入广告单元
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 -->
@@ -1080,7 +1073,7 @@ def main() -> None:
 
 <header class="topbar">
   <div class="shell topbar-in">
-    <a class="brand" href="{home}" data-al-zh="{U['brand_aria'][0]}" data-al-en="{U['brand_aria'][1]}">
+    <a class="brand" href="{home}" {al(*U['brand_aria'])}>
       <span class="brand-mark" aria-hidden="true">
         {mascot_svg(gid='mintBodyHead')}
       </span>
@@ -1090,7 +1083,7 @@ def main() -> None:
       </span>
     </a>
     <button class="search-btn" id="open-search" type="button" aria-haspopup="dialog"
-            data-al-zh="{U['search_open_aria'][0]}" data-al-en="{U['search_open_aria'][1]}">
+            {al(*U['search_open_aria'])}>
       <span class="sb-q">
         {icon('search')}
         <span class="sb-text">{ui('search_open')}</span>
@@ -1116,7 +1109,7 @@ def main() -> None:
     <div class="ad-slot" data-ad="top" aria-hidden="true"><!-- AdSense：顶部 / 桌面横幅 --></div>
   </div>
 
-  <div class="shell">{hot_board.replace('__HOT_ARIA__', e(U['hot_aria'][1] if is_en else U['hot_aria'][0]))}{modules}</div>
+  <div class="shell">{hot_board}{modules}</div>
 
   <div class="shell">
     <div class="ad-slot" data-ad="bottom" aria-hidden="true"><!-- AdSense：底部 --></div>
@@ -1125,32 +1118,28 @@ def main() -> None:
 
 <div class="rail-dock">
   <a class="rail-submit" id="open-submit" href="{TG_GROUP_URL}" target="_blank" rel="noopener"
-     data-al-zh="{U['nav_submit_aria'][0]}" data-al-en="{U['nav_submit_aria'][1]}">
+     {al(*U['nav_submit_aria'])}>
     {icon('send')}
     <span>{ui('nav_submit')}</span>
   </a>
-  <nav class="rail" aria-label="{U['nav_aria'][1] if is_en else U['nav_aria'][0]}"
-       data-al-zh="{U['nav_aria'][0]}" data-al-en="{U['nav_aria'][1]}">
+  <nav class="rail" {al(*U['nav_aria'])}>
   {rail}
   </nav>
 </div>
 
-<button class="lang-switch" id="lang-switch" type="button"
-        data-al-zh="{U['lang_switch_aria'][0]}" data-al-en="{U['lang_switch_aria'][1]}">
-  {bi('EN', '中')}
-</button>
+<a class="lang-switch" id="lang-switch" href="{'/en/' if not is_en else '/'}" {al(*U['lang_switch_aria'])}>{'EN' if not is_en else '中文'}</a>
 
 <div class="modal" id="search-modal" role="dialog" aria-modal="true" aria-hidden="true"
-     data-al-zh="{U['modal_aria'][0]}" data-al-en="{U['modal_aria'][1]}">
+     {al(*U['modal_aria'])}>
   <div class="modal-bg" data-close></div>
   <div class="sheet">
     <div class="sheet-top">
       <h2>{ui('modal_title')}</h2>
-      <button class="sheet-close" type="button" data-close data-al-zh="关闭" data-al-en="Close">✕</button>
+      <button class="sheet-close" type="button" data-close {al('关闭', 'Close')}>✕</button>
     </div>
     <div class="input-wrap">
       {icon('search')}
-      <input id="q" type="search" placeholder="{U['search_ph'][0]}" autocomplete="off" spellcheck="false">
+      <input id="q" type="search" placeholder="{pht('search_ph')}" autocomplete="off" spellcheck="false">
     </div>
 
     <div class="filter-row">
@@ -1208,7 +1197,7 @@ def main() -> None:
     </div>
 
     <div class="sheet-foot">
-      <span class="result-count"><span class="t-zh">匹配 <b data-result>0</b> 条</span><span class="t-en" lang="en"><b data-result>0</b> matching</span></span>
+      <span class="result-count">{'<b data-result>0</b> matching' if is_en else '匹配 <b data-result>0</b> 条'}</span>
       <span class="grow"></span>
       <button class="link-btn" type="button" data-reset>{ui('reset')}</button>
       <button class="solid-btn" type="button" data-close>{ui('done')}</button>
@@ -1218,26 +1207,25 @@ def main() -> None:
 
 <dialog class="submit-dialog" id="submit-dialog" data-endpoint="{SUBMIT_ENDPOINT}"
         aria-labelledby="submit-title"
-        data-al-zh="{U['submit_aria'][0]}" data-al-en="{U['submit_aria'][1]}"
-        data-msg-name-zh="{e(U['submit_need_name'][0])}" data-msg-name-en="{e(U['submit_need_name'][1])}"
-        data-msg-link-zh="{e(U['submit_need_link'][0])}" data-msg-link-en="{e(U['submit_need_link'][1])}"
-        data-msg-failed-zh="{e(U['submit_failed'][0])}" data-msg-failed-en="{e(U['submit_failed'][1])}">
+        data-msg-name="{e(U['submit_need_name'][1] if is_en else U['submit_need_name'][0])}"
+        data-msg-link="{e(U['submit_need_link'][1] if is_en else U['submit_need_link'][0])}"
+        data-msg-failed="{e(U['submit_failed'][1] if is_en else U['submit_failed'][0])}">
   <form class="sd-form" id="submit-form" novalidate autocomplete="off" autocorrect="off"
           autocapitalize="off" data-lpignore="true" data-form-type="other">
     <div class="sd-top">
       <button class="sd-back" type="button" data-submit-close
-              data-al-zh="{U['close'][0]}" data-al-en="{U['close'][1]}">
+              {al(*U['close'])}>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"/><path d="m11.5 19-7-7 7-7"/></svg>
       </button>
       <span class="sd-avatar" aria-hidden="true">{mascot_svg(gid='mintBodySubmit')}</span>
       <h2 id="submit-title">{ui('submit_title')}</h2>
       <a class="sd-tg" href="{TG_GROUP_URL}" target="_blank" rel="noopener"
-         data-al-zh="{U['submit_tg_aria'][0]}" data-al-en="{U['submit_tg_aria'][1]}">
+         {al(*U['submit_tg_aria'])}>
         <svg class="sd-tg-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.62 7.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74l9.11-3.51c.42-.15.79.1.65.83Z" fill="currentColor"/></svg>
         <span>{ui('submit_tg')}</span>
       </a>
       <button class="sd-send" type="submit"
-              data-al-zh="{U['submit_send'][0]}" data-al-en="{U['submit_send'][1]}">
+              {al(*U['submit_send'])}>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M3.4 11.1 20.2 4.2c.8-.3 1.6.5 1.3 1.3l-6.9 16.8c-.3.8-1.5.8-1.9 0l-1.9-5.2-5.2-1.9c-.8-.4-.8-1.6 0-1.9Z" fill="currentColor"/>
           <path d="M10.8 13.2 20 5.1" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity=".9"/>
@@ -1248,22 +1236,22 @@ def main() -> None:
     <label class="sd-row">
       <span class="sd-label">{ui('submit_name')}<i class="req" aria-hidden="true">*</i></span>
       <input class="sd-input" id="sd-name" type="text" maxlength="80" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next"
-             placeholder="{pht('submit_ph_name')}" data-ph-zh="{e(U['submit_ph_name'][0])}" data-ph-en="{e(U['submit_ph_name'][1])}">
+             placeholder="{pht('submit_ph_name')}">
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_link')}<i class="req" aria-hidden="true">*</i></span>
       <input class="sd-input" id="sd-url" type="text" inputmode="url" maxlength="500" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next"
-             placeholder="{pht('submit_ph_link')}" data-ph-zh="{e(U['submit_ph_link'][0])}" data-ph-en="{e(U['submit_ph_link'][1])}">
+             placeholder="{pht('submit_ph_link')}">
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_region')}</span>
       <input class="sd-input" id="sd-region" type="text" maxlength="60" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="done"
-             placeholder="{pht('submit_ph_region')}" data-ph-zh="{e(U['submit_ph_region'][0])}" data-ph-en="{e(U['submit_ph_region'][1])}">
+             placeholder="{pht('submit_ph_region')}">
     </label>
     <label class="sd-notes">
       <textarea class="sd-textarea" id="sd-notes" rows="3" maxlength="800" autocomplete="off" autocorrect="off" autocapitalize="off" data-lpignore="true" data-form-type="other"
-                data-al-zh="亮点与门槛说明" data-al-en="Highlights and requirements"
-                placeholder="{pht('submit_ph_notes')}" data-ph-zh="{e(U['submit_ph_notes'][0])}" data-ph-en="{e(U['submit_ph_notes'][1])}"></textarea>
+                {al('亮点与门槛说明', 'Highlights and requirements')}
+                placeholder="{pht('submit_ph_notes')}"></textarea>
     </label>
     <p class="sd-err" id="sd-err" role="alert" hidden></p>
   </form>
@@ -1302,16 +1290,15 @@ def main() -> None:
 </footer>
 
 <script id="search-index" type="application/json">{search_json}</script>
-<script id="i18n-head" type="application/json">{head_json(is_en)}</script>
 <script src="/assets/js/app.js?v={asset_ver('assets/js/app.js')}" defer></script>
 </body>
 </html>
 """
         return compact_html(head)
 
-    OUT.write_text(page_html("zh"), encoding="utf-8")
+    OUT.write_text(render_page("zh"), encoding="utf-8")
     EN_OUT.parent.mkdir(parents=True, exist_ok=True)
-    EN_OUT.write_text(page_html("en"), encoding="utf-8")
+    EN_OUT.write_text(render_page("en"), encoding="utf-8")
     print(f"index.html + en/index.html written · {len(active)} active / {len(expired)} expired / {len(fresh)} fresh")
     print(f"  英文条目：{len(deals) - len(missing_en)}/{len(deals)} 条有翻译")
     if missing_en:
