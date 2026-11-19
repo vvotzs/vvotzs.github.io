@@ -1211,7 +1211,8 @@ def main() -> None:
         data-msg-name-zh="{e(U['submit_need_name'][0])}" data-msg-name-en="{e(U['submit_need_name'][1])}"
         data-msg-link-zh="{e(U['submit_need_link'][0])}" data-msg-link-en="{e(U['submit_need_link'][1])}"
         data-msg-failed-zh="{e(U['submit_failed'][0])}" data-msg-failed-en="{e(U['submit_failed'][1])}">
-  <form class="sd-form" id="submit-form" novalidate>
+  <form class="sd-form" id="submit-form" novalidate autocomplete="off" autocorrect="off"
+          autocapitalize="off" data-lpignore="true" data-form-type="other">
     <div class="sd-top">
       <button class="sd-back" type="button" data-submit-close
               data-al-zh="{U['close'][0]}" data-al-en="{U['close'][1]}">
@@ -1235,21 +1236,21 @@ def main() -> None:
 
     <label class="sd-row">
       <span class="sd-label">{ui('submit_name')}<i class="req" aria-hidden="true">*</i></span>
-      <input class="sd-input" id="sd-name" name="name" type="text" maxlength="80" autocomplete="off" enterkeyhint="next"
+      <input class="sd-input" id="sd-name" type="text" maxlength="80" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next"
              placeholder="{pht('submit_ph_name')}" data-ph-zh="{e(U['submit_ph_name'][0])}" data-ph-en="{e(U['submit_ph_name'][1])}">
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_link')}<i class="req" aria-hidden="true">*</i></span>
-      <input class="sd-input" id="sd-url" name="url" type="text" inputmode="url" maxlength="500" autocomplete="off" spellcheck="false" enterkeyhint="next"
+      <input class="sd-input" id="sd-url" type="text" inputmode="url" maxlength="500" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next"
              placeholder="{pht('submit_ph_link')}" data-ph-zh="{e(U['submit_ph_link'][0])}" data-ph-en="{e(U['submit_ph_link'][1])}">
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_region')}</span>
-      <input class="sd-input" id="sd-region" name="region" type="text" maxlength="60" autocomplete="off" enterkeyhint="done"
+      <input class="sd-input" id="sd-region" type="text" maxlength="60" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="done"
              placeholder="{pht('submit_ph_region')}" data-ph-zh="{e(U['submit_ph_region'][0])}" data-ph-en="{e(U['submit_ph_region'][1])}">
     </label>
     <label class="sd-notes">
-      <textarea class="sd-textarea" id="sd-notes" name="notes" rows="3" maxlength="800"
+      <textarea class="sd-textarea" id="sd-notes" rows="3" maxlength="800" autocomplete="off" autocorrect="off" autocapitalize="off" data-lpignore="true" data-form-type="other"
                 data-al-zh="亮点与门槛说明" data-al-en="Highlights and requirements"
                 placeholder="{pht('submit_ph_notes')}" data-ph-zh="{e(U['submit_ph_notes'][0])}" data-ph-en="{e(U['submit_ph_notes'][1])}"></textarea>
     </label>

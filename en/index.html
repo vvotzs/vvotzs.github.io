@@ -6856,7 +6856,8 @@ data-al-zh="投稿优惠情报" data-al-en="Submit a deal"
 data-msg-name-zh="请填写优惠名称" data-msg-name-en="Please add a deal name"
 data-msg-link-zh="请填写活动或来源链接" data-msg-link-en="Please add an offer or source link"
 data-msg-failed-zh="没发出去，检查网络再试一次" data-msg-failed-en="Couldn&#x27;t send — check your connection and try again">
-<form class="sd-form" id="submit-form" novalidate>
+<form class="sd-form" id="submit-form" novalidate autocomplete="off" autocorrect="off"
+autocapitalize="off" data-lpignore="true" data-form-type="other">
 <div class="sd-top">
 <button class="sd-back" type="button" data-submit-close
 data-al-zh="关闭" data-al-en="Close">
@@ -6879,21 +6880,21 @@ data-al-zh="提交" data-al-en="Send">
 </div>
 <label class="sd-row">
 <span class="sd-label"><span class="t-zh">名称</span><span class="t-en" lang="en">Name</span><i class="req" aria-hidden="true">*</i></span>
-<input class="sd-input" id="sd-name" name="name" type="text" maxlength="80" autocomplete="off" enterkeyhint="next"
+<input class="sd-input" id="sd-name" type="text" maxlength="80" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next"
 placeholder="Deal name" data-ph-zh="优惠名称" data-ph-en="Deal name">
 </label>
 <label class="sd-row">
 <span class="sd-label"><span class="t-zh">链接</span><span class="t-en" lang="en">Link</span><i class="req" aria-hidden="true">*</i></span>
-<input class="sd-input" id="sd-url" name="url" type="text" inputmode="url" maxlength="500" autocomplete="off" spellcheck="false" enterkeyhint="next"
+<input class="sd-input" id="sd-url" type="text" inputmode="url" maxlength="500" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next"
 placeholder="https:// offer or source link" data-ph-zh="https:// 活动或来源链接" data-ph-en="https:// offer or source link">
 </label>
 <label class="sd-row">
 <span class="sd-label"><span class="t-zh">地区</span><span class="t-en" lang="en">Region</span></span>
-<input class="sd-input" id="sd-region" name="region" type="text" maxlength="60" autocomplete="off" enterkeyhint="done"
+<input class="sd-input" id="sd-region" type="text" maxlength="60" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="done"
 placeholder="Global / US / UK / JP / KR" data-ph-zh="全球 / 美区 / 英区 / 日区 / 韩区" data-ph-en="Global / US / UK / JP / KR">
 </label>
 <label class="sd-notes">
-<textarea class="sd-textarea" id="sd-notes" name="notes" rows="3" maxlength="800"
+<textarea class="sd-textarea" id="sd-notes" rows="3" maxlength="800" autocomplete="off" autocorrect="off" autocapitalize="off" data-lpignore="true" data-form-type="other"
 data-al-zh="亮点与门槛说明" data-al-en="Highlights and requirements"
 placeholder="Highlights &amp; requirements (optional)…" data-ph-zh="亮点与门槛说明（选填）…" data-ph-en="Highlights &amp; requirements (optional)…"></textarea>
 </label>
