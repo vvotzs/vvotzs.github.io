@@ -2945,5 +2945,182 @@
     ],
     "risk": "The 20 USDT is Dual Investment trial funds rather than withdrawable cash. The first 500 places can run out. Check-ins follow UTC days with no catch-up. KYC is required and some regions are excluded. WLFI is volatile, so its real value is below face value.",
     "source": "Gate official announcement (published 2026-11-19 09:00 UTC, checked 2026-11-20)"
+  },
+  "reducto-150-free-usage": {
+    "title": "[Global] Reducto: $150 free usage on the document-parsing API for new accounts (no card needed to start)",
+    "highlight": "A document parsing and structured-extraction API for AI agents. The Standard pay-as-you-go tier starts with $150 of free usage, then bills per page ($1 per 1,000 pages on r-1 mini).",
+    "regions": "[Global] No country restriction stated. Whether a card is required at signup is shown on the signup page (community reports say it is not).",
+    "value": "$150 of usage on the Standard pay-as-you-go tier",
+    "content": "Reducto is a document platform built for agents: Parse (PDFs, images, tables, scans to structured text), Extract (schema-based field extraction), Split, Classify and Edit, with 30+ file types and no page limits. Its pricing page, read on 2026-11-20, states the Standard pay-as-you-go plan includes \"Free $150 in free usage\". After that, list rates apply: r-1 mini Parse $1 per 1,000 pages, r-1 Parse $10, Extract $20, Deep Extract and Deep Split $40, Classify $7.50. The same page offers a Startup Program (under $15M funding, under $3M revenue, under 50 employees) with migration credits and discounted Growth pricing.",
+    "conditions": "The Standard tier includes $150 of free usage at signup and then switches to metered billing rather than a fixed subscription. The pricing page states no end date. The credit's validity period and whether a card is required are not stated on the pricing page, so check the console. The Startup Program requires an application and eligibility review.",
+    "steps": [
+      "Sign up at reducto.ai/pricing or app.reducto.ai",
+      "Create an API key and confirm $150 of usage is available on the Standard tier",
+      "Parse one PDF and check that pages are deducted from the balance",
+      "Decide before the balance runs out; do not add a card just to keep the trial"
+    ],
+    "risk": "The $150 is usage credit, not cash, and deep extraction burns it quickly. No validity period or card requirement is published, so the console is the source of truth. Parsing accuracy still needs spot checks, and confidential documents raise data-retention questions.",
+    "source": "Reducto official pricing page (read 2026-11-20, states \"Free $150 in free usage\") plus the perq.sh AI credits directory, re-checked 2026-11-19 against the same page"
+  },
+  "lindy-50-free-credits": {
+    "title": "[Global] Lindy: $50 in free credits at signup (valid 7 days, no card)",
+    "highlight": "An automation and AI-teammate platform whose Free plan starts with $50 in credits. Connect Slack, email, calendar and 3,000+ integrations and run scheduled routines; the credits expire after 7 days and nothing converts to paid on its own.",
+    "regions": "[Global] Email or Google sign-in. The Free plan is listed at $0 with no credit card.",
+    "value": "$50 in credits, valid for 7 days",
+    "content": "Lindy pitches itself as an AI teammate: mention it in a Slack thread and it works, with scheduled routines, meeting notes and prep, inbox management, voice-matched drafts, computer use on paid plans, 3,000+ integrations and MCP. Its pricing page, read on 2026-11-20, lists the Free plan as $0 with \"$50 in credits for free\" and \"Free credits last 7 days\". Paid Team plans start at $29.99/month for 3,000 credits, with top-ups at $10 per 1,000 credits. The FAQ says the free week is one-time per teammate and nothing is charged when it ends.",
+    "conditions": "A new account gets $50 in credits on the Free plan, usable within 7 days. The free week is one-time per teammate and does not reset. Actions with outside effects (sending email, updating tickets, posting messages) wait for approval by default. Paid usage starts at $29.99/month and no card is needed while trialling.",
+    "steps": [
+      "Open lindy.ai/pricing and choose Try for free with email or Google",
+      "Mention it in Slack or build one automation in the web app",
+      "Connect a read-only source such as a calendar and run it once",
+      "Spend the credits on a workflow you actually need before the 7 days end, and confirm no card is on file"
+    ],
+    "risk": "The credits last only 7 days and do not roll over, so this is a one-shot trial. Tool calls and automations burn credits fast. Paid plans start at $29.99/month, so keep payment details off the account, and review approval settings before letting it touch anyone's inbox or calendar.",
+    "source": "Lindy official pricing page (read 2026-11-20: \"$50 in credits for free\", \"Free credits last 7 days\") plus perq.sh directory, re-checked 2026-11-19"
+  },
+  "keenable-100k-search-free": {
+    "title": "[Global] Keenable search API: 100,000 free requests a month, no card ($4 per 1,000 after)",
+    "highlight": "A realtime search and page-fetch API for AI agents with 100,000 free requests per organisation per month and no card required. Overage is $4 per 1,000 requests, and an official MCP server plugs into Claude Code or Codex.",
+    "regions": "[Global] Sign up and use the free allowance, which resets monthly per organisation. A card is only needed to buy credits or turn on auto top-up.",
+    "value": "100,000 requests a month (about $400/month at the $4 per 1,000 list rate)",
+    "content": "Keenable sells search and fetch to AI agents and says version 1.0 reached first place on the Artificial Analysis Search Index. Its pricing page, read on 2026-11-20, states every organisation gets 100,000 free requests a month with no credit card: create an API key in the console and the allowance is live. After that, pay-as-you-go is $4 per 1,000 requests, and labs or inference platforms at 100+ RPS pay $1 per 1,000 on dedicated capacity. One search or fetch is one credit, with search.realtime, search.pro, fetch and fetch.live all costing one credit each, and every response reports its own usage. The MCP server at api.keenable.ai/mcp and the CLI draw on the same allowance, and keyless use runs on a shared public pool of 1,000 requests per hour per IP.",
+    "conditions": "The allowance is 100,000 requests a month per organisation and resets on the day the organisation was created. An API key allows 10 requests per second with no hourly cap. Past the allowance, /v1/search returns 402 until credits are bought or the allowance resets. No card is needed for the free tier; buying credits or enabling auto top-up requires one. Academic and startup programs are separate applications.",
+    "steps": [
+      "Open keenable.ai/pricing, choose Get Free 100K requests and create an organisation",
+      "Create an API key in the console; no card required",
+      "Run one /v1/search call using the quickstart at docs.keenable.ai",
+      "For Claude Code or Codex, connect the MCP server at https://api.keenable.ai/mcp"
+    ],
+    "risk": "The allowance is per organisation, does not roll over and stops service with a 402 once used up. Result quality and any affiliate or sponsored links in results need checking before an agent relies on them. The terms state no end date, so the allowance could change at any time.",
+    "source": "Keenable official pricing page (read 2026-11-20, including the Free 100K requests tier and FAQ) plus perq.sh directory, re-checked 2026-11-19"
+  },
+  "neevcloud-1500-sandbox-min": {
+    "title": "[Global] NeevCloud: 1,500 free sandbox minutes every month for verified accounts (no card)",
+    "highlight": "A free tier added in the November release: every verified account gets 1,500 sandbox minutes a month, fully covering sandboxes up to 2 vCPU / 4 GB with disk included, on templates that ship Claude Code, Codex CLI, opencode and OpenClaw.",
+    "regions": "[Global] Requires account verification (individual KYC). The docs state no card is required.",
+    "value": "1,500 sandbox minutes a month (2 vCPU / 4 GB covered, disk included)",
+    "content": "NeevCloud's November 2026 release notes (v0.8.1 to v0.9.0) add a free tier for Agentic Studio sandboxes: 1,500 sandbox minutes free each month, renewing monthly, for every verified account, and explicitly \"no credit card is needed; completing account verification is enough\". It applies to existing accounts too, and the console shows the remaining balance. Minutes are weighted by sandbox size: up to 2 vCPU / 4 GB is fully covered, smaller sandboxes burn fewer minutes and larger ones proportionally more, and disk inside the free tier is free. The platform also ships templates for OpenClaw, Claude Code, Codex CLI, opencode and Hermes, plus Docker and Playwright + Chromium templates, snapshots and an MCP endpoint.",
+    "conditions": "The account must be verified (individual KYC; businesses have a separate flow). The 1,500 minutes reset monthly and do not accumulate. 2 vCPU / 4 GB is the covered size, and larger sandboxes draw down proportionally more. Idle sandboxes pause automatically and wake on the first request, and usage beyond the allowance is billed.",
+    "steps": [
+      "Sign up at neevcloud.com and complete account verification (no card needed)",
+      "Open Agentic Studio, then Sandboxes, and confirm the 1,500-minute monthly allowance",
+      "Create a sandbox from a template such as Playwright + Chromium or Claude Code",
+      "Watch the remaining minutes in the console before committing to paid usage"
+    ],
+    "risk": "Minutes are weighted by size, so large sandboxes drain them quickly. KYC means handing over identity details. The allowance resets monthly with no carry-over, and sandboxes that pause still consume minutes while awake. The platform is young, so stability and retention policies deserve a look.",
+    "source": "NeevCloud official November 2026 release notes (read 2026-11-20: \"1,500 free sandbox minutes every month, for every verified account, no card required\") plus perq.sh directory, re-checked 2026-11-19"
+  },
+  "freebuff-free-coding-agent": {
+    "title": "[Global] Freebuff: an ad-funded free coding agent with 100 Freebucks a day, no card or API key",
+    "highlight": "A free coding agent from the Codebuff team, launched on 19 November: terminal, desktop, mobile and web, with no API key and no credit card. Small text ads in the terminal pay for the models, and 100 Freebucks refill at midnight Pacific time.",
+    "regions": "[Global] The full model list covers 25+ countries. Elsewhere it drops to limited mode (DeepSeek V4 Flash only, six one-hour sessions a day), and a VPN can trigger that too.",
+    "value": "Free ($0, with 100 Freebucks a day; comparable to a $20/month coding agent)",
+    "content": "Freebuff is the free tier from the Codebuff team, released on 2026-11-19. Its site, read on 2026-11-20, says \"The 100% free coding agent, $0 forever, unlimited usage\" and states there is no card and no credits to watch, because text ads in the terminal fund the models. It runs as a CLI (npm install -g freebuff), desktop apps for macOS, Windows and Linux, iOS and Android apps, and in the browser, with threads kept in the cloud so work continues across devices. Models include DeepSeek v4, MiMo 2.5 Pro, GLM 5.2 and MiniMax M3, with Gemini 3.1 Flash Lite for file finding, and you can bring your own Claude key. The daily allowance is 100 Freebucks, refilled at midnight Pacific time and not rolled over; each model shows an hourly rate, so strong models burn a day's allowance in a few hours.",
+    "conditions": "100 Freebucks a day, reset at midnight Pacific and not accumulated. The full model list is limited to 25+ countries; elsewhere limited mode offers only DeepSeek V4 Flash and six one-hour sessions a day. Text ads appear between agent turns, and the launch material says messages, traces and files may feed ad targeting while some models train on data (flagged in the model picker). A one-time login is required.",
+    "steps": [
+      "Install with npm install -g freebuff, or download the desktop app from freebuff.com",
+      "Log in once, then open /model and pick a model without the training note",
+      "Give it one verifiable change in a small project",
+      "Continue the same thread from mobile or the web, remembering the daily reset"
+    ],
+    "risk": "The price is privacy: the launch material admits messages, traces and files may feed ad targeting and some models train on data, so keep private code on a non-training model or your own key. Region limits can hide the best models, hourly rates drain the allowance quickly, and a brand-new service has no reliability record.",
+    "source": "Freebuff official site (read 2026-11-20: $0 forever, no card, ads pay for models) plus the DEV Community launch write-up (2026-11-19, with the 100 Freebucks and region rules)"
+  },
+  "opencode-go-glm500-usage": {
+    "title": "[Global] OpenCode Go: $10/month covers $500 of GLM-5.3 usage (through 11/22; Go Plus doubles it)",
+    "highlight": "Operation GLM phase two: the Go plan's monthly GLM-5.3 allowance is temporarily raised to $500 (from $200) and Go Plus to $1,000, for new and existing subscribers, with the official docs stating it runs only through 2026-11-22.",
+    "regions": "[Global] Built for international users. Subscribing through the OpenCode Console needs a payment method, and requests from China require setting Regions to Global in privacy settings.",
+    "value": "$500 of GLM-5.3 monthly usage on Go ($10/month); Go Plus pays $40 for $1,000",
+    "content": "OpenCode announced Operation GLM on 2026-11-17 with a phase one offer of $100 of GLM-5.3 usage for $10 on Go, then moved to phase two about eleven hours later: the same $10 covers $500 of GLM-5.3 usage, and Go Plus at $40 covers $1,000. The official Go docs, read on 2026-11-20, state \"GLM-5.3: Higher usage limits apply through November 22, 2026\". The $500 is the monthly ceiling the plan covers if you use only that model, not account balance; every paid model on Go draws on the same allowance, with 20% of the monthly allowance available per 5-hour window and 50% per week, resetting Mondays at 00:00 UTC. Subscribe on the OpenCode Console, then run /connect in OpenCode, choose OpenCode Go, paste the key and pick GLM-5.3 with /models, or call https://opencode.ai/inference/go directly.",
+    "conditions": "Requires an OpenCode Go ($10/month) or Go Plus ($40/month) subscription with a payment method. The raised allowance ends 2026-11-22 and then reverts. The $500 is a usage ceiling, not withdrawable balance. Limits are 20% per 5 hours and 50% per week, shared with other paid models. Users in China must set Regions to Global under Settings › Privacy to reach GLM-5.3.",
+    "steps": [
+      "Sign in at opencode.ai/console, subscribe to Go, add billing details and copy the API key",
+      "Run /connect in OpenCode, choose OpenCode Go and paste the key",
+      "Select GLM-5.3 with /models and work normally",
+      "Use the allowance before 11/22 and cancel the subscription once it reverts if you do not need it"
+    ],
+    "risk": "The $500 is a usage cap, not cash, and cannot be read as a 20% discount on real money. The 5-hour and weekly limits are real and heavy users will hit them, users report 529 errors at peak times, and the allowance drops after 11/22, so do not budget against it.",
+    "source": "OpenCode official Go docs (read 2026-11-20: \"Higher usage limits apply through November 22, 2026\") plus the official X phase-two announcement (2026-11-18) and reports from 模真真 and AI Promo Now ($500 on Go, $1,000 on Go Plus)"
+  },
+  "exa-api-40-credits-codes": {
+    "title": "[Global] Exa search API: two stackable $20 codes plus $10 of free credit a month",
+    "highlight": "A semantic search API for agents. Redeem EXA20FREEBUFF and then EXA20FIRESHIP under Billing for $20 each on the same account, on top of the Free plan's $10 a month and a one-time $10 onboarding bonus.",
+    "regions": "[Global] New accounts. The official Free tier needs no card, though some accounts report being asked to verify a non-prepaid card before bonus credit is usable.",
+    "value": "$40 in codes plus $10 of free credit a month (another $10 in the first month)",
+    "content": "Exa provides semantic search for AI applications through Search, Contents and Answer endpoints, with Lite search around $4 per 1,000 requests. The official Starter tier gives every team $10 of credits a month, reset on the first of each month without rollover and with no payment method required, and completing onboarding adds a one-time $10, so the first month holds $20. Two creator and partner codes circulating in the community, EXA20FREEBUFF and EXA20FIRESHIP, were tested on 2026-11-03 and stacked on one account, taking the balance from $20 to $60 with no expiry shown in the dashboard; the older EXA50API stopped working and EXA50FIRESHIP hit its redemption limit. A NodeSeek post on 6 November records the same codes with reports that EXA50API had already failed for some.",
+    "conditions": "Both codes are creator or partner promotions rather than official pricing-page offers, so they can stop working or hit a limit at any time, once per team each. Some accounts must verify a non-prepaid card before bonus credit is usable. The $10 a month does not roll over. Codes show no expiry in the dashboard, though the official terms reserve the right to change them.",
+    "steps": [
+      "Sign up at dashboard.exa.ai (no card needed)",
+      "Open Billing, redeem EXA20FREEBUFF, then EXA20FIRESHIP",
+      "Reload Billing to confirm the balance, then finish onboarding for the extra $10",
+      "Make one Search or Contents call; usage beyond the credits bills at list rates"
+    ],
+    "url": "https://dashboard.exa.ai/billing",
+    "risk": "Both codes are unofficial and can be withdrawn or capped. Some accounts hit a non-prepaid card check that virtual cards fail. The credits are API usage, not cash, and usage beyond the allowance bills at $4 per 1,000 requests.",
+    "source": "NodeSeek 情报帖 (2026-11-06, with the codes and failure reports) plus tahoo.tech testing (2026-11-03, two codes taking the balance from $20 to $60) and AIdeal's re-check of the official Free tier terms (2026-11-18)"
+  },
+  "gravatar-free-domain-1y": {
+    "title": "[Global] Gravatar: a free top-level domain for one year (.bio, .link, .social and more, usable as a Bluesky handle)",
+    "highlight": "Claim a .bio, .link or .social domain from your Gravatar account free for the first year, wired to redirect to your Gravatar profile, and usable as a Bluesky handle or a custom email address.",
+    "regions": "[Global] Any Gravatar (WordPress.com) account. No card required.",
+    "value": "A free domain for the first year (renews at $9+ a year)",
+    "content": "Gravatar's link-in-bio page, read on 2026-11-20, says it \"Includes free custom domain for one year\", offering .link, .bio, .social and other popular suffixes with \"First year free (then $9+ per year)\" and notes \"Use it for your Bluesky handle too\". The claim option sits at the top of the Gravatar dashboard or in the profile editor sidebar. Claimed domains get Smart Redirects, which point the domain at your Gravatar profile with no setup. Gravatar's support docs add that the domain can back a custom address such as hello@yourname.bio that forwards to your Gravatar email, while sending from that address needs a paid account.",
+    "conditions": "Free for the first year, then $9+ a year depending on the suffix, and an unpaid domain is released. A Gravatar or WordPress.com account is required. How many domains one account can claim depends on what the dashboard offers. Free-tier custom email only forwards mail; it cannot send.",
+    "steps": [
+      "Sign in at gravatar.com and open the profile editor",
+      "Choose the claim-domain option at the top or in the sidebar",
+      "Pick an available suffix (.bio, .link, .social and others) and claim it",
+      "Confirm the redirect works, then set a reminder for the one-year renewal"
+    ],
+    "risk": "Only the first year is free and the second is billed at $9+ a year, so a forgotten renewal costs money. The domain is tied to your Gravatar account, free-tier mail only forwards, and Gravatar labels the offer limited time.",
+    "source": "Gravatar official link-in-bio page (read 2026-11-20: \"First year free (then $9+ per year)\") plus Gravatar support docs on custom domains, Bluesky handles and email forwarding, and a linux.do thread from 2026-11-19"
+  },
+  "doubao-work-30day-sub": {
+    "title": "[China] Doubao Work: a 30-day subscription for new users on desktop, plus 8,800 credits for 30 days of check-ins",
+    "highlight": "New users of the Doubao Work desktop app get a 30-day subscription with no card. Daily check-ins pay 200 credits (double on Mondays) with milestone bonuses, adding up to 8,800 over 30 days, more than the 8,400 a standard ¥68 plan includes.",
+    "regions": "[China] Doubao and Doubao Work desktop apps on Windows and macOS. The entry point does not exist on mobile.",
+    "value": "A 30-day standard subscription (¥68/month tier) plus 8,800 credits from 30 days of check-ins",
+    "content": "Doubao Work, the AI agent office product under Doubao, shipped a 2026-11-12 update adding Kimi K3.1 Pro, GLM 5.3 and DeepSeek V4.1 Flash with credit multipliers shown per model, and a limited-time 0.01x rate on Doubao 2.1 Lite and DeepSeek V4.1 Flash. Alongside it Doubao offers two promotions: first-time users of the Doubao or Doubao Work desktop app can claim a 30-day free subscription covering everything except video generation and Pro models, and every user can check in daily for 200 credits, doubled to 400 on Mondays, with extra bonuses of 200, 500 and 1,300 credits at 500, 2,000 and 5,000 cumulative credits, totalling 8,800 over 30 consecutive days. Gift credits last 30 days, are spent first, and cannot be used on Pro models or video generation without a paid plan.",
+    "conditions": "The 30-day subscription is only for new users who first sign in on desktop, with no entry point on mobile. Check-ins happen once a day from the desktop pop-up or the avatar menu and are not made up if missed, and Mondays pay double. Gift credits expire after 30 days. Unpaid accounts cannot spend gift credits on Pro models or video generation. The 0.01x rate and discount windows are limited-time and undated.",
+    "steps": [
+      "Download Doubao Work for Windows or macOS and sign in with a phone number",
+      "Confirm the 30-day free subscription shows as active on the subscription page",
+      "Check in daily from the bottom-left pop-up, remembering Monday doubles",
+      "Run everyday tasks on the 0.01x models and use the gift credits within 30 days"
+    ],
+    "risk": "The promotion can change or end early, so the client's own display is the source of truth. Gift credits expire in 30 days and skip Pro models and video generation. A missed day delays milestone progress. The desktop entry point is China-only, so accounts elsewhere may not see it.",
+    "source": "Tencent News / 新京报 report on 2026-10-30 (official Doubao terms for the 30-day trial and the 8,800 check-in credits) plus 每日经济新闻 on the 2026-11-12 update and an mmmy.net hands-on post on 2026-11-13"
+  },
+  "quilter-invest-isa-100": {
+    "title": "[UK] Quilter Invest: open an ISA with £1,000, hold it 4 months, get £100 cashback via TopCashback (≈$130)",
+    "highlight": "Go through TopCashback, open a stocks and shares ISA, fund it with £1,000 and hold that balance for the four-month validation period to collect £100, a 10% cash bonus on the deposit, with market risk attached.",
+    "regions": "[UK] UK residents aged 18+, with unused ISA allowance, new to Quilter Invest only",
+    "value": "£100 cashback (≈$130)",
+    "content": "Quilter Invest is the investing app of Quilter, a FTSE 250 UK wealth manager. BeerMoneyUK, read on 2026-11-20 (listed three weeks ago, updated one week ago), records the offer: click through the cashback portal to sign up, open a stocks and shares ISA in the app, fund it with at least £1,000 within 30 days, and keep at least £1,000 in the account for the four-month validation period. The £100 is paid through TopCashback, usually within a month of validation. The page also suggests joining TopCashback first to collect its new-member bonus on top.",
+    "conditions": "New Quilter Invest customers only, UK residents aged 18+ with ISA allowance left. At least £1,000 must be funded within 30 days of opening and stay in the account for four months. Click through from the cashback portal in the same browser session with ad blockers off, one cashback per person, and no unlisted promo codes. Capital is at risk and platform and fund fees apply.",
+    "steps": [
+      "Join TopCashback UK first to stack its new-member bonus",
+      "Click Get This Offer on the activity page to reach Quilter through the portal",
+      "Open the stocks and shares ISA in the Quilter Invest app and check the cashback tracks",
+      "Fund £1,000 within 30 days, hold it four months, and pick a lower-risk portfolio if the £100 is the point"
+    ],
+    "risk": "The £1,000 is invested and four months of market movement can wipe out £100, with platform and fund fees on top. It uses £1,000 of this year's ISA allowance, which only resets on 6 April. Cashback frequently fails to track, so check the tracked status before funding. UK residents only.",
+    "source": "BeerMoneyUK listing (read 2026-11-20, with the funding and four-month validation terms) plus Quilter Invest's own in-app ISA process"
+  },
+  "webull-uk-5-free-shares": {
+    "title": "[UK] Webull UK: deposit £500 for 60 days for 5 free fractional shares (mostly about $3 each, up to $300)",
+    "highlight": "New Webull UK customers who deposit £500 in one go and hold it for 60 days can claim five US fractional shares in the Rewards centre, each worth $3 to $300, plus 12 months of Nasdaq TotalView Level 2 and a 90-day commission-free card.",
+    "regions": "[UK] New Webull UK customers only, with UK identity verification and a local bank deposit",
+    "value": "5 fractional shares ($3-$300 each; most are about $3 Apple shares, roughly £11 in practice)",
+    "content": "BeerMoneyUK, read on 2026-11-20 (listed three weeks ago), records Webull UK's new-customer offer. After signing up and verifying identity you must opt in manually under Menu → Promotion Centre, then make a single deposit of at least £500 (splitting it does not count, and transferring shares in does), hold it for 60 consecutive days, and claim five US fractional shares from My Rewards within 30 days. Each share is worth $3 to $300, but community reports say most people get roughly $3 Apple shares, about £11 in total. The offer also includes 12 months of free Nasdaq TotalView Level 2 data, a 90-day UK shares and ETFs commission-free card for a GIA or ISA, and, with options enabled, 90 days of commission-free contracts up to 100 plus 30 days of OPRA real-time data. The campaign asks for the deposit by 2027-03-31.",
+    "conditions": "New Webull UK customers only, and opting in under Promotion Centre is mandatory. A single deposit of at least £500 must stay for 60 consecutive days, with withdrawals allowed as long as they do not exceed what was deposited. Rewards must be claimed within 30 days of becoming available or they expire, and each share's value is random with most at the low end.",
+    "steps": [
+      "Sign up through the offer page and verify identity in the Webull app",
+      "Opt in under Menu → Promotion Centre before depositing, or there is no reward",
+      "Deposit at least £500 in one go and leave it for 60 consecutive days",
+      "Claim the five shares in My Rewards within 30 days of them appearing"
+    ],
+    "risk": "The five shares are random and most people get about $3 each, so do not expect anything near the $1,500 headline. Forgetting to opt in or to claim within 30 days wastes the 60-day hold. The £500 is locked for 60 days, investing carries risk, and a throwaway account brings idle-fee and tax-reporting chores.",
+    "source": "BeerMoneyUK listing (read 2026-11-20, covering the opt-in, the single £500 deposit, the 60-day hold and the $3-$300 range with most near $3) plus Webull's own new-customer terms"
   }
 }
