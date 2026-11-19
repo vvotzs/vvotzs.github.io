@@ -135,7 +135,16 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
     "search": (16, '<circle cx="7" cy="7" r="4.4"/><path d="m10.4 10.4 3 3"/>', 1.6),
     # 风险提示
     "warn": (16, '<path d="M8 2.6 14.2 13H1.8L8 2.6Z"/><path d="M8 6.6v3.1M8 11.6v.1"/>', 1.4),
+    # 投稿：纸飞机 + 暖色尾迹
+    "send": (24, '<path d="M20.8 3.5 3.6 10.6c-.9.4-.9 1.6 0 1.9l5.5 2 2 5.5c.4.9 1.6.9 1.9 0l7.1-17.2c.3-.8-.5-1.6-1.3-1.3Z" fill="#FDBA74"/>'
+               '<path d="M9.1 14.5 20.3 4.1" stroke="#FFFFFF" stroke-opacity=".85"/>'
+               '<path d="M11.2 13.9l-2.1 4.6" stroke="#C2410C" stroke-opacity=".55"/>', 1.7),
 }
+
+# Tally 投稿表单（https://tally.so/r/<id>）：弹窗优先，直接跳转兜底。
+TALLY_FORM_ID = "J1lj1d"
+TALLY_FORM_URL = f"https://tally.so/r/{TALLY_FORM_ID}"
+TALLY_EMBED = '<script async src="https://tally.so/widgets/embed.js"></script>'
 
 # 薄荷绿 Pickle 小精灵（页头 / 页脚直接内联，不走 sprite）。
 # 渐变必须写在可见的 <svg> 自己的 <defs> 里：放进 display:none 的 sprite 后，
@@ -1096,9 +1105,17 @@ def main() -> None:
   </div>
 </main>
 
-<nav class="rail" aria-label="{U['nav_aria'][0]}">
+<div class="rail-dock">
+  <a class="rail-submit" id="open-submit" href="{TALLY_FORM_URL}" target="_blank" rel="noopener"
+     data-tally-form="{TALLY_FORM_ID}"
+     data-al-zh="{U['nav_submit_aria'][0]}" data-al-en="{U['nav_submit_aria'][1]}">
+    {icon('send')}
+    <span>{ui('nav_submit')}</span>
+  </a>
+  <nav class="rail" aria-label="{U['nav_aria'][0]}">
   {rail}
-</nav>
+  </nav>
+</div>
 
 <button class="lang-switch" id="lang-switch" type="button"
         data-al-zh="{U['lang_switch_aria'][0]}" data-al-en="{U['lang_switch_aria'][1]}">
@@ -1196,6 +1213,7 @@ def main() -> None:
 
 <script id="search-index" type="application/json">{search_json}</script>
 <script id="i18n-head" type="application/json">{head_json(is_en)}</script>
+{TALLY_EMBED}
 <script src="/assets/js/app.js?v={asset_ver('assets/js/app.js')}" defer></script>
 </body>
 </html>

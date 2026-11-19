@@ -46,6 +46,9 @@ U: dict[str, tuple[str, str]] = {
     "nav_archive": ("归档", "Old"),
     "nav_top": ("顶部", "Top"),
     "nav_aria": ("分区导航", "Section navigation"),
+    # 滑轨正上方的投稿按钮（Tally 弹窗）
+    "nav_submit": ("投稿", "Submit"),
+    "nav_submit_aria": ("投稿优惠情报，打开投稿表单", "Submit a deal — open the submission form"),
     # 热榜 tab / 分区标题与说明
     "tab_fresh": ("新收录", "New"),
     "tab_rank": ("高价值榜", "Top"),

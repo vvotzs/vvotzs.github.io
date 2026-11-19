@@ -29,6 +29,15 @@ docs/workflows-reference/daily-rebuild.yml  # 每日重建工作流模板（不�
 robots.txt / sitemap.xml
 ```
 
+## 投稿（Tally）
+
+右侧滑轨正上方的「投稿 / Submit」按钮打开 Tally 投稿表单：
+
+- 表单：<https://tally.so/r/J1lj1d>（表单 ID `J1lj1d`，写在 `scripts/build_site.py` 的 `TALLY_FORM_ID`，换表单只改这一处再重建）
+- 弹窗：`Tally.openPopup(id, { layout: "modal", width: 520, autoClose: 3000 })`，脚本来自 `https://tally.so/widgets/embed.js`
+- 兜底：按钮本身就是指向 `https://tally.so/r/<id>` 的链接，embed.js 没加载（境内网络被墙 / 被拦截）时直接在新标签打开表单
+- 通知：表单 Settings → Email notifications → Self email notifications，新投稿发到 vvotzs@gmail.com（免费版收件人固定）
+
 ## 中英双语
 
 - **切换**：左下角悬浮小胶囊（中文页显示 `EN`，英文页显示 `中文`），不占顶栏任何空间，也不挡右侧滑轨和卡片按钮。

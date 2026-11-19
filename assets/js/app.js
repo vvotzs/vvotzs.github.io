@@ -664,6 +664,25 @@
     });
   }
 
+  /* ------------------------------------------------- 投稿（Tally 弹窗） */
+  /* 按钮本身就是一个指向 https://tally.so/r/<id> 的链接：Tally 的 embed.js 没加载成功
+     （境内网络被墙、脚本被拦截）时点下去照常在新标签打开表单；脚本就绪时改成官方弹窗，
+     页面不跳走。两条路都能提交。 */
+  var submitBtn = $("#open-submit");
+  if (submitBtn) {
+    submitBtn.addEventListener("click", function (ev) {
+      var formId = submitBtn.getAttribute("data-tally-form");
+      var tally = window.Tally;
+      if (!formId || !tally || typeof tally.openPopup !== "function") return; // 走链接兜底
+      ev.preventDefault();
+      try {
+        tally.openPopup(formId, { layout: "modal", width: 520, autoClose: 3000 });
+      } catch (err) {
+        window.open(submitBtn.href, "_blank", "noopener");
+      }
+    });
+  }
+
   restoreFromURL();
   /* 初始就按当前语言把标题 / 描述 / 占位符 / 无障碍标签对齐，再渲染一次 */
   applyLang(LANG, false);

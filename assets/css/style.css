@@ -954,12 +954,55 @@ html.js .pager-bar{ display: flex; }
 
 /* ---------------------------------------------------------- rail (desktop + mobile) */
 
-.rail{
+/* 滑轨 + 正上方的投稿按钮：整组一起固定居中。
+   两者同宽（align-items: stretch，取滑轨的宽度），按钮不会把 44px 的手机滑轨撑宽。 */
+.rail-dock{
   position: fixed;
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 55;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  pointer-events: none;   /* 只让按钮和滑轨本身接点击，两者之间的空隙不挡正文 */
+}
+.rail-dock > *{ pointer-events: auto; }
+
+/* 投稿按钮：暖薄荷底 + 纸飞机，和页面同一套温度；宽度跟随滑轨 */
+.rail-submit{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  padding: 6px 0 5px;
+  border: 1px solid rgba(5,150,105,.28);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ECFBF4 0%, #D2F6E6 100%);
+  color: #065F46;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 14px 30px -22px rgba(6,78,59,.6), 0 1px 2px rgba(28,25,23,.06);
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+.rail-submit svg{ width: 17px; height: 17px; display: block; }
+.rail-submit:hover{
+  background: linear-gradient(180deg, #F4FEF9 0%, #BBF7D0 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px -22px rgba(6,78,59,.7), 0 1px 2px rgba(28,25,23,.06);
+}
+.rail-submit:active{ transform: translateY(0); }
+.rail-submit:focus-visible{ outline: 2px solid rgba(5,150,105,.55); outline-offset: 2px; }
+
+.rail{
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -1200,7 +1243,7 @@ footer{
 /* --------------------------------------------------------------- responsive */
 
 @media (max-width: 1080px){
-  .rail{ right: 8px; }
+  .rail-dock{ right: 8px; }
 }
 
 /* content must not slide under the rail */
@@ -1510,9 +1553,22 @@ footer{
   .module.hot-strip .jump .jump-meta,
   .module.hot-strip .jump .jump-arrow{ display: none; }
 
-  /* ---- 右侧竖版滑轨：图标 + 小标签 + 底部小火箭回顶，总宽 44px ---- */
-  .rail{
+  /* ---- 右侧竖版滑轨：图标 + 小标签 + 底部小火箭回顶，总宽 44px；
+     投稿按钮同样贴 44px 宽，落在滑轨正上方 ---- */
+  .rail-dock{
     right: 2px;
+    gap: 6px;
+  }
+  .rail-submit{
+    gap: 1px;
+    padding: 4px 0 3px;
+    border-radius: 12px;
+    font-size: 8px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+  .rail-submit svg{ width: 15px; height: 15px; }
+  .rail{
     gap: 0;
     padding: 5px 2px;
     border-radius: 13px;
