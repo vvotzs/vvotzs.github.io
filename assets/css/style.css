@@ -1710,7 +1710,7 @@ html.dialog-open{ overflow: hidden; }
   flex: none;
   width: 34px;
   height: 34px;
-  margin-left: 2px;
+  margin-left: 20px;      /* 与「交流群」胶囊拉开距离，避免误触 */
   border: 0;
   border-radius: 50%;
   background: linear-gradient(180deg, #22C55E 0%, #16A34A 100%);
