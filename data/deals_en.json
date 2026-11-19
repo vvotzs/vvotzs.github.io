@@ -2569,5 +2569,217 @@
     ],
     "risk": "Whether the code still applies is best confirmed on the checkout total (unverified). The free transit eSIM is scarce and limited to past customers. Reseller plans are non-refundable, so a wrong destination is money lost.",
     "source": "OzBargain BambooSIM merchant page (posted 2026-11-17, checked 2026-11-19) + BambooSIM official plan pages"
+  },
+  "qiniu-conatus-free-100m-daily": {
+    "title": "[CN] Qiniu Conatus free model: 100M tokens a day after real-name verification (until Nov 30)",
+    "highlight": "A 1024 Programmer's Day promo: 100M tokens every day once you pass real-name verification, callable from the OpenAI SDK, Claude Code or Codex; when the quota runs out nothing is charged.",
+    "regions": "[CN] A Qiniu account with real-name verification; unverified accounts get no quota and cannot call the model.",
+    "value": "100M tokens/day (10B after a ¥100 top-up)",
+    "content": "Qiniu's limited-time Conatus model from its 1024 Programmer's Day event runs from 00:00 on 2026-10-24 to 23:59 on 2026-11-30 Beijing time. The model ID is `qiniu/conatus-free`; only this single fused label is exposed and it routes across several top models. A verified account gets 100M tokens a day, raised to 1B a day after any single top-up over ¥100 that has cleared (several top-ups do not add up, and buying a resource pack or subscription does not count). Usage is metered on input plus output tokens, cached input included, shared by every API key on the account, reset at 00:00 daily and not carried over.\n\nThe event is free quota only, with no pay-as-you-go: when the quota is gone requests are rejected outright, with no charge to your balance, resource pack, subscription or points, and no automatic switch to a paid model. Base URL is `https://api.qnaigc.com/v1`, compatible with both the Completions and Messages protocols, so the OpenAI SDK, Codex and Claude Code all work; 1M context, 128K max output.",
+    "conditions": "Sign in and complete real-name verification. Only a single top-up over ¥100 that has cleared raises the limit to 1B a day (earlier top-ups count, several do not add up). Accounts flagged by risk control cannot call the model. The event ends at 23:59 on 2026-11-30 and calling stops then even with quota left.",
+    "steps": [
+      "Sign in to the Qiniu console and complete real-name verification",
+      "Create an API key on the models page (every key on the account shares the quota)",
+      "Point the base URL at https://api.qnaigc.com/v1, set the model to qiniu/conatus-free and call it over the OpenAI or Messages protocol"
+    ],
+    "risk": "Service stops when the event ends on Nov 30 and does not move to paid; an exhausted quota is rejected; Qiniu advises against sensitive data or production use; the platform's terms govern what it does with your verification details.",
+    "source": "Qiniu Conatus Free official event page (checked 2026-11-20) + visitor submission email (2026-11-19 21:08, linking an X post)"
+  },
+  "stepfun-stepaudio3-free-preview": {
+    "title": "[CN/Global] StepFun StepAudio 3 voice models are free until Nov 23, 11:59 (no card)",
+    "highlight": "Realtime duplex voice, TTS with instant voice cloning, sound-effect generation, AI music and ASR all at zero cost until noon on Nov 23; no card and no prepayment.",
+    "regions": "[CN/Global] Sign up on the StepFun platform; no credit card and no prepayment. Personal accounts usually need real-name verification before using voice models.",
+    "value": "Six voice APIs at 0 (list price from ¥0.65 per session minute)",
+    "content": "StepFun's open platform has extended the free window for its StepAudio 3 voice family to 11:59:59 Beijing time on 2026-11-23; from 12:00:00 the new prices apply and the preview builds give way to paid releases. The free `-preview` model IDs are `stepaudio-3-realtime-preview` (end-to-end duplex realtime voice with barge-in), `stepaudio-3-chat-preview` (voice understanding over Chat Completions), `stepaudio-3-gen-preview` (text to sound effects and ambience) and `stepaudio-3-music-preview` (songs and instrumentals); `stepaudio-3-tts` (emotional TTS, seconds-long cloning, text-designed voices) and `stepaudio-3-asr-max` (long-form transcription with timestamps) are described as covered too.\n\nList prices for reference: realtime voice ¥0.65 per session minute (¥39 per hour), TTS and audio generation ¥95 per million billed characters, cloning or voice design ¥10 each, music ¥16 (no audio input) or ¥32 (with audio input) per output hour, ASR ¥7.50 per audio hour.",
+    "conditions": "Register on the platform and create an API key; personal accounts generally need real-name verification for voice models. No card, no prepayment. Billing resumes after 11:59:59 on Nov 23. Whether TTS and standalone ASR are fully inside the free window differs between sources, so check the console (unverified).",
+    "steps": [
+      "Register at platform.stepfun.com, complete verification and create an API key",
+      "Call the model names carrying the -preview suffix; try voices first in the playground",
+      "Stop any scripts or background calls before 12:00 on Nov 23 so the new prices do not bite"
+    ],
+    "risk": "New prices apply automatically from noon on Nov 23, so a call left running will be charged. The exact set of free models should be confirmed in the console. Verification data falls under the platform's terms.",
+    "source": "StepFun platform API pricing page (read 2026-11-20, stating StepAudio 3 free until 11:59:59 on 11-23) + extension coverage (Cyber Egg 2026-11-17, AI Promo Radar) + X daily digest (2026-11-19)"
+  },
+  "nous-portal-qwen4-max-free": {
+    "title": "[Global] Nous Portal: Qwen4-Max free for five days with native vision and 1M context",
+    "highlight": "Alibaba's Qwen4-Max is free on Nous Portal for a five-day window as qwen/qwen4-max:free, served by Inferact on vLLM.",
+    "regions": "[Global] Any free Nous Portal account; the free plan covers free models only, with standard rate limits and no monthly credits.",
+    "value": "Five days at $0 (paid route $1.43 in / $4.28 out per million tokens)",
+    "content": "Nous Research announced on 2026-11-19 that Qwen4-Max, Alibaba's new flagship, is free on Nous Portal for five days in partnership with the Qwen team and Inferact; the free tokens are served on the Inferact Platform and vLLM. The catalogue lists it as `qwen/qwen4-max:free`, with native vision and a 1M-token context aimed at long-horizon work. A paid route sits alongside at $1.43 per million input tokens and $4.28 per million output tokens (Alibaba's QwenCloud Singapore list price is $1.50 and $4.50).\n\nNous has published no rate limits, per-account quota or end time. Counting five days from the announcement points to about Nov 23, which is an inference and not a published date. The Portal's free plan covers free models only, with standard rate limits and no monthly credits.",
+    "conditions": "Register a Nous Portal account (free is enough). Limits and the exact end time are unpublished; five days from the announcement lands around Nov 23 (unverified). Once the window closes or quota runs out, the paid route applies.",
+    "steps": [
+      "Register and sign in at portal.nousresearch.com",
+      "Pick qwen/qwen4-max:free in the catalogue and create an API key",
+      "Run the long-document and screenshot work early; the window can close without notice"
+    ],
+    "risk": "Neither the end time nor a quota is published, so it can be cut short; the free endpoint is rate limited; leave no automated calls behind or they land on the paid price.",
+    "source": "Nous Research X announcement (2026-11-18/19) + Sulat AI News and OrcaRouter coverage (2026-11-19, catalogue and paid prices checked) + visitor submission email (2026-11-19 19:49)"
+  },
+  "hpc-ai-model-apis-2-credit": {
+    "title": "[Global] HPC-AI Model APIs: $2 on signup, $4 with invite code HPCAI-MAPI, OpenAI-compatible",
+    "highlight": "20+ open models such as Kimi K2.5 and MiniMax M2.5 behind one OpenAI-compatible endpoint, usable for agents at 5 requests a minute before the first deposit.",
+    "regions": "[Global] Everywhere except mainland China, which the terms exclude.",
+    "value": "$4 including the invite code",
+    "content": "HPC-AI.COM launched Model APIs: one OpenAI-compatible endpoint for 20-plus popular open models including Kimi K2.5 and MiniMax M2.5. The launch gives every user $2 of free credit, and signing up with the invite code `HPCAI-MAPI` gives $4 in total (a total balance, not an add-on). At MiniMax 2.5 pricing, $2 is roughly 4.3M input plus 1.07M output tokens, enough for a medium project of tens of thousands of lines.\n\nConnect with base URL `https://api.hpc-ai.com/inference/v1` from the OpenAI SDK or Codex CLI. Before a first deposit you are at L0: 5 requests a minute per account per model, with standard models also capped at 2M tokens a minute; spending alone does not promote an account to L1.",
+    "conditions": "Register and create an API key. The $2 is once per account and the invite code makes the total $4. HPC-AI says credit is limited and runs out. No expiry is published. The service is not offered in mainland China. Claude Opus 4.6 has a higher L0 token rate; DeepSeek V4 Pro has zero L0 requests per minute.",
+    "steps": [
+      "Register at hpc-ai.com/models-console (enter the invite code HPCAI-MAPI during signup)",
+      "Create a key on the API key page and export HPC_AI_API_KEY",
+      "Set the base URL to https://api.hpc-ai.com/inference/v1 and use a callable model ID such as moonshotai/kimi-k2.7-code"
+    ],
+    "risk": "Mainland China is excluded. Credit is limited and stops when used up, and the free tier's 5 requests a minute will not carry batch work.",
+    "source": "HPC-AI official 'Introducing Model APIs' blog plus Quickstart and Rate Limit docs (checked 2026-11-20) + awesome-free-ai-coding probe record (2026-11-19) + visitor submission email (2026-11-19 19:49)"
+  },
+  "inception-mercury-100m-free-tokens": {
+    "title": "[Global] Inception Mercury 3: 100M free tokens for every new account, no card, OpenAI-compatible",
+    "highlight": "Sign up and get 100M tokens with no payment details, on a low-latency diffusion model; note the Mercury API shuts down on 2026-12-28.",
+    "regions": "[Global] Sign up on the Inception Platform; no payment details required.",
+    "value": "100M tokens (one-time)",
+    "content": "Inception's docs state that every new account gets a one-time credit of 100 million free tokens, shared across all models rather than granted per model, with no payment details needed. Free-tier rate limits went up tenfold on 2026-10-19, enough for production-like comparison traffic.\n\nMercury 3 is a diffusion language model with a 1M context, priced at $0.10 per million input and $0.35 per million output tokens at its 50% launch discount. The API lives at platform.inceptionlabs.ai, is OpenAI-compatible, and works as soon as you create a key.\n\nImportant: a notice at the top of the docs says the Mercury API is winding down, fully available only through 2026-12-28, after which neither the service nor the data you submitted can be reached.",
+    "conditions": "The grant is one-time and not per model. Register and create an API key; adding payment details is only needed once the free tokens run low. The service closes on 2026-12-28, so the credit has to be used before then.",
+    "steps": [
+      "Register at platform.inceptionlabs.ai without payment details",
+      "Create a key on the API Keys page; the free credit lands automatically",
+      "Call Mercury 3 with any OpenAI-compatible SDK, and add a card under Billing only when the credit runs low"
+    ],
+    "risk": "The API shuts down on 2026-12-28, so do not tie long-term projects to it. The credit is one-time, and data submitted will be unreachable after the shutdown.",
+    "source": "Inception official Quick Start and FAQ (checked 2026-11-20, including the shutdown notice) + official 10x free tokens post (2026-10-19) + aifree.dev recheck (2026-11-15) + X @bobolv235824 (2026-11-19)"
+  },
+  "heygen-voice-turbo-free": {
+    "title": "[Global] HeyGen Voice Turbo is free until Nov 30: public voices plus instant clones, no card",
+    "highlight": "The top-ranked TTS model on Artificial Analysis is free through Nov 30 when the model name is heygen-voice-1-turbo-free; public voices and instant clones both work.",
+    "regions": "[Global] A HeyGen account and API key; no credit card and no credit balance.",
+    "value": "Free API calls until Nov 30",
+    "content": "HeyGen's docs say HeyGen Voice Turbo Free runs at no charge through 2026-11-30. Send `model` as `heygen-voice-1-turbo-free` to use public voices and instant clones (a voice rebuilt from one recording) without spending credits, and a free request never rolls over into a paid model. This works on both the TTS and streaming speech endpoints, and on the WebSocket with the same model name.\n\nLimits: 30 requests a minute per workspace member by default, with all free users sharing one pool of capacity, so over the limit you get a 429 (honour Retry-After when present, otherwise back off exponentially). Professional clones are excluded and need the paid `heygen-voice-1`. HeyGen explicitly guarantees no uptime, latency or time to first audio, so treat it as a way to test, prototype and produce small amounts of speech.",
+    "conditions": "The model name must be heygen-voice-1-turbo-free; the default model or paid Turbo is charged as usual. A HeyGen account and API key are needed, professional voice clones are not included, 429s are normal on shared capacity, and billing resumes after 2026-11-30.",
+    "steps": [
+      "Register at developers.heygen.com and create an API key on a free account",
+      "POST to https://api.heygen.com/v3/models/audio/tts with model set to heygen-voice-1-turbo-free",
+      "Start with a public voice from the docs, then switch to your own instant clone"
+    ],
+    "risk": "Free only until Nov 30, then list price applies; a wrong model name is charged; 429s are frequent at peak; do not build a production SLA on it.",
+    "source": "HeyGen official voice model docs and TTS reference (checked 2026-11-20) + official HeyGen Voice Turbo post (2026-10-21, updated 11-02) + X @bobolv235824 (2026-11-19)"
+  },
+  "jetbrains-junie-lite-free": {
+    "title": "[Global] JetBrains Junie Lite: a free coding agent for every JetBrains account, no card",
+    "highlight": "Not a trial and no countdown: a free JetBrains account gets it in Air and the Junie CLI, activated on the first request with no card at all.",
+    "regions": "[Global] Any JetBrains account (free, AI Pro or AI Ultimate) inside JetBrains Air and the Junie CLI.",
+    "value": "Free, virtually unlimited ($0)",
+    "content": "Junie Lite is a free model tier for Junie, JetBrains' coding agent. It ships with every JetBrains account, is not a trial, has no countdown, and is granted automatically on your first request with no separate signup and no card. It works in JetBrains Air inside the IDE and in the Junie CLI; in the CLI, `/model` selects it directly, otherwise Junie routes tasks itself.\n\nThe docs say the underlying model is currently OpenAI GPT-6 Luna (the launch post said Qwen 3.6 27B) and JetBrains may swap it at any time, so do not build workflows around the model name. Usage is described as virtually unlimited with no published quota: when the model's own capacity ceiling is reached, requests stop rather than falling back to another model. Inference runs only on JetBrains infrastructure, and prompts, code and output are neither shared with the model provider nor used for training.",
+    "conditions": "Available in JetBrains Air and the Junie CLI only, not in JetBrains AI Assistant. Needs a JetBrains account but no AI licence. No quota number is published. The launch post mentions running until 2026-12-31 while the docs describe a standing free tier, so check the official page (unverified).",
+    "steps": [
+      "Install a JetBrains IDE with Air, or the Junie CLI, and sign in with your JetBrains account",
+      "In Air go to Settings → AI | Air | Accounts and pick 'Junie Lite Only'; in the CLI run /model and choose Junie Lite",
+      "Hand it the mechanical work — renames, test scaffolds, changelogs — and keep frontier models for the hard parts"
+    ],
+    "risk": "The underlying model can change, the quota is unpublished and requests stop at the ceiling, and it covers JetBrains tooling only.",
+    "source": "JetBrains official Junie Lite docs and launch post (checked 2026-11-20) + JetBrains Air authorization help (updated 2026-11-11) + tahoo.tech recheck (2026-11-13)"
+  },
+  "vercel-ai-gateway-5-monthly": {
+    "title": "[Global] Vercel AI Gateway: $5 of free credits every 30 days, tokens at provider list price",
+    "highlight": "Included with any Vercel account, refreshed every 30 days; switch between OpenAI, Anthropic, Google and others by changing one string. Buying credits ends the monthly free allowance.",
+    "regions": "[Global] Every Vercel team account; the free tier covers a subset of models with lower per-model rate Limits.",
+    "value": "$5 every 30 days (about $60 a year)",
+    "content": "Vercel AI Gateway gives each team account a free tier: $5 of credits every 30 days to try models in the catalogue. The original FAQ said every model including premium ones; the current pricing docs say the free tier covers a subset with lower per-model rate limits, so check the Free Tier model list. Tokens are billed at the upstream provider's list price with no markup, including when you bring your own key.\n\nThe free credit starts with your first AI Gateway request. Once you purchase AI Gateway Credits the account moves to the paid tier and the monthly $5 free credit no longer applies. Exceeding a rate limit returns a 429 that you can retry after a short wait.",
+    "conditions": "A Vercel account is required. The free tier is a subset of models with lower rate limits, resets every 30 days and does not roll over, and it disappears for good once credits are purchased.",
+    "steps": [
+      "Register a Vercel account and open AI Gateway",
+      "Make your first request to any free-tier model, which starts the $5 clock",
+      "Change the model string to switch providers without touching your SDK; buy credits only for more usage"
+    ],
+    "risk": "The free model list and rate limits change; the $5 resets every 30 days and never accumulates; one credit purchase removes the free allowance permanently.",
+    "source": "Vercel AI Gateway official pricing docs and FAQ (checked 2026-11-20) + Vercel GA announcement FAQ + X daily digest (2026-11-19)"
+  },
+  "sosim-hk-33-100gb-esim": {
+    "title": "[HK] SoSIM new SIM at HK$33: 50GB becomes 100GB plus a free eSIM conversion (until Nov 30)",
+    "highlight": "A 3HK prepaid card for HK$33, bought as an eSIM and scanned in about ten minutes, with an extra 50GB for new cards (100GB in total) and a free SIM-to-eSIM coupon.",
+    "regions": "[HK] 30 days of 50GB local data plus 50GB extra for new cards and 1,500 local minutes; real-name registration is required for local use, while travel-only use does not need it (China, Macau, Japan, Korea, Thailand, Taiwan and 24 hotspots).",
+    "value": "HK$33 for 100GB over 30 days (about ¥30)",
+    "content": "SoSIM is Hutchison Telecom Hong Kong's (3HK) prepaid brand. The new-customer offer runs from 2026-09-01 to 11-30: activate a new card in the window and pick the 50GB Hong Kong package as the default, and the first 30 days give 100GB of Hong Kong data (the 50GB package plus 50GB extra), with 1,500 local minutes included. The card costs HK$33 and stays valid for 120 days; activate it within 60 days of purchase.\n\nThe eSIM can be bought online: the QR code goes to your verified email after payment and the fastest activation is about ten minutes, with no plastic. New cards also get the 'two-way privilege': a free SIM-to-eSIM conversion coupon (normally HK$28) and a HK$8 number change, delivered to Rewards > My Coupons within five working days and valid for seven days. For travel, the same HK$33 can buy five days of Asia-Pacific roaming data if you switch within 48 hours of activation.",
+    "conditions": "Real-name registration is required for use in Hong Kong. Activate within 60 days of purchase and the card lasts 120 days from activation. The extra 50GB only applies to cards activated before Nov 30 with the 50GB Hong Kong package as default. The device must support eSIM, and travel data has to be switched within 48 hours.",
+    "steps": [
+      "Buy the eSIM on the SoSIM online shop for HK$33 (Visa/Mastercard, Alipay, WeChat Pay accepted)",
+      "Scan the QR code sent to your email and activate, which takes about ten minutes",
+      "Complete real-name registration in the app and set the default package to 50GB Hong Kong data to get the extra 50GB",
+      "Collect the free conversion and number-change coupons under Rewards > My Coupons and use them within seven days"
+    ],
+    "risk": "This is not free: HK$33 is a real payment, local data needs real-name registration, the package must be renewed after 120 days, roaming calls and texts are expensive (HK$8 a minute to receive, HK$3.5 a text), and travel data must be switched within 48 hours.",
+    "source": "SoSIM official new-joiner and local service pages + Hutchison Telecom Hong Kong press release (2026-09-24), checked 2026-11-20 + visitor submission email (2026-11-19 21:10)"
+  },
+  "bitrefill-free-1gb-esim": {
+    "title": "[Global] Bitrefill app: claim a free 1GB eSIM, one per account, no code needed",
+    "highlight": "Only inside the official app: an account with a verified email that has never bought or claimed an eSIM sees a free banner on the eSIM tab and can pick a destination.",
+    "regions": "[Global] The official iOS or Android app only; eligible destinations are whatever the in-app list shows and can change.",
+    "value": "1GB eSIM",
+    "content": "Bitrefill's help centre (updated 2026-11-17) says an account qualifies for a free 1GB eSIM when the email is verified, the official iOS or Android app is used (the website does not work), no eSIM has ever been bought or claimed on that account, and the chosen destination is on the in-app list. The free banner sits on the eSIM tab in the app.\n\nIt is one claim per account, not transferable and uses no coupon code; eligible accounts simply see the offer. Free eSIMs connect to the same local networks as paid packages. If no banner appears, the usual causes are the website instead of the app, an active VPN or private relay, an unverified email, a previous eSIM order, a destination outside the list, or a location where claims are unavailable.",
+    "conditions": "Official app only, with VPN and private relay off. One claim per account and not transferable. Destinations change with the promotion, and accounts that previously bought or claimed an eSIM cannot take part.",
+    "steps": [
+      "Install the official Bitrefill app, sign in and confirm the email is verified",
+      "Open the eSIM tab and tap the 1GB free banner",
+      "Pick a destination, confirm the order and install from the email or on-screen steps"
+    ],
+    "risk": "The destination list and stock change, the website and a VPN hide the entry point, older accounts cannot take part, and community reports mention regional limits.",
+    "source": "Bitrefill help centre article on the free eSIM (updated 2026-11-17) + bitrefill.com/free-esim destinations page (checked 2026-11-20)"
+  },
+  "remitly-us-global-card": {
+    "title": "[US] Remitly Global Card and bank account: a bonus after $300 of wages lands, no monthly fee",
+    "highlight": "A Lead Bank Visa debit card on a Stripe account that can hold USD or USDC, with no monthly or foreign transaction fees; a first qualifying $300 payroll deposit pays a bonus about seven business days later.",
+    "regions": "[US] United States only, card and account from Lead Bank and Stripe (funds at Fifth Third Bank); expanding to the UK and Europe.",
+    "value": "Bonus after $300 of wages (amount shown in the app, $50 per the submission)",
+    "content": "Remitly launched the Global Card on 2026-07-30: a Lead Bank Visa debit card on a Stripe Payments Company account with funds at Fifth Third Bank (FDIC), holding dollars or USDC, free withdrawals at 40,000+ US ATMs, no monthly or foreign transaction fees, and Remitly's best rate when a transfer is funded from the card. Direct deposit arrived on 2026-09-29, with a switch form generated in the app or a few taps to link an employer.\n\nThe official direct-deposit promotion runs 2026-08-10 to 12-31: a first qualifying payroll, salary, pension or government-benefit ACH deposit of $300 or more earns a bonus about seven business days later, once per customer and per account. The terms only say the amount is the one shown in the app; the submission puts it at $50. A first-transfer discount sits alongside it ($10 off a $50+ send per the submission, $20 in our multi-region Remitly entry, which differs by market and channel).\n\nThe $9.99-a-month Global Card Plan (Pay Later credit, 1% rewards) is an optional upgrade and is not needed for the bonus.",
+    "conditions": "The card is currently invitation-only for eligible US users and has a waitlist. The deposit must be recurring salary, wages or benefits sent by an employer or payroll provider over ACH; transfers, P2P, wallets, cheques, cash, wires and tax refunds do not count. The bonus is once only, and both amounts vary by market and campaign.",
+    "steps": [
+      "Confirm the Global Card invitation in the Remitly app, open the card and activate it",
+      "Generate a direct deposit form in the app for your employer, or link the employer directly",
+      "Check the bonus in the app about seven business days after the first $300 deposit; send a transfer in the same session if you also want the first-transfer discount"
+    ],
+    "risk": "US only and invitation-based; Remitly alone decides what counts as a qualifying deposit, and a disguised transfer will not pay. The amount is not fixed in the terms, and the first-transfer discount may overlap with our multi-region $20 Remitly entry, so do not count both. The card is not a bank account.",
+    "source": "Remitly Global Card official landing page and Direct Deposit Promotional Terms (2026-11 version) + official press releases (card 2026-07-30, direct deposit 2026-09-29) + visitor submission email (2026-11-19 23:28)"
+  },
+  "payangel-referral-10": {
+    "title": "[UK/US/CA/AU] PayAngel referrals: £10 / $10 / CAD 10 / AUD 10 per friend, no cap",
+    "highlight": "When a friend signs up through your link, passes KYC and sends a first international transfer, you are paid instantly in your own currency with no limit on referrals.",
+    "regions": "[UK/US/CA/AU] £10 in the UK, $10 in the US, CAD 10 in Canada, AUD 10 in Australia and €10 in the eurozone; destinations are mainly in Africa and South Asia (Ghana, Nigeria, Kenya, Uganda, India, Bangladesh and more).",
+    "value": "£10 / $10 / €10 / AUD 10 / CAD 10 each",
+    "content": "PayAngel's help and Rewards pages explain the programme: take your personal link from the Referral Rewards page in the app or on the web, and when a friend signs up through it, completes a one-time KYC in their own name and sends a first qualifying international transfer, you receive £10, $10, €10, CAD 10 or AUD 10 instantly in your sending currency, with no cap on how many friends you refer. Referred friends get fee-free transfers on many corridors.\n\nKYC normally needs a valid government photo ID (passport, driving licence, national ID or residence permit) plus a selfie in the app, and occasionally proof of address for higher limits. PayAngel is supervised by the FCA in the UK, FinCEN in the US, FINTRAC in Canada and AUSTRAC in Australia, with PSD2 oversight in Europe.",
+    "conditions": "The friend must register through your link or code, pass KYC and send a first qualifying transfer, whose minimum the app shows per currency. Self-referrals, duplicate accounts and shared household identities are blocked by AML checks, and rewards are paid in the sending country's currency.",
+    "steps": [
+      "Register with PayAngel, pass KYC and copy your referral link from the Rewards tab",
+      "Send it to people who genuinely send money, and ask them to open the link before registering",
+      "Check the Rewards balance once their first qualifying transfer clears; the reward is immediate"
+    ],
+    "risk": "The first-transfer minimum varies by currency and corridor, so check the app; self-referral and multiple accounts are blocked and can close an account; tax on rewards is the user's own affair; only sending markets in the UK, US, Canada, Australia and the EU qualify.",
+    "source": "PayAngel official Referral Rewards and Rewards pages (checked 2026-11-20) + official send-from guides (2026-11-12) + visitor submission email (2026-11-19 19:49)"
+  },
+  "starryblu-free-virtual-card": {
+    "title": "[Global] Starryblu free virtual Mastercard from Singapore's Wotransfer, openable with a passport (queue applies)",
+    "highlight": "A sister brand of Panda Remit with a MAS major payment institution licence and OCBC-segregated funds; the free tier issues a Singapore-BIN 228001 Mastercard that community tests use for Claude.",
+    "regions": "[Global] A mainland Chinese passport plus a domestic proof of address works in practice; the card is issued in Singapore by Wotransfer Pte Ltd (Mastercard debit, BIN 228001).",
+    "value": "Free virtual card (physical card $9.9 shipping, plans $9.99-19.99 a month)",
+    "content": "Starryblu is a multi-currency account from Singapore's Wotransfer Pte. Ltd., a sister brand of Panda Remit holding MAS major payment institution licence PS20200501 with customer funds segregated at OCBC. It covers CNY, SGD, USD, EUR, HKD, GBP and more, with cross-border transfers and a Mastercard debit card.\n\nThe free tier issues a virtual Mastercard at no cost (Singapore BIN 228001, usable for Claude, ChatGPT, Cursor and other overseas subscriptions); a physical card ships for about US$9.9. Paid plans at $9.99 and $19.99 a month and $999.99 a year add free physical cards and number choice. Funding runs over Hong Kong FPS, Singapore PayNow or a cross-border wire, and withdrawals back to Alipay or WeChat work with small losses. Since 2026-10-29 the company has been releasing cards in batches, so free-tier users who queued for months can now open one; new registrations still queue, and a whitelist or invite code moves you up.",
+    "conditions": "A passport, face check and proof of address are required (a mainland ID card works as address proof). New accounts still queue for release. The free card cannot be added to Apple or Google Wallet per community reports. An invite code must be entered at signup and cannot be added later. Physical cards and plans carry extra fees and auto-renewal.",
+    "steps": [
+      "Download the app from the official site or an app store, pick your country of residence and enter an invite code if you have one",
+      "Photograph the passport photo page, complete the face check and upload proof of address",
+      "Once approved, open the card page, choose the free plan and apply for the free virtual card; order a physical card separately if needed",
+      "Fund a small amount first to test linking and spending before leaving a balance"
+    ],
+    "risk": "The queue can run for months and cards are released in batches; this is a payment account, not a bank deposit, so segregated custody is not deposit insurance; Alipay and WeChat QR spending carries noticeable loss; wallet and merchant acceptance varies; watch plan auto-renewal.",
+    "source": "Starryblu official site and app walkthrough (checked 2026-11, licence and free tier) + linux.do submission thread (2026-11-19) + NodeSeek datapoint (2026-11-11: free virtual card now live, BIN and queue) + HuoKe and Carddoger guides"
+  },
+  "revolut-mobile-ireland": {
+    "title": "[IE] Revolut Mobile eSIM: €9.99 a month for the first 25,000 (then €12.99), with 20GB of UK and EEA roaming",
+    "highlight": "Unlimited 5G in Ireland plus 20GB of UK and EEA roaming, a 1GB Messaging Pass across 120 countries and free NordVPN, activated as an eSIM in the app with no contract.",
+    "regions": "[IE] Irish numbers and Irish Revolut accounts only; 5G runs on Vodafone through Gigs, with roaming across the UK and EEA.",
+    "value": "Saves €3 a month (about €36 a year)",
+    "content": "Revolut launched Revolut Mobile in Ireland on 2026-11-09: an eSIM with network capability from Gigs on Vodafone 5G, activated in seconds in the app, on a rolling monthly contract you can cancel any time. The plan includes unlimited Irish data, calls and texts under a fair use policy, 20GB of roaming in the UK and EEA, a 1GB low-speed Messaging Pass across 120+ non-EU countries, and NordVPN at no extra cost.\n\nPricing: €9.99 a month for the first 25,000 customers, until 2027-01-31 or while that allocation lasts, then €12.99. RevPoints can offset the bill, up to the full amount (an Ultra customer spending about €1,400 a month covers it at €9.99). You can keep your number, take a free new one or buy a VIP number for €10, and extra numbers cost from €2 a month each.",
+    "conditions": "An Irish Revolut account (Revolut Bank UAB, Ireland branch) and an Irish number are required, 18+, and the €9.99 applies only to the first 25,000 or until 2027-01-31. Fair use policy limits tethering and abuse, and the device must support eSIM.",
+    "steps": [
+      "In the Revolut app open RevPoints → eSIM and choose the mobile plan",
+      "Pick a number: keep yours (text PAC to 65075 and give the code to Revolut), take a free new one or buy a VIP number",
+      "Check out, install the eSIM from the QR code; porting normally completes within one working day"
+    ],
+    "risk": "Irish numbers and Irish Revolut accounts only; the €9.99 can end early when the allocation runs out and reverts to €12.99; unlimited data is subject to fair use; the app price is authoritative.",
+    "source": "Revolut Mobile official plans page (UK, same mechanism) + Revolut/Gigs Ireland launch release (2026-11-09, prices, deadline and terms) + RTÉ, Irish Examiner and TheJournal coverage + visitor submission email (2026-11-19 19:50)"
   }
 }
