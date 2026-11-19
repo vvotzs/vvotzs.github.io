@@ -657,10 +657,27 @@
     var urlEl = $("#sd-url", submitDialog);
     var regionEl = $("#sd-region", submitDialog);
     var notesEl = $("#sd-notes", submitDialog);
-    var hpEl = $("#sd-hp", submitDialog);   /* 蜜罐：真人看不到也碰不到 */
+    var hpEl = $("#sd-hp", submitDialog);   /* 蜜罐：真人看不到也碰不到（字段名 hp_x7，不用 website 免得密码管理器自动填） */
     var sending = false;
-    var lastSentAt = 0;                      /* 上次提交时间，用于 5 秒防重复冷却 */
+    /* 5 秒防重复冷却的起点存在 sessionStorage 里：点「再投一条」或刷新页面都还在，
+       只有请求失败才清零（允许立即重试）。新开标签页 = 新会话，冷却从头算。 */
+    var SENT_KEY = "ydj_last_sent";
     var COOLDOWN_MS = 5000;
+    var readSentAt = function () {
+      try {
+        var v = parseInt(sessionStorage.getItem(SENT_KEY), 10);
+        return isNaN(v) ? 0 : v;
+      } catch (err) { return 0; }
+    };
+    var lastSentAt = readSentAt();
+    var writeSentAt = function (t) {
+      lastSentAt = t;
+      try {
+        if (t) sessionStorage.setItem(SENT_KEY, String(t));
+        else sessionStorage.removeItem(SENT_KEY);
+      } catch (err) { /* 隐私模式等存不了：只在内存里生效 */ }
+    };
+    var openedAt = 0;                        /* 弹窗打开时间：随提交带 elapsed_ms，太快的多半是脚本 */
 
     /* 手机端自适应：平时垂直居中；输入法把可视区域压小（或聚焦输入框）时贴到顶部。
        用 .kb-open 一个类切换，键盘收起 / 进入成功页就移除，弹窗平滑回到中间。 */
@@ -682,6 +699,7 @@
       submitDialog.classList.toggle("kb-open", !!on);
     };
     var syncKeyboard = function () {
+      if (!submitDialog.open) return;   /* 弹窗没开时不改 --vv-* / kb-open */
       if (!vp) return;
       syncViewportVars();
       /* 两种环境都成立：
@@ -690,14 +708,35 @@
          差值接近 0。所以再和「打开弹窗时的 vp.height」比一次，谁大听谁的。 */
       var shrunk = window.innerHeight - vp.height;
       var fromBase = vpBaseH ? vpBaseH - vp.height : 0;
-      kbOpen(shrunk > 110 || fromBase > 110);
+      var up = shrunk > 110 || fromBase > 110;
+      kbOpen(up);
+      /* 键盘没弹起时基线跟着当前可视高度走：收起键盘、旋转屏幕后自己回到正确值，
+         不会拿一个旧基线反复判成「键盘弹起」。 */
+      if (!up) vpBaseH = vp.height;
     };
     if (vp) {
       vp.addEventListener("resize", syncKeyboard);
       vp.addEventListener("scroll", syncKeyboard);
     }
+    /* 横竖屏切换 / 窗口宽度变化：可视高度整块换量级，旧基线会把「变矮」误判成键盘弹起，
+       键盘没弹起时先重取基线再判断。 */
+    var lastW = window.innerWidth;
+    var refreshBaseH = function () {
+      if (!vp || !submitDialog.open) return;
+      lastW = window.innerWidth;
+      /* 横竖屏 / 宽度变化和键盘无关：可视高度就是新基线（键盘若同时弹着，收起后 syncKeyboard 会再校正） */
+      vpBaseH = vp.height;
+      syncKeyboard();
+    };
     if (window.addEventListener) {
-      window.addEventListener("resize", syncKeyboard);
+      window.addEventListener("resize", function () {
+        if (window.innerWidth !== lastW) { refreshBaseH(); return; }
+        syncKeyboard();
+      });
+      window.addEventListener("orientationchange", function () {
+        /* 方向切换后布局尺寸要等一帧才更新，稍后再取基线 */
+        setTimeout(refreshBaseH, 120);
+      });
     }
 
     var fields = [nameEl, urlEl, regionEl, notesEl];
@@ -733,7 +772,7 @@
     };
     var resetForm = function () {
       submitForm.reset();
-      lastSentAt = 0;                        /* 「再投一条」= 新的一次提交，冷却重新计 */
+      /* 故意不清 lastSentAt：刷新 / 「再投一条」后 5 秒冷却继续生效，只有请求失败才清零 */
       clearBad();
       donePanel.hidden = true;
       submitForm.hidden = false;
@@ -748,6 +787,7 @@
     };
     var openDialog = function () {
       resetForm();
+      openedAt = Date.now();                 /* 提交时算 elapsed_ms */
       if (vp) {
         vpBaseH = vp.height;   /* 记下键盘未弹起时的可视高度，Android 上 innerHeight 也会缩，靠它判断 */
         syncViewportVars();
@@ -797,8 +837,12 @@
       if (sending) return;
       /* 蜜罐字段被填 = 机器人。静默走成功回执但不发请求，让它以为提交成功。 */
       if (hpEl && hpEl.value) { showDone(); return; }
-      /* 5 秒防重复冷却：连点 / 脚本在同一份表单里反复 POST 只会有第一次真正发出去。 */
-      if (Date.now() - lastSentAt < COOLDOWN_MS) return;
+      /* 5 秒防重复冷却：连点 / 脚本在同一份表单里反复 POST 只会有第一次真正发出去。
+         起点存在 sessionStorage，刷新或「再投一条」之后照样生效。 */
+      if (Date.now() - lastSentAt < COOLDOWN_MS) {
+        showErr(null, msg("wait") || (LANG === "en" ? "Please wait a few seconds." : "请等几秒再试"));
+        return;
+      }
       var name = (nameEl.value || "").trim();
       var url = (urlEl.value || "").trim();
       if (!name) { showErr(nameEl.parentNode, msg("name")); nameEl.focus(); return; }
@@ -811,15 +855,18 @@
       body.set("region", (regionEl.value || "").trim());
       body.set("notes", (notesEl.value || "").trim());
       body.set("lang", LANG);
+      /* 蜜罐与停留时长一起带给 Apps Script：服务端再按 hp_x7 非空 / elapsed_ms < 1200 拦一次 */
+      body.set("hp_x7", hpEl ? hpEl.value : "");
+      body.set("elapsed_ms", String(openedAt ? Date.now() - openedAt : 0));
 
       sending = true;
-      lastSentAt = Date.now();
+      writeSentAt(Date.now());
       sendBtn.disabled = true;
       clearBad();
       var finish = function (ok) {
         sending = false;
         sendBtn.disabled = false;
-        if (!ok) { lastSentAt = 0; showErr(null, msg("failed")); return; }   /* 失败允许立即重试 */
+        if (!ok) { writeSentAt(0); showErr(null, msg("failed")); return; }   /* 失败允许立即重试 */
         showDone();
       };
       if (!GAS_URL) { finish(false); return; }

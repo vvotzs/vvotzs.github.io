@@ -234,7 +234,7 @@ ZH_DESC = (
 )
 EN_TITLE = "Deal Hunter · Verified global deals, free credits & sign-up bonuses"
 EN_DESC = (
-    "Deal Hunter: a daily-verified directory of global offers — free AI credits, crypto sign-up rewards, "
+    "Deal Hunter: a directory of global offers, refreshed every 2 hours — free AI credits, crypto sign-up rewards, "
     "overseas bank and remittance bonuses, VPS credits, free eSIM data and student software. "
     "Value, requirements and deadline on one card, straight to the official page."
 )
@@ -1160,7 +1160,9 @@ def main() -> None:
   </nav>
 </div>
 
-<a class="lang-switch" id="lang-switch" href="{switch_href}" hreflang="{switch_hreflang}" lang="{switch_hreflang}" {al(*U['lang_switch_aria'])}>{ui('lang_switch')}</a>
+<!-- 语言徽标：lang 只挂在内部可见文字的 <span> 上，<a> 本身不声明 lang，
+     否则读屏会把整条链接按目标语言念（例如中文页把「EN」念成英文单词）。 -->
+<a class="lang-switch" id="lang-switch" href="{switch_href}" hreflang="{switch_hreflang}" {al(*U['lang_switch_aria'])}><span lang="{switch_hreflang}">{ui('lang_switch')}</span></a>
 
 <div class="modal" id="search-modal" role="dialog" aria-modal="true" aria-hidden="true"
      {al(*U['modal_aria'])}>
@@ -1242,13 +1244,15 @@ def main() -> None:
         aria-labelledby="submit-title"
         data-msg-name="{e(U['submit_need_name'][1] if is_en else U['submit_need_name'][0])}"
         data-msg-link="{e(U['submit_need_link'][1] if is_en else U['submit_need_link'][0])}"
-        data-msg-failed="{e(U['submit_failed'][1] if is_en else U['submit_failed'][0])}">
+        data-msg-failed="{e(U['submit_failed'][1] if is_en else U['submit_failed'][0])}"
+        data-msg-wait="{e(U['submit_wait'][1] if is_en else U['submit_wait'][0])}">
   <form class="sd-form" id="submit-form" novalidate autocomplete="off" autocorrect="off"
           autocapitalize="off" data-lpignore="true" data-form-type="other">
     <!-- 蜜罐：机器人才会填的陷阱字段。视觉上移出屏幕（不是 display:none，否则部分脚本会跳过），
          读屏与 Tab 键都碰不到；一旦有值，app.js 静默丢弃这次提交，不发请求。 -->
     <div class="sd-hp" aria-hidden="true">
-      <input id="sd-hp" type="text" name="website" tabindex="-1" autocomplete="off" spellcheck="false">
+      <!-- 字段名别用 website / email 这类常见名字：密码管理器会把它当网址自动填，真人就被误判成机器人。 -->
+      <input id="sd-hp" type="text" name="hp_x7" tabindex="-1" autocomplete="off" spellcheck="false">
     </div>
     <div class="sd-top">
       <button class="sd-back" type="button" data-submit-close

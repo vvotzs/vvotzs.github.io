@@ -65,6 +65,7 @@ U: dict[str, tuple[str, str]] = {
     "submit_need_name": ("请填写优惠名称", "Please add a deal name"),
     "submit_need_link": ("请填写活动或来源链接", "Please add an offer or source link"),
     "submit_failed": ("没发出去，检查网络再试一次", "Couldn't send — check your connection and try again"),
+    "submit_wait": ("刚提交过，请等几秒再试", "Just sent — please wait a few seconds"),
     "submit_success": ("已收到！核验后会尽快收录 ✨", "Received! We'll verify and list it soon."),
     "submit_again": ("再投一条", "Submit another"),
     # 热榜 tab / 分区标题与说明
