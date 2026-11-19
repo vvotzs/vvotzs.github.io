@@ -801,9 +801,14 @@
       }
       submitDialog.showModal();
       document.documentElement.classList.add("dialog-open");
-      /* 桌面端直接聚焦名称框；手机端不自动聚焦，避免一打开就弹键盘、把卡片顶到最上面 */
+      /* 桌面端直接聚焦名称框；手机端不自动聚焦，避免一打开就弹键盘、把卡片顶到最上面。
+         手机端把焦点显式放在 <dialog> 自己身上（tabindex="-1"）：不这么做时浏览器会自己挑
+         弹窗里第一个可聚焦元素，安卓 Chrome 就可能在打开瞬间闪出键盘上方的 🔑💳📍 填充辅助栏。 */
       if (!mqNarrow.matches) {
         setTimeout(function () { if (nameEl) nameEl.focus(); }, 40);
+      } else {
+        try { submitDialog.focus({ preventScroll: true }); }
+        catch (err) { submitDialog.focus(); }
       }
     };
     var closeDialog = function () {

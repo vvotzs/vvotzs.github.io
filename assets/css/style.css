@@ -1657,6 +1657,8 @@ footer{
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 }
+/* 弹窗自己 tabindex="-1" 收焦点（见 app.js openDialog）：这圈焦点框不该画出来 */
+.submit-dialog:focus{ outline: none; }
 html.dialog-open{ overflow: hidden; }
 
 /* 顶栏：← / 头像 / 标题 ………… TG 徽标 / 纸飞机 */
@@ -1762,6 +1764,8 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
   height: 1px;
   margin: 0;
   padding: 0;
+  border: 0;
+  resize: none;
   overflow: hidden;
   white-space: nowrap;
   clip-path: inset(50%);

@@ -1241,6 +1241,7 @@ def main() -> None:
 </div>
 
 <dialog class="submit-dialog" id="submit-dialog" data-endpoint="{SUBMIT_ENDPOINT}"
+        tabindex="-1"
         aria-labelledby="submit-title"
         data-msg-name="{e(U['submit_need_name'][1] if is_en else U['submit_need_name'][0])}"
         data-msg-link="{e(U['submit_need_link'][1] if is_en else U['submit_need_link'][0])}"
@@ -1258,8 +1259,10 @@ def main() -> None:
     <div class="sd-hp" aria-hidden="true">
       <!-- 不设 name 属性（没有 <form> 可提交，JS 直接读 .value）；也不用 website / email 这类名字，
            免得密码管理器把蜜罐填上、把真人误判成机器人。 -->
-      <input id="sd-hp" type="text" tabindex="-1" autocomplete="off" spellcheck="false"
-             data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other">
+      <!-- 用 textarea 而不是 input type="text"：<dialog>.showModal() 打开时 Chrome 会扫到弹窗里
+           唯一的文本 input 并聚焦它，于是键盘上方闪出 🔑💳📍 填充辅助栏；换成 textarea 就不会。 -->
+      <textarea id="sd-hp" rows="1" tabindex="-1" autocomplete="off" spellcheck="false"
+                data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other"></textarea>
     </div>
     <div class="sd-top">
       <button class="sd-back" type="button" data-submit-close
@@ -1282,7 +1285,7 @@ def main() -> None:
       </button>
     </div>
 
-    <!-- 单行字段一律用 <textarea rows="1"> 而不是 <input>：真机实测（安卓 Chrome）只有 textarea
+    <!-- 单行字段一律用 <textarea rows="1"> 而不是 input type="text"：真机实测（安卓 Chrome）只有 textarea
          不弹键盘上方那条 🔑💳📍 填充辅助栏——它不看 autocomplete / name / id，只按控件类型判断，
          所以改标签是唯一稳的办法。单行外观、Enter 发送、粘贴多行折成一行由 style.css 的
          .sd-field-single 与 app.js 的 beforeinput / input 拦截负责。 -->
