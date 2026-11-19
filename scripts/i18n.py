@@ -29,7 +29,7 @@ U: dict[str, tuple[str, str]] = {
     "lang_switch_aria": ("切换为英文版", "Switch to Chinese"),
     # 首屏
     "hero_h1": ("羊毛情报局", "Deal Hunter"),
-    "hero_tag": ("全球免费额度 · 限时奖励",
+    "hero_tag": ("全球高值羊毛 先看重点",
                  "Verified freebies & rewards"),
     "updated": ("北京时间 {t} 更新", "Updated {t} (UTC+8)"),
     "updated_short": ("{t} 更新", "{t} updated"),
