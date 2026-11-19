@@ -19,7 +19,7 @@ assets/fav/<domain>.webp # 构建时缓存到本地的站点图标（48×48 WebP
 assets/og-cover.png     # 1200×630 中文社交分享封面（scripts/make_og_cover.py 生成）
 assets/og-cover-en.png  # 1200×630 英文社交分享封面（/en/ 的 og:image，同一脚本 `en` 参数生成）
 data/deals.json         # 优惠条目（中文 12 项标准字段；抽奖 / 阶梯类另有 value_expected）
-data/deals_en.json      # 139 条英文翻译，按 id 对应 deals.json（title / highlight / regions / value / content / conditions / steps / risk / source）
+data/deals_en.json      # 150 条英文翻译，按 id 对应 deals.json（title / highlight / regions / value / content / conditions / steps / risk / source）
 data/meta.json          # 统计与最后更新时间
 scripts/common.py          # 共用常量与函数（北京时间、类别、状态、value_expected）
 scripts/i18n.py            # 界面文案的中英对照表、类别 / 门槛英文标签、英文日期格式
