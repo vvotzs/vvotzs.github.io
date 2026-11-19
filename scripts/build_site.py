@@ -614,7 +614,7 @@ def card(deal: dict, en: dict, today) -> str:
           {region_html}
           <span class="grow"></span>
           <a class="go" href="{e(main_link(deal))}" target="_blank" rel="noopener nofollow"
-             data-al-zh="直达原链接" data-al-en="Open the official offer"><span class="go-full">{ui("go_full")}</span><span class="go-short">{ui("go_short")}</span>{icon('external')}</a>
+             data-al-zh="直达来源链接" data-al-en="Open the source link"><span class="go-full">{ui("go_full")}</span><span class="go-short">{ui("go_short")}</span>{icon('external')}</a>
           <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-{deal_id}"
                   data-al-zh="展开详情" data-al-en="Expand details">{ui("detail_open")}
             {icon('chevron')}
@@ -1088,7 +1088,7 @@ def main() -> None:
 
 <button class="lang-switch" id="lang-switch" type="button"
         data-al-zh="{U['lang_switch_aria'][0]}" data-al-en="{U['lang_switch_aria'][1]}">
-  <span class="ls-dot" aria-hidden="true"></span>{bi('EN', '中文')}
+  {bi('EN', '中')}
 </button>
 
 <div class="modal" id="search-modal" role="dialog" aria-modal="true" aria-hidden="true"
