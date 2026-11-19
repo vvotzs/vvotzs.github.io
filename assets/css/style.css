@@ -957,13 +957,10 @@ html.js .pager-bar{ display: flex; }
 
 /* 分区标题由 tab 承担，省掉重复的一行 */
 .module.hot-strip .module-head{ display: none; }
-/* 计数口径不同时要留一行小注（「即将截止」= 7 天内优先 + 30 天内补足），默认不出 */
-.module.hot-strip .module-note{
-  margin: 0 0 8px;
-  font-size: 11.5px;
-  line-height: 1.5;
-  color: var(--ink-4);
-}
+/* 计数口径不同时要留一行小注（「即将截止」= 7 天内优先 + 30 天内补足），默认不出。
+   桌面右侧板是固定高度 + 内滚，10 条正好填满，小注就收进 tab 标签里（见 tab_closing_long），
+   只在手机端（板内不限高）才把这一行显示出来。 */
+.module.hot-strip .module-note{ display: none; }
 .module.hot-strip .module-empty{ margin-top: 8px; }
 .module.hot-strip{ padding: 8px 0 4px; }
 .module.hot-strip .more{ display: none; }
@@ -1486,7 +1483,13 @@ footer{
   .hot-panel-body:empty{ display: none; }
 
   .module.hot-strip{ padding: 0; }
-  .module.hot-strip .module-note{ margin: 0 0 6px; font-size: 10.5px; line-height: 1.45; }
+  .module.hot-strip .module-note{
+    display: block;
+    margin: 0 0 6px;
+    font-size: 10.5px;
+    line-height: 1.45;
+    color: var(--ink-4);
+  }
   .module.hot-strip .track{
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

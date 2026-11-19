@@ -75,7 +75,7 @@ U: dict[str, tuple[str, str]] = {
     "tab_lottery": ("抽奖", "Prizes"),
     "tab_fresh_long": ("新收录", "New"),
     "tab_rank_long": ("高价值榜", "Top value"),
-    "tab_closing_long": ("即将截止", "Closing soon"),
+    "tab_closing_long": ("即将截止 · 7 天内优先", "Closing soon · 7 days first"),
     "tab_lottery_long": ("抽奖 / 高上限", "Lotteries"),
     "hot_aria": ("热榜", "Leaderboards"),
     "mod_fresh": ("新收录", "Just added"),
