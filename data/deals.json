@@ -1096,7 +1096,7 @@
     "source_url": "https://reducto.ai/pricing",
     "source": "Reducto 官方定价页（2026-11-20 实抓，页面含「Free $150 in free usage」）+ perq.sh AI credits 目录（2026-11-19 复核指向同一官方页）",
     "risk": "$150 是消费额度而非现金，按各端点页价抵扣，重度跑 Deep Extract 很快用完；官方定价页没有写额度有效期与是否需绑卡，实际以控制台为准；解析准确率与幻觉仍需自行抽样核对，涉密文档注意数据留存条款。",
-    "added_at": "2026-11-20T05:26:10+08:00",
+    "added_at": "2026-11-20T05:24:10+08:00",
     "added": "2026-11-20",
     "status": "active"
   },
@@ -1222,7 +1222,7 @@
     "source_url": "https://www.beermoneyuk.co.uk/offers/quilter-isa-cashback",
     "source": "BeerMoneyUK 官方收录页（2026-11-20 实抓，含门槛与 4 个月验证期规则）+ Quilter Invest 官方 App 开户流程",
     "risk": "本金是投资、可能亏损，4 个月的波动可能吃掉 £100；平台与基金费用照收；ISA 额度当年用掉 £1,000（4/6 才重置）；返现平台抽风导致丢单很常见，务必看清「tracked」状态再入金；非英国居民无法参与。",
-    "added_at": "2026-11-20T05:46:00+08:00",
+    "added_at": "2026-11-20T05:30:10+08:00",
     "added": "2026-11-20",
     "status": "active"
   },
@@ -1926,7 +1926,7 @@
     "source_url": "https://www.lindy.ai/pricing",
     "source": "Lindy 官方定价页（2026-11-20 实抓：Free 档「$50 in credits for free」「Free credits last 7 days」）+ perq.sh 目录 2026-11-19 复核",
     "risk": "credits 只 7 天有效、不结转，等于一次性的试用额度；调用外部工具与自动化会快速消耗 credits；付费档 $29.99/月起，试用结束前别留支付方式；自动化改了别人的邮箱 / 日历前务必确认审批设置。",
-    "added_at": "2026-11-20T05:28:30+08:00",
+    "added_at": "2026-11-20T05:24:50+08:00",
     "added": "2026-11-20",
     "status": "active"
   },
@@ -2136,7 +2136,7 @@
     "source_url": "https://www.nodeseek.com/post-1036479-1",
     "source": "NodeSeek 情报帖（2026-11-06，记录三个码的实测与失效反馈）+ tahoo.tech 实测（2026-11-03，两码叠加余额 $20→$60）+ AIdeal 核对记录（2026-11-18 复核官方 Free 档条款）",
     "risk": "两个码非官方公布，随时可能被撤或到兑换上限；有账号被要求验证非预付卡，虚拟卡可能失败；配额本身是 API 调用额度，不可提现；超出 $10/月或码额度后按 $4/千次照扣。",
-    "added_at": "2026-11-20T05:40:00+08:00",
+    "added_at": "2026-11-20T05:28:10+08:00",
     "added": "2026-11-20",
     "status": "active"
   },
@@ -3212,7 +3212,7 @@
     "source_url": "https://www.beermoneyuk.co.uk/offers/webull",
     "source": "BeerMoneyUK 收录页（2026-11-20 实抓：opt in、单笔 £500、持有 60 天、$3–$300 随机与多数约 $3 的实测）+ Webull 官方新客活动规则",
     "risk": "5 股是随机面值，多数人只拿到约 $3/股（约 £11），不要按 $1,500 上限预期；忘记 opt in 或 30 天内不领就白存 60 天；£500 锁 60 天；投资有风险；纯为薅奖励开户要注意后续账户闲置费与合规申报。",
-    "added_at": "2026-11-20T05:48:30+08:00",
+    "added_at": "2026-11-20T05:30:50+08:00",
     "added": "2026-11-20",
     "status": "active"
   },
@@ -3611,7 +3611,7 @@
     "source_url": "https://news.qq.com/rain/a/20261030A087ZJ00",
     "source": "腾讯新闻 / 新京报 2026-10-30 报道（豆包官方活动口径：30 天体验套餐 + 签到 8,800 额度）+ 每日经济新闻 2026-11-12 产品更新报道 + mmmy.net 2026-11-13 实测（签到入口与额度规则）",
     "risk": "活动随时可能调整或提前结束，额度与倍率以客户端实际显示为准；赠送额度 30 天过期、不能用于 Pro 模型和生视频；签到漏一天里程碑进度会延后；只在中国区客户端可见，海外账号可能没有该入口。",
-    "added_at": "2026-11-20T05:44:10+08:00",
+    "added_at": "2026-11-20T05:29:30+08:00",
     "added": "2026-11-20",
     "status": "active"
   },
@@ -4100,7 +4100,7 @@
     "source_url": "https://gravatar.com/link-in-bio",
     "source": "Gravatar 官方 link-in-bio 页（2026-11-20 实抓：「First year free (then $9+ per year)」）+ Gravatar 支持文档（自定义域名 / Bluesky handle / 邮箱转发）+ linux.do 2026-11-19 讨论帖",
     "risk": "只是首年免费，第二年按 $9+/年自动续费条款收费，忘了取消就是一笔支出；域名与 Gravatar 账号绑定，账号问题会影响域名解析；免费档自定义邮箱只能收不能发；官方标注为「limited time」，活动可能随时结束。",
-    "added_at": "2026-11-20T05:42:20+08:00",
+    "added_at": "2026-11-20T05:28:50+08:00",
     "added": "2026-11-20",
     "status": "active"
   },
@@ -5555,7 +5555,7 @@
     "source_url": "https://keenable.ai/pricing",
     "source": "Keenable 官方定价页（2026-11-20 实抓，含 Free 100K requests 与 FAQ）+ perq.sh 目录 2026-11-19 复核",
     "risk": "免费额度按组织算、不累积到下月，用超了直接 402 断服务；搜索结果质量与是否带广告/联盟链接需自行判断，接入 agent 前应抽样核对引用来源；官方条款未标活动截止，额度政策随时可能调整。",
-    "added_at": "2026-11-20T05:31:00+08:00",
+    "added_at": "2026-11-20T05:25:30+08:00",
     "added": "2026-11-20",
     "status": "active"
   },
@@ -5585,7 +5585,7 @@
     "source_url": "https://docs.ai.neevcloud.com/release-notes/nov-2026-release",
     "source": "NeevCloud 官方文档 November 2026 Release 说明（2026-11-20 实抓，原文「1,500 free sandbox minutes every month, for every verified account, no card required」）+ perq.sh 目录 2026-11-19 复核",
     "risk": "免费分钟数按规格加权，跑大规格沙箱会成倍消耗；KYC 需提交个人资料；按月重置、不结转，闲置会自动暂停但暂停前的消耗照算；平台较新，长期稳定性与数据留存策略需自行确认。",
-    "added_at": "2026-11-20T05:33:40+08:00",
+    "added_at": "2026-11-20T05:26:10+08:00",
     "added": "2026-11-20",
     "status": "active"
   },
@@ -5615,7 +5615,7 @@
     "source_url": "https://freebuff.com/",
     "source": "Freebuff 官网（2026-11-20 实抓：$0 forever / no card / 广告承担成本）+ DEV 社区发布说明（2026-11-19，含 100 Freebucks 与地区降级规则）",
     "risk": "代价是隐私：官方承认消息、轨迹与文件可能用于广告定向，部分模型会拿数据训练，涉密代码务必挑非训练模型或自带 Key；地区限制会让完整模型不可用；按小时费率烧额度，强模型几小时见底；新上线服务稳定性未知。",
-    "added_at": "2026-11-20T05:35:20+08:00",
+    "added_at": "2026-11-20T05:26:50+08:00",
     "added": "2026-11-20",
     "status": "active"
   },
@@ -5679,7 +5679,7 @@
     "source_url": "https://opencode.ai/console/go",
     "source": "OpenCode 官方 Go 文档（2026-11-20 实抓：「GLM-5.3: Higher usage limits apply through November 22, 2026」）+ 官方 X 公告 Phase 2（2026-11-18）+ 模真真 / AI Promo Now 报道（Go $500、Go Plus $1,000）",
     "risk": "$500 是用量上限，不是现金、不可提现，也不能按「两折」直接换算省钱；5 小时 20%、每周 50% 的限流墙是真的，重度使用会撞墙；社区反馈高峰期有 529 报错与降速；11/22 后额度回落，别按促销额度做长期预算。",
-    "added_at": "2026-11-20T05:37:50+08:00",
+    "added_at": "2026-11-20T05:27:30+08:00",
     "added": "2026-11-20",
     "status": "expiring_soon"
   },
