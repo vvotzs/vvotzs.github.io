@@ -29,8 +29,8 @@ U: dict[str, tuple[str, str]] = {
     "lang_switch_aria": ("切换为英文版", "Switch to Chinese"),
     # 首屏
     "hero_h1": ("羊毛情报局", "Deal Hunter"),
-    "hero_tag": ("全球免费额度与限时奖励，先看值得点的。",
-                 "Free credits and limited-time rewards — only what's worth clicking."),
+    "hero_tag": ("全球免费额度 · 限时奖励",
+                 "Verified freebies & rewards"),
     "updated": ("北京时间 {t} 更新", "Updated {t} (UTC+8)"),
     "updated_short": ("{t} 更新", "{t} updated"),
     # 右侧滑轨（英文用 2–4 字母，避免撑宽 44px 的滑轨）
