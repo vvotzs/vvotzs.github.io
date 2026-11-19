@@ -1857,16 +1857,24 @@ html.dialog-open{ overflow: hidden; }
 /* 手机：平时和桌面端一样垂直居中；只有输入法弹起（JS 加 .kb-open）才贴到顶部，
    键盘收起或进入提交成功页就移除，平滑回正。 */
 @media (max-width: 680px){
+  /* 手机端用 top + transform 做定位，两者都能过渡：
+     平时 top:50% + translateY(-50%) 垂直居中，键盘弹起时 top:12px + 归零，
+     居中 ↔ 贴顶之间平滑滑动（而不是 margin:auto 那种无法动画的硬跳）。 */
   .submit-dialog{
+    inset: auto 0 auto 0;              /* 左右贴边，上下自动 */
+    top: 50%;
+    margin: 0 auto;
+    transform: translateY(-50%);
     width: calc(100vw - 12px);
-    max-height: calc(100dvh - 20px);
+    max-height: calc(100dvh - 24px);
     border-radius: 20px;
     overflow-y: auto;
+    transition: top .26s cubic-bezier(.22, 1, .36, 1),
+                transform .26s cubic-bezier(.22, 1, .36, 1);
   }
   .submit-dialog.kb-open{
-    inset: 0 0 auto 0;                 /* top: 0，左右贴边，底部自动 */
-    margin: 12px auto auto;            /* 贴到顶部 12px，水平居中 */
-    max-height: calc(100dvh - 24px);
+    top: 12px;
+    transform: translateY(0);
   }
   .sd-row{ height: 46px; }
   .sd-textarea{ min-height: 68px; }
