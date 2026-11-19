@@ -2418,5 +2418,156 @@
     ],
     "risk": "You must pay for a $100+/month subscription first, so it is not free; unused credits vanish each cycle; the first grant may be prorated; it does not raise ChatGPT or signed-in Codex limits; accounts or countries outside the rollout will not see the option.",
     "source": "OpenAI official API docs (API credits for ChatGPT subscribers) + ChatGPT Business release notes (2026-10-28) + Korean Naver blog walkthrough (2026-10-31)"
+  },
+  "capy-free-local-agent": {
+    "title": "[Global] Capy: desktop coding agent with a $0 plan, 100 reviews a month and three free models",
+    "highlight": "Runs on your own computer, plugs into the ChatGPT / Copilot / SuperGrok plan you already pay for, and the Free tier includes 100 review credits a month with unlimited members.",
+    "regions": "[Global] The free plan runs on your own machine; bring your own ChatGPT (Codex), Copilot or SuperGrok subscription or API keys. Cloud machines and Capy-hosted models are paid.",
+    "value": "Free plan $0 (100 reviews/month)",
+    "content": "Capy is a desktop AI coding agent. Install the app and it opens threads on your own computer (or on its cloud machines), writes code, runs commands and reviews changes. The official pricing page puts the Free plan at $0: agents on your own computers, your own subscriptions and keys, 100 review credits a month, unlimited members and one subscription per organisation.\n\nA review costs 1 credit at Low effort, 5 at Medium and 10 at High, so 100 credits is roughly 20 Medium reviews. Capy's launch post adds two things the pricing page does not list: Particle-1, DeepSeek V4.1 Flash and GLM 5.3 run free on any plan without a subscription, and commenting on that post gets you a month of Lite. Check the app before relying on either.\n\nBecause the free plan uses your own machine there are no machine minutes; cloud machines and Capy-hosted models are what draw on credits (Lite: 30,000 machine minutes and $20 of model usage, first week $1).",
+    "conditions": "The free plan needs your own ChatGPT (Codex), Copilot or SuperGrok subscription or API keys. Local threads only, no cloud machine minutes. 100 review credits reset monthly and do not roll over. The three free models and the free Lite month come from the launch announcement, not the pricing page.",
+    "steps": [
+      "Download the macOS / Windows / Linux app at capy.ai/download and sign in",
+      "Connect your ChatGPT (Codex), Copilot or SuperGrok subscription or API keys under Settings → Models",
+      "Pick your own computer as the machine, open a thread and hand over the task; choose Low / Medium / High when you want a review"
+    ],
+    "risk": "The free plan is local only and depends on your own model subscription, so nothing continues in the cloud. The free models and the free Lite month appear only in the launch post and can be withdrawn.",
+    "source": "Capy official pricing page and docs.capy.ai (checked 2026-11-19) + X @okeyccronald launch post (2026-11-19)"
+  },
+  "tesseract-free-desktop-agent": {
+    "title": "[Global] Tesseract: a free desktop AI agent that turns one sentence into a deck, site, logo or video",
+    "highlight": "It produces finished files rather than chat: PowerPoint, PDF, websites, brand kits, fonts and video. The app is free, and free of charge entirely if you already pay for Claude or ChatGPT.",
+    "regions": "[Global] macOS, Windows and Linux desktop app. Free when you have a Claude, ChatGPT or similar subscription; without one it runs on a built-in free allowance.",
+    "value": "Free app ($0 with your own AI subscription)",
+    "content": "Tesseract from Eightcell Labs launched on Product Hunt on 2026-11-14. It does not chat, it delivers: ask for an investor deck for a bakery and it shows a plan, does the work and hands back an editable PowerPoint or PDF. The same flow builds websites from 220+ templates and 14 themes, logos and brand kits, fonts, video, spreadsheets and sourced research reports, all saved to your computer.\n\nIts pricing is the interesting part. There is no subscription and no credit pack; it drives the AI subscription you already have — Claude Code, Codex, Gemini CLI, OpenCode, Cursor Agent, Kimi Code, Qwen Code and more — signed in with your own account. The site says that with a Claude or ChatGPT plan it costs nothing on top and never meters your usage, and it moves to the next account when one runs out. Without any AI subscription you start on a free allowance that refills, with prepaid credit from $10 for premium models.",
+    "conditions": "Free in full only if you already hold a Claude / ChatGPT-class subscription (its own limits still apply). Without one you get the official free allowance, whose size is not published (unverified). Desktop only, no mobile app.",
+    "steps": [
+      "Download the build for your OS at tesseract.dev (no credit card)",
+      "On first launch pick the agent you already use and sign in, or start on the free allowance",
+      "Pick one of the 33 guided makers or describe the job in one sentence and collect the editable files"
+    ],
+    "risk": "The free allowance size is unpublished. A desktop agent reads and writes local files, so try it in an empty folder first. Third-party agent CLIs may need their own authorisation.",
+    "source": "Tesseract official site and launch blog (checked 2026-11-19; Product Hunt launch 2026-11-14)"
+  },
+  "pollyreach-free-credits-number": {
+    "title": "[Global] PollyReach: a real phone number and voice for your AI agent — 200 free credits plus a free number",
+    "highlight": "Say \"book me a table for 7pm\" and the agent finds the number, dials, navigates the IVR and reports back with a summary, recording and transcript. It also answers your phone 24/7.",
+    "regions": "[Global] Calls in 50+ languages; the free number is a US number and calls are billed in credits.",
+    "value": "200 credits + 1 free number",
+    "content": "PollyReach gives an AI agent a real phone number and a real voice. Outbound: give it a task and it finds the number, dials, works through phone menus, holds the conversation, handles interruptions and hangs up when done, then sends you a summary, recording and transcript. Inbound: it answers 24/7, screens spam, takes messages and tags what matters.\n\nNew users start free. The Product Hunt launch post says everyone gets 200 credits plus a free phone number with no card. After the credits run out it becomes credit-based: the pricing page script lists Star at $20/month (2,000 credits, one agent, one US number), Pro at $40 (4,000 credits, two agents) and Max at $100 (10,000 credits, five agents), with annual billing around 15% off.",
+    "conditions": "The 200 free credits are a one-off; paid plans take over afterwards. The credit-to-minute conversion is not published (unverified). Daily outbound call limits apply and bulk robocalling is blocked. Complex IVR trees can still defeat it.",
+    "steps": [
+      "Sign up at pollyreach.ai (no credit card) and collect the 200 credits",
+      "Claim a free number and set the agent's identity and script",
+      "Send it a task in chat, e.g. \"book a table for two on Friday at 7pm\", then read the summary and recording"
+    ],
+    "risk": "Paid tiers are only in the page script and not fully published, so confirm charges in the app. The callee is talking to an AI and some businesses refuse. The free number is US-based, so international calls can cost the other side.",
+    "source": "PollyReach official pricing page + Product Hunt launch post (checked 2026-11-19)"
+  },
+  "instabox-free-cloud-machine": {
+    "title": "[Global] InstaBox free cloud computer: 4 vCPU / 8GiB with Claude Code and Codex preinstalled, no card",
+    "highlight": "One Firecracker microVM per agent, Debian 13 with a desktop and Chromium, pausing after 30 idle minutes and resuming in under a second at $0.",
+    "regions": "[Global] Machines run in the United States. The free plan allows one machine that auto-pauses after 30 idle minutes.",
+    "value": "4 vCPU / 8 GiB ($0/month)",
+    "content": "InstaBox gives each AI agent its own cloud Linux machine: a Firecracker microVM on Debian 13, by default 4 vCPU and 8 GiB of RAM, a 16 GiB root disk plus a 20 GiB persistent disk at /data, with Chromium, a desktop, Docker, Node.js, Python, Go, Rust and Claude Code, Codex and OpenCode already installed. Logins persist in /data/home and travel into snapshots.\n\nThe free tier is $0: one machine, five snapshots, 100 GiB egress a month, auto-pause after 30 idle minutes with state kept and no billing while paused, and runs capped at 120 minutes at first, growing to 480 with use. The pricing post says the free machine has no usage limit; it is built for bursty agent work rather than a 24/7 server.\n\nSign-up is GitHub or Google, and npx instabox@latest sh installs the CLI and starts a machine; the dashboard can also create one with a click and open its desktop.",
+    "conditions": "Free plan: 1 machine, 5 snapshots, 100 GiB egress/month, auto-pause after 30 idle minutes, 120-minute runs to start. Whether a brand-new free account needs a card is not stated (the API has a cardMissing state — unverified). US regions only.",
+    "steps": [
+      "Sign in at instabox.sh with GitHub or Google and create a free machine from a template",
+      "Open the machine desktop, or connect with npx instabox@latest sh",
+      "Run Claude Code / Codex with your own model keys; let it pause when the task ends"
+    ],
+    "risk": "It pauses when idle, so it is not a always-on server. GitHub, Claude and Codex logins live inside the machine and travel into snapshots. US-only nodes mean high latency from Asia.",
+    "source": "Visitor submission (Gmail 2026-11-19 19:49) + InstaBox official pricing page and docs (checked 2026-11-19)"
+  },
+  "ethena-pay-virtual-visa-4pct": {
+    "title": "[47 non-US countries] Ethena Pay free virtual Visa: 4% back in AVAX on the first $2,500 each month",
+    "highlight": "Self-custody Visa Platinum issued on a Puerto Rico BIN, no account or monthly fee, free virtual card, up to $100 of AVAX cashback a month on the Standard tier.",
+    "regions": "[47 non-US countries] Live across Latin America, the Caribbean, Asia and the Middle East, Africa and Oceania. Not available in the US or restricted jurisdictions; not in Europe yet.",
+    "value": "$100/month (4% × $2,500)",
+    "content": "Ethena Pay is Ethena's self-custody Visa card (issued by Third National, programme managed by Rain, BIN registered in Puerto Rico). The account is free: no opening fee, no monthly fee, no minimum balance, free virtual card issuance, and it works with Apple Pay and Google Pay.\n\nThe value is the cashback. Standard tier pays 4% on the first $2,500 of card spend each month, 1% from $2,500 to $4,000 and nothing above. Pro (unlocked with 10 referrals) pays 4.5% to $8,000 and VIP (invite only) 5% to $20,000. Cashback is calculated in dollars, paid in AVAX after settlement, roughly daily, with no monthly or lifetime cap — so a Standard user tops out near $100 of AVAX a month.\n\nThe FAQ says it is live in 47 countries and open to non-US persons only. KYC accepts passports, residence permits and driving licences, with the address typed into a form and no proof of address required. It used to need an invite code; this round's submission says the whitelist is gone (unverified).",
+    "conditions": "Non-US persons only, KYC required. Excluded spend includes cash advances, ATM withdrawals, crypto purchases, gift cards, P2P transfers, account funding, taxes and fees; transactions under $1 earn nothing; Standard earns nothing above $4,000 a month.",
+    "steps": [
+      "Download the app at pay.ethena.fi and finish KYC with a passport as a resident of one of the 47 countries",
+      "Issue the free virtual Visa and add it to Apple Pay / Google Pay",
+      "Spend on the card; AVAX cashback lands a few days after each transaction settles"
+    ],
+    "url": "https://pay.ethena.fi/pricing",
+    "risk": "Cashback is paid in AVAX, so price moves can eat the gain. Rewards are discretionary and can be cut at any time. The whitelist removal is only the submitter's word, so check before signing up. Whether mainland Chinese residency passes KYC is unverified.",
+    "source": "Visitor submission (Gmail 2026-11-19 19:49) + Ethena Pay official pricing page and FAQ (checked 2026-11-19)"
+  },
+  "ig-uk-refer-free-share-1000": {
+    "title": "[UK] IG share dealing referral: a random US share worth £50-£1,000 for the friend, £100 cash for the referrer",
+    "highlight": "Put in £1,000, hold it three months and submit a W-8BEN to receive a randomly allocated US share; 70% of them land at £50-£70.",
+    "regions": "[UK] UK residents aged 18+, new to IG, not living at the referrer's address.",
+    "value": "£50-£1,000",
+    "content": "IG's Share Dealing referral: the friend opens a GIA, ISA or SIPP through a unique link, makes a first investment of at least £1,000 within 30 days and keeps an average invested value of at least £1,000 for three months. They then receive one randomly allocated US-listed share worth £50-£1,000, and the referrer gets £100 cash into a GIA.\n\nThe probabilities are not even. The terms put 70% of shares at £50-£70, 20% at £70.01-£100, 7% at £100.01-£250 and the rest at £250-£1,000, so the expected value is roughly £70-£90, not the headline.\n\nTwo easy ways to lose it: the friend must submit a valid W-8BEN before the holding period ends or the share is withheld, and the reward is paid by the end of the calendar month after the three-month holding period. Referral links may only be shared privately with people you actually know.",
+    "conditions": "First investment of £1,000+ within 30 days of opening; average invested value of £1,000+ for 3 months (market moves alone do not count); valid W-8BEN before the period ends; one referral per person; referrer capped at 10 active referrals a month.",
+    "steps": [
+      "Open an IG Share Dealing (GIA), ISA or SIPP through the referrer's unique link",
+      "Invest at least £1,000 within 30 days and hold an average of £1,000 for 3 months",
+      "Submit the W-8BEN during the holding period; the share arrives the month after it ends"
+    ],
+    "risk": "70% of shares are only worth £50-£70. The share is USD-denominated, so FX and market moves apply. £1,000 is locked for three months, which can cost more than the reward. No W-8BEN means no share.",
+    "source": "IG official refer-a-friend terms (checked 2026-11-19) + r/beermoneyuk post"
+  },
+  "schwab-referral-brokerage-1000": {
+    "title": "[US] Charles Schwab referral: $100 for a $25,000 net deposit, up to $1,000",
+    "highlight": "A brokerage referral rather than a checking bonus: deposit new-to-Schwab money within 45 days and the award lands about a week later.",
+    "regions": "[US] US residents only (including US resident aliens), excluding US territories. The account must be an eligible Schwab One brokerage account or IRA.",
+    "value": "$100-$1,000",
+    "content": "Schwab's referral award runs through brokerage accounts, not checking. A referred person opens an eligible account with an existing client's referral code and makes a qualifying net deposit within 45 days: $25,000-$49,999 earns $100, $50,000-$99,999 earns $300, $100,000-$499,999 earns $500 and $500,000 or more earns $1,000. The award is credited about a week after the 45-day window closes.\n\nNet deposit means money new to Schwab from outside, minus anything withdrawn or transferred out; moving money between Schwab accounts does not count. In taxable accounts the net deposit (less market losses) must stay for at least a year or Schwab may claw the award back.\n\nDo not confuse this with the Investor Checking offer of up to $1,000 that circulated on US card forums: that one required opening and funding by 2026-11-10 and holding through 2026-12-25, so it has closed, and Schwab's terms explicitly exclude Investor Checking from this referral offer.",
+    "conditions": "Needs a referral code from an existing Schwab client; net deposit of outside money within 45 days; keep it a year in taxable accounts; one account and one enrolment per client; cannot be combined with other offers; US residents only.",
+    "steps": [
+      "Get a referral code or link from a friend who already has a Schwab account and enter it during the application",
+      "Open a Schwab One brokerage account or IRA and fund it from an outside bank within 45 days",
+      "Hold the deposit for a year in a taxable account; the award arrives about a week after day 45"
+    ],
+    "risk": "The tiers are steep: $1,000 needs half a million dollars parked for a year, which can cost far more than the award. It must be outside money, and a US residency plus SSN/ITIN is required. Terms can be withdrawn.",
+    "source": "Charles Schwab official referral page and terms (checked 2026-11-19) + US card forum discussion (its Investor Checking version closed on 2026-11-10)"
+  },
+  "monzo-uk-referral-bonus": {
+    "title": "[UK] Monzo referral: £5-£50 each side, depending on the invite",
+    "highlight": "Tap the link, enter your number first, open the account and make one card payment within 30 days; not every invite carries a bonus.",
+    "regions": "[UK] UK residents aged 16+ who have never held any Monzo account, personal or business.",
+    "value": "£5-£50",
+    "content": "Monzo's personal referral scheme: enter your phone number through an existing customer's link first, then within 30 days download the app, open a personal current account, add money and make one physical-card payment (Apple Pay and Google Pay count; ATM withdrawals, bank transfers and virtual-card payments do not). Both sides then get a bonus.\n\nThe amount is not fixed. The 4.0 personal referral terms (13 August 2026) publish £10, £20 or £50 for the first 100 referrals and £5 after that, while the 1.1 terms served from an authorised invite (29 October 2026) print no amount at all, and Monzo's help page warns that not every invite comes with an incentive. What the link and the in-app Referral hub show is what counts.\n\nBusiness accounts have a separate scheme: open Monzo Business (including the free Lite plan) and make a first card payment for £50 each side, capped at three rewards a month for the referrer.",
+    "conditions": "Open the invite link and enter your number before signing up; open the account and make one physical-card payment within 30 days; anyone who has held a Monzo account before is excluded; some invites carry no bonus.",
+    "steps": [
+      "Open the friend's invite link and enter your mobile number before anything else",
+      "Within 30 days download the Monzo app, open a personal current account and top it up",
+      "Make one card payment of any amount with the Monzo card; the bonus lands straight away"
+    ],
+    "risk": "The bonus varies by invite and can be as little as £5 or nothing. Skipping the link-then-number order breaks matching. Existing Monzo customers are excluded.",
+    "source": "Monzo official Refer a Friend page and referral terms (v4.0 / 2026-08-13, v1.1 / 2026-10-29, checked 2026-11-19) + r/beermoneyuk post"
+  },
+  "travelgoogoo-visa-free-esim-apac": {
+    "title": "[APAC-issued cards] Travelgoogoo x Visa free eSIM: 4GB global + 4GB APAC and a year of unlimited messaging on Infinite",
+    "highlight": "Enter a 16-digit Visa card number from an Asia-Pacific issuer and get a Travelgoogoo 365 annual eSIM covering 123 countries, with messaging that does not eat data.",
+    "regions": "[APAC-issued cards] Visa Infinite / Signature / Platinum issued in Asia-Pacific only. Data covers 123 countries; the APAC pack covers 23.",
+    "value": "4GB global + 4GB APAC (Infinite)",
+    "content": "A Visa perk with Travelgoogoo: enter a 16-digit card number from an eligible Asia-Pacific-issued Visa card at travelgoogoo.com/en/visa and receive a free Travelgoogoo 365 annual eSIM.\n\nTiers follow the card (raised from 2026-09-07): Visa Infinite gets 4GB of global data plus 4GB of APAC data and a year of unlimited messaging; Visa Signature gets 2GB global (plus an extra 1GB of APAC per some reports, check the redemption page); Visa Platinum gets 1GB global with the 365 annual plan. \"Unlimited messaging\" means text and photos in iMessage, WhatsApp, Telegram, LINE, WeChat, Viber and Zalo; voice and video calls still burn data.\n\nRedemption puts a $1 authorisation on the card, later reversed. The plan runs a year from first connection, so you can redeem now and activate before a trip.",
+    "conditions": "Asia-Pacific-issued Visa Infinite / Signature / Platinum only; one redemption per card number and per mobile number per year, up to two in total until 2027-11-30; eSIM phone required (iPhone XS or later, flagship Androids from 2019); data-only, no local number.",
+    "steps": [
+      "Open travelgoogoo.com/en/visa, tap Redeem Now and enter the 16-digit Visa number",
+      "Sign up and pass the $1 card authorisation (it is reversed)",
+      "Install the eSIM from the emailed QR code and activate it when you travel; valid for a year"
+    ],
+    "risk": "Only APAC-issued cards qualify, so European and US cards are rejected. Signature and Platinum APAC allowances are reported inconsistently (unverified). The data is small for heavy use, and the redemption page intermittently returns 500 from mainland China.",
+    "source": "Travelgoogoo x Visa official redemption page + The MileLion (2026-09-13) and CardExpert hands-on (2026-04-23)"
+  },
+  "bamboosim-bfcm-45off": {
+    "title": "[Global] BambooSIM Black Friday: 45% off travel eSIMs (50% off two) plus 100 free transit eSIMs for past customers",
+    "highlight": "Code BFCMO50 takes 45% off one travel eSIM and 50% off two or more across 200+ destinations; Japan unlimited 15 days drops to about $37.29.",
+    "regions": "[Global] Travel eSIMs for 200+ countries and regions; the free transit eSIM is limited to customers who bought in the past year.",
+    "value": "45% off, 50% off two",
+    "content": "BambooSIM's second-birthday and Black Friday sale (BFCMO50): 45% off a single travel eSIM and 50% off when you buy two or more, across Japan, China, Korea, Thailand, Europe, the US and 200+ other destinations. Japan unlimited 15 days comes to about $37.29, one of the better-known tiers in this sale.\n\nA second perk is for existing customers only: anyone who bought from BambooSIM in the past year can claim one free Transit eSIM for layovers, limited to the first 100.\n\nBambooSIM resells prepaid travel eSIMs with no contract. You scan a QR code and the plan starts when it first connects to a local network at your destination.",
+    "conditions": "Enter BFCMO50 at checkout; the 50% rate needs two or more eSIMs; the free Transit eSIM is limited to past-year customers and 100 units; sale ends 2026-12-01 10:59 AEDT.",
+    "steps": [
+      "Pick a destination and plan at bamboosim.com (Japan unlimited 15 days is about $37.29)",
+      "Enter BFCMO50 at checkout for 45% off one or 50% off two",
+      "Install the QR code after payment; it activates on first connection abroad. Past customers can claim the free transit eSIM separately"
+    ],
+    "risk": "Whether the code still applies is best confirmed on the checkout total (unverified). The free transit eSIM is scarce and limited to past customers. Reseller plans are non-refundable, so a wrong destination is money lost.",
+    "source": "OzBargain BambooSIM merchant page (posted 2026-11-17, checked 2026-11-19) + BambooSIM official plan pages"
   }
 }
