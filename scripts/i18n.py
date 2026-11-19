@@ -139,10 +139,12 @@ U: dict[str, tuple[str, str]] = {
     "ongoing": ("长期有效", "Ongoing"),
     "ended_word": ("已结束", "Ended"),
     "ends_today": ("今天截止", "Ends today"),
+    "ends_tomorrow": ("明天截止", "Ends tomorrow"),
     # 搜索与筛选
     "modal_title": ("搜索与筛选", "Search & filter"),
     "modal_aria": ("搜索与筛选", "Search and filter"),
     "close": ("关闭", "Close"),
+    "search_field_aria": ("搜索优惠", "Search deals"),
     "search_ph": ("搜活动、品牌、国家或门槛，例如 eSIM 日本 / 学生 / 免手续费",
                   "Search offers, brands, countries or requirements — e.g. eSIM Japan / student / no fees"),
     "f_time": ("时间范围", "Time"),

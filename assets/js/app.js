@@ -109,21 +109,36 @@
       }
     }
 
-    var added = cardDate(card, "added");
     var end = cardDate(card, "end");
+    /* 「近 24 / 48 小时 / 7 天」是滑动窗口，不是自然日：
+       拿卡片上的 added_at 完整时间戳（带时区）和当前时刻比，
+       不能拿「今天零点 − 收录日期」比——那样 24 小时会变成今天+昨天两天。 */
+    var addedMs = addedTime(card);
+    var nowMs = Date.now();
 
     if (state.time === "24h") {
-      if (!added || TODAY - added > DAY) return false;
+      if (addedMs == null || nowMs - addedMs > DAY) return false;
     } else if (state.time === "48h") {
-      if (!added || TODAY - added > DAY * TODAY_WINDOW_DAYS) return false;
+      if (addedMs == null || nowMs - addedMs > DAY * TODAY_WINDOW_DAYS) return false;
     } else if (state.time === "7d") {
-      if (!added || TODAY - added > DAY * 7) return false;
+      if (addedMs == null || nowMs - addedMs > DAY * 7) return false;
     } else if (state.time === "past") {
-      var isOld = added && TODAY - added > DAY * 7;
+      var isOld = addedMs != null && nowMs - addedMs > DAY * 7;
       var isOver = end && end < TODAY;
       if (!isOld && !isOver) return false;
     }
     return true;
+  }
+
+  /* 入库时刻（毫秒）：优先 data-added-at 的完整时间戳，拿不到再退回日期零点。 */
+  function addedTime(card) {
+    var raw = card.dataset.addedAt || "";
+    if (raw) {
+      var t = Date.parse(raw);
+      if (!isNaN(t)) return t;
+    }
+    var d = cardDate(card, "added");
+    return d ? d.getTime() : null;
   }
 
   function sortCards(list, anchor) {
@@ -320,6 +335,11 @@
       markTab(tab, mobile ? tab.dataset.tab === active : false);
     });
 
+    /* 首屏防抖（CLS）：构建期 /rank /lottery 已经带 hidden，手机断点下 #closing 由 CSS
+       先隐住（html:not(.board-ready)），这里把板子切成终态之后再放开，
+       页面就不会在 applyBoard 执行时整块上跳。桌面端两块板本来就这样，不受影响。 */
+    document.documentElement.classList.add("board-ready");
+
     syncNav();
   }
 
@@ -509,6 +529,29 @@
 
   document.addEventListener("keydown", function (ev) {
     if (ev.key === "Escape" && modal.classList.contains("on")) closeModal();
+    /* 搜索弹窗开着时把 Tab 圈在弹窗里：aria-modal="true" 只是声明，背景并没有 inert，
+       不拦的话连按 Tab 会跑到页脚的「回到顶部」。首尾两个可聚焦元素之间循环。 */
+    if (ev.key === "Tab" && modal.classList.contains("on")) {
+      var focusables = $$(
+        "a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex='-1'])",
+        modal
+      ).filter(function (el) { return el.getClientRects().length > 0; });
+      if (focusables.length) {
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        var cur = document.activeElement;
+        if (!modal.contains(cur)) {
+          ev.preventDefault();
+          first.focus();
+        } else if (ev.shiftKey && cur === first) {
+          ev.preventDefault();
+          last.focus();
+        } else if (!ev.shiftKey && cur === last) {
+          ev.preventDefault();
+          first.focus();
+        }
+      }
+    }
     if ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() === "k") {
       ev.preventDefault();
       modal.classList.contains("on") ? closeModal() : openModal();

@@ -25,7 +25,7 @@ import re
 import sys
 import urllib.parse
 import urllib.request
-from datetime import timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -34,8 +34,8 @@ if str(ROOT / "scripts") not in sys.path:
 
 from common import (  # noqa: E402
     CAT_META,
-    CLOSING_WINDOW_DAYS,
     DATA,
+    EXPIRING_DAYS,
     FAV_DIR,
     META,
     OG_IMAGE,
@@ -43,6 +43,7 @@ from common import (  # noqa: E402
     OUT,
     SITE_URL,
     TODAY_WINDOW_DAYS,
+    TZ,
     added_date,
     compute_status,
     ensure_added_at,
@@ -267,6 +268,22 @@ def e(value: object) -> str:
     return html.escape("" if value is None else str(value), quote=True)
 
 
+def safe_url(value: object) -> str:
+    """只放行 http:// 与 https://。
+
+    href 里的 `javascript:` / `data:` / `vbscript:` 在 HTML 转义后依然可执行，
+    所以外链（url / source_url / source 里抓到的原帖）在渲染前统一过一遍协议白名单。
+    不通过就返回空串，调用处渲染成不可点的文本。
+    """
+    s = ("" if value is None else str(value)).strip()
+    if not s:
+        return ""
+    low = s.lower()
+    if low.startswith("https://") or low.startswith("http://"):
+        return s
+    return ""
+
+
 # 当前正在渲染的页面语言。main() 里每个页面渲染前设置一次，`bi()` / `ui()` 据此只取一侧文案，
 # 页面里不再同时存在中英两份 DOM。
 CUR_LANG = "zh"
@@ -306,9 +323,13 @@ def deadline_html(deal: dict, today) -> str:
         return f'<span class="deadline">{ui("ongoing")}</span>'
     if end < today:
         return f'<span class="deadline">{bi(short_date(deal["end"]) + " 结束", "Ended " + short_date_en(end))}</span>'
+    # left 是「今天之后还剩几个自然日」：0 = 今天截止、1 = 明天截止。
+    # 原来写成 left <= 1 会把「明天截止」也说成今天，用户会当成最后一天。
     left = (end - today).days
-    if left <= 1:
+    if left == 0:
         return f'<span class="deadline hot">{ui("ends_today")}</span>'
+    if left == 1:
+        return f'<span class="deadline hot">{ui("ends_tomorrow")}</span>'
     if left <= 30:
         return (
             f'<span class="deadline hot">'
@@ -334,8 +355,10 @@ def short_deadline(deal: dict, today) -> tuple[str, str]:
     left = (end - today).days
     if left < 0:
         return (U["ended_word"][0], U["ended_word"][1])
-    if left <= 1:
+    if left == 0:
         return U["ends_today"]
+    if left == 1:
+        return U["ends_tomorrow"]
     if left <= 30:
         return (f"剩 {left} 天", f"{left}d left")
     return (short_date(deal["end"]), short_date_en(end))
@@ -595,18 +618,18 @@ def fav_html(deal: dict, size: int, en: dict | None = None) -> str:
 
 def main_link(deal: dict) -> str:
     """卡片主按钮的去向：抓取来源优先，没有就回官网活动页。"""
-    src = (deal.get("source_url") or "").strip()
+    src = safe_url(deal.get("source_url"))
     if not src:
         m = _SRC_URL_RE.search(deal.get("source") or "")
-        src = m.group(0).rstrip("。.,；;") if m else ""
-    official = (deal.get("url") or "").strip()
+        src = safe_url(m.group(0).rstrip("。.,；;") if m else "")
+    official = safe_url(deal.get("url"))
     if src and src.rstrip("/") != official.rstrip("/"):
         return src
     return official
 
 
 def official_link(deal: dict) -> str:
-    return (deal.get("url") or "").strip()
+    return safe_url(deal.get("url"))
 
 
 def card(deal: dict, en: dict, today) -> str:
@@ -643,6 +666,27 @@ def card(deal: dict, en: dict, today) -> str:
 
     deal_id = e(deal["id"])
 
+    # 外链一律过协议白名单：只有 http(s) 才渲染成可点的 <a>，
+    # javascript: / data: 这类值退化成纯文本，不会变成可执行的链接。
+    link = safe_url(main_link(deal))
+    if link:
+        go_html = (
+            f'<a class="go" href="{e(link)}" target="_blank" rel="noopener nofollow"\n'
+            f'             {al("原文链接", "Open the source link")}><span class="go-full">{ui("go_full")}</span>'
+            f'<span class="go-short">{ui("go_short")}</span>{icon("external")}</a>'
+        )
+    else:
+        go_html = f'<span class="go">{ui("go_short")}</span>'
+
+    official = safe_url(deal.get("url"))
+    if official:
+        url_dd = (
+            f'<a class="url-link" href="{e(official)}" target="_blank" rel="noopener nofollow">'
+            f"{e(official)}</a>"
+        )
+    else:
+        url_dd = e(deal.get("url", ""))
+
     period = bi(
         f"{e(deal.get('start') or U['not_announced'][0])} → {e(deal.get('end') or U['ongoing_not_announced'][0])}",
         f"{e(deal.get('start') or U['not_announced'][1])} → {e(deal.get('end') or U['ongoing_not_announced'][1])}",
@@ -664,8 +708,7 @@ def card(deal: dict, en: dict, today) -> str:
           {deadline_html(deal, today)}
           {region_html}
           <span class="grow"></span>
-          <a class="go" href="{e(main_link(deal))}" target="_blank" rel="noopener nofollow"
-             {al('原文链接', 'Open the source link')}><span class="go-full">{ui("go_full")}</span><span class="go-short">{ui("go_short")}</span>{icon('external')}</a>
+          {go_html}
           <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-{deal_id}"
                   {al('展开详情', 'Expand details')}>{ui("detail_open")}
             {icon('chevron')}
@@ -682,7 +725,7 @@ def card(deal: dict, en: dict, today) -> str:
       <div class="field"><dt>{ui("f_period")}</dt><dd>{period}</dd></div>
       <div class="field wide"><dt>{ui("f_steps")}</dt><dd><ol>{steps}</ol></dd></div>
       <div class="field wide"><dt>{ui("f_link")}</dt>
-        <dd><a class="url-link" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow">{e(deal['url'])}</a></dd></div>
+        <dd>{url_dd}</dd></div>
       </dl>
       <div class="risk">
         {icon('warn')}
@@ -721,7 +764,8 @@ def jump_card(deal: dict, en: dict, today, rank: int | None = None) -> str:
     return f"""<a class="jump" href="#deal-{deal_id}" data-jump="deal-{deal_id}"
     data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
-    data-added="{e(added_day(deal, today))}" data-key="{deal_id}">
+    data-added="{e(added_day(deal, today))}" data-added-at="{e(deal.get('added_at') or added_day(deal, today))}"
+    data-val-exp="{value_expected(deal):g}" data-key="{deal_id}">
       {rank_html}
       {fav_html(deal, 22, en)}
       <span class="jump-main">
@@ -743,6 +787,8 @@ def module_html(
     ranked: bool = False,
     jump: bool = False,
     strip: bool = False,
+    hidden: bool = False,
+    count_total: int | None = None,
 ) -> str:
     if jump:
         cards = [
@@ -751,13 +797,13 @@ def module_html(
         ]
     else:
         cards = [card(deal, en_map.get(deal["id"], {}), today) for deal in deals]
-    count = len(deals)
+    count = len(deals) if count_total is None else count_total
     # 分类内左右横滑翻页：手机一页 5 张（一屏装得下）、桌面双列一页 8 张；热榜跳转卡不翻页
     per_page = 6 if jump else 5
     per_page_lg = 6 if jump else 8
     pages = max(1, -(-count // per_page))
     return f"""
-  <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-per="{per_page}" data-per-lg="{per_page_lg}"{' data-kind="jump"' if jump else ''}>
+  <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-per="{per_page}" data-per-lg="{per_page_lg}"{' data-kind="jump"' if jump else ''}{' hidden' if hidden else ''}>
     <header class="module-head">
       <span class="module-badge" aria-hidden="true">{icon(icon_key)}</span>
       <h2>{bi(*title)} <span class="count" data-count>{count}</span></h2>
@@ -782,6 +828,53 @@ def compact_html(page: str) -> str:
     return re.sub(r"\n{2,}", "\n", page)
 
 
+def validate(deals: list[dict], en_map: dict) -> None:
+    """构建前的数据体检：有硬伤就直接报错退出，宁愿不发布。
+
+    重点是把可注入 / 可跺页面的值挡在渲染之前：
+      · url / source_url 必须是 http(s)（javascript: / data: 一律拒绝）
+      · id 唯一、必填字段齐全
+      · end / start 是 YYYY-MM-DD，且 end 不早于 start
+      · category / cost 在枚举范围内
+      · deals_en 里的 id 能在 deals 里找到（单向：允许英文翻译暂缺）
+    """
+    errors: list[str] = []
+    seen: set[str] = set()
+    required = ("id", "title", "url", "category", "cost", "regions", "content", "conditions", "risk", "source")
+    for i, deal in enumerate(deals):
+        tag = deal.get("id") or f"#{i}"
+        for key in required:
+            if not str(deal.get(key) or "").strip():
+                errors.append(f"{tag}: 缺字段 {key}")
+        if tag in seen:
+            errors.append(f"{tag}: id 重复")
+        seen.add(tag)
+        for key in ("url", "source_url"):
+            raw = str(deal.get(key) or "").strip()
+            if raw and not safe_url(raw):
+                errors.append(f"{tag}: {key} 不是 http(s) 链接（{raw[:40]}）")
+        start = parse_date(deal.get("start", ""))
+        end = parse_date(deal.get("end", ""))
+        if deal.get("start") and not start:
+            errors.append(f"{tag}: start 日期格式不对（{deal.get('start')}）")
+        if deal.get("end") and not end:
+            errors.append(f"{tag}: end 日期格式不对（{deal.get('end')}）")
+        if start and end and end < start:
+            errors.append(f"{tag}: end 早于 start")
+        if deal.get("category") not in CAT_META:
+            errors.append(f"{tag}: category 不在枚举内（{deal.get('category')}）")
+        if deal.get("cost") not in COST_CLASS:
+            errors.append(f"{tag}: cost 不在枚举内（{deal.get('cost')}）")
+    for key in en_map:
+        if key not in seen:
+            errors.append(f"deals_en: 多出未对应的 id {key}")
+    if errors:
+        print("数据体检未通过，已停止构建：", file=sys.stderr)
+        for line in errors[:40]:
+            print("  · " + line, file=sys.stderr)
+        raise SystemExit(1)
+
+
 def main() -> None:
     deals = json.loads(DATA.read_text(encoding="utf-8"))
     meta = json.loads(META.read_text(encoding="utf-8")) if META.exists() else {}
@@ -789,6 +882,9 @@ def main() -> None:
 
     for deal in deals:
         deal["status"] = compute_status(deal, today)
+
+    # 数据体检：外链协议、必填字段、日期、枚举；不通过直接拒绝构建。
+    validate(deals, load_en())
 
     # 图标：构建时落地到 assets/fav/，页面不再请求 google.com
     missing = []
@@ -814,8 +910,25 @@ def main() -> None:
     # 才按价值高低排，让同一批里更值钱的先出现。
     # 筛选与排序都只认入库日期（added_at 的日期部分，与卡片展示的 added 同一天）：
     # 只看 added 会漏掉只有 added_at 的条目，只看 added_at 又会把回填成今天的老条目放进来。
-    since = (today - timedelta(days=TODAY_WINDOW_DAYS)).isoformat()
-    fresh_pool = [d for d in active if added_date(d) and added_date(d) >= since]
+    # 真正的「最近 48 小时」：拿 added_at 的时间戳和当前时刻比，而不是拿日期比。
+    # 原来用 added >= today-2（按日期）实际把今天、昨天、前天三个自然日都算了进来
+    # （最多 72 小时），与板子上写的「最近 48 小时」对不上。
+    now = now_local()
+    cutoff = now - timedelta(hours=TODAY_WINDOW_DAYS * 24)
+
+    def added_stamp(deal: dict) -> datetime | None:
+        """入库时刻（带时区）；只有日期时按北京零点算。"""
+        raw = str(deal.get("added_at") or "")
+        try:
+            stamp = datetime.fromisoformat(raw)
+            if stamp.tzinfo is None:
+                stamp = stamp.replace(tzinfo=TZ)
+            return stamp
+        except ValueError:
+            day = parse_date(added_date(deal))
+            return datetime(day.year, day.month, day.day, tzinfo=TZ) if day else None
+
+    fresh_pool = [d for d in active if (stamp := added_stamp(d)) and stamp >= cutoff]
     fresh_pool.sort(key=lambda d: (-value_expected(d), idx_of.get(d["id"], 0)))
     fresh_pool.sort(key=lambda d: d.get("added_at") or d.get("added") or "", reverse=True)
     fresh = fresh_pool[:10]
@@ -830,14 +943,17 @@ def main() -> None:
     # 高价值榜：按可预期到手金额（不是上限）排
     leaderboard = sorted(active, key=lambda d: (value_expected(d), d.get("value_num") or 0), reverse=True)[:10]
 
-    closing = sorted(
+    # 「即将截止」统一按 EXPIRING_DAYS（7 天）算：顶栏胶囊、分区、tab 计数同一个口径。
+    # closing_pool 是完整列表（计数用它，不截断），closing 只取前 10 条用于渲染。
+    closing_pool = sorted(
         [
             d
             for d in active
-            if parse_date(d.get("end", "")) and 0 <= (parse_date(d["end"]) - today).days <= CLOSING_WINDOW_DAYS
+            if parse_date(d.get("end", "")) and 0 <= (parse_date(d["end"]) - today).days <= EXPIRING_DAYS
         ],
         key=lambda d: parse_date(d["end"]),
-    )[:10]
+    )
+    closing = closing_pool[:10]
 
     # 抽奖 / 随机 / 阶梯：上限很高但到手看运气，按上限金额排
     lottery = sorted(
@@ -857,7 +973,7 @@ def main() -> None:
     beijing_short = beijing_time[5:] if re.match(r"^\d{4}-\d{2}-\d{2}", beijing_time) else beijing_time
     counts = {
         "active": len(active),
-        "expiring": len(closing),
+        "expiring": len(closing_pool),
         "expired": len(expired),
         "total": len(deals),
     }
@@ -887,22 +1003,22 @@ def main() -> None:
             ),
             "rank": module_html(
                 "rank", "rank", U["mod_rank"], U["mod_rank_desc"],
-                leaderboard, en_map, today, ranked=True, jump=True, strip=True,
+                leaderboard, en_map, today, ranked=True, jump=True, strip=True, hidden=True,
             ),
             "closing": module_html(
-                "closing", "clock", U["mod_closing"], upair("mod_closing_desc", d=CLOSING_WINDOW_DAYS),
-                closing, en_map, today, jump=True, strip=True,
+                "closing", "clock", U["mod_closing"], upair("mod_closing_desc", d=EXPIRING_DAYS),
+                closing, en_map, today, jump=True, strip=True, count_total=len(closing_pool),
             ),
             "lottery": module_html(
                 "lottery", "gift", U["mod_lottery"], U["mod_lottery_desc"],
-                lottery, en_map, today, ranked=True, jump=True, strip=True,
+                lottery, en_map, today, ranked=True, jump=True, strip=True, hidden=True,
             ),
         }
 
         tab_counts = {
             "fresh": len(fresh),
             "rank": len(leaderboard),
-            "closing": len(closing),
+            "closing": len(closing_pool),
             "lottery": len(lottery),
         }
 
@@ -916,7 +1032,7 @@ def main() -> None:
 
         hot_board = f"""
       <div class="hot-board" data-hot-board>
-        <div class="hot-tabs-mobile" role="tablist" {al(*U['hot_aria'])}>
+        <div class="hot-tabs-mobile" role="group" {al(*U['hot_aria'])}>
           {hot_tab('fresh', 'tab_fresh', True)}
           {hot_tab('rank', 'tab_rank', False)}
           {hot_tab('closing', 'tab_closing', False)}
@@ -1004,15 +1120,18 @@ def main() -> None:
         item_list = []
         for i, deal in enumerate(leaderboard, start=1):
             en = en_map.get(deal["id"], {})
-            item_list.append(
-                {
-                    "@type": "ListItem",
-                    "position": i,
-                    "name": en.get("title") or deal["title"] if is_en else deal["title"],
-                    "url": deal["url"],
-                    "description": en.get("highlight") or deal["highlight"] if is_en else deal["highlight"],
-                }
+            name = (en.get("title") or deal.get("title", "")) if is_en else deal.get("title", "")
+            desc_text = (
+                (en.get("highlight") or deal.get("highlight") or "") if is_en
+                else (deal.get("highlight") or "")
             )
+            item = {"@type": "ListItem", "position": i, "name": name}
+            url = official_link(deal)
+            if url:
+                item["url"] = url
+            if desc_text:
+                item["description"] = desc_text
+            item_list.append(item)
 
         jsonld = json.dumps(
             [
@@ -1039,7 +1158,7 @@ def main() -> None:
             ],
             ensure_ascii=False,
             indent=2,
-        )
+        ).replace("</", "<\\/")   # 防止数据里的 </script> 提前结束 JSON-LD 块
 
         def pht(key: str) -> str:
             """placeholder 只能是一个字符串：按当前页面语言取。"""
@@ -1124,7 +1243,7 @@ def main() -> None:
       <kbd>⌘K</kbd>
     </button>
     <div class="topbar-stats">
-      <a class="stats-pill mint" href="#fresh">{ui('stat_active')} <b>{counts['active']}</b></a>
+      <a class="stats-pill mint" href="#ai">{ui('stat_active')} <b>{counts['active']}</b></a>
       <a class="stats-pill amber" href="#closing">{ui('stat_expiring')} <b>{counts['expiring']}</b></a>
       <a class="stats-pill stone" href="#archive">{ui('stat_archived')} <b>{counts['expired']}</b></a>
     </div>
@@ -1174,7 +1293,7 @@ def main() -> None:
     </div>
     <div class="input-wrap">
       {icon('search')}
-      <input id="q" type="search" placeholder="{pht('search_ph')}" autocomplete="off" spellcheck="false">
+      <input id="q" type="search" {al(*U['search_field_aria'])} placeholder="{pht('search_ph')}" autocomplete="off" spellcheck="false">
     </div>
 
     <div class="filter-row">

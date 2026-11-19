@@ -27,7 +27,7 @@
   --line-2: #DEE2E8;
   --ink: #18181B;
   --ink-2: #52525B;
-  --ink-3: #8A8A93;
+  --ink-3: #6B6B73;
   --ink-4: #A6A6AE;
   --amber: #F59E0B;
   --amber-deep: #B45309;
@@ -1276,6 +1276,11 @@ footer{
 
 @media (max-width: 768px){
   :root{ --topbar: 54px; }
+  /* 手机首屏（CLS）：构建期 /rank 与 /lottery 已带 hidden，只有 /closing 需要靠这里先隐住。
+     app.js 的 applyBoard() 把板子切到终态后给 <html> 加 .board-ready，这条就不再生效。
+     桌面端两块板本来就是 fresh + closing 并列，不需要这条规则。 */
+  html:not(.board-ready) #closing{ display: none; }
+
   html{ scroll-padding-top: 66px; }
   /* 右侧竖版滑轨占 44px：正文右留白同步收紧，卡片不钻到导轨下面 */
   .shell{ padding: 0 50px 4px 14px; }
@@ -1916,6 +1921,11 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
 /* 手机：平时和桌面端一样垂直居中；只有输入法弹起（JS 加 .kb-open）才贴到顶部，
    键盘收起或进入提交成功页就移除，平滑回正。 */
 @media (max-width: 680px){
+  /* iOS Safari 对 font-size < 16px 的输入框一聚焦就整页放大，关掉弹窗也不会缩回去。
+     手机断点下把所有可聚焦的文字控件提到 16px；不用 maximum-scale=1（那禁掉用户缩放，反而有障碍）。 */
+  #q,
+  .sd-input,
+  .sd-textarea{ font-size: 16px; }
   /* 手机端用 top + transform 做定位，两者都能过渡：
      平时 top:50% + translateY(-50%) 垂直居中，键盘弹起时 top:12px + 归零，
      居中 ↔ 贴顶之间平滑滑动（而不是 margin:auto 那种无法动画的硬跳）。 */
