@@ -1801,6 +1801,24 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
 }
 .sd-input::placeholder{ color: var(--ink-4); }
 .sd-input:-webkit-autofill{ -webkit-box-shadow: 0 0 0 40px #FAF9F5 inset; }
+/* 单行字段是 <textarea rows="1">（安卓 Chrome 只对 textarea 不弹键盘上方的填充辅助栏）。
+   这里把它压成和原来的单行 <input> 一模一样的观感：46px 高、行高等于高度所以文字垂直居中、
+   永不换行、无滚动条、不会自己撑高；拼贴进来的换行由 app.js 折成空格。 */
+.sd-input.sd-field-single{
+  display: block;
+  height: 46px;
+  min-height: 46px;
+  padding: 0;
+  border: 0;
+  line-height: 46px;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+  overflow: hidden;
+  resize: none;
+  scrollbar-width: none;
+}
+.sd-input.sd-field-single::-webkit-scrollbar{ display: none; }
 
 /* 正文区：无边框自适应多行，留白舒展 */
 .sd-notes{ display: block; padding: 12px 14px 4px; cursor: text; }

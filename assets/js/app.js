@@ -883,15 +883,42 @@
         .catch(function () { finish(false); });
     };
 
-    /* 发送：按钮点击（type="button"）；单行输入框按 Enter 也发（输入法组字中的 Enter 不算，
-       否则拼音选词会把半截内容发出去）。多行说明框的 Enter 保留换行。 */
+    /* 发送：按钮点击（type="button"）；单行的三个框按 Enter 也发。
+       这三个框是 <textarea rows="1">（安卓 Chrome 不会对 textarea 弹出填充辅助栏），
+       所以换行得自己拦：
+       - keydown 先拦一次（桌面与大多数安卓键盘）；
+       - beforeinput 兜底拦 insertLineBreak / insertParagraph——Gboard 常常只给 beforeinput，
+         keydown 是 keyCode 229，光靠 keydown 会漏一行换行。
+       - 输入法组字中不提交；刚用回车确认完候选词（200ms 内）也不提交，
+         否则拼音选词的回车会把半截内容发出去。多行说明框（sd-f4）保留正常换行，不介入。 */
     if (sendBtn) sendBtn.addEventListener("click", doSubmit);
     [nameEl, urlEl, regionEl].forEach(function (el) {
       if (!el) return;
+      var composeEndedAt = 0;
+      el.addEventListener("compositionend", function () { composeEndedAt = Date.now(); });
+      var pickingCandidate = function () { return Date.now() - composeEndedAt < 200; };
       el.addEventListener("keydown", function (ev) {
         if (ev.key !== "Enter" || ev.isComposing || ev.keyCode === 229) return;
         ev.preventDefault();
+        if (pickingCandidate()) return;   /* 这一下回车只算上屏，不发送 */
         doSubmit();
+      });
+      el.addEventListener("beforeinput", function (ev) {
+        var type = ev.inputType;
+        if (type !== "insertLineBreak" && type !== "insertParagraph") return;
+        ev.preventDefault();
+        if (ev.isComposing || pickingCandidate()) return;
+        doSubmit();
+      });
+      /* 粘贴 / 拖入的多行文本折成一行：\r\n、\r、\n 都变空格，光标留在原处 */
+      el.addEventListener("input", function () {
+        var raw = el.value;
+        if (raw.indexOf("\n") === -1 && raw.indexOf("\r") === -1) return;
+        var caret = el.selectionStart == null ? raw.length : el.selectionStart;
+        var head = raw.slice(0, caret).replace(/\r\n|\r|\n/g, " ");
+        var tail = raw.slice(caret).replace(/\r\n|\r|\n/g, " ");
+        el.value = head + tail;
+        try { el.setSelectionRange(head.length, head.length); } catch (err) { /* 不支持就算了 */ }
       });
     });
   }

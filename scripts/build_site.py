@@ -1282,20 +1282,24 @@ def main() -> None:
       </button>
     </div>
 
+    <!-- 单行字段一律用 <textarea rows="1"> 而不是 <input>：真机实测（安卓 Chrome）只有 textarea
+         不弹键盘上方那条 🔑💳📍 填充辅助栏——它不看 autocomplete / name / id，只按控件类型判断，
+         所以改标签是唯一稳的办法。单行外观、Enter 发送、粘贴多行折成一行由 style.css 的
+         .sd-field-single 与 app.js 的 beforeinput / input 拦截负责。 -->
     <label class="sd-row">
       <span class="sd-label">{ui('submit_name')}<i class="req" aria-hidden="true">*</i></span>
-      <input class="sd-input" id="sd-f1" type="text" maxlength="80" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send" aria-required="true"
-             placeholder="{pht('submit_ph_name')}">
+      <textarea class="sd-input sd-field-single" id="sd-f1" rows="1" wrap="off" maxlength="80" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send" aria-required="true"
+                placeholder="{pht('submit_ph_name')}"></textarea>
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_link')}<i class="req" aria-hidden="true">*</i></span>
-      <input class="sd-input" id="sd-f2" type="text" inputmode="url" maxlength="500" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send" aria-required="true"
-             placeholder="{pht('submit_ph_link')}">
+      <textarea class="sd-input sd-field-single" id="sd-f2" rows="1" wrap="off" maxlength="500" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send" aria-required="true"
+                placeholder="{pht('submit_ph_link')}"></textarea>
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_region')}</span>
-      <input class="sd-input" id="sd-f3" type="text" maxlength="60" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send"
-             placeholder="{pht('submit_ph_region')}">
+      <textarea class="sd-input sd-field-single" id="sd-f3" rows="1" wrap="off" maxlength="60" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send"
+                placeholder="{pht('submit_ph_region')}"></textarea>
     </label>
     <label class="sd-notes">
       <textarea class="sd-textarea" id="sd-f4" rows="3" maxlength="800" autocomplete="nope" autocorrect="off" autocapitalize="off" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other"
