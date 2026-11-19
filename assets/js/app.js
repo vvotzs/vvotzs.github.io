@@ -695,18 +695,33 @@
       window.open(btn.href, "_blank", "noopener");
     };
 
+    /* 弹窗真的出现在页面上没（embed.js 只建 .tally-overlay / .tally-popup 和 popup iframe） */
+    var tallyPopupShown = function () {
+      return !!(document.querySelector(".tally-popup, .tally-overlay") ||
+                document.querySelector('iframe[src*="tally.so/popup"]'));
+    };
+
+    /* embed.js 自己的宿主初始化比 window.Tally 晚时，openPopup 会被静默吞掉：
+       弹完 400ms 复核，没出来就再弹一次，仍没有才退回新标签，避免「点了没反应」。 */
+    var openTally = function (btn, retriesLeft) {
+      if (!openTallyPopup(btn)) { openTallyFallback(btn); return; }
+      setTimeout(function () {
+        if (tallyPopupShown()) return;
+        if (retriesLeft > 0) { openTally(btn, retriesLeft - 1); return; }
+        openTallyFallback(btn);
+      }, 400);
+    };
+
     var loadTally = function (done) {
       if (tallyReady()) { done(true); return; }
       if (tallyScript) { tallyWaiters.push(done); return; }
 
       var settled = false;
-      var poller = null;
       var timer = null;
 
       var finish = function (ok) {
         if (settled) return;
         settled = true;
-        if (poller) clearInterval(poller);
         if (timer) clearTimeout(timer);
         if (tallyScript) tallyScript.setAttribute("data-state", ok ? "ready" : "failed");
         var list = tallyWaiters;
@@ -714,15 +729,16 @@
         for (var i = 0; i < list.length; i++) list[i](ok);
       };
 
-      /* onload 之后 window.Tally 可能还差一两个 tick 才挂上：先轮询，再交给超时 */
-      poller = setInterval(function () { if (tallyReady()) finish(true); }, 50);
-      timer = setTimeout(function () { finish(tallyReady()); }, TALLY_LOAD_TIMEOUT);
-
       var s = document.createElement("script");
       s.src = TALLY_EMBED_SRC;
       s.async = true;
-      s.onload = function () { if (tallyReady()) finish(true); };
+      /* onload 时 embed.js 自己的弹窗宿主还在初始化，立刻 openPopup 会静默失败（
+         弹窗被它的初始化覆盖），所以等约 120ms 再判定，超出总预算就算失败。 */
+      s.onload = function () {
+        setTimeout(function () { finish(tallyReady()); }, 120);
+      };
       s.onerror = function () { finish(false); };
+      timer = setTimeout(function () { finish(tallyReady()); }, TALLY_LOAD_TIMEOUT);
       tallyScript = s;
       (document.body || document.head || document.documentElement).appendChild(s);
     };
@@ -735,7 +751,7 @@
 
       if (tallyReady()) {                                    // 已就绪：直接弹窗
         ev.preventDefault();
-        if (!openTallyPopup(submitBtn)) openTallyFallback(submitBtn);
+        openTally(submitBtn, 1);
         return;
       }
 
@@ -745,7 +761,7 @@
         return;
       }
       loadTally(function (ok) {
-        if (ok && openTallyPopup(submitBtn)) return;
+        if (ok) { openTally(submitBtn, 1); return; }
         openTallyFallback(submitBtn);
       });
     });
