@@ -3122,5 +3122,265 @@
     ],
     "risk": "The five shares are random and most people get about $3 each, so do not expect anything near the $1,500 headline. Forgetting to opt in or to claim within 30 days wastes the 60-day hold. The £500 is locked for 60 days, investing carries risk, and a throwaway account brings idle-fee and tax-reporting chores.",
     "source": "BeerMoneyUK listing (read 2026-11-20, covering the opt-in, the single £500 deposit, the 60-day hold and the $3-$300 range with most near $3) plus Webull's own new-customer terms"
+  },
+  "coop-bank-switch-200": {
+    "title": "[UK] Co-op Bank switch: £125 upfront plus 3×£25 (up to £200)",
+    "highlight": "Move a full external account into Co-op Bank's Standard Current Account or Everyday Extra with CASS, deposit £1,500, keep 2 direct debits, make 5 card payments and register for online banking within 30 days to get £125 within 7 days; keep the same activity for 3 more months for another £25 each month, up to £200",
+    "regions": "[UK] UK residents only; anyone who took a Co-op switching bonus since 1 Nov 2022 is excluded",
+    "value": "Up to £200 (£125 + 3×£25)",
+    "content": "Be Clever With Your Cash and Moneyfactscompare (checked 18 Nov 2026) confirm the new Co-op Bank switch offer: new customers opening a Standard Current Account or Everyday Extra, or existing holders of a qualifying account, complete a full CASS switch and get £125 within 7 days, in time for Christmas. Then, for three more months, keep depositing at least £1,500 a month, keep at least 2 active direct debits and make at least 5 debit card payments to receive another £25 per month, capped at a further £75 and £200 in total.",
+    "conditions": "UK residents only; a full CASS switch (old account closed); deposit at least £1,500 within 30 days, set up 2 active direct debits, make 5+ debit card payments and register for online banking; repeat the same activity for 3 further months; not valid if you took a Co-op switching bonus since 1 Nov 2022.",
+    "steps": [
+      "Apply for the Standard Current Account or Everyday Extra on Co-op Bank's site",
+      "Move your main external account across with CASS",
+      "Within 30 days deposit £1,500, set 2 direct debits, make 5 card payments, register for online banking",
+      "After £125 lands, keep the activity for 3 more months to collect £25 each month"
+    ],
+    "risk": "The £125 pays in one go but the three £25 payments depend on keeping up the activity, so stopping the card spend or direct debits loses them; CASS closes your old account, so check salary and subscriptions move cleanly; banks may refuse serial switchers.",
+    "source": "Moneyfactscompare (18 Nov 2026) + Be Clever With Your Cash November switching round-up (read 18 Nov 2026)"
+  },
+  "uq-mobile-sim-debut-20000": {
+    "title": "[Japan] UQ mobile SIM-only switch: ¥20,000 au PAY back (≈$130)",
+    "highlight": "Port in from any carrier except au or povo and take a SIM or eSIM only (no handset), choosing Komikomi Plan Value or Tokutoku Plan 2 plus the Data Increase Option II, and ¥20,000 of au PAY balance arrives in one payment the month after activation; lifted from ¥15,000 on 17 Sep 2026 with the spend requirement removed",
+    "regions": "[Japan] Japanese address and ID verification required; ports from au and povo are excluded",
+    "value": "¥20,000 au PAY balance (≈$130)",
+    "content": "UQ mobile's official SIM Debut campaign (cross-checked with Selectra, 10 Nov 2026, and Mynavi, 19 Nov 2026): since the 17 Sep 2026 revision the reward is a flat ¥20,000-equivalent (pre-tax) au PAY balance, the old requirement to spend ¥15,000 in au PAY the following month is gone, and the two-part payout became one. Conditions are an MNP port from outside au/povo, SIM or eSIM only, a qualifying plan and the Data Increase Option II added in the same order; payment arrives from late the month after activation. The online store charges a ¥3,850 admin fee, leaving about ¥16,150 (≈$105) net.",
+    "conditions": "Live in Japan with ID verification; MNP port from a carrier other than au or povo; SIM or eSIM only (buying a handset disqualifies); choose Komikomi Plan Value or Tokutoku Plan 2; add the Data Increase Option II (¥550/mo, free for 7 months) in the same order; activate by the end of the month after applying; one per line, and previous au PAY cashback recipients may be excluded.",
+    "steps": [
+      "Confirm your current number is not on au or povo",
+      "Order SIM-only or eSIM-only on UQ mobile's online store with Komikomi Plan Value or Tokutoku Plan 2",
+      "Tick the Data Increase Option II during checkout",
+      "Activate by the end of the month after applying",
+      "Log in to the au PAY app with that line's au ID and collect the ¥20,000 from late next month"
+    ],
+    "risk": "The reward is au PAY balance, not cash, so it can only be spent at au PAY merchants; the Data Increase Option II costs ¥550 a month after 7 free months, so cancel it; new lines from 1 Oct 2025 carry a ¥1,100 cancellation fee within a year and UQ states repeat short-term churn stops payouts; ¥20,000 is a maximum and missing the option pays nothing.",
+    "source": "UQ mobile official SIM Debut campaign page + Selectra (read 10 Nov 2026) + Mynavi SimSim World (19 Nov 2026)"
+  },
+  "ahamo-mnp-20000-points": {
+    "title": "[Japan] ahamo port-in: 20,000 d points, 4,000 × 5 months (≈$130)",
+    "highlight": "Port your number in from another carrier and take a SIM or eSIM only, entering the campaign with the same d account you apply with and activating by the end of the following month, to receive 20,000 d points (period- and use-restricted) paid as 4,000 points a month over 5 months",
+    "regions": "[Japan] Japanese residency, a d account and ID verification; moves inside docomo or new numbers are excluded",
+    "value": "20,000 d points (≈$130, paid over 5 months)",
+    "content": "ahamo's official port-in d-points campaign (cross-checked with Naruhayanet, 17 Nov 2026, Mynavi, 14 Nov 2026, and DX Magazine, 19 Nov 2026): MNP customers taking SIM or eSIM only, who enter the campaign first with the same d account they apply with, get 20,000 d points paid as 4,000 a month over five months, each instalment valid 94 days. Entry must happen in the month before or the month of activation. The points are period- and use-restricted, cannot be cashed out and cannot pay the ahamo bill. It cannot be combined with the referral or welcome-back campaigns; entering more than one means only the last entry counts (referral pays the customer 13,000 points).",
+    "conditions": "Live in Japan with ID verification; MNP port from another carrier with SIM or eSIM only (buying a handset disqualifies); enter and apply with the same d account; enter in the month before or the month of activation and activate by the end of the month after entry; moves inside docomo, new numbers and adding the JAL Mobile option are excluded; points are restricted and you must be a d POINT CLUB member.",
+    "steps": [
+      "Enter the campaign with the d account you will use for ahamo and screenshot the confirmation",
+      "Get an MNP reservation number from your current carrier (one-stop carriers need none)",
+      "Apply on ahamo.com choosing SIM-only and porting in (MNP) with the same d account",
+      "Activate by the end of the month after entry",
+      "From late the second month after activation, check d POINT CLUB for 4,000 points a month"
+    ],
+    "risk": "Points arrive over five months and each expires in 94 days, so cancelling or deleting the d account forfeits the rest; entering the referral or welcome-back campaign instead drops you from 20,000 to 13,000; missing entry or activating late voids the whole offer.",
+    "source": "ahamo official campaign terms + Naruhayanet (read 17 Nov 2026) + Mynavi SimSim World (14 Nov 2026) + DX Magazine (19 Nov 2026)"
+  },
+  "ymobile-parent-child-discount": {
+    "title": "[Japan] Y!mobile parent-child discount: ¥1,100 off per month for 12 months (≈¥13,200)",
+    "highlight": "From 18 Nov 2026, households with a 5–18 year old signing up or porting to Y!mobile Simple 3 M/L get ¥1,000 (¥1,100 with tax) off the monthly fee for 12 months, stackable with the PayPay Card discount (including a ¥200 boost) and the Hikari set discount, taking Simple 3 M (30GB) as low as ¥858 a month",
+    "regions": "[Japan] Japanese residency; a 5–18 year old user and their family; ports from SoftBank, LINEMO and LINE Mobile are excluded from parts of the offer",
+    "value": "About ¥13,200 over 12 months (≈$86)",
+    "content": "SoftBank's official press release (issued 16 Nov 2026, starting 18 Nov) and Mynavi's November round-up confirm: the parent-child discount targets users aged 5–18 and cuts ¥1,000 (¥1,100 with tax) a month for a year on Simple 3 M/L from the month after sign-up. From the same date the PayPay Card discount boost raises the PayPay Card discount from ¥300 to ¥500 a month (¥550 with tax) for those users and their families. Combined with the Hikari set discount (A), Simple 3 M comes to ¥780 (¥858 with tax) a month for the first year, returning to ¥1,958 from month 14. The separate SIM-only switching campaign pays up to ¥15,000 in PayPay points, but its stacking and exclusion rules differ, so check the application page.",
+    "conditions": "Japanese residency and ID verification; the user must be 5–18 years old (family members share the boost); new sign-up or MNP to Simple 3 M/L; the 12-month discount starts the month after applying and ends from month 14; the PayPay Card discount requires paying with a PayPay Card and completing PayPay KYC plus Yahoo! JAPAN ID linking; ports from SoftBank, LINEMO and LINE Mobile are excluded from the SIM cashback.",
+    "steps": [
+      "Prepare ID for the 5–18 year old user and a payment method",
+      "Order Simple 3 M/L as a new line or MNP on Y!mobile's official online store or Yahoo! store",
+      "Link the PayPay Card and Yahoo! JAPAN ID as prompted",
+      "After activation confirm the bill drops by ¥1,100 with tax from the next month",
+      "Apply separately for the Hikari set discount or SIM cashback if you want them stacked"
+    ],
+    "risk": "The discount lasts only 12 months and the price returns to normal from month 14, so it is poor value long term; the SIM cashback conflicts with some older campaigns and excludes past Y!mobile online-store PayPay recipients; a PayPay Card is a credit card, so decide whether it is worth opening one for this.",
+    "source": "SoftBank official press release (16 Nov 2026) + Mynavi SimSim World November round-up (read 19 Nov 2026)"
+  },
+  "esim-san-japan-free-1gb": {
+    "title": "[Japan] eSIM-san free trial: Japan eSIM 1GB / 1 day for ¥0 (LINE code, once per person)",
+    "highlight": "Add the official LINE (@esim-san) and pull a discount code from the menu, then enter it at checkout for the Japan eSIM 1GB / 1 day plan and the price drops to ¥0; open to people who have not bought before, once per person, the 1GB / 3 day tier is excluded, and the campaign runs to 31 Dec 2026",
+    "regions": "[Japan] Only the Japan 1GB/1-day plan; you must be able to receive esim-san.jp mail (carrier mailboxes need the domain unblocked)",
+    "value": "Japan eSIM 1GB / 1 day (normally from ¥260)",
+    "content": "eSIM-san's official list of live campaigns and buyer perks (updated 13 Nov), cross-checked through sp1.jp (19 Nov 2026) and Coupon World (14 Nov 2026): of eight live perks only the Japan eSIM 1GB/1-day at ¥0 cuts the price itself, the rest are airport duty-free and Korean store discounts. The flow is to add the official LINE, pull the code from the menu, enter it on checkout for Japan 1GB/1 day and receive the eSIM by email. Forget the code and there is no refund; the 1GB/3 day tier does not qualify.",
+    "conditions": "One per person; only the Japan eSIM 1GB/1 day plan, not 1GB/3 day or overseas destinations; the LINE discount code must be entered at checkout or no refund is given; you must be able to receive mail from esim-san.jp; the campaign is listed to 31 Dec 2026 and may end early.",
+    "steps": [
+      "Add eSIM-san's official LINE (@esim-san)",
+      "Pull the discount code from the LINE menu",
+      "Order the Japan eSIM 1GB / 1 day plan on the site",
+      "Enter the code at checkout and confirm the total is ¥0",
+      "Receive the eSIM QR code by email and install it"
+    ],
+    "url": "https://esim-san.jp/",
+    "source": "eSIM-san official live campaign list (updated 13 Nov), cross-checked via sp1.jp (19 Nov 2026) and Coupon World (14 Nov 2026)"
+  },
+  "codex-students-100": {
+    "title": "[US/Canada] Codex for Students: $100 of credits (2,500 credits, valid 12 months)",
+    "highlight": "Students at US or Canadian degree-granting universities who live there when claiming verify with a school email through SheerID and get $100 of Codex credits on any ChatGPT plan from Free to Pro, shown as 2,500 credits on the usage page and spent on top of the plan's own Codex allowance",
+    "regions": "[US/Canada] Current students at degree-granting universities in the US or Canada, residing there at claim time; French students have a separate €50 UNiDAYS offer",
+    "value": "$100 (2,500 credits)",
+    "content": "OpenAI's Help Center terms for Codex credits for Students (cross-checked with llmperks on 12 Nov 2026, TopUseAI on 3 Nov 2026 and gptx on 8 Nov 2026): the $100 appears as 2,500 credits on the usage page and is spent once the plan's own Codex allowance runs out, without upgrading the plan. It is not API credit and cannot be moved to another tool. One per student, non-transferable, and the official flow is SheerID verification rather than a code, so any \"student promo code\" is not genuine. The earlier four free months of ChatGPT Plus for students closed on 31 Oct 2026; this Codex offer remains open, and French students instead claim €50 (about 1,250 credits) through UNiDAYS.",
+    "conditions": "Current student at a degree-granting university in the US or Canada, living there when claiming; verify with a school email through SheerID; a ChatGPT account on Free, Go, Plus or Pro; one per student and non-transferable; credits expire 12 months after the grant; not API credits, and students outside the US and Canada (including mainland China) cannot pass verification.",
+    "steps": [
+      "Sign in to your own ChatGPT account (the free plan works)",
+      "Open the Codex for University Students page and press Claim now",
+      "Complete SheerID verification with your school email",
+      "The credits are added to your personal workspace automatically",
+      "Check the Codex usage page for 2,500 credits"
+    ],
+    "url": "https://chatgpt.com/codex",
+    "risk": "Usable only inside Codex, not the API; unused credits expire after 12 months; a VPN will not pass student verification, so ignore agents offering to claim it for you; one shot per student with no fallback if verification fails.",
+    "source": "OpenAI Help Center Codex credits for Students terms, cross-checked with llmperks (12 Nov 2026), TopUseAI (3 Nov 2026) and gptx (8 Nov 2026)"
+  },
+  "chatgpt-student-credits-fr": {
+    "title": "[France] French students: €50 of ChatGPT credits via UNiDAYS (about 1,250 credits)",
+    "highlight": "Students in France verify a school email on UNiDAYS and claim €50 of ChatGPT credits with no paid subscription needed; the credits cover agentic features such as Codex and are spent after the plan's own allowance",
+    "regions": "[France] Students enrolled in France, verified through UNiDAYS",
+    "value": "€50 (about 1,250 credits)",
+    "content": "Numerama (3 Nov 2026) reports and checks the UNiDAYS page: after the US and Canada, OpenAI gives French students €50 of ChatGPT credits, claimed on UNiDAYS after verifying student status with a university email and worth about 1,250 credits. As with the US/Canada version the credits fund agentic features such as Codex and are drawn after the plan's included allowance; they are not general API credit and no subscription is required.",
+    "conditions": "Enrolled student in France verified through UNiDAYS with a school email; a ChatGPT account (free plan is fine); credits are ChatGPT credits, not API; one per student; terms may change, so check the UNiDAYS page.",
+    "steps": [
+      "Register or sign in to UNiDAYS and verify student status with your university email",
+      "Claim the €50 OpenAI offer on UNiDAYS",
+      "Sign in to ChatGPT with the same email",
+      "Check the usage page to confirm the credits arrived"
+    ],
+    "url": "https://www.numerama.com/tech/2366829-openai-offre-50-e-de-credits-chatgpt-aux-etudiants-francais.html",
+    "risk": "France only (the US and Canada have a separate $100 offer); usable only inside ChatGPT/Codex; UNiDAYS may ask for extra proof of enrolment.",
+    "source": "Numerama (read 3 Nov 2026) + UNiDAYS claim page"
+  },
+  "google-ai-studio-monthly-credits": {
+    "title": "[Global] Google AI Studio: monthly Cloud credits for subscribers, $10 on Pro and $40/$100 on Ultra",
+    "highlight": "Since 13 Nov 2026, Google AI Pro and Ultra subscribers can create a developer profile, link billing and claim monthly Google Cloud credits inside AI Studio: $10 a month on Pro, $40 on Ultra (5x) and $100 on Ultra (20x), each valid 12 months and stacking month to month, usable on the Gemini API including paid-tier models",
+    "regions": "[Global] Requires a Google AI Pro or Ultra subscription (regional availability per the plan page); primary subscriber only, not shareable with family",
+    "value": "$120 a year on Pro ($480–$1,200 on Ultra)",
+    "content": "Google's official blog (13 Nov 2026) and the Google Developer Program benefits and FAQ pages (checked through duckssi, 18 Nov 2026): monthly cloud credits that used to be claimed across several sites now sit in AI Studio's left-hand menu. Grants scale with the plan ($10 on Pro, $40 on Ultra 5x, $100 on Ultra 20x), each is valid 12 months from issue and rolls over monthly, and nothing is backdated, so credits only start once a developer profile exists. Spending them on the Gemini API requires at least $5 of prepaid balance; the earliest-expiring credits are used first. Paid-tier models such as Gemini 4 Carbon are the useful target.",
+    "conditions": "A Google AI Pro or Ultra subscriber with a Google Developer Program profile in AI Studio; primary subscriber only, not shareable; no backdating of earlier months; at least $5 prepaid balance to draw on the Gemini API; each grant valid 12 months, earliest expiry first; the free developer tier gets no monthly credits.",
+    "steps": [
+      "Open Google AI Studio with the account holding the Pro or Ultra plan",
+      "Go to the credits page in the left menu and create or link your Developer Program profile",
+      "Link a Cloud billing account and claim the current month's credits",
+      "Prepay at least $5 before calling the Gemini API",
+      "Return each month to claim the new grant and watch the 12-month expiry order"
+    ],
+    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/google-cloud-credits-gdp-ai-studio/",
+    "risk": "These are credits attached to a paid subscription, so weigh the subscription cost; months before you create the profile are lost; $5 must be prepaid before the credits can be drawn; and the Gemini API was removed from the $300 trial credit scope from 16 Nov 2026.",
+    "source": "Google official blog (13 Nov 2026) + Google Developer Program benefits and FAQ (checked via duckssi, 18 Nov 2026)"
+  },
+  "telnyx-pretrial-25-ai": {
+    "title": "[Global] Telnyx: $25 of AI credits and a US number on a new account (no card, OpenAI compatible)",
+    "highlight": "Sign up with an email and $25 of AI credits lands automatically in a Telnyx Pretrial account, with no card and no top-up; it runs Kimi K3, GLM-5.3, DeepSeek V4.1 Flash and MiniMax-M3 over an OpenAI-compatible endpoint, and includes one US local number",
+    "regions": "[Global] Email sign-up; credits cover AI products only, voice and messaging need a full account with identity checks",
+    "value": "$25 of AI credits",
+    "content": "Telnyx pricing and account-upgrade docs (cross-checked with Cekura on 2 Nov 2026, AgentPhone on 18 Nov 2026 and aipromonow on 14 Nov 2026): a new account starts on the Pretrial tier with $25 of AI credits and one US local number, no card required, usable for Inference and AI Assistants. Inference runs on Telnyx's own GPUs and bills by token, so GLM-5.3 Flash at about $0.135 per million input and $0.45 output, DeepSeek V4.1 Flash at $0.30/$1.20 and Kimi K3 at $2.70/$13.50 stretch $25 a long way. Upgrading to a full account (LinkedIn or GitHub verification) swaps the $25 for a $5 general credit, so do not upgrade if you want the AI credits. Pretrial cannot be topped up and usage stops when the credits run out; the remaining days show in the console.",
+    "conditions": "Email sign-up, no card needed; AI products only, voice and messaging need an upgrade with verification; no top-ups on Pretrial and usage stops at zero; a full account replaces the $25 with $5; the credit has an expiry, shown in the console.",
+    "steps": [
+      "Open telnyx.com/sign-up and register with an email or Google/Microsoft account",
+      "Click the magic login link in the email (no password needed)",
+      "Confirm $25 of AI credits and one US number in the console",
+      "Create an API key and point the base URL at https://api.telnyx.com/v2/ai/openai",
+      "Pick a model and call it; do not upgrade before the credit runs down"
+    ],
+    "url": "https://telnyx.com/sign-up",
+    "risk": "The credit expires and Pretrial cannot be topped up, so long jobs may cut out; upgrading drops you to $5, so do not verify identity early; AI and communications products do not share the balance; some community reports say it has lapsed, so check the console balance at sign-up.",
+    "source": "Telnyx official pricing and account-upgrade docs, cross-checked with Cekura (2 Nov 2026), AgentPhone (18 Nov 2026) and aipromonow (14 Nov 2026)"
+  },
+  "infomaniak-ai-1m-credits": {
+    "title": "[Switzerland/Global] Infomaniak AI Services: 1 million credits for a one-month trial (card required)",
+    "highlight": "Infomaniak's sovereign-cloud AI Services guide states \"one million free credits allow you to test the service without commitment for one month\", covering LLMs, speech transcription and image generation, with API tokens for developers; a card is needed to start using the API and usage is billed afterwards",
+    "regions": "[Switzerland/Global] Swiss-hosted; a credit card is required and regional limits follow the site",
+    "value": "1 million credits (about a one-month trial, ≈$10 unverified)",
+    "content": "Infomaniak's official AI Services getting-started FAQ (reported by aifree.dev on 15 Nov 2026 and the townlet AI deals daily on 19 Nov 2026, both against the vendor page) says: \"One million free credits allow you to test the service without commitment for one month.\" Each request uses one credit or one LLM token, and billing is usage-based afterwards; access is through the web app, the API, or by migrating models on-premise. The million is platform credits, not a million dollars and not unlimited calls; how many tokens it actually buys is unverified.",
+    "conditions": "An Infomaniak account with a credit card on file; 1 million credits for about one month, then usage-based billing; the credits are not a dollar amount and the token conversion is unverified; overage can bill immediately, so set a spending limit first.",
+    "steps": [
+      "Register an Infomaniak account and add a credit card",
+      "Open the AI Services getting-started guide and the AI Services console",
+      "Confirm the 1 million credits have landed",
+      "Create an API token or try models in the web app",
+      "Set a spending limit in billing before the trial runs out"
+    ],
+    "url": "https://www.infomaniak.com/en/support/faq/2845/getting-started-guide-ai-services-sovereign-ai-services",
+    "risk": "A card is required and usage turns into paid billing once the credits run out, so set a cap; the real value of a million credits is unconfirmed, so do not read it as $1M; a Swiss bill may add currency-conversion fees.",
+    "source": "Infomaniak official AI Services getting-started FAQ (reported by aifree.dev 15 Nov 2026 and townlet 19 Nov 2026); token conversion and regional limits unverified"
+  },
+  "foxl-200-credits": {
+    "title": "[Global] Foxl v0.10.7: 200 credits on a new account, 100 more per friend (no key, no subscription)",
+    "highlight": "Since Foxl 0.10.7 every account can chat with Foxl's own models on Foxl credits: a new account starts with 200 and needs neither an API key nor a subscription; a friend who signs up through your link and uses Foxl credits on two different UTC days adds 100 more; the old 200-requests-a-day cap on free accounts is gone, replaced by a 1,500-a-day safety limit",
+    "regions": "[Global] Desktop or mobile app sign-up; at most 5 new accounts a day per network",
+    "value": "200 credits (plus 100 per referral)",
+    "content": "Foxl's official v0.10.7 release notes (13 Nov 2026) confirm: a new account starts with 200 credits however you sign up; each friend invited who uses Foxl credits on two different UTC days adds 100, and bursts of invites are checked and added over several days. At most 5 new accounts a day can be credited per network, and on busy days they arrive from 00:00 UTC oldest first. With no computer connected the cloud answers on Claude Haiku 5.5 using your credits, with hourly and daily caps on replies; when credits run out Foxl points you to inviting friends.",
+    "conditions": "Install Foxl 0.10.7 or later (desktop or mobile) or use app.foxl.ai; 200 credits per new account; at most 5 new accounts a day per network; referral credits require the friend to use Foxl credits on two different UTC days; top up by inviting or paying once credits run out.",
+    "steps": [
+      "Install Foxl on desktop or mobile, or open app.foxl.ai and sign up",
+      "Confirm the account shows 200 credits",
+      "Get your invite link under Settings > Account > Invite friends",
+      "Have a friend sign up through it and use Foxl credits on two days",
+      "Check the referral credits, which may arrive over several days"
+    ],
+    "risk": "200 credits are worth little and heavy use drains them quickly; anti-abuse checks delay or block rewards from multi-accounting on one network; cloud answers without a connected computer run on Haiku 5.5 with rate limits.",
+    "source": "Foxl official v0.10.7 release notes (read 13 Nov 2026)"
+  },
+  "easysim-free-1gb-esim": {
+    "title": "[Global] EasySIM: free 1GB eSIM for 190+ countries (one per phone number, while stocks last)",
+    "highlight": "Install the EasySIM app and open love.easysim.ai/claim to claim 1GB of global eSIM data covering 190+ countries; the page states one claim per phone number and that the offer lasts while supplies do",
+    "regions": "[Global] 190+ countries; one claim per phone number",
+    "value": "1GB of global data (≈$5)",
+    "content": "EasySIM's official claim page (love.easysim.ai/claim, read 20 Nov 2026) shows \"Free 1GB eSIM / Travel data for 190+ countries / One claim per phone number. Offer valid while supplies last.\" Arabic-language coverage (khabr.news, 17 and 19 Nov 2026) describes the same path: download the app from easysim.ai and activate the free data through love.easysim.ai/claim. The validity period and the exact country list are not on the claim page and appear only inside the app.",
+    "conditions": "Install the EasySIM app and register with a phone number; one claim per phone number; limited quantity, ends when supplies do; the eligible countries and validity days are shown only on the in-app activation page.",
+    "steps": [
+      "Download the EasySIM app from easysim.ai",
+      "Register and activate with your phone number",
+      "Open love.easysim.ai/claim",
+      "Confirm destination and validity in the app, then install the eSIM"
+    ],
+    "url": "https://love.easysim.ai/claim/",
+    "risk": "The claim page does not state validity or covered countries, so treat it as a spare rather than a main data line; \"while supplies last\" means it can stop at any time; a new brand with little track record, so share minimal personal data.",
+    "source": "EasySIM official claim page (read 20 Nov 2026) + khabr.news coverage (17 and 19 Nov 2026)"
+  },
+  "airtel-jio-bogo-recharge": {
+    "title": "[India] Airtel and Jio buy-one-get-one recharge: ₹349 and ₹399 plans doubled to 56 days",
+    "highlight": "Airtel and Jio are rolling out a buy-one-get-one to selected prepaid users: recharge the 28-day ₹349 or ₹399 plan in the Airtel Thanks or MyJio app and qualifying accounts get a second recharge of the same plan, doubling validity to 56 days and cutting the effective monthly cost to ₹175 or ₹200",
+    "regions": "[India] Indian prepaid numbers only, rolled out per account rather than to everyone",
+    "value": "About ₹349–₹399 (≈$4–5)",
+    "content": "Beebom (8 Nov 2026), Gadgets Now (15 Nov 2026) and PaidFreeDroid (9 Nov 2026) checked the carrier apps: Airtel shows a \"1+1 Recharge Free\" tag to some accounts, and recharging the ₹349 plan (2GB a day plus unlimited 5G) or ₹399 plan (unlimited 4G/5G) grants a second recharge of the same value. Jio's version appears as a \"Buy One Get One Free\" banner or a gold badge in recommended plans on MyJio, and support says the bonus is credited as a voucher in MyJio Vouchers within seven days. Eligibility is algorithmic in both cases, so if the tag is not on your account the offer is not available.",
+    "conditions": "Indian prepaid users only; the tag must appear in the Airtel Thanks or MyJio app; only the ₹349 and ₹399 28-day plans; Jio's bonus arrives as a voucher to redeem manually within seven days; cannot be stacked with some other promotions.",
+    "steps": [
+      "Open the Airtel Thanks or MyJio app and sign in with the prepaid number",
+      "Check whether the ₹349 or ₹399 plan carries the 1+1 tag",
+      "Complete the recharge as prompted",
+      "On Jio, collect the bonus voucher under Menu > Vouchers after seven days",
+      "Activate the bonus once the first plan expires so nothing is wasted"
+    ],
+    "url": "https://gadgets.beebom.com/news/airtel-buy-1-get-1-free-offer-rs-349-rs-399-plans",
+    "risk": "A trial rollout, so most accounts will not see the tag; the carriers have not detailed how the bonus activates and Jio needs a manual voucher redemption; you are locking in 56 days of prepaid service rather than getting cash.",
+    "source": "Beebom (8 Nov 2026) + Gadgets Now (15 Nov 2026) + PaidFreeDroid (9 Nov 2026) checking the carrier apps"
+  },
+  "spellar-chrome-300-minutes": {
+    "title": "[Global] Spellar for Chrome: AI meeting notes with 300 free minutes (no card, no bot joins)",
+    "highlight": "Spellar's Chrome edition, launched on Product Hunt on 19 Nov 2026, records Google Meet, Zoom, Teams and Webex in your own browser tab without a bot joining or appearing on the participant list; it comes with 300 free minutes, no card, a choice of Claude, GPT or Gemini, and notes that push to Slack, Notion or the whole invite list",
+    "regions": "[Global] Chrome on desktop; requires installing the extension and using the web version of the meeting",
+    "value": "300 free minutes (≈$15)",
+    "content": "The Product Hunt launch post (18 Nov 2026, by Spellar founder Zino) and the 19 Nov launch page: Spellar for Chrome moves meeting notes from Mac and iPhone into the browser, capturing the tab's audio locally and showing speaker names on Google Meet. It shares one memory with the Mac and iPhone apps, so a single question can cover a call on your laptop and one on your phone. You pick Claude, GPT or Gemini, and notes can go to Slack, Notion or everyone on the invite. New users get 300 minutes free without a card.",
+    "conditions": "Chrome on desktop with the extension installed; records only meetings in browser tabs (web Meet, Zoom, Teams, Webex); 300 free minutes without a card; beyond that it is a paid subscription at the vendor's price.",
+    "steps": [
+      "Install the Chrome extension from the Product Hunt launch page or spellar.ai",
+      "Sign up with an email and confirm the 300 free minutes",
+      "Pick Claude, GPT or Gemini and a notes destination in settings",
+      "Open the meeting in Chrome and start recording",
+      "Review notes afterwards or push them to Slack or Notion"
+    ],
+    "risk": "300 minutes is roughly ten meetings, so heavy use runs out fast; recording meetings involves other people's consent, so tell them in formal settings; it only works in browser tabs, not desktop meeting apps.",
+    "source": "Product Hunt official launch post (read 18 Nov 2026) + Spellar launch page (19 Nov 2026)"
+  },
+  "zcode-daily-build-cards": {
+    "title": "[Global/China] ZCode nightly card: 300M GLM-5.3-Flash tokens on weekdays, 500M at weekends (no card)",
+    "highlight": "The Zhipu ZCode client issues a GLOBAL BUILD card every night at 19:00: 300M GLM-5.3-Flash tokens on weekdays and 500M at weekends, active from 23:00 and zeroed at 09:00 next day (Monday 09:00 for weekend cards); free accounts qualify, no card needed, and new users also get a five-day trial of 8M tokens a day",
+    "regions": "[Global/China] BigModel login in China, Z.ai abroad; tokens work only inside the ZCode client",
+    "value": "300M tokens a night (500M at weekends), roughly $10 of compute",
+    "content": "iGetoken's standing campaign page (from 12 Nov 2026) and allagent.wiki's daily free-quota posts (14 and 16 Nov) agree: ZCode turned GLOBAL BUILD into a daily card on 27 Oct, claimed from the client's lower-left corner from 19:00, active at 23:00 and zeroed at 09:00 (weekend cards carry 500M and last to Monday 09:00), with no accumulation and no stacking between cards. After claiming you must switch the channel to Global Building (Start Plan) and keep the model on GLM-5.3-Flash, or your paid plan quota is charged instead. ZCode's official docs also list a new-user Free Trial Quota: five days after linking BigModel with 3M GLM-5.3 and 5M GLM-5.3-Flash tokens a day. These are in-product tokens, not exportable API keys, and cannot feed Cursor or Claude Code.",
+    "conditions": "Install the ZCode client (official notes say versions below 3.10 have no claim entry); any signed-in user, including free accounts, with no card; cards appear at 19:00, activate at 23:00 and expire at 09:00; switch to the Global Building channel and GLM-5.3-Flash after claiming; tokens cannot be exported as API; concurrency is capped at 3 tasks.",
+    "steps": [
+      "Download and update ZCode from zcode.z.ai",
+      "Sign in and claim the day's GLOBAL BUILD card in the lower-left corner",
+      "Wait for the tokens to land at 23:00",
+      "Switch the model channel to Global Building and pick GLM-5.3-Flash",
+      "Confirm in Settings > Usage stats that usage is not hitting the paid plan"
+    ],
+    "url": "https://zcode.z.ai/",
+    "risk": "Only covers the ten hours overnight, so nothing in the daytime; the tokens cannot be exported as an API; the wrong channel charges your paid plan; Zhipu publishes no public campaign page, so the card in the client governs and can change at any time; peak hours bring queues and rate limits, so keep important changes on a Git branch.",
+    "source": "ZCode client campaign card + official Free Trial Quota docs, cross-checked with iGetoken (standing page from 12 Nov 2026) and allagent.wiki (14 and 16 Nov 2026)"
   }
 }
