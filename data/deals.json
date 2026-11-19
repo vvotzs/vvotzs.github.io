@@ -2262,6 +2262,38 @@
     "status": "active"
   },
   {
+    "id": "skrill-uk-raf-10-off-100",
+    "title": "[英区] Skrill 跨区汇款 £100 减 £10（可开万事达卡）",
+    "brand": "Skrill",
+    "domain": "skrill.com",
+    "category": "bank",
+    "value": "£10（约 $13）",
+    "value_num": 13,
+    "value_expected": 5,
+    "cost": "需要邀请条件",
+    "highlight": "英区新客用推荐链接/推荐码注册，完成首笔 ≥£100 的跨区汇款后双方各得 £10 汇款额度；护照 + 英国地址证明过 KYC，用英国卡付款，还能顺手开一张欧元计价的 Skrill Prepaid Mastercard（数字卡即时可用、可绑 Apple/Google Pay）",
+    "regions": "[英区] 英国 Skrill 账户（Skrill Limited，受英国 FCA 监管）→ 约 39 个收款国，含德国、意大利（欧元区）、美国、菲律宾（菲律宾还可打款到手机钱包）；汇款人与收款人必须在不同国家",
+    "start": "",
+    "end": "",
+    "verified": true,
+    "last_verified": "2026-11-19",
+    "added": "2026-11-19",
+    "content": "Skrill Money Transfer 的 Refer a Friend 计划，官方条款里英国一栏写得很明确：注册国为 United Kingdom 的用户，最低汇款额 GBP 100（或等值发送币种），推荐额度 GBP 10，推荐人与新客双方各拿一份。流程是：新客通过邀请人的推荐链接注册账户，或在首笔汇款页点「Got a referral code?」填入推荐码（推荐码自注册起 3 个月内有效），完成一笔跨区汇款（汇款人与收款人分处不同国家、金额 ≥£100，不含手续费与税费、成功交付）后，Skrill 在确认收款方入账后把 £10 额度放进账户的 My Account → Refer a Friend 模块，可抵扣下一笔符合条件的汇款，3 个月内用掉，单笔最多抵 £50（最多叠 5 个额度）。账户注册与 KYC 需要证件 + 地址证明（护照 + 英国地址证明即可，官方给 4 天补齐，逾期交易取消）。付款方式为英国发行的借记卡/信用卡或英国银行账户，不能用 Skrill 余额付。同一账户里还能申请 Skrill Prepaid Mastercard：英国与 EEA 居民可申请，数字卡审批通过即可用，实体卡 15 个工作日内寄到，卡以欧元计价。用户英区实测：英国卡付款，汇往德国、美国、意大利、菲律宾的账户基本秒到，且全程在网页端操作（App 下单用不上这个优惠）。",
+    "conditions": "仅限 Skrill 新客（注册前不能已有 Skrill 账户，一人只能持有一个）；必须走邀请人的推荐链接注册，或在首笔汇款时填推荐码，注册后 3 个月内完成合格汇款；首笔须为跨区汇款（汇款人与收款人不同国家）、金额 ≥£100 且不含手续费与税费、成功到账；用 Skrill Prepaid Mastercard 付款、钱包充值/提现、用自己的码在自己账户间倒账、汇回邀请人本人，均不算合格交易；只能由卡或银行账户付款，Skrill 余额不能付；KYC 需护照/身份证 + 英国地址证明，4 天内补齐否则交易取消；£10 额度 3 个月内有效、单笔最多抵 £50、不能提现或转让，交易失败会退回。",
+    "steps": [
+      "找一位 Skrill Money Transfer 老用户要推荐链接或推荐码（老用户自己先汇过一笔才能生成）",
+      "通过链接注册英国 Skrill 账户，或在首笔汇款页点「Got a referral code?」填码",
+      "完成 KYC：护照 + 英国地址证明（姓名地址需与账户一致）",
+      "全程在 skrill.com 网页端操作：选英国 → 德国/美国/意大利/菲律宾，金额 ≥£100，用英国借记卡/信用卡付款",
+      "确认收款方到账，£10 额度出现在 My Account → Refer a Friend",
+      "3 个月内在第二笔 ≥£100 的跨区汇款里抵扣；想拿卡就到 Skrill Card → Apply now，数字卡即时可用"
+    ],
+    "url": "https://www.skrill.com/en/transfer-money/",
+    "source": "Skrill Money Transfer Refer a Friend 条款（skrill.com/en/footer/terms-conditions/skrill-money-transfer-raf/：UK 行 GBP 100 → GBP 10；页面拒爬时以同页 2027-02-01 生效版本及条款 PDF 交叉核对，2026-11-19）+ Skrill 官方 transfer-money 页 FAQ（新客「£10 off their first transfer」、KYC 需证件 + 地址证明且 4 天内完成）+ Skrill Prepaid Mastercard 页与条款（仅 UK/EEA 居民，€10 年费、部分用户 €10 开卡费、数字卡即时）+ Skrill 英国费率说明 2026-11-03（卡充值 1%、换汇 3.99%、提现 1.75%）+ 用户英区实测 DP（英国卡付款、德/美/意/菲秒到、全程网页端）",
+    "risk": "条款自相矛盾：3.4 写额度抵「下一笔」，3.6 与营销页又说新客「首笔即可用」，实际以下单页报价为准，按要再汇一笔 ≥£100 来规划；成本不为零——卡充值 1% + 换汇 3.99%（Skrill 自有汇率还有加点），两笔 £100 大约花 £7–8，净赚约 £5，本来就打算汇款才最划算；「秒到」「必须网页端别用 App」是用户实测 DP，官方只承诺数分钟到 2 个工作日；卡以欧元计价，€10 年费（部分用户另有 €10 开卡费）+ 1.75% ATM + 3.99% 换汇，只在真的要刷卡时值得开；KYC 的英国地址证明必须真实属于本人，借地址过审属合规风险，账户可能被冻结、余额难取回；账户 12 个月无交易按 €5/月收不活跃费；2027-02-01 起英国 Skrill 业务从 Skrill Limited 转到 Paysafe Financial Services Limited，条款会随之更新。",
+    "status": "active"
+  },
+  {
     "id": "etisalat-wasel-flexi-10gb-esim",
     "title": "[阿联酋] e&（etisalat）eSIM 新开 Wasel Flexi 送 10GB 本地流量",
     "brand": "e& UAE (etisalat)",
