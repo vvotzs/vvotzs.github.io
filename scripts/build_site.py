@@ -34,6 +34,8 @@ if str(ROOT / "scripts") not in sys.path:
 
 from common import (  # noqa: E402
     CAT_META,
+    CLOSING_SLOTS,
+    CLOSING_WINDOW_DAYS,
     DATA,
     EXPIRING_DAYS,
     FAV_DIR,
@@ -788,7 +790,7 @@ def module_html(
     jump: bool = False,
     strip: bool = False,
     hidden: bool = False,
-    count_total: int | None = None,
+    desc_visible: bool = False,
 ) -> str:
     if jump:
         cards = [
@@ -797,18 +799,23 @@ def module_html(
         ]
     else:
         cards = [card(deal, en_map.get(deal["id"], {}), today) for deal in deals]
-    count = len(deals) if count_total is None else count_total
+    count = len(deals)
     # 分类内左右横滑翻页：手机一页 5 张（一屏装得下）、桌面双列一页 8 张；热榜跳转卡不翻页
     per_page = 6 if jump else 5
     per_page_lg = 6 if jump else 8
     pages = max(1, -(-count // per_page))
+    # 热榜条（hot-strip）没有标题行，说明文字默认跟着一起隐藏；
+    # desc_visible=True 时把它当作 tab 下方的一行小注渲染，让两个口径说得清楚。
+    desc_html = "" if desc_visible else f'<p class="module-desc">{bi(*desc)}</p>'
+    note_html = f'<p class="module-note">{bi(*desc)}</p>' if desc_visible else ""
     return f"""
   <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-per="{per_page}" data-per-lg="{per_page_lg}"{' data-kind="jump"' if jump else ''}{' hidden' if hidden else ''}>
     <header class="module-head">
       <span class="module-badge" aria-hidden="true">{icon(icon_key)}</span>
       <h2>{bi(*title)} <span class="count" data-count>{count}</span></h2>
-      <p class="module-desc">{bi(*desc)}</p>
+      {desc_html}
     </header>
+    {note_html}
     <div class="track" data-track>
       {''.join(cards)}
     </div>
@@ -943,8 +950,12 @@ def main() -> None:
     # 高价值榜：按可预期到手金额（不是上限）排
     leaderboard = sorted(active, key=lambda d: (value_expected(d), d.get("value_num") or 0), reverse=True)[:10]
 
-    # 「即将截止」统一按 EXPIRING_DAYS（7 天）算：顶栏胶囊、分区、tab 计数同一个口径。
-    # closing_pool 是完整列表（计数用它，不截断），closing 只取前 10 条用于渲染。
+    # 「即将截止」分两层，两个口径各管各的，别混：
+    #   · closing_pool —— EXPIRING_DAYS（7 天）内到期。顶栏胶囊的计数与 meta.json
+    #     的 expiring_soon 仍旧只认它，口径不变。
+    #   · closing —— 热榜面板实际展示的 CLOSING_SLOTS 条：7 天内的按到期日升序排在前面，
+    #     不足 10 条时用 8～30 天（CLOSING_WINDOW_DAYS）内到期的按到期日升序补足。
+    #     这样桌面右侧板不会只剩三四行留白，同时排在前面的永远是最该先处理的。
     closing_pool = sorted(
         [
             d
@@ -953,7 +964,16 @@ def main() -> None:
         ],
         key=lambda d: parse_date(d["end"]),
     )
-    closing = closing_pool[:10]
+    closing_fill = sorted(
+        [
+            d
+            for d in active
+            if parse_date(d.get("end", ""))
+            and EXPIRING_DAYS < (parse_date(d["end"]) - today).days <= CLOSING_WINDOW_DAYS
+        ],
+        key=lambda d: parse_date(d["end"]),
+    )
+    closing = (closing_pool + closing_fill)[:CLOSING_SLOTS]
 
     # 抽奖 / 随机 / 阶梯：上限很高但到手看运气，按上限金额排
     lottery = sorted(
@@ -1006,8 +1026,9 @@ def main() -> None:
                 leaderboard, en_map, today, ranked=True, jump=True, strip=True, hidden=True,
             ),
             "closing": module_html(
-                "closing", "clock", U["mod_closing"], upair("mod_closing_desc", d=EXPIRING_DAYS),
-                closing, en_map, today, jump=True, strip=True, count_total=len(closing_pool),
+                "closing", "clock", U["mod_closing"],
+                upair("mod_closing_desc", d=EXPIRING_DAYS, w=CLOSING_WINDOW_DAYS, n=CLOSING_SLOTS),
+                closing, en_map, today, jump=True, strip=True, desc_visible=True,
             ),
             "lottery": module_html(
                 "lottery", "gift", U["mod_lottery"], U["mod_lottery_desc"],
@@ -1018,7 +1039,7 @@ def main() -> None:
         tab_counts = {
             "fresh": len(fresh),
             "rank": len(leaderboard),
-            "closing": len(closing_pool),
+            "closing": len(closing),
             "lottery": len(lottery),
         }
 
