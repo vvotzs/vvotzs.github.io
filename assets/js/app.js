@@ -688,6 +688,40 @@
     var notesEl = $("#sd-notes", submitDialog);
     var sending = false;
 
+    /* 手机端自适应：平时垂直居中；输入法把可视区域压小（或聚焦输入框）时贴到顶部。
+       用 .kb-open 一个类切换，键盘收起 / 进入成功页就移除，弹窗平滑回到中间。 */
+    var mqNarrow = window.matchMedia("(max-width: 680px)");
+    var vp = window.visualViewport || null;
+    var kbOpen = function (on) {
+      if (!mqNarrow.matches) { submitDialog.classList.remove("kb-open"); return; }
+      submitDialog.classList.toggle("kb-open", !!on);
+    };
+    var syncKeyboard = function () {
+      if (!vp) return;
+      var shrunk = window.innerHeight - vp.height;   /* 键盘占掉的高度 */
+      kbOpen(shrunk > 110);
+    };
+    if (vp) {
+      vp.addEventListener("resize", syncKeyboard);
+      vp.addEventListener("scroll", syncKeyboard);
+    }
+    if (window.addEventListener) {
+      window.addEventListener("resize", syncKeyboard);
+    }
+
+    var fields = [nameEl, urlEl, regionEl, notesEl];
+    fields.forEach(function (el) {
+      if (!el) return;
+      el.addEventListener("focusin", function () {
+        if (mqNarrow.matches) kbOpen(true);        /* 手指一动就先把卡片让到顶部 */
+      });
+      el.addEventListener("focusout", function () {
+        setTimeout(function () {
+          if (!fields.some(function (f) { return f && f === document.activeElement; })) kbOpen(false);
+        }, 80);
+      });
+    });
+
     /* 提示文案：弹窗上按语言各存一份（data-msg-<key>-zh / -en），出错时按当前语言取 */
     var msg = function (key) {
       return submitDialog.getAttribute("data-msg-" + key + "-" + LANG) ||
@@ -711,6 +745,7 @@
       donePanel.hidden = true;
       submitForm.hidden = false;
       if (sendBtn) sendBtn.hidden = false;   /* 回到填写界面：发送按钮恢复 */
+      kbOpen(false);                         /* 回到填写页 / 重新打开：回正居中 */
     };
     var openDialog = function () {
       resetForm();
@@ -740,6 +775,7 @@
     });
     submitDialog.addEventListener("close", function () {
       document.documentElement.classList.remove("dialog-open");
+      kbOpen(false);
     });
     var againBtn = $("[data-submit-again]", submitDialog);
     if (againBtn) againBtn.addEventListener("click", resetForm);
@@ -773,6 +809,7 @@
         submitForm.hidden = true;     /* 同一张卡片就地换成回执，不改弹窗高度 */
         donePanel.hidden = false;
         if (sendBtn) sendBtn.hidden = true;
+        kbOpen(false);                /* 成功页没有输入框：收回贴顶，回正居中 */
       };
       if (!GAS_URL) { finish(false); return; }
       fetch(GAS_URL, { method: "POST", mode: "no-cors", body: body })

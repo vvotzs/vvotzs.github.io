@@ -1854,16 +1854,19 @@ html.dialog-open{ overflow: hidden; }
 /* 成功态下右上角的纸飞机隐藏：没有可提交的内容 */
 .sd-send[hidden]{ display: none; }
 
-/* 手机上输入法弹出时，垂直居中的弹窗下半部分会被键盘盖住：
-   680px 以下改为顶部对齐，高度跟着可视区域走，内容超高时卡片内部自己滚动。 */
+/* 手机：平时和桌面端一样垂直居中；只有输入法弹起（JS 加 .kb-open）才贴到顶部，
+   键盘收起或进入提交成功页就移除，平滑回正。 */
 @media (max-width: 680px){
   .submit-dialog{
-    inset: 0 0 auto 0;                 /* top: 0，左右贴边，底部自动 */
-    margin: 10px auto auto;            /* 距顶部 10px，水平居中 */
     width: calc(100vw - 12px);
     max-height: calc(100dvh - 20px);
     border-radius: 20px;
     overflow-y: auto;
+  }
+  .submit-dialog.kb-open{
+    inset: 0 0 auto 0;                 /* top: 0，左右贴边，底部自动 */
+    margin: 12px auto auto;            /* 贴到顶部 12px，水平居中 */
+    max-height: calc(100dvh - 24px);
   }
   .sd-row{ height: 46px; }
   .sd-textarea{ min-height: 68px; }
