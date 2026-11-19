@@ -270,7 +270,7 @@ a.stats-pill:active{ transform: translateY(0); }
   align-items: baseline;
   gap: 14px;
   flex-wrap: wrap;
-  padding: 10px 0 8px;
+  padding: 10px 0 2px;
   min-height: 0;
 }
 .hero h1{
@@ -880,7 +880,7 @@ html.js .pager-bar{ display: flex; }
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 16px;
-  margin: 10px 0 4px;
+  margin: 6px 0 4px;
 }
 .hot-panel{ min-width: 0; }
 .hot-tabs-mobile{ display: none; }
@@ -1301,7 +1301,7 @@ footer{
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 5px 0 6px;
+    padding: 5px 0 2px;
     flex-wrap: nowrap;
   }
   .hero-tag{
@@ -1423,7 +1423,7 @@ footer{
   /* ---- 热榜：单板 4 tab，板内不再固定高度 ---- */
   .hot-board{
     display: block;
-    margin: 6px 0 8px;
+    margin: 4px 0 8px;
     gap: 0;
   }
   .hot-tabs-mobile{

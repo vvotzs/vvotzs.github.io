@@ -665,105 +665,80 @@
   }
 
   /* -------------------------------------- 投稿（Tally 弹窗，点击时才加载 embed.js） */
-  /* 打开网页时完全不请求 tally.so：第一次点「投稿」才插入 embed.js。
-     1.8 秒内加载成功 → 官方弹窗（页面不跳走）；超时或加载失败（含境内被墙 / 被拦截）
-     → 直接 window.open(btn.href) 新标签打开表单，不让用户干等。
-     按钮本身就是指向 https://tally.so/r/<id> 的链接，禁用 JS 时照常可用；
-     重复点击复用同一个 <script>，不会重复插入；确认失败后再点直接走新标签。 */
+  /* 打开网页时完全不请求 tally.so：用户第一次滚动 / 按键 / 点按，或直接点「投稿」时才插入
+     embed.js。脚本就绪后走官方弹窗（页面不跳走）；1.8 秒内弹不出来（被墙、被拦截、脚本异常）
+     就直接在新标签打开表单，不让用户干等。按钮本身就是指向 https://tally.so/r/<id> 的链接，
+     禁用 JS 时照常可用；重复点击复用同一个 <script>，不会重复插入。 */
   var submitBtn = $("#open-submit");
   if (submitBtn) {
     var TALLY_EMBED_SRC = "https://tally.so/widgets/embed.js";
-    var TALLY_LOAD_TIMEOUT = 1800;
-    var tallyScript = null;   // 已插入的 <script>，用来防重复
-    var tallyWaiters = [];    // 同一时刻多个点击共用一次加载
+    var TALLY_LOAD_TIMEOUT = 1800;   // 从点击算起的总预算
+    var TALLY_POLL_MS = 100;         // embed.js 初始化完成前 openPopup 会静默失败，按拍重试
+    var tallyScript = null;          // 已插入的 <script>，用来防重复
+    var tallyFailed = false;         // 脚本加载失败
+    var pendingOpen = false;         // 已有一次点击在等弹窗，避免重复触发
 
     var tallyReady = function () {
       return !!(window.Tally && typeof window.Tally.openPopup === "function");
     };
-
-    var openTallyPopup = function (btn) {
+    /* 弹窗是不是真的出现了（embed.js 只建 .tally-popup 和 popup iframe） */
+    var tallyPopupShown = function () {
+      return !!(document.querySelector(".tally-popup") ||
+                document.querySelector('iframe[src*="tally.so/popup"]'));
+    };
+    var tryOpenPopup = function (btn) {
+      if (!tallyReady()) return false;
       try {
         window.Tally.openPopup(btn.getAttribute("data-tally-form"),
           { layout: "modal", width: 520, autoClose: 3000 });
-        return true;
       } catch (err) {
         return false;
       }
+      return tallyPopupShown();
+    };
+    var openFormInTab = function (btn) {
+      var win = window.open(btn.href, "_blank");
+      if (win) { try { win.opener = null; } catch (err) {} return; }
+      location.href = btn.href;        // 新标签被浏览器拦下：同标签打开，至少能提交
     };
 
-    var openTallyFallback = function (btn) {
-      window.open(btn.href, "_blank", "noopener");
-    };
-
-    /* 弹窗真的出现在页面上没（embed.js 只建 .tally-overlay / .tally-popup 和 popup iframe） */
-    var tallyPopupShown = function () {
-      return !!(document.querySelector(".tally-popup, .tally-overlay") ||
-                document.querySelector('iframe[src*="tally.so/popup"]'));
-    };
-
-    /* embed.js 自己的宿主初始化比 window.Tally 晚时，openPopup 会被静默吞掉：
-       弹完 400ms 复核，没出来就再弹一次，仍没有才退回新标签，避免「点了没反应」。 */
-    var openTally = function (btn, retriesLeft) {
-      if (!openTallyPopup(btn)) { openTallyFallback(btn); return; }
-      setTimeout(function () {
-        if (tallyPopupShown()) return;
-        if (retriesLeft > 0) { openTally(btn, retriesLeft - 1); return; }
-        openTallyFallback(btn);
-      }, 400);
-    };
-
-    var loadTally = function (done) {
-      if (tallyReady()) { done(true); return; }
-      if (tallyScript) { tallyWaiters.push(done); return; }
-
-      var settled = false;
-      var timer = null;
-
-      var finish = function (ok) {
-        if (settled) return;
-        settled = true;
-        if (timer) clearTimeout(timer);
-        if (tallyScript) tallyScript.setAttribute("data-state", ok ? "ready" : "failed");
-        var list = tallyWaiters;
-        tallyWaiters = [];
-        for (var i = 0; i < list.length; i++) list[i](ok);
-      };
-
+    var loadTally = function () {
+      if (tallyScript) return;
       var s = document.createElement("script");
       s.src = TALLY_EMBED_SRC;
       s.async = true;
-      /* onload 时 embed.js 自己的弹窗宿主还在初始化，立刻 openPopup 会静默失败（
-         弹窗被它的初始化覆盖），所以等约 120ms 再判定，超出总预算就算失败。 */
-      s.onload = function () {
-        setTimeout(function () { finish(tallyReady()); }, 120);
-      };
-      s.onerror = function () { finish(false); };
-      timer = setTimeout(function () { finish(tallyReady()); }, TALLY_LOAD_TIMEOUT);
+      s.onload = function () { s.setAttribute("data-state", "loaded"); };
+      s.onerror = function () { tallyFailed = true; s.setAttribute("data-state", "failed"); };
       tallyScript = s;
       (document.body || document.head || document.documentElement).appendChild(s);
     };
 
     submitBtn.addEventListener("click", function (ev) {
-      var formId = submitBtn.getAttribute("data-tally-form");
-      if (!formId) return;                                   // 没配表单：走原生链接
+      if (!submitBtn.getAttribute("data-tally-form")) return;      // 没配表单：走原生链接
       /* ⌘/Ctrl/Shift 点击、中键点击仍按用户习惯在新标签打开 */
       if (ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
 
-      if (tallyReady()) {                                    // 已就绪：直接弹窗
-        ev.preventDefault();
-        openTally(submitBtn, 1);
-        return;
-      }
+      ev.preventDefault();
+      if (pendingOpen) return;                                     // 上一次还在等，别叠加
+      if (tryOpenPopup(submitBtn)) return;                         // 已预热：立即弹窗
 
-      ev.preventDefault();                                   // 先拦住跳转，等脚本
-      if (tallyScript && tallyScript.getAttribute("data-state") === "failed") {
-        openTallyFallback(submitBtn);                        // 已确认失败，别再让用户等
-        return;
-      }
-      loadTally(function (ok) {
-        if (ok) { openTally(submitBtn, 1); return; }
-        openTallyFallback(submitBtn);
-      });
+      loadTally();                                                 // 首次点击：现加载
+      var deadline = Date.now() + TALLY_LOAD_TIMEOUT;
+      pendingOpen = true;
+      var tick = function () {
+        if (tryOpenPopup(submitBtn)) { pendingOpen = false; return; }
+        if (!tallyFailed && Date.now() < deadline) { setTimeout(tick, TALLY_POLL_MS); return; }
+        pendingOpen = false;
+        openFormInTab(submitBtn);
+      };
+      setTimeout(tick, TALLY_POLL_MS);
+    });
+
+    /* 预热：滚动 / 按键 / 点按（不含「打开页面」本身）时先加载 embed.js，
+       多数人真去点「投稿」时弹窗已经能秒开。 */
+    ["scroll", "pointerdown", "touchstart", "keydown"].forEach(function (type) {
+      window.addEventListener(type, function () { setTimeout(loadTally, 150); },
+        { passive: true, once: true });
     });
   }
 
