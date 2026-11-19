@@ -306,13 +306,15 @@ a.stats-pill:active{ transform: translateY(0); }
 }
 .hm-short{ display: none; }
 
-main{ padding-bottom: 40px; }
+main{ padding-bottom: 0; }
 
 /* ---------------------------------------------------------------- modules */
 
 .module{
   padding: 18px 0 4px;
 }
+/* 最后一个分区（已结束活动档案）直接贴到页脚，不再叠一层底部留白 */
+.module:last-of-type{ padding-bottom: 0; }
 .module + .module{ border-top: 1px solid rgba(28,25,23,.055); }
 
 .module-head{
@@ -1220,9 +1222,9 @@ html.js .pager-bar{ display: flex; }
 footer{
   position: relative;
   z-index: 1;
-  margin-top: 34px;
+  margin-top: 16px;        /* 档案区到页脚只留一点呼吸感 */
   border-top: 1px solid rgba(28,25,23,.08);
-  padding: 14px 0 58px;   /* 底部留给左下角语言胶囊，避免压住页脚文字 */
+  padding: 9px 0 12px;     /* 压成 ~40px 的紧凑单行；语言胶囊在右侧留白里，不挡文字 */
   background: rgba(255,255,255,.55);
 }
 .foot-line{

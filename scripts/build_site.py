@@ -1248,7 +1248,6 @@ def main() -> None:
     <!-- 蜜罐：机器人才会填的陷阱字段。视觉上移出屏幕（不是 display:none，否则部分脚本会跳过），
          读屏与 Tab 键都碰不到；一旦有值，app.js 静默丢弃这次提交，不发请求。 -->
     <div class="sd-hp" aria-hidden="true">
-      <label for="sd-hp">Website</label>
       <input id="sd-hp" type="text" name="website" tabindex="-1" autocomplete="off" spellcheck="false">
     </div>
     <div class="sd-top">
