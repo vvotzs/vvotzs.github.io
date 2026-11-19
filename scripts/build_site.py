@@ -1269,11 +1269,6 @@ def main() -> None:
       </svg>
     </span>
     <p class="sd-done-t">{ui('submit_success')}</p>
-    <a class="sd-tg sd-tg-lg" href="{TG_GROUP_URL}" target="_blank" rel="noopener"
-       data-al-zh="{U['submit_tg_aria'][0]}" data-al-en="{U['submit_tg_aria'][1]}">
-      <svg class="sd-tg-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.62 7.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74l9.11-3.51c.42-.15.79.1.65.83Z" fill="currentColor"/></svg>
-      <span>{ui('submit_tg')}</span>
-    </a>
     <div class="sd-actions">
       <button class="sd-btn sd-btn-ghost" type="button" data-submit-close>{ui('close')}</button>
       <button class="sd-btn sd-btn-mint" type="button" data-submit-again>{ui('submit_again')}</button>
