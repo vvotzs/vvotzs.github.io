@@ -43,13 +43,18 @@ robots.txt / sitemap.xml
 - 邮件：脚本里 `MailApp.sendEmail("vvotzs@gmail.com", "[羊毛情报投稿] …", …)`，
   免费额度每天 100 封（个人 Gmail），不占第三方表单名额。
 - 必填：名称、链接（链接只要求非空，`http(s)://` 前缀与域名格式都不校验）；地区与亮点选填。
-- 防刷：表单里有一个移出屏幕、不占布局、读屏与 Tab 都碰不到的蜜罐字段（字段名 `hp_x7`，
+- 防刷：表单里有一个移出屏幕、不占布局、读屏与 Tab 都碰不到的蜜罐字段（`app.js` 读它的 `.value` 当作 `hp_x7`，
   故意不用 `website` / `email` 这类名字，免得密码管理器自动填写把真人误判成机器人），被填入就静默走回执、不发请求；
   提交同时带上 `elapsed_ms`（弹窗打开到点提交的毫秒数）。同一份表单 5 秒内重复提交只发第一次
   （`app.js` 的 `COOLDOWN_MS`），起点存在 `sessionStorage` 的 `ydj_last_sent`，刷新页面或点「再投一条」后仍然生效，
   只有请求失败才清零。
 - 服务端参考实现：`docs/apps-script-submit.gs`（蜜罐、`elapsed_ms < 1200`、`CacheService` 每分钟限流、
   `MailApp.getRemainingDailyQuota()` 检查与同链接去重）。线上 Web App 仍是旧版参数，未重新部署，避免中断现有直邮。
+- 没有 `<form>`：弹窗内容用 `<div class="sd-form">` 承载，发送按钮（`type="button"`）与单行输入框的 Enter
+  在 `app.js` 里触发同一段提交逻辑（校验、蜜罐、5 秒冷却、提交中态、回执都不变），多行说明框的 Enter 仍是换行。
+  原因：安卓 Chrome 的 Autofill 启发式会忽略 `autocomplete="off"`，只要检测到 `<form>` 加带 `name` / `region`
+  这类关键词的输入框，就会在 Gboard 上方弹出钥匙 / 银行卡 / 地址填充条；因此输入框用中性 `id`（`sd-f1`～`sd-f4`）、
+  不设 `name` 属性，并带 `autocomplete="nope"` + `data-lpignore` / `data-1p-ignore` / `data-bwignore` / `data-form-type="other"`。
 - 兜底：禁用 JS / 不支持 `showModal()` 时，按钮本身就是 TG 群链接
   （<https://t.me/+aAqP0DbW_YMxMmNh>），不会走进死路。
 - 关闭：左上 `←`、ESC、点遮罩都可以；提交成功后同一张卡片就地换成紧凑回执

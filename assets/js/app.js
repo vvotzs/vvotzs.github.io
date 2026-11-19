@@ -653,11 +653,11 @@
     var donePanel = $("#sd-done", submitDialog);
     var errEl = $("#sd-err", submitDialog);
     var sendBtn = $(".sd-send", submitDialog);
-    var nameEl = $("#sd-name", submitDialog);
-    var urlEl = $("#sd-url", submitDialog);
-    var regionEl = $("#sd-region", submitDialog);
-    var notesEl = $("#sd-notes", submitDialog);
-    var hpEl = $("#sd-hp", submitDialog);   /* 蜜罐：真人看不到也碰不到（字段名 hp_x7，不用 website 免得密码管理器自动填） */
+    var nameEl = $("#sd-f1", submitDialog);
+    var urlEl = $("#sd-f2", submitDialog);
+    var regionEl = $("#sd-f3", submitDialog);
+    var notesEl = $("#sd-f4", submitDialog);
+    var hpEl = $("#sd-hp", submitDialog);   /* 蜜罐：真人看不到也碰不到（不设 name，不用 website 免得密码管理器自动填） */
     var sending = false;
     /* 5 秒防重复冷却的起点存在 sessionStorage 里：点「再投一条」或刷新页面都还在，
        只有请求失败才清零（允许立即重试）。新开标签页 = 新会话，冷却从头算。 */
@@ -770,8 +770,15 @@
       errEl.textContent = text;
       errEl.hidden = false;
     };
+    /* 弹窗里没有 <form>（避开安卓 Chrome 的自动填充条），清空只能逐个写 value；
+       submitForm 本身是 <div>，没有 reset()。 */
+    var clearFields = function () {
+      [nameEl, urlEl, regionEl, notesEl, hpEl].forEach(function (el) {
+        if (el) el.value = "";
+      });
+    };
     var resetForm = function () {
-      submitForm.reset();
+      clearFields();
       /* 故意不清 lastSentAt：刷新 / 「再投一条」后 5 秒冷却继续生效，只有请求失败才清零 */
       clearBad();
       donePanel.hidden = true;
@@ -832,8 +839,9 @@
       if (el) el.addEventListener("input", clearBad);
     });
 
-    submitForm.addEventListener("submit", function (ev) {
-      ev.preventDefault();
+    /* 没有 <form>，原生 submit 不会再触发：发送按钮的点击和单行输入框的 Enter 都走这里。
+       下面这一整段（蜜罐 / 5 秒冷却 / 必填校验 / 提交中态 / 回执）与原来 submit 处理器逐行一致。 */
+    var doSubmit = function () {
       if (sending) return;
       /* 蜜罐字段被填 = 机器人。静默走成功回执但不发请求，让它以为提交成功。 */
       if (hpEl && hpEl.value) { showDone(); return; }
@@ -873,6 +881,18 @@
       fetch(GAS_URL, { method: "POST", mode: "no-cors", body: body })
         .then(function () { finish(true); })
         .catch(function () { finish(false); });
+    };
+
+    /* 发送：按钮点击（type="button"）；单行输入框按 Enter 也发（输入法组字中的 Enter 不算，
+       否则拼音选词会把半截内容发出去）。多行说明框的 Enter 保留换行。 */
+    if (sendBtn) sendBtn.addEventListener("click", doSubmit);
+    [nameEl, urlEl, regionEl].forEach(function (el) {
+      if (!el) return;
+      el.addEventListener("keydown", function (ev) {
+        if (ev.key !== "Enter" || ev.isComposing || ev.keyCode === 229) return;
+        ev.preventDefault();
+        doSubmit();
+      });
     });
   }
 

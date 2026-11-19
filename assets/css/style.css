@@ -1747,7 +1747,9 @@ html.dialog-open{ overflow: hidden; }
 .sd-send:focus-visible{ outline: 2px solid rgba(22,163,74,.55); outline-offset: 2px; }
 .sd-send[disabled]{ opacity: .6; cursor: default; transform: none; }
 
-/* 表单：横线分行，左标签右输入，没有任何输入框边框 */
+/* 表单区：横线分行，左标签右输入，没有任何输入框边框。
+   注意这里是 <div> 不是 <form>（安卓 Chrome 见到 <form> 就会弹自动填充条），
+display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着。 */
 .sd-form{ display: block; }
 .sd-form[hidden]{ display: none; }   /* 成功态整块换掉表单，而不是在下面追加 */
 /* 蜜罐：只给机器人看的字段。不用 display:none / visibility:hidden（部分脚本会跳过），

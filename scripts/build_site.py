@@ -1246,13 +1246,20 @@ def main() -> None:
         data-msg-link="{e(U['submit_need_link'][1] if is_en else U['submit_need_link'][0])}"
         data-msg-failed="{e(U['submit_failed'][1] if is_en else U['submit_failed'][0])}"
         data-msg-wait="{e(U['submit_wait'][1] if is_en else U['submit_wait'][0])}">
-  <form class="sd-form" id="submit-form" novalidate autocomplete="off" autocorrect="off"
-          autocapitalize="off" data-lpignore="true" data-form-type="other">
+  <!-- 故意不用 <form>：安卓 Chrome 的 Autofill 启发式会忽略 autocomplete="off"，只要看到 <form>
+       加带 name / region 之类关键词的输入框，就在键盘上方弹出钥匙 / 银行卡 / 地址填充条。
+       这里用 <div> 承载，发送由 app.js 的按钮点击 + Enter 键驱动，校验 / 冷却 / 蜜罐逻辑一模一样。 -->
+  <div class="sd-form" id="submit-form" role="group"
+       aria-labelledby="submit-title"
+       autocomplete="nope" autocorrect="off" autocapitalize="off"
+       data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other">
     <!-- 蜜罐：机器人才会填的陷阱字段。视觉上移出屏幕（不是 display:none，否则部分脚本会跳过），
          读屏与 Tab 键都碰不到；一旦有值，app.js 静默丢弃这次提交，不发请求。 -->
     <div class="sd-hp" aria-hidden="true">
-      <!-- 字段名别用 website / email 这类常见名字：密码管理器会把它当网址自动填，真人就被误判成机器人。 -->
-      <input id="sd-hp" type="text" name="hp_x7" tabindex="-1" autocomplete="off" spellcheck="false">
+      <!-- 不设 name 属性（没有 <form> 可提交，JS 直接读 .value）；也不用 website / email 这类名字，
+           免得密码管理器把蜜罐填上、把真人误判成机器人。 -->
+      <input id="sd-hp" type="text" tabindex="-1" autocomplete="off" spellcheck="false"
+             data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other">
     </div>
     <div class="sd-top">
       <button class="sd-back" type="button" data-submit-close
@@ -1266,7 +1273,7 @@ def main() -> None:
         <svg class="sd-tg-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.62 7.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74l9.11-3.51c.42-.15.79.1.65.83Z" fill="currentColor"/></svg>
         <span>{ui('submit_tg')}</span>
       </a>
-      <button class="sd-send" type="submit"
+      <button class="sd-send" type="button"
               {al(*U['submit_send'])}>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M3.4 11.1 20.2 4.2c.8-.3 1.6.5 1.3 1.3l-6.9 16.8c-.3.8-1.5.8-1.9 0l-1.9-5.2-5.2-1.9c-.8-.4-.8-1.6 0-1.9Z" fill="currentColor"/>
@@ -1277,26 +1284,26 @@ def main() -> None:
 
     <label class="sd-row">
       <span class="sd-label">{ui('submit_name')}<i class="req" aria-hidden="true">*</i></span>
-      <input class="sd-input" id="sd-name" type="text" maxlength="80" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next" aria-required="true"
+      <input class="sd-input" id="sd-f1" type="text" maxlength="80" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send" aria-required="true"
              placeholder="{pht('submit_ph_name')}">
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_link')}<i class="req" aria-hidden="true">*</i></span>
-      <input class="sd-input" id="sd-url" type="text" inputmode="url" maxlength="500" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next" aria-required="true"
+      <input class="sd-input" id="sd-f2" type="text" inputmode="url" maxlength="500" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send" aria-required="true"
              placeholder="{pht('submit_ph_link')}">
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_region')}</span>
-      <input class="sd-input" id="sd-region" type="text" maxlength="60" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="done"
+      <input class="sd-input" id="sd-f3" type="text" maxlength="60" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send"
              placeholder="{pht('submit_ph_region')}">
     </label>
     <label class="sd-notes">
-      <textarea class="sd-textarea" id="sd-notes" rows="3" maxlength="800" autocomplete="off" autocorrect="off" autocapitalize="off" data-lpignore="true" data-form-type="other"
+      <textarea class="sd-textarea" id="sd-f4" rows="3" maxlength="800" autocomplete="nope" autocorrect="off" autocapitalize="off" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other"
                 {al('亮点与门槛说明', 'Highlights and requirements')}
                 placeholder="{pht('submit_ph_notes')}"></textarea>
     </label>
     <p class="sd-err" id="sd-err" role="alert" hidden></p>
-  </form>
+  </div>
 
   <div class="sd-done" id="sd-done" hidden>
     <span class="sd-done-mark" aria-hidden="true">
