@@ -2823,6 +2823,37 @@
     "status": "active"
   },
   {
+    "id": "hark-pro-free-agent",
+    "dedup_key": "hark|ai|us-uk-eu|free-pro-agent",
+    "title": "[美/英/欧区] Hark Pro：全功能永久免费的个人 AI 代理，自带云端电脑代下单",
+    "brand": "Hark",
+    "domain": "hark.com",
+    "category": "ai",
+    "value": "免费（全功能）",
+    "value_num": 10,
+    "cost": "真正免费",
+    "highlight": "Hark Labs（Brett Adcock 创立）的个人 AI 代理：Hark Pro 全功能永久免费、无广告，Web / iOS / Android / Mac 通用；自带 Handoff 云端虚拟电脑（真实浏览器＋文件系统＋终端，可同时开 6 个浏览器），自己登录网站下单、填表、管邮件日程、做 Mini App。",
+    "regions": "[美区/英区/欧区] 美国、英国与 27 个欧盟国家已上架（App Store 免费下载、无需邀请码）；EEA、英国、瑞士不提供 Memory 记忆功能；其他地区以官网与应用商店能否下载为准",
+    "start": "2026-10-06",
+    "end": "",
+    "verified": true,
+    "last_verified": "2026-11-19",
+    "added": "2026-11-19",
+    "content": "Hark 是 Brett Adcock 创立的 Hark Labs 于 2026-10-06 推出的个人 AI 代理，定位「生活操作系统」：事情都在同一条长期对话里完成，另有按主题分线的 Projects 和可自定义的 Home。核心是 Handoff——每个请求都会开一台独立云端虚拟电脑，带自己的浏览器、文件系统与终端，能像人一样登录上百万个网站、下单、退订、填表、报销、订位、做幻灯片；官方称它可同时处理 6 个浏览器，浏览器之外还通过 API 直连 Google Workspace 与 Microsoft 365，可读文件、查外部数据库、走 MCP。配合 Memory 记住你的偏好与上下文，以及 Action Buttons（一键付账单/退订）、Panels（一句话生成 Mini App）、Scheduled Tasks 与 Specialties（把多步流程记成固定套路）。价格：Hark Pro 全功能永久免费、无广告，只受基础用量上限约束（官方未公布具体数值）；Pro² $20/月为 2× 用量，Pro³ $100/月为 10× 用量，所有档位功能完全一致，只有用量差别；美国 App Store 另有 Pro⁴（$259.99，10× Pro²，2026-11-11 上线），且应用内购价高于官网。安全方面，密码与卡号放在连 Hark 自己都看不到的加密保险库 Secured by Hark，付款、下单等敏感动作会先向你确认；官方承诺不出售数据、不向广告商共享。",
+    "conditions": "免费档注册即用、无需邀请码，也不用绑卡；升级 Pro² / Pro³ 或开启自动充值（auto top-up）才需绑卡，并会按你设定的金额与上限自动扣款；Memory 在 EEA、英国、瑞士不可用；免费档有基础用量上限，官方未公布数值、消耗规则与重置方式，达到上限后需升级档位或充值才能继续；代登录、付款、下单前需在 Hark 内授权并确认，Handoff 依赖你连接的账号（Gmail、Google Calendar、Microsoft 365 等）。",
+    "steps": [
+      "在 hark.com 注册，或从 App Store / Google Play / hark.com/mac 下载 App（免费档无需绑卡）",
+      "在设置里连接 Gmail、Google Calendar、Microsoft 365 等账号，让它能读邮件、看日程",
+      "直接在 Chat 里说要办的事，例如「周五 19 点订两人位，顺便查附近停车」，需要上网的动作会自动交给 Handoff 云端电脑",
+      "付款、下单、退订前看确认卡片（做什么、花多少钱），确认后再让它执行",
+      "用量不够再升级 Pro²（$20/月，2×）或 Pro³（$100/月，10×）；不升级也能一直用免费档"
+    ],
+    "url": "https://hark.com/pricing",
+    "source": "Hark 官方：定价页 hark.com/pricing（Free to use、Pro² $20 / Pro³ $100）、使用说明 hark.com/using-hark（Handoff 定义、平台 iOS/Android/web、Pro² 2× / Pro³ 10×）、发布文《Introducing Hark Pro》2026-10-06（全功能永久免费）、技术文《Introducing Hark Handoff》2026-08-05（独立虚拟电脑含浏览器/文件系统/终端、6 浏览器、登录代操作）、隐私政策 2026-11-05（EEA/英国/瑞士不提供 Memory）；上架地区：Personal Agent Atlas 2026-11-01 与 App Store 查询（美/英/德/法）；2026-11-19 核验",
+    "risk": "免费档的用量上限、消耗规则与重置方式官方均未公布，「永久免费」只承诺功能不缩水，重度使用可能很快触顶（标「待核实」）；value 里的 ≈$10/月是按 Pro² $20 = 2× 用量折算的估算，不是官方标价；绑卡或开启 auto top-up 后会在额度低时自动扣款，只想用免费档就别绑卡；EEA/英国/瑞士没有 Memory，体验与美区不同；代理会出错，付款、下单、退订前务必核对确认卡片与结果，密码/卡号只放进 Secured by Hark，别打在聊天里；美国 App Store 还有 Pro⁴，且内购价（$26 / $129.99 / $259.99）高于官网，以官网为准。",
+    "status": "active"
+  },
+  {
     "id": "touch-lebanon-magic-welcome-3gb",
     "title": "[黎巴嫩] touch 新卡欢迎礼：3GB/月 × 3 个月（$7 买 Magic 预付费卡）",
     "brand": "touch",
