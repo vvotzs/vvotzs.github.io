@@ -142,9 +142,10 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
 }
 
 # Tally 投稿表单（https://tally.so/r/<id>）：弹窗优先，直接跳转兜底。
+# embed.js 不再预加载（省掉首屏一次第三方请求），改由 assets/js/app.js 在点击「投稿」时
+# 按需插入；1.8 秒内没就绪就直接新标签打开 TALLY_FORM_URL。
 TALLY_FORM_ID = "J1lj1d"
 TALLY_FORM_URL = f"https://tally.so/r/{TALLY_FORM_ID}"
-TALLY_EMBED = '<script async src="https://tally.so/widgets/embed.js"></script>'
 
 # 薄荷绿 Pickle 小精灵（页头 / 页脚直接内联，不走 sprite）。
 # 渐变必须写在可见的 <svg> 自己的 <defs> 里：放进 display:none 的 sprite 后，
@@ -1213,7 +1214,6 @@ def main() -> None:
 
 <script id="search-index" type="application/json">{search_json}</script>
 <script id="i18n-head" type="application/json">{head_json(is_en)}</script>
-{TALLY_EMBED}
 <script src="/assets/js/app.js?v={asset_ver('assets/js/app.js')}" defer></script>
 </body>
 </html>

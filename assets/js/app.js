@@ -664,22 +664,90 @@
     });
   }
 
-  /* ------------------------------------------------- 投稿（Tally 弹窗） */
-  /* 按钮本身就是一个指向 https://tally.so/r/<id> 的链接：Tally 的 embed.js 没加载成功
-     （境内网络被墙、脚本被拦截）时点下去照常在新标签打开表单；脚本就绪时改成官方弹窗，
-     页面不跳走。两条路都能提交。 */
+  /* -------------------------------------- 投稿（Tally 弹窗，点击时才加载 embed.js） */
+  /* 打开网页时完全不请求 tally.so：第一次点「投稿」才插入 embed.js。
+     1.8 秒内加载成功 → 官方弹窗（页面不跳走）；超时或加载失败（含境内被墙 / 被拦截）
+     → 直接 window.open(btn.href) 新标签打开表单，不让用户干等。
+     按钮本身就是指向 https://tally.so/r/<id> 的链接，禁用 JS 时照常可用；
+     重复点击复用同一个 <script>，不会重复插入；确认失败后再点直接走新标签。 */
   var submitBtn = $("#open-submit");
   if (submitBtn) {
+    var TALLY_EMBED_SRC = "https://tally.so/widgets/embed.js";
+    var TALLY_LOAD_TIMEOUT = 1800;
+    var tallyScript = null;   // 已插入的 <script>，用来防重复
+    var tallyWaiters = [];    // 同一时刻多个点击共用一次加载
+
+    var tallyReady = function () {
+      return !!(window.Tally && typeof window.Tally.openPopup === "function");
+    };
+
+    var openTallyPopup = function (btn) {
+      try {
+        window.Tally.openPopup(btn.getAttribute("data-tally-form"),
+          { layout: "modal", width: 520, autoClose: 3000 });
+        return true;
+      } catch (err) {
+        return false;
+      }
+    };
+
+    var openTallyFallback = function (btn) {
+      window.open(btn.href, "_blank", "noopener");
+    };
+
+    var loadTally = function (done) {
+      if (tallyReady()) { done(true); return; }
+      if (tallyScript) { tallyWaiters.push(done); return; }
+
+      var settled = false;
+      var poller = null;
+      var timer = null;
+
+      var finish = function (ok) {
+        if (settled) return;
+        settled = true;
+        if (poller) clearInterval(poller);
+        if (timer) clearTimeout(timer);
+        if (tallyScript) tallyScript.setAttribute("data-state", ok ? "ready" : "failed");
+        var list = tallyWaiters;
+        tallyWaiters = [];
+        for (var i = 0; i < list.length; i++) list[i](ok);
+      };
+
+      /* onload 之后 window.Tally 可能还差一两个 tick 才挂上：先轮询，再交给超时 */
+      poller = setInterval(function () { if (tallyReady()) finish(true); }, 50);
+      timer = setTimeout(function () { finish(tallyReady()); }, TALLY_LOAD_TIMEOUT);
+
+      var s = document.createElement("script");
+      s.src = TALLY_EMBED_SRC;
+      s.async = true;
+      s.onload = function () { if (tallyReady()) finish(true); };
+      s.onerror = function () { finish(false); };
+      tallyScript = s;
+      (document.body || document.head || document.documentElement).appendChild(s);
+    };
+
     submitBtn.addEventListener("click", function (ev) {
       var formId = submitBtn.getAttribute("data-tally-form");
-      var tally = window.Tally;
-      if (!formId || !tally || typeof tally.openPopup !== "function") return; // 走链接兜底
-      ev.preventDefault();
-      try {
-        tally.openPopup(formId, { layout: "modal", width: 520, autoClose: 3000 });
-      } catch (err) {
-        window.open(submitBtn.href, "_blank", "noopener");
+      if (!formId) return;                                   // 没配表单：走原生链接
+      /* ⌘/Ctrl/Shift 点击、中键点击仍按用户习惯在新标签打开 */
+      if (ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+
+      if (tallyReady()) {                                    // 已就绪：直接弹窗
+        ev.preventDefault();
+        if (!openTallyPopup(submitBtn)) openTallyFallback(submitBtn);
+        return;
       }
+
+      ev.preventDefault();                                   // 先拦住跳转，等脚本
+      if (tallyScript && tallyScript.getAttribute("data-state") === "failed") {
+        openTallyFallback(submitBtn);                        // 已确认失败，别再让用户等
+        return;
+      }
+      loadTally(function (ok) {
+        if (ok && openTallyPopup(submitBtn)) return;
+        openTallyFallback(submitBtn);
+      });
     });
   }
 
