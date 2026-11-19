@@ -159,11 +159,11 @@
   },
   "santander-everyday-switch-240": {
     "title": "[UK] Santander Everyday switch bonus £240: switch + 2 household Direct Debits + deposit £1,500 (from 10/27)",
-    "highlight": "Use CASS to move another bank account to Santander Everyday, then within 60 days complete the switch, 2 household Direct Debits, a £1,500 deposit and £200 into a Regular Saver for £240 cash about 90 days later",
+    "highlight": "Full CASS switch into Santander Everyday: complete the switch, two household direct debits, a £1,500 deposit and £200 into the Regular Saver within 60 days to get £240 about 90 days later. Apply through the MSE link before 15:00 on 2026-11-25 and add a £25 Amazon gift card.",
     "regions": "[UK] UK residents switching in full from another UK bank or building society (Santander, cahoot and Cater Allen accounts don't count)",
-    "value": "£240 cash (≈$320)",
-    "content": "Santander's official £240 Switch & Save: apply from 27 October 2026 (the bank can withdraw the offer at any time). Within 60 days you must complete a full CASS switch (old account closed), have at least 2 \"household\" Direct Debits on the account (council tax, mobile/home phone/broadband/pay TV, utilities and other specified billers), deposit a total of at least £1,500 into the Everyday Current Account and put at least £200 into your own Santander Regular Saver. Eligibility is checked on day 60 after the switch, and £240 is paid into the account within the next 30 days, so about 90 days in; you must still hold both accounts and the 2 active household Direct Debits on the payout day.",
-    "conditions": "UK resident; held no Santander current account on 2026-01-01 and neither you nor any joint holder has ever had a Santander switch bonus; the switch must be a full CASS switch that closes the old account; within 60 days: 2 specified household Direct Debits, a £1,500 deposit and £200 into a Regular Saver; one payout per joint account.",
+    "value": "£240 cash plus a £25 gift card (about $350)",
+    "content": "Santander's official £240 Switch & Save: apply from 27 October 2026 (the bank can withdraw the offer at any time). Within 60 days you must complete a full CASS switch (old account closed), have at least 2 \"household\" Direct Debits on the account (council tax, mobile/home phone/broadband/pay TV, utilities and other specified billers), deposit a total of at least £1,500 into the Everyday Current Account and put at least £200 into your own Santander Regular Saver. Eligibility is checked on day 60 after the switch, and £240 is paid into the account within the next 30 days, so about 90 days in; you must still hold both accounts and the 2 active household Direct Debits on the payout day.\n\nAddition (MSE round-up 2026-11-19): applying for the Everyday account through the designated MoneySavingExpert link and meeting the same £240 conditions also earns a £25 Amazon.co.uk gift card, £265 in total. Applications must be submitted by 15:00 on 2026-11-25; the claim instructions arrive by email within 120 days and must be used within 30 days.",
+    "conditions": "UK resident; held no Santander current account on 2026-01-01 and neither you nor any joint holder has ever had a Santander switch bonus; the switch must be a full CASS switch that closes the old account; within 60 days: 2 specified household Direct Debits, a £1,500 deposit and £200 into a Regular Saver; one payout per joint account. The extra £25 gift card requires applying through the MSE promotional link before 15:00 on 2026-11-25.",
     "steps": [
       "Open an Everyday Current Account at santander.co.uk (or use the one you have)",
       "Choose a full switch through the Current Account Switch Service and enter the old account details correctly",
@@ -745,7 +745,7 @@
     "highlight": "To promote Vibe + Le Chonk (Mistral Large 4) Mistral released limited places: European developers redeem code LECHONK for 3 months of Vibe Pro, including a monthly API allowance",
     "regions": "[EEA] Aimed at European developers; the redemption page expects a European IP and non-European accounts often fail risk checks",
     "value": "3 months of Pro (about $45)",
-    "content": "On 17 November Mistral AI released limited free 3-month Vibe Pro places to European developers to mark the launch of the open model Le Chonk (Mistral Large 4, 1 trillion parameters with about 52 billion active) combined with Vibe, using code LECHONK. Vibe Pro normally costs $14.99/mo before tax, so three months saves about $45 and includes higher message and web-search limits, expanded Vibe capacity, all-day CLI/IDE/web agentic coding and a monthly API allowance. Places ran out that day and Mistral said on X that more might come the next day; on 11-18 the community saw the code go from \"unavailable\" back to claimable after a restock, so it's issued in batches.",
+    "content": "On 17 November Mistral AI released limited free 3-month Vibe Pro places to European developers to mark the launch of the open model Le Chonk (Mistral Large 4, 1 trillion parameters with about 52 billion active) combined with Vibe, using code LECHONK. Vibe Pro normally costs $14.99/mo before tax, so three months saves about $45 and includes higher message and web-search limits, expanded Vibe capacity, all-day CLI/IDE/web agentic coding and a monthly API allowance. Places ran out that day and Mistral said on X that more might come the next day; on 11-18 the community saw the code go from \"unavailable\" back to claimable after a restock, so it's issued in batches.\n\nRe-check (2026-11-20 03:30): Mistral restocked once on 11-18 alongside the Vibe Desktop launch, but users again reported \"This code is no longer available\" the same day. From 11-19, AI Promo Now marks it \"verified: no longer works\" and mydealz lists it as ended, while users on X are still asking @MistralAI for another drop. It is archived as sold out; if codes return, it can be revived.",
     "conditions": "European developers only; limited places, first come first served, and the code shows \"This code is no longer available\" until restocked; redeem while signed in to a Mistral account; a valid payment method is needed and community reports say zero-balance virtual cards usually pass verification (a data point, not an official promise); it renews at $14.99/mo, so cancel manually.",
     "steps": [
       "Connect through a European node and sign in to a Mistral account (register first if needed)",
@@ -753,7 +753,7 @@
       "Confirm Vibe Pro is $0 for the first 3 months and submit",
       "Cancel the renewal on the subscription page before it ends"
     ],
-    "risk": "Code availability fluctuates with stock, which is to be confirmed — not getting it is normal; non-European accounts or risk checks may fail outright; don't try it on your main account; it charges $14.99/mo when the trial ends.",
+    "risk": "Archived as sold out: stock can return at any time, and failing to redeem is normal. Non-European accounts or risk checks may fail outright. Anyone who already redeemed still auto-renews at $14.99/month unless cancelled.",
     "source": "Mistral official campaign post on X (2026-11-17) + NodeSeek hands-on thread of 2026-11-18 (including the restock data point) + DDay.it coverage"
   },
   "proton-black-friday-2026": {
@@ -2797,5 +2797,153 @@
     ],
     "risk": "Barclays says the offer can be withdrawn at any time and publishes no end date. Salary must arrive by Bacs and cannot be a transfer between personal accounts. The 10 card purchases must clear within the month, and every missed month costs £30 of the £300 ceiling.",
     "source": "Barclays official switch-offer page and October 2026 terms (checked 2026-11-20) + Barclays press release (2026-10-01) + Proper Money comparison (2026-11-16) + Martin Lewis and Birmingham Live coverage (2026-11-15)"
+  },
+  "chatgpt-business-plugin-credits": {
+    "title": "[Multi-region] ChatGPT Business: $50 PayPal and Oracle plugin credits, $25 HubSpot, $50 Klaviyo",
+    "highlight": "Inside a ChatGPT Business workspace, accept the offer in the plugin directory, install and connect the plugin, then run one real workflow within 7 days and the workspace gets $25–$50 of agentic credits. PayPal and Oracle pay $50 each, HubSpot $25, Klaviyo $50, and the four caps stack independently.",
+    "regions": "[Multi-region] PayPal is US users only; Oracle QuickStart is global; the November HubSpot and Klaviyo grants are rolled out per workspace, so you need the banner in the plugin directory to qualify",
+    "value": "$25–$50 per grant, up to about $550 per workspace",
+    "content": "OpenAI's help centre article \"ChatGPT Business plugin credit promotions\" explains that eligible ChatGPT Business workspaces see a promotional banner in the plugin directory on ChatGPT web or desktop. The order is: accept the offer, install and connect the plugin, then complete one real successful workflow with it within the stated window. After eligibility checks the credit is added to the workspace automatically, with no promo code and no separate application, and you and the workspace admins get a confirmation email.\n\nCurrent offers: PayPal pays $50 per grant, US users only, one per user and up to three users per workspace ($150 cap). Oracle QuickStart pays $50 per grant worldwide, one per user and up to five per workspace ($250 cap). The November HubSpot offer pays $25 per grant (up to two per workspace, $50 cap, 8,000 grants campaign-wide). Klaviyo pays $50 per grant (up to two per workspace, $100 cap, 10,000 grants). The four caps are counted separately, so a workspace eligible for all four could stack about $550.\n\nThese are agentic credits, not API credits: they apply to workspace usage of ChatGPT Work, Codex, ChatGPT for Excel or Sheets, ChatGPT for PowerPoint and Workspace Agent. They do not change the subscription or the usage included in the plan, and November credits expire 30 days after they land. The earlier Stripe / Intuit QuickBooks / HubSpot / Gusto / Dropbox / Canva promotion ($50 each) has ended.",
+    "conditions": "You must be a member of a ChatGPT Business workspace (a paid seat, Standard, Premium or legacy Codex seats) with the plugin and its underlying apps enabled by an admin. You are not eligible if the plugin was already installed or explicitly connected when you accept the offer. November HubSpot and Klaviyo require a real successful run in ChatGPT Work or Codex in the same workspace within 7 days of accepting; PayPal and Oracle require it within 7 days of installing. Grants are first come, first served and accepting does not reserve one. PayPal is US-only.",
+    "steps": [
+      "Sign in to a Business account on ChatGPT web or the desktop app and open the plugin directory",
+      "Open the plugin with the promo banner (PayPal, Oracle QuickStart, HubSpot or Klaviyo) and accept the offer first",
+      "Then install and connect that plugin (an admin may need to enable it for the workspace)",
+      "Run one real successful workflow with the plugin inside the window; installing alone does not count",
+      "Wait for the confirmation email and check the workspace usage or billing page; spend the credit within 30 days"
+    ],
+    "risk": "You need a paid Business seat to be eligible, and the credit only offsets agentic usage for 30 days, so it is not cash. Banners are rolled out per user and workspace, so not seeing one means no eligibility this round. Doing it in the wrong order (installing the plugin before accepting) disqualifies you. Supplies are limited and OpenAI can change or end an offer at any time.",
+    "source": "OpenAI Help Centre \"ChatGPT Business plugin credit promotions\" (updated 2 days ago; credit table checked 2026-11-20) + NodeSeek report and DPs 2026-11-19 + VPSlu review 2026-11-19"
+  },
+  "vercel-parallel-search-free": {
+    "title": "[Global] Vercel AI Gateway x Parallel web search: fast mode free until 2027-01-31",
+    "highlight": "Parallel web search inside AI Gateway is free through 2027-01-31 as long as you set the tool to fast mode, with no separate Parallel account. eve agents use the free fast mode by default.",
+    "regions": "[Global] Any Vercel account; model tokens are still billed",
+    "value": "$0 (normally $5 per 1,000 requests)",
+    "content": "Vercel's 2026-11-18 changelog made Parallel web search in fast mode free on AI Gateway through 2027-01-31, and made Parallel the default search tool for eve agents. Parallel finds relevant pages and returns links with short excerpts, filterable by site or publication date, works with any AI Gateway model and needs no separate Parallel API key.\n\nIn code: pass `gateway.tools.parallelSearch({ mode: 'fast' })` in the AI SDK tools, or set `\"mode\": \"fast\"` in the `vercel:parallel_search` tool config for Chat Completions. eve needs no configuration because its default search already runs in fast mode and is free.\n\nThe regular price is $5 per 1,000 requests (up to 10 results each, with extra results at $1 per 1,000). Only a mode you set in the tool configuration is free; a model choosing fast inside its own tool call does not qualify. Free capacity is shared and can be rate limited, in which case the tool call returns a rate-limit error to the model without failing the request, and it is never retried as a billed search. Free searches are not counted as billable gatewayToolCalls, but model tokens are still charged.",
+    "conditions": "Needs a Vercel account with AI Gateway enabled. Only searches with `mode: 'fast'` explicitly set in the tool configuration are free; basic, advanced and turbo modes stay at $5 per 1,000. Free capacity is shared and can be rate limited. From 2027-02-01 fast mode returns to regular pricing. Zero Data Retention is on by default; Parallel does not retain free searches or train on them.",
+    "steps": [
+      "Sign in to Vercel, create or open a project and enable an AI Gateway key",
+      "Add gateway.tools.parallelSearch({ mode: 'fast' }) to your AI SDK tools (or mode: fast in the Chat Completions tool config)",
+      "Call it from any AI Gateway model; the search bills at $0",
+      "Confirm in AI Gateway logs that searches were not billed (tokens still are)"
+    ],
+    "risk": "Only the search call is free; model tokens are charged in full. Without an explicit fast mode you pay $5 per 1,000. The free pool is shared and rate limited at peak times, and forgetting to change the config after the deadline starts billing.",
+    "source": "Vercel changelog (2026-11-18) + AI Gateway web search billing docs (checked 2026-11-20)"
+  },
+  "agnes-ai-flash-free-api": {
+    "title": "[Global / China site] Agnes AI Flash models at $0: free text, image and video API (OpenAI compatible)",
+    "highlight": "Singapore's Sapiens AI lists agnes-2.5-flash, agnes-3.0-flash, three image Flash models and agnes-video-2.5-flash at $0 for input and output, with the China site also at ¥0. Sign up, no card needed.",
+    "regions": "[Global / China site] International site bills in USD, the China site is ¥0; sign-up only, no card, rate limited",
+    "value": "Text, image and video Flash models all $0 (list price $0.05–$0.15 per million tokens, $10 per 1,000 images)",
+    "content": "Agnes AI's official international pricing page, checked 2026-11-20, shows `agnes-2.5-flash` and `agnes-3.0-flash` at $0 for cached input, input and output under the Angel User Trial Price column (list prices are $0.005, $0.05 and $0.15 per million tokens). On the image side, `agnes-image-2.0-flash`, `2.1-flash` and `2.5-flash` are $0 for 1K through 4K output and for reference images from the fourth onward (list price $10–$24 per 1,000 images). On video, `agnes-video-2.5-flash` is $0 per second at 720P (list price $0.025 per second). `agnes-video-2.5` and `agnes-2.5-pro` remain paid.\n\nThe API is OpenAI compatible: register, create a key in the console and point base_url at Agnes. Text models take about 512K of context and support tool calling and image input. The FAQ says the core models are free indefinitely and only limited by RPM, with free keys and paid Token Plan keys on separate rate-limit pools. Verified limits are roughly 10–20 RPM for text, 1–20 RPM for images depending on resolution, and 1 RPM for video; the free video pricing is a limited-time promotion.",
+    "conditions": "Register an Agnes account and create an API key; no card. The free tier is limited by requests per minute with no published daily allowance. Free video is a limited-time promotion while text and image Flash are currently listed as permanent $0. Agent Plan and Token Plan allowances do not get the model-level free pricing.",
+    "steps": [
+      "Register at agnes-ai.com (the China site is also ¥0)",
+      "Create a free API key in the console and note the base_url",
+      "Call agnes-2.5-flash, agnes-3.0-flash, agnes-image-*-flash or agnes-video-2.5-flash with OpenAI-compatible requests",
+      "Watch RPM and usage in the console and wait out the minute when limited"
+    ],
+    "risk": "Free access is gated by RPM limits that the provider says may change, so do not build a production SLA on it. Free video is a limited-time promotion that can close without notice. The provider publishes no end date. Free and paid keys use separate pools.",
+    "source": "Agnes AI official pricing page and FAQ (checked 2026-11-20) + aifree.dev free-API listing (human verified 2026-11-06, rechecked 2026-11-19) + Chinese X deal digest 2026-11-19"
+  },
+  "fireworks-glimmer-free-training": {
+    "title": "[Global] Fireworks Free Weights Club: train Muse Glimmer 30B free (SFT/DPO/RL through 11/30)",
+    "highlight": "Fireworks' Free Weights Club opens with multimodal Muse Glimmer 30B: SFT, DPO and RL training are free through 2026-11-30 with no credit card, enough for your own LoRA experiments.",
+    "regions": "[Global] Fireworks account required, no card",
+    "value": "Free training (LoRA SFT normally $3 per million training tokens)",
+    "content": "Fireworks' post \"Train Muse Glimmer for free\" announced the first Free Weights Club offer: Muse Glimmer 30B, a multimodal 30B-class model, is free to train with supervised fine-tuning, DPO and RL through 2026-11-30, with no credit card. You can run SFT through Managed Training in the app or API, or write your own loop with the Serverless Training API. The docs and cookbook add one detail: LoRA SFT is free in the UI and the Serverless Training API for jobs started before 2026-12-01T00:00:00-08:00, and the starter script refuses to launch after that unless you pass --allow-paid.\n\nThe published experiment trains a LoRA adapter on Kalshi prediction questions in one pass and lifts accuracy on unseen topics from 53.2% (base) to 58.3%, 11.2 points ahead of the Jev comparison. Training produces a LoRA adapter you can promote to a model, but serving it still needs an on-demand deployment billed per GPU-hour.",
+    "conditions": "Register a Fireworks account; no card. Only training is free: inference, including evaluation sampling during a training run, is billed per token. Muse Glimmer 30B left serverless inference on 2026-09-25, so serving a tuned model needs an on-demand deployment. The blog says SFT, DPO and RL are all free while the cookbook only states LoRA SFT, so check the billing note on the job screen for DPO and RL.",
+    "steps": [
+      "Register a Fireworks account (no card)",
+      "In Managed Training or the Serverless Training API, pick accounts/fireworks/models/muse-glimmer-30b",
+      "Prepare chat JSONL data and start a LoRA SFT job (the muse_glimmer starter in the cookbook works)",
+      "Read the cost line the launcher prints and confirm only evaluation sampling is billed",
+      "Promote the LoRA adapter to a model; open an on-demand deployment only if you need to serve it"
+    ],
+    "risk": "Only training is free; inference and evaluation sampling are charged and a large eval run will create a bill. Serving the tuned model bills per GPU-hour. The blog and docs differ on whether DPO and RL are covered. Jobs started after 11-30 are no longer free.",
+    "source": "Fireworks official blog (2026-10-20, updated 2026-11-17) + official cookbook and model page promotion notes (checked 2026-11-20) + that.promo and Token Thrift re-checks 2026-11-19"
+  },
+  "tabstack-free-10k-credits": {
+    "title": "[Global] Tabstack by Mozilla: 10,000 free credits for new accounts, no card",
+    "highlight": "Mozilla's web API for agents gives every new account 10,000 credits with no card, enough for 1,000 page-to-Markdown extractions or 40 cited fast research runs. The trial stops when the credits run out.",
+    "regions": "[Global] Sign-up only, no credit card",
+    "value": "10,000 credits (about 1,000 Markdown extractions or 40 fast research runs)",
+    "content": "Tabstack's pricing page states every new account includes 10,000 free credits with no credit card. Credits are spent per action: Extract to Markdown 10 credits, Extract to JSON 50, Generate 100, Automate 100, Research Fast 250, Research Balanced 350. So 10,000 credits is roughly 1,000 Markdown extractions, 40 fast research runs, or any mix.\n\nThe platform runs search, page reading, gap checking, synthesis and citation outside your model and returns a cited Markdown report. It says it is never trained on, private by default and built by Mozilla. Trial accounts have no overage billing: requests stop when the credits run out instead of converting to a paid plan. Paid tiers are Starter at $10/month (100,000 credits), Team at $99 and Pro at $499. It launched on Product Hunt on 2026-11-19 with \"Start free with 10,000 credits\".",
+    "conditions": "Sign up at tabstack.ai; no card. The 10,000 credits are a one-off trial allowance and do not refresh. Balanced research needs Team or above, so trial accounts only get Fast. Rate limit is 15 requests per minute.",
+    "steps": [
+      "Register at tabstack.ai with no card",
+      "Create an API key in the console and confirm the balance shows 10,000 credits",
+      "Call /extract (Markdown or JSON) or /research with mode: fast",
+      "Check in the console how many credits each action spent; requests stop when they are gone"
+    ],
+    "risk": "At the published overage rate the 10,000 credits are worth only about $3, so this is a trial rather than a lasting free tier. Research can chain several actions and bills each one, so use the console estimate before running it. Do not point production at a trial account.",
+    "source": "Tabstack official pricing page and docs FAQ (checked 2026-11-20) + Product Hunt launch 2026-11-19"
+  },
+  "sspace-30day-max-trial": {
+    "title": "[Global] S.Space by the AutoGen team: 30-day Max trial, no card",
+    "highlight": "A workspace where people and their own agents share rooms, built by AutoGen's creators: every new account starts a 30-day Max trial with no card, and you plug in your own Claude Code or Codex.",
+    "regions": "[Global] Sign-up only. The Sutando agent currently needs the macOS app; web and iPhone users can join rooms but cannot run a local agent",
+    "value": "30-day Max trial (Max pricing not public; 待核实)",
+    "content": "S.Space comes from AG2ai, the company of AutoGen's creator Chi Wang and co-creator Qingyun Wu. It launched publicly on 2026-11-02 and topped Product Hunt on 11-18. The product puts people and their agents into shared rooms: each person runs an agent called Sutando on macOS whose core is a real Claude Code or Codex session on their own subscription, so there is no per-token API key. Agents from other apps (ChatGPT's Dot, Grok Bot, Muse, Claude and others) join by adding S.Space as an MCP server at https://mcp.s.space/mcp. Agents ask each other for data, outputs land in shared Commons docs and tables, and anything leaving the room needs a human approval.\n\nOfficial pricing plus third-party checks on 2026-11-19: the Free plan is $0, lets you join rooms and run Sutando on your own subscription, and includes no usage credits. Every new account gets a 30-day Max trial with no credit card. Plus, Pro and Max prices are not published on the public pages and are bought inside sutando.s.space; cloud tools are charged per use (for example $5 per market map, $0.15 per qualified lead, $20 per competitor sweep), and the managed Gemini voice key needs a paid plan. Sutando itself is MIT open source.",
+    "conditions": "Register for a 30-day Max trial with no card. Sutando runs only on the macOS 12+ app (Apple Silicon or Intel); Windows and Linux users can join rooms from web or iPhone and connect agents from other apps. The Free plan includes no usage credits, and cloud tools and managed voice need a paid plan or purchased credits. Rooms with agents are not end-to-end encrypted for now.",
+    "steps": [
+      "Register at s.space and confirm the account is on the 30-day Max trial",
+      "On macOS, install the S.Space app and connect your Claude Code or Codex subscription",
+      "Create a room and invite teammates, or add ChatGPT / Grok / Muse agents over MCP",
+      "Work in Commons on what the agents produce, approving anything that leaves the room",
+      "Decide before the trial ends whether to move to a paid plan, and watch per-use cloud tools"
+    ],
+    "risk": "Max has no public price, so the value of 30 days can only be estimated from comparable $200/month tiers and is marked unverified. The free plan carries no credits. The local agent needs a Mac and draws down your own Claude or ChatGPT subscription. Cloud tools bill per use, so do not click through them carelessly during the trial.",
+    "source": "S.Space official site + TechLogHub pricing check (2026-11-19) + Product Hunt leaderboard 11-18 + NewAIToolsToday board 2026-11-19"
+  },
+  "onlook-free-designer-desktop": {
+    "title": "[Global] Onlook (YC W25) open-source agentic design tool: free desktop app",
+    "highlight": "Design on top of your real codebase: Onlook overlays a canvas on your repo, and clicking an element and saying 'make this a card layout' drives the Claude Code or Codex you already run to produce a git diff or PR. The desktop app is free and open source.",
+    "regions": "[Global] macOS, Windows and Linux desktop; bring your own Claude Code or Codex subscription",
+    "value": "Free and open source (Apache-2.0); cloud collaboration to be paid later",
+    "content": "Onlook (YC W25) launched on Hacker News on 2026-11-19, announcing it had rebuilt the product as an agentic design tool and open-sourced the whole thing under Apache-2.0. The desktop app is an Electron program: import a GitHub repo or a local folder and it creates a git worktree, starts the dev server and has the agent sort out dependencies. You select elements on the canvas and give instructions; changes appear as git diffs you can push as a PR or throw away, and several worktrees can run at once.\n\nOnlook does not train its own model. It runs your existing Claude Code or Codex subscription, turns whatever the agent emits into one typed event log, and renders the UI from that. It adds design-specific tools such as arranging frames on the canvas and generating several iterations of a selection. The desktop editor is free and open source; a paid cloud product for teams is planned, along with image, vector and font generation. The project has had 25,000+ designers and developers, 100+ contributors and two stints as the world's trending #1 repo.",
+    "conditions": "Free and open source, but you need your own working Claude Code or Codex subscription because Onlook supplies no model credits. The desktop app is aimed at macOS and Windows (Linux is not officially offered yet). The imported repo needs a dev server that starts, or the canvas cannot boot.",
+    "steps": [
+      "Download the desktop app from onlook.com, or build it from github.com/onlook-dev/onlook",
+      "Import a project from GitHub or a local folder and let it create the worktree and start the dev server",
+      "Select elements on the canvas and give instructions; the agent edits code through your own Claude Code or Codex",
+      "Review the diff and open a PR or discard it"
+    ],
+    "risk": "The tool is free but model usage comes out of your own subscription. It is early software, so complex repos may fail to start. When cloud collaboration and image, vector or font generation ship as paid features, the free boundary may narrow.",
+    "source": "Launch HN thread (2026-11-19, founder D_R_Farrell) + official GitHub onlook-dev/onlook (Apache-2.0)"
+  },
+  "tsb-uk-25-amazon-gift-card": {
+    "title": "[UK] TSB Spend & Save: £25 Amazon gift card for opening an account by 12/16 and making 3 payments",
+    "highlight": "No switch and no direct debits needed: open a TSB Spend & Save or Spend & Save Plus account through the MoneySupermarket link, make three payments of any value by 12/31, and a £25 Amazon gift card is emailed to you. It stacks with £5 a month card cashback for six months.",
+    "regions": "[UK] UK residents 18+ opening a new Spend & Save or Spend & Save Plus current account",
+    "value": "£25 Amazon.co.uk gift card (about $32)",
+    "content": "TSB's £25 Amazon gift card offer with Mony Group (MoneySupermarket and MSE) runs from 16:00 on 2026-11-17 until 2026-12-16, or earlier if withdrawn. Apply for a TSB Spend & Save or Spend & Save Plus account through the MoneySupermarket listing, then make at least three debit card payments of any value on the new account by 2026-12-31 (counted when the money leaves the account), and you get a £25 Amazon.co.uk gift card.\n\nThe flow is: click the promotional link, register your email with Giftcloud, click Continue Purchase to reach TSB and open the account. Once TSB confirms the account and the three payments, Giftcloud emails the claim link by 2027-01-31 and you have 60 days to claim. The account must still be open when the card is sent. Spend & Save also pays £5 a month for the first six months when you make 20 card payments a month (up to £30), and offers a 5% regular saver taking up to £250 a month. No CASS switch, direct debits or salary are required.",
+    "conditions": "UK resident, 18+. You must start from the MoneySupermarket promotional link so Giftcloud can track it; other entry points and Quidco do not qualify. You must not already hold a TSB Spend & Save or Spend & Save Plus account. Make three debit card payments of any value by 2026-12-31. One gift card per person. The account must be open when the card is issued. Safari or leaving the application part way can break tracking, so enable third-party cookies and finish in one session.",
+    "steps": [
+      "Open the TSB Spend & Save listing on MoneySupermarket, click the offer link and register your email with Giftcloud",
+      "Click Continue Purchase to reach TSB and open a Spend & Save or Spend & Save Plus account online",
+      "Make three debit card payments of any value by 2026-12-31, counting when they clear",
+      "Wait for the Giftcloud claim email by 2027-01-31 and claim the £25 gift card within 60 days",
+      "Optionally make 20 card payments a month to collect £5 monthly cashback for six months"
+    ],
+    "risk": "Only applications arriving through the promotional link count; going straight to tsb.co.uk gets you nothing. TSB runs a hard credit search that stays on your file. Tracking failure is the most common way this offer fails, so keep the Giftcloud emails. Closing the account early forfeits the card.",
+    "source": "TSB and Mony Group official terms (effective 2026-11-17 16:00, transcribed in full on the MSE forum) + MoneySavingExpert round-up 2026-11-19 + Daily Record report 2026-11-19"
+  },
+  "gate-convert-new-user-20usdt": {
+    "title": "[Global site] Gate Convert for new users: $1 in, 20 USDT out, plus 10 WLFI daily check-ins (11/19–11/26)",
+    "highlight": "Users who have never used Gate Convert can register and make one Convert trade of at least 1 USDT to get 20 USDT (first 500 only). Trade 20 USDT a day to check in for 10 WLFI, out of an 80,000 WLFI pool.",
+    "regions": "[Global site] KYC required; restricted regions excluded; rewards paid as Dual Investment trial funds and WLFI spot",
+    "value": "20 USDT (first 500) plus up to 70 WLFI from check-ins",
+    "content": "Gate's official announcement dated 2026-11-19 09:00 UTC runs the Convert new-user campaign until 2026-11-26 09:00 UTC. Event 1, New User Convert Gift: after registering on the event page and passing identity verification, a user who has never completed a Convert trade on Gate gets 20 USDT for their first Convert trade of at least 1 USDT. It is limited to the first 500 users, first come first served, credited automatically as Dual Investment trial funds.\n\nEvent 2, Daily Convert Check-In: a new user who trades at least 20 USDT through Convert in a UTC calendar day (00:00–23:59) counts that day as a check-in and earns 10 WLFI, from a pool of 80,000 WLFI that runs out first come first served. Up to seven days means about 70 WLFI, paid as WLFI spot. Both events can be joined together, and both require clicking Join Now on the event page and completing KYC.",
+    "conditions": "Click Join Now on the event page and complete KYC first. A Convert new user means no Convert trade completed before registering for the event. Event 1 is capped at the first 500 qualifying users. Event 2 counts UTC calendar days with at least 20 USDT of Convert volume, and missed days cannot be made up. Rewards are paid as Dual Investment trial funds (event 1) and WLFI spot (event 2), not withdrawable USDT.",
+    "steps": [
+      "Sign in to Gate, open the event page, click Join Now and complete KYC",
+      "Make one Convert trade of at least 1 USDT to receive the 20 USDT trial funds",
+      "Trade at least 20 USDT through Convert each day to check in for 10 WLFI",
+      "Confirm WLFI in your wallet and use the trial funds under Dual Investment rules"
+    ],
+    "risk": "The 20 USDT is Dual Investment trial funds rather than withdrawable cash. The first 500 places can run out. Check-ins follow UTC days with no catch-up. KYC is required and some regions are excluded. WLFI is volatile, so its real value is below face value.",
+    "source": "Gate official announcement (published 2026-11-19 09:00 UTC, checked 2026-11-20)"
   }
 }
