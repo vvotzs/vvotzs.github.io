@@ -61,6 +61,12 @@ robots.txt / sitemap.xml
   `beforeinput` 兜底拦 `insertLineBreak` / `insertParagraph`（Gboard 常常只给 `beforeinput`），输入法组字中与
   `compositionend` 后 200ms 内不发送（拼音选词的回车只算上屏），`input` 事件把粘贴进来的换行折成空格并复位光标。
   多行说明框（`sd-f4`）不受影响，仍是正常换行。
+- 蜜罐 `#sd-hp` 同样是 `<textarea rows="1">`，所以 `<dialog id="submit-dialog">` 里**没有任何 `<input>`**：
+  `<dialog>.showModal()` 打开时 Chrome 会扫到弹窗内的文本 `<input>` 并聚焦它，那一瞬间就会闪出键盘上方的
+  🔑💳📍 辅助栏（点进任一字段、焦点转走后它又消失）。另给 `<dialog>` 加 `tabindex="-1"`（CSS `.submit-dialog:focus{outline:none}`），
+  并在 `app.js` 的 `openDialog()` 里手机端（`max-width:680px`）`showModal()` 后显式
+  `submitDialog.focus({preventScroll:true})`，让打开时的焦点落在弹窗自己身上、不落到任何表单控件上；
+  桌面端维持自动聚焦名称框。
 - 兜底：禁用 JS / 不支持 `showModal()` 时，按钮本身就是 TG 群链接
   （<https://t.me/+aAqP0DbW_YMxMmNh>），不会走进死路。
 - 关闭：左上 `←`、ESC、点遮罩都可以；提交成功后同一张卡片就地换成紧凑回执
