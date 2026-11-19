@@ -305,6 +305,15 @@ def deadline_html(deal: dict, today) -> str:
     return f'<span class="deadline">{bi(short_date(deal["end"]) + " 截止", "Ends " + short_date_en(end))}</span>'
 
 
+def added_day(deal: dict, today) -> str:
+    """卡片上展示的收录日期（YYYY-MM-DD）。
+
+    数据里理论上一定有 added，但外部脚本 / 手工追加可能只写了 added_at，
+    渲染层再兜一层，保证不会出现空的「收录 · 」。
+    """
+    return str(deal.get("added") or deal.get("added_at") or today.isoformat())[:10]
+
+
 def short_deadline(deal: dict, today) -> tuple[str, str]:
     """跳转卡第二行用的极短截止提示（(中文, English)）。"""
     end = parse_date(deal.get("end", ""))
@@ -614,7 +623,7 @@ def card(deal: dict, en: dict, today) -> str:
 
     return f"""<article class="{classes}" id="deal-{deal_id}" data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
-    data-added="{e(deal.get('added', ''))}" data-val-exp="{value_expected(deal):g}" data-key="{deal_id}">
+    data-added="{e(added_day(deal, today))}" data-val-exp="{value_expected(deal):g}" data-key="{deal_id}">
     <div class="card-head">
       {fav_html(deal, 24)}
       <div class="card-body">
@@ -652,7 +661,7 @@ def card(deal: dict, en: dict, today) -> str:
       <div class="detail-foot">
         <span>{bi(e(f"{U['f_source'][0]} · {deal['source']}"), e(f"{U['f_source'][1]} · {en.get('source') or deal['source']}"))}</span>
         <span>{bi(e(f"{U['f_last_verified'][0]} · {deal['last_verified']}"), e(f"{U['f_last_verified'][1]} · {deal['last_verified']}"))}</span>
-        <span>{bi(e(f"{U['f_added'][0]} · {deal.get('added', '')}"), e(f"{U['f_added'][1]} · {deal.get('added', '')}"))}</span>
+        <span>{bi(e(f"{U['f_added'][0]} · {added_day(deal, today)}"), e(f"{U['f_added'][1]} · {added_day(deal, today)}"))}</span>
       </div>
     </div></div></div>
   </article>"""
@@ -682,7 +691,7 @@ def jump_card(deal: dict, en: dict, today, rank: int | None = None) -> str:
     return f"""<a class="jump" href="#deal-{deal_id}" data-jump="deal-{deal_id}"
     data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
-    data-added="{e(deal.get('added', ''))}" data-key="{deal_id}">
+    data-added="{e(added_day(deal, today))}" data-key="{deal_id}">
       {rank_html}
       {fav_html(deal, 22)}
       <span class="jump-main">
@@ -870,7 +879,8 @@ def main() -> None:
 
     hot_board = f"""
   <div class="hot-board" data-hot-board>
-    <div class="hot-tabs-mobile" role="tablist" aria-label="{U['hot_aria'][0]}">
+    <div class="hot-tabs-mobile" role="tablist" aria-label="__HOT_ARIA__"
+         data-al-zh="{U['hot_aria'][0]}" data-al-en="{U['hot_aria'][1]}">
       {hot_tab('fresh', 'tab_fresh', True)}
       {hot_tab('rank', 'tab_rank', False)}
       {hot_tab('closing', 'tab_closing', False)}
@@ -1106,7 +1116,7 @@ def main() -> None:
     <div class="ad-slot" data-ad="top" aria-hidden="true"><!-- AdSense：顶部 / 桌面横幅 --></div>
   </div>
 
-  <div class="shell">{hot_board}{modules}</div>
+  <div class="shell">{hot_board.replace('__HOT_ARIA__', e(U['hot_aria'][1] if is_en else U['hot_aria'][0]))}{modules}</div>
 
   <div class="shell">
     <div class="ad-slot" data-ad="bottom" aria-hidden="true"><!-- AdSense：底部 --></div>
@@ -1119,7 +1129,8 @@ def main() -> None:
     {icon('send')}
     <span>{ui('nav_submit')}</span>
   </a>
-  <nav class="rail" aria-label="{U['nav_aria'][0]}">
+  <nav class="rail" aria-label="{U['nav_aria'][1] if is_en else U['nav_aria'][0]}"
+       data-al-zh="{U['nav_aria'][0]}" data-al-en="{U['nav_aria'][1]}">
   {rail}
   </nav>
 </div>

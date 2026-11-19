@@ -78,6 +78,8 @@
     var q = $("#q");
     if (q && pack.placeholder) q.placeholder = pack.placeholder;
     applyAria();
+    /* 已展开卡片的按钮标签是「收起详情 / Collapse details」，跟着语言重设一遍 */
+    $$(".card.open").forEach(function (card) { setOpen(card, true); });
     /* placeholder 只能是一个字符串：成对存在 data-ph-zh / data-ph-en 上，这里同步 */
     $$("[data-ph-zh]").forEach(function (el) {
       var v = el.getAttribute(LANG === "en" ? "data-ph-en" : "data-ph-zh");
@@ -385,7 +387,9 @@
     var toggle = $(".toggle", card);
     if (toggle) {
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      toggle.setAttribute("aria-label", open ? "收起详情" : "展开详情");
+      toggle.setAttribute("aria-label", LANG === "en"
+        ? (open ? "Collapse details" : "Expand details")
+        : (open ? "收起详情" : "展开详情"));
     }
   }
 
@@ -770,13 +774,14 @@
       el.addEventListener("click", closeDialog);
     });
     /* 点遮罩关闭：::backdrop 不是 DOM 节点，点在卡片外时事件目标是 <dialog> 本身，
-       再用坐标确认一次确实落在卡片外面（填写中与提交成功页都一样生效） */
+       再用坐标确认一次确实落在卡片外面（填写中与提交成功页都一样生效）。
+       只看坐标：落在卡片矩形内（含内边距、提交成功页的按钮区域）就不关。 */
     submitDialog.addEventListener("click", function (ev) {
       if (ev.target !== submitDialog) return;
       var r = submitDialog.getBoundingClientRect();
       var outside = ev.clientX < r.left || ev.clientX > r.right ||
                     ev.clientY < r.top || ev.clientY > r.bottom;
-      if (outside || ev.target === submitDialog) closeDialog();
+      if (outside) closeDialog();
     });
     submitDialog.addEventListener("close", function () {
       document.documentElement.classList.remove("dialog-open");

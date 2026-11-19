@@ -79,17 +79,26 @@ def compute_status(deal: dict, today: date) -> str:
 
 
 def ensure_added_at(deals: list[dict], when: datetime | None = None) -> bool:
-    """给还没有入库时间 added_at 的条目补上时间戳，返回是否改动。
+    """补齐入库相关字段（added_at / added），返回是否改动。
 
     「新收录」要按入库先后排，而 added 只精确到日期、同一批往往几十条并列，
     所以每条需要一份带时分的 added_at。新条目入库时（维护 / 构建）自动补，
     人工往 deals.json 里追加也不用记着填。
+
+    added（展示用的 YYYY-MM-DD）也要一起兜底：只写了 added_at 的条目，
+    卡片底部会渲染成空的「收录 · 」。回填顺序是 added_at 的日期部分，
+    两者都缺时再用当天（北京时间）。
     """
-    stamp = (when or now_local()).isoformat(timespec="seconds")
+    now = when or now_local()
+    stamp = now.isoformat(timespec="seconds")
+    fallback_day = now.date().isoformat()
     changed = False
     for deal in deals:
         if not deal.get("added_at"):
             deal["added_at"] = stamp
+            changed = True
+        if not deal.get("added"):
+            deal["added"] = str(deal.get("added_at") or fallback_day)[:10]
             changed = True
     return changed
 
