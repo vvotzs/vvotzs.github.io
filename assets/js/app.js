@@ -78,6 +78,11 @@
     var q = $("#q");
     if (q && pack.placeholder) q.placeholder = pack.placeholder;
     applyAria();
+    /* placeholder 只能是一个字符串：成对存在 data-ph-zh / data-ph-en 上，这里同步 */
+    $$("[data-ph-zh]").forEach(function (el) {
+      var v = el.getAttribute(LANG === "en" ? "data-ph-en" : "data-ph-zh");
+      if (v) el.setAttribute("placeholder", v);
+    });
     SEARCH = SEARCH_MAP[LANG] || SEARCH_MAP.zh;
     if (persist) { try { localStorage.setItem("ydj-lang", LANG); } catch (err) {} }
     render();
@@ -664,81 +669,110 @@
     });
   }
 
-  /* -------------------------------------- 投稿（Tally 弹窗，点击时才加载 embed.js） */
-  /* 打开网页时完全不请求 tally.so：用户第一次滚动 / 按键 / 点按，或直接点「投稿」时才插入
-     embed.js。脚本就绪后走官方弹窗（页面不跳走）；1.8 秒内弹不出来（被墙、被拦截、脚本异常）
-     就直接在新标签打开表单，不让用户干等。按钮本身就是指向 https://tally.so/r/<id> 的链接，
-     禁用 JS 时照常可用；重复点击复用同一个 <script>，不会重复插入。 */
+  /* ---------------------------------- 投稿（原生 <dialog> → Apps Script 直邮）
+     不加载任何第三方脚本：弹窗就是页面里的 <dialog>，表单用 fetch（no-cors）POST 到
+     Apps Script Web App，由它用 MailApp 发到 vvotzs@gmail.com。接口地址写在弹窗的
+     data-endpoint 上（构建时由 build_site.py 注入），换接口只改那一处。
+     禁用 JS 或不支持 showModal 时，按钮本身就是 TG 群链接，不会走进死路。 */
+  var submitDialog = $("#submit-dialog");
   var submitBtn = $("#open-submit");
-  if (submitBtn) {
-    var TALLY_EMBED_SRC = "https://tally.so/widgets/embed.js";
-    var TALLY_LOAD_TIMEOUT = 1800;   // 从点击算起的总预算
-    var TALLY_POLL_MS = 100;         // embed.js 初始化完成前 openPopup 会静默失败，按拍重试
-    var tallyScript = null;          // 已插入的 <script>，用来防重复
-    var tallyFailed = false;         // 脚本加载失败
-    var pendingOpen = false;         // 已有一次点击在等弹窗，避免重复触发
+  if (submitDialog && submitBtn && typeof submitDialog.showModal === "function") {
+    var GAS_URL = submitDialog.getAttribute("data-endpoint") || "";
+    var submitForm = $("#submit-form", submitDialog);
+    var donePanel = $("#sd-done", submitDialog);
+    var errEl = $("#sd-err", submitDialog);
+    var sendBtn = $(".sd-send", submitDialog);
+    var nameEl = $("#sd-name", submitDialog);
+    var urlEl = $("#sd-url", submitDialog);
+    var regionEl = $("#sd-region", submitDialog);
+    var notesEl = $("#sd-notes", submitDialog);
+    var sending = false;
 
-    var tallyReady = function () {
-      return !!(window.Tally && typeof window.Tally.openPopup === "function");
-    };
-    /* 弹窗是不是真的出现了（embed.js 只建 .tally-popup 和 popup iframe） */
-    var tallyPopupShown = function () {
-      return !!(document.querySelector(".tally-popup") ||
-                document.querySelector('iframe[src*="tally.so/popup"]'));
-    };
-    var tryOpenPopup = function (btn) {
-      if (!tallyReady()) return false;
-      try {
-        window.Tally.openPopup(btn.getAttribute("data-tally-form"),
-          { layout: "modal", width: 520, autoClose: 3000 });
-      } catch (err) {
-        return false;
-      }
-      return tallyPopupShown();
-    };
-    var openFormInTab = function (btn) {
-      var win = window.open(btn.href, "_blank");
-      if (win) { try { win.opener = null; } catch (err) {} return; }
-      location.href = btn.href;        // 新标签被浏览器拦下：同标签打开，至少能提交
+    /* 提示文案：弹窗上按语言各存一份（data-msg-<key>-zh / -en），出错时按当前语言取 */
+    var msg = function (key) {
+      return submitDialog.getAttribute("data-msg-" + key + "-" + LANG) ||
+             submitDialog.getAttribute("data-msg-" + key + "-zh") || "";
     };
 
-    var loadTally = function () {
-      if (tallyScript) return;
-      var s = document.createElement("script");
-      s.src = TALLY_EMBED_SRC;
-      s.async = true;
-      s.onload = function () { s.setAttribute("data-state", "loaded"); };
-      s.onerror = function () { tallyFailed = true; s.setAttribute("data-state", "failed"); };
-      tallyScript = s;
-      (document.body || document.head || document.documentElement).appendChild(s);
+    var clearBad = function () {
+      $$(".sd-row", submitDialog).forEach(function (row) { row.classList.remove("bad"); });
+      errEl.textContent = "";
+      errEl.hidden = true;
+    };
+    var showErr = function (row, text) {
+      clearBad();
+      if (row) row.classList.add("bad");
+      errEl.textContent = text;
+      errEl.hidden = false;
+    };
+    var resetForm = function () {
+      submitForm.reset();
+      clearBad();
+      donePanel.hidden = true;
+      submitForm.hidden = false;
+    };
+    var openDialog = function () {
+      resetForm();
+      submitDialog.showModal();
+      document.documentElement.classList.add("dialog-open");
+      setTimeout(function () { if (nameEl) nameEl.focus(); }, 40);
+    };
+    var closeDialog = function () {
+      if (submitDialog.open) submitDialog.close();
     };
 
     submitBtn.addEventListener("click", function (ev) {
-      if (!submitBtn.getAttribute("data-tally-form")) return;      // 没配表单：走原生链接
-      /* ⌘/Ctrl/Shift 点击、中键点击仍按用户习惯在新标签打开 */
-      if (ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
-
-      ev.preventDefault();
-      if (pendingOpen) return;                                     // 上一次还在等，别叠加
-      if (tryOpenPopup(submitBtn)) return;                         // 已预热：立即弹窗
-
-      loadTally();                                                 // 首次点击：现加载
-      var deadline = Date.now() + TALLY_LOAD_TIMEOUT;
-      pendingOpen = true;
-      var tick = function () {
-        if (tryOpenPopup(submitBtn)) { pendingOpen = false; return; }
-        if (!tallyFailed && Date.now() < deadline) { setTimeout(tick, TALLY_POLL_MS); return; }
-        pendingOpen = false;
-        openFormInTab(submitBtn);
-      };
-      setTimeout(tick, TALLY_POLL_MS);
+      ev.preventDefault();            /* 按钮的 href 留给禁用 JS 时的兜底 */
+      openDialog();
+    });
+    $$("[data-submit-close]", submitDialog).forEach(function (el) {
+      el.addEventListener("click", closeDialog);
+    });
+    /* 点遮罩关闭：落在 <dialog> 自身上的点击就是卡片外的空白 */
+    submitDialog.addEventListener("click", function (ev) {
+      if (ev.target === submitDialog) closeDialog();
+    });
+    submitDialog.addEventListener("close", function () {
+      document.documentElement.classList.remove("dialog-open");
+    });
+    var againBtn = $("[data-submit-again]", submitDialog);
+    if (againBtn) againBtn.addEventListener("click", resetForm);
+    [nameEl, urlEl, regionEl].forEach(function (el) {
+      if (el) el.addEventListener("input", clearBad);
     });
 
-    /* 预热：滚动 / 按键 / 点按（不含「打开页面」本身）时先加载 embed.js，
-       多数人真去点「投稿」时弹窗已经能秒开。 */
-    ["scroll", "pointerdown", "touchstart", "keydown"].forEach(function (type) {
-      window.addEventListener(type, function () { setTimeout(loadTally, 150); },
-        { passive: true, once: true });
+    submitForm.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      if (sending) return;
+      var name = (nameEl.value || "").trim();
+      var url = (urlEl.value || "").trim();
+      if (!name) { showErr(nameEl.parentNode, msg("name")); nameEl.focus(); return; }
+      if (!url) { showErr(urlEl.parentNode, msg("link")); urlEl.focus(); return; }
+      if (!/^https?:\/\//i.test(url)) {
+        showErr(urlEl.parentNode, msg("link-invalid")); urlEl.focus(); return;
+      }
+
+      var body = new URLSearchParams();
+      body.set("name", name);
+      body.set("url", url);
+      body.set("region", (regionEl.value || "").trim());
+      body.set("notes", (notesEl.value || "").trim());
+      body.set("lang", LANG);
+
+      sending = true;
+      sendBtn.disabled = true;
+      clearBad();
+      var finish = function (ok) {
+        sending = false;
+        sendBtn.disabled = false;
+        if (!ok) { showErr(null, msg("failed")); return; }
+        submitForm.hidden = true;     /* 同一张卡片就地换成回执 */
+        donePanel.hidden = false;
+      };
+      if (!GAS_URL) { finish(false); return; }
+      fetch(GAS_URL, { method: "POST", mode: "no-cors", body: body })
+        .then(function () { finish(true); })
+        .catch(function () { finish(false); });
     });
   }
 

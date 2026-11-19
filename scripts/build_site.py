@@ -141,11 +141,14 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
                '<path d="M11.2 13.9l-2.1 4.6" stroke="#C2410C" stroke-opacity=".55"/>', 1.7),
 }
 
-# Tally 投稿表单（https://tally.so/r/<id>）：弹窗优先，直接跳转兜底。
-# embed.js 不再预加载（省掉首屏一次第三方请求），改由 assets/js/app.js 在点击「投稿」时
-# 按需插入；1.8 秒内没就绪就直接新标签打开 TALLY_FORM_URL。
-TALLY_FORM_ID = "J1lj1d"
-TALLY_FORM_URL = f"https://tally.so/r/{TALLY_FORM_ID}"
+# 投稿：纯原生 <dialog> 弹窗 → fetch 直接 POST 到 Google Apps Script Web App，
+# 由脚本用 MailApp 发信到 vvotzs@gmail.com（免费，不占第三方表单额度，也没有水印）。
+# 换接口只改这一处再重建；app.js 从弹窗的 data-endpoint 读地址。
+SUBMIT_ENDPOINT = (
+    "https://script.google.com/macros/s/"
+    "AKfycbytBigdTS4LTwtRh6K_jiTPXHOf-6MvljhVuYFDZ9VLfUuTmzgNqNATK_oX2UELJzCJTg/exec"
+)
+TG_GROUP_URL = "https://t.me/+aAqP0DbW_YMxMmNh"
 
 # 薄荷绿 Pickle 小精灵（页头 / 页脚直接内联，不走 sprite）。
 # 渐变必须写在可见的 <svg> 自己的 <defs> 里：放进 display:none 的 sprite 后，
@@ -1010,6 +1013,10 @@ def main() -> None:
             indent=2,
         )
 
+        def pht(key: str) -> str:
+            """placeholder 只能是一个字符串：按当前页面语言取，切语言时 app.js 再同步。"""
+            return e(U[key][1] if is_en else U[key][0])
+
         head = f"""<!DOCTYPE html>
 <html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}">
 <head>
@@ -1107,8 +1114,7 @@ def main() -> None:
 </main>
 
 <div class="rail-dock">
-  <a class="rail-submit" id="open-submit" href="{TALLY_FORM_URL}" target="_blank" rel="noopener"
-     data-tally-form="{TALLY_FORM_ID}"
+  <a class="rail-submit" id="open-submit" href="{TG_GROUP_URL}" target="_blank" rel="noopener"
      data-al-zh="{U['nav_submit_aria'][0]}" data-al-en="{U['nav_submit_aria'][1]}">
     {icon('send')}
     <span>{ui('nav_submit')}</span>
@@ -1198,6 +1204,70 @@ def main() -> None:
     </div>
   </div>
 </div>
+
+<dialog class="submit-dialog" id="submit-dialog" data-endpoint="{SUBMIT_ENDPOINT}"
+        aria-labelledby="submit-title"
+        data-al-zh="{U['submit_aria'][0]}" data-al-en="{U['submit_aria'][1]}"
+        data-msg-name-zh="{e(U['submit_need_name'][0])}" data-msg-name-en="{e(U['submit_need_name'][1])}"
+        data-msg-link-zh="{e(U['submit_need_link'][0])}" data-msg-link-en="{e(U['submit_need_link'][1])}"
+        data-msg-link-invalid-zh="{e(U['submit_link_invalid'][0])}" data-msg-link-invalid-en="{e(U['submit_link_invalid'][1])}"
+        data-msg-failed-zh="{e(U['submit_failed'][0])}" data-msg-failed-en="{e(U['submit_failed'][1])}">
+  <form class="sd-form" id="submit-form" novalidate>
+    <div class="sd-top">
+      <button class="sd-back" type="button" data-submit-close
+              data-al-zh="{U['close'][0]}" data-al-en="{U['close'][1]}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"/><path d="m11.5 19-7-7 7-7"/></svg>
+      </button>
+      <span class="sd-avatar" aria-hidden="true">{mascot_svg(gid='mintBodySubmit')}</span>
+      <h2 id="submit-title">{ui('submit_title')}</h2>
+      <a class="sd-tg" href="{TG_GROUP_URL}" target="_blank" rel="noopener"
+         data-al-zh="{U['submit_tg_aria'][0]}" data-al-en="{U['submit_tg_aria'][1]}">
+        <svg class="sd-tg-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.62 7.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74l9.11-3.51c.42-.15.79.1.65.83Z" fill="currentColor"/></svg>
+        <span>{ui('submit_tg')}</span>
+      </a>
+      <button class="sd-send" type="submit"
+              data-al-zh="{U['submit_send'][0]}" data-al-en="{U['submit_send'][1]}">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3.4 11.1 20.2 4.2c.8-.3 1.6.5 1.3 1.3l-6.9 16.8c-.3.8-1.5.8-1.9 0l-1.9-5.2-5.2-1.9c-.8-.4-.8-1.6 0-1.9Z" fill="currentColor"/>
+          <path d="M10.8 13.2 20 5.1" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity=".9"/>
+        </svg>
+      </button>
+    </div>
+
+    <label class="sd-row">
+      <span class="sd-label">{ui('submit_name')}<i class="req" aria-hidden="true">*</i></span>
+      <input class="sd-input" id="sd-name" name="name" type="text" maxlength="80" autocomplete="off" enterkeyhint="next"
+             placeholder="{pht('submit_ph_name')}" data-ph-zh="{e(U['submit_ph_name'][0])}" data-ph-en="{e(U['submit_ph_name'][1])}">
+    </label>
+    <label class="sd-row">
+      <span class="sd-label">{ui('submit_link')}<i class="req" aria-hidden="true">*</i></span>
+      <input class="sd-input" id="sd-url" name="url" type="url" inputmode="url" maxlength="500" autocomplete="off" spellcheck="false" enterkeyhint="next"
+             placeholder="{pht('submit_ph_link')}" data-ph-zh="{e(U['submit_ph_link'][0])}" data-ph-en="{e(U['submit_ph_link'][1])}">
+    </label>
+    <label class="sd-row">
+      <span class="sd-label">{ui('submit_region')}</span>
+      <input class="sd-input" id="sd-region" name="region" type="text" maxlength="60" autocomplete="off" enterkeyhint="done"
+             placeholder="{pht('submit_ph_region')}" data-ph-zh="{e(U['submit_ph_region'][0])}" data-ph-en="{e(U['submit_ph_region'][1])}">
+    </label>
+    <label class="sd-notes">
+      <textarea class="sd-textarea" id="sd-notes" name="notes" rows="5" maxlength="800"
+                placeholder="{pht('submit_ph_notes')}" data-ph-zh="{e(U['submit_ph_notes'][0])}" data-ph-en="{e(U['submit_ph_notes'][1])}"></textarea>
+    </label>
+    <p class="sd-err" id="sd-err" role="alert" hidden></p>
+  </form>
+
+  <div class="sd-done" id="sd-done" hidden>
+    <span class="sd-done-mark" aria-hidden="true">✨</span>
+    <p class="sd-done-t">{ui('submit_success')}</p>
+    <p class="sd-done-s">{ui('submit_done_sub')}</p>
+    <a class="sd-tg sd-tg-lg" href="{TG_GROUP_URL}" target="_blank" rel="noopener"
+       data-al-zh="{U['submit_tg_aria'][0]}" data-al-en="{U['submit_tg_aria'][1]}">
+      <svg class="sd-tg-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.62 7.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74l9.11-3.51c.42-.15.79.1.65.83Z" fill="currentColor"/></svg>
+      <span>{ui('submit_tg')}</span>
+    </a>
+    <div><button class="sd-again" type="button" data-submit-again>{ui('submit_again')}</button></div>
+  </div>
+</dialog>
 
 <footer>
   <div class="shell foot-line">

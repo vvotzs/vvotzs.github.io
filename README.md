@@ -29,14 +29,22 @@ docs/workflows-reference/daily-rebuild.yml  # 每日重建工作流模板（不�
 robots.txt / sitemap.xml
 ```
 
-## 投稿（Tally）
+## 投稿（原生弹窗 + Apps Script 直邮）
 
-右侧滑轨正上方的「投稿 / Submit」按钮打开 Tally 投稿表单：
+右侧滑轨正上方的「投稿 / Submit」按钮打开**纯原生 `<dialog>` 弹窗**（Gmail 写信式布局：
+左上 `←` 关闭、右上「TG 交流群 + 纸飞机发送」、横线分行的名称 / 链接 / 地区 / 亮点说明），
+不加载任何第三方脚本，也没有 `Made with …` 水印。
 
-- 表单：<https://tally.so/r/J1lj1d>（表单 ID `J1lj1d`，写在 `scripts/build_site.py` 的 `TALLY_FORM_ID`，换表单只改这一处再重建）
-- 弹窗：`Tally.openPopup(id, { layout: "modal", width: 520, autoClose: 3000 })`，脚本来自 `https://tally.so/widgets/embed.js`
-- 兜底：按钮本身就是指向 `https://tally.so/r/<id>` 的链接，embed.js 没加载（境内网络被墙 / 被拦截）时直接在新标签打开表单
-- 通知：表单 Settings → Email notifications → Self email notifications，新投稿发到 vvotzs@gmail.com（免费版收件人固定）
+- 接口：Google Apps Script Web App（项目 `Deal Hunter Submit`，账号 `vvotzs@gmail.com`），
+  地址写在 `scripts/build_site.py` 的 `SUBMIT_ENDPOINT`，换接口只改这一处再重建；
+  前端从弹窗的 `data-endpoint` 读取，用 `fetch(..., { method: "POST", mode: "no-cors" })`
+  提交 `URLSearchParams`（name / url / region / notes / lang）。
+- 邮件：脚本里 `MailApp.sendEmail("vvotzs@gmail.com", "[羊毛情报投稿] …", …)`，
+  免费额度每天 100 封（个人 Gmail），不占第三方表单名额。
+- 必填：名称、链接（须以 `http(s)://` 开头）；地区与亮点选填。
+- 兜底：禁用 JS / 不支持 `showModal()` 时，按钮本身就是 TG 群链接
+  （<https://t.me/+aAqP0DbW_YMxMmNh>），不会走进死路。
+- 关闭：左上 `←`、ESC、点遮罩都可以；提交成功后同一张卡片就地换成回执并给出进群链接。
 
 ## 中英双语
 

@@ -1611,3 +1611,222 @@ footer{
   html{ scroll-behavior: auto; }
   *{ transition: none !important; animation: none !important; }
 }
+
+/* ------------------------------------------------- 投稿弹窗（原生 <dialog>）
+   Gmail 写信式的极简结构：左上「返回」即关闭，右上「TG 交流群 + 纸飞机发送」，
+   正文是横线分行的「左标签 / 右输入」，没有边框盒子，也没有任何第三方水印。
+   暖米白卡片底，浅暖灰 1px 分割线，薄荷绿只留给发送按钮。 */
+
+.submit-dialog{
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(440px, calc(100vw - 16px));
+  max-height: calc(100dvh - 24px);
+  padding: 0;
+  border: 1px solid rgba(28,25,23,.1);
+  border-radius: 22px;
+  background: #FAF9F5;
+  color: var(--ink);
+  box-shadow: 0 40px 90px -40px rgba(60,40,10,.55), 0 2px 8px rgba(28,25,23,.06);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.submit-dialog::backdrop{
+  background: rgba(50,38,22,.32);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+html.dialog-open{ overflow: hidden; }
+
+/* 顶栏：← / 头像 / 标题 ………… TG 徽标 / 纸飞机 */
+.sd-top{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px 8px 6px;
+  border-bottom: 1px solid #EFECE4;
+}
+.sd-back{
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-2);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.sd-back svg{
+  width: 19px; height: 19px;
+  fill: none; stroke: currentColor;
+  stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round;
+}
+.sd-back:hover{ background: #F1EEE6; color: var(--ink); }
+.sd-back:focus-visible{ outline: 2px solid rgba(22,163,74,.5); outline-offset: 1px; }
+
+.sd-avatar{ flex: none; width: 22px; height: 22px; margin-left: 1px; }
+.sd-avatar svg{ width: 22px; height: 22px; display: block; }
+
+.sd-top h2{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  line-height: 1.2;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* TG 交流群：紧凑蓝色胶囊，紧挨右上角，不占高度、不折行 */
+.sd-tg{
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+  padding: 0 9px 0 6px;
+  border: 1px solid rgba(42,171,238,.26);
+  border-radius: 999px;
+  background: #EFF9FF;
+  color: #0B79A8;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .15s ease, border-color .15s ease;
+}
+.sd-tg:hover{ background: #E1F4FF; border-color: rgba(42,171,238,.42); }
+.sd-tg-i{ width: 14px; height: 14px; flex: none; color: #2AABEE; }
+.sd-tg span{ display: block; }
+
+/* 纸飞机发送：薄荷绿主色，唯一的高饱和色块 */
+.sd-send{
+  flex: none;
+  width: 34px;
+  height: 34px;
+  margin-left: 2px;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #22C55E 0%, #16A34A 100%);
+  color: #FFFFFF;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 14px -9px rgba(22,163,74,.95), 0 1px 2px rgba(28,25,23,.06);
+  transition: transform .15s ease, filter .15s ease;
+}
+.sd-send svg{ width: 17px; height: 17px; fill: currentColor; }
+.sd-send:hover{ filter: brightness(1.05); transform: translateY(-1px); }
+.sd-send:active{ transform: translateY(0); }
+.sd-send:focus-visible{ outline: 2px solid rgba(22,163,74,.55); outline-offset: 2px; }
+.sd-send[disabled]{ opacity: .6; cursor: default; transform: none; }
+
+/* 表单：横线分行，左标签右输入，没有任何输入框边框 */
+.sd-form{ display: block; }
+.sd-row{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 14px;
+  border-bottom: 1px solid #F0EDE5;
+  cursor: text;
+}
+.sd-label{
+  flex: none;
+  width: 44px;
+  font-size: 12.5px;
+  color: var(--ink-3);
+  letter-spacing: .01em;
+}
+.sd-label .req{ color: #DC2626; font-style: normal; margin-left: 2px; }
+.sd-input{
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.sd-input::placeholder{ color: var(--ink-4); }
+.sd-input:-webkit-autofill{ -webkit-box-shadow: 0 0 0 40px #FAF9F5 inset; }
+
+/* 正文区：无边框自适应多行，留白舒展 */
+.sd-notes{ display: block; padding: 12px 14px 4px; cursor: text; }
+.sd-textarea{
+  display: block;
+  width: 100%;
+  min-height: 172px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.7;
+  resize: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.sd-textarea::placeholder{ color: var(--ink-4); }
+
+/* 必填项为空：只在那一行加一层很淡的暖红，不动布局 */
+.sd-row.bad{ background: #FDF4F2; }
+.sd-row.bad .sd-label{ color: #B91C1C; }
+.sd-err{
+  margin: 0 14px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #B91C1C;
+}
+
+/* 提交成功：同一张卡片就地换成回执 */
+.sd-done{ padding: 30px 22px 22px; text-align: center; }
+.sd-done[hidden]{ display: none; }
+.sd-done-mark{ font-size: 24px; line-height: 1; }
+.sd-done-t{
+  margin: 10px 0 4px;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: var(--ink);
+}
+.sd-done-s{ margin: 0; font-size: 12.5px; color: var(--ink-3); }
+.sd-tg-lg{ margin-top: 14px; height: 30px; padding: 0 12px 0 9px; font-size: 12px; }
+.sd-again{
+  margin-top: 2px;
+  padding: 10px 6px 2px;
+  border: 0;
+  background: transparent;
+  color: var(--mint);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.sd-again:hover{ color: #047857; }
+
+@media (max-width: 480px){
+  .submit-dialog{
+    width: calc(100vw - 12px);
+    max-height: calc(100dvh - 16px);
+    border-radius: 20px;
+  }
+  .sd-row{ height: 46px; }
+  .sd-textarea{ min-height: 158px; }
+  .sd-top h2{ font-size: 13.5px; }
+}
