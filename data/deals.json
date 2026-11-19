@@ -26,7 +26,8 @@
     "url": "https://www.coinbase.com/learning-rewards",
     "source": "Coinbase 官方活动页（条款注明平均奖励约 $25）",
     "risk": "官方写明是“最高 $2,000”的随机奖励，多数人拿到的是小额；买入后币价波动风险自负，奖励不构成投资建议。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "usbank-business-checking-1500",
@@ -55,7 +56,8 @@
     "url": "https://www.usbank.com/splash/business-checking/business-checking-promo.html",
     "source": "U.S. Bank 官方 Business Checking and Online Banking Bonus 页（条款至 2027-01-13）+ Doctor of Credit 2026-09-29 更新 + 美卡论坛 2026-11-18 实测 DP",
     "risk": "需占用 $25,000 资金约 60 天，且必须是美国企业主体；$1,500 档来自 Q4BUS26 邀请码（官方页面标价 $1,200，码不同金额不同）；月费 $30 需靠余额豁免；奖励按利息报税。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:18:37+08:00"
   },
   {
     "id": "binance-lite-vouchers",
@@ -85,7 +87,8 @@
     "url": "https://www.binance.com/en/support/faq/detail/6233094e540b4ea4ac50387d1518911b",
     "source": "Binance 官方推荐计划说明 + 第三方条款核对（2026-09）",
     "risk": "返佣券只抵扣现货手续费，不交易就等于 0 价值；「最高」金额并非人人可得，需以券面实际数值为准。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "jetbrains-student-pack",
@@ -113,7 +116,8 @@
     "url": "https://www.jetbrains.com/community/education/",
     "source": "JetBrains 官方学生包页 + 支持文档（2026-10-29）",
     "risk": "许可按年续期，忘了续会失效；商业项目使用需遵守教育许可条款。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "hostinger-black-friday",
@@ -141,7 +145,8 @@
     "url": "https://www.hostinger.com/black-friday",
     "source": "Hostinger 官方黑五页（活动期与价格均为官方标注）",
     "risk": "四年一次性付款、续费翻数倍；建站需求不确定时先用月付，别为折扣锁死四年。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "bybit-referral-tasks",
@@ -171,7 +176,8 @@
     "url": "https://www.bybit.com/en/help-center/article?id=000001074&language=en_US",
     "source": "Bybit 官方推荐计划 FAQ（2026-11-17 更新）",
     "risk": "奖励以 Bonus / Fee Saver / Position Airdrop 形式发放，不可直接提现，只能抵扣手续费或作保证金；每月奖励池 50 万 USDT，先到先得。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "okx-new-user-bonus",
@@ -201,7 +207,8 @@
     "url": "https://www.okx.com/en-us/help/new-user-bonus-program-terms-and-conditions-eea",
     "source": "OKX 官方新人奖励条款（2026-09-09 更新）",
     "risk": "加密奖励最多锁定 45 天不能提现；奖励为合约/永续券而非现金；非指定渠道注册一律无效。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "citizens-bank-400-checking",
@@ -231,7 +238,8 @@
     "url": "https://www.citizensbank.com/promo/checking/26-q4-bau-gm.aspx",
     "source": "Citizens Bank 官方活动页（条款脚注 1，2026-11-19 读取）",
     "risk": "仅美国部分州可线上开，非居民无法办理；One Deposit Checking 有 $9.99 月费（每期入金可免），EverValue 的 $5 月费不可免；奖金到账要等 2–4 个月，期间关户会失去资格；官方可随时撤回活动。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T09:52:44+08:00"
   },
   {
     "id": "sofi-checking-400-direct-deposit",
@@ -260,7 +268,8 @@
     "url": "https://www.sofi.com/banking/checking-offer/",
     "source": "SoFi 官方 Checking Offer 页条款（2026-11-19 读取）",
     "risk": "要达到 $400 档得在 25 天内进 $5,000，本质是工资搬家；直存识别由 SoFi 判定，个别雇主不入账需人工申诉；奖金报税。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T09:52:44+08:00"
   },
   {
     "id": "chase-total-checking-400",
@@ -289,7 +298,8 @@
     "url": "https://account.chase.com/consumer/banking/seo",
     "source": "Chase 官方活动页 + Bankrate / BankDealGuy（2026-11-11 更新）",
     "risk": "$15 月费不豁免会吃掉奖励；提前关户可能被追回；需美国地址与 SSN/ITIN，非居民开户另有限制。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "santander-everyday-switch-240",
@@ -320,7 +330,8 @@
     "url": "https://www.santander.co.uk/personal/support/current-accounts/switching",
     "source": "Santander UK 官方转户页「Switch. Save. Get £240.」+ 官方 £240 Switcher T&Cs（2026-10 版，活动自 2026-10-27 起）+ 官方新闻稿（2026-09-01）",
     "risk": "标题 £240 要同时满足转户、2 个家庭直扣、£1,500 流水和 £200 存 Regular Saver，缺一项就没有；£1,500 和 £200 是自己的钱（可再取出，但发放日要仍在账户里）；转户会关闭旧账户，先确认工资、订阅等扣款能迁移；官方可随时撤活动（已提交申请的仍按资格发）。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "ally-spending-300",
@@ -349,7 +360,8 @@
     "url": "https://www.ally.com/bank/spending-account/",
     "source": "Ally 官方条款 ALLY300（经 Perkful 2026-11-17 逐条核对、CNBC Select 2026-11-18 引用；官网页面直连对本环境返回 500）",
     "risk": "要连续 6 个月每月 $1,000 直存，断一个月就少了后面的奖金；活动 11/30 截止，开户后入金有 30 天期限；官网条款页未能直连核实，开通前请在 ally.com 复核码与截止日。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T09:52:44+08:00"
   },
   {
     "id": "surfshark-black-friday",
@@ -377,7 +389,8 @@
     "url": "https://surfshark.com/deals",
     "source": "Surfshark 官方黑五页 + Cybernews / Security.org（2026-11）",
     "risk": "VPN 价格战常年“黑五价”，不必为折扣囤四年；自动续费按原价，记得关自动续订。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "td-bank-checking-300",
@@ -406,7 +419,8 @@
     "url": "https://www.td.com/us/en/personal-banking/checking-and-saving-bonus",
     "source": "TD Bank 官方 Special Offers 与 Checking & Savings 奖励页（活动截至 2027-01-30，条款见 Important Disclosures）",
     "risk": "只对 16 个州 + DC 居民开放，别州申请会被拒；$300 的门槛是 $2,500 直存，不是网上流传的“存 $500 就有 $300”（$500 对应的是 $200 档）；月费不豁免会吃掉奖励，注意直存或余额条件。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:23:12+08:00"
   },
   {
     "id": "oracle-always-free",
@@ -435,7 +449,8 @@
     "url": "https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm",
     "source": "Oracle 官方 Always Free 文档 + 2026-07-21 官方调整公告",
     "risk": "2026-07 起 ARM 免费额度已下调为 2 OCPU/12GB（原 4 OCPU/24GB），旧的 4 核实例会被停用并在 30 天后删除；闲置实例可能被回收。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "gcp-300-credit",
@@ -464,7 +479,8 @@
     "url": "https://docs.cloud.google.com/free/docs/free-cloud-features",
     "source": "Google Cloud 官方免费计划文档（2026-11 核对）",
     "risk": "额度 90 天到期作废，不升级则资源会被停止并在 30 天宽限期后删除；2026-11-16 起新注册的 $300 不能用于 Gemini/Vertex AI。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "vultr-credit",
@@ -492,7 +508,8 @@
     "url": "https://www.vultr.com/coupons/",
     "source": "Vultr 官方优惠页 + 官方文档（2026-10 更新）",
     "risk": "体验金到期即失效，剩余额度不退；忘记销毁实例会转为真实扣费。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "hsbc-uk-bank-account-switch-220",
@@ -523,7 +540,8 @@
     "url": "https://www.hsbc.co.uk/current-accounts/switching-to-hsbc/",
     "source": "HSBC UK 官方转户页「Current switch offers: Get £220」+ Bank Account 产品页资格说明 + 官方 £220 活动 T&Cs（2026-06-15 起）",
     "risk": "必须 App 开户，网页/网点开的账户不算，很多人卡在这一步；£500 刷卡消费须是真实消费，取现和费用不计；已有 HSBC/first direct 账户（2023 年起）直接没资格；官方可随时撤回活动。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "first-direct-1st-account-switch-210",
@@ -553,7 +571,8 @@
     "url": "https://www.firstdirect.com/banking/current-account/",
     "source": "first direct 官方 1st Account 页面 + 官方转户页（£175 与 £35 加码条款，加码期 2026-09-14 至 2026-12-02）",
     "risk": "£35 加码只到 12 月 2 日开户，过期只剩 £175；HSBC 2018 年后的客户不能参加，注意与 HSBC £220 活动互斥（同一人只能选一边）；存入的 £1,000 是自己的钱，不必留存但要在 45 天内到账。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "club-lloyds-switch-200",
@@ -583,7 +602,8 @@
     "url": "https://www.lloydsbank.com/current-accounts/switch.html",
     "source": "Lloyds Bank 官方转户页「£200 on us when you switch」（活动延长至 2027-01-08）+ Club Lloyds 产品页 + 官方 £200 T&Cs",
     "risk": "需要 3 个真实有效的 Direct Debit，纯工资流水不够；Club Lloyds 有 £5 月费（月存 £2,000 退回），Silver/Platinum 月费更高；Halifax / BoS 客户不能转入；官方可提前撤回。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "natwest-select-switch-200",
@@ -614,7 +634,8 @@
     "url": "https://www.natwest.com/current-accounts/select_account.html",
     "source": "NatWest 官方 Select 账户页「£200 switch offer」+ NatWest Group 官方新闻稿（2026-05-06）+ 官方 Switch Offer T&Cs",
     "risk": "£1,250 是自己的钱，可分笔但要每笔留 24 小时；以前拿过 NatWest Group 转户奖的直接没资格；官方可随时改/撤活动；Reward 有 £2 月费。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "za-bank-mgm-welcome-2000",
@@ -645,7 +666,8 @@
     "url": "https://bank.za.group/hk/open-account-mgm",
     "source": "ZA Bank 官方 MGM 活动页与完整条款（活动期 2026-11-19 至 2027-01-13、迎新 HK$2,000、20% 定存加息、USD 30 MU 股票券）",
     "risk": "HK$2,000 是券包不是现金，多数券要另外买卖股票/基金或汇款才用得上，实际到手远低于面值；开户必须人在香港境内；20% 定存只限 7 天、最高 HK$20,000；活动方由推荐人选择奖励计划，细则可能调整。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "google-ai-student",
@@ -674,7 +696,8 @@
     "url": "https://gemini.google/students/",
     "source": "Google 官方博客（2026-08-19）+ Google One 学生优惠条款",
     "risk": "试用结束会自动按原价续费（Pro $19.99/月、Plus $4.99/月），不取消就会扣款；每年需重新验证学籍。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "nationwide-flexaccount-switch-175",
@@ -704,7 +727,8 @@
     "url": "https://www.nationwide.co.uk/current-accounts/switch-offer",
     "source": "Nationwide 官方转户页「£175 when you switch」+ 官方 £175 Current Account Switch Offer Terms（2026-05 版，起于 2026-05-21）",
     "risk": "必须在 28 天内完成整体转户（含关闭旧账户），手动/部分转户不算；2 个直扣要在旧账户上本来就有效；2021 年以来拿过 Nationwide 转户奖的不能再拿；官方可随时结束活动。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "trading212-au-bonus-shares",
@@ -733,7 +757,8 @@
     "url": "https://helpcentre.trading212.com/hc/en-us/p/invite_a_friend_au",
     "source": "Trading 212 官方帮助中心活动页（2026-11-18～2026-12-08）+ 官方 Invite a Friend 条款 PDF",
     "risk": "多数人拿到的是 A$20–50 档；为达标投入的 A$100 需自行承担市场风险；奖励碎股 30 天内不可提现；平台可提前终止活动。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T07:58:34+08:00"
   },
   {
     "id": "github-student-pack",
@@ -761,7 +786,8 @@
     "url": "https://education.github.com/pack/",
     "source": "GitHub Education 官方页面（2026-10 核对）",
     "risk": "各伙伴福利期限不同（几个月到“在读期间”），需分别领取；Copilot 学生版每月复核学籍。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "rakuten-alliant-checking-200",
@@ -791,7 +817,8 @@
     "url": "https://www.rakuten.com/shop/alliantcreditunionchecking",
     "source": "Rakuten 官方 Alliant 活动页条款（$200，原 $100）+ StackTheDeal 2026-11-17 对银行页复核",
     "risk": "核心门槛是真实直存与第 45 天的 $1,000 余额，做不到就别开；返现靠 Rakuten 追踪，务必从它的链接进入并截图留证，漏单申诉很麻烦；活动为限时，官方未写固定截止日。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:23:12+08:00"
   },
   {
     "id": "deepgram-200-free-credit",
@@ -820,7 +847,8 @@
     "url": "https://deepgram.com/pricing",
     "source": "Deepgram 官方定价页 Pay as you go 档与 FAQ（Free $200 credit，no credit card，does not expire）",
     "risk": "$200 是按 Nova-3 转写估算的量，用 TTS / Voice Agent / 音频智能类接口会成倍消耗；额度用完后若已绑卡会自动按量计费，建议先不绑卡做原型。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:32:43+08:00"
   },
   {
     "id": "pingandb-hk-new-customer-nov2026",
@@ -850,7 +878,8 @@
     "url": "https://www.pingandb.com/",
     "source": "平安数字银行官方新闻稿（2026-11-04，Media OutReach 发布，含 NTB2026 推荐码与 20% 定存条款）+ 官网服务范围说明（2026-11-19 复核：仅限香港居民及身处香港的访客）",
     "risk": "20% 是「1 个月定存」的年化利率，不是白送现金，本质要靠 HK$80,000 存款赚 HK$1,315 利息，资金占用一个月；非香港居民须本人到港办理，差旅成本自负；推荐码与活动细则以 App 内活动页当日展示为准，名额有限随时截止；该行目前无实体/虚拟借记卡。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T05:49:57+08:00"
   },
   {
     "id": "robinhood-uk-free-stock",
@@ -880,7 +909,8 @@
     "url": "https://robinhood.com/gb/en/support/articles/open-account-get-free-stock-terms/",
     "source": "Robinhood UK 官方 Fractional Stock Offer 条款（2026-11-19 读取）",
     "risk": "期望值只有约 $8（96% 概率），不要为抽大奖开户；入金与提现都是英镑，换汇有成本；碎股在 Robinhood 之外不可转让；官方可随时改条款。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T09:52:44+08:00"
   },
   {
     "id": "amd-ai-developer-program-credits",
@@ -910,7 +940,8 @@
     "url": "https://developer.amd.com/ai-developer-program/",
     "source": "AMD 官方 AI Developer Program 页面 + AMD Developer Cloud FAQ（$100 额度、30 天有效、审核流程）+ AMD 官方技术文章「How to Claim AMD Cloud Credits」（Fireworks $50 / 90 天）",
     "risk": "云额度要审核，用途写得空泛可能不批；$100 额度激活后仅 30 天，别提前激活；Token Lab 的积分数量和限速官方没公布，随时可能变；额度用尽的实例会被销毁、数据丢失。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "wooriwon-mobile-black-friday",
@@ -941,7 +972,8 @@
     "url": "https://www.wooriwonmobile.com/benefits/event/detail/EVT0014805",
     "source": "우리WON모바일 官方活动页 EVT0014805（2026-11-01～11-30，2026-11-19 核验）+ 우리은행 2026-11-09 新闻稿与韩媒报道",
     "risk": "「0 元」是点数与券折算后的体感价，账单照原价扣，先自己算现金流；提前解约、改套餐、暂停、转名都会失去后续点数与券；点数只能在我们WON멤버스/Naver Pay 生态里用，不能提现、不结转；外国人开通需要外国人登录证与韩国手机号；各套餐确切 꿀머니 金额以开通页为准（第三方整理为 10,500–29,500 韩元，官方活动页只写区间）。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:51:35+08:00"
   },
   {
     "id": "ymobile-yahoo-store-benefits",
@@ -972,7 +1004,8 @@
     "url": "https://ymobile-store.yahoo.co.jp/special/benefits_ltd/",
     "source": "Y!mobile 官方 Yahoo! 店「SIMご契約特典 / 新どこでももらえる特典」页面与特典条件书（2026-11-19 核验）",
     "risk": "没加 550 円/月 的数据增量选项就一分钱拿不到，而它只在头 6 个月免费；2026-07-01 之后签约的，开通月起 1 年内解约要付 858 円 解约金；限定券必须在申办前领且只看第 4 个月消费，很容易忘；点数发到 Yahoo! JAPAN ID 而非手机号，ID 搞错就领不到；活动结束日未定。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:51:35+08:00"
   },
   {
     "id": "bybit-eu-card-welcome-120",
@@ -1003,7 +1036,8 @@
     "url": "https://www.bybit.eu/en-EU/cards/welcome-package/",
     "source": "Bybit EU 官方 Bybit Card Welcome Offer 页与促销条款（2026-11-19 复核；全球站 120 USDT 版已于 2026-11-11 10:00 UTC 结束）",
     "risk": "只对 EEA 居民开放，中国大陆无法参与，别拿 VPN 硬闯（KYC 会拒）；返现限指定 MCC、按结算时间算，超窗口的消费不算；€120 是上限，正常消费额下实得远低于它；加密资产价格波动自负。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:23:12+08:00"
   },
   {
     "id": "elevenlabs-black-friday-creator",
@@ -1032,7 +1066,8 @@
     "url": "https://elevenlabs.io/pricing",
     "source": "ElevenLabs 官方定价页黑五横幅与 Creator/Pro 首年价格（2026-11-19 复核，Ends December 1）",
     "risk": "折扣只限首年，第二年按 $18.33/月（Creator）自动续费，忘记取消会多付一倍多；credits 各产品共用，配音/音乐消耗很快；商用授权条款需按官方条款执行。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:23:12+08:00"
   },
   {
     "id": "notion-education",
@@ -1060,7 +1095,8 @@
     "url": "https://www.notion.com/help/notion-for-education",
     "source": "Notion 官方帮助中心与定价页（2026-11 核对）",
     "risk": "升级到付费 Business/Enterprise 会永久失去教育资格；无法验证邮箱时工作区会退回 Free。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "modelscope-amd-100h-gpu",
@@ -1090,7 +1126,8 @@
     "url": "https://modelscope.cn/events/247",
     "source": "魔搭官方活动页 events/247 + AMD 开发者云官方页（$100 ADC 额度）+ 2026-11-11/14 多篇实测流程",
     "risk": "登记审核制，权益是否到账只以「我的 Notebook」出现 AMD GPU 环境那一行为准；高峰期可能提示资源紧张启动失败（不扣时长）；多账号重复领取可能被判违规；不要把重要数据只放在实例上，用完即清。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T07:58:34+08:00"
   },
   {
     "id": "amazon-prime-young-adults",
@@ -1119,7 +1156,8 @@
     "url": "https://amazon.com/joinstudent",
     "source": "Amazon 官方 Prime for Young Adults 页面与帮助中心",
     "risk": "6 个月后自动续费 $7.49/月，需自己设提醒取消；仅美国站，需美国支付方式与地址；学生身份到期后会转普通 Prime。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "dxo-black-friday-2026",
@@ -1147,7 +1185,8 @@
     "url": "https://www.dxo.com/news/introducing-black-friday/",
     "source": "DxO 官方黑五公告页（2026-11-17 发布，含各产品折后价与结束时间）",
     "risk": "买断版不含后续大版本升级；黑五是一年最低价但对当前不拍照修图的人只是冲动消费；不同地区币种价格差异较大。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T07:58:34+08:00"
   },
   {
     "id": "wise-invite",
@@ -1176,7 +1215,8 @@
     "url": "https://wise.com/help/articles/2487043/how-does-the-free-transfer-invite-program-work",
     "source": "Wise 官方帮助中心（三种邀请计划条款）",
     "risk": "各地区礼遇不同（英国/欧洲常见免费卡或 £500 免手续费，澳洲等为返现）；手续费抵扣不是现金，不能提现。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "ifast-golden-ticket-50",
@@ -1207,7 +1247,8 @@
     "url": "https://www.ifastgb.com/",
     "source": "iFAST 金票推荐计划邮件原文（社区 2026-11-01 完整转述）+ iFAST 官网 MGM 条款页 / 企业推荐官方公告（LinkedIn 2026-10-21、2026-11-05）",
     "risk": "官方未公开零售版活动落地页，只能从邀请邮件/客户端进入，活动口径、月费与是否可与 £5 常规奖叠加均标 待核实；£1,000 需锁定 60 天，占用资金与汇率波动风险自负；银行可随时调整或提前终止活动。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T07:58:34+08:00"
   },
   {
     "id": "att-us-free-trial-30d",
@@ -1237,7 +1278,8 @@
     "url": "https://www.att.com/wireless/free-trial/",
     "source": "AT&T 官方 Try AT&T 试用页（100GB / 25GB 热点 / 30 天，页面 2026-11-19 复核）+ AT&T 官方博客 2024-10-22 上线说明（无需信用卡）",
     "risk": "需要美国网络环境与美国账号资料，非美国用户可能卡在资格校验；eSIM 需无锁机，运营商合约机通常不合格；试用号码不能携号转出，试用结束后服务即停；官方保留随时调整或结束试用的权利。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T05:49:57+08:00"
   },
   {
     "id": "xiaomi-india-google-ai-pro-3m",
@@ -1267,7 +1309,8 @@
     "url": "https://www.mi.com/in/support/terms/google-ai-pro/",
     "source": "小米印度官网 Google AI Pro Offer 条款页（领取截止 2027-06-12）",
     "risk": "必须是在印度购买并激活的真机，闲鱼代领/卖激活名额有掉订阅与账号风险；3 个月后按当地价自动续费（约 ₹1,950/月），不打算长期用一定要在试用期内取消。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:23:12+08:00"
   },
   {
     "id": "zalando-plus-spotify-duolingo",
@@ -1296,7 +1339,8 @@
     "url": "https://www.zalando.de/plus",
     "source": "Zalando 官方企业新闻（2026-09-28 Duolingo 合作，17 个市场最多 4 个月）+ Zalando Lounge 官方帮助页（Spotify 3–5 个月、活动至 2028-07-06）+ Zalando 法国站促销条款（市场名单）",
     "risk": "权益按国家站点与会员等级不同，德国站与西班牙站口径有差异；Duolingo 部分地区要求近 12 个月有一笔 Zalando 订单，等于要先消费；Spotify 仅限从未订阅过 Premium 的账号；忘记取消会按 €11.99/月 左右自动扣费，务必设提醒。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T05:49:57+08:00"
   },
   {
     "id": "lemfi-eu-referral-50",
@@ -1327,7 +1371,8 @@
     "url": "https://support.lemfi.com/hc/en-us/articles/52157037367569-How-much-LemFi-Cash-do-I-get-for-a-referral",
     "source": "LemFi 官方帮助中心「How much LemFi Cash do I get for a referral?」（2026-10-21）+ 官方德文帮助页「Wie funktioniert das Empfehlen von Personen」（欧洲注册者合格汇款须汇往欧洲以外）+ 论坛实操帖（NodeSeek 2026-11-03，11-19 更新到账细节）",
     "risk": "€50 是抵扣额度不是现金，一口气拿不到；每笔汇款有手续费与汇差，实际到手可能远低于面值；欧洲注册需要欧洲手机号与对应 IP，地址证明视风控而定；不要把邀请码公开发布（官方限制仅可分享给熟人）。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "revolut-referral",
@@ -1357,7 +1402,8 @@
     "url": "https://help.revolut.com/en-US/help/referrals/more-help-with-referrals/referrals-new/missed-steps/requirements-to-get-the-referral-reward/",
     "source": "Revolut 官方推荐要求页 + 各地区活动条款（2026-11）",
     "risk": "金额待核实：很多市场只奖励邀请人，好友端无奖励；赌博、礼品卡、转账不算有效消费，实卡邮寄费需自付。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "worldremit-quidco-uk-cashback",
@@ -1388,7 +1434,8 @@
     "url": "https://www.quidco.com/merchant/worldremit/",
     "source": "Quidco WorldRemit 商家页（2026-11-19 抓取，£40 为 Premium 显示价）+ Cashback Wolf / Bank Boost 同日记录（普通 £37.50）+ WorldRemit Refer a Friend 官方 FAQ 与条款 + r/beermoneyuk 2026-10~11 多帖实测",
     "risk": "有 Reddit 用户报告「Quidco + 推荐码」叠法被 WorldRemit 关户，官方条款也保留以滥用为由取消奖励的权利；返现要等商家确认，6 个月内才到账，期间别关户；Premium 的 £1 从返现里扣；换汇差价与汇款手续费会吃掉一部分（菲律宾线约 £1.99 手续费）。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:57:48+08:00"
   },
   {
     "id": "lemfi-uk-referral-50",
@@ -1418,7 +1465,8 @@
     "url": "https://www.lemfi.com/en-gb/invite-and-earn",
     "source": "LemFi 官方 invite-and-earn 页面（$50/£50 双币展示）+ 官方「How does referring someone work」帮助页（2026-10-21）+ referralplug 对 LemFi 条款复核（2026-11-18）",
     "risk": "标题里的「£50」是抵扣额度不是现金，一口气拿不到；实际价值取决于你还会不会再汇款。Budgetfitter 等站宣传的 FATILPG7「£10 现金直接到账」与官方 LemFi Cash 条款不一致，以 App 内为准；汇率差价仍照收。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:57:48+08:00"
   },
   {
     "id": "mistral-vibe-pro-lechonk-3m",
@@ -1446,7 +1494,8 @@
     "url": "https://admin.mistral.ai/subscription/upgrade/redeem?redeem_code=LECHONK",
     "source": "Mistral 官方 X 活动公告（2026-11-17）+ NodeSeek 2026-11-18 实测帖（含补货 DP）+ DDay.it 报道",
     "risk": "码的可用性随库存波动，属 待核实，领不到属正常；非欧洲区账号或风控可能直接失败；不要用主力账号硬试；到期自动扣费 $14.99/月。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T07:58:34+08:00"
   },
   {
     "id": "proton-black-friday-2026",
@@ -1474,7 +1523,8 @@
     "url": "https://proton.me/mail/black-friday",
     "source": "Proton 官方黑五页与定价页（2026-11-19 核对 $77.88 首年 / $119.88 续订）",
     "risk": "第二年续订价翻倍（$119.88/年），忘记取消就会多花钱；黑五价按整年预付，中途停用不退款超过 30 天后的部分。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T07:58:34+08:00"
   },
   {
     "id": "aliyun-yungongkaiwu-300",
@@ -1503,7 +1553,8 @@
     "url": "https://university.aliyun.com/",
     "source": "阿里云云工开物官方活动规则页",
     "risk": "券只对部分公共云产品生效，且多数商品不能与折扣叠加；学生认证需真实学籍，买卖或出借账号会被收回权益。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "unicom-esim-xianxian-2026",
@@ -1532,7 +1583,8 @@
     "url": "https://www.10010.com/",
     "source": "中国联通 eSIM 尝鲜季 2026 官方活动规则（IT之家 2026-09-09/09-13 报道、联通官方微博；权益细则经 2026-11-17 媒体核对）",
     "risk": "国内流量只给联通统一供应的机型，自购机通常只能选境外流量或漫游券；达量限速/互斥套餐会让国内流量权益领取无效；境外流量需在 365 天内在境外安装激活、不支持热点；线下办理要跑自有营业厅。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T09:52:44+08:00"
   },
   {
     "id": "perplexity-nvidia-rtx",
@@ -1560,7 +1612,8 @@
     "url": "https://www.perplexity.ai/help-center/en/articles/2026101501-nvidia-rtx-spark-promo",
     "source": "Perplexity 帮助中心官方活动说明",
     "risk": "活动只到 2027-03-31；积分 30 天过期；换机或换账号不能重复领。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "verizon-free-trial-30d",
@@ -1589,7 +1642,8 @@
     "url": "https://www.verizon.com/plans/free-trial/",
     "source": "Verizon 官方 Free Trial 页与支持 FAQ（2026-11-19 读取）",
     "risk": "只在美国境内有效；100GB 是优先流量上限，用超会降速；部分三星机型要删掉现有 eSIM 才能参加；临时号码无国际漫游。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T09:52:44+08:00"
   },
   {
     "id": "antbank-macau-nov2026",
@@ -1618,7 +1672,8 @@
     "url": "https://www.antbank.mo/",
     "source": "螞蟻銀行（澳門）11 月新客活动（官方 App 内活动页；多个渠道 2026-11 转述条款）",
     "risk": "待核实：活动细则在 App 内，网页端打不开，条款以你开户当日的活动页为准；股票价值随股价波动，兑换卡有适用范围与有效期；需占用 3,000 港币 30 天，赴澳成本自负；入金后补绑邀请人可能无效。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "paypal-uk-25-invite",
@@ -1647,7 +1702,8 @@
     "url": "https://www.paypal.com/uk/campaign/invite/terms",
     "source": "PayPal UK 官方 Invite Friends 条款页（2026-11-19 读取）",
     "risk": "必须先拿到官方邀请，公开贴邀请链接违反条款；£25 只能结账抵扣、不能提现，3/31 过期；用同一设备/身份批量注册易被判违规。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T09:52:44+08:00"
   },
   {
     "id": "gigsky-usbank-altitude",
@@ -1676,7 +1732,8 @@
     "url": "https://www.gigsky.com/free-offering",
     "source": "GigSky 官方 U.S. Bank 条款 + InsideFlyer（2026-07-27）/ CardTuned（2026-11-17）",
     "risk": "11/30 后权益终止且不补发；换卡或卡状态异常会失去资格；不建议只为这个权益去申请一张信用卡。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "airvoice-us-free-trial-10gb",
@@ -1706,7 +1763,8 @@
     "url": "https://airvoicewireless.com/trial",
     "source": "AirVoice Wireless 官方试用页（2026-11-19 读取：10GB + 无限通话短信 / 30 天 / 之后 $27 起）；线索来自阿拉伯语 X 羊毛账号 2026-11-10 的分享",
     "risk": "本质是订阅试用：30 天后自动扣 $27/月，忘记取消就会续费；只有美国网络与号码，回国后没有信号，只能靠 Wi-Fi 通话；要绑卡验证，介意的人跳过；eSIM 与申报的 IMEI 绑定，换机要重新申请。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:09:47+08:00"
   },
   {
     "id": "bitget-wallet-card-usdc",
@@ -1736,7 +1794,8 @@
     "url": "https://www.bitget.com/zh-CN/support/articles/12560603900389",
     "source": "Bitget 官方帮助中心公告（2026-11-17）",
     "risk": "需要真实消费与 KYC，奖励名额先到先得；中国大陆等地区不支持申卡；加密资产与卡片账户存在合规与冻结风险。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "airalo-black25-unlimited",
@@ -1766,7 +1825,8 @@
     "url": "https://www.airalo.com/campaign-terms/Black-Friday-2026",
     "source": "Airalo 官方 Black Friday 活动条款（活动期 2026-11-13 至 11-30）+ 官方 Unlimited 套餐页（BLACK25、每日 3GB 高速、365 天激活）",
     "risk": "BLACK25 只对 Unlimited 系列生效，买固定流量套餐不省；「无限」是每天 3GB 高速后降速；一单只能用一码，和首单 15% 码不能叠加；活动码过期即失效。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "airtel-postpaid-free-roaming",
@@ -1794,7 +1854,8 @@
     "url": "https://www.airtel.in/press-release/10-2026/airtel-offers-free-international-roaming-on-all-postpaid-plans/",
     "source": "Airtel 官方新闻稿（2026-10-07）",
     "risk": "需先持有印度后付费号码并按月付费；漫游包只覆盖合作网络，具体目的地与限速以激活页为准。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "gigsky-visa-complimentary-data",
@@ -1823,7 +1884,8 @@
     "url": "https://www.gigsky.com/visa",
     "source": "GigSky 官方 Visa Travel Benefits 页（最高 3GB / 175+ 国 / 指定目的地 7 天无限 / 最高 30% off，2026-11-19 复核）",
     "risk": "额度取决于卡种与发卡行，普通卡可能只有 1GB 或没有资格；需在 App 内验证卡号，会有隐私顾虑；免费流量有使用期限，安装后长期不激活可能过期；GigSky 可随时调整或结束该合作。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T05:49:57+08:00"
   },
   {
     "id": "unicom-cloud-free-ai-desktop",
@@ -1853,7 +1915,8 @@
     "url": "https://www.cucloud.cn/bwnnov.html",
     "source": "联通云官方活动页（2026 双 11 算力狂欢，页面标注「0 元试用 · 新客专享」）+ 多篇 2026-11-11 社区实测（aipromonow / 慢慢摸鱼 / 吾便宜）",
     "risk": "只对新客有效，老账号看不到或下不了单；限量（社区称 5,000 份）先到先得；云桌面没有网页版入口，必须装客户端；Windows 授权不含在内，到期后不买授权就用不了。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:23:12+08:00"
   },
   {
     "id": "iijmio-gigaplan-half-price",
@@ -1884,7 +1947,8 @@
     "url": "https://www.iijmio.jp/gigaplan/",
     "source": "IIJ 官方公告「IIJmioギガプラン半額キャンペーン」实施通知（2026-11-05，iijmio.jp/info/iij/1793256547.html）+ IIJmio 官方 Q&A（2026-11-10 更新）",
     "risk": "需要日本地址、日本支付方式与本人确认，海外用户基本办不了；结束日未定，可能随时收；折扣只有 3 个月，第 4 个月起回原价，长期成本要自己算；中途改容量或换 SIM 功能即失去折扣；首月日割可能让折扣「看不见」。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:51:35+08:00"
   },
   {
     "id": "swarms-cloud-black-friday",
@@ -1912,7 +1976,8 @@
     "url": "https://cloud.swarms.world/black-friday",
     "source": "Swarms Cloud 官方黑五活动页（2026-11-18 核对）",
     "risk": "免费积分有有效期且按模型扣费较快；订阅会自动续费到常规价格，用完记得取消；高级端点的 agent/图片/搜索费用不在免费 token 范围内。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T07:58:34+08:00"
   },
   {
     "id": "taptap-send-uk-first-transfer",
@@ -1942,7 +2007,8 @@
     "url": "https://budgetfitter.uk/brand/taptap-send/",
     "source": "TapTap Send 官方推荐条款（奖励金额与最低额以 App 为准、90 天过期）+ ReferMonkey（£5 / 首笔 £25）+ Budgetfitter 品牌页（2026-11：土耳其 £20、Budget100、FATIH2945）+ Finder UK（2026-07：FINDER10）",
     "risk": "「汇土耳其 £20」只有 affiliate 页面在宣传，官方与 App 未公示，属待核实，下单前必须看 App 有没有减；奖励只能整笔抵用，可能超过你本来要汇的金额；只限一个码，选了 £20 就用不了通用邀请码。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:57:48+08:00"
   },
   {
     "id": "revolut-uk-signup-20",
@@ -1972,7 +2038,8 @@
     "url": "https://www.revolut.com/revolut-sziget-cash-reward/",
     "source": "Revolut 官方活动页（Sziget 版 £20 / 首笔 ≥£1；Man City W.F.C. 版 £20 / 首笔 ≥£20，均写 2026-12-31 截止）+ Revolut Help Centre 推荐活动条件",
     "risk": "奖励按活动分批、按地区开放，链接里的活动可能轮换，注册时务必以 App 内奖励页为准；促销可能涉及代扣税；已有 Revolut 账户的人不适用。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:57:48+08:00"
   },
   {
     "id": "remitly-first-transfer",
@@ -2001,7 +2068,8 @@
     "url": "https://www.remitly.com/blog/money-transfer/refer-a-friend-to-remitly-on-the-app/",
     "source": "Remitly 官方推荐说明与优惠条款（2026-10）",
     "risk": "折扣为转账抵扣，不折现；汇率与手续费按当日报价，别只看 $-20 忽略汇差。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "sendwave-referral",
@@ -2030,7 +2098,8 @@
     "url": "https://www.sendwave.com/en-us/terms-and-conditions/referral-program",
     "source": "Sendwave 官方推荐条款（有效期 12 个月）+ 2026-11 第三方 App 截图核对",
     "risk": "具体金额待核实：官方按国家和促销变动，只能以 App 内显示为准；测试汇款（$1 以下）不计入。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "gigsky-free-esim",
@@ -2060,7 +2129,8 @@
     "url": "https://www.gigsky.com/free-offering",
     "source": "GigSky 官方免费试用页（2026-07 更新）",
     "risk": "100MB 只够验证能否联网；游轮与部分国家资费另计，别把试用当主力流量。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "worldremit-uk-refer-a-friend",
@@ -2090,7 +2160,8 @@
     "url": "https://www.worldremit.com/en-gb/faq/refer-a-friend",
     "source": "WorldRemit 官方 Refer a Friend FAQ（英国奖励表）+ Refer a Friend 条款 + referralplug 英国推荐索引复核（2026-11-18：新客 £10 / 邀请人 £20 / 首笔 £30）",
     "risk": "券是汇款抵扣不是现金，实际价值看你怎么用：社区实测第二轮用券后扣掉手续费与汇率损耗只剩约 £7；WorldRemit 对同住址、多账号、回流邀请人的汇款保留取消奖励甚至关户的权利。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:57:48+08:00"
   },
   {
     "id": "ria-uk-refer-a-friend-20",
@@ -2120,7 +2191,8 @@
     "url": "https://www.riamoneytransfer.com/en-gb/promo/",
     "source": "Ria 官方英国 Promotional Terms（Refer-a-Friend、UK New Customer £4+£6、HELLORIA、Welcome Rates，2026-11 抓取）+ nodeseek 2026-10 实测",
     "risk": "10 月中旬中文社区流传的 £20 首单码在 10/20 前后大面积关停，只有部分邀请人的码仍有效——App 里不显示减免就是没有了；£20 只抵首笔且必须首笔达标；多账号、自己汇给自己易触发风控封号；加码名单不含菲律宾，走 Maya 的薅法拿不到 £4/£6。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:57:48+08:00"
   },
   {
     "id": "lg-exaone-25-free-api",
@@ -2149,7 +2221,8 @@
     "url": "https://docs.exaone.ai/",
     "source": "LG AI Research 官方新闻 2026-11-09「K-EXAONE 2.5 API Available for Free」+ 官方 API 文档（上下文 524,288 / OpenAI 兼容，2026-11-19 复核）",
     "risk": "「免费」无期限与额度承诺，官方文档没有价格页，随时可能收费或限流；只支持韩语/英语，不适合中文内容生产；中国大陆直连受限，需自备网络条件；技术验证版模型质量与稳定性弱于商用模型，别直接接生产。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T05:49:57+08:00"
   },
   {
     "id": "aws-kiro-free-500-trial-credits",
@@ -2180,7 +2253,8 @@
     "url": "https://kiro.dev/pricing/",
     "source": "Kiro 官方定价页 kiro.dev/pricing（含免费试用问答）、官方博客「Kiro's new free trial gives you 500 extra credits」（2026-10-27）、官方 FAQ kiro.dev/faq；2026-11-19 核验",
     "risk": "升级必须绑卡，忘记在次月 1 日前降级就会按 $20/月起扣费；免费月与 500 trial credits 只有首次升级一次；降回 Free 后 trial credits 只能用于免费档模型；Free 档 50 credits/月不累积，跑完整 spec 任务很快见底；高级模型并非所有国家可用；50 credits 的具体模型倍率、Sonnet 4.5 速率上限与 trial credits 的消耗顺序未在官网量化，标「待核实」。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:30:41+08:00"
   },
   {
     "id": "dusk-bot-free",
@@ -2211,7 +2285,8 @@
     "source_url": "https://www.producthunt.com/products/dusk-bot",
     "source": "dusk bot 官方站与定价页（2026-11-19 核验）+ Product Hunt 发布页（2026-11-18 日榜）",
     "risk": "免费档跑在你自己的机器上，合盖/休眠就停，别拿它做必须准点的事；模型额度由你原有的 ChatGPT/Claude 订阅承担，多开 bot 会加快消耗；商业或业务用途必须买 work license，否则违反授权；Product Hunt 页写「100% free and open source」，开源仓库地址未在定价页列出（待核实）；bot 会代你登录网站、点按钮，先给低风险任务观察行为。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:51:35+08:00"
   },
   {
     "id": "scalekit-agentkit-free-tier",
@@ -2242,7 +2317,8 @@
     "source_url": "https://www.producthunt.com/products/scalekit",
     "source": "Scalekit 官方定价页（2026-11-19 核验）+ Product Hunt 2026 年 11 月月榜（第 6）",
     "risk": "官方页面自相矛盾：Free 卡片写「10,000 tool calls / mo」，同页对比表 Free 一列写「Tool calls / month 5K」，两个数字不一致，以注册后控制台显示为准（待核实）；免费层要自己申请并维护各家 OAuth 凭据，不是开箱即用；超出后按 $0.50/1K 计费，量大时账单会跑得很快。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:51:35+08:00"
   },
   {
     "id": "gemini-tasks-free-jpkr",
@@ -2272,7 +2348,8 @@
     "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
     "source": "Google 官方博客「Put Gemini to work for you」（2026-11-17）+ Gemini app 发布说明 / 日本官方发布信息（2026-11-19 核验）",
     "risk": "日本、韩国等只有「委托作业」本体，电话代打、Google Pay 下单、短信/邮件派活仍限美国，别按美国演示期待；任务会读你的邮件、日历与已连接应用，先从小任务试，别一上来就交出付款权限；Gemini 仍会执行失败或误解，买与付务必确认；需要开启活动历史，介意留痕的人注意。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:51:35+08:00"
   },
   {
     "id": "sendwave-latam-tshirt",
@@ -2301,7 +2378,8 @@
     "url": "https://www.sendwave.com/en-us/vivalatam/terms",
     "source": "Sendwave 官方活动条款（Promotion Period 明确）",
     "risk": "奖励是实物、非现金，且有邮寄地区限制；活动 11/28 23:59（美东）截止，之后达标不再计入。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "databasemart-black-friday-vps",
@@ -2330,7 +2408,8 @@
     "url": "https://www.databasemart.com/promo/black-friday-sale",
     "source": "Database Mart 官方 2026 Black Friday 页（Sale runs Nov 15–28 CST，VPS from $1.25/mo）",
     "risk": "$1.25/月是最低配 + 长期预付摊出来的价格，实际要一次付清数年；小配置跑不动现代面板/数据库；续费价要看是否属于「终身价」套餐，非终身价第二年按目录价。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:23:12+08:00"
   },
   {
     "id": "airalo-first-order",
@@ -2359,7 +2438,8 @@
     "url": "https://www.airalo.com/m/features/airalo-discounts-deals/",
     "source": "Airalo 官方折扣页（11 月活动码）+ 官方推荐页",
     "risk": "码会按月更换、随时失效；Airalo 套餐按流量+天数计，买多了不退，按行程估算。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "flexiroam-mastercard-gdr-3gb",
@@ -2388,7 +2468,8 @@
     "url": "https://gdr.flexiroam.com/",
     "source": "FlexiRoam 官方 Global Data Roaming 页（2026-11-19 读取）+ Westpac 权益说明 + The MileLion 指南（2026-02-04）",
     "risk": "不是所有 Mastercard 都有资格，输错卡号两次以上可能直接锁账号（要拍照证件找客服解锁）；每卡每年 1 次、当年必须激活；3GB 用完后超量按标准资费扣。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:16:09+08:00"
   },
   {
     "id": "openrouter-qwen4-max-free",
@@ -2417,7 +2498,8 @@
     "url": "https://openrouter.ai/qwen/qwen4-max:free",
     "source": "OpenRouter 官方模型页（qwen/qwen4-max:free，标注 Price: Free、1M 上下文、2026-11-16 发布）+ 腾讯 Hy4 Flash 免费端点页",
     "risk": "免费端点限速、随时可能下架或改为付费；模型输出质量与付费版一致但无可用性保证，别把重要业务压在上面；EU 区内路由不支持，数据出境要自己评估。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:23:12+08:00"
   },
   {
     "id": "cricket-free-trial-14d",
@@ -2446,7 +2528,8 @@
     "url": "https://www.cricketwireless.com/free-trial.html",
     "source": "Cricket Wireless 官方 free-trial 页与 tryCricket EULA（2026-11-19 读取）",
     "risk": "只在美国境内可用，出国无效；试用结束后号码与流量一起失效；5G 需兼容机型。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T09:52:44+08:00"
   },
   {
     "id": "topcashback-uk-signup-10",
@@ -2475,7 +2558,8 @@
     "url": "https://www.topcashback.co.uk/refer-a-friend/",
     "source": "TopCashback 英国站 Refer & Earn 条款（第三方站点 2026-11-16 复核；官网对非英国 IP 返回 403）",
     "risk": "待核实：官网对当前地区封锁，金额与窗口来自第三方对官方条款的复核，注册前请以邀请页显示为准；奖励要等商家确认返现后才发，通常 30–90 天。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "skrill-uk-raf-10-off-100",
@@ -2507,7 +2591,8 @@
     "url": "https://www.skrill.com/en/transfer-money/",
     "source": "Skrill Money Transfer Refer a Friend 条款（skrill.com/en/footer/terms-conditions/skrill-money-transfer-raf/：UK 行 GBP 100 → GBP 10；页面拒爬时以同页 2027-02-01 生效版本及条款 PDF 交叉核对，2026-11-19）+ Skrill 官方 transfer-money 页 FAQ（新客「£10 off their first transfer」、KYC 需证件 + 地址证明且 4 天内完成）+ Skrill Prepaid Mastercard 页与条款（仅 UK/EEA 居民，€10 年费、部分用户 €10 开卡费、数字卡即时）+ Skrill 英国费率说明 2026-11-03（卡充值 1%、换汇 3.99%、提现 1.75%）+ 用户英区实测 DP（英国卡付款、德/美/意/菲秒到、全程网页端）",
     "risk": "条款自相矛盾：3.4 写额度抵「下一笔」，3.6 与营销页又说新客「首笔即可用」，实际以下单页报价为准，按要再汇一笔 ≥£100 来规划；成本不为零——卡充值 1% + 换汇 3.99%（Skrill 自有汇率还有加点），两笔 £100 大约花 £7–8，净赚约 £5，本来就打算汇款才最划算；「秒到」「必须网页端别用 App」是用户实测 DP，官方只承诺数分钟到 2 个工作日；卡以欧元计价，€10 年费（部分用户另有 €10 开卡费）+ 1.75% ATM + 3.99% 换汇，只在真的要刷卡时值得开；KYC 的英国地址证明必须真实属于本人，借地址过审属合规风险，账户可能被冻结、余额难取回；账户 12 个月无交易按 €5/月收不活跃费；2027-02-01 起英国 Skrill 业务从 Skrill Limited 转到 Paysafe Financial Services Limited，条款会随之更新。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T12:55:55+08:00"
   },
   {
     "id": "etisalat-wasel-flexi-10gb-esim",
@@ -2536,7 +2621,8 @@
     "url": "https://www.eand.ae/en/c/support/mobile/prepaid/wasel-flexi/promotions.html",
     "source": "e&（etisalat）官方 Wasel Flexi 促销 FAQ",
     "risk": "面向阿联酋本地用户，需当地实名证件与本地号码；28 天到期作废，不能漫游使用。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "du-uae-free-tourist-esim",
@@ -2565,7 +2651,8 @@
     "url": "https://shop.du.ae/en/personal/prepaid/du-tourist-prepaid-plans",
     "source": "du 官方免费游客 eSIM 页面（2026-11-19 实测仍显示 Free / 10GB / 24 小时）+ du 游客手册 PDF；Gulf News（2025-09-12）说明领取位置与护照上限",
     "risk": "只有 24 小时，落地当天用掉最划算；数据仅限阿联酋本地，去沙特或欧洲不能漫游；同一护照上限 2 张；需在境内激活，出发前装不了。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:04:36+08:00"
   },
   {
     "id": "eand-uae-free-visitor-line-esim",
@@ -2594,7 +2681,8 @@
     "url": "https://www.eand.ae/en/c/mobile/plans/visitor-line.html",
     "source": "e& UAE 官方 Visitor Line 页面（2026-11-19 实测：Free Visitor Line AED 0 / 10GB / 24 小时 / 含新 SIM）；e& 新闻稿 2024-09-16 与 2025-11-20（阿布扎比机场合作）；Telecompaper 2025-10（沙迦机场）",
     "risk": "只有 24 小时；到期后套餐外流量按量计费（第三方指南称约 AED 1.05/20MB、每日封顶 AED 9.45，待核实），建议到期前关数据或先买套餐；eSIM 必须在阿联酋境内申请。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:04:36+08:00"
   },
   {
     "id": "nestdaddy-mcp-free",
@@ -2625,7 +2713,8 @@
     "source_url": "https://www.producthunt.com/posts/nestdaddy",
     "source": "NestDaddy 官方 MCP 页面（2026-11-19 核验）+ Product Hunt 发布帖 + DEV 发布说明（PH50 至 11-24）",
     "risk": "1,000 credits 看着多，全文抓取与新闻轮询消耗快，重活建议接有钱的计划；PH50 只到 11-24；免费额度是否月底清零、是否可累积官方没写（待核实）；结果来自自有索引，长尾冷门站点覆盖未必比 Google 全。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:51:35+08:00"
   },
   {
     "id": "1free-eu-host-vps",
@@ -2654,7 +2743,8 @@
     "url": "https://www.1free.eu/vps",
     "source": "1free.eu 官方 VPS 与主机页面（活动标注至 2026-11-30）",
     "risk": "小型服务商，稳定性与售后不如大厂；免费主机资源小、不能跑自定义程序；试用到期不付费会被回收，数据需自行备份。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "ace-money-transfer-uk-india-10",
@@ -2684,7 +2774,8 @@
     "url": "https://acemoneytransfer.com/promotion/first-send-bonus-India",
     "source": "ACE Money Transfer 官方活动页与 £10 First Transfer 条款（2026-11 抓取）+ ACE 官方 Invite a Friend 说明（英国 £100 / 双方 £10）",
     "risk": "只限印度走廊；页面顶部写 12/31、条款写 11/30，可能提前结束；促销码必须取自活动页，社区流传的多为个人邀请码，两者不通用；钱包积分只能抵手续费，不等于现金。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:57:48+08:00"
   },
   {
     "id": "pelago-krisflyer-esim",
@@ -2713,7 +2804,8 @@
     "url": "https://www.pelago.com/en/static-pages/sia-benefits/",
     "source": "Pelago 官方活动页（SIA Passenger Benefits）",
     "risk": "只对已订新航/酷航机票的乘客有效，不是人人可领；免费额度用完需自费加购；eSIM 需在支持 eSIM 的手机上安装。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "tencent-tokenhub-new-user-pack",
@@ -2742,7 +2834,8 @@
     "url": "https://cloud.tencent.com/document/product/1823/130053",
     "source": "腾讯云 TokenHub 官方文档《新人免费体验包》（2026-11-16 更新，活动截至 2026-12-31）+ 产品页「新用户零门槛领取百万免费 tokens」",
     "risk": "每个模型只有一次领取机会，领了不用的模型等于白占名额；额度 1 年后作废；开启后付费后超出免费额度会按 Token 计费，测试时注意设上限。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:23:12+08:00"
   },
   {
     "id": "klook-data-bank-gift",
@@ -2773,7 +2866,8 @@
     "url": "https://www.klook.com/en-MY/esim/databank/GTM2026/",
     "source": "Klook 官方 Data Bank 活动页 + 官方活动 T&C（databank_gtm_2026，市场限台/泰/马/越，2026-11-16 至 12-31）",
     "risk": "礼盒随机，多数是小额（0.5–3GB）；必须买 eSIM 才能用，单独领不到免费流量；居住地按 Klook 账户判定，中国大陆账户看不到入口；数据不是现金、不可提现，180 天不用会消失。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "taptap-send-referral",
@@ -2802,7 +2896,8 @@
     "url": "https://www.taptapsend.com/en/referrals-terms/referral-v4/referrals-en4",
     "source": "Taptap Send 官方推荐条款 + 各地区码页核对（2026-10）",
     "risk": "奖励 90 天过期且不能提现；金额、最低汇款额因发送国/收款国而异，务必在 App 内确认实际数字。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "nomad-trial-esim",
@@ -2831,7 +2926,8 @@
     "url": "https://www.nomadesim.com/documents/landing-trial-plan",
     "source": "Nomad 官方试用页 + 帮助中心（2026-08-24）",
     "risk": "领了试用就等于放弃首购折扣，若本来就打算买大流量套餐，先比价再决定；1GB 只够导航和聊天。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "saily-referral",
@@ -2860,7 +2956,8 @@
     "url": "https://saily.com/legal/referral-program-terms-and-conditions/",
     "source": "Saily 官方推荐条款（2026-09-25 更新）+ 帮助中心",
     "risk": "积分不能提现、不能转让；退款会撤销推荐人积分；Saily 无免费试用，介意可先选 Nomad / GigSky 试网。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "ubigi-welcome",
@@ -2888,7 +2985,8 @@
     "url": "https://www.ubigi.com/",
     "source": "Ubigi 官方帮助中心 + 2026-11 第三方比价（邀请 20% 为待核实项）",
     "risk": "邀请 20% 的具体比例待核实，官方页面只保证 WELCOME10 的 10%；月付订阅不参与任何折扣。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "redbull-mobile-free-esim",
@@ -2918,7 +3016,8 @@
     "url": "https://www.redbullmobile.com/",
     "source": "美卡论坛 2026-09 实测帖（含安装步骤与多国 DP）；官方 App 内优惠码入口",
     "risk": "待核实：TRAVELDEALZ 为社区流传的活动码，官方网页未公示，是否仍可用以 App 内下单结果为准；纯数据卡不能收验证码；长期不用会失效。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:18:37+08:00"
   },
   {
     "id": "moneygram-uk-invite-friends",
@@ -2948,7 +3047,8 @@
     "url": "https://www.moneygram.com/gb/en/services/invite-friends",
     "source": "MoneyGram 英国 Invite Friends 官方页 + Invite Friends Program Information（UK 2026）+ My Side Gig 英国汇款榜（2026-11-14，标 £10）",
     "risk": "金额官方不公示，£10 是第三方口径，注册后务必在 App 里确认；折扣只能抵一笔且不能叠加；MoneyGram 保留随时修改或终止该计划的权利，汇率差价照样存在。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:57:48+08:00"
   },
   {
     "id": "opera-android-free-esim-3gb",
@@ -2978,7 +3078,8 @@
     "url": "https://press.opera.com/2026/09/29/opera-adds-a-travel-esim-to-their-browser-for-android/",
     "source": "Opera 官方新闻稿（2026-09-29）+ Opera Mobile 博客领取步骤 + esim.operacdn.com 帮助页（2026-11-19 复核）",
     "risk": "中国大陆、香港、台湾等地用户不在免费名单，只能买付费套餐；47 个目的地不含阿联酋、沙特等海湾国家，去中东本身用不上；安装渠道或版本不对会看不到领取入口。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:04:36+08:00"
   },
   {
     "id": "remitly-uk-cashback",
@@ -3008,7 +3109,8 @@
     "url": "https://www.topcashback.co.uk/remitly/",
     "source": "TopCashback UK Remitly 商家页（2026-11-19 复核：新客 £8、首笔 ≥£100；官网对非英国 IP 返 403，条款经搜索引擎缓存与比价站交叉复核）+ Quidco Remitly 商家页（2026-11-19 实抓：£6.40 为 Premium 价，首笔 £100 起，24 小时内追踪、6 个月内付款）+ GotCashback 比价页（2026-11-18 抓取：KidStart 最高 £15、ShopBuddies 最高 £8、Rakuten 最高 £7，均为分档上限）+ Remitly 英国推荐计划页与 Referral 条款（好友首笔折扣 / 汇率加成 / 免手续费，金额随活动浮动）",
     "risk": "网上流传的「$25 off Remitly」几乎都是美区专属码，英区用了无效；返现是事后确认制，汇款取消、账户被关或商家拒认都拿不到，别把这笔钱提前算进首笔预算；KidStart 的 £15 是分档上限且只能进孩子储蓄账户；「免手续费」通常只是把成本放进汇率点差，比价时看收款人最终实收金额。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:04:36+08:00"
   },
   {
     "id": "hoody-free-cloud-computers",
@@ -3036,7 +3138,8 @@
     "url": "https://hoody.com/pricing",
     "source": "Hoody 官方定价页（2026-11-19 核对免费档规格与「no card / 3 computers」）",
     "risk": "免费档无 SLA、共享主机，资源随时可能被回收或调整；不要把唯一副本的重要数据放在上面；平台较新，条款与免费政策可能变动。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T07:58:34+08:00"
   },
   {
     "id": "hark-pro-free-agent",
@@ -3067,7 +3170,8 @@
     "url": "https://hark.com/pricing",
     "source": "Hark 官方：定价页 hark.com/pricing（Free to use、Pro² $20 / Pro³ $100）、使用说明 hark.com/using-hark（Handoff 定义、平台 iOS/Android/web、Pro² 2× / Pro³ 10×）、发布文《Introducing Hark Pro》2026-10-06（全功能永久免费）、技术文《Introducing Hark Handoff》2026-08-05（独立虚拟电脑含浏览器/文件系统/终端、6 浏览器、登录代操作）、隐私政策 2026-11-05（EEA/英国/瑞士不提供 Memory）；上架地区：Personal Agent Atlas 2026-11-01 与 App Store 查询（美/英/德/法）；2026-11-19 核验",
     "risk": "免费档的用量上限、消耗规则与重置方式官方均未公布，「永久免费」只承诺功能不缩水，重度使用可能很快触顶（标「待核实」）；value 里的 ≈$10/月是按 Pro² $20 = 2× 用量折算的估算，不是官方标价；绑卡或开启 auto top-up 后会在额度低时自动扣款，只想用免费档就别绑卡；EEA/英国/瑞士没有 Memory，体验与美区不同；代理会出错，付款、下单、退订前务必核对确认卡片与结果，密码/卡号只放进 Secured by Hark，别打在聊天里；美国 App Store 还有 Pro⁴，且内购价（$26 / $129.99 / $259.99）高于官网，以官网为准。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:42:07+08:00"
   },
   {
     "id": "touch-lebanon-magic-welcome-3gb",
@@ -3096,7 +3200,8 @@
     "url": "https://www.touch.com.lb/en/news/385/1414",
     "source": "touch 官方活动页（Offer valid until December 14th 2026）+ touch 数字开户发布会（2026-10-23）与 LeBusiness 报道",
     "risk": "要先花 $7 买卡，线上开户又限黎巴嫩护照，非黎巴嫩用户基本无缘；赠送流量仅本地使用、按月发放、过期不补；活动 12 月 14 日截止。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:04:36+08:00"
   },
   {
     "id": "meta-muse-referral-1b-tokens",
@@ -3126,7 +3231,8 @@
     "url": "https://muse.ai/join",
     "source": "Meta 官方 @Muse 账号 2026-09-16 邀请公告及 48 小时兑换说明；Meta 帮助中心「About Muse subscriptions」「How to buy additional Muse tokens」；Meta Newsroom 各市场上市公告（2026-09-08 美国起，2026-11-17 澳大利亚）；2026-11-19 核验",
     "risk": "Meta 帮助中心没有公布邀请奖励的过期规则、与付费额度的消耗顺序，也未公布 10 亿 tokens 的官方折现价（按 Power 档折算约 $9，本条 value 为估算），这些都标「待核实」；每个码有兑换次数上限，网上公开码常已用尽；兑换只在 app/官网 Settings 内进行，任何要求密码、验证码、卡号或收费的「激活」都是诈骗；错过 48 小时无法补兑；免费档每周额度 Meta 未公布确切数字（Zuckerberg 曾称约 1 亿/周，未写进帮助页）。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:30:41+08:00"
   },
   {
     "id": "teleagent-free-cloud-pc",
@@ -3155,7 +3261,8 @@
     "url": "https://ta.teleai.com.cn/pricing",
     "source": "TeleAgent 官方定价页与首页（免费体验版 ¥0/月、内置 Windows 云电脑）+ NodeLoc 2026-11-18 实测帖",
     "risk": "待核实：云电脑具体规格（社区称 4 核）与免费额度时长未在官方定价页写明；免费版积分有限；国内产品需实名手机号，注意数据合规。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:20:21+08:00"
   },
   {
     "id": "cloady-free-tier",
@@ -3184,7 +3291,8 @@
     "url": "https://cloady.com/",
     "source": "Cloady 官网定价/免费层说明（2026-11-19 复核）+ 1A2X 社区 2026-11-13 实测贴（含限额与踩坑）",
     "risk": "「永久免费」是社区说法，官网只承诺免费层 + 部分区域免费试用，有网友反馈已变成免费一个月，长期可用性未定；免费档资源很小，放大站点会超额度；日本区有工作区但免费应用受限，部署时要手选区域。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T05:49:57+08:00"
   },
   {
     "id": "woori-bank-esim-1gb",
@@ -3214,7 +3322,8 @@
     "url": "https://www.wooribank.com/",
     "source": "友利银行官方活动公告（2026-11-17 起）+ 韩国ニュースピム、现代经济新闻等多家韩媒同日报道（活动细节一致）",
     "risk": "需要韩国友利银行账户并真的换一笔外汇（钱还是自己的，但会占资金）；限量 2 万份先到先得；必须另装 THE LOUNGE App；1GB 只够应急，别当主力流量。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T11:52:23+08:00"
   },
   {
     "id": "simular-box-free",
@@ -3243,7 +3352,8 @@
     "url": "https://box.simular.ai/",
     "source": "box by Simular 官方页面（免费额度与计费说明）",
     "risk": "免费额度用完后按 credits 计费，注意别让 AI 空转；云桌面里有你的浏览器会话，不要在里面登录重要账号。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "horizon-free-europe-esim",
@@ -3272,7 +3382,8 @@
     "url": "https://horizonesim.com/free-europe-esim",
     "source": "Horizon 官方免费欧洲页 + 官方 Europe 套餐页（1GB/30 天标 €0.00，PROMO 限一次）；NodeSeek post-1055219、NodeLoc topic/117906、1A2X t/881、奶昔论坛 thread-16496（2026-11-15）",
     "risk": "只覆盖欧洲 33 国，去土耳其、巴尔干部分国家用不了；要先有能收 WhatsApp 验证码的号码；1GB 用完不会变成付费订阅，但也不会再有流量。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:49:59+08:00"
   },
   {
     "id": "kolet-virgin-atlantic-free-esim",
@@ -3301,7 +3412,8 @@
     "url": "https://virginatlantic.shop.kolet.com/",
     "source": "Kolet × Virgin Atlantic 官方合作页（2026-11 仍在展示 1GB 免费）；NodeSeek post-1051360（2026-11-13）、NodeLoc、奶昔论坛 thread-16469（2026-11-13）",
     "risk": "只有约 2 天，用完即停；一台设备只能嫖一次，重装无效（社区称其「黑 EID」）；领取要过手机号验证，虚拟号可能被拦。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:49:59+08:00"
   },
   {
     "id": "nala-uk-first-transfer-5",
@@ -3331,7 +3443,8 @@
     "url": "https://help.nala.money/en/articles/5738997-how-does-nala-s-invite-a-friend-program-work",
     "source": "NALA 官方帮助中心（Invite a Friend、最低汇款额）+ nodeseek 2026-11-12 多帖实测（£10 已降为 £5）+ aijp.jizhiku.net 2026-11-11 教程（仍写 £10）",
     "risk": "奖励金额从 £10 降到 £5，且「人太多」时可能提前关门；官方最低汇款额写 £100、社区实测 £50，两者不一致；地址/时区/IP 不一致会被拒付甚至封号；奖励只能抵汇款不能提现。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:57:48+08:00"
   },
   {
     "id": "xl-indonesia-free-esim-5gb",
@@ -3360,7 +3473,8 @@
     "url": "https://www.xl.co.id/esim-trial",
     "source": "XL Axiata 官方 eSIM Gratis 页（2026-11-19 读取：kuota 5GB / 7 hari + Gemini 3.1 Pro + 400GB Google Storage）",
     "risk": "要印尼实名信息才能开卡，纯游客需用护照走指定渠道（待核实）；5GB 只有 7 天，且是本地流量；社媒宣传的 50GB/1TB 与官方页面不一致。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:16:09+08:00"
   },
   {
     "id": "garuda-esim-free-2gb",
@@ -3389,7 +3503,8 @@
     "url": "https://garuda.yoowifi.com/",
     "source": "Garuda eSIM by Yoowifi 官方站（2026-11-19 读取：Free 2GB / 7 days、Claim Complimentary eSIM、160+ 国家）+ Garuda Indonesia 2026-10-01 发布报道（Kompas、Bisnis、Marketing-Interactive）",
     "risk": "必须有鹰航机票，没订票的领不到；2GB 只有 7 天、覆盖按目的地套餐而定；航司合作活动可能随时结束或改规则。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:16:09+08:00"
   },
   {
     "id": "sesame-voice-ai-free",
@@ -3420,7 +3535,8 @@
     "url": "https://www.sesame.com/plans",
     "source": "Sesame 官方：定价页 sesame.com/plans（Free $0 = 30 分钟/天 + 限量周 credits、Plus $20 4×、Pro $100 20×、加时/credits 加购价、Plus 7 天试用）、帮助页 sesame.com/journal/getting-started（98 个上架国家/地区名单、语言支持）、Sesame Link 官网 link.sesame.com 与文档 link.sesame.com/docs（支持 Claude Code / Codex / Pi / Cursor / Hermes / OpenCode、macOS/Linux、语音操控与权限确认）、changelog v0.1.44（2026-11-17）；2026-11-19 核验",
     "risk": "免费档「每周有限 credits」官方未公布具体数值，任务类使用消耗多快未知（标「待核实」）；value 里的 ≈$5/月是按 Plus $20 = 4× 免费通话时长折算的估算，不是官方标价；Sesame Link 没有单独价目页，官方未说明 Link 本身是否额外收费，语音操控会消耗 Sesame 的 talk time / credits（标「待核实」）；app 未在中国大陆、香港、印度等地上架，只能用功能较少的网页版；编码 agent 跑在你自己电脑上，过长的计划、文件内容与多数 MCP 参数无法在电话里完整读出，需回 web client 或终端确认；付费订阅在 App Store / Google Play 内购，取消要走商店，试用后别忘了取消。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:44:04+08:00"
   },
   {
     "id": "yahoo-japan-agent-i-stamp-rally",
@@ -3450,7 +3566,8 @@
     "url": "https://stamp.yahoo.co.jp/stamp/exc-agenti202611p",
     "source": "Yahoo!ズバトク 官方活动页「AIを楽しんでポイントGET! Agent i スタンプラリー」（2026-11-19 核验）",
     "risk": "金额很小：完走 50 円 + 抽奖 1–500 円，期望值只有几円，主要价值是顺手体验 Agent i；完走名额先到 2 万，11-27 后可能随时关；必须从活动页按钮进入，直接访问任务页不计章；点数不关联 PayPay 就 28 天失效；极限是 5 次抽奖全中一等 2,500 円，实际几乎不可能。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:51:35+08:00"
   },
   {
     "id": "jetpac-eterna-free-esim",
@@ -3479,7 +3596,8 @@
     "url": "https://www.jetpacglobal.com/zh/eterna",
     "source": "Jetpac 官方 Eterna 页（领取资格、每年 4 次、免流 App 均写明）；NodeSeek post-969696 / 969051（2026-10-07）、post-1030534（2026-11-04）、奶昔论坛 thread-15892（2026-10-07）、烧饼论坛 t/16798（2026-11-04）",
     "risk": "100MB/次很少，只是落地应急；官方写明仅限合资格国际漫游、不能本国使用；免流只针对 4 个 App 且限速 1Mbps，不能当主力流量。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:49:59+08:00"
   },
   {
     "id": "eskimo-free-esim",
@@ -3509,7 +3627,8 @@
     "url": "https://www.eskimo.travel/en/free-esim",
     "source": "Eskimo 官方免费流量 Promo 页（eskimo.travel，FREE500MB 档）+ 2026-11 多篇实测（含 App 内到账截图）",
     "risk": "500MB 只够应急（几小时导航与消息），不含通话；1GB 礼品码属限时活动、额度与有效期未经官方页面确认；国行机需另买小白卡/品牌 eUICC 卡，写卡失败要重来。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:16:53+08:00"
   },
   {
     "id": "pickle-ai-free-agent-jpkr",
@@ -3541,7 +3660,8 @@
     "url": "https://pickle.com/",
     "source": "Pickle 官方帮助中心（日文版，2026-11-19 打开核验）：プランを確認する / 利用上限はどうなっていますか？ / リセットチケットを使う / ピクルにタスクを任せる / ピクルのブラウザを引き継ぐ；Pickle 官网与 App Store 介绍",
     "risk": "地区差异大：日文/韩文帮助页写「全部账号免费、无付费计划」，英文（美国）帮助页仍要求付费订阅并列 Plus/Pro/Max/Ultra，实际以 app 内卡片为准；重置券不提高基础额度，只为当天救急，04:00 后照常清零；官方未公布每日额度的具体点数、点数消耗规则与券价，标「待核实」；Pickle 会出错，付款与预订前务必核对任务卡片与结果；电话与浏览器代操作涉及授权，别把密码/卡号打在聊天里。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:30:41+08:00"
   },
   {
     "id": "gohub-free-trial-esim",
@@ -3570,7 +3690,8 @@
     "url": "https://gohub.com/claim-free-esim",
     "source": "GoHub 官方领取页 + 官方博客（2026-11-17 更新）；NodeSeek post-1055219、NodeLoc topic/117906、1A2X t/881、奶昔论坛 thread-16496（均 2026-11-15）同帖推荐，跟帖实测大陆漫游中国联通约 40Mbps",
     "risk": "只有 300MB / 1 天，够落地打车、导航、发消息，撑不起一整天；流量用完即停，不会扣费也不会自动续；别把 1 天试用当整趟行程的主力流量。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:49:59+08:00"
   },
   {
     "id": "gomoworld-free-trial-esim",
@@ -3599,7 +3720,8 @@
     "url": "https://gomoworld.com/en",
     "source": "GoMoWorld 官方 App 商店说明（2026-11 更新）+ 官方 FAQ + 第三方逐家核对（2026-10-31）；四个论坛 2026-11-15 同帖推荐",
     "risk": "额度随目的地变化、有效期只有 1 天；中国大陆那档约 100MB 来自论坛实测，官网未列明，先小额试；别指望用它顶一整天。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:49:59+08:00"
   },
   {
     "id": "roroesim-cs-trial-300mb",
@@ -3628,7 +3750,8 @@
     "url": "https://roroesim.com/cn/",
     "source": "奶昔论坛 thread-16230（2026-10-27，含实测截图与多名用户反馈）；官方站仅写明实体卡标配 300MB 全球流量，eSIM 测试包属客服发放，官方未公开条款（待核实）",
     "risk": "这是客服口头发的测试包，不是公开活动，随时可能停；跟帖已有人反馈拿到的二维码是别人用过的、客服不回；300MB 只够应急，别当主力；原帖邀请码是楼主返利，介意可直接找客服。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:49:59+08:00"
   },
   {
     "id": "ooredoo-qatar-easysim-welcome",
@@ -3657,7 +3780,8 @@
     "url": "https://www.ooredoo.qa/web/en/easysim/",
     "source": "Ooredoo Qatar 官方 EasySIM 页（2026-11-19 实测 Welcome Offer 标 Free：300MB + 10 本地分钟 / 3 天）；Ooredoo 资费文件 C11-01 v195（2026-10-06 生效）",
     "risk": "300MB 只够落地导航和报平安；开卡要实名，游客需护照、部分渠道要卡塔尔 ID；免费额度仅本地，漫游另算。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:04:36+08:00"
   },
   {
     "id": "iroamly-free-500mb-trial",
@@ -3687,7 +3811,8 @@
     "url": "https://www.iroamly.com/redeem-free-esim/",
     "source": "iRoamly 官方免费试用页（2026-11-19 复核）",
     "risk": "500MB 只够导航、叫车和报平安；1 天到期即停；哪些国家不在免费名单内要在领取页确认。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:04:36+08:00"
   },
   {
     "id": "eskimo-referral-500mb",
@@ -3716,7 +3841,8 @@
     "url": "https://www.eskimo.travel/en/invite-friend",
     "source": "Eskimo 官方邀请页与首页（首页写明新用户免费 250MB / 111+ 国 / 不过期）；阿拉伯语 X 账号 @TawfeerStation、@KSAoffers0（2026-10-22）分享的邀请码玩法；第三方邀请码站 giverefer / getquids 标 500MB each、上限 15GB",
     "risk": "500MB 是邀请奖励不是长期套餐；上限 15GB、有效期等细节官方页面未明写，属待核实；填了陌生人的码等于把奖励给了对方，介意就用自己朋友的码。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:09:47+08:00"
   },
   {
     "id": "roamless-free-trial-500mb",
@@ -3745,7 +3871,8 @@
     "url": "https://roamless.com/",
     "source": "Roamless 官方帮助中心（2026-09-08《What Type of Rewards Can I Get?》《How to Use Roamless》《Roamless Overview》）+ 官网目的地页「Your first 500 MB is on us」",
     "risk": "500MB 是按 $1.25 折算的上限，单价高的目的地（如加拿大）换到的流量更少；额度用完不会自动停，余额不足就断网；这是按量付费产品，后续容易顺手充值。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:16:09+08:00"
   },
   {
     "id": "roami-free-100mb-esim",
@@ -3774,7 +3901,8 @@
     "url": "https://www.roamiapp.com/free-esim/",
     "source": "Roami 官方免费页（页面自标 2026-10-09 复核）；NodeSeek post-1055219、NodeLoc topic/117906、1A2X t/881、奶昔论坛 thread-16496（2026-11-15）",
     "risk": "100MB 只够验证能不能联网；中国大陆是否可用两种口径矛盾（官网列有中国，论坛说不含大陆），国内用户先小额实测再指望它；免费额度随时会调。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T02:49:59+08:00"
   },
   {
     "id": "keepgo-free-trial-100mb",
@@ -3804,7 +3932,8 @@
     "url": "https://www.keepgo.com/blogs/articles/esim-free-trial",
     "source": "Keepgo 官方博客（2026-11-18《Try a Keepgo eSIM for Free: 100MB for 7 Days》）+ Keepgo FAQ",
     "risk": "100MB 只够装卡测试、开地图和报平安；要绑卡才能下 $0 单，介意绑卡的人跳过；领了不装 24 小时就失效。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T03:06:09+08:00"
   },
   {
     "id": "firsty-free-esim-global",
@@ -3832,7 +3961,8 @@
     "url": "https://www.firsty.app/",
     "source": "Firsty 官方首页与免费档说明（2026-11-19 读取）",
     "risk": "1Mbps 只够地图和消息，视频基本看不了；靠看广告续量，广告服务中断时无法补量；官方可随时调整额度或下线免费档。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T09:52:44+08:00"
   },
   {
     "id": "call-e-free-credits",
@@ -3863,7 +3993,8 @@
     "source_url": "https://www.producthunt.com/products/call-e",
     "source": "CALL-E 官方站 FAQ 与 llms.txt（2026-11-19 核验）+ Product Hunt 发布页（2026-11-11 日榜第 3）",
     "risk": "100 credits 只够少量试打，真正的代理体验要自己充值；计费=模型费+线路费，规划阶段没用上电话也可能扣额度；AI 会在电话里表明自己是助手，部分商家会拒接；涉及预约、退订、付款授权时务必先看清它的通话计划；中国大陆等地区能否注册与拨号以官网/登录页为准（待核实）。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:51:35+08:00"
   },
   {
     "id": "rankspot-1-credit",
@@ -3894,7 +4025,8 @@
     "source_url": "https://www.producthunt.com/products/rankspot",
     "source": "RankSpot 官方定价页（2026-11-19 核验）+ Product Hunt 发布页（2026-11-17 日榜第 2）",
     "risk": "$1 只等于三分之一个 $3 的文章，真正跑一轮发文远超免费额度；Product Hunt 文案写「附带一篇免费文章」，定价页只列 $1 欢迎额度、没写免费文章，这条待核实；发文会把内容直接发布到你站点并请求收录，先小规模试；外链外呼是从你自己的邮箱发，注意发件域名声誉。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T14:51:35+08:00"
   },
   {
     "id": "github-copilot-free",
@@ -3922,7 +4054,8 @@
     "url": "https://github.com/features/copilot/plans",
     "source": "GitHub 官方定价页与文档（2026-11 核对）",
     "risk": "免费额度用完后只能等下月重置，没有按量付费选项；学生可改领 Copilot Student（无限补全）。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "cursor-free-plan",
@@ -3950,7 +4083,8 @@
     "url": "https://cursor.com/pricing",
     "source": "Cursor 官方定价页与帮助文档（2026-11 核对）",
     "risk": "免费额度按周/月重置、不累积；重度使用很快耗尽，注意别在工作关键期试水。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "cloudflare-workers-free",
@@ -3978,7 +4112,8 @@
     "url": "https://developers.cloudflare.com/workers/platform/limits/",
     "source": "Cloudflare 官方 Workers 限额与定价文档（2026-11 核对）",
     "risk": "10ms CPU 限制对重计算不友好；免费层无 SLA，商用关键业务需评估升级。",
-    "status": "active"
+    "status": "active",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "huawei-codearts-200-voucher",
@@ -4008,7 +4143,8 @@
     "url": "https://developer.huaweicloud.com/competition/information/1300000350/html1",
     "source": "华为云官方赛事权益页 + 华为云社区官方博客实操记录（2026-11-15、11-17，bbs.huaweicloud.com/blogs/534936）+ 吾便宜 2026-11-14 条款复核",
     "risk": "报名是领券前提，券的发放会审查参赛资格，纯为薅券而无作品可能拿不到；每天限量 1000 张，热门时段几十秒抢完；有网友反馈只领到 10 元档，实际金额以券面为准；券不能用于域名与特价套餐，到期作废。",
-    "status": "expiring_soon"
+    "status": "expiring_soon",
+    "added_at": "2026-11-19T05:49:57+08:00"
   },
   {
     "id": "autoclaw-weekly-100m-tokens",
@@ -4037,7 +4173,8 @@
     "url": "https://autoclaw.zhipuai.cn/blog/news/M11W3/",
     "source": "AutoClaw 官方博客《每周福利｜100M Tokens 等你领取！》（2026-11-13）",
     "risk": "11 月 22 日 23:59 就失效，晚领等于白领；周福利额度每期不同，别把宣传的 1 亿当成长期权益；额度只用于 AutoClaw 内的模型调用。",
-    "status": "expiring_soon"
+    "status": "expiring_soon",
+    "added_at": "2026-11-19T03:23:12+08:00"
   },
   {
     "id": "jio-google-ai-pro-expired",
@@ -4063,7 +4200,8 @@
     "url": "https://inc42.com/buzz/jio-ends-new-sign-ups-for-free-google-ai-pro-subscription/",
     "source": "Inc42（2026-11-16）+ Beebom（2026-11-16）引述 Jio 官方条款",
     "risk": "已结束，勿再按旧攻略充值；已领取者一旦降档到不合格套餐，订阅可能被暂停。",
-    "status": "expired"
+    "status": "expired",
+    "added_at": "2026-11-19T01:20:37+08:00"
   },
   {
     "id": "gcp-gemini-credit-expired",
@@ -4089,6 +4227,7 @@
     "url": "https://cloud.google.com/terms/free-trial",
     "source": "Google Cloud 官方免费试用条款与文档限制条款 + AI Promo Now（2026-11-12）",
     "risk": "已结束；如仍想在免费额度内跑 Gemini，可改用 Gemini API 免费层或预付账单方案。",
-    "status": "expired"
+    "status": "expired",
+    "added_at": "2026-11-19T01:20:37+08:00"
   }
 ]

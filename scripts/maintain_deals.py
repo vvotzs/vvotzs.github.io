@@ -31,6 +31,7 @@ from common import (  # noqa: E402
     SITE_URL,
     SITEMAP,
     compute_status,
+    ensure_added_at,
     now_local,
     parse_date,
     today_local,
@@ -139,6 +140,10 @@ def main() -> int:
         # 过期条目一律保留：pruned 恒为空，不做任何删除（SEO 长尾需要长期收录）。
 
     deals = [d for d in deals if d["id"] not in pruned]
+
+    # 入库时间：新条目补 added_at，老条目已回填过，不动
+    if ensure_added_at(deals):
+        print("  - 入库时间：为新条目补写了 added_at")
 
     for deal in deals:
         deal.setdefault("last_verified", "待核实")

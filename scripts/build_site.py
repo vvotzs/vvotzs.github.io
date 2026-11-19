@@ -41,6 +41,7 @@ from common import (  # noqa: E402
     SITE_URL,
     TODAY_WINDOW_DAYS,
     compute_status,
+    ensure_added_at,
     now_local,
     parse_date,
     short_date,
@@ -745,17 +746,32 @@ def main() -> None:
 
     active = [d for d in deals if d["status"] != "expired"]
     expired = [d for d in deals if d["status"] == "expired"]
+    # 入库时在 deals.json 里的位置（仅用作同一时刻入库的条目之间的稳定次序）
+    idx_of = {d["id"]: i for i, d in enumerate(deals)}
 
-    # 新收录：最近 48 小时，按收录时间倒序（原来的「今日优惠」是它的子集，已合并）
+    # 手动追加条目、只跑 build_site 的路径也要有入库时间：缺的补上并回写数据文件
+    if ensure_added_at(deals):
+        DATA.write_text(json.dumps(deals, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"已为缺入库时间的条目补写 added_at 并回写 {DATA.name}")
+
+    # 新收录：最近 48 小时按「入库先后」倒序。
+    # 不能用 value_expected / 文件下标当次序：added 只精确到日期，同一天上百条并列，
+    # 一加价值键就会退化成第二个「高价值榜」（大额银行奖把当天新条目全压下去）；
+    # 而 deals.json 每次维护都按价值重排过，下标本身就是价值序。
+    # 真正的入库时间写在 added_at，主次序只认它；只有同一批次（时间戳相同）内
+    # 才按价值高低排，让同一批里更值钱的先出现。
     since = (today - timedelta(days=TODAY_WINDOW_DAYS)).isoformat()
-    fresh = sorted(
-        [d for d in active if (d.get("added") or "") >= since],
-        key=lambda d: ((d.get("added") or ""), value_expected(d)),
-        reverse=True,
-    )[:10]
+    fresh_pool = [d for d in active if (d.get("added") or "") >= since]
+    fresh_pool.sort(key=lambda d: (-value_expected(d), idx_of.get(d["id"], 0)))
+    fresh_pool.sort(key=lambda d: d.get("added_at") or d.get("added") or "", reverse=True)
+    fresh = fresh_pool[:10]
     # 今天没有新条目时也保证板子不空
     if not fresh:
-        fresh = sorted(active, key=lambda d: (d.get("added") or ""), reverse=True)[:10]
+        fresh = sorted(
+            active,
+            key=lambda d: (d.get("added_at") or d.get("added") or "",),
+            reverse=True,
+        )[:10]
 
     # 高价值榜：按可预期到手金额（不是上限）排
     leaderboard = sorted(active, key=lambda d: (value_expected(d), d.get("value_num") or 0), reverse=True)[:10]

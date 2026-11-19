@@ -78,6 +78,22 @@ def compute_status(deal: dict, today: date) -> str:
     return "active"
 
 
+def ensure_added_at(deals: list[dict], when: datetime | None = None) -> bool:
+    """给还没有入库时间 added_at 的条目补上时间戳，返回是否改动。
+
+    「新收录」要按入库先后排，而 added 只精确到日期、同一批往往几十条并列，
+    所以每条需要一份带时分的 added_at。新条目入库时（维护 / 构建）自动补，
+    人工往 deals.json 里追加也不用记着填。
+    """
+    stamp = (when or now_local()).isoformat(timespec="seconds")
+    changed = False
+    for deal in deals:
+        if not deal.get("added_at"):
+            deal["added_at"] = stamp
+            changed = True
+    return changed
+
+
 def value_expected(deal: dict) -> float:
     """排行榜用的“可预期价值”。
 
