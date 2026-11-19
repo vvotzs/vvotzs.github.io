@@ -635,8 +635,6 @@ def card(deal: dict, en: dict, today) -> str:
         {icon('warn')}
         <span>{bi(e(deal['risk']), e(en.get('risk') or deal['risk']))}</span>
       </div>
-      <a class="detail-cta" href="{e(main_link(deal))}" target="_blank" rel="noopener nofollow">
-        {ui("go_full")}{icon('external')}</a>
       <div class="detail-foot">
         <span>{bi(e(f"{U['f_source'][0]} · {deal['source']}"), e(f"{U['f_source'][1]} · {en.get('source') or deal['source']}"))}</span>
         <span>{bi(e(f"{U['f_last_verified'][0]} · {deal['last_verified']}"), e(f"{U['f_last_verified'][1]} · {deal['last_verified']}"))}</span>
