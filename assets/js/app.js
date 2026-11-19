@@ -665,8 +665,8 @@
   }
 
   restoreFromURL();
-  applyAria();
-  render();
+  /* 初始就按当前语言把标题 / 描述 / 占位符 / 无障碍标签对齐，再渲染一次 */
+  applyLang(LANG, false);
   var hash = (location.hash || "").slice(1);
   if (hash === "expiring") hash = "closing";
   if (!showTab(hash)) applyBoard();

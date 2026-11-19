@@ -233,6 +233,10 @@ LANG_BOOT = (
     'else if(s==="en"||s==="zh")l=s;'
     'else l="zh";'
     'd.setAttribute("data-lang",l);d.lang=l==="en"?"en":"zh-CN";'
+    'var j=document.getElementById("i18n-head"),p2=j?JSON.parse(j.textContent)[l]:null;'
+    "if(p2){document.title=p2.title;"
+    'var m=document.querySelector(\'meta[name="description"]\');'
+    "if(m)m.setAttribute(\"content\",p2.description);}"
     "}catch(e){}}();</script>"
 )
 
