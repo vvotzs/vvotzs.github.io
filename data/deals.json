@@ -2715,6 +2715,36 @@
     "status": "active"
   },
   {
+    "id": "eskimo-free-esim",
+    "title": "[全球] Eskimo 免费 500MB 全球 eSIM（126 国 / 无到期日）",
+    "brand": "Eskimo",
+    "domain": "eskimo.travel",
+    "category": "esim",
+    "value": "500MB（约 $4）",
+    "value_num": 4,
+    "cost": "真正免费",
+    "highlight": "注册时在「推荐或礼品代码」填 FREE500MB，免费拿 500MB 全球流量，覆盖 126 个国家/地区，不过期、不要信用卡",
+    "regions": "[全球] 126+ 个国家/地区（含日本、中国、美国、意大利、泰国等）；仅限新用户",
+    "start": "",
+    "end": "",
+    "verified": true,
+    "last_verified": "2026-11-19",
+    "added": "2026-11-19",
+    "content": "旅行 eSIM 品牌 Eskimo（新加坡 Datapro）的免费试用：新用户下载 App 注册时在「仅推荐或礼品代码」处填 FREE500MB，即可获得 500MB 全球流量，覆盖 126 个以上国家/地区。官方页面写明无需信用卡、装一次即可在多国使用且流量不过期，适合落地时用地图、打车和收消息。早前的 FREE250MB 档仍可能对部分账号生效，另有 EDC1GB、OKZMO 等限时 1GB 礼品码在社群流传（有效期未经官方页面确认，属限时拉新活动，随时可能失效）。",
+    "conditions": "仅限 Eskimo 新用户；须在 App 注册时填码（漏填可于注册后 24 小时内补填）；每个账号一次；流量不过期，但账号连续约 2 年不用会被注销；不支持原生 eSIM 的国行手机需联系客服索要二维码，写入小白卡（APN 选 Singtel Postpaid、安装后勿删）。",
+    "steps": [
+      "下载 Eskimo App（开发商 Datapro Technologies）",
+      "用邮箱或谷歌账号注册新账号，在「推荐或礼品代码」处填 FREE500MB",
+      "到 Data 页确认出现 Global 500MB 流量卡",
+      "支持 eSIM 的手机直接安装；国行机联系客服要二维码写入小白卡",
+      "抵达目的地后把移动数据切到该 eSIM 并打开数据漫游"
+    ],
+    "url": "https://www.eskimo.travel/en/free-esim",
+    "source": "Eskimo 官方免费流量 Promo 页（eskimo.travel，FREE500MB 档）+ 2026-11 多篇实测（含 App 内到账截图）",
+    "risk": "500MB 只够应急（几小时导航与消息），不含通话；1GB 礼品码属限时活动、额度与有效期未经官方页面确认；国行机需另买小白卡/品牌 eUICC 卡，写卡失败要重来。",
+    "status": "active"
+  },
+  {
     "id": "gohub-free-trial-esim",
     "title": "[亚洲 12 国] GoHub 免费试用 eSIM：300MB / 1 天",
     "brand": "GoHub",
@@ -2858,35 +2888,6 @@
     "url": "https://www.iroamly.com/redeem-free-esim/",
     "source": "iRoamly 官方免费试用页（2026-11-19 复核）",
     "risk": "500MB 只够导航、叫车和报平安；1 天到期即停；哪些国家不在免费名单内要在领取页确认。",
-    "status": "active"
-  },
-  {
-    "id": "eskimo-free-esim",
-    "title": "[全球] Eskimo 免费 250MB 全球 eSIM（126 国 / 无到期日）",
-    "brand": "Eskimo",
-    "domain": "eskimo.travel",
-    "category": "esim",
-    "value": "250MB（约 $2）",
-    "value_num": 2,
-    "cost": "真正免费",
-    "highlight": "注册时输入 FREE250MB，免费拿 250MB 全球流量，覆盖 126 个国家/地区，不过期、不要信用卡",
-    "regions": "[全球] 126+ 个国家/地区（含日本、中国、美国、意大利、泰国等）；仅限新用户",
-    "start": "",
-    "end": "",
-    "verified": true,
-    "last_verified": "2026-11-19",
-    "added": "2026-11-19",
-    "content": "旅行 eSIM 品牌 Eskimo 的免费试用：新用户下载 App 注册时在邀请码处填 FREE250MB，即可获得 250MB 全球流量，覆盖 126 个以上国家/地区。官方页面写明无需信用卡、安装一次即可在多国之间使用且无到期日，适合落地时用地图、打车和收消息。",
-    "conditions": "仅限 Eskimo 新用户；须在 App 注册时填写免费码 FREE250MB；每个账号一次；额度固定 250MB，用完可自费加购套餐。",
-    "steps": [
-      "下载 Eskimo App",
-      "注册新账号，在邀请码处填 FREE250MB",
-      "按 App 指引安装免费 eSIM",
-      "抵达目的地后开启该 eSIM 的数据"
-    ],
-    "url": "https://www.eskimo.travel/en/free-esim",
-    "source": "Eskimo 官方免费 eSIM 页面",
-    "risk": "250MB 只够应急（约几十分钟导航与消息），不含通话；官方可随时调整额度或下线该活动。",
     "status": "active"
   },
   {
