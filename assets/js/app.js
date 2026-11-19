@@ -29,16 +29,58 @@
     if (img.complete && img.naturalWidth === 0) window.__favFallback(img);
   });
 
+  /* ------------------------------------------------------- 语言（中文 / EN） */
+  /* 语言已在 <head> 的引导脚本里定好（?lang= → /en/ 路径 → localStorage → 中文），
+     这里只负责：切语言、同步 URL / 标题 / 无障碍标签、按语言换搜索索引。 */
+  var IS_EN_PAGE = /^\/en(\/|$)/.test(location.pathname);
+  var HEAD_I18N = {};
+  var headEl = $("#i18n-head");
+  if (headEl) {
+    try { HEAD_I18N = JSON.parse(headEl.textContent) || {}; } catch (err) { HEAD_I18N = {}; }
+  }
+
+  function currentLang() {
+    return document.documentElement.getAttribute("data-lang") === "en" ? "en" : "zh";
+  }
+  var LANG = currentLang();
+
+  function applyAria() {
+    $$("[data-al-zh]").forEach(function (el) {
+      var v = el.getAttribute(LANG === "en" ? "data-al-en" : "data-al-zh");
+      if (v) el.setAttribute("aria-label", v);
+    });
+  }
+
   /* ------------------------------------------------------- 搜索索引（JSON） */
-  var SEARCH = {};
+  var SEARCH_MAP = { zh: {}, en: {} };
   var indexEl = $("#search-index");
   if (indexEl) {
     try {
-      SEARCH = JSON.parse(indexEl.textContent) || {};
-      Object.keys(SEARCH).forEach(function (k) {
-        SEARCH[k] = String(SEARCH[k]).toLowerCase();
+      var rawIndex = JSON.parse(indexEl.textContent) || {};
+      ["zh", "en"].forEach(function (k) {
+        var m = rawIndex[k] || {};
+        Object.keys(m).forEach(function (id) { SEARCH_MAP[k][id] = String(m[id]).toLowerCase(); });
       });
-    } catch (err) { SEARCH = {}; }
+    } catch (err) { SEARCH_MAP = { zh: {}, en: {} }; }
+  }
+  var SEARCH = SEARCH_MAP[LANG] || SEARCH_MAP.zh;
+
+  /* 切语言：只改 <html data-lang>，文案由 CSS 成对切换；再刷新标题 / 索引 / 结果 */
+  function applyLang(lang, persist) {
+    LANG = lang === "en" ? "en" : "zh";
+    var root = document.documentElement;
+    root.setAttribute("data-lang", LANG);
+    root.lang = LANG === "en" ? "en" : "zh-CN";
+    var pack = HEAD_I18N[LANG] || {};
+    if (pack.title) document.title = pack.title;
+    var md = document.querySelector('meta[name="description"]');
+    if (md && pack.description) md.setAttribute("content", pack.description);
+    var q = $("#q");
+    if (q && pack.placeholder) q.placeholder = pack.placeholder;
+    applyAria();
+    SEARCH = SEARCH_MAP[LANG] || SEARCH_MAP.zh;
+    if (persist) { try { localStorage.setItem("ydj-lang", LANG); } catch (err) {} }
+    render();
   }
 
   /* ------------------------------------------------------------- modules */
@@ -548,6 +590,7 @@
   function syncURL() {
     if (!history.replaceState) return;
     var params = new URLSearchParams();
+    if (LANG === "en" && !IS_EN_PAGE) params.set("lang", "en");
     if (state.q) params.set("q", state.q);
     URL_KEYS.forEach(function (k) {
       if (state[k] && state[k] !== DEFAULTS[k]) params.set(k, state[k]);
@@ -600,7 +643,29 @@
   }
 
   /* ---------------------------------------------------------------- init */
+  /* 从 ?lang=en/zh 进站的人记住选择；没参数时保持“默认中文”，不看 localStorage */
+  try {
+    var bootLang = new URLSearchParams(location.search).get("lang");
+    if ((bootLang === "en" || bootLang === "zh") && !IS_EN_PAGE) {
+      localStorage.setItem("ydj-lang", bootLang);
+    }
+  } catch (err) { /* 隐私模式禁用 localStorage 时忽略 */ }
+
+  var langBtn = $("#lang-switch");
+  if (langBtn) {
+    langBtn.addEventListener("click", function () {
+      var toEn = LANG !== "en";
+      if (!toEn && IS_EN_PAGE) {
+        try { localStorage.setItem("ydj-lang", "zh"); } catch (err) {}
+        location.href = "/";
+        return;
+      }
+      applyLang(toEn ? "en" : "zh", true);
+    });
+  }
+
   restoreFromURL();
+  applyAria();
   render();
   var hash = (location.hash || "").slice(1);
   if (hash === "expiring") hash = "closing";

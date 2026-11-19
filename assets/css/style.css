@@ -100,6 +100,49 @@ button{ font-family: inherit; }
 /* sprite 里的 <svg> 走 <use> 引用，这里只定基本盒模型 */
 .i{ display: block; flex: none; }
 
+/* ---------------------------------------------------------- 中英切换 */
+/* 双语文本成对存在 <span class="t-zh"> / <span class="t-en">，只显示一种。
+   用 CSS 切换而不是 JS 改文本：语言在 <head> 里就定好，不会闪一下另一种语言。 */
+html[data-lang="en"] .t-zh{ display: none !important; }
+html[data-lang="zh"] .t-en,
+html:not([data-lang]) .t-en{ display: none !important; }
+
+/* 左下角悬浮语言胶囊：躲开顶栏、右侧滑轨与卡片右侧的「直达」按钮 */
+.lang-switch{
+  position: fixed;
+  left: 14px;
+  bottom: 18px;
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(5,150,105,.30);
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(10px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%);
+  color: #065F46;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px -12px rgba(6,78,59,.55), 0 1px 2px rgba(28,25,23,.06);
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+.lang-switch:hover{ background: #FFFFFF; transform: translateY(-1px); box-shadow: 0 10px 22px -14px rgba(6,78,59,.6); }
+.lang-switch:active{ transform: translateY(0); }
+.lang-switch:focus-visible{ outline: 2px solid rgba(5,150,105,.5); outline-offset: 2px; }
+.lang-switch .ls-dot{
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 0 3px rgba(5,150,105,.14);
+  flex: none;
+}
+
 /* ---------------------------------------------------------------- top bar */
 
 .topbar{
@@ -1144,7 +1187,7 @@ footer{
   z-index: 1;
   margin-top: 34px;
   border-top: 1px solid rgba(28,25,23,.08);
-  padding: 14px 0 16px;
+  padding: 14px 0 58px;   /* 底部留给左下角语言胶囊，避免压住页脚文字 */
   background: rgba(255,255,255,.55);
 }
 .foot-line{
@@ -1333,16 +1376,17 @@ footer{
     flex: 0 0 auto;
     justify-content: center;
     gap: 2px;
-    height: 24px;
+    height: auto;
     margin: 0;
-    padding: 0 8px;
+    padding: 3px 8px;
     border: 1px solid var(--amber-line);
     background: #FFF7ED;
     border-radius: 999px;
-    font-size: 10.8px;
+    font-size: 10.5px;
+    line-height: 1.15;
     color: #C2410C;
   }
-  .row3 .go svg{ width: 9px; height: 9px; }
+  .row3 .go svg{ width: 8px; height: 8px; }
   .row3 .go:hover{ text-decoration: none; background: #FFF1E6; }
 
   /* 展开态：地区 / 时间并排，正文与步骤整行 */
@@ -1353,6 +1397,20 @@ footer{
     font-size: 11.5px;
     line-height: 1.42;
   }
+  /* 展开面板底部的直达按钮：紧凑小胶囊，不再擑满整行 38px */
+  .detail-cta{
+    grid-column: 1 / -1;
+    justify-self: start;
+    width: auto;
+    height: auto;
+    padding: 5px 12px;
+    margin-top: 1px;
+    gap: 4px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .detail-cta svg{ width: 10px; height: 10px; }
   .field dt{ font-size: 9px; margin-bottom: 1px; }
   .field dd, .field ol{ font-size: 11.5px; line-height: 1.42; }
   .field ol{ padding-left: 14px; }
@@ -1518,6 +1576,17 @@ footer{
 
   .foot-line{ gap: 10px; font-size: 11px; }
   .foot-up{ display: none; }
+
+  /* 左下角语言胶囊：手机上再收小一圈，不挡内容 */
+  .lang-switch{
+    left: 10px;
+    bottom: 12px;
+    height: 27px;
+    padding: 0 10px;
+    gap: 5px;
+    font-size: 11px;
+  }
+  .lang-switch .ls-dot{ width: 5px; height: 5px; }
 }
 
 /* 窄屏（iPhone SE / 360 级）：先舍「已归档」胶囊，保证 🥒 羊毛情报局 完整不截断 */

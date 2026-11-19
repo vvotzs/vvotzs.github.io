@@ -47,6 +47,17 @@ from common import (  # noqa: E402
     today_local,
     value_expected,
 )
+from i18n import (  # noqa: E402
+    CAT_EN,
+    COST_EN,
+    U,
+    load_en,
+    short_date_en,
+    upair,
+)
+
+# 英文版页面：/en/index.html（英文 OG 预览 + 英文收录），中文首页用 ?lang=en 原地切换
+EN_OUT = ROOT / "en" / "index.html"
 
 try:
     from PIL import Image
@@ -174,16 +185,16 @@ def mascot_svg(cls: str = "", gid: str = "mintBody") -> str:
 
 
 NAV = [
-    ("fresh", "新收录", "today"),
-    ("rank", "榜单", "rank"),
-    ("ai", "AI", "ai"),
-    ("crypto", "币", "crypto"),
-    ("bank", "卡", "bank"),
-    ("cloud", "云", "cloud"),
-    ("esim", "eSIM", "esim"),
-    ("closing", "截止", "clock"),
-    ("software", "软件", "software"),
-    ("archive", "归档", "archive"),
+    ("fresh", "nav_fresh", "today"),
+    ("rank", "nav_rank", "rank"),
+    ("ai", "nav_ai", "ai"),
+    ("crypto", "nav_crypto", "crypto"),
+    ("bank", "nav_bank", "bank"),
+    ("cloud", "nav_cloud", "cloud"),
+    ("esim", "nav_esim", "esim"),
+    ("closing", "nav_closing", "clock"),
+    ("software", "nav_software", "software"),
+    ("archive", "nav_archive", "archive"),
 ]
 
 COST_CLASS = {
@@ -193,6 +204,37 @@ COST_CLASS = {
     "需要交易量": "cost-volume",
     "需要邀请条件": "cost-invite",
 }
+
+
+ZH_DESC = (
+    "羊毛情报局：每日核验的全球优惠情报导航。AI 工具免费额度、Crypto 空投与交易奖励、"
+    "海外银行开户与跨境汇款邀请、VPS 云服务体验金、eSIM 免费流量、软件学生福利——"
+    "一屏看清价值、门槛与截止时间，点击直达官方活动页。"
+)
+EN_TITLE = "Deal Hunter · Verified global deals, free credits & sign-up bonuses"
+EN_DESC = (
+    "Deal Hunter: a daily-verified directory of global offers — free AI credits, crypto sign-up rewards, "
+    "overseas bank and remittance bonuses, VPS credits, free eSIM data and student software. "
+    "Value, requirements and deadline on one card, straight to the official page."
+)
+EN_OG_DESC = (
+    "Free AI credits, crypto rewards, bank and remittance bonuses, VPS credits, free eSIM data and "
+    "student software — value, requirements and deadline at a glance."
+)
+
+# 语言引导：在样式表之前跑，按 ?lang= → /en/ 路径 → localStorage 的顺序定语言，
+# 避免英文用户看到一闪而过的中文（默认仍是中文）。
+LANG_BOOT = (
+    "<script>!function(){try{var d=document.documentElement,"
+    'p=new URLSearchParams(location.search),q=p.get("lang"),'
+    's=localStorage.getItem("ydj-lang"),l;'
+    'if(/^\\/en(\\/|$)/.test(location.pathname))l="en";'
+    'else if(q==="en"||q==="zh")l=q;'
+    'else if(s==="en"||s==="zh")l=s;'
+    'else l="zh";'
+    'd.setAttribute("data-lang",l);d.lang=l==="en"?"en":"zh-CN";'
+    "}catch(e){}}();</script>"
+)
 
 
 def asset_ver(rel: str) -> str:
@@ -207,33 +249,57 @@ def e(value: object) -> str:
     return html.escape("" if value is None else str(value), quote=True)
 
 
+def bi(zh: str, en: str, cls: str = "") -> str:
+    """中英双语内联片段（zh / en 都已转义）。
+
+    CSS 按 <html data-lang> 只显示一种，因此不用 JS 改 DOM 文本，切换零闪烁；
+    两段文字各带正确的 lang，读屏和搜索引擎都能分清语言。
+    """
+    c = " " + cls if cls else ""
+    return (
+        f'<span class="t-zh{c}">{zh}</span>'
+        f'<span class="t-en{c}" lang="en">{en}</span>'
+    )
+
+
+def ui(key: str, **fmt) -> str:
+    """界面文案的双语片段；带占位符的 key 用 fmt 填。"""
+    zh, en = U[key]
+    if fmt:
+        return bi(zh.format(**fmt), en.format(**fmt))
+    return bi(zh, en)
+
+
 def deadline_html(deal: dict, today) -> str:
     end = parse_date(deal.get("end", ""))
     if not end:
-        return '<span class="deadline">长期有效</span>'
+        return f'<span class="deadline">{ui("ongoing")}</span>'
     if end < today:
-        return f'<span class="deadline">{short_date(deal["end"])} 结束</span>'
+        return f'<span class="deadline">{bi(short_date(deal["end"]) + " 结束", "Ended " + short_date_en(end))}</span>'
     left = (end - today).days
     if left <= 1:
-        return '<span class="deadline hot">今天截止</span>'
+        return f'<span class="deadline hot">{ui("ends_today")}</span>'
     if left <= 30:
-        return f'<span class="deadline hot">剩 {left} 天 · {short_date(deal["end"])}</span>'
-    return f'<span class="deadline">{short_date(deal["end"])} 截止</span>'
+        return (
+            f'<span class="deadline hot">'
+            f'{bi(f"剩 {left} 天 · {short_date(deal["end"])}", f"{left} days left · {short_date_en(end)}")}</span>'
+        )
+    return f'<span class="deadline">{bi(short_date(deal["end"]) + " 截止", "Ends " + short_date_en(end))}</span>'
 
 
-def short_deadline(deal: dict, today) -> str:
-    """跳转卡第二行用的极短截止提示。"""
+def short_deadline(deal: dict, today) -> tuple[str, str]:
+    """跳转卡第二行用的极短截止提示（(中文, English)）。"""
     end = parse_date(deal.get("end", ""))
     if not end:
-        return "长期有效"
+        return U["ongoing"]
     left = (end - today).days
     if left < 0:
-        return "已结束"
+        return (U["ended_word"][0], U["ended_word"][1])
     if left <= 1:
-        return "今天截止"
+        return U["ends_today"]
     if left <= 30:
-        return f"剩 {left} 天"
-    return short_date(deal["end"])
+        return (f"剩 {left} 天", f"{left}d left")
+    return (short_date(deal["end"]), short_date_en(end))
 
 
 # ---------------------------------------------------------------- 价值展示
@@ -273,7 +339,12 @@ def _paren_estimate(raw: str) -> tuple[float | None, str]:
 
 def value_display(deal: dict) -> str:
     """统一成「≈$25 · 最高 $2,000」这种可比格式。"""
-    raw = (deal.get("value") or "").strip()
+    return value_text((deal.get("value") or "").strip(), deal)
+
+
+def value_text(raw: str, deal: dict) -> str:
+    """对任意语言的 value 原文做同一套折算：
+    括号里的折算值提前、非美元金额补 ≈$ 对照、上限型补期望值。"""
     exp = value_expected(deal)
 
     est, rest = _paren_estimate(raw)
@@ -302,10 +373,18 @@ def value_display(deal: dict) -> str:
     return f"≈${exp:,.0f} · {raw}" if raw else f"≈${exp:,.0f}"
 
 
-def value_compact(deal: dict) -> str:
+def value_pair(deal: dict, en: dict) -> tuple[str, str]:
+    """卡面价值徽标：中文取 value，英文取 value_en（缺字段时退回原文）。"""
+    raw_en = (en.get("value") or "").strip() or (deal.get("value") or "").strip()
+    return value_text((deal.get("value") or "").strip(), deal), value_text(raw_en, deal)
+
+
+def value_compact(v: str, lang: str = "zh") -> str:
     """热榜窄条用的短价值：去括号补充说明，还长就只留「≈$X」。"""
-    v = re.sub(r"[（(][^）)]*[）)]", "", value_display(deal)).strip()
-    if len(v) > 18 and " · " in v:
+    v = re.sub(r"[（(][^）)]*[）)]", "", v).strip()
+    # 英文单词更长，宽度阈值放多一点（约合同样像素宽度）
+    limit = 18 if lang == "zh" else 22
+    if len(v) > limit and " · " in v:
         v = v.split(" · ")[0]
     return v
 
@@ -414,109 +493,163 @@ def ensure_favicon(domain: str) -> bool:
 
 
 # --------------------------------------------------------------------- cards
-def detail_tags(deal: dict) -> str:
-    cat = CAT_META.get(deal.get("category", ""), {"label": deal.get("category", "")})["label"]
+def detail_tags(deal: dict, en: dict) -> str:
+    cat = deal.get("category", "")
+    cat_zh = CAT_META.get(cat, {"label": cat})["label"]
+    cat_en = CAT_EN.get(cat, (cat, ""))[0]
     cost = deal.get("cost", "")
     cost_cls = COST_CLASS.get(cost, "cost-invite")
+    cost_en = COST_EN.get(cost, cost)
     if deal.get("verified"):
-        check = '<span class="dcheck ok">✓ 已核验</span>'
+        check = f'<span class="dcheck ok">{ui("verified")}</span>'
     else:
-        check = '<span class="dcheck wait">待核实</span>'
+        check = f'<span class="dcheck wait">{ui("unverified")}</span>'
+    v_zh, v_en = value_pair(deal, en)
     return (
         '<div class="detail-tags">'
-        f'<span class="dtag cat">{e(cat)}</span>'
-        f'<span class="dval"><span class="dval-k">实际价值</span><strong>{e(value_display(deal))}</strong></span>'
-        f'<span class="dtag {cost_cls}">{e(cost)}</span>'
+        f'<span class="dtag cat">{bi(e(cat_zh), e(cat_en))}</span>'
+        f'<span class="dval"><span class="dval-k">{ui("actual_value")}</span>'
+        f"<strong>{bi(e(v_zh), e(v_en))}</strong></span>"
+        f'<span class="dtag {cost_cls}">{bi(e(cost), e(cost_en))}</span>'
         f"{check}"
         "</div>"
     )
 
 
-def card(deal: dict, today) -> str:
+# 「直达」按钮指向抓取来源（nodeseek / nodeloc / linux.do / Reddit 等原帖），
+# 只有条目显式给了 source_url，或 source 里写了原帖链接时才切换；官网链接始终留在详情里。
+_SRC_URL_RE = re.compile(r"https?://[^\s）)，,；;】]+")
+
+
+def fav_html(deal: dict, size: int) -> str:
+    """站点图标：构建时已落地的用 <img>；个别域名下载不到就直接给字母块，避免页面上出现 404。"""
+    name = fav_name(deal.get("domain", ""))
+    monogram = e((deal.get("brand") or "?")[:1].upper())
+    if (FAV_DIR / f"{name}.png").exists():
+        return (
+            f'<img class="fav" src="/assets/fav/{name}.png" width="{size}" height="{size}" alt="" '
+            f'loading="lazy" decoding="async" data-fallback="{monogram}" '
+            f'onerror="window.__favFallback&&window.__favFallback(this)">'
+            f'<span class="fav-fallback" style="display:none" aria-hidden="true">{monogram}</span>'
+        )
+    return f'<span class="fav-fallback" style="display:grid" aria-hidden="true">{monogram}</span>'
+
+
+def main_link(deal: dict) -> str:
+    """卡片主按钮的去向：抓取来源优先，没有就回官网活动页。"""
+    src = (deal.get("source_url") or "").strip()
+    if not src:
+        m = _SRC_URL_RE.search(deal.get("source") or "")
+        src = m.group(0).rstrip("。.,；;") if m else ""
+    official = (deal.get("url") or "").strip()
+    if src and src.rstrip("/") != official.rstrip("/"):
+        return src
+    return official
+
+
+def official_link(deal: dict) -> str:
+    return (deal.get("url") or "").strip()
+
+
+def card(deal: dict, en: dict, today) -> str:
     cost = deal.get("cost", "")
     cost_cls = COST_CLASS.get(cost, "cost-invite")
     expired = bool(deal.get("status") == "expired")
     classes = "card is-expired" if expired else "card"
 
-    steps = "".join(f"<li>{e(s)}</li>" for s in deal.get("steps", []))
-    if not steps:
-        steps = "<li>见官方活动页</li>"
+    steps_zh = "".join(f"<li>{e(s)}</li>" for s in deal.get("steps", []))
+    steps_en = "".join(f"<li>{e(s)}</li>" for s in (en.get("steps") or []))
+    if not steps_zh:
+        steps_zh = f"<li>{e(U['see_official'][0])}</li>"
+        steps_en = f"<li>{e(U['see_official'][1])}</li>"
 
     value_cls = "value gold" if (deal.get("value_num") or 0) >= 100 else "value"
+    v_zh, v_en = value_pair(deal, en)
 
-    region_text = strip_region_bracket(deal["regions"])
-    region_html = f'<span class="sep">·</span><span class="region">{e(region_text)}</span>' if region_text else ""
+    region_text_zh = strip_region_bracket(deal["regions"])
+    region_text_en = strip_region_bracket(en.get("regions") or deal["regions"])
+    region_html = ""
+    if region_text_zh:
+        region_html = (
+            f'<span class="sep">·</span><span class="region">'
+            f"{bi(e(region_text_zh), e(region_text_en))}</span>"
+        )
 
-    region_tag, title_text = title_parts(deal.get("title", ""))
-    if region_tag:
-        title_html = f'<span class="rtag">{e(region_tag)}</span>{e(title_text)}'
-    else:
-        title_html = e(title_text)
+    rtag_zh, title_zh = title_parts(deal.get("title", ""))
+    rtag_en, title_en = title_parts(en.get("title") or deal.get("title", ""))
+    title_html = ""
+    if rtag_zh:
+        title_html += f'<span class="rtag t-zh">{e(rtag_zh)}</span>'
+    if rtag_en:
+        title_html += f'<span class="rtag t-en" lang="en">{e(rtag_en)}</span>'
+    title_html += f'<span class="t-zh">{e(title_zh)}</span><span class="t-en" lang="en">{e(title_en)}</span>'
 
-    fav = f"assets/fav/{fav_name(deal.get('domain', ''))}.png"
-    monogram = (deal.get("brand") or "?")[:1].upper()
+    hl_zh = e(deal.get("highlight", ""))
+    hl_en = e(en.get("highlight") or deal.get("highlight", ""))
+
     deal_id = e(deal["id"])
+
+    period = bi(
+        f"{e(deal.get('start') or U['not_announced'][0])} → {e(deal.get('end') or U['ongoing_not_announced'][0])}",
+        f"{e(deal.get('start') or U['not_announced'][1])} → {e(deal.get('end') or U['ongoing_not_announced'][1])}",
+    )
 
     return f"""<article class="{classes}" id="deal-{deal_id}" data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
     data-added="{e(deal.get('added', ''))}" data-val-exp="{value_expected(deal):g}" data-key="{deal_id}">
     <div class="card-head">
-      <img class="fav" src="{fav}" width="24" height="24" alt=""
-           loading="lazy" decoding="async" data-fallback="{e(monogram)}"
-           onerror="window.__favFallback&&window.__favFallback(this)">
-      <span class="fav-fallback" style="display:none" aria-hidden="true">{e(monogram)}</span>
+      {fav_html(deal, 24)}
       <div class="card-body">
         <div class="row1">
           <h3>{title_html}</h3>
-          <span class="{value_cls}">{e(value_display(deal))}</span>
+          <span class="{value_cls}">{bi(e(v_zh), e(v_en))}</span>
         </div>
-        <p class="row2"><span class="tag {cost_cls}">{e(cost)}</span>{e(deal['highlight'])}</p>
+        <p class="row2"><span class="tag {cost_cls}">{bi(e(cost), e(COST_EN.get(cost, cost)))}</span>{bi(hl_zh, hl_en)}</p>
         <div class="row3">
           {deadline_html(deal, today)}
           {region_html}
           <span class="grow"></span>
-          <a class="go" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow"
-             aria-label="直达原链接"><span class="go-full">直达原链接</span><span class="go-short">直达</span>{icon('external')}</a>
+          <a class="go" href="{e(main_link(deal))}" target="_blank" rel="noopener nofollow"
+             data-al-zh="直达原链接" data-al-en="Open the official offer"><span class="go-full">{ui("go_full")}</span><span class="go-short">{ui("go_short")}</span>{icon('external')}</a>
           <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-{deal_id}"
-                  aria-label="展开详情">详情
+                  data-al-zh="展开详情" data-al-en="Expand details">{ui("detail_open")}
             {icon('chevron')}
           </button>
         </div>
       </div>
     </div>
     <div class="detail" id="detail-{deal_id}"><div class="detail-in"><div class="detail-body">
-      {detail_tags(deal)}
-      <div class="field wide"><dt>优惠内容</dt><dd>{e(deal['content'])}</dd></div>
-      <div class="field wide"><dt>参与条件</dt><dd>{e(deal['conditions'])}</dd></div>
-      <div class="field"><dt>适用国家或地区</dt><dd>{e(deal['regions'])}</dd></div>
-      <div class="field"><dt>开始及截止时间</dt><dd>{e(deal.get('start') or '官方未公布')} → {e(deal.get('end') or '长期 / 官方未公布')}</dd></div>
-      <div class="field wide"><dt>参与步骤</dt><ol>{steps}</ol></div>
-      <div class="field wide"><dt>官方活动链接</dt>
+      {detail_tags(deal, en)}
+      <div class="field wide"><dt>{ui("f_what")}</dt><dd>{bi(e(deal['content']), e(en.get('content') or deal['content']))}</dd></div>
+      <div class="field wide"><dt>{ui("f_conditions")}</dt><dd>{bi(e(deal['conditions']), e(en.get('conditions') or deal['conditions']))}</dd></div>
+      <div class="field"><dt>{ui("f_regions")}</dt><dd>{bi(e(deal['regions']), e(en.get('regions') or deal['regions']))}</dd></div>
+      <div class="field"><dt>{ui("f_period")}</dt><dd>{period}</dd></div>
+      <div class="field wide"><dt>{ui("f_steps")}</dt><ol class="t-zh">{steps_zh}</ol><ol class="t-en" lang="en">{steps_en}</ol></div>
+      <div class="field wide"><dt>{ui("f_link")}</dt>
         <dd><a class="url-link" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow">{e(deal['url'])}</a></dd></div>
       <div class="risk">
         {icon('warn')}
-        <span>{e(deal['risk'])}</span>
+        <span>{bi(e(deal['risk']), e(en.get('risk') or deal['risk']))}</span>
       </div>
-      <a class="detail-cta" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow">
-        直达原链接{icon('external')}</a>
+      <a class="detail-cta" href="{e(main_link(deal))}" target="_blank" rel="noopener nofollow">
+        {ui("go_full")}{icon('external')}</a>
       <div class="detail-foot">
-        <span>来源 · {e(deal['source'])}</span>
-        <span>最后验证 · {e(deal['last_verified'])}</span>
-        <span>收录 · {e(deal.get('added', ''))}</span>
+        <span>{bi(e(f"{U['f_source'][0]} · {deal['source']}"), e(f"{U['f_source'][1]} · {en.get('source') or deal['source']}"))}</span>
+        <span>{bi(e(f"{U['f_last_verified'][0]} · {deal['last_verified']}"), e(f"{U['f_last_verified'][1]} · {deal['last_verified']}"))}</span>
+        <span>{bi(e(f"{U['f_added'][0]} · {deal.get('added', '')}"), e(f"{U['f_added'][1]} · {deal.get('added', '')}"))}</span>
       </div>
     </div></div></div>
   </article>"""
 
 
-def jump_card(deal: dict, today, rank: int | None = None) -> str:
+def jump_card(deal: dict, en: dict, today, rank: int | None = None) -> str:
     """精简跳转卡：点一下滚到 #deal-<id> 并展开，详情只存一份。
 
     标题独占第一行；价值徽标与地区/截止信息放第二行，标题能用到整行宽度。
     """
-    region_tag, title_text = title_parts(deal.get("title", ""))
+    rtag_zh, title_zh = title_parts(deal.get("title", ""))
+    rtag_en, title_en = title_parts(en.get("title") or deal.get("title", ""))
     cost = deal.get("cost", "")
-    fav = f"assets/fav/{fav_name(deal.get('domain', ''))}.png"
-    monogram = (deal.get("brand") or "?")[:1].upper()
     deal_id = e(deal["id"])
     if rank is None:
         rank_html = ""
@@ -524,20 +657,21 @@ def jump_card(deal: dict, today, rank: int | None = None) -> str:
         rank_cls = "jump-rank" + (f" r{rank}" if rank <= 3 else "")
         rank_html = f'<span class="{rank_cls}"><i>#</i>{rank}</span>'
     # 截止提示放前面：窄条里被截断时先舍地区，不舍截止
-    meta = e(short_deadline(deal, today)) + (f" · {e(region_tag)}" if region_tag else "")
+    sd_zh, sd_en = short_deadline(deal, today)
+    meta_zh = sd_zh + (f" · {rtag_zh}" if rtag_zh else "")
+    meta_en = sd_en + (f" · {rtag_en}" if rtag_en else "")
     value_cls = "value gold" if (deal.get("value_num") or 0) >= 100 else "value"
+    v_zh, v_en = value_pair(deal, en)
 
     return f"""<a class="jump" href="#deal-{deal_id}" data-jump="deal-{deal_id}"
     data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
     data-added="{e(deal.get('added', ''))}" data-key="{deal_id}">
       {rank_html}
-      <img class="fav" src="{fav}" width="22" height="22" alt="" loading="lazy" decoding="async"
-           data-fallback="{e(monogram)}" onerror="window.__favFallback&&window.__favFallback(this)">
-      <span class="fav-fallback" style="display:none" aria-hidden="true">{e(monogram)}</span>
+      {fav_html(deal, 22)}
       <span class="jump-main">
-        <span class="jump-title">{e(title_text)}</span>
-        <span class="jump-sub"><span class="{value_cls}">{e(value_compact(deal))}</span><span class="jump-meta">{meta}</span></span>
+        <span class="jump-title">{bi(e(title_zh), e(title_en))}</span>
+        <span class="jump-sub"><span class="{value_cls}">{bi(e(value_compact(v_zh)), e(value_compact(v_en, 'en')))}</span><span class="jump-meta">{bi(e(meta_zh), e(meta_en))}</span></span>
       </span>
       {icon('external', 'jump-arrow')}
     </a>"""
@@ -546,18 +680,22 @@ def jump_card(deal: dict, today, rank: int | None = None) -> str:
 def module_html(
     anchor: str,
     icon_key: str,
-    title: str,
-    desc: str,
+    title: tuple[str, str],
+    desc: tuple[str, str],
     deals: list[dict],
+    en_map: dict,
     today,
     ranked: bool = False,
     jump: bool = False,
     strip: bool = False,
 ) -> str:
     if jump:
-        cards = [jump_card(deal, today, rank=i if ranked else None) for i, deal in enumerate(deals, start=1)]
+        cards = [
+            jump_card(deal, en_map.get(deal["id"], {}), today, rank=i if ranked else None)
+            for i, deal in enumerate(deals, start=1)
+        ]
     else:
-        cards = [card(deal, today) for deal in deals]
+        cards = [card(deal, en_map.get(deal["id"], {}), today) for deal in deals]
     count = len(deals)
     # 分类内左右横滑翻页：手机一页 5 张（一屏装得下）、桌面双列一页 8 张；热榜跳转卡不翻页
     per_page = 6 if jump else 5
@@ -567,18 +705,18 @@ def module_html(
   <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-per="{per_page}" data-per-lg="{per_page_lg}"{' data-kind="jump"' if jump else ''}>
     <header class="module-head">
       <span class="module-badge" aria-hidden="true">{icon(icon_key)}</span>
-      <h2>{title} <span class="count" data-count>{count}</span></h2>
-      <p class="module-desc">{desc}</p>
+      <h2>{bi(*title)} <span class="count" data-count>{count}</span></h2>
+      <p class="module-desc">{bi(*desc)}</p>
     </header>
     <div class="track" data-track>
       {''.join(cards)}
     </div>
     <div class="pager-bar" data-bar>
-      <button class="pg" type="button" data-prev aria-label="上一页">‹</button>
+      <button class="pg" type="button" data-prev data-al-zh="上一页" data-al-en="Previous page">‹</button>
       <span class="pager-label" data-label>1 / {pages}</span>
-      <button class="pg" type="button" data-next aria-label="下一页">›</button>
+      <button class="pg" type="button" data-next data-al-zh="下一页" data-al-en="Next page">›</button>
     </div>
-    <p class="module-empty" style="display:none">该分类暂无符合条件的优惠</p>
+    <p class="module-empty" style="display:none">{ui("mod_empty")}</p>
     <button class="more" type="button" data-more hidden></button>
   </section>"""
 
@@ -652,51 +790,65 @@ def main() -> None:
         "total": len(deals),
     }
 
+    en_map = load_en()
+    missing_en = [d["id"] for d in deals if d["id"] not in en_map]
+
     rail = "".join(
-        f'<a href="#{anchor}" data-target="{anchor}" aria-label="{label}">{icon(icon_key)}'
-        f"<span>{label}</span></a>"
-        for anchor, label, icon_key in NAV
+        f'<a href="#{anchor}" data-target="{anchor}" data-al-zh="{U[key][0]}" data-al-en="{U[key][1]}">{icon(icon_key)}'
+        f"<span>{ui(key)}</span></a>"
+        for anchor, key, icon_key in NAV
     )
     rail += (
         '<div class="rail-sep" aria-hidden="true"></div>'
-        f'<a class="rail-top" href="#top" aria-label="回到顶部">{icon("rocket")}'
-        "<span>顶部</span></a>"
+        f'<a class="rail-top" href="#top" data-al-zh="回到顶部" data-al-en="Back to top">{icon("rocket")}'
+        f"<span>{ui('nav_top')}</span></a>"
     )
     board = {
         "fresh": module_html(
-            "fresh", "today", "新收录",
-            f"最近 {TODAY_WINDOW_DAYS * 24} 小时新收录、且仍在进行的优惠，按收录时间倒序。点一条即可跳到分类里的完整详情。",
-            fresh, today, jump=True, strip=True,
+            "fresh", "today", U["mod_fresh"], upair("mod_fresh_desc", h=TODAY_WINDOW_DAYS * 24),
+            fresh, en_map, today, jump=True, strip=True,
         ),
         "rank": module_html(
-            "rank", "rank", "高价值榜",
-            "按可预期到手金额排序（抽奖类按期望值折算），先挑最值钱的。",
-            leaderboard, today, ranked=True, jump=True, strip=True,
+            "rank", "rank", U["mod_rank"], U["mod_rank_desc"],
+            leaderboard, en_map, today, ranked=True, jump=True, strip=True,
         ),
         "closing": module_html(
-            "closing", "clock", "即将截止",
-            f"{CLOSING_WINDOW_DAYS} 天内到期的活动，按截止时间排序；标「剩 N 天」的请优先处理。",
-            closing, today, jump=True, strip=True,
+            "closing", "clock", U["mod_closing"], upair("mod_closing_desc", d=CLOSING_WINDOW_DAYS),
+            closing, en_map, today, jump=True, strip=True,
         ),
         "lottery": module_html(
-            "lottery", "gift", "抽奖 / 高上限",
-            "上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。",
-            lottery, today, ranked=True, jump=True, strip=True,
+            "lottery", "gift", U["mod_lottery"], U["mod_lottery_desc"],
+            lottery, en_map, today, ranked=True, jump=True, strip=True,
         ),
     }
 
+    tab_counts = {
+        "fresh": len(fresh),
+        "rank": len(leaderboard),
+        "closing": len(closing),
+        "lottery": len(lottery),
+    }
+
+    def hot_tab(anchor: str, key: str, on: bool) -> str:
+        cls = "hot-tab on" if on else "hot-tab"
+        cur = ' aria-current="true"' if on else ""
+        return (
+            f'<a class="{cls}" href="#{anchor}" data-tab="{anchor}"{cur}>'
+            f'{ui(key)} <b data-tabcount="{anchor}">{tab_counts[anchor]}</b></a>'
+        )
+
     hot_board = f"""
   <div class="hot-board" data-hot-board>
-    <div class="hot-tabs-mobile" role="tablist" aria-label="热榜">
-      <a class="hot-tab on" href="#fresh" data-tab="fresh" aria-current="true">新收录 <b data-tabcount="fresh">{len(fresh)}</b></a>
-      <a class="hot-tab" href="#rank" data-tab="rank">高价值榜 <b data-tabcount="rank">{len(leaderboard)}</b></a>
-      <a class="hot-tab" href="#closing" data-tab="closing">即将截止 <b data-tabcount="closing">{len(closing)}</b></a>
-      <a class="hot-tab" href="#lottery" data-tab="lottery">抽奖 <b data-tabcount="lottery">{len(lottery)}</b></a>
+    <div class="hot-tabs-mobile" role="tablist" aria-label="{U['hot_aria'][0]}">
+      {hot_tab('fresh', 'tab_fresh', True)}
+      {hot_tab('rank', 'tab_rank', False)}
+      {hot_tab('closing', 'tab_closing', False)}
+      {hot_tab('lottery', 'tab_lottery', False)}
     </div>
     <div class="hot-panel hot-panel-main">
       <div class="hot-tablist">
-        <a class="hot-tab on" href="#fresh" data-tab="fresh" aria-current="true">新收录 <b data-tabcount="fresh">{len(fresh)}</b></a>
-        <a class="hot-tab" href="#rank" data-tab="rank">高价值榜 <b data-tabcount="rank">{len(leaderboard)}</b></a>
+        {hot_tab('fresh', 'tab_fresh_long', True)}
+        {hot_tab('rank', 'tab_rank_long', False)}
       </div>
       <div class="hot-panel-body" data-panel-body>
         {board["fresh"]}
@@ -705,8 +857,8 @@ def main() -> None:
     </div>
     <div class="hot-panel hot-panel-alt">
       <div class="hot-tablist">
-        <a class="hot-tab on" href="#closing" data-tab="closing" aria-current="true">即将截止 <b data-tabcount="closing">{len(closing)}</b></a>
-        <a class="hot-tab" href="#lottery" data-tab="lottery">抽奖 / 高上限 <b data-tabcount="lottery">{len(lottery)}</b></a>
+        {hot_tab('closing', 'tab_closing_long', True)}
+        {hot_tab('lottery', 'tab_lottery_long', False)}
       </div>
       <div class="hot-panel-body" data-panel-body>
         {board["closing"]}
@@ -717,49 +869,27 @@ def main() -> None:
 
     modules = "".join(
         [
+            module_html("ai", "ai", U["mod_ai"], U["mod_ai_desc"], by_cat["ai"], en_map, today),
+            module_html("crypto", "crypto", U["mod_crypto"], U["mod_crypto_desc"], by_cat["crypto"], en_map, today),
+            module_html("bank", "bank", U["mod_bank"], U["mod_bank_desc"], by_cat["bank"], en_map, today),
+            module_html("cloud", "cloud", U["mod_cloud"], U["mod_cloud_desc"], by_cat["cloud"], en_map, today),
+            module_html("esim", "esim", U["mod_esim"], U["mod_esim_desc"], by_cat["esim"], en_map, today),
+            module_html("software", "software", U["mod_software"], U["mod_software_desc"], by_cat["software"], en_map, today),
             module_html(
-                "ai", "ai", "AI 工具免费与折扣",
-                "ChatGPT、Gemini、Claude、Copilot、Cursor 等免费额度与限时赠送，含学生专属。",
-                by_cat["ai"], today,
-            ),
-            module_html(
-                "crypto", "crypto", "Crypto 空投与积分",
-                "交易所新人奖励、任务空投与积分计划；奖励多为返佣券或代币，注意可提现条件。",
-                by_cat["crypto"], today,
-            ),
-            module_html(
-                "bank", "bank", "海外银行 · U 卡 · 跨境汇款",
-                "开户奖励、虚拟卡返现、可双向叠加的邀请奖励（Wise / Sendwave / Taptap Send / Remitly 等）。",
-                by_cat["bank"], today,
-            ),
-            module_html(
-                "cloud", "cloud", "VPS 及云服务",
-                "永久免费实例、新人体验金与黑五主机折扣，部署前先看清到期与回收规则。",
-                by_cat["cloud"], today,
-            ),
-            module_html(
-                "esim", "esim", "eSIM 全球流量",
-                "免费试用与首单折扣，每条都标出可用国家或地区与注册限制——先试网，再买大套餐。",
-                by_cat["esim"], today,
-            ),
-            module_html(
-                "software", "software", "软件与数字服务",
-                "学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠。",
-                by_cat["software"], today,
-            ),
-            module_html(
-                "archive", "archive", "已结束活动档案",
-                "已过期活动全部保留供查档，可按截止时间翻看历史优惠。",
-                sorted(expired, key=lambda d: d.get("end") or "", reverse=True), today,
+                "archive", "archive", U["mod_archive"], U["mod_archive_desc"],
+                sorted(expired, key=lambda d: d.get("end") or "", reverse=True), en_map, today,
             ),
         ]
     )
 
-    # 搜索索引：每张卡只留 data-key，搜索文本统一放在这段 JSON 里
-    search_index = {}
+    # 搜索索引：每张卡只留 data-key，搜索文本统一放在这段 JSON 里（中英各一份）
+    search_zh: dict[str, str] = {}
+    search_en: dict[str, str] = {}
     for deal in deals:
         cat_meta = CAT_META.get(deal.get("category", ""), {"label": "", "search": ""})
-        hay = " ".join(
+        cat_en = CAT_EN.get(deal.get("category", ""), ("", ""))
+        en = en_map.get(deal["id"], {})
+        hay_zh = " ".join(
             [
                 deal.get("title", ""),
                 deal.get("highlight", ""),
@@ -770,73 +900,116 @@ def main() -> None:
                 cat_meta.get("search", ""),
             ]
         )
-        search_index[deal["id"]] = re.sub(r"\s+", " ", hay).strip()
-    search_json = json.dumps(search_index, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-
-    item_list = []
-    for i, deal in enumerate(leaderboard, start=1):
-        item_list.append(
-            {
-                "@type": "ListItem",
-                "position": i,
-                "name": deal["title"],
-                "url": deal["url"],
-                "description": deal["highlight"],
-            }
+        hay_en = " ".join(
+            [
+                en.get("title", ""),
+                en.get("highlight", ""),
+                en.get("regions", ""),
+                deal.get("brand", ""),
+                COST_EN.get(deal.get("cost", ""), ""),
+                cat_en[0],
+                cat_en[1],
+            ]
         )
-
-    jsonld = json.dumps(
-        [
-            {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "name": "羊毛情报局",
-                "alternateName": "羊毛情报局 · 全球优惠情报",
-                "url": SITE_URL,
-                "inLanguage": "zh-CN",
-                "description": "每日核验的全球优惠情报导航：AI 免费额度、Crypto 奖励、海外银行与汇款邀请、云服务额度、eSIM 免费流量、软件学生福利。",
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": SITE_URL + "?q={search_term_string}",
-                    "query-input": "required name=search_term_string",
-                },
-            },
-            {
-                "@context": "https://schema.org",
-                "@type": "ItemList",
-                "name": "高价值优惠排行榜",
-                "itemListElement": item_list,
-            },
-        ],
-        ensure_ascii=False,
-        indent=2,
+        search_zh[deal["id"]] = re.sub(r"\s+", " ", hay_zh).strip()
+        search_en[deal["id"]] = re.sub(r"\s+", " ", hay_en).strip()
+    search_json = json.dumps({"zh": search_zh, "en": search_en}, ensure_ascii=False, separators=(",", ":")).replace(
+        "</", "<\\/"
     )
 
-    page = f"""<!DOCTYPE html>
-<html lang="zh-CN">
+    def head_json(lang_en: bool) -> str:
+        data = {
+            "zh": {
+                "title": "羊毛情报局 · 全球优惠 / 免费额度 / 限时活动情报",
+                "description": ZH_DESC,
+                "placeholder": U["search_ph"][0],
+            },
+            "en": {
+                "title": EN_TITLE,
+                "description": EN_DESC,
+                "placeholder": U["search_ph"][1],
+            },
+        }
+        return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+    def page_html(lang: str) -> str:
+        is_en = lang == "en"
+        title = EN_TITLE if is_en else "羊毛情报局 · 全球优惠 / 免费额度 / 限时活动情报"
+        desc = EN_DESC if is_en else ZH_DESC
+        og_title = "Deal Hunter · Global deals & free credits" if is_en else "羊毛情报局 · 全球优惠与免费额度情报"
+        og_desc = EN_OG_DESC if is_en else "每日核验的全球优惠导航：AI、Crypto、海外银行与汇款、云服务、eSIM、软件学生福利。价值、门槛、截止时间一眼看清，直达官方链接。"
+        site_name = "Deal Hunter" if is_en else "羊毛情报局"
+        home = "/en/" if is_en else "/"
+        canonical = SITE_URL + ("en/" if is_en else "")
+
+        item_list = []
+        for i, deal in enumerate(leaderboard, start=1):
+            en = en_map.get(deal["id"], {})
+            item_list.append(
+                {
+                    "@type": "ListItem",
+                    "position": i,
+                    "name": en.get("title") or deal["title"] if is_en else deal["title"],
+                    "url": deal["url"],
+                    "description": en.get("highlight") or deal["highlight"] if is_en else deal["highlight"],
+                }
+            )
+
+        jsonld = json.dumps(
+            [
+                {
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    "name": site_name,
+                    "alternateName": "Deal Hunter · global deals" if is_en else "羊毛情报局 · 全球优惠情报",
+                    "url": canonical,
+                    "inLanguage": "en" if is_en else "zh-CN",
+                    "description": desc,
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": canonical + "?q={search_term_string}",
+                        "query-input": "required name=search_term_string",
+                    },
+                },
+                {
+                    "@context": "https://schema.org",
+                    "@type": "ItemList",
+                    "name": "Top value deals" if is_en else "高价值优惠排行榜",
+                    "itemListElement": item_list,
+                },
+            ],
+            ensure_ascii=False,
+            indent=2,
+        )
+
+        head = f"""<!DOCTYPE html>
+<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>羊毛情报局 · 全球优惠 / 免费额度 / 限时活动情报</title>
-<meta name="description" content="羊毛情报局：每日核验的全球优惠情报导航。AI 工具免费额度、Crypto 空投与交易奖励、海外银行开户与跨境汇款邀请、VPS 云服务体验金、eSIM 免费流量、软件学生福利——一屏看清价值、门槛与截止时间，点击直达官方活动页。">
-<meta name="author" content="羊毛情报局">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<meta name="author" content="{site_name}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2">
-<link rel="canonical" href="{SITE_URL}">
+<link rel="canonical" href="{canonical}">
+<link rel="alternate" hreflang="zh-CN" href="{SITE_URL}">
+<link rel="alternate" hreflang="en" href="{SITE_URL}en/">
+<link rel="alternate" hreflang="x-default" href="{SITE_URL}">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="羊毛情报局">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:title" content="羊毛情报局 · 全球优惠与免费额度情报">
-<meta property="og:description" content="每日核验的全球优惠导航：AI、Crypto、海外银行与汇款、云服务、eSIM、软件学生福利。价值、门槛、截止时间一眼看清，直达官方链接。">
-<meta property="og:url" content="{SITE_URL}">
+<meta property="og:site_name" content="{site_name}">
+<meta property="og:locale" content="{'en_US' if is_en else 'zh_CN'}">
+<meta property="og:title" content="{og_title}">
+<meta property="og:description" content="{og_desc}">
+<meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{OG_IMAGE}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="羊毛情报局 · 每日核验的全球优惠情报">
+<meta property="og:image:alt" content="{site_name} · {'verified global deals' if is_en else '每日核验的全球优惠情报'}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="羊毛情报局 · 全球优惠与免费额度情报">
-<meta name="twitter:description" content="每日核验的全球优惠导航：AI、Crypto、海外银行与汇款、云服务、eSIM、软件学生福利。">
+<meta name="twitter:title" content="{og_title}">
+<meta name="twitter:description" content="{og_desc}">
 <meta name="twitter:image" content="{OG_IMAGE}">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -844,7 +1017,9 @@ def main() -> None:
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/style.css?v={asset_ver('assets/css/style.css')}">
+<link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
+
+{LANG_BOOT}
 
 <!-- Google AdSense：开通后把脚本放在这里，并给 .ad-slot 容器填入广告单元
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
@@ -860,26 +1035,27 @@ def main() -> None:
 
 <header class="topbar">
   <div class="shell topbar-in">
-    <a class="brand" href="{SITE_URL}" aria-label="羊毛情报局 首页">
+    <a class="brand" href="{home}" data-al-zh="{U['brand_aria'][0]}" data-al-en="{U['brand_aria'][1]}">
       <span class="brand-mark" aria-hidden="true">
         {mascot_svg(gid='mintBodyHead')}
       </span>
       <span class="brand-text">
-        <span class="brand-name">羊毛情报局</span>
-        <span class="brand-sub">全球优惠 · 每日核验</span>
+        <span class="brand-name">{ui('brand')}</span>
+        <span class="brand-sub">{ui('brand_sub')}</span>
       </span>
     </a>
-    <button class="search-btn" id="open-search" type="button" aria-haspopup="dialog" aria-label="搜索优惠、可用地区、类别">
+    <button class="search-btn" id="open-search" type="button" aria-haspopup="dialog"
+            data-al-zh="{U['search_open_aria'][0]}" data-al-en="{U['search_open_aria'][1]}">
       <span class="sb-q">
         {icon('search')}
-        <span class="sb-text">搜索优惠、可用地区、类别…</span>
+        <span class="sb-text">{ui('search_open')}</span>
       </span>
       <kbd>⌘K</kbd>
     </button>
     <div class="topbar-stats">
-      <a class="stats-pill mint" href="#fresh">进行中 <b>{counts['active']}</b></a>
-      <a class="stats-pill amber" href="#closing">即将截止 <b>{counts['expiring']}</b></a>
-      <a class="stats-pill stone" href="#archive">已归档 <b>{counts['expired']}</b></a>
+      <a class="stats-pill mint" href="#fresh">{ui('stat_active')} <b>{counts['active']}</b></a>
+      <a class="stats-pill amber" href="#closing">{ui('stat_expiring')} <b>{counts['expiring']}</b></a>
+      <a class="stats-pill stone" href="#archive">{ui('stat_archived')} <b>{counts['expired']}</b></a>
     </div>
   </div>
 </header>
@@ -887,9 +1063,9 @@ def main() -> None:
 <main id="top">
   <div class="shell">
     <section class="hero">
-      <h1>羊毛情报局</h1>
-      <p class="hero-tag">全球免费额度与限时奖励，先看值得点的。</p>
-      <p class="hero-meta"><span class="dot" aria-hidden="true"></span><span class="hm-long">北京时间 {e(beijing_time)} 更新</span><span class="hm-short">{e(beijing_short)} 更新</span></p>
+      <h1>{ui('hero_h1')}</h1>
+      <p class="hero-tag">{ui('hero_tag')}</p>
+      <p class="hero-meta"><span class="dot" aria-hidden="true"></span><span class="hm-long">{ui('updated', t=e(beijing_time))}</span><span class="hm-short">{ui('updated_short', t=e(beijing_short))}</span></p>
     </section>
 
     <div class="ad-slot" data-ad="top" aria-hidden="true"><!-- AdSense：顶部 / 桌面横幅 --></div>
@@ -902,81 +1078,87 @@ def main() -> None:
   </div>
 </main>
 
-<nav class="rail" aria-label="分区导航">
+<nav class="rail" aria-label="{U['nav_aria'][0]}">
   {rail}
 </nav>
 
-<div class="modal" id="search-modal" role="dialog" aria-modal="true" aria-label="搜索与筛选" aria-hidden="true">
+<button class="lang-switch" id="lang-switch" type="button"
+        data-al-zh="{U['lang_switch_aria'][0]}" data-al-en="{U['lang_switch_aria'][1]}">
+  <span class="ls-dot" aria-hidden="true"></span>{bi('EN', '中文')}
+</button>
+
+<div class="modal" id="search-modal" role="dialog" aria-modal="true" aria-hidden="true"
+     data-al-zh="{U['modal_aria'][0]}" data-al-en="{U['modal_aria'][1]}">
   <div class="modal-bg" data-close></div>
   <div class="sheet">
     <div class="sheet-top">
-      <h2>搜索与筛选</h2>
-      <button class="sheet-close" type="button" data-close aria-label="关闭">✕</button>
+      <h2>{ui('modal_title')}</h2>
+      <button class="sheet-close" type="button" data-close data-al-zh="关闭" data-al-en="Close">✕</button>
     </div>
     <div class="input-wrap">
       {icon('search')}
-      <input id="q" type="search" placeholder="搜活动、品牌、国家或门槛，例如 eSIM 日本 / 学生 / 免手续费" autocomplete="off" spellcheck="false">
+      <input id="q" type="search" placeholder="{U['search_ph'][0]}" autocomplete="off" spellcheck="false">
     </div>
 
     <div class="filter-row">
-      <div class="filter-label">时间范围</div>
+      <div class="filter-label">{ui('f_time')}</div>
       <div class="chips" data-group="time">
-        <button class="chip on" type="button" data-value="all">全部时间</button>
-        <button class="chip" type="button" data-value="24h">近 24 小时</button>
-        <button class="chip" type="button" data-value="48h">近 48 小时</button>
-        <button class="chip" type="button" data-value="7d">近 7 天</button>
-        <button class="chip" type="button" data-value="past">7 天前往期</button>
+        <button class="chip on" type="button" data-value="all">{ui('time_all')}</button>
+        <button class="chip" type="button" data-value="24h">{ui('time_24h')}</button>
+        <button class="chip" type="button" data-value="48h">{ui('time_48h')}</button>
+        <button class="chip" type="button" data-value="7d">{ui('time_7d')}</button>
+        <button class="chip" type="button" data-value="past">{ui('time_past')}</button>
       </div>
     </div>
 
     <div class="filter-row">
-      <div class="filter-label">排序</div>
+      <div class="filter-label">{ui('f_sort')}</div>
       <div class="chips" data-group="sort">
-        <button class="chip on" type="button" data-value="value">价值优先</button>
-        <button class="chip" type="button" data-value="new">最新收录</button>
-        <button class="chip" type="button" data-value="end">最近截止</button>
+        <button class="chip on" type="button" data-value="value">{ui('sort_value')}</button>
+        <button class="chip" type="button" data-value="new">{ui('sort_new')}</button>
+        <button class="chip" type="button" data-value="end">{ui('sort_end')}</button>
       </div>
     </div>
 
     <div class="filter-row">
-      <div class="filter-label">类别</div>
+      <div class="filter-label">{ui('f_cat')}</div>
       <div class="chips" data-group="cat">
-        <button class="chip on" type="button" data-value="all">全部</button>
-        <button class="chip" type="button" data-value="ai">AI 工具</button>
-        <button class="chip" type="button" data-value="crypto">Crypto</button>
-        <button class="chip" type="button" data-value="bank">银行 / 卡 / 汇款</button>
-        <button class="chip" type="button" data-value="cloud">VPS / 云</button>
-        <button class="chip" type="button" data-value="esim">eSIM</button>
-        <button class="chip" type="button" data-value="software">软件 / 其他</button>
+        <button class="chip on" type="button" data-value="all">{ui('all')}</button>
+        <button class="chip" type="button" data-value="ai">{ui('cat_ai')}</button>
+        <button class="chip" type="button" data-value="crypto">{ui('cat_crypto')}</button>
+        <button class="chip" type="button" data-value="bank">{ui('cat_bank')}</button>
+        <button class="chip" type="button" data-value="cloud">{ui('cat_cloud')}</button>
+        <button class="chip" type="button" data-value="esim">{ui('cat_esim')}</button>
+        <button class="chip" type="button" data-value="software">{ui('cat_software')}</button>
       </div>
     </div>
 
     <div class="filter-row">
-      <div class="filter-label">参与门槛</div>
+      <div class="filter-label">{ui('f_cost')}</div>
       <div class="chips" data-group="cost">
-        <button class="chip on" type="button" data-value="all">全部</button>
-        <button class="chip" type="button" data-value="真正免费">真正免费</button>
-        <button class="chip" type="button" data-value="免费试用">免费试用</button>
-        <button class="chip" type="button" data-value="需要充值">需要充值</button>
-        <button class="chip" type="button" data-value="需要交易量">需要交易量</button>
-        <button class="chip" type="button" data-value="需要邀请条件">需要邀请条件</button>
+        <button class="chip on" type="button" data-value="all">{ui('all')}</button>
+        <button class="chip" type="button" data-value="真正免费">{bi('真正免费', 'Free')}</button>
+        <button class="chip" type="button" data-value="免费试用">{bi('免费试用', 'Free trial')}</button>
+        <button class="chip" type="button" data-value="需要充值">{bi('需要充值', 'Deposit')}</button>
+        <button class="chip" type="button" data-value="需要交易量">{bi('需要交易量', 'Volume')}</button>
+        <button class="chip" type="button" data-value="需要邀请条件">{bi('需要邀请条件', 'Referral')}</button>
       </div>
     </div>
 
     <div class="filter-row">
-      <div class="filter-label">核验状态</div>
+      <div class="filter-label">{ui('f_verify')}</div>
       <div class="chips" data-group="verify">
-        <button class="chip on" type="button" data-value="all">全部</button>
-        <button class="chip" type="button" data-value="1">已核验</button>
-        <button class="chip" type="button" data-value="0">待核实</button>
+        <button class="chip on" type="button" data-value="all">{ui('all')}</button>
+        <button class="chip" type="button" data-value="1">{bi('已核验', 'Verified')}</button>
+        <button class="chip" type="button" data-value="0">{bi('待核实', 'Unverified')}</button>
       </div>
     </div>
 
     <div class="sheet-foot">
-      <span class="result-count">匹配 <b data-result>0</b> 条</span>
+      <span class="result-count"><span class="t-zh">匹配 <b data-result>0</b> 条</span><span class="t-en" lang="en"><b data-result>0</b> matching</span></span>
       <span class="grow"></span>
-      <button class="link-btn" type="button" data-reset>重置</button>
-      <button class="solid-btn" type="button" data-close>完成</button>
+      <button class="link-btn" type="button" data-reset>{ui('reset')}</button>
+      <button class="solid-btn" type="button" data-close>{ui('done')}</button>
     </div>
   </div>
 </div>
@@ -987,20 +1169,28 @@ def main() -> None:
       <span class="brand-mark" aria-hidden="true">
         {mascot_svg(gid='mintBodyFoot')}
       </span>
-      羊毛情报局 · © {today.year}
+      {ui('foot_brand', y=today.year)}
     </span>
-    <span class="foot-up">更新 {e(last_updated)}</span>
-    <a class="foot-top" href="#top">回到顶部 ↑</a>
+    <span class="foot-up">{ui('foot_updated', t=e(last_updated))}</span>
+    <a class="foot-top" href="#top">{ui('foot_top')}</a>
   </div>
 </footer>
 
 <script id="search-index" type="application/json">{search_json}</script>
-<script src="assets/js/app.js?v={asset_ver('assets/js/app.js')}" defer></script>
+<script id="i18n-head" type="application/json">{head_json(is_en)}</script>
+<script src="/assets/js/app.js?v={asset_ver('assets/js/app.js')}" defer></script>
 </body>
 </html>
 """
-    OUT.write_text(compact_html(page), encoding="utf-8")
-    print(f"index.html written · {len(active)} active / {len(expired)} expired / {len(fresh)} fresh")
+        return compact_html(head)
+
+    OUT.write_text(page_html("zh"), encoding="utf-8")
+    EN_OUT.parent.mkdir(parents=True, exist_ok=True)
+    EN_OUT.write_text(page_html("en"), encoding="utf-8")
+    print(f"index.html + en/index.html written · {len(active)} active / {len(expired)} expired / {len(fresh)} fresh")
+    print(f"  英文条目：{len(deals) - len(missing_en)}/{len(deals)} 条有翻译")
+    if missing_en:
+        print(f"  ! 缺少英文翻译 {len(missing_en)} 条：{', '.join(missing_en[:12])}{' …' if len(missing_en) > 12 else ''}")
     if missing:
         print(f"  ! 图标下载失败 {len(missing)} 个（回退字母块）：{', '.join(missing)}")
     else:
