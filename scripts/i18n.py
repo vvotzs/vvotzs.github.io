@@ -32,7 +32,7 @@ U: dict[str, tuple[str, str]] = {
     "hero_tag": ("全球高值羊毛 • 先看重点",
                  "Verified freebies & rewards"),
     "updated": ("北京时间 {t} 更新", "Updated {t} (UTC+8)"),
-    "updated_short": ("{t} 更新", "{t} updated"),
+    "updated_short": ("{t} 更新", "Updated {t}"),
     # 右侧滑轨（英文用 2–4 字母，避免撑宽 44px 的滑轨）
     "nav_fresh": ("新收录", "New"),
     "nav_rank": ("榜单", "Top"),

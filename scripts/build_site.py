@@ -39,9 +39,11 @@ from common import (  # noqa: E402
     FAV_DIR,
     META,
     OG_IMAGE,
+    OG_IMAGE_EN,
     OUT,
     SITE_URL,
     TODAY_WINDOW_DAYS,
+    added_date,
     compute_status,
     ensure_added_at,
     now_local,
@@ -560,10 +562,27 @@ def detail_tags(deal: dict, en: dict) -> str:
 _SRC_URL_RE = re.compile(r"https?://[^\s）)，,；;】]+")
 
 
-def fav_html(deal: dict, size: int) -> str:
+def monogram_for(deal: dict, en: dict | None) -> str:
+    """图标兜底的字母块。
+
+    中文页取品牌首字（「币」「华」），英文页取英文标题的首个字母数字
+    （标题带 [Global] 这类前缀时先剥掉），拿不到再退域名首字母——
+    英文页不能出现中文字符。
+    """
+    if CUR_LANG == "en":
+        _, title = title_parts((en or {}).get("title") or deal.get("title", ""))
+        hit = re.search(r"[A-Za-z0-9]", title)
+        if hit:
+            return hit.group(0).upper()
+        dom = (deal.get("domain") or "").strip()
+        return dom[:1].upper() if dom else "?"
+    return (deal.get("brand") or "?")[:1].upper()
+
+
+def fav_html(deal: dict, size: int, en: dict | None = None) -> str:
     """站点图标：构建时已落地的用 <img>（WebP）；个别域名下载不到就直接给字母块，避免页面上出现 404。"""
     name = fav_name(deal.get("domain", ""))
-    monogram = e((deal.get("brand") or "?")[:1].upper())
+    monogram = e(monogram_for(deal, en))
     if (FAV_DIR / f"{name}.webp").exists():
         return (
             f'<img class="fav" src="/assets/fav/{name}.webp" width="{size}" height="{size}" alt="" '
@@ -631,9 +650,10 @@ def card(deal: dict, en: dict, today) -> str:
 
     return f"""<article class="{classes}" id="deal-{deal_id}" data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
-    data-added="{e(added_day(deal, today))}" data-val-exp="{value_expected(deal):g}" data-key="{deal_id}">
+    data-added="{e(added_day(deal, today))}" data-added-at="{e(deal.get('added_at') or added_day(deal, today))}"
+    data-val-exp="{value_expected(deal):g}" data-key="{deal_id}">
     <div class="card-head">
-      {fav_html(deal, 24)}
+      {fav_html(deal, 24, en)}
       <div class="card-body">
         <div class="row1">
           <h3>{title_html}</h3>
@@ -655,13 +675,15 @@ def card(deal: dict, en: dict, today) -> str:
     </div>
     <div class="detail" id="detail-{deal_id}"><div class="detail-in"><div class="detail-body">
       {detail_tags(deal, en)}
+      <dl class="detail-fields">
       <div class="field wide"><dt>{ui("f_what")}</dt><dd>{bi(e(deal['content']), e(en.get('content') or deal['content']))}</dd></div>
       <div class="field wide"><dt>{ui("f_conditions")}</dt><dd>{bi(e(deal['conditions']), e(en.get('conditions') or deal['conditions']))}</dd></div>
       <div class="field"><dt>{ui("f_regions")}</dt><dd>{bi(e(deal['regions']), e(en.get('regions') or deal['regions']))}</dd></div>
       <div class="field"><dt>{ui("f_period")}</dt><dd>{period}</dd></div>
-      <div class="field wide"><dt>{ui("f_steps")}</dt><ol>{steps}</ol></div>
+      <div class="field wide"><dt>{ui("f_steps")}</dt><dd><ol>{steps}</ol></dd></div>
       <div class="field wide"><dt>{ui("f_link")}</dt>
         <dd><a class="url-link" href="{e(deal['url'])}" target="_blank" rel="noopener nofollow">{e(deal['url'])}</a></dd></div>
+      </dl>
       <div class="risk">
         {icon('warn')}
         <span>{bi(e(deal['risk']), e(en.get('risk') or deal['risk']))}</span>
@@ -701,7 +723,7 @@ def jump_card(deal: dict, en: dict, today, rank: int | None = None) -> str:
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
     data-added="{e(added_day(deal, today))}" data-key="{deal_id}">
       {rank_html}
-      {fav_html(deal, 22)}
+      {fav_html(deal, 22, en)}
       <span class="jump-main">
         <span class="jump-title">{bi(e(title_zh), e(title_en))}</span>
         <span class="jump-sub"><span class="{value_cls}">{bi(e(value_compact(v_zh)), e(value_compact(v_en, 'en')))}</span><span class="jump-meta">{bi(e(meta_zh), e(meta_en))}</span></span>
@@ -790,8 +812,10 @@ def main() -> None:
     # 而 deals.json 每次维护都按价值重排过，下标本身就是价值序。
     # 真正的入库时间写在 added_at，主次序只认它；只有同一批次（时间戳相同）内
     # 才按价值高低排，让同一批里更值钱的先出现。
+    # 筛选与排序都只认入库日期（added_at 的日期部分，与卡片展示的 added 同一天）：
+    # 只看 added 会漏掉只有 added_at 的条目，只看 added_at 又会把回填成今天的老条目放进来。
     since = (today - timedelta(days=TODAY_WINDOW_DAYS)).isoformat()
-    fresh_pool = [d for d in active if (d.get("added") or "") >= since]
+    fresh_pool = [d for d in active if added_date(d) and added_date(d) >= since]
     fresh_pool.sort(key=lambda d: (-value_expected(d), idx_of.get(d["id"], 0)))
     fresh_pool.sort(key=lambda d: d.get("added_at") or d.get("added") or "", reverse=True)
     fresh = fresh_pool[:10]
@@ -1021,8 +1045,16 @@ def main() -> None:
             """placeholder 只能是一个字符串：按当前页面语言取。"""
             return e(U[key][1] if is_en else U[key][0])
 
+        # 分享图：英文页用英文封面，中文页用中文封面
+        og_image = OG_IMAGE_EN if is_en else OG_IMAGE
+        og_locale = "en_US" if is_en else "zh_CN"
+        og_locale_alt = "zh_CN" if is_en else "en_US"
+        # 语言切换链接：带上 hreflang / lang，让读屏与搜索引擎知道目标页语言
+        switch_href = "/" if is_en else "/en/"
+        switch_hreflang = "zh-CN" if is_en else "en"
+
         head = f"""<!DOCTYPE html>
-<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}">
+<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}" data-today="{today.isoformat()}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
@@ -1039,18 +1071,19 @@ def main() -> None:
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{site_name}">
-<meta property="og:locale" content="{'en_US' if is_en else 'zh_CN'}">
+<meta property="og:locale" content="{og_locale}">
+<meta property="og:locale:alternate" content="{og_locale_alt}">
 <meta property="og:title" content="{og_title}">
 <meta property="og:description" content="{og_desc}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{OG_IMAGE}">
+<meta property="og:image" content="{og_image}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{site_name} · {'verified global deals' if is_en else '每日核验的全球优惠情报'}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{og_title}">
 <meta name="twitter:description" content="{og_desc}">
-<meta name="twitter:image" content="{OG_IMAGE}">
+<meta name="twitter:image" content="{og_image}">
 
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
@@ -1127,7 +1160,7 @@ def main() -> None:
   </nav>
 </div>
 
-<a class="lang-switch" id="lang-switch" href="{'/en/' if not is_en else '/'}" {al(*U['lang_switch_aria'])}>{'EN' if not is_en else '中文'}</a>
+<a class="lang-switch" id="lang-switch" href="{switch_href}" hreflang="{switch_hreflang}" lang="{switch_hreflang}" {al(*U['lang_switch_aria'])}>{ui('lang_switch')}</a>
 
 <div class="modal" id="search-modal" role="dialog" aria-modal="true" aria-hidden="true"
      {al(*U['modal_aria'])}>
@@ -1212,6 +1245,12 @@ def main() -> None:
         data-msg-failed="{e(U['submit_failed'][1] if is_en else U['submit_failed'][0])}">
   <form class="sd-form" id="submit-form" novalidate autocomplete="off" autocorrect="off"
           autocapitalize="off" data-lpignore="true" data-form-type="other">
+    <!-- 蜜罐：机器人才会填的陷阱字段。视觉上移出屏幕（不是 display:none，否则部分脚本会跳过），
+         读屏与 Tab 键都碰不到；一旦有值，app.js 静默丢弃这次提交，不发请求。 -->
+    <div class="sd-hp" aria-hidden="true">
+      <label for="sd-hp">Website</label>
+      <input id="sd-hp" type="text" name="website" tabindex="-1" autocomplete="off" spellcheck="false">
+    </div>
     <div class="sd-top">
       <button class="sd-back" type="button" data-submit-close
               {al(*U['close'])}>
@@ -1235,12 +1274,12 @@ def main() -> None:
 
     <label class="sd-row">
       <span class="sd-label">{ui('submit_name')}<i class="req" aria-hidden="true">*</i></span>
-      <input class="sd-input" id="sd-name" type="text" maxlength="80" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next"
+      <input class="sd-input" id="sd-name" type="text" maxlength="80" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next" aria-required="true"
              placeholder="{pht('submit_ph_name')}">
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_link')}<i class="req" aria-hidden="true">*</i></span>
-      <input class="sd-input" id="sd-url" type="text" inputmode="url" maxlength="500" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next"
+      <input class="sd-input" id="sd-url" type="text" inputmode="url" maxlength="500" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-form-type="other" enterkeyhint="next" aria-required="true"
              placeholder="{pht('submit_ph_link')}">
     </label>
     <label class="sd-row">

@@ -673,6 +673,14 @@ html.js .pager-bar{ display: flex; }
   line-height: 1.45;
 }
 
+/* dt/dd 必须有 <dl> 父元素，而标签条 / 风险条 / 页脚不是描述项，不能放进 dl。
+   所以 dl 只包字段，用 display:contents 把自身盒子去掉——字段仍是 .detail-body
+   这个网格的直接项目，栅格与间距跟原来一模一样。 */
+.detail-fields{
+  display: contents;
+  margin: 0;
+}
+
 /* 顶部徽标条：类别 / 实际价值 / 门槛 / 核验状态 挤成一行 */
 .detail-tags{
   grid-column: 1 / -1;
@@ -1736,6 +1744,21 @@ html.dialog-open{ overflow: hidden; }
 /* 表单：横线分行，左标签右输入，没有任何输入框边框 */
 .sd-form{ display: block; }
 .sd-form[hidden]{ display: none; }   /* 成功态整块换掉表单，而不是在下面追加 */
+/* 蜜罐：只给机器人看的字段。不用 display:none / visibility:hidden（部分脚本会跳过），
+   而是移出屏幕且不占布局、读屏隐藏、Tab 也进不来；有值就说明是自动填充的机器人。 */
+.sd-hp{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+  pointer-events: none;
+}
 .sd-row{
   display: flex;
   align-items: center;
@@ -1879,8 +1902,12 @@ html.dialog-open{ overflow: hidden; }
                 transform .26s cubic-bezier(.22, 1, .36, 1);
   }
   .submit-dialog.kb-open{
-    top: 12px;
+    /* iOS 键盘弹起时布局视口并不缩小，Safari 会把可视区域往下平移（visualViewport.offsetTop > 0）。
+       app.js 把这两个值写成 CSS 变量：top 跟着可视区域顶走，max-height 按可见高度收，
+       弹窗永远不会被顶出屏幕，也一定落在键盘上方。 */
+    top: calc(var(--vv-top, 0px) + 8px);
     transform: translateY(0);
+    max-height: calc(var(--vv-max-h, 100dvh) - 16px);
   }
   .sd-row{ height: 46px; }
   .sd-textarea{ min-height: 68px; }

@@ -1,18 +1,27 @@
 #!/usr/bin/env python3
-"""生成 1200×630 的社交分享封面 assets/og-cover.png。
+"""生成 1200×630 的社交分享封面。
 
-一次性用途，但保留脚本方便以后改文案重新出图：
-    python3 scripts/make_og_cover.py
+    python3 scripts/make_og_cover.py        # 中英两张都重出
+    python3 scripts/make_og_cover.py en     # 只出英文 assets/og-cover-en.png
+    python3 scripts/make_og_cover.py zh     # 只出中文 assets/og-cover.png
+
+中文页用 assets/og-cover.png（build_site.py 的 OG_IMAGE），
+英文页用 assets/og-cover-en.png（OG_IMAGE_EN），两页共用同一套暖米白 + 薄荷绿版式，
+只有文案不同——分享到 X / Dev.to 时，英文卡片不再是中文字。
 """
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "assets" / "og-cover.png"
+OUT_ZH = ROOT / "assets" / "og-cover.png"
+OUT_EN = ROOT / "assets" / "og-cover-en.png"
 FONT = "/usr/share/fonts/pickle-hwp/NotoSansCJKkr-Regular.otf"
+FONT_EN = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
+FONT_EN_BOLD = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
 
 W, H = 1200, 630
 BG = (250, 249, 245)
@@ -24,12 +33,22 @@ AMBER_DEEP = (180, 83, 9)
 MINT = (5, 150, 105)
 
 
-def font(size: int) -> ImageFont.FreeTypeFont:
+def font(size: int, en: bool = False, bold: bool = False) -> ImageFont.FreeTypeFont:
+    if en:
+        return ImageFont.truetype(FONT_EN_BOLD if bold else FONT_EN, size)
     return ImageFont.truetype(FONT, size)
 
 
-def text(draw: ImageDraw.ImageDraw, xy, s, size, fill, bold=0, anchor="la", spacing=0):
-    draw.text(xy, s, font=font(size), fill=fill, anchor=anchor, stroke_width=bold, stroke_fill=fill)
+def text(draw: ImageDraw.ImageDraw, xy, s, size, fill, bold=0, anchor="la", en=False):
+    draw.text(xy, s, font=font(size, en=en, bold=bool(bold) and en), fill=fill,
+              anchor=anchor, stroke_width=bold, stroke_fill=fill)
+
+
+def fit_size(draw: ImageDraw.ImageDraw, s: str, size: int, max_w: float, en: bool) -> int:
+    """英文句子比中文长：从给定字号往下收，直到整句塞得进 max_w。"""
+    while size > 16 and draw.textlength(s, font=font(size, en=en)) > max_w:
+        size -= 1
+    return size
 
 
 def gradient_bg() -> Image.Image:
@@ -96,9 +115,29 @@ def mascot(img: Image.Image, cx: int, cy: int, scale: float = 1.0) -> None:
     d.ellipse([cx + s(2), cy - s(176), cx + s(40), cy - s(142)], fill=(52, 211, 153))
 
 
-def main() -> None:
-    img = gradient_bg().convert("RGBA")
+def brand_row(d: ImageDraw.ImageDraw) -> None:
+    d.ellipse([80, 84, 118, 122], fill=(209, 250, 229))
+    d.ellipse([90, 94, 108, 112], fill=(127, 227, 184))
+    text(d, (132, 103), "vvotzs.github.io", 22, INK3, anchor="lm")
 
+
+def chips(d: ImageDraw.ImageDraw, items: list[str], sizes: list[int], y: int = 392,
+          en: bool = False) -> None:
+    """底部一排分类胶囊，四种配色循环。"""
+    x = 80
+    for i, c in enumerate(items):
+        size = sizes[i]
+        w = int(d.textlength(c, font=font(size, en=en))) + 44
+        fill = [(255, 247, 237), (236, 253, 245), (239, 246, 255), (245, 243, 255)][i % 4]
+        line = [(253, 186, 116), (187, 247, 208), (191, 219, 254), (221, 214, 254)][i % 4]
+        ink = [AMBER_DEEP, MINT, (29, 78, 216), (109, 40, 217)][i % 4]
+        rounded(d, [x, y, x + w, y + 48], 24, fill, line, 2)
+        text(d, (x + w // 2, y + 24), c, size, ink, anchor="mm", en=en)
+        x += w + 14
+
+
+def compose_zh() -> Image.Image:
+    img = gradient_bg().convert("RGBA")
     mascot(img, 946, 252, 1.12)
 
     # 右下角装饰卡（示意「一条优惠」），压在小怪兽前面制造层次
@@ -113,34 +152,70 @@ def main() -> None:
     img.alpha_composite(deco)
 
     d = ImageDraw.Draw(img)
-
-    # 顶部品牌行
-    d.ellipse([80, 84, 118, 122], fill=(209, 250, 229))
-    d.ellipse([90, 94, 108, 112], fill=(127, 227, 184))
-    text(d, (132, 103), "vvotzs.github.io", 22, INK3, anchor="lm")
+    brand_row(d)
 
     # 主标题
     text(d, (76, 176), "羊毛情报局", 104, INK, bold=3)
     text(d, (80, 316), "每日核验的全球优惠情报", 42, INK2)
 
     # 三个分类胶囊
-    chips = ["AI 免费额度", "Crypto 奖励", "eSIM 流量", "云服务体验金"]
-    x = 80
-    for i, c in enumerate(chips):
-        w = int(d.textlength(c, font=font(23))) + 44
-        fill = [(255, 247, 237), (236, 253, 245), (239, 246, 255), (245, 243, 255)][i % 4]
-        line = [(253, 186, 116), (187, 247, 208), (191, 219, 254), (221, 214, 254)][i % 4]
-        ink = [AMBER_DEEP, MINT, (29, 78, 216), (109, 40, 217)][i % 4]
-        rounded(d, [x, 392, x + w, 440], 24, fill, line, 2)
-        text(d, (x + w // 2, 416), c, 23, ink, anchor="mm")
-        x += w + 14
+    chips(d, ["AI 免费额度", "Crypto 奖励", "eSIM 流量", "云服务体验金"], [23, 23, 23, 23])
 
     # 底部一句
     text(d, (80, 512), "值多少 · 门槛 · 截止日，一眼看清后直达官方页面", 26, INK3)
 
-    img.convert("RGB").save(OUT, "PNG", optimize=True)
-    print(f"wrote {OUT} · {OUT.stat().st_size/1024:.1f} KB")
+    return img
+
+
+def compose_en() -> Image.Image:
+    img = gradient_bg().convert("RGBA")
+    mascot(img, 946, 252, 1.12)
+
+    deco = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    dd = ImageDraw.Draw(deco)
+    rounded(dd, [700, 424, 1128, 534], 26, (255, 255, 255, 240), (236, 238, 242, 255), 2)
+    dd.ellipse([722, 452, 776, 506], fill=(254, 243, 199, 255))
+    text(dd, (794, 452), "Binance new-user", 24, INK, en=True)
+    text(dd, (794, 490), "Up to $1,100 vouchers · Verified", 19, INK3, en=True)
+    rounded(dd, [1030, 446, 1108, 480], 17, (254, 243, 199, 255), (253, 230, 138, 255), 2)
+    text(dd, (1069, 463), "$1,100", 19, (146, 64, 14), anchor="mm", en=True)
+    img.alpha_composite(deco)
+
+    d = ImageDraw.Draw(img)
+    brand_row(d)
+
+    # 主标题：Deal Hunter
+    title = "Deal Hunter"
+    t_size = fit_size(d, title, 100, 650, en=True)
+    text(d, (76, 150), title, t_size, INK, bold=3, en=True)
+
+    # 副标题分两行（整句 = Verified Free AI Credits, eSIM Trials & Bank Bonuses · Updated Every 2h）
+    line1 = "Verified Free AI Credits, eSIM Trials"
+    line2 = "& Bank Bonuses · Updated Every 2h"
+    s1 = fit_size(d, line1, 36, 650, en=True)
+    s2 = fit_size(d, line2, 36, 650, en=True)
+    s_size = min(s1, s2)
+    text(d, (80, 276), line1, s_size, INK2, en=True)
+    text(d, (80, 276 + s_size + 10), line2, s_size, INK2, en=True)
+
+    chips(d, ["AI credits", "Crypto", "eSIM", "Cloud"], [23, 23, 23, 23], y=400, en=True)
+
+    text(d, (80, 512), "Value, requirements & deadline — at a glance", 26, INK3, en=True)
+
+    return img
+
+
+def main(argv: list[str]) -> None:
+    which = (argv[1].lower() if len(argv) > 1 else "both")
+    if which in ("zh", "both"):
+        img = compose_zh()
+        img.convert("RGB").save(OUT_ZH, "PNG", optimize=True)
+        print(f"wrote {OUT_ZH} · {OUT_ZH.stat().st_size/1024:.1f} KB")
+    if which in ("en", "both"):
+        img = compose_en()
+        img.convert("RGB").save(OUT_EN, "PNG", optimize=True)
+        print(f"wrote {OUT_EN} · {OUT_EN.stat().st_size/1024:.1f} KB")
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)

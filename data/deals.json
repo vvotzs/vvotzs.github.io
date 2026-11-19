@@ -88,7 +88,7 @@
     "source": "Binance 官方推荐计划说明 + 第三方条款核对（2026-09）",
     "risk": "返佣券只抵扣现货手续费，不交易就等于 0 价值；「最高」金额并非人人可得，需以券面实际数值为准。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-18T00:00:00+08:00"
   },
   {
     "id": "jetbrains-student-pack",
@@ -117,7 +117,7 @@
     "source": "JetBrains 官方学生包页 + 支持文档（2026-10-29）",
     "risk": "许可按年续期，忘了续会失效；商业项目使用需遵守教育许可条款。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-18T00:00:00+08:00"
   },
   {
     "id": "hostinger-black-friday",
@@ -146,7 +146,7 @@
     "source": "Hostinger 官方黑五页（活动期与价格均为官方标注）",
     "risk": "四年一次性付款、续费翻数倍；建站需求不确定时先用月付，别为折扣锁死四年。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-18T00:00:00+08:00"
   },
   {
     "id": "bybit-referral-tasks",
@@ -208,7 +208,7 @@
     "source": "OKX 官方新人奖励条款（2026-09-09 更新）",
     "risk": "加密奖励最多锁定 45 天不能提现；奖励为合约/永续券而非现金；非指定渠道注册一律无效。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-13T00:00:00+08:00"
   },
   {
     "id": "citizens-bank-400-checking",
@@ -299,7 +299,7 @@
     "source": "Chase 官方活动页 + Bankrate / BankDealGuy（2026-11-11 更新）",
     "risk": "$15 月费不豁免会吃掉奖励；提前关户可能被追回；需美国地址与 SSN/ITIN，非居民开户另有限制。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-18T00:00:00+08:00"
   },
   {
     "id": "santander-everyday-switch-240",
@@ -390,7 +390,7 @@
     "source": "Surfshark 官方黑五页 + Cybernews / Security.org（2026-11）",
     "risk": "VPN 价格战常年“黑五价”，不必为折扣囤四年；自动续费按原价，记得关自动续订。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-18T00:00:00+08:00"
   },
   {
     "id": "td-bank-checking-300",
@@ -480,7 +480,7 @@
     "source": "Google Cloud 官方免费计划文档（2026-11 核对）",
     "risk": "额度 90 天到期作废，不升级则资源会被停止并在 30 天宽限期后删除；2026-11-16 起新注册的 $300 不能用于 Gemini/Vertex AI。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-17T00:00:00+08:00"
   },
   {
     "id": "vultr-credit",
@@ -509,7 +509,7 @@
     "source": "Vultr 官方优惠页 + 官方文档（2026-10 更新）",
     "risk": "体验金到期即失效，剩余额度不退；忘记销毁实例会转为真实扣费。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-13T00:00:00+08:00"
   },
   {
     "id": "hsbc-uk-bank-account-switch-220",
@@ -697,7 +697,7 @@
     "source": "Google 官方博客（2026-08-19）+ Google One 学生优惠条款",
     "risk": "试用结束会自动按原价续费（Pro $19.99/月、Plus $4.99/月），不取消就会扣款；每年需重新验证学籍。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-17T00:00:00+08:00"
   },
   {
     "id": "nationwide-flexaccount-switch-175",
@@ -788,7 +788,7 @@
     "source": "GitHub Education 官方页面（2026-10 核对）",
     "risk": "各伙伴福利期限不同（几个月到“在读期间”），需分别领取；Copilot 学生版每月复核学籍。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-15T00:00:00+08:00"
   },
   {
     "id": "rakuten-alliant-checking-200",
@@ -1097,7 +1097,7 @@
     "source": "Notion 官方帮助中心与定价页（2026-11 核对）",
     "risk": "升级到付费 Business/Enterprise 会永久失去教育资格；无法验证邮箱时工作区会退回 Free。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-13T00:00:00+08:00"
   },
   {
     "id": "modelscope-amd-100h-gpu",
@@ -1218,7 +1218,7 @@
     "source": "Wise 官方帮助中心（三种邀请计划条款）",
     "risk": "各地区礼遇不同（英国/欧洲常见免费卡或 £500 免手续费，澳洲等为返现）；手续费抵扣不是现金，不能提现。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-12T00:00:00+08:00"
   },
   {
     "id": "ifast-golden-ticket-50",
@@ -1405,7 +1405,7 @@
     "source": "Revolut 官方推荐要求页 + 各地区活动条款（2026-11）",
     "risk": "金额待核实：很多市场只奖励邀请人，好友端无奖励；赌博、礼品卡、转账不算有效消费，实卡邮寄费需自付。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-10T00:00:00+08:00"
   },
   {
     "id": "worldremit-quidco-uk-cashback",
@@ -1617,7 +1617,7 @@
     "source": "Perplexity 帮助中心官方活动说明",
     "risk": "活动只到 2027-03-31；积分 30 天过期；换机或换账号不能重复领。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-18T00:00:00+08:00"
   },
   {
     "id": "verizon-free-trial-30d",
@@ -1737,7 +1737,7 @@
     "source": "GigSky 官方 U.S. Bank 条款 + InsideFlyer（2026-07-27）/ CardTuned（2026-11-17）",
     "risk": "11/30 后权益终止且不补发；换卡或卡状态异常会失去资格；不建议只为这个权益去申请一张信用卡。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-18T00:00:00+08:00"
   },
   {
     "id": "airvoice-us-free-trial-10gb",
@@ -2074,7 +2074,7 @@
     "source": "Remitly 官方推荐说明与优惠条款（2026-10）",
     "risk": "折扣为转账抵扣，不折现；汇率与手续费按当日报价，别只看 $-20 忽略汇差。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-15T00:00:00+08:00"
   },
   {
     "id": "sendwave-referral",
@@ -2135,7 +2135,7 @@
     "source": "GigSky 官方免费试用页（2026-07 更新）",
     "risk": "100MB 只够验证能否联网；游轮与部分国家资费另计，别把试用当主力流量。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-17T00:00:00+08:00"
   },
   {
     "id": "worldremit-uk-refer-a-friend",
@@ -2444,7 +2444,7 @@
     "source": "Airalo 官方折扣页（11 月活动码）+ 官方推荐页",
     "risk": "码会按月更换、随时失效；Airalo 套餐按流量+天数计，买多了不退，按行程估算。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-16T00:00:00+08:00"
   },
   {
     "id": "flexiroam-mastercard-gdr-3gb",
@@ -2902,7 +2902,7 @@
     "source": "Taptap Send 官方推荐条款 + 各地区码页核对（2026-10）",
     "risk": "奖励 90 天过期且不能提现；金额、最低汇款额因发送国/收款国而异，务必在 App 内确认实际数字。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-15T00:00:00+08:00"
   },
   {
     "id": "nomad-trial-esim",
@@ -2962,7 +2962,7 @@
     "source": "Saily 官方推荐条款（2026-09-25 更新）+ 帮助中心",
     "risk": "积分不能提现、不能转让；退款会撤销推荐人积分；Saily 无免费试用，介意可先选 Nomad / GigSky 试网。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-12T00:00:00+08:00"
   },
   {
     "id": "ubigi-welcome",
@@ -2991,7 +2991,7 @@
     "source": "Ubigi 官方帮助中心 + 2026-11 第三方比价（邀请 20% 为待核实项）",
     "risk": "邀请 20% 的具体比例待核实，官方页面只保证 WELCOME10 的 10%；月付订阅不参与任何折扣。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-14T00:00:00+08:00"
   },
   {
     "id": "redbull-mobile-free-esim",
@@ -4061,7 +4061,7 @@
     "source": "GitHub 官方定价页与文档（2026-11 核对）",
     "risk": "免费额度用完后只能等下月重置，没有按量付费选项；学生可改领 Copilot Student（无限补全）。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-16T00:00:00+08:00"
   },
   {
     "id": "cursor-free-plan",
@@ -4090,7 +4090,7 @@
     "source": "Cursor 官方定价页与帮助文档（2026-11 核对）",
     "risk": "免费额度按周/月重置、不累积；重度使用很快耗尽，注意别在工作关键期试水。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-14T00:00:00+08:00"
   },
   {
     "id": "cloudflare-workers-free",
@@ -4119,7 +4119,7 @@
     "source": "Cloudflare 官方 Workers 限额与定价文档（2026-11 核对）",
     "risk": "10ms CPU 限制对重计算不友好；免费层无 SLA，商用关键业务需评估升级。",
     "status": "active",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-11T00:00:00+08:00"
   },
   {
     "id": "huawei-codearts-200-voucher",
@@ -4207,7 +4207,7 @@
     "source": "Inc42（2026-11-16）+ Beebom（2026-11-16）引述 Jio 官方条款",
     "risk": "已结束，勿再按旧攻略充值；已领取者一旦降档到不合格套餐，订阅可能被暂停。",
     "status": "expired",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-17T00:00:00+08:00"
   },
   {
     "id": "gcp-gemini-credit-expired",
@@ -4234,6 +4234,6 @@
     "source": "Google Cloud 官方免费试用条款与文档限制条款 + AI Promo Now（2026-11-12）",
     "risk": "已结束；如仍想在免费额度内跑 Gemini，可改用 Gemini API 免费层或预付账单方案。",
     "status": "expired",
-    "added_at": "2026-11-19T01:20:37+08:00"
+    "added_at": "2026-11-16T00:00:00+08:00"
   }
 ]

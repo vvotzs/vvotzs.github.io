@@ -78,8 +78,15 @@
   /* --------------------------------------------------------------- state */
   var state = { q: "", time: "all", cat: "all", cost: "all", verify: "all", sort: "value" };
 
-  var TODAY = new Date();
-  TODAY.setHours(0, 0, 0, 0);
+  /* 「今天」必须按北京时间算：数据里的 added / end 都是北京时间日期，
+     英文版主要受众在美国，用浏览器本地零点会把 24h / 48h 筛差一天。
+     构建时把北京日期写进 <html data-today>，这里只做解析；拿不到才退回本地日期。 */
+  var TODAY = (function () {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(document.documentElement.getAttribute("data-today") || "");
+    var d = m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date();
+    d.setHours(0, 0, 0, 0);
+    return d;
+  })();
   var DAY = 86400000;
 
   function cardDate(card, key) {
@@ -124,7 +131,10 @@
     var by = state.sort;
     list.sort(function (a, b) {
       if (by === "new") {
-        return (b.dataset.added || "").localeCompare(a.dataset.added || "") ||
+        /* 同一天入库的条目很多，只按日期排会退化成价值序：带时分的时间戳优先。 */
+        var na = a.dataset.addedAt || (a.dataset.added || "") + "T00:00:00";
+        var nb = b.dataset.addedAt || (b.dataset.added || "") + "T00:00:00";
+        return nb.localeCompare(na) ||
                (+b.dataset.valExp || 0) - (+a.dataset.valExp || 0);
       }
       if (by === "end") {
@@ -647,20 +657,40 @@
     var urlEl = $("#sd-url", submitDialog);
     var regionEl = $("#sd-region", submitDialog);
     var notesEl = $("#sd-notes", submitDialog);
+    var hpEl = $("#sd-hp", submitDialog);   /* 蜜罐：真人看不到也碰不到 */
     var sending = false;
+    var lastSentAt = 0;                      /* 上次提交时间，用于 5 秒防重复冷却 */
+    var COOLDOWN_MS = 5000;
 
     /* 手机端自适应：平时垂直居中；输入法把可视区域压小（或聚焦输入框）时贴到顶部。
        用 .kb-open 一个类切换，键盘收起 / 进入成功页就移除，弹窗平滑回到中间。 */
     var mqNarrow = window.matchMedia("(max-width: 680px)");
     var vp = window.visualViewport || null;
+    var rootStyle = document.documentElement.style;
+    var vpBaseH = 0;   /* 打开弹窗时的可视区域高度（键盘未弹起） */
+
+    /* 把可视区域的位置和高度写成 CSS 变量，style.css 的 .kb-open 用它们算 top / max-height：
+       iOS 键盘弹起时布局视口并不缩小，Safari 会把可视区域往下平移（vp.offsetTop > 0），
+       只按布局视口写 top:12px 会被顶出屏幕；按可视区域算就不会。 */
+    var syncViewportVars = function () {
+      if (!vp) return;
+      rootStyle.setProperty("--vv-top", Math.max(0, vp.offsetTop || 0).toFixed(1) + "px");
+      rootStyle.setProperty("--vv-max-h", Math.max(120, vp.height || 0).toFixed(1) + "px");
+    };
     var kbOpen = function (on) {
       if (!mqNarrow.matches) { submitDialog.classList.remove("kb-open"); return; }
       submitDialog.classList.toggle("kb-open", !!on);
     };
     var syncKeyboard = function () {
       if (!vp) return;
-      var shrunk = window.innerHeight - vp.height;   /* 键盘占掉的高度 */
-      kbOpen(shrunk > 110);
+      syncViewportVars();
+      /* 两种环境都成立：
+         iOS —— innerHeight 不变、vp.height 变小，差值 ≈ 键盘高度；
+         Android Chrome —— viewport 写了 interactive-widget=resizes-content，innerHeight 与 vp.height 一起变小，
+         差值接近 0。所以再和「打开弹窗时的 vp.height」比一次，谁大听谁的。 */
+      var shrunk = window.innerHeight - vp.height;
+      var fromBase = vpBaseH ? vpBaseH - vp.height : 0;
+      kbOpen(shrunk > 110 || fromBase > 110);
     };
     if (vp) {
       vp.addEventListener("resize", syncKeyboard);
@@ -703,14 +733,25 @@
     };
     var resetForm = function () {
       submitForm.reset();
+      lastSentAt = 0;                        /* 「再投一条」= 新的一次提交，冷却重新计 */
       clearBad();
       donePanel.hidden = true;
       submitForm.hidden = false;
       if (sendBtn) sendBtn.hidden = false;   /* 回到填写界面：发送按钮恢复 */
       kbOpen(false);                         /* 回到填写页 / 重新打开：回正居中 */
     };
+    var showDone = function () {
+      submitForm.hidden = true;     /* 同一张卡片就地换成回执，不改弹窗高度 */
+      donePanel.hidden = false;
+      if (sendBtn) sendBtn.hidden = true;
+      kbOpen(false);                /* 成功页没有输入框：收回贴顶，回正居中 */
+    };
     var openDialog = function () {
       resetForm();
+      if (vp) {
+        vpBaseH = vp.height;   /* 记下键盘未弹起时的可视高度，Android 上 innerHeight 也会缩，靠它判断 */
+        syncViewportVars();
+      }
       submitDialog.showModal();
       document.documentElement.classList.add("dialog-open");
       /* 桌面端直接聚焦名称框；手机端不自动聚焦，避免一打开就弹键盘、把卡片顶到最上面 */
@@ -742,6 +783,8 @@
     submitDialog.addEventListener("close", function () {
       document.documentElement.classList.remove("dialog-open");
       kbOpen(false);
+      rootStyle.removeProperty("--vv-top");
+      rootStyle.removeProperty("--vv-max-h");
     });
     var againBtn = $("[data-submit-again]", submitDialog);
     if (againBtn) againBtn.addEventListener("click", resetForm);
@@ -752,6 +795,10 @@
     submitForm.addEventListener("submit", function (ev) {
       ev.preventDefault();
       if (sending) return;
+      /* 蜜罐字段被填 = 机器人。静默走成功回执但不发请求，让它以为提交成功。 */
+      if (hpEl && hpEl.value) { showDone(); return; }
+      /* 5 秒防重复冷却：连点 / 脚本在同一份表单里反复 POST 只会有第一次真正发出去。 */
+      if (Date.now() - lastSentAt < COOLDOWN_MS) return;
       var name = (nameEl.value || "").trim();
       var url = (urlEl.value || "").trim();
       if (!name) { showErr(nameEl.parentNode, msg("name")); nameEl.focus(); return; }
@@ -766,16 +813,14 @@
       body.set("lang", LANG);
 
       sending = true;
+      lastSentAt = Date.now();
       sendBtn.disabled = true;
       clearBad();
       var finish = function (ok) {
         sending = false;
         sendBtn.disabled = false;
-        if (!ok) { showErr(null, msg("failed")); return; }
-        submitForm.hidden = true;     /* 同一张卡片就地换成回执，不改弹窗高度 */
-        donePanel.hidden = false;
-        if (sendBtn) sendBtn.hidden = true;
-        kbOpen(false);                /* 成功页没有输入框：收回贴顶，回正居中 */
+        if (!ok) { lastSentAt = 0; showErr(null, msg("failed")); return; }   /* 失败允许立即重试 */
+        showDone();
       };
       if (!GAS_URL) { finish(false); return; }
       fetch(GAS_URL, { method: "POST", mode: "no-cors", body: body })

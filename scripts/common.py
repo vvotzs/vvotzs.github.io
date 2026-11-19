@@ -31,6 +31,7 @@ FAV_DIR = ROOT / "assets" / "fav"
 
 SITE_URL = "https://vvotzs.github.io/"
 OG_IMAGE = SITE_URL + "assets/og-cover.png"
+OG_IMAGE_EN = SITE_URL + "assets/og-cover-en.png"
 
 # ---------------------------------------------------------------- 类别
 # label 用于详情面板展示；search 是搜索索引里额外补上的中文别名。
@@ -78,6 +79,14 @@ def compute_status(deal: dict, today: date) -> str:
     return "active"
 
 
+def added_date(deal: dict) -> str:
+    """条目的入库日期（YYYY-MM-DD）——「新收录」筛选与展示的唯一口径。
+
+    added_at 是带时分的入库时间，added 是展示用的日期；两者必须落在同一天。
+    """
+    return str(deal.get("added_at") or deal.get("added") or "")[:10]
+
+
 def ensure_added_at(deals: list[dict], when: datetime | None = None) -> bool:
     """补齐入库相关字段（added_at / added），返回是否改动。
 
@@ -88,6 +97,12 @@ def ensure_added_at(deals: list[dict], when: datetime | None = None) -> bool:
     added（展示用的 YYYY-MM-DD）也要一起兜底：只写了 added_at 的条目，
     卡片底部会渲染成空的「收录 · 」。回填顺序是 added_at 的日期部分，
     两者都缺时再用当天（北京时间）。
+
+    两个字段还会互相对齐：added 是人工登记的入库日期，added_at 的日期部分
+    必须等于它。历史上一次性回填脚本按 commit 时间写过 added_at，把 26 条
+    老条目记成了「今天」，卡片显示「收录 11-13」却排在真正的新条目前面。
+    这里发现日期不一致就把 added_at 归一到 added 当天 00:00（北京时间），
+    让筛选、排序、展示三处永远同一个日期。
     """
     now = when or now_local()
     stamp = now.isoformat(timespec="seconds")
@@ -98,7 +113,11 @@ def ensure_added_at(deals: list[dict], when: datetime | None = None) -> bool:
             deal["added_at"] = stamp
             changed = True
         if not deal.get("added"):
-            deal["added"] = str(deal.get("added_at") or fallback_day)[:10]
+            deal["added"] = added_date(deal) or fallback_day
+            changed = True
+        day = str(deal.get("added"))[:10]
+        if day and str(deal["added_at"])[:10] != day:
+            deal["added_at"] = day + "T00:00:00+08:00"
             changed = True
     return changed
 
