@@ -713,7 +713,9 @@
     fields.forEach(function (el) {
       if (!el) return;
       el.addEventListener("focusin", function () {
-        if (mqNarrow.matches) kbOpen(true);        /* 手指一动就先把卡片让到顶部 */
+        /* 有 visualViewport 时以「可视区域真的变小」为准（不误判）；
+           老浏览器拿不到可视区域，才在聚焦时先让位 */
+        if (mqNarrow.matches && !vp) kbOpen(true);
       });
       el.addEventListener("focusout", function () {
         setTimeout(function () {
@@ -751,7 +753,10 @@
       resetForm();
       submitDialog.showModal();
       document.documentElement.classList.add("dialog-open");
-      setTimeout(function () { if (nameEl) nameEl.focus(); }, 40);
+      /* 桌面端直接聚焦名称框；手机端不自动聚焦，避免一打开就弹键盘、把卡片顶到最上面 */
+      if (!mqNarrow.matches) {
+        setTimeout(function () { if (nameEl) nameEl.focus(); }, 40);
+      }
     };
     var closeDialog = function () {
       if (submitDialog.open) submitDialog.close();
