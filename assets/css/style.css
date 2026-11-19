@@ -568,7 +568,7 @@ html.js .pager-bar{ display: flex; }
   background: #FEF3C7;
   border: 1px solid #FDE68A;
   border-radius: 999px;
-  padding: 2px 9px;
+  padding: 2px 8px;
   font-feature-settings: "tnum";
 }
 .value.gold{ color: #92400E; background: #FEF3C7; border-color: #F8DFA5; }
@@ -694,31 +694,62 @@ html.js .pager-bar{ display: flex; }
 }
 .detail-tags .dtag{
   font-size: 10px;
-  line-height: 1.5;
+  line-height: 1.45;
   padding: 1px 7px;
   border-radius: 999px;
   border: 1px solid transparent;
   font-weight: 600;
-  white-space: nowrap;
+  /* 窄屏兜底：类别标签宁可折一行，也不越过卡片右边界被裁掉 */
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .detail-tags .dtag.cat{ color: #52525B; background: #F4F4F0; border-color: #E7E5E1; }
+/* 实际价值：多币种金额能在气泡内部换行，只在「/」「·」处折行，
+   单个金额（AUD 10）不拆开；气泡本身不越过卡片边框。 */
 .detail-tags .dval{
   display: inline-flex;
-  align-items: center;
-  gap: 4px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1px 4px;
+  max-width: 100%;
+  min-width: 0;
   font-family: var(--mono);
   font-size: 10px;
-  line-height: 1.5;
-  padding: 1px 8px;
-  border-radius: 999px;
+  line-height: 1.35;
+  padding: 1px 7px;
+  border-radius: 12px;
   color: #E65100;
   background: #FFF1E6;
   border: 1px solid #FFCBA8;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   font-feature-settings: "tnum";
 }
-.detail-tags .dval-k{ font-family: var(--font); font-size: 9px; color: #C2410C; opacity: .9; }
-.detail-tags .dval strong{ font-size: 10.5px; font-weight: 700; color: #E65100; }
+.detail-tags .dval-k{
+  font-family: var(--font);
+  font-size: 9px;
+  color: #C2410C;
+  opacity: .9;
+  white-space: nowrap;
+}
+.detail-tags .dval strong{
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 3px;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #E65100;
+  overflow-wrap: anywhere;
+}
+/* 单个价值块：短块内部的空格是 nbsp（构建时焊死），所以默认不会从中间断开；
+   只有当整块本身比气泡还宽（英文长句说明、无空格长串）时才在块内折行 */
+.detail-tags .dval-t{ white-space: normal; overflow-wrap: anywhere; }
+.detail-tags .dval-s{ opacity: .45; }
 .detail-tags .dcheck{ margin-left: auto; font-size: 10px; font-weight: 600; white-space: nowrap; }
 .detail-tags .dcheck.ok{ color: var(--mint); }
 .detail-tags .dcheck.wait{ color: var(--ink-4); }
@@ -1453,7 +1484,7 @@ footer{
     text-overflow: ellipsis;
   }
   .card.open .row1 h3{ white-space: normal; }
-  .value{ font-size: 10px; padding: 0 5px; margin-top: 0; max-width: 46%; }
+  .value{ font-size: 10px; padding: 0 4px; margin-top: 0; max-width: 46%; }
   .row2{ font-size: 11.5px; line-height: 1.4; margin-top: 2px; }
   .row2 .tag{ font-size: 9px; padding: 0 4px; margin-right: 4px; }
   .row3{
@@ -1506,6 +1537,15 @@ footer{
     font-size: 11.5px;
     line-height: 1.42;
   }
+  /* 手机端徽标条更紧凑：类别 / 实际价值 / 门槛 挤得进一行多一点，
+     多币种价值在气泡内部换行，不越过卡片右边界 */
+  .detail-tags{ gap: 3px 5px; }
+  .detail-tags .dtag{ font-size: 9.5px; padding: 1px 6px; }
+  .detail-tags .dval{ padding: 1px 6px; gap: 0 3px; }
+  .detail-tags .dval strong{ gap: 0 2px; }
+  .detail-tags .dval-k{ font-size: 8.5px; }
+  .detail-tags .dval strong{ font-size: 10px; }
+  .detail-tags .dcheck{ font-size: 9.5px; }
   .field dt{ font-size: 9px; margin-bottom: 1px; }
   .field dd, .field ol{ font-size: 11.5px; line-height: 1.42; }
   .field ol{ padding-left: 14px; }

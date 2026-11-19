@@ -561,6 +561,33 @@ def ensure_favicon(domain: str) -> bool:
 
 
 # --------------------------------------------------------------------- cards
+# 价值串里的自然断开点：「£10 / $10」「≈$13 · £10」，语言无关
+_VAL_SPLIT_RE = re.compile(r"\s*([/·])\s*")
+
+
+def value_tokens(text: str) -> str:
+    """把价值串切成小块（块之间包着分隔符）。
+
+    手机端气泡宽度不够时要能换行，但优先只在「/」「·」这些断点折行——
+    「AUD 10」这类单个金额不会被拆成两行；英文整句说明这类长块
+    仍可在词间断行，气泡不会越过卡片右边被裁掉。
+    """
+    out = []
+    for i, part in enumerate(_VAL_SPLIT_RE.split((text or "").strip())):
+        if not part.strip():
+            continue
+        if i % 2 == 1:  # 捕获到的分隔符
+            out.append(f'<span class="dval-s">{e(part)}</span>')
+        else:
+            token = part.strip()
+            # 短块（「AUD 10」「CAD 10 每人」）内部用不换行空格焊死，
+            # 折行只发生在块与块之间；长块（英文整句说明）保留空格，允许在词间断行。
+            if len(token) <= 12:
+                token = token.replace(" ", "\u00a0")
+            out.append(f'<span class="dval-t">{e(token)}</span>')
+    return "".join(out)
+
+
 def detail_tags(deal: dict, en: dict) -> str:
     cat = deal.get("category", "")
     cat_zh = CAT_META.get(cat, {"label": cat})["label"]
@@ -577,7 +604,7 @@ def detail_tags(deal: dict, en: dict) -> str:
         '<div class="detail-tags">'
         f'<span class="dtag cat">{bi(e(cat_zh), e(cat_en))}</span>'
         f'<span class="dval"><span class="dval-k">{ui("actual_value")}</span>'
-        f"<strong>{bi(e(v_zh), e(v_en))}</strong></span>"
+        f"<strong>{value_tokens(bi(v_zh, v_en))}</strong></span>"
         f'<span class="dtag {cost_cls}">{bi(e(cost), e(cost_en))}</span>'
         f"{check}"
         "</div>"
