@@ -1073,7 +1073,7 @@
   {
     "id": "reducto-150-free-usage",
     "dedup_key": "reducto|ai|global|150-free-usage",
-    "title": "[全球] Reducto：文档解析 API 新账号送 $150 免费额度（免绑卡可用）",
+    "title": "[全球] Reducto：文档解析 API 新账号送 $150 免费额度",
     "brand": "Reducto",
     "domain": "reducto.ai",
     "category": "ai",
@@ -1081,7 +1081,7 @@
     "value_num": 150,
     "cost": "免费试用",
     "highlight": "给 AI 代理读 PDF / 表格 / 扫描件的解析与结构化抽取 API，Standard 按量付费档自带 $150 免费额度，用完才按页计费（r-1 mini 解析 $1 / 千页起）",
-    "regions": "[全球] 官方未写国家限制；注册与测试额度按账号计，需绑卡与否以注册页实际提示为准（多条社区记录为不需要）",
+    "regions": "[全球] 官方未写国家限制；是否需绑卡以注册页 / 控制台实际提示为准（社区记录多为不需要）",
     "verified": true,
     "last_verified": "2026-11-20",
     "content": "Reducto 是面向 agent 的文档处理平台，提供 Parse（PDF/图片/表格/扫描件转结构化文本）、Extract（按 schema 抽字段）、Split、Classify、Edit 等接口，官方宣称支持 30+ 文件类型、无页数上限。定价页（2026-11-20 核对）写明 Standard 按量付费档「Free $150 in free usage」，$150 用完后按各端点列表价计费：r-1 mini Parse $1 / 千页、r-1 Parse $10 / 千页、Extract $20 / 千页、Deep Extract 与 Deep Split $40 / 千页、Classify $7.50 / 千页。同一页还挂着 Startup Program（融资 <$15M、年收入 <$3M、员工 <50 人），可另拿迁移额度与 Growth 档折扣。",
@@ -1903,7 +1903,7 @@
   {
     "id": "lindy-50-free-credits",
     "dedup_key": "lindy|ai|global|50-free-credits",
-    "title": "[全球] Lindy：注册送 $50 credits（7 天内有效，免绑卡）",
+    "title": "[全球] Lindy：注册送 $50 credits（7 天内有效）",
     "brand": "Lindy",
     "domain": "lindy.ai",
     "category": "ai",
@@ -1915,7 +1915,7 @@
     "verified": true,
     "last_verified": "2026-11-20",
     "content": "Lindy 主打「AI 队友」：在 Slack 线程里被 @ 就能干活，支持定时例程、会议记录与准备、收件箱管理、草稿撰写、电脑操作（Pro / Max 档）以及 3,000+ 集成和 MCP。定价页（2026-11-20 核对）写明 Free 档「$0，$50 in credits for free」，且「Free credits last 7 days」；付费从 Team 档 $29.99/月（3,000 credits）起，充值 $10 / 1,000 credits。FAQ 说明 Free 试用每个成员一次，7 天到期后不主动付费就停下来。",
-    "conditions": "新账号 Free 档自动给 $50 credits，7 天内用完即止；每个成员仅一次试用，离开后回来不再重置；有对外副作用的动作（发邮件、改工单、发消息）默认要人工批准；超出免费额度转付费从 $29.99/月起，不想付费无需绑卡。",
+    "conditions": "新账号 Free 档自动给 $50 credits，7 天内用完即止；每个成员仅一次试用，离开后回来不再重置；有对外副作用的动作（发邮件、改工单、发消息）默认要人工批准；官方 Free 档标价 $0，注册页未提示需要绑卡（以实际注册页提示为准）。",
     "steps": [
       "打开 lindy.ai/pricing 点 Try for free，用邮箱或 Google 注册",
       "在 Slack 里 @Lindy 或在网页版新建一个自动化流程",

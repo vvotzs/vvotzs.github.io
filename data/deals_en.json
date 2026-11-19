@@ -2947,9 +2947,9 @@
     "source": "Gate official announcement (published 2026-11-19 09:00 UTC, checked 2026-11-20)"
   },
   "reducto-150-free-usage": {
-    "title": "[Global] Reducto: $150 free usage on the document-parsing API for new accounts (no card needed to start)",
+    "title": "[Global] Reducto: $150 of free usage on the document-parsing API for new accounts",
     "highlight": "A document parsing and structured-extraction API for AI agents. The Standard pay-as-you-go tier starts with $150 of free usage, then bills per page ($1 per 1,000 pages on r-1 mini).",
-    "regions": "[Global] No country restriction stated. Whether a card is required at signup is shown on the signup page (community reports say it is not).",
+    "regions": "[Global] No country restriction stated. Whether a card is required is shown on the signup page and in the console (community reports say it is not).",
     "value": "$150 of usage on the Standard pay-as-you-go tier",
     "content": "Reducto is a document platform built for agents: Parse (PDFs, images, tables, scans to structured text), Extract (schema-based field extraction), Split, Classify and Edit, with 30+ file types and no page limits. Its pricing page, read on 2026-11-20, states the Standard pay-as-you-go plan includes \"Free $150 in free usage\". After that, list rates apply: r-1 mini Parse $1 per 1,000 pages, r-1 Parse $10, Extract $20, Deep Extract and Deep Split $40, Classify $7.50. The same page offers a Startup Program (under $15M funding, under $3M revenue, under 50 employees) with migration credits and discounted Growth pricing.",
     "conditions": "The Standard tier includes $150 of free usage at signup and then switches to metered billing rather than a fixed subscription. The pricing page states no end date. The credit's validity period and whether a card is required are not stated on the pricing page, so check the console. The Startup Program requires an application and eligibility review.",
@@ -2963,12 +2963,12 @@
     "source": "Reducto official pricing page (read 2026-11-20, states \"Free $150 in free usage\") plus the perq.sh AI credits directory, re-checked 2026-11-19 against the same page"
   },
   "lindy-50-free-credits": {
-    "title": "[Global] Lindy: $50 in free credits at signup (valid 7 days, no card)",
+    "title": "[Global] Lindy: $50 in free credits at signup (valid 7 days)",
     "highlight": "An automation and AI-teammate platform whose Free plan starts with $50 in credits. Connect Slack, email, calendar and 3,000+ integrations and run scheduled routines; the credits expire after 7 days and nothing converts to paid on its own.",
     "regions": "[Global] Email or Google sign-in. The Free plan is listed at $0 with no credit card.",
     "value": "$50 in credits, valid for 7 days",
     "content": "Lindy pitches itself as an AI teammate: mention it in a Slack thread and it works, with scheduled routines, meeting notes and prep, inbox management, voice-matched drafts, computer use on paid plans, 3,000+ integrations and MCP. Its pricing page, read on 2026-11-20, lists the Free plan as $0 with \"$50 in credits for free\" and \"Free credits last 7 days\". Paid Team plans start at $29.99/month for 3,000 credits, with top-ups at $10 per 1,000 credits. The FAQ says the free week is one-time per teammate and nothing is charged when it ends.",
-    "conditions": "A new account gets $50 in credits on the Free plan, usable within 7 days. The free week is one-time per teammate and does not reset. Actions with outside effects (sending email, updating tickets, posting messages) wait for approval by default. Paid usage starts at $29.99/month and no card is needed while trialling.",
+    "conditions": "A new account gets $50 in credits on the Free plan, usable within 7 days. The free week is one-time per teammate and does not reset. Actions with outside effects (sending email, updating tickets, posting messages) wait for approval by default. The Free plan is listed at $0 and the signup page does not ask for a card, though the signup flow is the final word.",
     "steps": [
       "Open lindy.ai/pricing and choose Try for free with email or Google",
       "Mention it in Slack or build one automation in the web app",
