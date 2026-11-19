@@ -1021,7 +1021,7 @@ def main() -> None:
 <html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="author" content="{site_name}">
@@ -1249,7 +1249,7 @@ def main() -> None:
              placeholder="{pht('submit_ph_region')}" data-ph-zh="{e(U['submit_ph_region'][0])}" data-ph-en="{e(U['submit_ph_region'][1])}">
     </label>
     <label class="sd-notes">
-      <textarea class="sd-textarea" id="sd-notes" name="notes" rows="5" maxlength="800"
+      <textarea class="sd-textarea" id="sd-notes" name="notes" rows="3" maxlength="800"
                 data-al-zh="亮点与门槛说明" data-al-en="Highlights and requirements"
                 placeholder="{pht('submit_ph_notes')}" data-ph-zh="{e(U['submit_ph_notes'][0])}" data-ph-en="{e(U['submit_ph_notes'][1])}"></textarea>
     </label>

@@ -1855,14 +1855,20 @@ html.dialog-open{ overflow: hidden; }
 /* 成功态下右上角的纸飞机隐藏：没有可提交的内容 */
 .sd-send[hidden]{ display: none; }
 
-@media (max-width: 480px){
+/* 手机上输入法弹出时，垂直居中的弹窗下半部分会被键盘盖住：
+   680px 以下改为顶部对齐，高度跟着可视区域走，内容超高时卡片内部自己滚动。 */
+@media (max-width: 680px){
   .submit-dialog{
+    inset: 0 0 auto 0;                 /* top: 0，左右贴边，底部自动 */
+    margin: 10px auto auto;            /* 距顶部 10px，水平居中 */
     width: calc(100vw - 12px);
-    max-height: calc(100dvh - 16px);
+    max-height: calc(100dvh - 20px);
     border-radius: 20px;
+    overflow-y: auto;
   }
   .sd-row{ height: 46px; }
-  .sd-textarea{ min-height: 158px; }
+  .sd-textarea{ min-height: 68px; }
+  .sd-notes{ padding: 10px 14px 6px; }
   .sd-top h2{ font-size: 13.5px; }
-  .sd-done{ min-height: 312px; }
+  .sd-done{ min-height: 268px; padding: 22px 18px 20px; }
 }
