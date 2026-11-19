@@ -2781,5 +2781,21 @@
     ],
     "risk": "Irish numbers and Irish Revolut accounts only; the €9.99 can end early when the allocation runs out and reverts to €12.99; unlimited data is subject to fair use; the app price is authoritative.",
     "source": "Revolut Mobile official plans page (UK, same mechanism) + Revolut/Gigs Ireland launch release (2026-11-09, prices, deadline and terms) + RTÉ, Irish Examiner and TheJournal coverage + visitor submission email (2026-11-19 19:50)"
+  },
+  "barclays-uk-switch-300": {
+    "title": "[UK] Barclays switch offer worth up to £300: £150 to open plus £30 a month for five months",
+    "highlight": "The biggest switch bonus in the UK right now: switch in with CASS and three direct debits plus a £2,000 salary to earn £150, then £30 a month for five months by spending 10 times and keeping the salary coming.",
+    "regions": "[UK] UK residents 18+ opening a sole Barclays Bank Account through the Barclays app.",
+    "value": "Up to £300 (£150 + 5 × £30)",
+    "content": "Barclays' Current Account Switch offer (from 2026-10-01, withdrawable at any time) pays £150 when you open a sole Barclays Bank Account in the app, complete a full CASS switch from another UK bank with at least three active direct debits, request the switch within 30 days and have £2,000 of salary paid in within 30 days of opening. The £150 arrives within 28 working days of qualifying.\n\nAfter that, up to five further full months each pay £30 when you make at least 10 eligible debit card purchases, receive £2,000 of salary in that month and still hold the account, for a maximum of £300. Someone qualifying in October is assessed for the first £30 in November with payment in December, and so on through March 2027 assessed and April paid.\n\nSalary must be Bacs from an employer, a state or private pension, or a transfer from a UK business account to your personal account; transfers between personal accounts do not count. Eligible card spending excludes cash withdrawals, ATMs, gambling, refunds, P2P payments and internal transfers, and pending transactions do not count.",
+    "conditions": "UK resident, 18+, opening in the app with a mobile number. You are excluded if you held any Barclays current account on or before 2026-10-01, have had a Barclays CASS bonus before, are opening a joint account or only qualify for a Basic Account. The switch must carry three active direct debits, the first £2,000 salary must land within 30 days, and the total is capped at £300.",
+    "steps": [
+      "Download the Barclays app and open a sole Barclays Bank Account (finish the application within 21 days)",
+      "Complete a full CASS switch within 30 days of opening, carrying three active direct debits",
+      "Have £2,000 or more of salary paid in by Bacs within 30 days",
+      "For the next five months, make 10 eligible debit card purchases and keep the £2,000 salary arriving"
+    ],
+    "risk": "Barclays says the offer can be withdrawn at any time and publishes no end date. Salary must arrive by Bacs and cannot be a transfer between personal accounts. The 10 card purchases must clear within the month, and every missed month costs £30 of the £300 ceiling.",
+    "source": "Barclays official switch-offer page and October 2026 terms (checked 2026-11-20) + Barclays press release (2026-10-01) + Proper Money comparison (2026-11-16) + Martin Lewis and Birmingham Live coverage (2026-11-15)"
   }
 }
