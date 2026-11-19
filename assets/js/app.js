@@ -747,10 +747,8 @@
       var name = (nameEl.value || "").trim();
       var url = (urlEl.value || "").trim();
       if (!name) { showErr(nameEl.parentNode, msg("name")); nameEl.focus(); return; }
+      /* 链接只要求非空：用户写 testdomain.com 或一段文字说明也照收，不做前缀校验 */
       if (!url) { showErr(urlEl.parentNode, msg("link")); urlEl.focus(); return; }
-      if (!/^https?:\/\//i.test(url)) {
-        showErr(urlEl.parentNode, msg("link-invalid")); urlEl.focus(); return;
-      }
 
       var body = new URLSearchParams();
       body.set("name", name);

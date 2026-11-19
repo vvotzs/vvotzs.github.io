@@ -1210,7 +1210,6 @@ def main() -> None:
         data-al-zh="{U['submit_aria'][0]}" data-al-en="{U['submit_aria'][1]}"
         data-msg-name-zh="{e(U['submit_need_name'][0])}" data-msg-name-en="{e(U['submit_need_name'][1])}"
         data-msg-link-zh="{e(U['submit_need_link'][0])}" data-msg-link-en="{e(U['submit_need_link'][1])}"
-        data-msg-link-invalid-zh="{e(U['submit_link_invalid'][0])}" data-msg-link-invalid-en="{e(U['submit_link_invalid'][1])}"
         data-msg-failed-zh="{e(U['submit_failed'][0])}" data-msg-failed-en="{e(U['submit_failed'][1])}">
   <form class="sd-form" id="submit-form" novalidate>
     <div class="sd-top">
@@ -1241,7 +1240,7 @@ def main() -> None:
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_link')}<i class="req" aria-hidden="true">*</i></span>
-      <input class="sd-input" id="sd-url" name="url" type="url" inputmode="url" maxlength="500" autocomplete="off" spellcheck="false" enterkeyhint="next"
+      <input class="sd-input" id="sd-url" name="url" type="text" inputmode="url" maxlength="500" autocomplete="off" spellcheck="false" enterkeyhint="next"
              placeholder="{pht('submit_ph_link')}" data-ph-zh="{e(U['submit_ph_link'][0])}" data-ph-en="{e(U['submit_ph_link'][1])}">
     </label>
     <label class="sd-row">
@@ -1251,6 +1250,7 @@ def main() -> None:
     </label>
     <label class="sd-notes">
       <textarea class="sd-textarea" id="sd-notes" name="notes" rows="5" maxlength="800"
+                data-al-zh="亮点与门槛说明" data-al-en="Highlights and requirements"
                 placeholder="{pht('submit_ph_notes')}" data-ph-zh="{e(U['submit_ph_notes'][0])}" data-ph-en="{e(U['submit_ph_notes'][1])}"></textarea>
     </label>
     <p class="sd-err" id="sd-err" role="alert" hidden></p>
