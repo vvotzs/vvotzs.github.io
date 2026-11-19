@@ -1609,8 +1609,8 @@ footer{
 
   .foot-line{ gap: 10px; font-size: 11px; }
   .foot-up{ display: none; }
-  /* 手机端 .shell 自带 4px 底边距，页脚再让出 4px，档案区到页脚仍是 ~16px */
-  footer{ margin-top: 12px; }
+  /* 手机端两个 .shell 各带 4px 底边距（共 8px），页脚再让 8px，档案区到页脚仍是 ~16px */
+  footer{ margin-top: 8px; }
 
   /* 右下角语言徽标：再收小一圈，正好落在右侧 44px 滑轨与正文之间 */
   .lang-switch{
