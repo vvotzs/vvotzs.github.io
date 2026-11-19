@@ -59,7 +59,7 @@ U: dict[str, tuple[str, str]] = {
     "submit_region": ("地区", "Region"),
     "submit_ph_region": ("全球 / 美区 / 英区 / 日区 / 韩区", "Global / US / UK / JP / KR"),
     "submit_ph_notes": ("亮点与门槛说明（选填）…", "Highlights & requirements (optional)…"),
-    "submit_tg": ("交流群", "TG group"),
+    "submit_tg": ("交流群", "TG Group"),
     "submit_tg_aria": ("加入 Telegram 交流群", "Join the Telegram group"),
     "submit_send": ("提交", "Send"),
     "submit_need_name": ("请填写优惠名称", "Please add a deal name"),
