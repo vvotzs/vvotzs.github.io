@@ -50,11 +50,17 @@ robots.txt / sitemap.xml
   只有请求失败才清零。
 - 服务端参考实现：`docs/apps-script-submit.gs`（蜜罐、`elapsed_ms < 1200`、`CacheService` 每分钟限流、
   `MailApp.getRemainingDailyQuota()` 检查与同链接去重）。线上 Web App 仍是旧版参数，未重新部署，避免中断现有直邮。
-- 没有 `<form>`：弹窗内容用 `<div class="sd-form">` 承载，发送按钮（`type="button"`）与单行输入框的 Enter
+- 没有 `<form>`：弹窗内容用 `<div class="sd-form">` 承载，发送按钮（`type="button"`）与单行字段的 Enter
   在 `app.js` 里触发同一段提交逻辑（校验、蜜罐、5 秒冷却、提交中态、回执都不变），多行说明框的 Enter 仍是换行。
   原因：安卓 Chrome 的 Autofill 启发式会忽略 `autocomplete="off"`，只要检测到 `<form>` 加带 `name` / `region`
   这类关键词的输入框，就会在 Gboard 上方弹出钥匙 / 银行卡 / 地址填充条；因此输入框用中性 `id`（`sd-f1`～`sd-f4`）、
   不设 `name` 属性，并带 `autocomplete="nope"` + `data-lpignore` / `data-1p-ignore` / `data-bwignore` / `data-form-type="other"`。
+- 三个单行字段（名称 / 链接 / 地区）是 `<textarea rows="1" wrap="off">` 而不是 `<input>`：真机实测那条 🔑💳📍 辅助栏
+  只按控件类型判断，对 `<textarea>` 完全不弹（`<input>` 无论换什么 `autocomplete` 值都照弹）。视觉由 `.sd-field-single`
+  压成 46px 单行（行高=高度垂直居中、`nowrap`、`overflow:hidden`、`resize:none`），`app.js` 里：`keydown` 拦 Enter 发送，
+  `beforeinput` 兜底拦 `insertLineBreak` / `insertParagraph`（Gboard 常常只给 `beforeinput`），输入法组字中与
+  `compositionend` 后 200ms 内不发送（拼音选词的回车只算上屏），`input` 事件把粘贴进来的换行折成空格并复位光标。
+  多行说明框（`sd-f4`）不受影响，仍是正常换行。
 - 兜底：禁用 JS / 不支持 `showModal()` 时，按钮本身就是 TG 群链接
   （<https://t.me/+aAqP0DbW_YMxMmNh>），不会走进死路。
 - 关闭：左上 `←`、ESC、点遮罩都可以；提交成功后同一张卡片就地换成紧凑回执
