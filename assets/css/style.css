@@ -460,6 +460,11 @@ html.js .pager-bar{ display: flex; }
   transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
   overflow: hidden;
   scroll-margin-top: 78px;
+  /* 性能：屏幕外的卡片跳过布局与绘制，139 张的长列表只算首屏那几张 */
+  content-visibility: auto;
+  /* 占位高度写的是「内容区」，不含上下各 1px 边框：桌面实测外高 99.5px（→97.5px）、
+     手机 81px（→79px，见手机媒体查询）。占位和真实高度对齐，滚动或横滑翻页才不会抖 */
+  contain-intrinsic-size: auto 97.5px;
 }
 .card:hover{
   border-color: rgba(28,25,23,.13);
@@ -471,6 +476,8 @@ html.js .pager-bar{ display: flex; }
   box-shadow: 0 2px 6px rgba(28,25,23,.05), 0 20px 44px -22px rgba(120,70,10,.35);
   grid-column: 1 / -1;
   transform: none;
+  /* 展开态会被锚点跳转 / 深链接测高，必须真实渲染，不能只按占位高度算 */
+  content-visibility: visible;
 }
 .card.open::after{
   content: "";
@@ -1346,6 +1353,8 @@ footer{
   html.js .pager-bar{ display: flex; }
   .more{ display: none !important; }
 
+  /* 手机端未展开卡片外高实测 81px（含上下各 1px 边框）→ 内容区 79px */
+  .card{ contain-intrinsic-size: auto 79px; }
   .card-head{ padding: 9px 10px; gap: 8px; }
   .card-head .fav,
   .card-head .fav-fallback{ width: 22px; height: 22px; border-radius: 6px; margin-top: 0; }
