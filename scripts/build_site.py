@@ -614,7 +614,7 @@ def card(deal: dict, en: dict, today) -> str:
           {region_html}
           <span class="grow"></span>
           <a class="go" href="{e(main_link(deal))}" target="_blank" rel="noopener nofollow"
-             data-al-zh="直达来源链接" data-al-en="Open the source link"><span class="go-full">{ui("go_full")}</span><span class="go-short">{ui("go_short")}</span>{icon('external')}</a>
+             data-al-zh="原文链接" data-al-en="Open the source link"><span class="go-full">{ui("go_full")}</span><span class="go-short">{ui("go_short")}</span>{icon('external')}</a>
           <button class="toggle" type="button" aria-expanded="false" aria-controls="detail-{deal_id}"
                   data-al-zh="展开详情" data-al-en="Expand details">{ui("detail_open")}
             {icon('chevron')}
@@ -1195,6 +1195,8 @@ def main() -> None:
     print(f"  英文条目：{len(deals) - len(missing_en)}/{len(deals)} 条有翻译")
     if missing_en:
         print(f"  ! 缺少英文翻译 {len(missing_en)} 条：{', '.join(missing_en[:12])}{' …' if len(missing_en) > 12 else ''}")
+    src_hits = [d for d in deals if main_link(d) != official_link(d)]
+    print(f"  原文链接：{len(src_hits)} 条指向抓取来源原帖，{len(deals) - len(src_hits)} 条回落到官方页（source_url 或 source 里带原帖 URL 时自动切换）")
     if missing:
         print(f"  ! 图标下载失败 {len(missing)} 个（回退字母块）：{', '.join(missing)}")
     else:

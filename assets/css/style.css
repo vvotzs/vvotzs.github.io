@@ -1237,7 +1237,8 @@ footer{
 
   /* ---- 顶栏：🥒 羊毛情报局 + 搜索图标 + 三枚统计胶囊，一行放下 ---- */
   .topbar-in{ height: var(--topbar); gap: 6px; }
-  .brand{ gap: 6px; min-width: 0; flex: 0 1 auto; }
+  /* 站名不参与收缩：顶栏本来放得下，一收缩就会因 1px 取整出现省略号 */
+  .brand{ gap: 6px; min-width: 0; flex: 0 0 auto; }
   .brand-mark{ width: 26px; height: 26px; border-radius: 9px; }
   .brand-mark svg{ width: 20px; height: 20px; }
   .brand-name{
