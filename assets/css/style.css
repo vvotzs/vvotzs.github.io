@@ -1794,31 +1794,66 @@ html.dialog-open{ overflow: hidden; }
   color: #B91C1C;
 }
 
-/* 提交成功：同一张卡片就地换成回执 */
-.sd-done{ padding: 30px 22px 22px; text-align: center; }
+/* 提交成功：同一张卡片就地换成回执，高度与填写态一致（内容居中，不把弹窗拉长） */
+.sd-done{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 336px;
+  padding: 26px 22px 24px;
+  text-align: center;
+}
 .sd-done[hidden]{ display: none; }
-.sd-done-mark{ font-size: 24px; line-height: 1; }
+.sd-done-mark{ display: block; width: 44px; height: 44px; }
+.sd-done-mark svg{ width: 44px; height: 44px; display: block; }
 .sd-done-t{
-  margin: 10px 0 4px;
+  margin: 0;
   font-size: 14.5px;
   font-weight: 700;
   letter-spacing: .01em;
+  line-height: 1.45;
   color: var(--ink);
 }
-.sd-done-s{ margin: 0; font-size: 12.5px; color: var(--ink-3); }
-.sd-tg-lg{ margin-top: 14px; height: 30px; padding: 0 12px 0 9px; font-size: 12px; }
-.sd-again{
-  margin-top: 2px;
-  padding: 10px 6px 2px;
-  border: 0;
-  background: transparent;
-  color: var(--mint);
+.sd-tg-lg{ height: 28px; padding: 0 11px 0 8px; font-size: 11.5px; }
+.sd-tg-lg .sd-tg-i{ width: 15px; height: 15px; }
+
+.sd-actions{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+.sd-btn{
+  min-width: 104px;
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 999px;
   font-family: inherit;
-  font-size: 12.5px;
+  font-size: 12.8px;
   font-weight: 600;
   cursor: pointer;
+  transition: filter .15s ease, background .15s ease, border-color .15s ease;
 }
-.sd-again:hover{ color: #047857; }
+.sd-btn-ghost{
+  border: 1px solid rgba(28,25,23,.14);
+  background: #FFFFFF;
+  color: var(--ink-2);
+}
+.sd-btn-ghost:hover{ background: #F6F4EE; border-color: rgba(28,25,23,.22); color: var(--ink); }
+.sd-btn-mint{
+  border: 1px solid #16A34A;
+  background: linear-gradient(180deg, #22C55E 0%, #16A34A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 6px 14px -10px rgba(22,163,74,.95);
+}
+.sd-btn-mint:hover{ filter: brightness(1.05); }
+.sd-btn:focus-visible{ outline: 2px solid rgba(22,163,74,.5); outline-offset: 2px; }
+
+/* 成功态下右上角的纸飞机隐藏：没有可提交的内容 */
+.sd-send[hidden]{ display: none; }
 
 @media (max-width: 480px){
   .submit-dialog{
@@ -1829,4 +1864,5 @@ html.dialog-open{ overflow: hidden; }
   .sd-row{ height: 46px; }
   .sd-textarea{ min-height: 158px; }
   .sd-top h2{ font-size: 13.5px; }
+  .sd-done{ min-height: 312px; }
 }

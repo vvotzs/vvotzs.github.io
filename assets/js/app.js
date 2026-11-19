@@ -710,6 +710,7 @@
       clearBad();
       donePanel.hidden = true;
       submitForm.hidden = false;
+      if (sendBtn) sendBtn.hidden = false;   /* 回到填写界面：发送按钮恢复 */
     };
     var openDialog = function () {
       resetForm();
@@ -728,9 +729,14 @@
     $$("[data-submit-close]", submitDialog).forEach(function (el) {
       el.addEventListener("click", closeDialog);
     });
-    /* 点遮罩关闭：落在 <dialog> 自身上的点击就是卡片外的空白 */
+    /* 点遮罩关闭：::backdrop 不是 DOM 节点，点在卡片外时事件目标是 <dialog> 本身，
+       再用坐标确认一次确实落在卡片外面（填写中与提交成功页都一样生效） */
     submitDialog.addEventListener("click", function (ev) {
-      if (ev.target === submitDialog) closeDialog();
+      if (ev.target !== submitDialog) return;
+      var r = submitDialog.getBoundingClientRect();
+      var outside = ev.clientX < r.left || ev.clientX > r.right ||
+                    ev.clientY < r.top || ev.clientY > r.bottom;
+      if (outside || ev.target === submitDialog) closeDialog();
     });
     submitDialog.addEventListener("close", function () {
       document.documentElement.classList.remove("dialog-open");
@@ -764,8 +770,9 @@
         sending = false;
         sendBtn.disabled = false;
         if (!ok) { showErr(null, msg("failed")); return; }
-        submitForm.hidden = true;     /* 同一张卡片就地换成回执 */
+        submitForm.hidden = true;     /* 同一张卡片就地换成回执，不改弹窗高度 */
         donePanel.hidden = false;
+        if (sendBtn) sendBtn.hidden = true;
       };
       if (!GAS_URL) { finish(false); return; }
       fetch(GAS_URL, { method: "POST", mode: "no-cors", body: body })

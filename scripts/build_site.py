@@ -1257,15 +1257,27 @@ def main() -> None:
   </form>
 
   <div class="sd-done" id="sd-done" hidden>
-    <span class="sd-done-mark" aria-hidden="true">✨</span>
+    <span class="sd-done-mark" aria-hidden="true">
+      <svg viewBox="0 0 48 48">
+        <defs>
+          <linearGradient id="sdDoneGrad" x1="0" y1="0" x2="0.5" y2="1">
+            <stop offset="0" stop-color="#34D399"/><stop offset="1" stop-color="#16A34A"/>
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="22" fill="url(#sdDoneGrad)"/>
+        <path d="m14.4 24.6 6.6 6.6 12.6-13.2" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
     <p class="sd-done-t">{ui('submit_success')}</p>
-    <p class="sd-done-s">{ui('submit_done_sub')}</p>
     <a class="sd-tg sd-tg-lg" href="{TG_GROUP_URL}" target="_blank" rel="noopener"
        data-al-zh="{U['submit_tg_aria'][0]}" data-al-en="{U['submit_tg_aria'][1]}">
       <svg class="sd-tg-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.62 7.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74l9.11-3.51c.42-.15.79.1.65.83Z" fill="currentColor"/></svg>
       <span>{ui('submit_tg')}</span>
     </a>
-    <div><button class="sd-again" type="button" data-submit-again>{ui('submit_again')}</button></div>
+    <div class="sd-actions">
+      <button class="sd-btn sd-btn-ghost" type="button" data-submit-close>{ui('close')}</button>
+      <button class="sd-btn sd-btn-mint" type="button" data-submit-again>{ui('submit_again')}</button>
+    </div>
   </div>
 </dialog>
 
