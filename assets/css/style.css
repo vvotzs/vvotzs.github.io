@@ -1729,6 +1729,7 @@ html.dialog-open{ overflow: hidden; }
 
 /* 表单：横线分行，左标签右输入，没有任何输入框边框 */
 .sd-form{ display: block; }
+.sd-form[hidden]{ display: none; }   /* 成功态整块换掉表单，而不是在下面追加 */
 .sd-row{
   display: flex;
   align-items: center;
