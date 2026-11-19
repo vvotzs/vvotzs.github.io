@@ -7873,23 +7873,19 @@ placeholder="亮点与门槛说明（选填）…"></textarea>
 window.__errs = [];
 window.addEventListener('error', function (e) { window.__errs.push('error: ' + e.message); });
 window.addEventListener('unhandledrejection', function (e) { window.__errs.push('rej: ' + ((e.reason && e.reason.message) || e.reason)); });
-window.addEventListener('load', function () { setTimeout(run, 400); });
-function run() {
-  var lines = [];
-  var sent = [];
-  function show(name, ok, extra) { lines.push((ok ? 'PASS ' : 'FAIL ') + name + (extra ? '  [' + extra + ']' : '')); }
-  function dump() { document.getElementById('__out').textContent = lines.join('\n'); }
-  window.fetch = function (u, o) {
-    sent.push(o && o.body ? String(o.body) : '');
-    return Promise.resolve(new Response('', { status: 200 }));
-  };
+window.addEventListener('load', function () { setTimeout(function () { run().catch(function (e) { window.__errs.push('run: ' + e.message); dump(); }); }, 400); });
+var lines = [], sent = [];
+function show(name, ok, extra) { lines.push((ok ? 'PASS ' : 'FAIL ') + name + (extra ? '  [' + extra + ']' : '')); }
+function dump() { document.getElementById('__out').textContent = lines.join('\n'); }
+function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+async function run() {
+  window.fetch = function (u, o) { sent.push(o && o.body ? String(o.body) : ''); return Promise.resolve(new Response('', { status: 200 })); };
   var d = document.querySelector('#submit-dialog');
   document.querySelector('#open-submit').click();
   show('dialog opens', d.open === true, 'open=' + d.open);
   var f1 = document.querySelector('#sd-f1'), f2 = document.querySelector('#sd-f2'),
       f3 = document.querySelector('#sd-f3'), f4 = document.querySelector('#sd-f4');
 
-  // 1) 粘贴多行 -> 一行 + 光标位置
   f1.focus();
   f1.value = '第一行\n第二行\r\n第三行';
   f1.setSelectionRange(f1.value.length, f1.value.length);
@@ -7902,48 +7898,44 @@ function run() {
   f1.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertFromPaste' }));
   show('paste caret kept mid', f1.value === 'ab cd' && f1.selectionStart === 3, JSON.stringify(f1.value) + ' @' + f1.selectionStart);
 
-  // 2) 多行说明框保留换行
   f4.value = '行1\n行2';
   f4.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertFromPaste' }));
   show('notes keeps newline', f4.value === '行1\n行2', JSON.stringify(f4.value));
 
-  // 3) 组字中的换行：拦下、不提交
   f1.value = '候选词'; f1.setSelectionRange(3, 3);
   var p1 = !f1.dispatchEvent(new InputEvent('beforeinput', { bubbles: true, cancelable: true, inputType: 'insertLineBreak', isComposing: true }));
   show('composing linebreak prevented', p1, 'prevented=' + p1);
   show('composing linebreak no submit', sent.length === 0, 'sent=' + sent.length);
-  // 组字中 keydown 也不发
-  var k1 = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true, isComposing: true });
-  f1.dispatchEvent(k1);
+  f1.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true, isComposing: true }));
   show('composing keydown no submit', sent.length === 0, 'sent=' + sent.length);
 
-  // 4) 英文直接回车（keydown）-> 发送
   f1.value = '测试名称'; f2.value = 'https://example.com/pickle-test'; f3.value = '韩区';
-  var k2 = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true });
-  var p2 = !f1.dispatchEvent(k2);
+  var p2 = !f1.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true }));
   show('keydown Enter prevented newline', p2, '');
+  await wait(150);
   show('keydown Enter submits once', sent.length === 1, 'sent=' + sent.length);
-  show('receipt shown', document.querySelector('#sd-done').hidden === false, '');
-  show('body carries fields', sent[0] && sent[0].indexOf('name=') > -1 && sent[0].indexOf('url=') > -1 && sent[0].indexOf('hp_x7') > -1, (sent[0] || '').slice(0, 200));
+  show('receipt shown', document.querySelector('#sd-done').hidden === false, 'hidden=' + document.querySelector('#sd-done').hidden);
+  show('form panel hidden', document.querySelector('#submit-form').hidden === true, '');
+  show('body carries fields', sent[0] && sent[0].indexOf('name=') > -1 && sent[0].indexOf('url=') > -1 && sent[0].indexOf('hp_x7') > -1, (sent[0] || '').slice(0, 160));
 
-  // 5) beforeinput 兜底（Gboard 只给 beforeinput 的情形）
+  await wait(5200);   // 等 5 秒冷却过去，验证 beforeinput 兜底真的会发
   document.querySelector('[data-submit-again]').click();
-  window.sessionStorage.removeItem('ydj_last_sent');
   f1.value = '第二笔'; f2.value = 'https://example.com/second';
   var p3 = !f3.dispatchEvent(new InputEvent('beforeinput', { bubbles: true, cancelable: true, inputType: 'insertParagraph' }));
   show('beforeinput linebreak prevented', p3, '');
+  await wait(150);
   show('beforeinput submits once more', sent.length === 2, 'sent=' + sent.length);
+  show('second submission has content', sent[1] && sent[1].indexOf('second') > -1, (sent[1] || '').slice(0, 120));
 
-  // 6) 蜜罐被填：静默回执、不发请求
+  await wait(5200);
   document.querySelector('[data-submit-again]').click();
-  window.sessionStorage.removeItem('ydj_last_sent');
   document.querySelector('#sd-hp').value = 'bot';
   f1.value = '蜜罐'; f2.value = 'https://example.com/hp';
   document.querySelector('.sd-send').click();
+  await wait(150);
   show('honeypot no request', sent.length === 2, 'sent=' + sent.length);
   show('honeypot shows receipt', document.querySelector('#sd-done').hidden === false, '');
 
-  // 7) 尺寸与样式
   document.querySelector('[data-submit-again]').click();
   var cs = getComputedStyle(f1);
   show('field height 46px', Math.round(f1.getBoundingClientRect().height) === 46, f1.getBoundingClientRect().height + 'px');
@@ -7951,8 +7943,7 @@ function run() {
   show('no resize handle', cs.resize === 'none', cs.resize);
   show('single-line nowrap', cs.whiteSpace === 'nowrap', cs.whiteSpace);
   show('sd-f4 is textarea rows=3', f4.tagName === 'TEXTAREA' && f4.getAttribute('rows') === '3', f4.tagName + ' rows=' + f4.getAttribute('rows'));
-  show('no input elements beside honeypot', document.querySelectorAll('#submit-form input').length === 1, 'inputs=' + document.querySelectorAll('#submit-form input').length);
-
+  show('one input left (honeypot)', document.querySelectorAll('#submit-form input').length === 1, 'inputs=' + document.querySelectorAll('#submit-form input').length);
   show('no js errors', window.__errs.length === 0, window.__errs.join(' | '));
   dump();
 }
