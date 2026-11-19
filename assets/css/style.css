@@ -1224,7 +1224,9 @@ footer{
   z-index: 1;
   margin-top: 16px;        /* 档案区到页脚只留一点呼吸感 */
   border-top: 1px solid rgba(28,25,23,.08);
-  padding: 8px 0 8px;      /* 压成 ~40px 的紧凑单行；语言胶囊在右侧留白里，不挡文字 */
+  /* 压成 ~40px 的紧凑单行；语言胶囊在右侧留白里，不挡文字。
+     iPhone 的 Home 指示条会盖住最底部，用 safe-area 补上（其他平台 env() = 0，不改变高度）。 */
+  padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0px));
   background: rgba(255,255,255,.55);
 }
 .foot-line{
