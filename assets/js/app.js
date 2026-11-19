@@ -377,6 +377,79 @@
     if (history.replaceState) history.replaceState(null, "", "#" + id);
   });
 
+  /* ------------------------------------ 「即将截止」口径吐司：点 ⓘ 弹出，3.5 秒自己走 */
+  var closingToast = document.getElementById("closing-toast");
+  var closingInfoBtns = $$(".closing-info");
+  var closingToastTimer = null;
+  var closingInfoOn = null;
+
+  /* 吐司挂在 ⓘ 下方，左右都夹进视口：375px 窄屏也不会挤出横向滚动条；
+     万一下方放不下（键盘弹起 / 屏很矮）就翻到按钮上方。 */
+  function placeClosingToast(btn) {
+    if (!closingToast || !btn) return;
+    var r = btn.getBoundingClientRect();
+    if (!r.width || r.bottom < 0 || r.top > window.innerHeight) {
+      hideClosingToast();
+      return;
+    }
+    var pad = 10;
+    var w = closingToast.offsetWidth;
+    var h = closingToast.offsetHeight;
+    var left = r.left + r.width / 2 - 20;
+    left = Math.min(Math.max(left, pad), window.innerWidth - w - pad);
+    var top = r.bottom + 8;
+    if (top + h > window.innerHeight - pad) top = Math.max(pad, r.top - h - 8);
+    closingToast.style.left = Math.round(left) + "px";
+    closingToast.style.top = Math.round(top) + "px";
+  }
+
+  function hideClosingToast() {
+    if (!closingToast || closingToast.hidden) return;
+    closingToast.hidden = true;
+    clearTimeout(closingToastTimer);
+    closingToastTimer = null;
+    if (closingInfoOn) {
+      closingInfoOn.setAttribute("aria-expanded", "false");
+      closingInfoOn = null;
+    }
+  }
+
+  function showClosingToast(btn) {
+    if (!closingToast) return;
+    closingToast.hidden = false;
+    closingInfoOn = btn;
+    btn.setAttribute("aria-expanded", "true");
+    placeClosingToast(btn);
+    clearTimeout(closingToastTimer);
+    closingToastTimer = setTimeout(hideClosingToast, 3500);
+  }
+
+  closingInfoBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (ev) {
+      // ⓘ 在 tab 旁边：别顺带切 tab、也别顺带收起展开的卡片
+      ev.preventDefault();
+      ev.stopPropagation();
+      if (closingInfoOn === btn) hideClosingToast();
+      else showClosingToast(btn);
+    });
+  });
+
+  if (closingToast) {
+    window.addEventListener("resize", function () { if (closingInfoOn) placeClosingToast(closingInfoOn); });
+    window.addEventListener("scroll", function () {
+      if (closingInfoOn) placeClosingToast(closingInfoOn);
+    }, { passive: true });
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape") hideClosingToast();
+    });
+    // 点空白处关（捕获阶段先看一眼：点在 ⓘ / 吐司本身就别关）
+    document.addEventListener("click", function (ev) {
+      if (!closingInfoOn) return;
+      if (ev.target.closest && ev.target.closest(".closing-info, #closing-toast")) return;
+      hideClosingToast();
+    }, true);
+  }
+
   /* ------------------------------------------------------------ accordion */
   function setOpen(card, open) {
     card.classList.toggle("open", open);

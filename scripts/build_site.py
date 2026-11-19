@@ -139,6 +139,8 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
                    '<path d="M12 20.9c-.9 0-1.6-.9-1.6-2.1h3.2c0 1.2-.7 2.1-1.6 2.1Z" fill="#FDE68A"/>', 1.9),
     # 外链箭头
     "external": (12, '<path d="M3 9 9 3M4.5 3H9v4.5"/>', 1.6),
+    # 口径说明（ⓘ）：细圈 + 小写 i
+    "info": (16, '<circle cx="8" cy="8" r="6.3"/><path d="M8 7.3v4.1"/><path d="M8 4.8v.1"/>', 1.35),
     # 展开箭头
     "chevron": (12, '<path d="m2.5 4.5 3.5 3.5 3.5-3.5"/>', 1.8),
     # 搜索
@@ -790,7 +792,6 @@ def module_html(
     jump: bool = False,
     strip: bool = False,
     hidden: bool = False,
-    desc_visible: bool = False,
 ) -> str:
     if jump:
         cards = [
@@ -804,10 +805,9 @@ def module_html(
     per_page = 6 if jump else 5
     per_page_lg = 6 if jump else 8
     pages = max(1, -(-count // per_page))
-    # 热榜条（hot-strip）没有标题行，说明文字默认跟着一起隐藏；
-    # desc_visible=True 时把它当作 tab 下方的一行小注渲染，让两个口径说得清楚。
-    desc_html = "" if desc_visible else f'<p class="module-desc">{bi(*desc)}</p>'
-    note_html = f'<p class="module-note">{bi(*desc)}</p>' if desc_visible else ""
+    # 说明文字统一留在标题行里（热榜条没有标题行，跟着一起隐藏），
+    # 手机端「即将截止」的口径改由 tab 上的 ⓘ 吐司说明，不再占一行高度。
+    desc_html = f'<p class="module-desc">{bi(*desc)}</p>'
     return f"""
   <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-per="{per_page}" data-per-lg="{per_page_lg}"{' data-kind="jump"' if jump else ''}{' hidden' if hidden else ''}>
     <header class="module-head">
@@ -815,7 +815,6 @@ def module_html(
       <h2>{bi(*title)} <span class="count" data-count>{count}</span></h2>
       {desc_html}
     </header>
-    {note_html}
     <div class="track" data-track>
       {''.join(cards)}
     </div>
@@ -974,6 +973,11 @@ def main() -> None:
         key=lambda d: parse_date(d["end"]),
     )
     closing = (closing_pool + closing_fill)[:CLOSING_SLOTS]
+    # tab 上的小徽标按「面板实际展示的这批条目」算，不按池子算：
+    # 全部落在 EXPIRING_DAYS 天内 → 7天；只要用到 8～30 天窗口补足 → 30天。
+    closing_used_window = any(
+        (parse_date(d["end"]) - today).days > EXPIRING_DAYS for d in closing
+    )
 
     # 抽奖 / 随机 / 阶梯：上限很高但到手看运气，按上限金额排
     lottery = sorted(
@@ -1027,8 +1031,8 @@ def main() -> None:
             ),
             "closing": module_html(
                 "closing", "clock", U["mod_closing"],
-                upair("mod_closing_desc", d=EXPIRING_DAYS, w=CLOSING_WINDOW_DAYS, n=CLOSING_SLOTS),
-                closing, en_map, today, jump=True, strip=True, desc_visible=True,
+                upair("closing_info", d=EXPIRING_DAYS, w=CLOSING_WINDOW_DAYS, n=CLOSING_SLOTS),
+                closing, en_map, today, jump=True, strip=True,
             ),
             "lottery": module_html(
                 "lottery", "gift", U["mod_lottery"], U["mod_lottery_desc"],
@@ -1051,12 +1055,42 @@ def main() -> None:
                 f'{ui(key)} <b data-tabcount="{anchor}">{tab_counts[anchor]}</b></a>'
             )
 
+        # 「即将截止」tab：标签 + 动态小徽标 + 一个小巧的 ⓘ。
+        # 徽标只说明「当前这批条目落在哪个窗口」，构建期按实际展示的条目算：
+        #   全部在 EXPIRING_DAYS 天内 → 「7天 / 7d」；用到 8～30 天窗口补足 → 「30天 / 30d」。
+        # 徽标本身不是交互元素，留在 <a> 里（点了就是切 tab）；ⓘ 是独立 <button>
+        # ——<a> 里不能嵌按钮，否则键盘 / 读屏都会把它当成链接的一部分。
+        badge_html = (
+            '<span class="closing-badge">'
+            + ui(
+                "closing_badge_w" if closing_used_window else "closing_badge_d",
+                d=EXPIRING_DAYS,
+                w=CLOSING_WINDOW_DAYS,
+            )
+            + "</span>"
+        )
+        info_btn = (
+            '<button class="closing-info" type="button" aria-expanded="false" '
+            'aria-controls="closing-toast" '
+            f'{al(*U["closing_info_aria"])}>{icon("info")}</button>'
+        )
+
+        def closing_tab(key: str, on: bool) -> str:
+            cls = "hot-tab on" if on else "hot-tab"
+            cur = ' aria-current="true"' if on else ""
+            return (
+                '<span class="hot-tab-unit">'
+                f'<a class="{cls}" href="#closing" data-tab="closing"{cur}>'
+                f'{ui(key)} <b data-tabcount="closing">{tab_counts["closing"]}</b>{badge_html}</a>'
+                f'{info_btn}</span>'
+            )
+
         hot_board = f"""
       <div class="hot-board" data-hot-board>
         <div class="hot-tabs-mobile" role="group" {al(*U['hot_aria'])}>
           {hot_tab('fresh', 'tab_fresh', True)}
           {hot_tab('rank', 'tab_rank', False)}
-          {hot_tab('closing', 'tab_closing', False)}
+          {closing_tab('tab_closing', False)}
           {hot_tab('lottery', 'tab_lottery', False)}
         </div>
         <div class="hot-panel hot-panel-main">
@@ -1071,7 +1105,7 @@ def main() -> None:
         </div>
         <div class="hot-panel hot-panel-alt">
           <div class="hot-tablist">
-            {hot_tab('closing', 'tab_closing_long', True)}
+            {closing_tab('tab_closing_long', True)}
             {hot_tab('lottery', 'tab_lottery_long', False)}
           </div>
           <div class="hot-panel-body" data-panel-body>
@@ -1303,6 +1337,10 @@ def main() -> None:
 <!-- 语言徽标：lang 只挂在内部可见文字的 <span> 上，<a> 本身不声明 lang，
      否则读屏会把整条链接按目标语言念（例如中文页把「EN」念成英文单词）。 -->
 <a class="lang-switch" id="lang-switch" href="{switch_href}" hreflang="{switch_hreflang}" {al(*U['lang_switch_aria'])}><span lang="{switch_hreflang}">{ui('lang_switch')}</span></a>
+
+<!-- 「即将截止」口径吐司：tab 上的 ⓘ 点开显示，3.5 秒自动消失，点空白 / 再点一次也关。
+     固定定位 + JS 量位置，不占文档流，手机 375px 下也不会挤出横向滚动条。 -->
+<div class="closing-toast" id="closing-toast" role="status" aria-live="polite" hidden>{ui('closing_info', d=EXPIRING_DAYS, n=CLOSING_SLOTS, w=CLOSING_WINDOW_DAYS)}</div>
 
 <div class="modal" id="search-modal" role="dialog" aria-modal="true" aria-hidden="true"
      {al(*U['modal_aria'])}>

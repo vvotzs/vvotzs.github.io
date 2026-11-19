@@ -942,6 +942,74 @@ html.js .pager-bar{ display: flex; }
   background: linear-gradient(90deg, #FBBF24, #EA580C);
 }
 
+/* 「即将截止」tab 的动态小徽标 + ⓘ
+   徽标（7天 / 30天）只说这批条目用到的窗口，是非交互内容，跟着 <a> 切 tab；
+   ⓘ 是独立 <button>，点开口径吐司。<a> 里不嵌按钮，键盘与读屏不会把两者混成一样东西。 */
+.hot-tab-unit{ display: inline-flex; align-items: stretch; gap: 4px; min-width: 0; }
+.closing-badge{
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 5px;
+  padding: 1px 5px 0;
+  border: 1px solid rgba(245,158,11,.28);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #FFFCF4 0%, #FDF1DC 100%);
+  color: var(--amber-deep);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.closing-info{
+  position: relative;
+  align-self: center;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  border: 1px solid rgba(28,25,23,.14);
+  border-radius: 50%;
+  background: #FFFDF9;
+  color: var(--ink-4);
+  cursor: pointer;
+  transition: color .16s ease, border-color .16s ease, background .16s ease;
+}
+.closing-info svg{ width: 11px; height: 11px; }
+/* 视觉 15px，热区 25×33：手指点得到，又不至于盖住旁边的 tab */
+.closing-info::before{ content: ""; position: absolute; inset: -9px -5px; }
+.closing-info:hover{ color: var(--amber-deep); border-color: rgba(245,158,11,.45); background: #FFF8EC; }
+.closing-info:focus-visible{ outline: 2px solid rgba(245,158,11,.55); outline-offset: 2px; }
+.closing-info[aria-expanded="true"]{ color: #B45309; border-color: rgba(245,158,11,.55); background: #FEF3C7; }
+
+/* 口径吐司：固定定位 + JS 量位置，不占文档流；3.5 秒自动消失，点空白 / 再点一次也关 */
+.closing-toast{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 65;
+  width: max-content;
+  max-width: min(300px, calc(100vw - 20px));
+  padding: 8px 11px;
+  border: 1px solid rgba(245,158,11,.32);
+  border-radius: 12px;
+  background: #FFFDF7;
+  color: var(--ink-2);
+  font-size: 11.5px;
+  line-height: 1.5;
+  box-shadow: 0 18px 40px -24px rgba(60,40,10,.55), 0 2px 8px rgba(28,25,23,.08);
+  animation: toastIn .16s ease-out;
+}
+.closing-toast[hidden]{ display: none; }
+@keyframes toastIn{
+  from{ opacity: 0; transform: translateY(-4px); }
+  to{ opacity: 1; transform: none; }
+}
+
 /* 固定高度 + 板内滚动：切 tab 时整块板的高度不变 */
 .hot-panel-body{
   height: 304px;
@@ -957,10 +1025,8 @@ html.js .pager-bar{ display: flex; }
 
 /* 分区标题由 tab 承担，省掉重复的一行 */
 .module.hot-strip .module-head{ display: none; }
-/* 计数口径不同时要留一行小注（「即将截止」= 7 天内优先 + 30 天内补足），默认不出。
-   桌面右侧板是固定高度 + 内滚，10 条正好填满，小注就收进 tab 标签里（见 tab_closing_long），
-   只在手机端（板内不限高）才把这一行显示出来。 */
-.module.hot-strip .module-note{ display: none; }
+/* 计数口径说明收进「即将截止」tab 的 ⓘ 吐司里（见 .closing-toast），
+   四个聚合分区的头部高度因此完全一致，桌面右侧板 10 条也仍然整行塞满。 */
 .module.hot-strip .module-empty{ margin-top: 8px; }
 .module.hot-strip{ padding: 8px 0 4px; }
 .module.hot-strip .more{ display: none; }
@@ -1456,7 +1522,7 @@ footer{
   .hot-tabs-mobile{
     display: flex;
     align-items: stretch;
-    gap: 10px;
+    gap: 2px;
     border-bottom: 1px solid rgba(28,25,23,.08);
     margin-bottom: 8px;
   }
@@ -1467,7 +1533,12 @@ footer{
     padding: 6px 0 8px;
     font-size: 12.5px;
   }
-  .hot-tabs-mobile .hot-tab b{ font-size: 9.5px; padding: 0 4px; }
+  .hot-tabs-mobile .hot-tab b{ font-size: 9.5px; padding: 0 2px; }
+  .hot-tabs-mobile .hot-tab-unit{ flex: 0 0 auto; gap: 2px; }
+  .hot-tabs-mobile .hot-tab-unit > .hot-tab{ flex: 0 0 auto; }
+  .hot-tabs-mobile .closing-badge{ margin-left: 2px; padding: 1px 3px 0; font-size: 8.5px; }
+  .hot-tabs-mobile .closing-info{ width: 13px; height: 13px; }
+  .hot-tabs-mobile .closing-info svg{ width: 9px; height: 9px; }
   .hot-tabs-mobile .hot-tab.on::after{
     left: 50%;
     right: auto;
@@ -1483,13 +1554,6 @@ footer{
   .hot-panel-body:empty{ display: none; }
 
   .module.hot-strip{ padding: 0; }
-  .module.hot-strip .module-note{
-    display: block;
-    margin: 0 0 6px;
-    font-size: 10.5px;
-    line-height: 1.45;
-    color: var(--ink-4);
-  }
   .module.hot-strip .track{
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1641,6 +1705,8 @@ footer{
 /* 窄屏（iPhone SE / 360 级）：先舍「已归档」胶囊，保证 🥒 羊毛情报局 完整不截断 */
 @media (max-width: 379px){
   .topbar-stats .stats-pill.stone{ display: none; }
+  /* 「即将截止」多了小徽标 + ⓘ，窄屏上把 tab 字号收半号，四个 tab 一行不换不溢 */
+  .hot-tabs-mobile .hot-tab{ font-size: 12px; gap: 2px; }
 }
 
 @media (prefers-reduced-motion: reduce){
