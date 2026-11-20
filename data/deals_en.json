@@ -3822,5 +3822,134 @@
     ],
     "risk": "Credit validity and burn rate are not published, so how many videos the gift really covers has to be tested; the deadline exists only in the promo post and the offer may end at any time; free-tier watermarks, resolution and commercial rights are unverified; a newly launched video tool may queue or break, so do not leave delivery to the last day.",
     "source": "AhaNow official site (read live 2026-11-20 23:03, on-site banner offering 100,000 credits for new sign-ups) + promo post by @imFarhanAi (2026-11-20 15:00 UTC, register before 11/26 noon ET)"
+  },
+  "caffeine-blackfriday-studio-1m": {
+    "title": "[Global] Caffeine Black Friday code BLACKFRIDAY: one month of Studio free ($25 a month, 100 credits)",
+    "highlight": "Swiss Caffeine (an AI app-building platform) is running a Black Friday code: any account without an active subscription enters BLACKFRIDAY under its avatar and gets a month of Studio, 100 credits a month, with Claude Fable 5.1, Opus 5.5 and GPT-6 Astra selectable after linking a card; community tests put the usable value around 115 credits, roughly $20-27",
+    "regions": "[Global] Sign up with any email; redeeming needs a card check (virtual cards, UnionPay and Bybit cards passed in community tests, with about a $1 hold); most regions outside the US and EU can register",
+    "value": "One month of Studio ($25 a month, 100 credits plus 15 signup credits)",
+    "content": "From 13 November Caffeine has been pushing the code BLACKFRIDAY on X and LinkedIn: anyone without an active subscription tries the paid features free for a month, first-timers and returning users alike. The official help centre (updated 17 November) confirms Studio at $25 a month, or $20 on annual billing, with 100 credits a month, plus 15 welcome credits at signup valid for 30 days, so a month works out to about 115 credits.\n\nThe path is: sign up with Gmail, click the avatar, Use Code, enter BLACKFRIDAY, then verify a card. linux.do, nodeloc and NodeSeek all carried it the same night, and their notes line up: Bybit, Gate and UnionPay cards passed with only a $1 hold; some who cancelled the renewal saw the credits pulled while cancelling under another reason kept them; the app exposes a single auto-routed model with no separate model picker; Caffeine also runs CYBERWEEK26 at $120 for the first year on annual billing instead of $240.",
+    "conditions": "Only for accounts without an active subscription, though returning users qualify as long as nothing is active; redeeming needs a card, with about a $1 authorisation; Studio renews at $25 a month, so cancel it; community reports show some accounts losing credits after cancelling, so use them first; credits only build apps and go live inside Caffeine, they are neither cash nor general API quota.",
+    "steps": [
+      "Sign up at caffeine.ai with Gmail, without touching a paid plan first",
+      "Click the avatar, choose Use Code and enter BLACKFRIDAY",
+      "Link the card, then check the subscription page shows a one-month Studio trial",
+      "Use the credits, then cancel the renewal, since some accounts lose credits on cancelling"
+    ],
+    "risk": "A card is required and it renews at $25 a month; several users report credits vanishing after cancellation, so the real value is roughly $20-27; there is a single auto-routed model and no selectable API, so it suits trying app building rather than acting as general quota; the code's end date is unpublished.",
+    "source": "Caffeine Black Friday posts on X and LinkedIn (from 13 Nov 2026) + official help centre Plans and Pricing (updated 17 Nov 2026) + same-night tests on linux.do, nodeloc and NodeSeek"
+  },
+  "moomoo-us-black-friday-2026": {
+    "title": "[US] Moomoo Black Friday boost: a $50 Amazon gift card plus up to $300 trading coupons on a first deposit, stacked on up to $1,000 in Anthropic stock",
+    "highlight": "A first deposit by 30 November brings a $50 Amazon gift card and up to $300 in trading coupons, a November-only extra, stacking on the existing up-to-$1,000 Anthropic stock, 8.1% APY for the first two months on up to $20,000 and a year of Moomoo Engine membership",
+    "regions": "[US] US residents with an SSN aged 18+; residents of Malaysia, Singapore, Canada, Australia and Japan use their regional global links; Hong Kong goes through Futu; mainland China has been unable to open accounts since January 2023",
+    "value": "$50 gift card + up to $300 trading coupons + up to $1,000 stock + 8.1% APY",
+    "content": "Moomoo stacked a Black Friday boost on its regular account bonus for November. The official event page, read on 21 November 2026, confirms that new clients get Anthropic stock by first cumulative net deposit: $30 for $500, $100 for $2,000, $200 for $10,000, $400 for $50,000 and $1,000 for $100,000; the 8.1% APY is a 3.6% base plus a temporary 4.5% booster for two months on up to $20,000; and a deposit of $100 or more also brings ten $10 trading coupons. The terms limit it to clients who have never deposited or transferred since 1 January 2026, US residents aged 18+ with a valid SSN, holding assets at the tier level for 60 to 180 days.\n\nThe Black Friday part, a $50 Amazon gift card plus up to $300 in trading coupons, comes from two independent write-ups (Rangka on 18 November, US Credit Cards 101 on 12 November), both stating a first deposit by 30 November, November only and an activity-specific link; the official event page does not list them. The stock is not IPO stock: Moomoo buys it on the open market once Anthropic lists and expects to issue it within a week, and if Anthropic has not listed by 31 December it pays an equivalent reward in NVDA. ACATS transfers do not count as a deposit, though Moomoo runs a separate 3% transfer match capped at $600.",
+    "conditions": "You must register through the activity link before opening the account, since signing up in the app yourself forfeits the reward; the US requires an SSN, and non-resident aliens can open an account but without the zero-commission terms; only a first net deposit counts, and ACATS or FOP transfers do not; rewards follow cumulative deposit tiers and need the assets held for 60, 120 or 180 days, with withdrawals forfeiting them; the stock is stock, not cash, and moves with the price; 8.1% lasts two months on the first $20,000; mainland China residents cannot open an account; the $50 gift card and coupons are partner-link extras absent from the official page (unverified).",
+    "steps": [
+      "Enter through the activity link and follow the US or global application for your region",
+      "Open the account, cash and margin both if you want, and pass identity checks",
+      "Make the first deposit before 30 November, choosing $2,000 or $10,000 cumulative for the higher stock tiers",
+      "Activate the gift card, trading coupons and booster in the app's coupon centre before they expire",
+      "Keep the assets at the tier level for at least 60 days before moving money"
+    ],
+    "risk": "The $50 gift card and up to $300 in coupons only come through partner links and are not on the official page, so they can change or end early; the stock waits on an Anthropic listing and defaults to NVDA, so the headline value is not cash in hand; pulling money inside the 60-to-180-day hold forfeits the reward; brokerage accounts do not protect principal and 8.1% is a promotional rate; mainland China users cannot take part.",
+    "source": "Moomoo official event page and terms (read 21 Nov 2026: Anthropic stock tiers, 8.1% APY, trading coupons) + Rangka (18 Nov 2026) and US Credit Cards 101 (12 Nov 2026) write-ups of the $50 Amazon gift card and up-to-$300 coupon boost"
+  },
+  "kite-bitrefill-3pct-kite": {
+    "title": "[Global] Kite x Bitrefill: 3% back in $KITE when an AI agent shops (capped at $5) plus 5 winners refunded up to $100",
+    "highlight": "Kite is putting up a $1,000 pool: let an AI agent shop on Bitrefill through Kite Agent Passport and eligible orders return 3% in $KITE, capped at $5 per user, while five raffle winners get their winning order refunded in full in $KITE up to $100 each; orders only count from 19 November 20:00 UTC to 24 November 08:00 UTC",
+    "regions": "[Global] Needs Kite Agent Passport (agent identity and payments) plus a Bitrefill account; rewards paid in $KITE",
+    "value": "3% back capped at $5 per user + 5 winners refunded up to $100",
+    "content": "The open thread from the previous sweep asking whether the Kite x Bitrefill terms could be confirmed is now closed: Kite announced the joint campaign on 19 November at 20:55 UTC. Until 24 November, shopping on Bitrefill through an agent using Kite Agent Passport returns $KITE from a $1,000 pool: eligible orders return 3% capped at $5 per user, and up to five raffle winners get their winning order's full value back in $KITE capped at $100 each. Orders count from 19 November 20:00 UTC to 24 November 08:00 UTC, with winners and all rewards announced or sent by 28 November.\n\nBitrefill's own terms support the mechanism: section 29 treats a purchase an agent makes as the customer's own purchase and bars resale, so agent-bought gift cards are a legitimate path, and rewards count order value rather than order count. German outlet CryptoDACademy noted the modest size: a $1,000 pool is a live test of whether agents can really buy things, not a token distribution.",
+    "conditions": "Purchases must go through Kite Agent Passport; the 3% back stops at $5 per user and the raffle at $100 per winner; only orders paid between 19 November 20:00 UTC and 24 November 08:00 UTC count; rewards are paid in $KITE by 28 November and move with its price; you need a Kite account with a spending allowance in Passport and a Bitrefill account.",
+    "steps": [
+      "Register a Kite account, enable Agent Passport and set a spending allowance",
+      "Let the agent place a Bitrefill order, gift cards and top-ups both qualify",
+      "Keep the order number and payment time and confirm it lands before 24 November 08:00 UTC",
+      "Check for $KITE and the winner announcement around 28 November"
+    ],
+    "risk": "The pool is only $1,000, so the certain return caps at $5 and the raffle odds are long; rewards are $KITE tokens whose value moves with the price; a wrong agent purchase cannot be refunded, so start small; Kite Agent Passport is a new tool and tying up an allowance carries its own risk; Bitrefill gift cards are non-refundable.",
+    "source": "KITE AI official campaign announcement (19 Nov 2026, 20:55 UTC, mirrored in full by tree.news) + Bitrefill terms section 29 (agent purchases count as the customer's) + CryptoDACademy report (20 Nov 2026)"
+  },
+  "bytevirt-tokyo-512m-premium": {
+    "title": "[Japan] ByteVirt Tokyo Premium 512M restocked: $16.88 per six months (about $2.81 a month, China-optimised network)",
+    "highlight": "VPS-512-KVM-Premium-JP is back in stock: 1 core, 512MB, 15GB NVMe, 500GB of traffic a month at 500Mbps, Tokyo DC1 or DC3, on the Premium network whose IPv6 return path identifies CN2GIA, 4837 and CMIN2, with 17 units available when read",
+    "regions": "[Japan] Tokyo (ByteVirt, PayPal or card), with China optimisation on the return path",
+    "value": "$16.88 per six months (about $2.81 a month)",
+    "content": "ByteVirt's official JP-China Optimized store page, read on 21 November 2026 at 01:40, lists VPS-512-KVM-Premium-JP at 1 core, 512MB, 15GB NVMe, 1 IPv4 plus a /64 IPv6, 500GB a month at 500Mbps for $16.88 semi-annually with 17 available; the same page has a 1GB plan at $15 a quarter with 2 left and a 2GB plan at $25 a quarter, up to a 16GB tier. All are KVM with three snapshots and one backup, and speed drops on the port to 1Mbps once traffic is exceeded.\n\nThis is the long-running Tokyo China-optimised plan and stock comes in waves: third-party tracking shows a restock at 15:39 on 20 November still in stock at 17:23, after earlier restocks on 19 and 18 November that sold out within hours, so buy when you see it. A community benchmark from the evening peak on 18 September 2026 found IPv6 return paths identifying Telecom CN2GIA, Unicom 4837 and Mobile CMIN2/CMI while IPv4 return paths could not be identified; Tokyo local latency was 4.5ms with 100Mbps down, but at the evening peak Shanghai Unicom showed 746ms at 0Mbps down and Mobile Suzhou 304ms at 0Mbps. IPQualityScore scored the IP 65 and flagged it as VPN, with Netflix and Claude not unlocking and Google search unavailable.",
+    "conditions": "$16.88 semi-annually, throttled to 1Mbps after 500GB; stock is thin and has sold out same-day repeatedly, so confirm price and availability at checkout; the China optimisation shows mainly on the IPv6 return path while the IPv4 return path was not identified as optimised; suited to Japan-local tasks, light proxying or small sites, not to stable three-carrier evening performance.",
+    "steps": [
+      "Open bytevirt.com/store/tokyo-china-optimized",
+      "Pick VPS-512-KVM-Premium-JP and choose DC1 or DC3",
+      "Confirm $16.88 semi-annually and the stock, then pay",
+      "After setup test IPv4 and IPv6 return routes and evening speed, and use the refund window if it does not fit"
+    ],
+    "risk": "A plan that sells out as soon as it restocks, so it can vanish while you order; evening benchmarks show 0Mbps to parts of China and big differences between carriers; IPQualityScore flags the IP as VPN and some platforms block it; traffic over the limit drops to 1Mbps; a small provider, so long-term continuity is on you.",
+    "source": "ByteVirt official JP-China Optimized store page (read 21 Nov 2026 at 01:40, 17 available) + submitted tip (21 Nov 2026, 00:38) + VPSRig evening benchmark (18 Sep 2026) + stock tracking"
+  },
+  "nodeseek-bandwagon-20g-cn2gia-secondhand": {
+    "title": "[US] NodeSeek second-hand: BandwagonHost SPECIAL 20G CN2 GIA ECOMMERCE at $50 a quarter, asking ¥120, email change only",
+    "highlight": "A whole BandwagonHost CN2 GIA ECOMMERCE 20G box (SPECIAL 20G KVM PROMO V5) renewing at $50 a quarter, sold by pineappleall for ¥120 total, deliverable only by changing the account email since the seller keeps the original, with an escrow agent already replying in the thread",
+    "regions": "[US] BandwagonHost CN2 GIA (United States) facility; the transfer happens on the NodeSeek trade board and needs no US identity",
+    "value": "¥120 (renews at $50 a quarter)",
+    "content": "The NodeSeek trade thread, posted around 13:45 on 20 November 2026 and still live when rechecked at 01:45 on 21 November, offers a BandwagonHost SPECIAL 20G KVM PROMO V5, CN2 GIA ECOMMERCE, quarterly billing, for ¥120 total, noting that the seller keeps the original email so only an email change is possible. Replies include one buyer asking whether it is $50 a quarter, which the seller confirms; DriftKelp and bywenshu asking what changing the email means and what it costs the buyer, with the seller answering that some buyers want the original email and needs differ; the escrow agent solaireh3 simply notes that the email change is a pity. No sold marker appeared by the recheck.\n\nThe arithmetic: ¥120, about $17, for the box, then $50 a quarter, about ¥356, on renewal. It is BandwagonHost's older CN2 GIA ECOMMERCE line with a 20GB disk and a CN2 GIA return path, a keeper-class plan, and because the original mailbox is the seller's main account it cannot be handed over.",
+    "conditions": "Delivered by email change only, with no original email, so skip it if that matters; ¥120 total with renewal at $50 a quarter and the box reclaimed if unpaid; the thread does not state the expiry date or remaining days, so get a panel screenshot before paying; use NodeSeek official escrow rather than paying off-platform; BandwagonHost handles email changes by ticket, so both sides must cooperate.",
+    "steps": [
+      "Reply in the thread or message the seller to confirm the box is available, its expiry date and the remaining value",
+      "Agree on NodeSeek official escrow and pay through it",
+      "After paying, have the seller open a BandwagonHost ticket to move the account email to yours",
+      "Once the email is yours, change the root password in KiwiVM, reinstall and confirm the renewal date"
+    ],
+    "risk": "With an email-only transfer ownership rests on the mailbox, and while a completed change locks the seller out, the ticket period invites disputes, so escrow is essential; $50 a quarter is not cheap and you must price the remaining term yourself; the 20GB disk is small; a used box may carry abusive history that blackened the IP, so check its reputation after taking over.",
+    "source": "NodeSeek trade thread (posted 20 Nov 2026, status and replies rechecked 21 Nov 2026 at 01:45) + submitted tip (21 Nov 2026, 00:36)"
+  },
+  "nodeseek-recloud-de-9929-2c2g-secondhand": {
+    "title": "[Germany] NodeSeek second-hand: ReCloud Germany 9929 2C2G/4TB, ¥120 with original email (renews at ¥30 a month, expires 25 Dec)",
+    "highlight": "A ReCloud German box with 2 cores, 2GB, 10GB and 300Mbps on 4TB bidirectional, returning via Unicom AS9929 and AS10099 over a 91Telecom upstream, renewing at ¥30 a month, expiring on 25 December 2026 and sold by nhnhnh000 with the original email, price negotiable",
+    "regions": "[Germany] German facility (ReCloud, ASN Aiyun, upstream 91Telecom AS197213); the transfer happens on the NodeSeek trade board",
+    "value": "¥120 with the original email (renews at ¥30 a month)",
+    "content": "The NodeSeek trade thread, posted around 18:40 on 20 November 2026 and edited three hours later, was still live at 01:50 on 21 November. Its table lists 2 cores, 2GB, 10GB of disk, 300Mbps, 4TB bidirectional, a ¥30 monthly renewal, expiry on 25 December 2026, a ¥120 asking price and delivery with the original email, closing with price negotiable. Replies compare it with DeluxHost at €1 a year and call the premium off-putting; the seller explains the box is not on a Chinese upstream but uses AS197213 (91Telecom) for the network, reaching China Unicom through AS9929 and AS10099, and provides 82.139.204.4 as a test IP. Another user offers a 2C4G box from the same provider, with the seller taking priority. No sold marker appeared, and the seller's newest reply is a bump with price negotiable.\n\nSplit apart: ¥120 buys about one month of remaining term to 25 December plus the original email, at a ¥30 monthly renewal, so the transfer carries a clear premium.",
+    "conditions": "Delivered with the original email, cleaner than an email change but confirm the mailbox can be moved; the remaining term only runs to 25 December 2026 at ¥30 a month; ¥120 is a premium and negotiable; the return path is German 9929 and AS10099, not US CN2; use NodeSeek official escrow.",
+    "steps": [
+      "Reply in the thread or message the seller to confirm the remaining days and whether you renew after 25 December",
+      "Negotiate, since the thread says the price is open, and agree on escrow",
+      "Once you have the mailbox, change its password and the panel password immediately",
+      "After installing, test the 9929 and 10099 return paths before deciding on the ¥30 renewal"
+    ],
+    "risk": "Only about a month of term is left, so ¥120 is a clear premium that replies already criticise; with the original mailbox you must change passwords quickly or the seller can take it back; German 9929 latency to China is not low, so do not buy expecting US CN2; ReCloud is a small provider with its own continuity risk; the 4TB is bidirectional.",
+    "source": "NodeSeek trade thread (posted 20 Nov 2026, table and replies rechecked 21 Nov 2026 at 01:50) + submitted tip (21 Nov 2026, 00:36)"
+  },
+  "nodeseek-racknerd-5c6g-secondhand": {
+    "title": "[US] NodeSeek second-hand: RackNerd Black Friday 5-core/6GB at $89.46 for two years (about $44.73 a year), price by private message",
+    "highlight": "Seller dadong is passing on a RackNerd Black Friday 5-core/6GB box at its original two-year price of $89.46, about $44.73 a year, roughly 40% below this year's $74.98 annual 6GB plan, but the data centre is unstated, there is no fixed asking price and the post only says to message privately",
+    "regions": "[US] United States (RackNerd's multiple facilities, exact one unstated); the transfer happens on the NodeSeek trade board",
+    "value": "$89.46 for two years (about $44.73 a year)",
+    "content": "The NodeSeek trade thread, posted around 21 November 2026 and edited two hours before the recheck at 01:55, is titled for sale, RackNerd 5c 6G Black Friday box, and its body is one line: $89.46 is two years, $44.73 a year, message if interested. Replies mostly push back on price, calling it expensive, a keeper rather than a bargain, a 70% price, or reading it as RMB, and one asks which location and whether the route is bad. The seller replies that the plan was always to keep it, bought and left idle, with no idea what to use it for. No sold marker appeared by the recheck.\n\nCompared with this year's official Black Friday page, where the 6GB plan is 6GB, 85GB and 15TB at $74.98 a year, this box at $89.46 for two years works out to $44.73 a year and is genuinely below the current price, but the seller names neither the data centre nor the expiry and never states a transfer price.",
+    "conditions": "There is no fixed transfer price and the deal amounts to passing it on at cost, $44.73 a year, with room to negotiate; neither the data centre nor the expiry is stated, so confirm both before paying; a RackNerd transfer needs a ticket to change the account email with both sides cooperating; use NodeSeek official escrow.",
+    "steps": [
+      "Message the seller about the data centre, expiry date, remaining value and transfer price",
+      "Once agreed, list it through escrow and pay",
+      "Have the seller open a RackNerd ticket to move the account email to yours",
+      "Change the password in SolusVM, reinstall and confirm the renewal date"
+    ],
+    "risk": "With neither the data centre nor the expiry stated the remaining value cannot be judged, so it is easy to take over at full cost; replies widely consider the price poor value and want about 70%; a RackNerd email change runs through a ticket and stalls if the seller will not cooperate; cheap annual boxes are oversold and their routes to China are ordinary; a used box may carry an abusive history.",
+    "source": "NodeSeek trade thread (status and replies rechecked 21 Nov 2026) + submitted tip (21 Nov 2026, 00:37) + RackNerd official Black Friday page price comparison (read 20 Nov 2026)"
+  },
+  "shandun-us-8off-4usd": {
+    "title": "[US] ShanDun US line at 20% off: $4 a month (from $4.99), with the 9929 anti-DDoS and 4837 dual-ISP plans in stock",
+    "highlight": "All three US plans are $4 a month at 20% off: US Premium China Route (CN2, 9929 and CMIN2, 1C1G/30G/30Mbps), US 9929 Anti-DDoS with 200G of protection, and US 4837 ISP (dual-ISP pseudo-residential, 1C1G/10G/1TB/1Gbps); Premium was out of stock at the recheck while 9929 and 4837 were available",
+    "regions": "[US] Los Angeles; Chinese control panel with Alipay and cards, from a relatively new Chinese-run small provider",
+    "value": "$4 a month (20% off the $4.99 list price)",
+    "content": "The submitted tip on 21 November 2026 at 00:39 describes ShanDun's US Premium China Route at 1 core, 1GB, 30GB and 30Mbps on CN2, 9929 and CMIN2, discounted to $4 a month from $4.99, with the US 4837 ISP plan, 1 core, 1GB, 10GB, 1TB at 1Gbps and a native IP, also at $4.\n\nVerification: the official shandun.net is a JavaScript storefront whose home page carries product lines but no readable prices, so price and stock were cross-checked through third-party tracking. VPSding recorded at 01:26 on 21 November that the provider has 8 plans with 5 in stock; US Premium China Route is listed at $4.00 a month, a 20% discount on $4.99, and out of stock, with two restocks in 30 days that typically sell out within 57 minutes, while US 9929 Anti-DDoS and US 4837 ISP are both $4.00 and in stock. SpaceVPS and reviews on 1A2X and NodeSeek give the same three configurations and a $3.99 to $4.99 range, so the discounted $4 price has several independent sources while the official checkout price stays unverified.\n\nCommunity detail that matters: several review threads report heavy evening throttling and packet loss, with phrases like bandwidth not holding 10M during peak and this is a one-man operation, balanced by positives: Telecom CN2 GIA, Unicom 9929 and Mobile CMIN2 optimised in both directions, pseudo-residential IPs that beat datacentre IPs, and a full refund within 24 hours of activation while usage stays under 10GB, with traffic packs available. Purchases must use the traffic-billing checkout to land the pseudo-residential IP range.",
+    "conditions": "The 20% discount gives $4 a month from $4.99, with the official checkout price unverified; Premium China Route is chronically out of stock and sells out within 30 to 60 minutes of a restock; you must use the traffic-billing checkout to get the pseudo-residential IP; 30Mbps is narrow, though the 4837 ISP plan has 1Gbps; the provider is new and run by one person, so continuity risk is yours; refunds cover 24 hours after activation with usage under 10GB.",
+    "steps": [
+      "Open shandun.net, or check the stock tracker first for which plan is available",
+      "Choose US Premium China Route, 9929 anti-DDoS or 4837 ISP, and use the traffic-billing checkout",
+      "Confirm the 20% price of $4 a month at checkout, then pay",
+      "Test evening speed within 24 hours and use the refund policy if it disappoints"
+    ],
+    "risk": "Evening throttling and packet loss recur across reviews, with 4 dollars 200M and poor at peak as a direct quote; the provider is new and run by one person, so it could disappear; Premium restocks sell out in minutes, so missing one is normal; 30Mbps only covers personal proxying; the official price could not be read, so check the checkout page before ordering.",
+    "source": "Submitted tip (21 Nov 2026, 00:39) + VPSding stock tracker (snapshot 21 Nov 2026, 01:26) + SpaceVPS pricing + NodeSeek and 1A2X review threads and replies (10-14 Nov 2026)"
   }
 }
