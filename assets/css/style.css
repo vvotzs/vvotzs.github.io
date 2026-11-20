@@ -338,11 +338,12 @@ a.stats-pill:active{ transform: translateY(0); }
   text-decoration: none;
   transition: filter .15s ease, transform .15s ease;
 }
-/* 图形外一圈透明点击热区（不占布局、不影响行高） */
+/* 图形外一圈很窄的透明热区（不占布局、不影响行高）：
+   以前收到 -10px，手机上会向下压住「即将截止」标签、向上顶到顶栏 */
 .hero-tg::before{
   content: "";
   position: absolute;
-  inset: -10px -8px;
+  inset: -2px -5px;
 }
 .hero-tg .hero-tg-b{
   position: absolute;
@@ -736,14 +737,15 @@ html.js .pager-bar{ display: flex; }
   margin: 0;
 }
 
-/* 顶部徽标条：类别 / 实际价值 / 门槛 / 核验状态 挤成一行 */
+/* 展开卡顶部一行紧凑标签：类别 + 门槛 + 核验（已核验靠右），
+   实际价值另起一条气泡跟在下面——不再分三层，省掉两行上下留白 */
 .detail-tags{
   grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 4px 6px;
-  margin-bottom: 1px;
+  margin-bottom: -1px;
 }
 .detail-tags .dtag{
   font-size: 10px;
@@ -758,55 +760,44 @@ html.js .pager-bar{ display: flex; }
   overflow-wrap: anywhere;
 }
 .detail-tags .dtag.cat{ color: #52525B; background: #F4F4F0; border-color: #E7E5E1; }
-/* 实际价值：多币种金额能在气泡内部换行，只在「/」「·」处折行，
-   单个金额（AUD 10）不拆开；气泡本身不越过卡片边框。 */
-.detail-tags .dval{
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 1px 4px;
+.detail-tags .dcheck{ margin-left: auto; font-size: 10px; font-weight: 600; white-space: nowrap; }
+.detail-tags .dcheck.ok{ color: var(--mint); }
+.detail-tags .dcheck.wait{ color: var(--ink-4); }
+.detail-tags .dcheck .ic3d{ width: 12.5px; height: 12.5px; vertical-align: -2.5px; margin-right: 2px; }
+
+/* 实际价值：小字标签后紧跟金额，宽度随内容收缩（长串也不越过右边框）；
+   金额只在「/」「·」「→」「；」「（」处折行，单个金额不拆开 */
+.dval{
+  grid-column: 1 / -1;
+  justify-self: start;
   max-width: 100%;
   min-width: 0;
   font-family: var(--mono);
-  font-size: 10px;
-  line-height: 1.35;
-  padding: 1px 7px;
-  border-radius: 12px;
+  font-size: 10.5px;
+  line-height: 1.32;
+  padding: 2px 8px;
+  border-radius: 11px;
   color: #E65100;
   background: #FFF1E6;
   border: 1px solid #FFCBA8;
   white-space: normal;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  word-break: keep-all;
+  overflow-wrap: break-word;
   font-feature-settings: "tnum";
 }
-.detail-tags .dval-k{
+.dval-k{
   font-family: var(--font);
   font-size: 9px;
   color: #C2410C;
   opacity: .9;
   white-space: nowrap;
+  margin-right: 3px;
 }
-.detail-tags .dval strong{
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0 3px;
-  min-width: 0;
-  max-width: 100%;
-  font-size: 10.5px;
-  font-weight: 700;
-  color: #E65100;
-  overflow-wrap: anywhere;
-}
-/* 单个价值块：短块内部的空格是 nbsp（构建时焊死），所以默认不会从中间断开；
+.dval strong{ font-weight: 700; color: #E65100; }
+/* 单个价值块：块内空格是 nbsp（构建时焊死），所以优先整块挪到下一行，
    只有当整块本身比气泡还宽（英文长句说明、无空格长串）时才在块内折行 */
-.detail-tags .dval-t{ white-space: normal; overflow-wrap: anywhere; }
-.detail-tags .dval-s{ opacity: .45; }
-.detail-tags .dcheck{ margin-left: auto; font-size: 10px; font-weight: 600; white-space: nowrap; }
-.detail-tags .dcheck.ok{ color: var(--mint); }
-.detail-tags .dcheck.wait{ color: var(--ink-4); }
-.detail-tags .dcheck .ic3d{ width: 12.5px; height: 12.5px; vertical-align: -2.5px; margin-right: 2px; }
+.dval-t{ white-space: normal; word-break: keep-all; overflow-wrap: break-word; }
+.dval-s{ opacity: .45; }
 
 /* 卡片行内的截止沙漏：只在展开态出现。收起态连占位都没有（display:none），
    所以首屏行高、行宽、换行位置与原来一模一样。 */
@@ -1254,6 +1245,12 @@ html.js .pager-bar{ display: flex; }
 /* 「AI」一格：蓝芯芯片图标；未选中是 #3292FF，选中态（薄荷绿实心胶囊）切成纯白 */
 .rail a[data-target="ai"]{ --ai-ic: #3292FF; }
 .rail a[data-target="ai"].active{ --ai-ic: #FFFFFF; }
+/* 「币」一格：比特币徽标（橙圆 + 白 ₿）；选中态（薄荷绿实心胶囊）
+   换成白圆 + 深绿 ₿，绿底上依然清楚可读 */
+.rail a[data-target="crypto"]{ --btc-bg: #F7931A; --btc-fg: #FFFFFF; }
+.rail a[data-target="crypto"].active{ --btc-bg: #FFFFFF; --btc-fg: #047857; }
+/* 比特币徽标比其它图标大 1px：橙圆里的 ₿ 在 14–15px 下才看得清竖笔 */
+.rail a[data-target="crypto"] svg{ width: 16px; height: 16px; }
 /* 滑轨容器本身也不做过渡 */
 .rail{ transition: none; }
 
@@ -1657,10 +1654,9 @@ footer{
      多币种价值在气泡内部换行，不越过卡片右边界 */
   .detail-tags{ gap: 3px 5px; }
   .detail-tags .dtag{ font-size: 9.5px; padding: 1px 6px; }
-  .detail-tags .dval{ padding: 1px 6px; gap: 0 3px; }
-  .detail-tags .dval strong{ gap: 0 2px; }
-  .detail-tags .dval-k{ font-size: 8.5px; }
-  .detail-tags .dval strong{ font-size: 10px; }
+  .dval{ padding: 1px 6px; line-height: 1.3; }
+  .dval-k{ font-size: 8.5px; margin-right: 2px; }
+  .dval strong{ font-size: 10px; }
   .detail-tags .dcheck{ font-size: 9.5px; }
   .detail-tags .dcheck .ic3d{ width: 11.5px; height: 11.5px; vertical-align: -2.5px; margin-right: 2px; }
   .field dt{ font-size: 9px; margin-bottom: 1px; }

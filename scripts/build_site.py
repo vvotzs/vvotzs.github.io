@@ -24,6 +24,7 @@ import json
 import re
 import shutil
 import sys
+import unicodedata
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
@@ -208,11 +209,17 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
                  'L64,362.67L64,320ZM405.33,149.33L448,149.33L448,192L405.33,192L405.33,149.33ZM64,234.67L106.67,234.67'
                  'L106.67,277.33L64,277.33L64,234.67ZM64,149.33L106.67,149.33L106.67,192L64,192L64,149.33Z"'
                  ' fill="var(--ai-ic, #3292FF)" stroke="none"/>', 0),
-    # 币：金币 + ₿
-    "crypto": (24, '<circle cx="12" cy="12" r="8.5" fill="#FCD34D"/>'
-                   '<path d="M10.6 7.1v9.8M12.4 7.1v9.8" stroke="#92400E" stroke-width="1.15"/>'
-                   '<path d="M10.6 8.9h3.1a1.6 1.6 0 0 1 0 3.2h-3.1z" fill="#92400E"/>'
-                   '<path d="M10.6 12.1h3.5a1.75 1.75 0 0 1 0 3.5h-3.5z" fill="#92400E"/>', 1.9),
+    # 币：经典比特币徽标——亮橙正圆 + 微向右倾的纯白 ₿（选中态由 CSS 换成白圆绿 ₿）
+    "crypto": (24, '<circle cx="12" cy="12" r="11" fill="var(--btc-bg, #F7931A)"/>'
+                   '<g transform="rotate(14 12 12)" fill="var(--btc-fg, #FFFFFF)">'
+                   '<rect x="9.15" y="4.4" width="2.2" height="15.2" rx="1.1"/>'
+                   '<path d="M10.9 5.5h2.9a3.1 3.1 0 0 1 0 6.2h-2.9v-1.9h2.8a1.2 1.2 0 0 0 0-2.4h-2.8z"/>'
+                   '<path d="M10.9 12.1h3.3a3.45 3.45 0 0 1 0 6.9h-3.3v-1.95h3.2a1.5 1.5 0 0 0 0-3h-3.2z"/>'
+                   '<rect x="9.45" y="2.4" width="1.55" height="3.9" rx=".77"/>'
+                   '<rect x="12.05" y="2.4" width="1.55" height="3.9" rx=".77"/>'
+                   '<rect x="9.45" y="17.7" width="1.55" height="3.9" rx=".77"/>'
+                   '<rect x="12.05" y="17.7" width="1.55" height="3.9" rx=".77"/>'
+                   '</g>', 0),
     # 卡：银行卡（磁条 + 芯片）
     "bank": (24, '<rect x="2.4" y="5.4" width="19.2" height="13.2" rx="3.2" fill="#BBF7D0"/>'
                  '<path d="M2.4 9.2h19.2" stroke-width="2.4"/>'
@@ -662,14 +669,82 @@ def value_pair(deal: dict, en: dict) -> tuple[str, str]:
     return value_text((deal.get("value") or "").strip(), deal), value_text(raw_en, deal)
 
 
-def value_compact(v: str, lang: str = "zh") -> str:
-    """热榜窄条用的短价值：去括号补充说明，还长就只留「≈$X」。"""
-    v = re.sub(r"[（(][^）)]*[）)]", "", v).strip()
-    # 英文单词更长，宽度阈值放多一点（约合同样像素宽度）
-    limit = 18 if lang == "zh" else 22
-    if len(v) > limit and " · " in v:
-        v = v.split(" · ")[0]
-    return v
+# ------------------------------------------------------- 收起态价值胶囊
+# 折叠卡右上角只放「一眼就知道值多少钱」：≈$ 折算值，或核心金额 + 极短单位。
+# 括号里的补充说明、第二段条件全部留给展开态那个完整的「实际价值」气泡，
+# 胶囊不再靠 text-overflow: ellipsis 截断成「$500 GLM-5.3 月用…」。
+_EST_PREFIX_RE = re.compile(r"^[≈约]\s*\$\s*(\d[\d,]*(?:\.\d+)?)")
+_BADGE_MONEY_RE = re.compile(
+    r"(?:US|HK|A|C|NZ)?\$\s*\d[\d,]*(?:\.\d+)?"
+    r"|[£€¥₹₩]\s*\d[\d,]*(?:\.\d+)?"
+    r"|\d[\d,]*(?:\.\d+)?\s*(?:USDT|USD|HKD|AUD|CAD|EUR|GBP)"
+)
+_VAL_PAREN_RE = re.compile(r"[（(][^（）()]*[）)]")
+# 句末逗号只认「全角，」和「后面跟空格的半角 ,」——“100,000”里的千位逗号不能当分句
+_VAL_CLAUSE_RE = re.compile(r"\s*(?:[；;，]|,(?=\s)).*$")
+_VAL_EDGE_RE = re.compile(r"^[\s/／·→+、]+|[\s/／·→+、]+$")
+
+
+def _val_width(s: str) -> int:
+    """视觉宽度：中文/全角算 2、半角算 1，用来估算胶囊放不放得下。"""
+    return sum(2 if unicodedata.east_asian_width(c) in "WFA" else 1 for c in s)
+
+
+def value_badge(text: str, lang: str = "zh") -> str:
+    """折叠卡胶囊文案：能短就短，但不留半截话。
+
+    1. 「≈$130 · £100 返现」这类已折算的，只留 ≈$130——横向可比的那个数；
+    2. 先剥掉括号补充、分句补充，短得了就原样用；
+    3. 还是太长，就退到「核心金额（+ 极短单位）」，绝不输出截断的残句。
+    """
+    t = " ".join((text or "").split())
+    if not t:
+        return ""
+    est = _EST_PREFIX_RE.match(t)
+    if est:
+        return f"≈${est.group(1)}"
+
+    t = _tight_value(_VAL_PAREN_RE.sub("", t), lang)
+    t = _VAL_CLAUSE_RE.sub("", t)
+    t = _VAL_EDGE_RE.sub("", " ".join(t.split()))
+    # 手机端胶囊内容宽约 109px：中文 17 个视觉单位 / 英文 21 个字符以内不截
+    budget = 17 if lang == "zh" else 21
+    if _val_width(t) <= budget:
+        return t
+
+    money = _BADGE_MONEY_RE.search(t)
+    if money:
+        core = re.sub(r"((?:US|HK|A|C|NZ)?\$|[£€¥₹₩])\s+", r"\1", money.group(0))
+        low = t.lower()
+        if "月用量" in t or "每月" in t or "/月" in t or "monthly" in low or "per month" in low:
+            return f"{core}/mo" if lang == "en" else f"{core}/月"
+        if (
+            "每年" in t or "/年" in t or "a year" in low or "yearly" in low
+            or "per year" in low or "/yr" in low
+        ):
+            return f"{core}/yr" if lang == "en" else f"{core}/年"
+        return core
+    # 没有金额（免费 / 流量 / 名额类）：先把开头的时间状语收成后缀
+    # （「每月 100,000 次请求」→「100,000 次请求/月」），再从分隔符或介词前收住
+    suffix = ""
+    for pre, suf in (("每月", "/月"), ("每年", "/年"), ("每日", "/日"), ("每周", "/周"), ("每晚", "/晚")):
+        if t.startswith(pre):
+            t, suffix = t[len(pre):].strip(), suf
+            break
+    head = re.split(
+        r"\s*(?:[/／+·]|\b(?:for|on|with|plus|from|after|that|when|and|of|at|to)\b)\s*", t
+    )[0].strip()
+    if head:
+        t = head
+    if _val_width(t) + _val_width(suffix) > budget:  # 还是太长：逐词收到预算内
+        words = t.split(" ")
+        out: list[str] = []
+        for w in words:
+            if out and _val_width(" ".join(out + [w])) + _val_width(suffix) > budget:
+                break
+            out.append(w)
+        t = " ".join(out) or words[0]
+    return _VAL_EDGE_RE.sub("", t) + suffix
 
 
 def title_parts(raw_title: str) -> tuple[str, str]:
@@ -778,30 +853,59 @@ def ensure_favicon(domain: str) -> bool:
 
 
 # --------------------------------------------------------------------- cards
-# 价值串里的自然断开点：「£10 / $10」「≈$13 · £10」，语言无关
-_VAL_SPLIT_RE = re.compile(r"\s*([/·])\s*")
+# 标点两侧的宽松空格全部收窄：「$10 / 月」→「$10/月」、「（Go 」→「（Go」
+_VAL_TIGHT_RE = re.compile(r"\s*([/／·→;；])\s*")
+_VAL_PAREN_TIGHT_RE = re.compile(r"\s*([（(])\s*")
+_VAL_PAREN_END_RE = re.compile(r"\s+([）)])")
+# 断点：符号留在上一块末尾（「$10/」「月；」），左括号自己开一块（「（Go ……」）
+_VAL_BREAK_RE = re.compile(r"(?<=[/／·→;；])|(?=[（(])")
 
 
-def value_tokens(text: str) -> str:
+def _tight_value(text: str, lang: str = "zh") -> str:
+    """收窄价值串里符号周围的松散空格（数据里人手写的「 $40 → $1,000 」）。
+
+    英文只在「/」「·」「→」两侧收，括号与分号保留正常英文间距
+    （「on Go ($10/month); Go Plus」不能变成「Go($10/month);Go」）；
+    中文连括号、分号一起收，避免中文标点前后多出一整格空白。
+    """
+    t = " ".join((text or "").split())
+    if lang == "en":
+        t = re.sub(r"\s*([/·→])\s*", r"\1", t)
+        return t
+    t = _VAL_TIGHT_RE.sub(r"\1", t)
+    t = _VAL_PAREN_TIGHT_RE.sub(r"\1", t)
+    t = _VAL_PAREN_END_RE.sub(r"\1", t)
+    return t
+
+
+def value_tokens(text: str, lang: str = "zh") -> str:
     """把价值串切成小块（块之间包着分隔符）。
 
-    手机端气泡宽度不够时要能换行，但优先只在「/」「·」这些断点折行——
-    「AUD 10」这类单个金额不会被拆成两行；英文整句说明这类长块
+    手机端气泡宽度不够时要能换行，但优先只在「/」「·」「→」「；」「（」这些
+    断点折行——「AUD 10」这类单个金额不会被拆成两行；英文整句说明这类长块
     仍可在词间断行，气泡不会越过卡片右边被裁掉。
     """
-    out = []
-    for i, part in enumerate(_VAL_SPLIT_RE.split((text or "").strip())):
-        if not part.strip():
-            continue
-        if i % 2 == 1:  # 捕获到的分隔符
-            out.append(f'<span class="dval-s">{e(part)}</span>')
+    t = _tight_value(text, lang)
+    if not t:
+        return ""
+    blocks = [b for b in _VAL_BREAK_RE.split(t) if b.strip()]
+    # 分隔符后面跟着的短块并回前一块：「$10/月」「$40→$1,000」不被拆开
+    merged: list[str] = []
+    for b in blocks:
+        if merged and merged[-1][-1:] in "/／·→;；" and (
+            len(b) <= 8 or len(merged[-1]) + len(b) <= 14
+        ):
+            merged[-1] += b
         else:
-            token = part.strip()
-            # 短块（「AUD 10」「CAD 10 每人」）内部用不换行空格焊死，
-            # 折行只发生在块与块之间；长块（英文整句说明）保留空格，允许在词间断行。
-            if len(token) <= 12:
-                token = token.replace(" ", "\u00a0")
-            out.append(f'<span class="dval-t">{e(token)}</span>')
+            merged.append(b)
+    out = []
+    for b in merged:
+        # 中文块内的空格全部焊成不换行空格：中文本来就能在字间断行，
+        # 不焊住会把「Go Plus 实付」和后面的金额拆到两行；
+        # 英文不焊，保留词间空格正常折行，不会把一长串英文啃成一整块。
+        if lang == "zh":
+            b = b.replace(" ", "\u00a0")
+        out.append(f'<span class="dval-t">{e(b)}</span>')
     return "".join(out)
 
 
@@ -817,14 +921,16 @@ def detail_tags(deal: dict, en: dict) -> str:
     else:
         check = f'<span class="dcheck wait">{ui("unverified")}</span>'
     v_zh, v_en = value_pair(deal, en)
+    # 一行紧凑标签：分类、门槛、核验状态。实际价值另起一个气泡放在下面，
+    # 不再自已占三层，省掉两行上下留白。
     return (
         '<div class="detail-tags">'
         f'<span class="dtag cat">{bi(e(cat_zh), e(cat_en))}</span>'
-        f'<span class="dval"><span class="dval-k">{ui("actual_value")}</span>'
-        f"<strong>{value_tokens(bi(v_zh, v_en))}</strong></span>"
-        f'<span class="dtag {cost_cls}">{bi(e(cost), e(cost_en))}</span>'
+        f'<span class="dtag tag {cost_cls}">{bi(e(cost), e(cost_en))}</span>'
         f"{check}"
         "</div>"
+        f'<div class="dval"><span class="dval-k">{ui("actual_value")}</span>'
+        f"<strong>{value_tokens(bi(v_zh, v_en), CUR_LANG)}</strong></div>"
     )
 
 
@@ -965,6 +1071,12 @@ def card(deal: dict, en: dict, today) -> str:
         f"{e(deal.get('start') or U['not_announced'][1])} → {e(deal.get('end') or U['ongoing_not_announced'][1])}",
     )
 
+    badge_zh, badge_en = value_badge(v_zh), value_badge(v_en, "en")
+    badge_html = (
+        f'<span class="{value_cls}">{bi(e(badge_zh), e(badge_en))}</span>'
+        if (badge_zh or badge_en) else ""
+    )
+
     return f"""<article class="{classes}" id="deal-{deal_id}" data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
     data-added="{e(added_day(deal, today))}" data-added-at="{e(deal.get('added_at') or added_day(deal, today))}"
@@ -974,7 +1086,7 @@ def card(deal: dict, en: dict, today) -> str:
       <div class="card-body">
         <div class="row1">
           <h3>{title_html}</h3>
-          <span class="{value_cls}">{bi(e(v_zh), e(v_en))}</span>
+          {badge_html}
         </div>
         <p class="row2"><span class="tag {cost_cls}">{bi(e(cost), e(COST_EN.get(cost, cost)))}</span>{bi(hl_zh, hl_en)}</p>
         <div class="row3">
@@ -994,11 +1106,11 @@ def card(deal: dict, en: dict, today) -> str:
       <dl class="detail-fields">
       <div class="field wide"><dt>{ui("f_what")}</dt><dd>{bi(e(deal['content']), e(en.get('content') or deal['content']))}</dd></div>
       <div class="field wide"><dt>{ui("f_conditions")}</dt><dd>{bi(e(deal['conditions']), e(en.get('conditions') or deal['conditions']))}</dd></div>
-      <div class="field"><dt>{ui("f_regions")}</dt><dd>{bi(e(deal['regions']), e(en.get('regions') or deal['regions']))}</dd></div>
+      <div class="field wide"><dt>{ui("f_regions")}</dt><dd>{bi(e(deal['regions']), e(en.get('regions') or deal['regions']))}</dd></div>
       <div class="field"><dt>{ui("f_period")}</dt><dd>{period}</dd></div>
-      <div class="field wide"><dt>{ui("f_steps")}</dt><dd><ol>{steps}</ol></dd></div>
-      <div class="field wide"><dt>{ui("f_link")}</dt>
+      <div class="field"><dt>{ui("f_link")}</dt>
         <dd>{url_dd}</dd></div>
+      <div class="field wide"><dt>{ui("f_steps")}</dt><dd><ol>{steps}</ol></dd></div>
       </dl>
       <div class="risk">
         {icon('warn')}
@@ -1044,7 +1156,7 @@ def jump_card(deal: dict, en: dict, today, rank: int | None = None) -> str:
       {fav_html(deal, 22, en)}
       <span class="jump-main">
         <span class="jump-title">{bi(e(title_zh), e(title_en))}</span>
-        <span class="jump-sub"><span class="{value_cls}">{bi(e(value_compact(v_zh)), e(value_compact(v_en, 'en')))}</span><span class="jump-meta">{bi(e(meta_zh), e(meta_en))}</span></span>
+        <span class="jump-sub"><span class="{value_cls}">{bi(e(value_badge(v_zh)), e(value_badge(v_en, 'en')))}</span><span class="jump-meta">{bi(e(meta_zh), e(meta_en))}</span></span>
       </span>
       {icon('external', 'jump-arrow')}
     </a>"""
@@ -1262,7 +1374,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         rel_items.append(
             f'<li><a href="/{e(deal_path(rel_deal["id"], lang))}">'
             f'<span class="dp-rel-t">{rel_rtag_html}{e(rel_title)}</span>'
-            f'<span class="dp-rel-v">{e(value_compact(rel_v, lang))}</span></a></li>'
+            f'<span class="dp-rel-v">{e(value_badge(rel_v, lang))}</span></a></li>'
         )
     rel_html = ""
     if rel_items:
