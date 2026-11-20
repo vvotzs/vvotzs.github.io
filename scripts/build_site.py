@@ -91,6 +91,11 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
     # 新收录：暖色火苗
     "today": (24, '<path d="M12 2.9c2.9 3.1 4.6 5.7 4.6 8.5a4.6 4.6 0 1 1-9.2 0c0-2.8 1.7-5.4 4.6-8.5Z" fill="#FDBA74"/>'
                   '<path d="M12 9.4c1.3 1.5 2 2.7 2 4a2 2 0 1 1-4 0c0-1.3.7-2.5 2-4Z" fill="#FEF3C7"/>', 1.9),
+    # 发现（滑轨唯一的热榜入口）：鲜亮橘红火焰 + 暖黄内芯。
+    # 用 --fl-outer / --fl-inner 两个变量画，选中态（实心薄荷绿胶囊）再把它们切成白色，
+    # 一个 symbol 就能兼顾「未选中一眼鲜亮」与「选中高对比」。
+    "flame": (24, '<path d="M12.3 2.4c3.4 3.6 5.4 6.6 5.4 9.8a5.7 5.7 0 1 1-11.4 0c0-3.2 2.6-6.2 6-9.8Z" fill="var(--fl-outer,#FF5A1F)" stroke="none"/>'
+                  '<path d="M12.2 9.1c1.6 1.8 2.5 3.3 2.5 4.9a2.5 2.5 0 1 1-5 0c0-1.6.9-3.1 2.5-4.9Z" fill="var(--fl-inner,#FFD166)" stroke="none"/>', 1.9),
     # 榜单：奖杯
     "rank": (24, '<path d="M7.6 3.5h8.8v4.9a4.4 4.4 0 0 1-8.8 0V3.5Z" fill="#FCD34D"/>'
                  '<path d="M7.6 5.1H5.1a2.6 2.6 0 0 0 2.6 4.6"/>'
@@ -255,7 +260,7 @@ def mascot_svg(cls: str = "", gid: str = "mintBody") -> str:
 # 右侧滑轨：新收录 / 高价值榜 / 即将截止 三块板同在页面顶部的一个聚合看板里，
 # 合成一个「发现」锚点指向 .hot-board 顶部（#hot），放在原来「新收录」的位置。
 NAV = [
-    ("hot", "nav_hot", "today"),
+    ("hot", "nav_hot", "flame"),
     ("ai", "nav_ai", "ai"),
     ("crypto", "nav_crypto", "crypto"),
     ("bank", "nav_bank", "bank"),

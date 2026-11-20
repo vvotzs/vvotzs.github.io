@@ -1209,6 +1209,11 @@ html.js .pager-bar{ display: flex; }
   box-shadow: 0 8px 18px -10px rgba(4,120,87,.8), inset 0 1px 0 rgba(255,255,255,.22);
 }
 .rail a.active svg{ color: #FFFFFF; }
+/* 「发现」一格：鲜亮橘红火焰（--fl-outer / --fl-inner 由 symbol 内部读取）。
+   未选中时是整条滑轨里唯一的饱和暖色；选中态（上面那层实心薄荷绿）自动切成纯白高对比。 */
+.rail a[data-target="hot"]{ --fl-outer: #FF5A1F; --fl-inner: #FFD166; }
+.rail a[data-target="hot"]:hover{ --fl-outer: #FF6D2E; --fl-inner: #FFDD82; }
+.rail a[data-target="hot"].active{ --fl-outer: #FFFFFF; --fl-inner: rgba(6,78,59,.42); }
 /* 滑轨容器本身也不做过渡 */
 .rail{ transition: none; }
 
