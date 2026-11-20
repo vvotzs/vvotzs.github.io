@@ -102,11 +102,12 @@ robots.txt / sitemap.xml
 ## 首屏 TG 徽标 + 右侧滑轨的一个发现锚点
 
 - `.hero` 行内（标语与更新时间之间的空档）加了一颗 Telegram 群徽标 `a.hero-tg`，指向与投稿弹窗同一个群
-  `https://t.me/+aAqP0DbW_YMxMmNh`（`target="_blank" rel="noopener noreferrer"`）。纸飞机图形与弹窗顶栏共用
-  `scripts/build_site.py` 的 `telegram_svg()`，两处图形完全一致。
-  桌面端 18px 高、文案「TG 交流群 / TG Group」，徽标与 `.hero-meta` 两个 `margin-left:auto` 平分空档，
-  于是徽标正好落在空位中间；≤768px 收成 15px 高、「TG群 / TG」。两种高度都卡在 `.hero` 标语行高
-  （15.9px / 18.2px）以下，这一行的高度、基线位置与改动前完全一致，不撑行、不换行。
+  `https://t.me/+aAqP0DbW_YMxMmNh`（`target="_blank" rel="noopener noreferrer"`）。
+  徽标是纯 SVG、没有可见文字（`hero_tg_badge()`）：亮蓝 `#0A8CFF` 正圆，上半白色 Telegram 纸飞机，
+  下半三人剪影（中间 `#0044FF`、两侧 `#000000`，用蓝底缝隙分隔，底部贴合内弧）；语义走 `aria-label` + `title`
+  （中英各自输出，复用 `submit_tg_aria`）。桌面 20×20px、≤768px 18×18px，盒子只占标语行高
+  （18.2px / 15.9px）并让图形绝对居中溢出约 1px，所以 `.hero` 行高与改动前逐像素一致，不撑行、不换行。
+  徽标与 `.hero-meta` 两个 `margin-left:auto` 平分空档，图形正好落在空位中间；另挂一圈透明点击热区。
 - 右侧滑轨里「新收录 / 高价值榜 / 即将截止」本来就同属页面顶部的一块聚合看板，三格锚点合成一格
   「发现 / Discover」（`href="#hot"`，即 `.hot-board` 的 `id`），位置就是原来「新收录」那一格；
   点它平滑回到看板顶部，看板里当前看的哪块板保持不变。滑轨高亮只要停在看板内任一块板就点亮这一格。
