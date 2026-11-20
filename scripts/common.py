@@ -34,6 +34,78 @@ SITE_URL = "https://vvotzs.github.io/"
 OG_IMAGE = SITE_URL + "assets/og-cover.png"
 OG_IMAGE_EN = SITE_URL + "assets/og-cover-en.png"
 
+# 单条独立详情页：中文 /d/<id>/，英文 /en/d/<id>/（目录名就是条目 id）
+DEALS_DIR = ROOT / "d"
+DEALS_DIR_EN = ROOT / "en" / "d"
+
+
+def deal_path(deal_id: str, lang: str = "zh") -> str:
+    """条目的站内相对路径（不带开头的斜杠）：`d/<id>/` 或 `en/d/<id>/`。"""
+    return ("en/" if lang == "en" else "") + f"d/{deal_id}/"
+
+
+def deal_url(deal_id: str, lang: str = "zh") -> str:
+    return SITE_URL + deal_path(deal_id, lang)
+
+
+def write_sitemap(deals: list[dict], today: date | None = None) -> Path:
+    """写 sitemap.xml：首页中英两版 + 全部条目的中英详情页。
+
+    maintain_deals.py（每轮巡检）与 build_site.py（每次构建）都调这里，
+    保证「数据里有多少条」与「sitemap 里有多少个详情页」永远一致；
+    每个 <url> 都带 hreflang 三件套，方便搜索引擎把中英两版当成一对。
+    已过期条目同样保留在 sitemap 里：它们是长期有效的查档页。
+    """
+    day = today or today_local()
+    today_iso = day.isoformat()
+
+    def alt_block(alternates: list[tuple[str, str]]) -> str:
+        return "".join(
+            f'    <xhtml:link rel="alternate" hreflang="{h}" href="{href}"/>\n'
+            for h, href in alternates
+        )
+
+    home_zh = SITE_URL
+    home_en = SITE_URL + "en/"
+    home_alt = [("zh-CN", home_zh), ("en", home_en), ("x-default", home_zh)]
+
+    parts = [
+        '<?xml version="1.0" encoding="UTF-8"?>\n',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n',
+        '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n',
+    ]
+
+    def add(loc: str, alts: list[tuple[str, str]], lastmod: str, freq: str, prio: str) -> None:
+        parts.append("  <url>\n")
+        parts.append(f"    <loc>{loc}</loc>\n")
+        parts.append(alt_block(alts))
+        parts.append(f"    <lastmod>{lastmod}</lastmod>\n")
+        parts.append(f"    <changefreq>{freq}</changefreq>\n")
+        parts.append(f"    <priority>{prio}</priority>\n")
+        parts.append("  </url>\n")
+
+    add(home_zh, home_alt, today_iso, "daily", "1.0")
+    add(home_en, home_alt, today_iso, "daily", "0.8")
+
+    for deal in deals:
+        deal_id = str(deal.get("id") or "").strip()
+        if not deal_id:
+            continue
+        zh = deal_url(deal_id, "zh")
+        en = deal_url(deal_id, "en")
+        alts = [("zh-CN", zh), ("en", en), ("x-default", zh)]
+        # 条目内容最后一次被核验 / 收录的日期；两者都缺就用今天
+        lastmod = str(deal.get("last_verified") or added_date(deal) or today_iso)[:10]
+        expired = deal.get("status") == "expired"
+        freq, prio = ("yearly", "0.3") if expired else ("weekly", "0.6")
+        add(zh, alts, lastmod, freq, prio)
+        add(en, alts, lastmod, freq, prio)
+
+    parts.append("</urlset>\n")
+    SITEMAP.write_text("".join(parts), encoding="utf-8")
+    return SITEMAP
+
+
 # ---------------------------------------------------------------- 类别
 # label 用于详情面板展示；search 是搜索索引里额外补上的中文别名。
 CAT_META = {

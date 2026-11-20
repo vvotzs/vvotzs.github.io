@@ -28,13 +28,12 @@ from common import (  # noqa: E402
     DATA,
     EXPIRING_DAYS,
     META,
-    SITE_URL,
-    SITEMAP,
     compute_status,
     ensure_added_at,
     now_local,
     parse_date,
     today_local,
+    write_sitemap,
 )
 
 
@@ -188,31 +187,6 @@ def main() -> int:
         "expiring_threshold_days": EXPIRING_DAYS,
     }
 
-    sitemap = (
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
-        '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
-        "  <url>\n"
-        f"    <loc>{SITE_URL}</loc>\n"
-        f'    <xhtml:link rel="alternate" hreflang="zh-CN" href="{SITE_URL}"/>\n'
-        f'    <xhtml:link rel="alternate" hreflang="en" href="{SITE_URL}en/"/>\n'
-        f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE_URL}"/>\n'
-        f"    <lastmod>{today.isoformat()}</lastmod>\n"
-        "    <changefreq>daily</changefreq>\n"
-        "    <priority>1.0</priority>\n"
-        "  </url>\n"
-        "  <url>\n"
-        f"    <loc>{SITE_URL}en/</loc>\n"
-        f'    <xhtml:link rel="alternate" hreflang="zh-CN" href="{SITE_URL}"/>\n'
-        f'    <xhtml:link rel="alternate" hreflang="en" href="{SITE_URL}en/"/>\n'
-        f'    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE_URL}"/>\n'
-        f"    <lastmod>{today.isoformat()}</lastmod>\n"
-        "    <changefreq>daily</changefreq>\n"
-        "    <priority>0.8</priority>\n"
-        "  </url>\n"
-        "</urlset>\n"
-    )
-
     print(f"载入 {before} 条 → 去重后 {len(deals)} 条")
     for line in dropped:
         print(f"  - 去重：{line}")
@@ -229,8 +203,8 @@ def main() -> int:
 
     DATA.write_text(json.dumps(deals, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     META.write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    SITEMAP.write_text(sitemap, encoding="utf-8")
-    print(f"已写入 {DATA.name}、{META.name}、{SITEMAP.name}")
+    write_sitemap(deals, today)
+    print(f"已写入 {DATA.name}、{META.name}、sitemap.xml（含中英详情页）")
     return 0
 
 

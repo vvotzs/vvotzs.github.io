@@ -478,7 +478,7 @@
   document.addEventListener("click", function (ev) {
     var card = ev.target.closest(".card");
     if (!card) return;
-    if (ev.target.closest(".go") || ev.target.closest(".url-link")) return; // 直达链接不触发折叠
+    if (ev.target.closest(".go") || ev.target.closest(".url-link") || ev.target.closest(".dlink")) return; // 直达链接 / 详情页链接不触发折叠
     var head = ev.target.closest(".card-head");
     var toggle = ev.target.closest(".toggle");
     if (!head && !toggle) {

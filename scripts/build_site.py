@@ -22,6 +22,7 @@ import html
 import io
 import json
 import re
+import shutil
 import sys
 import urllib.parse
 import urllib.request
@@ -37,6 +38,8 @@ from common import (  # noqa: E402
     CLOSING_SLOTS,
     CLOSING_WINDOW_DAYS,
     DATA,
+    DEALS_DIR,
+    DEALS_DIR_EN,
     EXPIRING_DAYS,
     FAV_DIR,
     META,
@@ -48,12 +51,15 @@ from common import (  # noqa: E402
     TZ,
     added_date,
     compute_status,
+    deal_path,
+    deal_url,
     ensure_added_at,
     now_local,
     parse_date,
     short_date,
     today_local,
     value_expected,
+    write_sitemap,
 )
 from i18n import (  # noqa: E402
     CAT_EN,
@@ -181,12 +187,17 @@ _MASCOT_BODY = (
 )
 
 
-def sprite_svg() -> str:
-    """整页共用的一份图标 sprite：<symbol> 定义一次，各处 <use> 引用。"""
+def sprite_svg(keys: tuple[str, ...] | None = None) -> str:
+    """整页共用的一份图标 sprite：<symbol> 定义一次，各处 <use> 引用。
+
+    keys 只为详情页准备：那 440 个独立页每种图标只用得到几个，
+    只带需要的 symbol 能把每页体积压到一半。
+    """
     parts = [
         '<svg class="sprite" style="display:none" aria-hidden="true" focusable="false">',
     ]
-    for key, (size, inner, sw) in _SYMBOLS.items():
+    items = _SYMBOLS.items() if keys is None else [(k, _SYMBOLS[k]) for k in dict.fromkeys(keys) if k in _SYMBOLS]
+    for key, (size, inner, sw) in items:
         parts.append(
             f'<symbol id="i-{key}" viewBox="0 0 {size} {size}" fill="none" stroke="currentColor" '
             f'stroke-width="{sw}" stroke-linecap="round" stroke-linejoin="round">{inner}</symbol>'
@@ -763,6 +774,7 @@ def card(deal: dict, en: dict, today) -> str:
         <span>{bi(e(deal['risk']), e(en.get('risk') or deal['risk']))}</span>
       </div>
       <div class="detail-foot">
+        <a class="dlink" href="/{deal_path(deal_id, CUR_LANG)}">{ui("dp_permalink")} \u2197</a>
         <span>{bi(e(f"{U['f_source'][0]} · {deal['source']}"), e(f"{U['f_source'][1]} · {en.get('source') or deal['source']}"))}</span>
         <span>{bi(e(f"{U['f_last_verified'][0]} · {deal['last_verified']}"), e(f"{U['f_last_verified'][1]} · {deal['last_verified']}"))}</span>
         <span>{bi(e(f"{U['f_added'][0]} · {added_day(deal, today)}"), e(f"{U['f_added'][1]} · {added_day(deal, today)}"))}</span>
@@ -859,6 +871,423 @@ def compact_html(page: str) -> str:
     """去掉每行缩进和空行：生成物小一大截，源码可读性交给生成器。"""
     page = re.sub(r"\n[ \t]+", "\n", page)
     return re.sub(r"\n{2,}", "\n", page)
+
+
+# ------------------------------------------------------- 单条独立详情页 /d/<id>/
+# 每条优惠一份真实静态页（中文 /d/<id>/、英文 /en/d/<id>/），给外链、搜索结果
+# 与站内「详情页」入口一个不会 404 的落脚点；已过期条目也照样生成，并在页顶
+# 挂一条归档提示，这样当年发出去的链接永远能打开。
+CAT_ICON = {"ai": "ai", "crypto": "crypto", "bank": "bank", "cloud": "cloud", "esim": "esim", "software": "software"}
+DP_FAV_JS = (
+    "<script>window.__favFallback=function(i){i.style.display='none';"
+    "var f=i.nextElementSibling;if(f&&f.classList.contains('fav-fallback'))f.style.display='grid';};</script>"
+)
+
+DP_ICONS = (
+    "external", "archive", "chevron",
+    *[v for v in CAT_ICON.values() if v],
+)
+
+
+def dp_deadline(deal: dict, today) -> str:
+    """详情页顶部的截止说明：「12月31日 截止 · 剩 41 天」这种一句话。"""
+    end = parse_date(deal.get("end", ""))
+    if not end:
+        return ui("ongoing")
+    day = bi(short_date(deal["end"]), short_date_en(end))
+    left = (end - today).days
+    if left < 0:
+        return ui("dp_deadline_ended", d=day)
+    if left == 0:
+        return ui("ends_today")
+    if left == 1:
+        return ui("ends_tomorrow")
+    if left <= 60:
+        return ui("dp_deadline_left", d=day, n=left)
+    return ui("dp_deadline_only", d=day)
+
+
+def dp_period(deal: dict) -> str:
+    """开始 → 截止的原始日期区间（未公布时写说明文字）。"""
+    start = e(deal.get("start") or ui("not_announced"))
+    end = e(deal.get("end") or ui("ongoing_not_announced"))
+    return f"{start} \u2192 {end}"
+
+
+def dp_status(deal: dict) -> tuple[str, str]:
+    """状态胶囊文案与配色：[进行中 / 即将截止 / 已结束·归档]。"""
+    state = deal.get("status")
+    if state == "expired":
+        return ui("dp_status_expired"), "is-old"
+    if state == "expiring_soon":
+        return ui("dp_status_soon"), "is-soon"
+    return ui("dp_status_active"), "is-live"
+
+
+def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, related: list[dict]) -> str:
+    """一条优惠的完整独立页：头部要点 + 全部字段 + 官方/原帖入口 + 同类内链。"""
+    set_lang(lang)
+    is_en = lang == "en"
+    deal_id = deal["id"]
+    cat = deal.get("category", "")
+    cat_zh = CAT_META.get(cat, {"label": cat})["label"]
+    cat_plain = CAT_EN.get(cat, (cat, ""))[0] if is_en else cat_zh
+    cat_label = e(cat_plain)
+    cat_icon = CAT_ICON.get(cat, "software")
+
+    def pick(key: str, default: str = "") -> str:
+        if is_en:
+            return en.get(key) or deal.get(key) or default
+        return deal.get(key) or default
+
+    raw_title = pick("title")
+    rtag, title_text = title_parts(raw_title)
+    highlight = pick("highlight")
+    content = pick("content")
+    conditions = pick("conditions")
+    risk = pick("risk")
+    regions = pick("regions")
+    source = pick("source")
+    steps = (en.get("steps") or deal.get("steps") or []) if is_en else (deal.get("steps") or [])
+
+    # 少数老条目没填 highlight：用正文首句当「亮点」，字段不缺席、也不编内容
+    lead = highlight
+    if not lead and content:
+        lead = re.split(r"(?<=[。！？.!?])\s*", content.strip(), maxsplit=1)[0].strip()
+        if len(lead) > 96:
+            lead = lead[:94].rstrip("，,、 ") + "…"
+
+    cost = deal.get("cost", "")
+    cost_cls = COST_CLASS.get(cost, "cost-invite")
+    cost_label = COST_EN.get(cost, cost) if is_en else cost
+    v_zh, v_en = value_pair(deal, en)
+    value_now = v_en if is_en else v_zh
+    st_label, st_cls = dp_status(deal)
+    expired = deal.get("status") == "expired"
+
+    official = official_link(deal)
+    src = safe_url(deal.get("source_url"))
+    if not src:
+        hit = _SRC_URL_RE.search(deal.get("source") or "")
+        src = safe_url(hit.group(0).rstrip("。.,；;") if hit else "")
+    if src and official and src.rstrip("/") == official.rstrip("/"):
+        src = ""
+
+    # 主按钮：官方活动页；万一条目只填了原帖，就把它当主按钮
+    acts = []
+    if official:
+        acts.append(
+            f'<a class="dp-btn mint" href="{e(official)}" target="_blank" rel="noopener noreferrer">'
+            f'{ui("dp_official")}{icon("external", "dp-ico")}</a>'
+        )
+    if src:
+        acts.append(
+            f'<a class="dp-btn ghost" href="{e(src)}" target="_blank" rel="noopener noreferrer">'
+            f'{ui("dp_source_post")}{icon("external", "dp-ico")}</a>'
+        )
+    if not acts:
+        acts.append(f'<span class="dp-btn ghost">{ui("see_official")}</span>')
+
+    def block(title: str, body: str, cls: str = "") -> str:
+        return (
+            f'<section class="dp-sec{(" " + cls) if cls else ""}"><h2>{title}</h2>{body}</section>'
+        )
+
+    steps_html = "".join(f"<li>{e(s)}</li>" for s in steps) or f"<li>{e(ui('see_official'))}</li>"
+
+    secs = []
+    if lead:
+        secs.append(block(ui("dp_highlight"), f'<p class="dp-lead">{e(lead)}</p>'))
+    if content:
+        secs.append(block(ui("dp_content"), f'<p>{e(content)}</p>'))
+    if conditions:
+        secs.append(block(ui("f_conditions"), f'<p>{e(conditions)}</p>'))
+    secs.append(block(ui("f_steps"), f'<ol class="dp-steps">{steps_html}</ol>'))
+    if risk:
+        secs.append(block(ui("dp_risk"), f'<p>{e(risk)}</p>', "is-risk"))
+
+    # 来源 / 核验 / 收录：SEO 与“这条到底谁说的”都要的细节
+    meta_bits = [
+        f'<span><i>{ui("f_source")}</i>{e(source)}</span>',
+        f'<span><i>{ui("f_last_verified")}</i>{e(deal.get("last_verified") or ui("unverified"))}</span>',
+        f'<span><i>{ui("f_added")}</i>{e(added_day(deal, today))}</span>',
+    ]
+    meta_html = "".join(meta_bits)
+
+    facts = [
+        f'<li><span>{ui("dp_facts_status")}</span><b><span class="dp-st {st_cls}">{st_label}</span></b></li>',
+        f'<li><span>{ui("dp_facts_deadline")}</span><b>{e(dp_deadline(deal, today))}</b></li>',
+        f'<li><span>{ui("dp_facts_period")}</span><b>{dp_period(deal)}</b></li>',
+        f'<li><span>{ui("f_regions")}</span><b>{e(regions)}</b></li>',
+        f'<li><span>{ui("dp_facts_cost")}</span><b><span class="dtag {cost_cls}">{e(cost_label)}</span></b></li>',
+        f'<li><span>{ui("dp_facts_value")}</span><b class="dp-val">{e(value_now)}</b></li>',
+        f'<li><span>{ui("dp_facts_check")}</span><b class="{"dp-ok" if deal.get("verified") else "dp-wait"}">'
+        f'{ui("verified") if deal.get("verified") else ui("unverified")}</b></li>',
+    ]
+
+    # 同类内链：给搜索引擎更多可爬路径，也给读者一个继续逛的入口
+    rel_items = []
+    for rel_deal in related[:4]:
+        rel_en = en_map.get(rel_deal["id"], {})
+        rel_raw = (rel_en.get("title") or rel_deal.get("title", "")) if is_en else rel_deal.get("title", "")
+        rel_rtag, rel_title = title_parts(rel_raw)
+        rel_v = (value_pair(rel_deal, rel_en)[1] if is_en else value_pair(rel_deal, rel_en)[0])
+        rel_rtag_html = f'<i>{e(rel_rtag)}</i>' if rel_rtag else ""
+        rel_items.append(
+            f'<li><a href="/{e(deal_path(rel_deal["id"], lang))}">'
+            f'<span class="dp-rel-t">{rel_rtag_html}{e(rel_title)}</span>'
+            f'<span class="dp-rel-v">{e(value_compact(rel_v, lang))}</span></a></li>'
+        )
+    rel_html = ""
+    if rel_items:
+        rel_html = (
+            f'<section class="dp-more" aria-label="{e(ui("dp_related_aria"))}">'
+            f'<h2>{ui("dp_more", cat=cat_label)}</h2><ul>{"".join(rel_items)}</ul></section>'
+        )
+
+    home = "/en/" if is_en else "/"
+    other = "/d/" if is_en else "/en/d/"
+    switch_href = other + deal_id + "/"
+    switch_lang = "zh-CN" if is_en else "en"
+    switch_aria = ui("dp_switch_aria_zh") if is_en else ui("dp_switch_aria")
+    canon = deal_url(deal_id, lang)
+    site_name = "Deal Hunter" if is_en else "羊毛情报局"
+    seo_title = f"{title_text} · {site_name}"
+
+    desc = re.sub(r"\s+", " ", highlight or content or title_text).strip()
+    if len(desc) > 156:
+        desc = desc[:152].rstrip("，,、 ·") + "…"
+
+    og_image = OG_IMAGE_EN if is_en else OG_IMAGE
+    og_locale = "en_US" if is_en else "zh_CN"
+    og_locale_alt = "zh_CN" if is_en else "en_US"
+
+    ld = [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": canon + "#webpage",
+            "url": canon,
+            "name": seo_title,
+            "description": desc,
+            "inLanguage": "en" if is_en else "zh-CN",
+            "isPartOf": {"@type": "WebSite", "name": site_name, "url": SITE_URL + ("en/" if is_en else "")},
+            "breadcrumb": {"@id": canon + "#breadcrumb"},
+            "mainEntity": {"@id": canon + "#offer"},
+            "datePublished": added_day(deal, today),
+            "dateModified": str(deal.get("last_verified") or added_day(deal, today)),
+            "primaryImageOfPage": {"@type": "ImageObject", "url": og_image},
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "@id": canon + "#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": ui("dp_crumb_home"),
+                    "item": SITE_URL + ("en/" if is_en else ""),
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": cat_plain,
+                    "item": SITE_URL + ("en/" if is_en else "") + "#" + cat,
+                },
+                {"@type": "ListItem", "position": 3, "name": title_text},
+            ],
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Offer",
+            "@id": canon + "#offer",
+            "name": title_text,
+            "description": highlight or content or title_text,
+            "url": official or canon,
+            "category": cat_plain,
+            "availability": "https://schema.org/Discontinued" if expired else "https://schema.org/InStock",
+            "areaServed": strip_region_bracket(regions) or regions,
+            "seller": {"@type": "Organization", "name": deal.get("brand") or site_name},
+        },
+    ]
+    if deal.get("end"):
+        ld[2]["validThrough"] = str(deal["end"]) + "T23:59:59+08:00"
+    jsonld = json.dumps(ld, ensure_ascii=False, indent=2).replace("</", "<\\/")
+
+    archive_html = ""
+    if expired:
+        end_zh, end_en = dp_end_pair(deal)
+        archive_html = (
+            f'<p class="dp-note is-archive">{icon("archive", "dp-ico")}'
+            f'<span>{ui("dp_archived", d=bi(end_zh, end_en))}</span></p>'
+        )
+
+    title_tag = f'<span class="rtag">{e(rtag)}</span>' if rtag else ""
+
+    return f"""<!DOCTYPE html>
+<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}" data-today="{today.isoformat()}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>{e(seo_title)}</title>
+<meta name="description" content="{e(desc)}">
+<meta name="author" content="{site_name}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAF7F2">
+<link rel="canonical" href="{canon}">
+<link rel="alternate" hreflang="zh-CN" href="{deal_url(deal_id, 'zh')}">
+<link rel="alternate" hreflang="en" href="{deal_url(deal_id, 'en')}">
+<link rel="alternate" hreflang="x-default" href="{deal_url(deal_id, 'zh')}">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="{site_name}">
+<meta property="og:locale" content="{og_locale}">
+<meta property="og:locale:alternate" content="{og_locale_alt}">
+<meta property="og:title" content="{e(seo_title)}">
+<meta property="og:description" content="{e(desc)}">
+<meta property="og:url" content="{canon}">
+<meta property="og:image" content="{og_image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{e(seo_title)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(seo_title)}">
+<meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:image" content="{og_image}">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
+
+<script type="application/ld+json">
+{jsonld}
+</script>
+</head>
+<body class="dp">
+
+{sprite_svg(("external", "archive", "chevron", cat_icon))}
+
+<header class="topbar">
+  <div class="shell topbar-in">
+    <a class="brand" href="{home}" {al(*U['brand_aria'])}>
+      <span class="brand-mark" aria-hidden="true">
+        {mascot_svg(gid='dpMintHead')}
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">{ui('brand')}</span>
+        <span class="brand-sub">{ui('brand_sub')}</span>
+      </span>
+    </a>
+    <div class="dp-top">
+      <a class="dp-back" href="{home}">{icon('chevron', 'dp-back-i')}<span>{ui('dp_back')}</span></a>
+      <a class="dp-switch" href="{switch_href}" hreflang="{switch_lang}" {al(switch_aria, switch_aria)}><span lang="{switch_lang}">{ui('dp_switch')}</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="shell dp-wrap">
+    <nav class="dp-crumbs" {al(*U['dp_crumb_aria'])}>
+      <a href="{home}">{ui('dp_crumb_home')}</a>
+      <span class="dp-sep" aria-hidden="true">/</span>
+      <a href="{home}#{cat}">{cat_label}</a>
+      <span class="dp-sep" aria-hidden="true">/</span>
+      <span class="dp-cur">{e(title_text)}</span>
+    </nav>
+
+    {archive_html}
+
+    <article class="dp-card">
+      <div class="dp-head">
+        {fav_html(deal, 44, en)}
+        <div class="dp-hgroup">
+          <h1 class="dp-title">{title_tag} {e(title_text)}</h1>
+          <div class="dp-badges">
+            <span class="dtag cat">{icon(cat_icon, 'dp-cat-i')}{cat_label}</span>
+            <span class="dp-st {st_cls}">{st_label}</span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="dp-facts">
+        {''.join(facts)}
+      </ul>
+
+      <div class="dp-actions">
+        {''.join(acts)}
+      </div>
+    </article>
+
+    {''.join(secs)}
+
+    <section class="dp-sec dp-meta-sec">
+      <h2>{ui('dp_source_block')}</h2>
+      <p class="dp-meta">{meta_html}</p>
+    </section>
+
+    {rel_html}
+
+    <nav class="dp-nav" aria-label="{e(ui('dp_crumb_aria'))}">
+      <a class="dp-nav-home" href="{home}">{ui('dp_back')}</a>
+      <a href="{home}#{cat}">{ui('dp_more_all')}</a>
+      <a href="{switch_href}" hreflang="{switch_lang}">{ui('dp_switch')}</a>
+    </nav>
+  </div>
+</main>
+
+<footer>
+  <div class="shell foot-line">
+    <span class="foot-brand">
+      <span class="brand-mark" aria-hidden="true">
+        {mascot_svg(gid='dpMintFoot')}
+      </span>
+      {ui('foot_brand', y=today.year)}
+    </span>
+    <span class="foot-up">{ui('f_last_verified')} {e(deal.get('last_verified') or added_day(deal, today))}</span>
+    <a class="foot-top" href="#top">↑</a>
+  </div>
+</footer>
+
+{DP_FAV_JS}
+</body>
+</html>
+"""
+
+
+def dp_end_pair(deal: dict) -> tuple[str, str]:
+    end = parse_date(deal.get("end", ""))
+    return short_date(deal.get("end")), short_date_en(end) if end else ""
+
+
+def write_deal_pages(deals: list[dict], en_map: dict, today) -> int:
+    """重建 d/ 与 en/d/：先整个删掉旧目录（清掉已不存在条目的残留），再逐条写。"""
+    for base in (DEALS_DIR, DEALS_DIR_EN):
+        if base.exists():
+            shutil.rmtree(base)
+        base.mkdir(parents=True, exist_ok=True)
+
+    by_cat: dict[str, list[dict]] = {}
+    for deal in deals:
+        by_cat.setdefault(deal.get("category", ""), []).append(deal)
+
+    count = 0
+    for deal in deals:
+        related = [
+            d
+            for d in sorted(by_cat.get(deal.get("category", ""), []), key=value_expected, reverse=True)
+            if d["id"] != deal["id"]
+        ]
+        en = en_map.get(deal["id"], {})
+        for lang, base in (("zh", DEALS_DIR), ("en", DEALS_DIR_EN)):
+            out = base / deal["id"] / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(compact_html(render_deal_page(deal, en, lang, today, en_map, related)), encoding="utf-8")
+            count += 1
+    return count
 
 
 def validate(deals: list[dict], en_map: dict) -> None:
@@ -1208,9 +1637,9 @@ def main() -> None:
                 else (deal.get("highlight") or "")
             )
             item = {"@type": "ListItem", "position": i, "name": name}
-            url = official_link(deal)
-            if url:
-                item["url"] = url
+            # 指向站内详情页（/d/<id>/ 与 /en/d/<id>/），官网站外链接留在详情页里，
+            # 这样 ItemList 的每条都能落到一个我们控制的、可长期访问的页面。
+            item["url"] = deal_url(deal["id"], "en" if is_en else "zh")
             if desc_text:
                 item["description"] = desc_text
             item_list.append(item)
@@ -1560,7 +1989,14 @@ def main() -> None:
     OUT.write_text(render_page("zh"), encoding="utf-8")
     EN_OUT.parent.mkdir(parents=True, exist_ok=True)
     EN_OUT.write_text(render_page("en"), encoding="utf-8")
+
+    # 单条独立页：每条一份中文 /d/<id>/、一份英文 /en/d/<id>/（含已归档条目）
+    set_lang("zh")
+    pages = write_deal_pages(deals, en_map, today)
+    # sitemap 与详情页同时生成，保证「数据里有几条」与「站点上有几页」永远对得上
+    write_sitemap(deals, today)
     print(f"index.html + en/index.html written · {len(active)} active / {len(expired)} expired / {len(fresh)} fresh")
+    print(f"  单条详情页：{pages} 个（d/ 与 en/d/ 各 {pages // 2} 个）· sitemap.xml 已同步")
     print(f"  英文条目：{len(deals) - len(missing_en)}/{len(deals)} 条有翻译")
     if missing_en:
         print(f"  ! 缺少英文翻译 {len(missing_en)} 条：{', '.join(missing_en[:12])}{' …' if len(missing_en) > 12 else ''}")
