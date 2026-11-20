@@ -31,9 +31,8 @@ U: dict[str, tuple[str, str]] = {
     "hero_h1": ("羊毛情报局", "Deal Hunter"),
     "hero_tag": ("全球高值羊毛 • 先看重点",
                  "Verified freebies & rewards"),
-    # 首屏行内的 Telegram 群徽标：桌面用长写法，手机端换短写法硬塞进同一行
-    "hero_tg": ("TG 交流群", "TG Group"),
-    "hero_tg_short": ("TG群", "TG"),
+    # 首屏行内的 Telegram 群徽标是纯 SVG 图形（无可见文字），文案只用在 aria-label / title 上
+    # （复用下面的 submit_tg_aria），不再需要长短两种可见写法。
     "updated": ("北京时间 {t} 更新", "Updated {t} (UTC+8)"),
     "updated_short": ("{t} 更新", "Updated {t}"),
     # 右侧滑轨（英文用 2–4 字母，避免撑宽 44px 的滑轨）

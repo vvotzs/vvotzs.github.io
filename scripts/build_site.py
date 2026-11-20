@@ -227,6 +227,31 @@ def telegram_svg(cls: str = "") -> str:
     )
 
 
+# 首屏行内的「Telegram 交流群」纯图形徽标：淡蓝圆角胶囊里，左边是 Telegram 蓝圆底白纸飞机，
+# 右边是三人小群剪影（后面两位浅紫、前面那位深紫并带胶囊底色描边，形成叠层分离）。
+# 图形全部画在 SVG 内，页面上没有可见文字；语义由外层的 aria-label 与 title 承担。
+# 比例 41:20，双端只改高度（手机 16px / 桌面 18px），宽度跟着走，绝不换行。
+def hero_tg_badge() -> str:
+    return (
+        '<svg class="hero-tg-b" viewBox="0 0 41 20" aria-hidden="true" focusable="false">'
+        '<rect x=".55" y=".55" width="39.9" height="18.9" rx="9.45" fill="#EFF9FF"'
+        ' stroke="#C4E8FB" stroke-width="1.1"/>'
+        '<circle cx="10.4" cy="10" r="8.4" fill="#2AABEE"/>'
+        '<path fill="#fff" transform="translate(10.4 10) scale(.84) translate(-11.75 -12.25)"'
+        ' d="m16.62 9.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24'
+        'l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74'
+        'l9.11-3.51c.42-.15.79.1.65.83z"/>'
+        '<circle cx="24.7" cy="5.8" r="2.45" fill="#8E7CF0"/>'
+        '<path fill="#8E7CF0" d="M20.9 16.1v-3.7a3.8 3.8 0 0 1 7.6 0v3.7Z"/>'
+        '<circle cx="34.1" cy="5.8" r="2.45" fill="#B0A2F6"/>'
+        '<path fill="#B0A2F6" d="M30.3 16.1v-3.7a3.8 3.8 0 0 1 7.6 0v3.7Z"/>'
+        '<circle cx="29.4" cy="8.3" r="3.2" fill="#5B4BE0" stroke="#EFF9FF" stroke-width="1.35"/>'
+        '<path fill="#5B4BE0" stroke="#EFF9FF" stroke-width="1.35"'
+        ' d="M24.7 16.7v-.5a4.7 4.7 0 0 1 9.4 0v.5Z"/>'
+        '</svg>'
+    )
+
+
 def calendar_badge(num: int, tone: str = "amber") -> str:
     """迷你日历小标：日历框里直接印数字（参考 Jun 的日历 App 图标）。
 
@@ -366,6 +391,11 @@ def ui(key: str, **fmt) -> str:
 def al(zh: str, en: str) -> str:
     """无障碍标签：构建时按当前语言直接写成 aria-label，不用再在 DOM 上挂 data-al-zh/-en 让 JS 回填。"""
     return f'aria-label="{e(en if CUR_LANG == "en" else zh)}"'
+
+
+def tt(zh: str, en: str) -> str:
+    """原生 title 提示：纯图形徽标（没有可见文字）鼠标悬停时用同一句文案补一句说明。"""
+    return f'title="{e(en if CUR_LANG == "en" else zh)}"'
 
 
 def deadline_html(deal: dict, today) -> str:
@@ -1817,7 +1847,7 @@ def main() -> None:
       <h1>{ui('hero_h1')}</h1>
       <p class="hero-tag">{ui('hero_tag')}</p>
       <a class="hero-tg" href="{TG_GROUP_URL}" target="_blank" rel="noopener noreferrer"
-         {al(*U['submit_tg_aria'])}>{telegram_svg('hero-tg-i')}<span class="htg-long">{ui('hero_tg')}</span><span class="htg-short">{ui('hero_tg_short')}</span></a>
+         {al(*U['submit_tg_aria'])} {tt(*U['submit_tg_aria'])}>{hero_tg_badge()}</a>
       <p class="hero-meta"><span class="dot" aria-hidden="true"></span><span class="hm-long">{ui('updated', t=e(beijing_time))}</span><span class="hm-short">{ui('updated_short', t=e(beijing_short))}</span></p>
     </section>
 
