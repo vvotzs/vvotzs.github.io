@@ -4119,5 +4119,197 @@
     ],
     "risk": "The subdomain is still owned by L53 and can be reclaimed or suspended at any time, so it is unsuitable for a main or brand site. Renewals are not free. The free-service terms let L53 show ads on or redirect promotional domains. The code is single-use and stock is limited, so it can expire early. Inaccurate details or a flagged IP can get the account removed.",
     "source": "L53 official client area and registration terms (checked 2026-11-21) + Lengxi blog post 2026-11-20 with the tested code and 11/20–12/3 dates + NodeLoc Black Friday thread"
+  },
+  "rbs-select-reward-switch-200": {
+    "title": "[UK] RBS Select / Reward switch: £200 for a full CASS switch, £1,250 in for 24h and one app login",
+    "highlight": "Switch a current account to RBS Select or Reward with the Current Account Switch Service, pay in £1,250 and keep it there 24 hours, log in to the app once within 60 days, and £200 lands within 30 days",
+    "regions": "[UK] UK residents aged 18+ only; open to new and existing customers who did not hold a Royal Bank current account on 6 May 2026",
+    "value": "£200 (≈$260)",
+    "content": "Royal Bank of Scotland, part of NatWest Group, pays £200 when you open a Select or Reward current account and move a current account held elsewhere across with the Current Account Switch Service. The page's three steps: apply for Select or Reward and complete a full switch, pay in £1,250 within 60 days of switching (several payments are fine, but it must stay in the account for 24 hours), and log in to the Royal Bank mobile app in the same window. The £200 is paid into the eligible account within 30 days once the conditions are met. Checked on rbs.co.uk again on 21 November 2026: the page still leads with 'Switch to us and you could get £200', the same steps are listed, and the offer is described as open to customers who did not hold a Royal Bank current account on 6 May 2026. A £500 Premier welcome offer sits on the same page but needs Premier income or wealth criteria.",
+    "conditions": "UK resident aged 18+; open a Select or Reward current account and complete a full switch with the Current Account Switch Service (partial switches and manual direct debit moves do not count); pay in £1,250 and keep it for 24 hours, and log in to the app, within 60 days of switching; not eligible if you or anyone on the account has had a NatWest Group cash switch incentive or you are switching from NatWest or Ulster Bank; the Reward account carries a £2 monthly fee.",
+    "steps": [
+      "Apply for a Select or Reward current account on rbs.co.uk and ask for a full switch with the Current Account Switch Service",
+      "Within 60 days of switching, pay in £1,250 in total and leave it in the account for at least 24 hours",
+      "Log in to the Royal Bank mobile app once in the same 60-day window",
+      "Check your statements: £200 is paid within 30 days of meeting the conditions"
+    ],
+    "risk": "NatWest Group (NatWest, RBS, Ulster) pays a cash switch incentive once per customer, so a previous NatWest £200 makes you ineligible; the Reward account has a monthly fee; opening a current account involves a hard credit search; the offer can be changed or withdrawn.",
+    "source": "RBS official current accounts page (switch offer £200, checked 21 November 2026); original listing on My Side Gig"
+  },
+  "jpm-personal-investing-invest-1000-100": {
+    "title": "[UK] J.P. Morgan Personal Investing: invest £1,000 in one payment by 30 Nov, hold 6 months, get £100 cash",
+    "highlight": "Register first, open an account with the same email, put £1,000 in one payment into any managed product and hold it six months; £100 cash follows within 55 days",
+    "regions": "[UK] UK residents only; new J.P. Morgan Personal Investing clients (or invited existing clients) who pass identity and suitability checks",
+    "value": "£100 (≈$130)",
+    "content": "J.P. Morgan Personal Investing, the firm's UK managed-portfolio platform, pays a £100 cash reward: 'Invest at least £1,000 in one payment by 30 November 2026 and keep it invested for at least 6 months'. The sequence is to register your email on the offer page, open a JPM PI account with the same address, open one managed product (managed GIA, Stocks and Shares ISA, Lifetime ISA, Junior ISA or Personal Pension) and pay in £1,000 or more in a single payment of new money (transfers from another provider do not count), then keep net contributions at £1,000 or more for six months. Market moves do not affect eligibility, but a withdrawal that drops net contributions below £1,000 does. The £100 is paid as unallocated cash into the account within 55 days of the six-month period ending, ready to invest or withdraw. Checked on the offer page on 21 November 2026: the 30 November 2026 23:59 GMT deadline, the single £1,000 payment, the six-month hold and the 55-day payout all match.",
+    "conditions": "UK resident who has not invested with JPM PI before (or an invited existing client); register on the offer page and open the account with the same email; invest £1,000 or more in one payment into a managed product - multiple payments, transfers from another provider and a 100% cash pot do not qualify; keep net contributions at £1,000 or more for six months; cannot be combined with another new-client offer.",
+    "steps": [
+      "Register your email on the £100 offer page",
+      "Open a JPM PI account with the same email and choose a managed product: Stocks and Shares ISA, Lifetime ISA, Junior ISA, Personal Pension or managed GIA",
+      "Pay in £1,000 or more in a single payment by 23:59 GMT on 30 November 2026 and set your investment style and risk level",
+      "Hold net contributions of £1,000 or more for six months; the £100 arrives as cash within 55 days of the period ending"
+    ],
+    "risk": "Investments can fall, so the £1,000 may be worth less after six months (that does not affect eligibility, but the loss is yours); managed products carry platform and fund charges; the deadline is 30 November, so allow time for the account and the payment to clear; only one new-client offer per customer.",
+    "source": "J.P. Morgan Personal Investing official offer page and terms (closing 30 November 2026, 23:59 GMT; checked 21 November 2026); original listing on My Side Gig"
+  },
+  "chase-uk-referral-50": {
+    "title": "[UK] Chase UK referral: £50 each when you enter a code in the app and deposit £1,000 within 30 days",
+    "highlight": "Anyone who did not apply to Chase before 3 December 2025 can enter a referral code in the app's Rewards section and deposit a total of £1,000 within 30 days, and both sides get £50",
+    "regions": "[UK] UK residents aged 18+, with a UK mobile number; must not have applied to Chase before 3 December 2025",
+    "value": "£50 (≈$65)",
+    "content": "Chase UK, J.P. Morgan's British retail bank, runs a refer a friend offer: the friend downloads the app, opens a first Chase account, selects the offer in the Rewards section and enters the referrer's code, then deposits a total of at least £1,000 within 30 days of opening. Both sides receive £50 into their rewards balance, which can be moved to a Chase current or saver account and withdrawn. The terms say the friend must not have applied to Chase before 3 December 2025, the code must be used within 30 days of opening, the £1,000 can build up over several deposits (deposit £500, spend £250, deposit another £500 still counts), and neither side may close their last Chase account or deactivate rewards before the award is paid. Each code is single use and a referrer can generate up to five. Checked on the Refer a friend terms page on 21 November 2026: £50, 30 days, £1,000 and the 3 December 2025 cut-off are unchanged; no end date is published and Chase may end the offer at any time.",
+    "conditions": "UK resident aged 18+, with a smartphone and UK mobile number, tax resident in the UK and passing a soft credit search; must not have applied to Chase before 3 December 2025; enter the code in Rewards within 30 days of opening the first account and deposit a total of £1,000 within those 30 days; do not close the account or deactivate rewards before the award is paid; JPMorgan Group staff and their clients cannot refer each other.",
+    "steps": [
+      "Open your first Chase current account in the app using a friend's referral code",
+      "Within 30 days, open Rewards in the app, choose refer a friend and enter the code to link to the referrer",
+      "Deposit a total of £1,000 into the Chase account within 30 days, in one or several payments",
+      "Move the £50 from your rewards balance to a current or saver account and withdraw it before closing anything"
+    ],
+    "risk": "Chase rolls the referral entry out to customers in batches, so no entry in the app means you were not picked this time; the reward sits in a rewards balance that must be transferred out before leaving Chase; opening an account involves a soft search and Chase offers no overdraft.",
+    "source": "Chase UK official Refer a friend terms page (£50, 30 days, £1,000, 3 December 2025 cut-off; checked 21 November 2026); original listing on My Side Gig"
+  },
+  "chip-uk-referral-50": {
+    "title": "[UK] Chip referral: £50 each when you deposit £1,000 and hold it 90 days, all within 120 days",
+    "highlight": "A referred new customer who puts £1,000 into any eligible Chip account and holds it for 90 days triggers £50 for both sides, with everything done within 120 days of the referral",
+    "regions": "[UK] UK residents aged 18+, UK tax residents; Chip must be a new customer (never held a Chip account)",
+    "value": "£50 (≈$65)",
+    "content": "Chip, the UK savings and investing app, pays £50 to both sides of a referral: the friend must be new to Chip, sign up through the referral link, deposit at least £1,000 into any eligible Chip account and keep the balance there for 90 calendar days, all within 120 calendar days of being referred. Eligible accounts are the Smart Cash ISA, Instant Access, Prize Savings, Everyday Saver, General Investment Account and Stocks and Shares ISA; the Chip Pension does not count. The £1,000 can be split across eligible accounts but the total must stay at or above £1,000 for the 90 days. The bonus is paid into an Instant Access or Prize Savings account on both sides, and withdrawing to a linked bank account takes up to five working days. Checked on the Refer a friend terms page at getchip.uk on 21 November 2026: £50, £1,000, 90 days, the 120-day window and the account list are unchanged.",
+    "conditions": "UK resident aged 18+, UK tax resident, new to Chip (never held a Chip account); sign up through the referral link on app version 4.56.0 or later; deposit £1,000 in total into eligible Chip accounts and hold it 90 days; meet every condition within 120 days of the referral; the Chip Pension does not count.",
+    "steps": [
+      "Sign up to Chip through a friend's referral link and pass identity checks",
+      "Put £1,000 into eligible accounts such as Instant Access, Cash ISA or Prize Savings (it can be split)",
+      "Keep the balance at £1,000 or more for 90 days",
+      "Once all conditions are met inside the 120-day window, £50 lands in your Instant Access or Prize Savings account"
+    ],
+    "risk": "Withdrawing during the 90 days drops the balance below £1,000 and loses the bonus; the bonus can only be paid into an Instant Access or Prize Savings account; the 120-day clock starts on the day you are referred.",
+    "source": "Chip official Refer a friend terms page (£50 / £1,000 / 90 days / 120 days; checked 21 November 2026); original listing on My Side Gig"
+  },
+  "wealthify-referral-50": {
+    "title": "[UK] Wealthify referral: £50 each when you invest £1,000 in an ISA, or £5,000 in a GIA or SIPP, for 6 + 6 months",
+    "highlight": "Open through a referral link, invest £1,000 in a Stocks and Shares or Junior ISA (or £5,000 in a GIA or SIPP), then keep that balance another six months, and both sides get £50",
+    "regions": "[UK] UK residents aged 18+; new Wealthify customers who pass the risk questionnaire and identity checks",
+    "value": "£50 (≈$65)",
+    "content": "Wealthify, the Aviva-owned robo-investor, pays £50 to both sides: the friend opens an account through the referral link, makes a first investment within six months of opening - at least £1,000 into a Stocks and Shares ISA or Junior ISA, or at least £5,000 into a General Investment Account or SIPP - and then keeps that balance for a further six months. The £50 is paid straight into both investment plans rather than as cash. A referrer can share one code as often as they like, up to 50 successful referrals, and the link is the only way the referral is tracked. Checked on the Refer a Friend page at wealthify.com on 21 November 2026: £50, the £1,000 and £5,000 thresholds and the six-plus-six-month holding requirement are unchanged.",
+    "conditions": "UK resident aged 18+, new to Wealthify; must arrive through the referral link; invest at least £1,000 in a Stocks and Shares ISA or Junior ISA, or at least £5,000 in a GIA or SIPP; keep that balance for six months after the first investment; the reward is paid as invested money, not cash.",
+    "steps": [
+      "Register through a friend's Wealthify referral link and complete the risk questionnaire and identity checks",
+      "Within six months of opening, invest £1,000 in an ISA (or £5,000 in a GIA or SIPP)",
+      "Keep at least that amount invested for a further six months",
+      "The £50 is added to your plan automatically, with nothing to claim"
+    ],
+    "risk": "The reward is invested money, so it must be sold and settled before it can be taken out; investments can fall; the 6 + 6 months ties money up for about a year and early withdrawals lose the bonus.",
+    "source": "Wealthify official Refer a Friend page (£50, ISA £1,000 / GIA and SIPP £5,000; checked 21 November 2026); original listing on My Side Gig"
+  },
+  "freetrade-free-share-10-100": {
+    "title": "[UK] Freetrade free share: £10-£100 random share for funding £50, cash out after 180 days",
+    "highlight": "UK tax residents who open through a referral link, finish W-8BEN and fund £50 net get a random share worth £10-£100 within 30 days, usually at the £10 end",
+    "regions": "[UK] UK tax residents only; new Freetrade customers; US nationals and dual US-UK nationals are excluded",
+    "value": "£10-£100 random share (≈$13-130)",
+    "content": "Freetrade, the UK commission-free broker, awards a free share to both sides of a referral. The new customer signs up through the referral link, passes onboarding and the W-8BEN form, and brings the account to a net cash balance of at least £50 within 30 calendar days; the free share is then issued, with the terms stating that each share is worth between £10 and £100 at the time of award and that pricier shares are rarer. Shares are usually issued within 28 business days, and the sale proceeds can only be withdrawn 180 calendar days after the award date. The referrer must also hold at least £50 net, can receive up to ten free shares a month, and may only share links with family and friends - not on public social media or forums. Checked against the Freetrade Free Share Terms (v7) and the /free-share page on 21 November 2026: the £10-£100 range, the £50 funding requirement and the 180-day withdrawal lock are unchanged.",
+    "conditions": "UK tax resident aged 18+, new to Freetrade (existing or previous accounts do not qualify); sign up through a referral link and complete KYC and W-8BEN; reach £50 net cash within 30 days; US nationals and dual US-UK nationals resident in the UK are excluded; referral links must not be posted publicly.",
+    "steps": [
+      "Sign up through a friend's Freetrade referral link and complete identity checks and W-8BEN",
+      "Bring the account's net cash to £50 or more within 30 days",
+      "Wait for the share to be issued, usually within 28 business days, and find it in your portfolio",
+      "Sell whenever you like, but proceeds unlock for withdrawal 180 days after the award"
+    ],
+    "risk": "Most recipients get the £10 end despite the £100 headline; share values move with the market; sale proceeds are locked for 180 days; this is an investment account with KYC and market risk.",
+    "source": "Freetrade official Free Share terms v7 and /free-share offer page (checked 21 November 2026); original listing on My Side Gig"
+  },
+  "investengine-referral-20-200": {
+    "title": "[UK] InvestEngine referral: invest £100, get a random £20-£200 bonus (75% at £20-£24), hold 12 months",
+    "highlight": "A new customer who registers through a referral link and invests £100 gets a random bonus for both sides: 75% get £20-£24, 15% £28-£34, 5% £42-£56, 3% £75-£100 and 2% £150-£200",
+    "regions": "[UK] UK residents only; new InvestEngine customers who pass identity checks (business accounts also need an LEI)",
+    "value": "£20-£200 (≈$26-260, average about £26)",
+    "content": "InvestEngine, the FCA-regulated ETF portfolio platform, pays a random referral bonus to both sides: the new customer registers through a referral link, opens an ISA, GIA or SIPP, and invests at least £100, and the amount is revealed when claimed, straight into the portfolio. The official terms (V1.4, effective 16 March 2026) publish the weighting: £20-£24 at 75%, £28-£34 at 15%, £42-£56 at 5%, £75-£100 at 3% and £150-£200 at 2%, with business accounts on £100-£400. After the bonus is claimed, both sides must stay invested for 12 months with at least £100 plus the bonus as net funding, or InvestEngine reclaims it. The referrer needs £100 of their own invested before generating a link and can make up to 25 valid referrals. Checked on the Term Incentives page on 21 November 2026: the weighting table and the 12-month requirement are unchanged.",
+    "conditions": "UK resident, new to InvestEngine (never registered); must arrive through a referral link; invest at least £100 in an ISA, GIA or SIPP; keep both sides invested for 12 months with net funding of at least £100 plus the bonus; self-referrals are not accepted.",
+    "steps": [
+      "Register through a friend's InvestEngine referral link and open an ISA, GIA or SIPP",
+      "Invest at least £100 into a portfolio (cash sitting idle does not count)",
+      "Claim the bonus in the platform; the amount is generated at that moment and cannot be changed",
+      "Stay invested for 12 months with net funding of at least £100 plus the bonus, or the money is reclaimed"
+    ],
+    "risk": "The bonus is invested money that must stay for 12 months or be reclaimed; investments can fall; the advertised £200 has a 2% chance and most people get £20-£24.",
+    "source": "InvestEngine official Term Incentives page (Referral Program V1.4 with the weighting table and 12-month rule; checked 21 November 2026); original listing on My Side Gig"
+  },
+  "oaknorth-referral-30": {
+    "title": "[UK] OakNorth referral: £30 each for saving £2,000 for 30 days, plus £10 each for a second account",
+    "highlight": "A referred new customer opens an OakNorth personal savings account, funds it with £2,000 within 14 days and holds it 30 days, and both sides get £30 within 60 days",
+    "regions": "[UK] UK residents only (England, Scotland, Wales, Northern Ireland), aged 18+; new OakNorth personal savings customers",
+    "value": "£30 (≈$39), plus £10 each for a second account",
+    "content": "OakNorth, the UK digital bank with FSCS protection, runs the Better Together referral programme: the friend submits a referral form naming the referrer and their registered email, opens a new personal savings account, funds it with at least £2,000 within 14 days and keeps the balance for 30 calendar days, and both sides receive £30 within 60 calendar days of meeting the conditions, paid into their OakNorth account or nominated account. A second eligible account opened within 90 days earns both sides another £10. A referrer can be rewarded for up to ten successful referrals (£300), and up to 50 people linked to one referrer can receive a reward. The page says there is currently no cut-off date but the programme may be withdrawn or amended. Checked at oaknorth.co.uk on 21 November 2026: £30 / £2,000 / 30 days / 60-day payout all match.",
+    "conditions": "UK resident aged 18+, who has not previously applied for an OakNorth personal savings account; must be referred by an existing OakNorth customer, with the referrer's name and registered email on the form; fund the new account with £2,000 within 14 days and hold it 30 calendar days; a second account must be opened within 90 days for the extra £10; only one reward as a referred customer.",
+    "steps": [
+      "Ask a friend with an OakNorth account to refer you, then submit the referral form with their name and registered email",
+      "Open a new personal savings account and fund it with at least £2,000 within 14 days",
+      "Keep at least £2,000 in it for 30 calendar days",
+      "The £30 arrives within 60 days; open a second eligible account within 90 days for another £10 each"
+    ],
+    "risk": "You need £2,000 up front and withdrawals inside 30 days lose the bonus; savings rates move, so do not pick a weak account just for £30; the referral form has to be filled in at the start, not afterwards.",
+    "source": "OakNorth official Refer a Friend page (£30 / £2,000 / 30 days; checked 21 November 2026); original listing on My Side Gig"
+  },
+  "raisin-uk-refer-friend-100": {
+    "title": "[UK] Raisin UK referral: £100 each when your first account is a 1-year+ fixed bond of £10,000",
+    "highlight": "Register through a referral link, make your first savings account a fixed rate bond of 1 year or more funded with £10,000 in one go, and both sides get £100 within 28 days",
+    "regions": "[UK] UK residents aged 18+; new Raisin UK customers who have not registered before",
+    "value": "£100 (≈$130)",
+    "content": "Raisin UK, which puts savings products from many banks in one account, pays £100 to both sides of a referral: the new customer registers through the referral link, makes their first savings account a fixed rate bond with a term of one year or longer, and funds it with at least £10,000; both bonuses are paid into the respective Transaction Accounts, usually within 28 days of the bond being opened and funded. The traps: the £10,000 must all go into that one fixed bond rather than being split across accounts; the bond has to be the first savings account opened (an easy access or shorter account first disqualifies you); registration to funding must happen within 365 days; and the bonus cannot be combined with other new-customer codes. Checked on the Refer a friend bonus page at raisin.com on 21 November 2026: £100, the one-year term, £10,000, the 28-day payout and those exclusions are unchanged.",
+    "conditions": "UK resident aged 18+, new to Raisin UK; must register through a referral link; the first savings account must be a fixed rate bond of one year or more funded with £10,000 or more in a single account (not split); register and fund within 365 days; cannot be combined with other new-customer codes.",
+    "steps": [
+      "Register through a friend's Raisin UK referral link and complete full identity verification",
+      "Choose a fixed rate bond with a term of one year or longer and fund it with £10,000 or more in one go",
+      "Make sure all £10,000 sits in that one bond rather than an easy access or shorter account first",
+      "The £100 arrives in your Transaction Account within 28 days; the bond stays locked until maturity"
+    ],
+    "risk": "The £10,000 threshold and the lock-up usually make £100 poor value on its own, so compare rates first; opening another account first or splitting the deposit loses the bonus; each partner bank keeps its own FSCS protection.",
+    "source": "Raisin UK official Refer a friend bonus page (£100 / 1 year / £10,000; checked 21 November 2026); original listing on My Side Gig"
+  },
+  "lloyds-uk-refer-friend-30": {
+    "title": "[UK] Lloyds referral: £30 for a new customer opening a current account in the app, no switch or pay-in",
+    "highlight": "A customer brand new to Lloyds opens a sole current account from a referral link inside the app and keeps it open; £30 is credited within 35 days, with no switch, deposit or direct debits",
+    "regions": "[UK] UK residents aged 18+ who are brand new to Lloyds (no Lloyds current account, savings, credit card, loan or mortgage)",
+    "value": "£30 (≈$39)",
+    "content": "Lloyds' Refer a Friend is a different offer from its Club Lloyds switch bonus: the £200 switch deal needs a switch plus three direct debits, while this £30 referral just needs the friend to use a referral link, download the Lloyds app, and open a new sole current account in the app - no switch, no set deposit and no direct debits - then keep the account open until the reward is paid. £30 is credited to the new account as a cash credit within 35 calendar days of opening, and the referrer also gets £30. Lloyds states the offer on its joint accounts page - 'Psst, want £30? Just refer a friend ... you could both pocket £30 when you open a qualifying current account' - and the detailed terms appear in the Lloyds app: referral links are valid for 14 days from generation (an expired link still opens an account but pays nothing), the application must start from the link, only sole accounts qualify, and Under 19s, Smart Start, Student, Money Smart and Expresscash accounts are excluded. Checked on lloydsbank.com on 21 November 2026: the £30 and those points still hold.",
+    "conditions": "UK resident aged 18+ with no Lloyds current account, savings account, credit card, loan or mortgage (brand new customer); arrive through a referral link and download the app to open a new current account in the app; sole account only, joint accounts excluded; keep the account open until the reward is paid; one referral reward per person; the link is valid for 14 days.",
+    "steps": [
+      "Ask a friend who holds a Lloyds product for a freshly generated referral link (valid 14 days)",
+      "Open the link, download the Lloyds app and apply for a sole current account there (Classic or another eligible account)",
+      "Pass identity and credit checks and keep the account open - no set deposit and no direct debits needed",
+      "£30 arrives as a cash credit within 35 calendar days of opening"
+    ],
+    "risk": "A link older than 14 days still opens an account but pays nothing; the account must be in your sole name; opening a current account involves a credit check; holding any Lloyds product, even a savings account, means you are not a brand new customer.",
+    "source": "Lloyds Bank official Refer a Friend and joint accounts pages (£30; checked 21 November 2026, the terms page intermittently returns an error while the detail sits in the Lloyds app); original listing on My Side Gig"
+  },
+  "fidelity-uk-refer-100-amazon": {
+    "title": "[UK] Fidelity referral: £100 Amazon gift card each for a £5,000 lump sum into an ISA, SIPP or investment account",
+    "highlight": "Open through a referral link and put a £5,000 lump sum into a Stocks and Shares ISA, SIPP or investment account that passes validation, and both sides get a £100 Amazon.co.uk gift card",
+    "regions": "[UK] UK residents aged 18+; new Fidelity customers without an existing investment account",
+    "value": "£100 Amazon.co.uk gift card (≈$130)",
+    "content": "Fidelity, the UK fund and investment platform, pays a £100 Amazon.co.uk gift card to both sides of a referral: the friend arrives through the referral link, opens a Stocks and Shares ISA, a Self-Invested Personal Pension or an investment account, and funds it with a lump sum of £5,000 or more. Once the account is opened and validated, each side receives a £100 gift card. The page is explicit that accounts opened with less than £5,000 do not qualify and that the reward is a gift card rather than cash, with eligibility resting on the account being opened and validated. Checked on the Refer a friend page at fidelity.co.uk on 21 November 2026: £100, £5,000, the three account types and the gift card form are unchanged.",
+    "conditions": "UK resident aged 18+, new to Fidelity (no existing investment account); open the account through a referral link; fund it with a £5,000 lump sum into a Stocks and Shares ISA, SIPP or investment account; the account must pass validation.",
+    "steps": [
+      "Register through a friend's Fidelity referral link",
+      "Open a Stocks and Shares ISA, SIPP or investment account and pay in a £5,000 lump sum",
+      "Complete account validation, including identity and source-of-funds checks",
+      "Both sides receive a £100 Amazon.co.uk gift card once the account is validated"
+    ],
+    "risk": "The £5,000 threshold only makes sense if you were investing anyway; the reward is a gift card, not cash; investments can fall; funding below £5,000, or in several payments, may not qualify.",
+    "source": "Fidelity UK official Refer a friend page (£100 / £5,000; checked 21 November 2026); original listing on My Side Gig"
+  },
+  "currensea-referral-10": {
+    "title": "[UK] Currensea referral: £10 each when you spend £100 abroad, free-tier card included",
+    "highlight": "Apply for a Currensea travel debit card through a friend's link and spend £100 abroad, and both sides get £10 while the offer lasts",
+    "regions": "[UK] UK residents aged 18+ with a UK bank account that Currensea can debit directly",
+    "value": "£10 (≈$13)",
+    "content": "Currensea is a travel debit card that links to a UK current account and spends at the real exchange rate without the usual foreign transaction fees. Its refer a friend offer says you'll both get £10 when you spend £100 abroad; the free Essential tier only charges a £4.95 delivery fee, while Pro and Elite are annual-fee tiers on the same referral terms. Checked on the Refer a friend page at currensea.com on 21 November 2026: the page still reads 'You'll both get £10 when you spend £100 abroad' and notes the offer runs from 12:00pm BST 29 June 2026 until withdrawn, with the full terms on the recommend-a-friend terms page. The amount is small, but it is free money if you already spend abroad.",
+    "conditions": "UK resident aged 18+ with a UK current account; apply through a referral link; spend a total of £100 abroad on the card; the offer can be withdrawn at any time, so check the page when you apply.",
+    "steps": [
+      "Apply for a Currensea card through a friend's referral link - the free Essential tier is enough",
+      "Link the card to your UK current account and complete identity checks",
+      "Use the card abroad until you have spent £100 in total",
+      "£10 cashback appears in your Currensea account for both sides"
+    ],
+    "risk": "Only worth it if you actually spend abroad rather than spending just to qualify; Pro and Elite tiers carry annual fees; the offer can be withdrawn at any time; the card debits your current account directly.",
+    "source": "Currensea official Refer a friend page and terms (£10 / £100 abroad; checked 21 November 2026); original listing on My Side Gig"
   }
 }
