@@ -532,6 +532,8 @@
   /* ------------------------------------------------------------ 滑轨高亮 */
   var navLinks = $$(".rail a[data-target]");
   var sections = $$(".module");
+  /* 聚合看板里的四块板（新收录 / 高价值榜 / 即将截止 / 抽奖）在滑轨里只有一格 */
+  var BOARD_TARGET = { fresh: 1, rank: 1, closing: 1, lottery: 1 };
   var navRaf = null;
   /* 点击滑轨后页面还要平滑滚一段：这段时间把高亮钉在刚点的分区，
      不要让高亮跟着中间分区一个个扫过去（那就是用户看到的「过渡延迟」） */
@@ -553,8 +555,11 @@
     if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8) {
       current = visible[visible.length - 1].id;
     }
+    // 滑轨里的「热榜」一个锚点替掉新收录 / 高价值榜 / 即将截止 / 抽奖四个板子：
+    // 只要当前停在看板内的任一块板，就高亮这唯一的一格。
+    var target = BOARD_TARGET[current] ? "hot" : current;
     navLinks.forEach(function (a) {
-      a.classList.toggle("active", a.dataset.target === current);
+      a.classList.toggle("active", a.dataset.target === target);
     });
   }
 
@@ -572,6 +577,14 @@
         showTab(id);
         scrollToBoard();
         if (history.replaceState) history.replaceState(null, "", "#" + id);
+      } else if (id === "hot" && hotBoard) {
+        // 合并后的「热榜」：平滑回到聚合看板顶部，看板里当前看的哪块板保持不变
+        ev.preventDefault();
+        var rect = hotBoard.getBoundingClientRect();
+        var barH = mqMobile.matches ? 64 : 68;
+        var top = window.scrollY + rect.top - barH;
+        window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+        if (history.replaceState) history.replaceState(null, "", "#hot");
       }
       navLinks.forEach(function (x) { x.classList.remove("active"); });
       a.classList.add("active");

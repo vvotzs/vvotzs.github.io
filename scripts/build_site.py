@@ -210,6 +210,18 @@ def icon(key: str, cls: str = "") -> str:
     return f'<svg class="i{" " + cls if cls else ""}" aria-hidden="true"><use href="#i-{key}"/></svg>'
 
 
+# Telegram 纸飞机（圆底 + 折角）徽标：投稿弹窗顶栏与首屏行内的小徽标共用一份，
+# 保证两处的图形完全一致；颜色走 currentColor，尺寸由各自的 class 决定。
+def telegram_svg(cls: str = "") -> str:
+    return (
+        f'<svg class="{cls}" viewBox="0 0 24 24" aria-hidden="true">'
+        '<path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.62 7.06-1.53 7.2c-.11.51-.42.63-.85.39'
+        'l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1'
+        'l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74l9.11-3.51c.42-.15.79.1.65.83Z" fill="currentColor"/>'
+        '</svg>'
+    )
+
+
 def calendar_badge(num: int, tone: str = "amber") -> str:
     """迷你日历小标：日历框里直接印数字（参考 Jun 的日历 App 图标）。
 
@@ -240,15 +252,15 @@ def mascot_svg(cls: str = "", gid: str = "mintBody") -> str:
     )
 
 
+# 右侧滑轨：新收录 / 高价值榜 / 即将截止 三块板同在页面顶部的一个聚合看板里，
+# 合成一个「发现」锚点指向 .hot-board 顶部（#hot），放在原来「新收录」的位置。
 NAV = [
-    ("fresh", "nav_fresh", "today"),
-    ("rank", "nav_rank", "rank"),
+    ("hot", "nav_hot", "today"),
     ("ai", "nav_ai", "ai"),
     ("crypto", "nav_crypto", "crypto"),
     ("bank", "nav_bank", "bank"),
     ("cloud", "nav_cloud", "cloud"),
     ("esim", "nav_esim", "esim"),
-    ("closing", "nav_closing", "clock"),
     ("software", "nav_software", "software"),
     ("archive", "nav_archive", "archive"),
 ]
@@ -1575,7 +1587,7 @@ def main() -> None:
             )
 
         hot_board = f"""
-      <div class="hot-board" data-hot-board>
+      <div class="hot-board" id="hot" data-hot-board>
         <div class="hot-tabs-mobile" role="group" {al(*U['hot_aria'])}>
           {hot_tab('fresh', 'tab_fresh', True)}
           {hot_tab('rank', 'tab_rank', False)}
@@ -1799,6 +1811,8 @@ def main() -> None:
     <section class="hero">
       <h1>{ui('hero_h1')}</h1>
       <p class="hero-tag">{ui('hero_tag')}</p>
+      <a class="hero-tg" href="{TG_GROUP_URL}" target="_blank" rel="noopener noreferrer"
+         {al(*U['submit_tg_aria'])}>{telegram_svg('hero-tg-i')}<span class="htg-long">{ui('hero_tg')}</span><span class="htg-short">{ui('hero_tg_short')}</span></a>
       <p class="hero-meta"><span class="dot" aria-hidden="true"></span><span class="hm-long">{ui('updated', t=e(beijing_time))}</span><span class="hm-short">{ui('updated_short', t=e(beijing_short))}</span></p>
     </section>
 
@@ -1940,7 +1954,7 @@ def main() -> None:
       <h2 id="submit-title">{ui('submit_title')}</h2>
       <a class="sd-tg" href="{TG_GROUP_URL}" target="_blank" rel="noopener"
          {al(*U['submit_tg_aria'])}>
-        <svg class="sd-tg-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.62 7.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74l9.11-3.51c.42-.15.79.1.65.83Z" fill="currentColor"/></svg>
+        {telegram_svg('sd-tg-i')}
         <span>{ui('submit_tg')}</span>
       </a>
       <button class="sd-send" type="button"

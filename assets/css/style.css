@@ -304,6 +304,35 @@ a.stats-pill:active{ transform: translateY(0); }
   background: var(--amber);
   box-shadow: 0 0 0 3px rgba(245,158,11,.18);
 }
+
+/* 首屏行内的 TG 众徽标：夹在标语与更新时间之间的空档里，
+   高度卡在标语行高（3px 字号 × 1.4 = 18.2px）以下，绝不撑高这一行；
+   两个 auto 外边距（徽标自身 + .hero-meta）平分空档，徽标落在中间。 */
+.hero-tg{
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  align-self: center;
+  flex: none;
+  height: 18px;
+  margin-left: auto;
+  padding: 0 8px 0 5px;
+  border: 1px solid rgba(42,171,238,.24);
+  border-radius: 999px;
+  background: #EFF9FF;
+  color: #0B79A8;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .15s ease, border-color .15s ease;
+}
+.hero-tg:hover{ background: #E1F4FF; border-color: rgba(42,171,238,.42); }
+.hero-tg-i{ width: 13px; height: 13px; flex: none; color: #2AABEE; }
+.hero-tg .htg-long{ display: block; }
+.hero-tg .htg-short{ display: none; }
 .hm-short{ display: none; }
 
 main{ padding-bottom: 0; }
@@ -1464,6 +1493,18 @@ footer{
   }
   .hero-meta{ margin: 0; flex: 0 0 auto; font-size: 10px; gap: 4px; }
   .hero-meta .dot{ width: 5px; height: 5px; }
+  /* 手机上这一行只剩标语 + 徽标 + 短时间：徽标收成图标 + 「TG群」/「TG」，
+     高度 15px < 标语行高 15.9px，.hero 的高度与改动前完全一致。 */
+  .hero-tg{
+    margin-left: 0;
+    height: 15px;
+    gap: 2px;
+    padding: 0 5px 0 3px;
+    font-size: 9.5px;
+  }
+  .hero-tg-i{ width: 10px; height: 10px; }
+  .hero-tg .htg-long{ display: none; }
+  .hero-tg .htg-short{ display: block; }
   .hm-long{ display: none; }
   .hm-short{ display: inline; }
 
