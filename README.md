@@ -89,9 +89,11 @@ robots.txt / sitemap.xml
 
 ## 「直达」按钮指向哪
 
-主按钮（卡片上的 `Go ↗` / `Open official page`）默认指向条目自己的 `url`（官方活动页）。
-如果条目是从社区原帖抓的（NodeSeek、NodeLoc、linux.do、Reddit 等），在 `data/deals.json` 里给它加 `source_url`，按钮就改指原帖；也可以在 `source` 字段里直接写原帖链接，构建时会自动识别。
+主按钮默认指向条目自己的 `url`（官方活动页）。
+如果条目是从社区原帖抓的（NodeSeek、NodeLoc、linux.do、Reddit、美卡论坛、Doctor of Credit、官方博客公告等），在 `data/deals.json` 里给它加 `source_url`，按钮就改指原帖；也可以在 `source` 字段里直接写原帖链接，构建时会自动识别。
 官方活动链接始终保留在展开详情里，不会丢。
+
+按钮文案跟着去向变：`source_url` 与 `url` 不同时写「原文 ↗ / Source ↗」；确实只有官方活动页可点（包括 `url` 本身就是第三方报道或论坛帖的情形）时写「官网 ↗ / Official ↗」，不再让官方页冒充原帖。构建结束会打印「原文 / 官网」各多少条。
 
 ## 日常维护
 

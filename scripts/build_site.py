@@ -658,16 +658,33 @@ def fav_html(deal: dict, size: int, en: dict | None = None) -> str:
     return f'<span class="fav-fallback" style="display:grid" aria-hidden="true">{monogram}</span>'
 
 
-def main_link(deal: dict) -> str:
-    """卡片主按钮的去向：抓取来源优先，没有就回官网活动页。"""
+def main_link_kind(deal: dict) -> tuple[str, str]:
+    """卡片主按钮的去向与性质，返回 (kind, url)。
+
+    kind = "source"：指向真正的来源原帖（source_url，或 source 里写的原帖链接），
+    也包含「条目 url 本身就是第三方报道/论坛帖」的情况——那种页面点过去看到的
+    是别人写的文章，不该冒充品牌官网。
+    kind = "official"：确实只有官方活动页可点，按钮就老实写「官网」。
+    """
     src = safe_url(deal.get("source_url"))
     if not src:
         m = _SRC_URL_RE.search(deal.get("source") or "")
         src = safe_url(m.group(0).rstrip("。.,；;") if m else "")
     official = safe_url(deal.get("url"))
-    if src and src.rstrip("/") != official.rstrip("/"):
-        return src
-    return official
+    if src and official and src.rstrip("/") != official.rstrip("/"):
+        return "source", src
+    if not official:
+        return "source", src
+    host = (urllib.parse.urlparse(official).hostname or "").lower()
+    dom = (deal.get("domain") or "").strip().lower()
+    if dom and (host == dom or host.endswith("." + dom)):
+        return "official", official
+    return "source", official
+
+
+def main_link(deal: dict) -> str:
+    """卡片主按钮的去向：抓取来源优先，没有就回官网活动页。"""
+    return main_link_kind(deal)[1]
 
 
 def official_link(deal: dict) -> str:
@@ -710,15 +727,23 @@ def card(deal: dict, en: dict, today) -> str:
 
     # 外链一律过协议白名单：只有 http(s) 才渲染成可点的 <a>，
     # javascript: / data: 这类值退化成纯文本，不会变成可执行的链接。
-    link = safe_url(main_link(deal))
+    # 只有真原帖才写「原文」，只剩官方活动页的写「官网」，别让人以为点的是原帖。
+    link_kind, link = main_link_kind(deal)
+    link = safe_url(link)
+    if link_kind == "official":
+        go_full, go_short = ui("go_official_full"), ui("go_official_short")
+        go_aria = al(*U["go_official_aria"])
+    else:
+        go_full, go_short = ui("go_full"), ui("go_short")
+        go_aria = al(*U["go_aria"])
     if link:
         go_html = (
             f'<a class="go" href="{e(link)}" target="_blank" rel="noopener nofollow"\n'
-            f'             {al("原文链接", "Open the source link")}><span class="go-full">{ui("go_full")}</span>'
-            f'<span class="go-short">{ui("go_short")}</span>{icon("external")}</a>'
+            f'             {go_aria}><span class="go-full">{go_full}</span>'
+            f'<span class="go-short">{go_short}</span>{icon("external")}</a>'
         )
     else:
-        go_html = f'<span class="go">{ui("go_short")}</span>'
+        go_html = f'<span class="go">{go_short}</span>'
 
     official = safe_url(deal.get("url"))
     if official:
@@ -1994,8 +2019,11 @@ def main() -> None:
     print(f"  英文条目：{len(deals) - len(missing_en)}/{len(deals)} 条有翻译")
     if missing_en:
         print(f"  ! 缺少英文翻译 {len(missing_en)} 条：{', '.join(missing_en[:12])}{' …' if len(missing_en) > 12 else ''}")
-    src_hits = [d for d in deals if main_link(d) != official_link(d)]
-    print(f"  原文链接：{len(src_hits)} 条指向抓取来源原帖，{len(deals) - len(src_hits)} 条回落到官方页（source_url 或 source 里带原帖 URL 时自动切换）")
+    src_hits = [d for d in deals if main_link_kind(d)[0] == "source"]
+    print(
+        f"  主按钮：{len(src_hits)} 条指向抓取来源原帖（「原文」），"
+        f"{len(deals) - len(src_hits)} 条只有官方活动页（「官网」）"
+    )
     if missing:
         print(f"  ! 图标下载失败 {len(missing)} 个（回退字母块）：{', '.join(missing)}")
     else:
