@@ -307,14 +307,14 @@ a.stats-pill:active{ transform: translateY(0); }
 
 /* 首屏行内的 TG 群徽标：上 Telegram 蓝圆纸飞机、下三人小群（中间亮蓝、两侧纯黑），
    上下叠放、没有外围胶囊，整枚都是 SVG、没有可见文字。
-   盒子只占「标语行高」（桌面 18.2px / 手机 15.9px），图形本身 20px / 18px 高，
+   盒子只占「标语行高」（桌面 18.2px / 手机 15.9px），徽标本体是 20px / 18px 的正圆，
    用绝对定位垂直居中、上下各溢出约 1px 落在 .hero 的留白里 —— 所以这一行的高度与改动前完全一致。 */
 .hero-tg{
   position: relative;
   display: block;
   align-self: center;
   flex: none;
-  width: 18.9px;
+  width: 20px;
   height: 18.2px;
   margin-left: auto;
   padding: 0;
@@ -333,8 +333,9 @@ a.stats-pill:active{ transform: translateY(0); }
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 18.9px;
+  width: 20px;
   height: 20px;
+  border-radius: 50%;
   transform: translate(-50%, -50%);
 }
 .hero-tg:hover{ filter: saturate(1.08); }
@@ -1217,11 +1218,14 @@ html.js .pager-bar{ display: flex; }
   box-shadow: 0 8px 18px -10px rgba(4,120,87,.8), inset 0 1px 0 rgba(255,255,255,.22);
 }
 .rail a.active svg{ color: #FFFFFF; }
-/* 「发现」一格：鲜亮橘红火焰（--fl-outer / --fl-inner 由 symbol 内部读取）。
-   未选中时是整条滑轨里唯一的饱和暖色；选中态（上面那层实心薄荷绿）自动切成纯白高对比。 */
-.rail a[data-target="hot"]{ --fl-outer: #FF5A1F; --fl-inner: #FFD166; }
-.rail a[data-target="hot"]:hover{ --fl-outer: #FF6D2E; --fl-inner: #FFDD82; }
-.rail a[data-target="hot"].active{ --fl-outer: #FFFFFF; --fl-inner: rgba(6,78,59,.42); }
+/* 「发现」一格：动感多舌叠层烈焰（四层颜色 --fl-1…--fl-4 由 symbol 内部读取）。
+   未选中时是整条滑轨里唯一的饱和暖色；选中态（上面那层实心薄荷绿）切成白 / 浅薄荷，
+   白描边把火舌边缘和绿底隔开，缩小到 16px 也不糊。 */
+.rail a[data-target="hot"]{ --fl-1: #FF3D17; --fl-2: #FF981A; --fl-3: #FFE234; --fl-4: #FFF5A8; }
+.rail a[data-target="hot"]:hover{ --fl-1: #FF5A2E; --fl-2: #FFA93A; --fl-3: #FFE96A; --fl-4: #FFFBD0; }
+.rail a[data-target="hot"].active{ --fl-1: #FFFFFF; --fl-2: #A7F3D0; --fl-3: #FFFFFF; --fl-4: #34D399; }
+/* 火焰比其它图标大 1–2px，火舌才看得清 */
+.rail a[data-target="hot"] svg{ width: 17px; height: 17px; }
 /* 滑轨容器本身也不做过渡 */
 .rail{ transition: none; }
 
@@ -1509,10 +1513,10 @@ footer{
   /* 手机上这一行只剩标语 + 徽标 + 短时间：盒子只占标语行高 15.9px，图形 18px 高、上下各溢出 1px。 */
   .hero-tg{
     margin-left: 0;
-    width: 17px;
+    width: 18px;
     height: 15.9px;
   }
-  .hero-tg .hero-tg-b{ width: 17px; height: 18px; }
+  .hero-tg .hero-tg-b{ width: 18px; height: 18px; }
   .hm-long{ display: none; }
   .hm-short{ display: inline; }
 
@@ -1802,6 +1806,7 @@ footer{
     border-radius: 9px;
   }
   .rail a svg{ width: 14px; height: 14px; }
+  .rail a[data-target="hot"] svg{ width: 16px; height: 16px; }
   .rail a span{
     display: block;
     font-size: 8px;
