@@ -880,11 +880,11 @@ def _tight_value(text: str, lang: str = "zh") -> str:
     t = " ".join((text or "").split())
     if lang == "en":
         t = re.sub(r"\s*([/·→])\s*", r"\1", t)
-        return t
+        return t.replace("·", "\u2009·\u2009")  # 「≈$13 · £10」留一道细缝，不糊成一个词
     t = _VAL_TIGHT_RE.sub(r"\1", t)
     t = _VAL_PAREN_TIGHT_RE.sub(r"\1", t)
     t = _VAL_PAREN_END_RE.sub(r"\1", t)
-    return t
+    return t.replace("·", "\u2009·\u2009")
 
 
 def value_tokens(text: str, lang: str = "zh") -> str:
