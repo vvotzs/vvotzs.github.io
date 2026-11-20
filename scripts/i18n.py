@@ -86,8 +86,8 @@ U: dict[str, tuple[str, str]] = {
                       "Ranked by expected cash value (lotteries by expected value, not the headline cap)."),
     "mod_closing": ("即将截止", "Closing soon"),
     # 「即将截止」的口径说明：tab 上的 ⓘ 点开就是这个（也留在分区头里给搜索引擎与读屏）。
-    "closing_info": ("{d} 天内到期的排最前，不足 {n} 条时用 {w} 天内的补足；tab 上那颗小日历里的数字就是这批用到的窗口（{d} / {w}），顶栏数字只数 {d} 天内。",
-                     "{d}-day deals come first, filled to {n} from the {w}-day window; the number in the little calendar shows the window this batch used ({d} / {w}), and the top-bar number counts {d}-day deals only."),
+    "closing_info": ("{d} 天内到期的排最前，不足 {n} 条时用 {w} 天内的补足；tab 上那颗小日历里的数字就是这批用到的窗口天数（这批约 {w} 天）；顶栏数字只数 {d} 天内。",
+                     "{d}-day deals come first, filled to {n} from the {w}-day window; the number in the little calendar at the tab is the window this batch used (about {w} days); the top-bar number counts {d}-day deals only."),
     # tab 上迷你日历里印的窗口天数：{d} 或 {w}（中英文同一个写法，不带单位）。
     "closing_badge_d": ("{d}", "{d}"),
     "closing_badge_w": ("{w}", "{w}"),

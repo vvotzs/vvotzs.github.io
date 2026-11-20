@@ -533,9 +533,13 @@
   var navLinks = $$(".rail a[data-target]");
   var sections = $$(".module");
   var navRaf = null;
+  /* 点击滑轨后页面还要平滑滚一段：这段时间把高亮钉在刚点的分区，
+     不要让高亮跟着中间分区一个个扫过去（那就是用户看到的「过渡延迟」） */
+  var navJumpUntil = 0;
 
   function syncNav() {
     if (!navLinks.length) return;
+    if (performance.now() < navJumpUntil) return;
     var probe = window.scrollY + (mqMobile.matches ? 72 : 76);
     var visible = sections.filter(function (sec) { return !sec.hidden; });
     if (!visible.length) return;
@@ -571,6 +575,8 @@
       }
       navLinks.forEach(function (x) { x.classList.remove("active"); });
       a.classList.add("active");
+      navJumpUntil = performance.now() + 700;
+      setTimeout(syncNav, 760);
     });
   });
 
