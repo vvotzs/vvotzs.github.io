@@ -227,27 +227,27 @@ def telegram_svg(cls: str = "") -> str:
     )
 
 
-# 首屏行内的「Telegram 交流群」纯图形徽标：淡蓝圆角胶囊里，左边是 Telegram 蓝圆底白纸飞机，
-# 右边是三人小群剪影（左右两位纯黑、中间那位亮蓝，中间那位带胶囊底色描边做叠层分离）。
-# 图形全部画在 SVG 内，页面上没有可见文字；语义由外层的 aria-label 与 title 承担。
-# 比例 41:20，双端只改高度（手机 16px / 桌面 18px），宽度跟着走，绝不换行。
+# 首屏行内的「Telegram 交流群」纯图形徽标：上半是 Telegram 蓝圆底白纸飞机，下半是三人小群剪影。
+# 上下叠放、不加外围胶囊，整枚 SVG 里没有可见文字；语义由外层的 aria-label 与 title 承担。
+# 三人剪影按 Jun 的素材：中间那位亮蓝、左右两位纯黑，中间那位带页面底色描边形成叠层分隔。
+# 比例 20:21.2，双端只改高度（手机 18px / 桌面 20px），宽度跟着走，绝不换行。
 def hero_tg_badge() -> str:
     return (
-        '<svg class="hero-tg-b" viewBox="0 0 41 20" aria-hidden="true" focusable="false">'
-        '<rect x=".55" y=".55" width="39.9" height="18.9" rx="9.45" fill="#EFF9FF"'
-        ' stroke="#C4E8FB" stroke-width="1.1"/>'
-        '<circle cx="10.4" cy="10" r="8.4" fill="#2AABEE"/>'
-        '<path fill="#fff" transform="translate(10.4 10) scale(.84) translate(-11.75 -12.25)"'
+        '<svg class="hero-tg-b" viewBox="0 0 20 21.2" aria-hidden="true" focusable="false">'
+        '<g transform="translate(-19.5 4.25)">'
+        '<circle cx="23.5" cy="6.0" r="2.5" fill="#111112"/>'
+        '<path fill="#111112" d="M19.6 16.1v-3.85a3.9 3.9 0 0 1 7.8 0v3.85Z"/>'
+        '<circle cx="35.3" cy="6.0" r="2.5" fill="#111112"/>'
+        '<path fill="#111112" d="M31.4 16.1v-3.85a3.9 3.9 0 0 1 7.8 0v3.85Z"/>'
+        '<circle cx="29.4" cy="8.2" r="3.15" fill="#0A6BFF" stroke="#FAF9F5" stroke-width="1.25"/>'
+        '<path fill="#0A6BFF" stroke="#FAF9F5" stroke-width="1.25"'
+        ' d="M25 16.8v-.9a4.4 4.4 0 0 1 8.8 0v.9Z"/>'
+        '</g>'
+        '<circle cx="9.9" cy="3.6" r="3.4" fill="#26A5E4"/>'
+        '<path fill="#fff" transform="translate(9.9 3.6) scale(.38) translate(-11.75 -12.25)"'
         ' d="m16.62 9.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24'
         'l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74'
         'l9.11-3.51c.42-.15.79.1.65.83z"/>'
-        '<circle cx="24.7" cy="5.8" r="2.45" fill="#111112"/>'
-        '<path fill="#111112" d="M20.9 16.1v-3.7a3.8 3.8 0 0 1 7.6 0v3.7Z"/>'
-        '<circle cx="34.1" cy="5.8" r="2.45" fill="#111112"/>'
-        '<path fill="#111112" d="M30.3 16.1v-3.7a3.8 3.8 0 0 1 7.6 0v3.7Z"/>'
-        '<circle cx="29.4" cy="8.3" r="3.2" fill="#0A6BFF" stroke="#EFF9FF" stroke-width="1.35"/>'
-        '<path fill="#0A6BFF" stroke="#EFF9FF" stroke-width="1.35"'
-        ' d="M24.7 16.7v-.5a4.7 4.7 0 0 1 9.4 0v.5Z"/>'
         '</svg>'
     )
 
