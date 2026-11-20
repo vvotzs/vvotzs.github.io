@@ -1583,8 +1583,8 @@ footer{
   .hm-short{ display: inline; }
 
   /* ---- 分区 ---- */
-  .module{ padding: 10px 0 0; }
-  .module-head{ margin-bottom: 5px; gap: 8px; }
+  .module{ padding: 6px 0 0; }
+  .module-head{ margin-bottom: 4px; gap: 8px; }
   .module-badge{ width: 22px; height: 22px; border-radius: 7px; }
   .module-badge svg{ width: 15px; height: 15px; }
   .module h2{ font-size: 16px; }
@@ -1592,7 +1592,14 @@ footer{
   .module-desc{ display: none; }
 
   /* ---- 分类内左右横滑翻页：手机单列一页 5 张 ---- */
+  /* 首帧就必须是单列：app.js 是 defer，页面常常在它加 .js、切出 .page 之前
+     就已经画出来了，基础样式里的双列网格会在那一瞬露出两列（2026-11-20 手机实拍）。
+     这里把「还没分页」的 .track 直接钉成单列、缝 4px，和分页后 .page 的 flex
+     单列同形同缝，所以首帧到分页完成不会有任何双列帧，也不产生位移。
+     顶部热榜 .module.hot-strip .track 的双列 5 行随后覆盖，不受影响。 */
   .track{
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
     -webkit-overflow-scrolling: touch;
   }
   html.js .page{
@@ -1606,6 +1613,8 @@ footer{
     gap: 4px;
   }
   html.js .pager-bar{ display: flex; }
+  /* 翻页条离上面卡片 4px；到下一个分区标题 7px（下一区自己的 6px padding + 分区分隔线） */
+  .pager-bar{ margin-top: 4px; }
   .more{ display: none !important; }
 
   /* 手机端未展开卡片外高实测 78px（含上下各 1px 边框）→ 内容区 76px */
@@ -1704,10 +1713,11 @@ footer{
     align-items: stretch;
     justify-content: space-between;
     gap: 2px;
-    /* 角标上浮的余量（收紧到 1px，再小就会被上一行压住） */
-    padding-top: 1px;
+    /* 这一行的上下留白留在行上、不放在按钮身上：按钮盒子只包住文字，
+       长按蓝框与点击热区就不会向上压到标语行、向下压到第一行小卡。 */
+    padding-top: 4px;
     border-bottom: 1px solid rgba(28,25,23,.08);
-    margin-bottom: 3px;
+    margin-bottom: 6px;
   }
   /* 四个 tab 按文字宽度排开，余量均分到彼此的间隙里（四段间距一致）；
      数字浮在各自右上角、不占行内宽度，所以 360px / 375px 上文字与角标都完整，
@@ -1715,7 +1725,8 @@ footer{
   .hot-tabs-mobile .hot-tab{
     --tab-badge-space: 15px;
     flex: 0 0 auto;
-    padding: 4px var(--tab-badge-space) 6px 0;
+    /* 只留住文字本身：4px/6px 的上下 padding 收成 2px/2px，盒子高 28.6 → 22.6px */
+    padding: 2px var(--tab-badge-space) 2px 0;
     font-size: 12.5px;
   }
   .hot-tabs-mobile .hot-tab b{ min-width: 12px; height: 12.5px; padding: 0 2px; font-size: 8px; top: -1px; }
