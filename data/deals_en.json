@@ -2201,13 +2201,13 @@
     "source": "IIJ official announcement of the IIJmio Giga Plan half-price campaign (2026-11-05, iijmio.jp/info/iij/1793256547.html) and the official IIJmio Q&A (updated 2026-11-10)"
   },
   "ymobile-yahoo-store-benefits": {
-    "title": "[JP] Y!mobile via the Yahoo! store: up to ¥15,000 PayPay for switching carriers + 6 months of the data-boost option free (eSIM works)",
+    "title": "[JP] Y!mobile via the Yahoo! store: up to ¥15,000 PayPay for switching carriers, Black Friday waives the setup fee (eSIM works)",
     "brand_en": "Y!mobile (Yahoo! Shopping store)",
-    "highlight": "Order a SIM-only line (eSIM included) from the Yahoo! store: switching from another carrier with Simple 3 M/L earns ¥15,000 in PayPay and S earns ¥5,000; a new M/L line earns ¥5,000 (¥10,000 for ages 5–18); on top, a Yahoo-only coupon returns up to 20% (capped at ¥6,000 for M/L).",
+    "highlight": "Black Friday add-on (11/20–12/1 14:59): the online store waives the activation fee for new and switching lines; a SIM-only line (eSIM included) switching from another carrier earns ¥15,000 in PayPay on Simple 3 S, M and L (Simple 3 S is normally excluded), and an existing customer's second line on M/L rises from ¥5,000 to ¥15,000; on top, a Yahoo-only coupon returns up to 20% (capped at ¥6,000 for M/L).",
     "regions": "[JP] Japan; needs a Yahoo! JAPAN ID, and the Y!mobile service must be registered on that same ID. Switching from SoftBank, LINEMO or a SoftBank-network MVNO does not count as another carrier.",
     "value": "Up to about ¥21,000 (≈$136)",
-    "content": "These are SoftBank's Y!mobile sign-up benefits at the official Y!mobile online store on Yahoo! Shopping, with no announced end date. Two layers. First, the SIM contract benefit: order a SIM-only line (physical SIM or eSIM) from this page and join the Data Boost option (¥550/month, free for the first six months from the month after joining) and you get PayPay points worth ¥15,000 for switching from another carrier onto Simple 3 M or L, or ¥5,000 on Simple 3 S; a new M/L line gets ¥5,000, and ages 5–18 get ¥10,000 (new S lines are excluded). Points go to the Yahoo! JAPAN ID used for the service registration, at the end of the month after next. Second, the Yahoo-only coupon: claim it before ordering, and the fourth month after ordering, Yahoo! Shopping purchases get up to 20% back, capped at ¥6,000 for Simple 3 M/L and ¥500 for S.",
-    "conditions": "You must order from this page and add the Data Boost option (¥550/month) at the time of ordering — without it none of the SIM contract points are paid. SIM-only contracts must complete Y!mobile service registration by the end of the month after ordering. One line per name. Switching from SoftBank, LINEMO or a SoftBank-network MVNO is excluded. PayPay points cannot be withdrawn or transferred and need the Yahoo! JAPAN ID linked to a PayPay account. The coupon must be claimed before ordering and only applies to that fourth month's Yahoo! Shopping spend.",
+    "content": "These are SoftBank's Y!mobile sign-up benefits at the official Y!mobile online store on Yahoo! Shopping, with no announced end date. Two layers. First, the SIM contract benefit: order a SIM-only line (physical SIM or eSIM) from this page and join the Data Boost option (¥550/month, free for the first six months from the month after joining) and you get PayPay points worth ¥15,000 for switching from another carrier onto Simple 3 M or L, or ¥5,000 on Simple 3 S; a new M/L line gets ¥5,000, and ages 5–18 get ¥10,000 (new S lines are excluded). Points go to the Yahoo! JAPAN ID used for the service registration, at the end of the month after next. Second, the Yahoo-only coupon: claim it before ordering, and the fourth month after ordering, Yahoo! Shopping purchases get up to 20% back, capped at ¥6,000 for Simple 3 M/L and ¥500 for S.\n\nOn 2026-11-20 SoftBank started a BLACK FRIDAY SALE at the Y!mobile online store, running to 12/1 14:59. Three additions: the activation fee (normally ¥3,850) is waived for new lines and carrier switches ordered online, excluding device upgrades; for SIM/eSIM-only lines on Simple 3 S/M/L with the Data Boost option (¥550/month), switching from another carrier pays ¥15,000 in PayPay points — and Simple 3 S, normally outside the benefit, is included this time, while an existing customer's second line on M/L rises from ¥5,000 to ¥15,000; and buying a device in one payment with Simple 3 M/L puts the OPPO A5 5G or a certified refurbished iPhone SE (3rd gen) at ¥1, with a certified refurbished iPhone 14 128GB at ¥23,040. Switching from SoftBank, LINEMO or a SoftBank-network MVNO still does not count.",
+    "conditions": "You must order from this page and add the Data Boost option (¥550/month) at the time of ordering — without it none of the SIM contract points are paid. SIM-only contracts must complete Y!mobile service registration by the end of the month after ordering. One line per name. Switching from SoftBank, LINEMO or a SoftBank-network MVNO is excluded. PayPay points cannot be withdrawn or transferred and need the Yahoo! JAPAN ID linked to a PayPay account. The coupon must be claimed before ordering and only applies to that fourth month's Yahoo! Shopping spend. The Black Friday tier (11/20–12/1 14:59) also requires ordering online, since stores do not qualify, and the fee waiver excludes device upgrades for existing customers; the ¥15,000 for a SIM/eSIM-only line still needs the Data Boost option, and the second-line top-up is limited to Simple 3 M/L in the existing customer's own name.",
     "steps": [
       "Claim the Yahoo-only coupon on this page first — claiming after ordering does not count",
       "Choose Simple 3 S / M / L, pick eSIM or a physical SIM, and tick the Data Boost option when ordering",
@@ -2215,7 +2215,7 @@
       "Keep the line; the PayPay points arrive at the end of the month after next; use the 20% coupon in month four",
       "After six months the Data Boost option starts charging ¥550/month — cancel it once the points are paid if you don't need it"
     ],
-    "risk": "Without the ¥550/month Data Boost option you get none of the points, and it is only free for six months. Lines activated on or after 2026-07-01 pay an ¥858 cancellation fee if cancelled within a year. The coupon must be claimed before ordering and only counts on month-four shopping, which is easy to forget. Points go to the Yahoo! JAPAN ID, so a wrong ID loses them. The end date is unannounced.",
+    "risk": "Without the ¥550/month Data Boost option you get none of the points, and it is only free for six months. Lines activated on or after 2026-07-01 pay an ¥858 cancellation fee if cancelled within a year. The coupon must be claimed before ordering and only counts on month-four shopping, which is easy to forget. Points go to the Yahoo! JAPAN ID, so a wrong ID loses them. The end date is unannounced. The waived activation fee lasts only to 12/1 14:59 and then returns to ¥3,850; the SIM-only points are still tied to the ¥550/month Data Boost option and the Y!mobile registration, so don't skip either while racing the deadline.",
     "source": "Y!mobile official Yahoo! store pages and terms for the SIM contract benefit and the Yahoo-only coupon (checked 2026-11-19)"
   },
   "wooriwon-mobile-black-friday": {
@@ -2254,10 +2254,10 @@
   },
   "envato-minimax-h3-unlimited-24h": {
     "title": "[Global] Envato × MiniMax H3: 24 hours of unlimited video generation, free accounts included",
-    "highlight": "From 21:00 Nov 19 to 21:00 Nov 20 (Beijing), a free Envato account can generate unlimited MiniMax H3 videos without any subscription",
+    "highlight": "Last call: unlimited MiniMax H3 video generation for free accounts runs 11/19 21:00 to 11/20 21:00 Beijing time, closing tonight at 21:00",
     "regions": "[Global] Countries where Envato sign-up is open (free account only, no card needed)",
     "value": "Unlimited for 24 hours (subscription from $16.50/mo)",
-    "content": "Limited Envato × MiniMax event: for 24 hours starting 8am EST on 19 November 2026, both Envato subscribers and free account holders can generate unlimited MiniMax H3 videos in Envato AI Video (the page says unlimited, subject to the Fair Use Policy). The offer ends 8am EST on 20 November, which is 19 November 21:00 to 20 November 21:00 Beijing time.",
+    "content": "Limited Envato × MiniMax event: for 24 hours starting 8am EST on 19 November 2026, both Envato subscribers and free account holders can generate unlimited MiniMax H3 videos in Envato AI Video (the page says unlimited, subject to the Fair Use Policy). The offer ends 8am EST on 20 November, which is 19 November 21:00 to 20 November 21:00 Beijing time.\n\nA recheck of the Envato AI Video page during the 2026-11-20 20:40 sweep found the Unlimited MiniMax H3 note still up, with the official end at 8am EST Nov 20, 2026 — 21:00 Beijing, less than half an hour left; MiniMax H3 sits in the model dropdown alongside Seedance 2.0 and Wan 3.0.",
     "conditions": "Register and sign in to a free Envato account; only valid during the 24-hour window, after which normal subscription credits apply (Core 20 credits/month, Plus 200, Ultimate 500–2000); no scripts, bots or shared accounts.",
     "steps": [
       "Register a free account at elements.envato.com ahead of time and sign in",
@@ -3659,5 +3659,56 @@
     ],
     "risk": "Free has a hard end: after GA you pay for resident memory and CPU, and an always-on backend can generate a bill quickly; the free plan has one instance and scales to zero after five idle minutes, so first requests wait on a cold start; state must live in Netlify Database or Blobs or it is lost when an instance is replaced; APIs and limits can change during Early Access.",
     "source": "Netlify's official Introducing Netlify Server post, the 2026-11-10 Early Access changelog and the docs.netlify.com/build/server pricing and limits sections (read 2026-11-20; all state it is free during Early Access)"
+  },
+  "upsolve-free-1000-credits": {
+    "title": "[Global] Upsolve free plan: 1,000 one-time credits (about 500 analytics questions, ≈$100), no card, with MCP and CLI",
+    "brand_en": "Upsolve AI",
+    "highlight": "Sign up for the $0 Free plan and get 1,000 one-time credits (worth about $100 at the $0.10 overage rate) with no credit card; its CLI and remote MCP server plug straight into Claude, Cursor or Codex",
+    "regions": "[Global] English site at upsolve.ai; sign up with Google, GitHub or email; you need your own database (Postgres, Snowflake, BigQuery, Redshift and similar)",
+    "value": "1,000 credits (≈$100)",
+    "content": "Upsolve (YC W24) builds an analytics agent for your data warehouse: ask in plain English why revenue dropped last quarter and it writes the SQL, draws the charts and writes up the answer, and it can save results into Notion or open a Linear ticket. The official pricing page lists a Free plan at $0 with 1,000 one-time credits (roughly 500 analytical questions), no credit card, then $0.10 per credit, or the Team plan at $160/month billed annually with 5,000 credits a month.\n\nCredit costs vary by work: a clarification is under 1 credit, a basic data lookup 0.5–1, a full analytical question 1–3, and building dashboards or data apps 10–50 — so the allowance goes much further on questions than on dashboards. The Free plan still includes the AI analyst, agentic dashboards and presentations, the data model, skills and knowledge base, the playground, the CLI and the remote MCP server (https://mcp.upsolve.ai/mcp), and bring-your-own-key through Upsolve Local. Row-level security, embedding and team features are Team-only. The CLI runs with npx @upsolve-labs/analytics.",
+    "conditions": "Register an account (18+). The 1,000 Free credits are one-time, not monthly. You need to connect your own data source for it to do anything useful. Row-level security/RBAC, embedding and multi-tenant features are Team-only. Data is processed in the US and UK, so do not upload regulated or confidential data. When the credits run out you pay $0.10 per credit or upgrade.",
+    "steps": [
+      "Open upsolve.ai/pricing and press Get started on the Free plan — no card needed",
+      "Connect a data source (Postgres, Snowflake, BigQuery or Redshift), or try Upsolve Local with your own key first",
+      "Ask a real question such as which channel lost the most customers this month, and watch it write SQL, chart the answer and write it up",
+      "To use it inside Claude, Cursor or Codex, add the remote MCP server https://mcp.upsolve.ai/mcp under Settings → Connectors and sign in with the same account"
+    ],
+    "risk": "The 1,000 credits are one-time, not a monthly gift, and chatting or experimenting burns them. Row-level security and embedding are not in the free tier. Analysis means connecting real company data, so check compliance. Dashboards are expensive in credits at 10–50 each.",
+    "source": "Upsolve official pricing page (Free $0, 1,000 one-time credits, no credit card) read 2026-11-20 + official MCP server docs + a verification thread on X by @okeyccronald (2026-11-20)"
+  },
+  "celesto-5-trial-credit": {
+    "title": "[Global] Celesto: $5 cloud-computer credit without a card (AI agent sandboxes, ≈333 Micro hours; CI runners nearly 90% cheaper than GitHub's)",
+    "brand_en": "Celesto",
+    "highlight": "Sign up for $5 of Micro runtime with no credit card, valid 30 days: Micro is 1 vCPU / 2 GB / 20 GB at $0.015 an hour, so about 333 hours, with up to two retained sandboxes",
+    "regions": "[Global] English site at celesto.ai; email sign-up, no card; sandbox availability depends on host capacity",
+    "value": "$5 runtime credit (≈333 Micro hours)",
+    "content": "Celesto sells cloud computers and CI runners for AI agents. Each sandbox runs in its own microVM: you create one, SSH in, run commands, and it keeps files, browser logins and workspace state between sessions. For GitHub Actions you swap the runs-on label for a Celesto runner label, which it advertises as nearly 90% cheaper per minute than GitHub's standard runner on the same hardware.\n\nBilling is runtime only, with no monthly platform fee: Micro (1 vCPU / 2 GB / 20 GB) at $0.015 an hour, Small $0.020, Standard $0.030, Memory $0.040, Large $0.080 and XL $0.160. A stopped computer keeps its root disk free for 30 days. New accounts get a one-time $5 Micro runtime credit without a card; it expires 30 days after activation and the trial allows two retained Micro sandboxes, stopped ones included. Larger sizes need a top-up from $2.01.",
+    "conditions": "One-time $5, Micro size only, expires 30 days after activation. The trial keeps at most two sandboxes, and stopped or failed ones still count. Larger sizes require prepaid credit. Creation depends on host capacity. Trial credit cannot be withdrawn or transferred.",
+    "steps": [
+      "Sign up at celesto.ai and claim the $5 Micro trial credit (no card) under Settings → Billing",
+      "Install the CLI and run celesto computer create --cloud --size micro",
+      "Run celesto computer exec <ID> --cloud -- uname -a to test it, or use the coding-agent template when you need common coding tools",
+      "Stop rather than delete a computer to keep its files; stopped root disks are free for 30 days"
+    ],
+    "risk": "$5 covers only 333 Micro hours and expires after 30 days. Stopped sandboxes still use the two-slot trial limit, so repeatedly creating and deleting can get you throttled. Runtime billing means a forgotten machine keeps spending. It is a young service, so check its stability and data-retention terms yourself.",
+    "source": "Celesto official pricing page and docs ($5 card-free Micro trial, 30 days, two retained sandboxes) read 2026-11-20 + Toolify 'Just launched' listing (2026-11-20)"
+  },
+  "apple-card-double-daily-cash": {
+    "title": "[US] Apple Card double Daily Cash: up to 6% back in year one, up to $1,000 in bonus cash (apply through the promo link by 12/10)",
+    "brand_en": "Apple Card (issued by Goldman Sachs)",
+    "highlight": "Open a new Apple Card through the promo link by 12/10 and your first 12 months earn double: 6% at Apple and select merchants, 4% with Apple Pay, 2% on the physical card, for up to $1,000 in extra Daily Cash in total",
+    "regions": "[US] US applicants only (needs a US credit history and SSN/ITIN), and you must apply through the promo link; Apple Card is issued in the US only",
+    "value": "Up to $1,000 in bonus cash back",
+    "content": "Apple's limited-time new-cardholder offer runs from 2026-11-03 to 12-10. Anyone who applies through the promo link (apple.co/cardoffer110326a) and opens a new Apple Card inside that window earns double the standard Daily Cash for the first 365 days: 6% at Apple and at bonus merchants when paying with Apple Pay (normally 3%), 4% on other Apple Pay purchases (normally 2%), and 2% on the titanium card or virtual card number (normally 1%). The extra half is Bonus Daily Cash, capped at $1,000 in total across the purchase period; after that the standard 1/2/3% rates resume.\n\nMacRumors notes that reaching the full $1,000 would take about $33,333 of spending at 6%, $50,000 at 4% or $100,000 at 2%, so most people will earn well below the cap. Apple Card itself has no annual fee, no foreign transaction fee and no late fees, and Daily Cash can go into a Savings account or Apple Cash.",
+    "conditions": "New cardholders only: anyone who has had an Apple Card before, or who has a pending or approved application, is ineligible. You must apply in the offer period from the promo link and click Apply now there; applications elsewhere do not qualify. Credit approval required. Purchases by Apple Card Family co-owners or participants do not earn the bonus rate. Returns reduce Daily Cash already paid. Apple may void the bonus for abuse.",
+    "steps": [
+      "On your iPhone open learn.applecard.apple/double-your-daily-cash-promo and confirm the page shows the 2X / 6% offer",
+      "Apply from the Apply now button on that page — not the usual Wallet entry point, which does not qualify",
+      "Once approved, add the card to Apple Pay and choose whether Daily Cash goes to Savings or Apple Cash",
+      "Put everyday spending on Apple Pay during the first year, use Apple and bonus merchants such as Nike or Walgreens for the 6% tier, and watch the $1,000 cap"
+    ],
+    "risk": "This is spend-more-to-earn-more, not free money: the full $1,000 needs over $33,000 of spending, and a normal spender may see only tens or a hundred-odd dollars. Applying is a hard credit pull. Spending extra just to earn the cash back is a net loss. It is effectively unavailable outside the US. Applying outside the promo link earns nothing, and Slickdeals reports several YMMV cases.",
+    "source": "Apple's official Double Your Daily Cash terms page (11/03–12/10, $1,000 bonus cap) read 2026-11-20 + MacRumors (2026-11-18) + 9to5Mac and Slickdeals discussion (2026-11-19, data points that the double rate requires the promo link)"
   }
 }
