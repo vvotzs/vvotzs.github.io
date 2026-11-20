@@ -1869,10 +1869,12 @@ footer{
   .rail a.rail-top svg{ width: 15px; height: 15px; }
   .rail-sep{ margin: 3px 5px; }
 
-  .foot-line{ gap: 8px; font-size: 11px; }
+  /* 375px 一行放得下：品牌（153px）+ 关于·隐私·披露（9px 下英 122 / 中 63）+ 间距，
+     页脚高度与改动前一致；右下角滑轨本身有「顶部」，页脚这颗在手机上省掉，不重复。 */
+  .foot-line{ gap: 8px; font-size: 11px; flex-wrap: wrap; }
   .foot-up{ display: none; }
-  /* 375px 一行放得下：品牌 + 关于·隐私·披露 + 回到顶部（不换行，页脚高度不变） */
-  .foot-legal{ gap: 3px; font-size: 10px; }
+  .foot-legal{ gap: 3px; font-size: 9px; }
+  .foot-top{ display: none; }
   /* 手机端两个 .shell 各带 4px 底边距（共 8px），页脚再让 8px，档案区到页脚仍是 ~16px */
   footer{ margin-top: 8px; }
 
