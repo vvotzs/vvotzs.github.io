@@ -950,13 +950,6 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     source = pick("source")
     steps = (en.get("steps") or deal.get("steps") or []) if is_en else (deal.get("steps") or [])
 
-    # 少数老条目没填 highlight：用正文首句当「亮点」，字段不缺席、也不编内容
-    lead = highlight
-    if not lead and content:
-        lead = re.split(r"(?<=[。！？.!?])\s*", content.strip(), maxsplit=1)[0].strip()
-        if len(lead) > 96:
-            lead = lead[:94].rstrip("，,、 ") + "…"
-
     cost = deal.get("cost", "")
     cost_cls = COST_CLASS.get(cost, "cost-invite")
     cost_label = COST_EN.get(cost, cost) if is_en else cost
@@ -996,8 +989,9 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     steps_html = "".join(f"<li>{e(s)}</li>" for s in steps) or f"<li>{e(ui('see_official'))}</li>"
 
     secs = []
-    if lead:
-        secs.append(block(ui("dp_highlight"), f'<p class="dp-lead">{e(lead)}</p>'))
+    # 少数老条目数据里没有 highlight：这一栏就不出现（不拿正文首句顶替，避免同段文字出现两遍）
+    if highlight:
+        secs.append(block(ui("dp_highlight"), f'<p class="dp-lead">{e(highlight)}</p>'))
     if content:
         secs.append(block(ui("dp_content"), f'<p>{e(content)}</p>'))
     if conditions:
