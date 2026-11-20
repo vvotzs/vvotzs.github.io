@@ -17,6 +17,8 @@ d/<id>/index.html       # 每条优惠的中文独立详情页（含已归档条
 en/d/<id>/index.html    # 每条优惠的英文独立详情页（title / description / canonical / hreflang / og / JSON-LD 各自独立）
 category/<slug>/index.html     # 6 大类的中文静态目录页（banner 面包屑 / 导语 / 全部活跃优惠 / 其他分类导航）
 en/category/<slug>/index.html  # 同上，纯英文；slug 取 ai / crypto / bank / cloud / esim / software
+about|privacy|disclosure/index.html     # 合规页（中英各一份，页脚只有一行「关于 · 隐私 · 披露」文字链接）
+en/about|privacy|disclosure/index.html  # 同上，纯英文；给 AdSense 审核与投稿说明用
 assets/css/style.css    # 视觉与交互样式
 assets/js/app.js        # 手风琴 / 搜索筛选 / 移动端分页 / 滑轨高亮 / URL 状态同步 / 语言跳转
 assets/fav/<domain>.webp # 构建时缓存到本地的站点图标（48×48 WebP，境内直连即可显示，不依赖 google.com）
@@ -32,6 +34,7 @@ scripts/build_site.py      # 由 deals.json + deals_en.json 生成中英两个 i
 scripts/check_schema.py    # 结构化数据体检：每段 ld+json 必须合法 JSON，Offer / HowTo 字段齐全（构建时自动跑，也可单独跑）
 scripts/make_og_cover.py   # 生成中英两张分享封面（`python3 scripts/make_og_cover.py` 全出，加 `en` 只出英文）
 docs/workflows-reference/daily-rebuild.yml  # 每日重建工作流模板（不放进 .github/workflows）
+ads.txt                        # AdSense 发布商授权文件（当前只有注释，拿到 pub-… 后取消注释填 ID）
 robots.txt / sitemap.xml
 ```
 

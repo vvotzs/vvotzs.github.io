@@ -128,6 +128,60 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://vvotzs.github.io/about/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/about/"/>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/about/"/>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/privacy/"/>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/privacy/"/>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/disclosure/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/disclosure/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/disclosure/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/disclosure/"/>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/en/disclosure/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/disclosure/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/disclosure/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/disclosure/"/>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://vvotzs.github.io/d/clearstreet-3pct-cash-match/</loc>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/clearstreet-3pct-cash-match/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/clearstreet-3pct-cash-match/"/>

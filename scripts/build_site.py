@@ -68,8 +68,12 @@ from common import (  # noqa: E402
 )
 from i18n import (  # noqa: E402
     CATEGORY_PAGE,
+    ascii_punct,
     CAT_EN,
     COST_EN,
+    LEGAL_LINKS,
+    LEGAL_PAGES,
+    LEGAL_UPDATED,
     U,
     load_en,
     short_date_en,
@@ -627,7 +631,8 @@ def _paren_estimate(raw: str) -> tuple[float | None, str]:
     est = float(found.group(1).replace(",", ""))
     rest = re.sub(r"[,，\s]*[≈约]\s*(?:US)?\$\s*[\d,]+(?:\.\d+)?", "", inner).strip(" ，,、")
     if rest:
-        new = raw[: m.start()] + "（" + rest + "）" + raw[m.end():]
+        lp, rp = ("(", ")") if CUR_LANG == "en" else ("（", "）")
+        new = raw[: m.start()] + lp + rest + rp + raw[m.end():]
     else:
         new = raw[: m.start()] + raw[m.end():]
     return est, new.strip()
@@ -703,6 +708,23 @@ _VAL_EDGE_RE = re.compile(r"^[\s/／·→+、]+|[\s/／·→+、]+$")
 _SENT_SPLIT_RE = re.compile(r"(?<=[。！？；!?;])\s*|(?<=[.])\s+")
 
 
+# 英文徽标的长度预算：手机端卡片胶囊内容宽约 109px（.value 的 max-width:46% +
+# 10px 等宽字体），实测 18 个字符以内完整显示，19 个字符起会被省略号截断
+# （Hark 复查点名 8 条：19–23 字符）。中文页的 17 个视觉单位是老口径，保持不变。
+_EN_BADGE_BUDGET = 18
+
+# 英文长徽标的等价短写：只在超预算时才用，改完仍是完整的说法
+_EN_BADGE_SHORT = (
+    (r"^Free for a limited time$", "Free (limited)"),
+    (r"^Unlimited for (\d+) hours?$", r"\1h unlimited"),
+    (r"\bsandbox minutes\b", "sandbox min"),
+    (r"\bwon Naver Pay$", "won"),
+    (r"\btokens a night$", "tokens/night"),
+    (r"^(\d+) fractional shares$", r"\1 free shares"),
+    (r"^(\d+) hours of (.+)$", r"\1h \2"),
+)
+
+
 def _val_width(s: str) -> int:
     """视觉宽度：中文/全角算 2、半角算 1，用来估算胶囊放不放得下。"""
     return sum(2 if unicodedata.east_asian_width(c) in "WFA" else 1 for c in s)
@@ -730,10 +752,15 @@ def value_badge(text: str, lang: str = "zh") -> str:
     t = re.sub(r"\s+(?:a|per)\s+year$", "/yr", t, flags=re.I)
     t = re.sub(r"\s+(?:a|per)\s+day$", "/day", t, flags=re.I)
     t = re.sub(r"\s+(?:a|per)\s+week$", "/wk", t, flags=re.I)
-    # 手机端胶囊内容宽约 109px：中文 17 个视觉单位 / 英文 20 个字符以内不截；
-    # 结尾是 /mo、/yr 这种单位后缀时多给 3 个字符的余量
-    budget = 17 if lang == "zh" else 20
-    if _val_width(t) <= budget + (3 if re.search(r"/(?:mo|yr|day|wk|月|年|日|周|晚)$", t) else 0):
+    if lang == "en":
+        for pat, rep in _EN_BADGE_SHORT:
+            t = re.sub(pat, rep, t, flags=re.I)
+    # 手机端胶囊内容宽约 109px：中文 17 个视觉单位 / 英文 18 个字符以内不截断；
+    # 中文结尾是 /月、/年 这类单位后缀时再多给 3 个视觉单位的余量
+    budget = 17 if lang == "zh" else _EN_BADGE_BUDGET
+    if _val_width(t) <= budget + (
+        3 if lang == "zh" and re.search(r"/(?:mo|yr|day|wk|月|年|日|周|晚)$", t) else 0
+    ):
         return t
 
     amounts = list(_BADGE_MONEY_RE.finditer(t))
@@ -774,6 +801,12 @@ def value_badge(text: str, lang: str = "zh") -> str:
         if t.startswith(pre):
             t, suffix = t[len(pre):].strip(), suf
             break
+    # 英文的 /mo、/night 结尾先摘下来，避免下面按「/」分段时把单位切成半截
+    if lang == "en":
+        m_period = re.search(r"/(mo|yr|day|wk|night)$", t)
+        if m_period:
+            suffix = "/" + m_period.group(1)
+            t = t[: m_period.start()].strip()
     # 先在符号处分段（「4GB global + 4GB APAC」→「4GB global」），
     # 再在介词前收住（「… plus 15 GB」→ 前半句）；短句宁可整句留着，不把话说半截
     for _ in range(2):
@@ -781,7 +814,7 @@ def value_badge(text: str, lang: str = "zh") -> str:
         if len(sym) > 1 and sym[0].strip():
             t = sym[0].strip()
             continue
-        if _val_width(t) > 23:
+        if _val_width(t + suffix) > (budget if lang == "en" else 23):
             cut = re.split(
                 r"\s+\b(?:for|on|with|plus|from|after|that|when|and|of|at|to)\b\s*", t
             )[0].strip()
@@ -789,6 +822,12 @@ def value_badge(text: str, lang: str = "zh") -> str:
                 t = cut
                 continue
         break
+    # 英文还超预算：千分位收成 K（100,000 requests → 100K requests）
+    if lang == "en" and _val_width(t + suffix) > budget:
+        t = re.sub(r"(\d{1,3}),000\b", r"\1K", t)
+    # 加了单位仍放不下：宁可留着完整短语，也不要半截单位
+    if lang == "en" and _val_width(t + suffix) > budget:
+        return _VAL_EDGE_RE.sub("", t)
     # 找不到语义断点就整句留着：宁可胶囊略宽，也不输出「Unlimited for 24」这种半截话
     return _VAL_EDGE_RE.sub("", t) + suffix
 
@@ -1000,6 +1039,19 @@ def monogram_for(deal: dict, en: dict | None) -> str:
         dom = (deal.get("domain") or "").strip()
         return dom[:1].upper() if dom else "?"
     return (deal.get("brand") or "?")[:1].upper()
+
+
+def brand_name(deal: dict, en: dict | None = None, is_en: bool = False) -> str:
+    """品牌名：英文页优先用 deals_en 里的 brand_en，别让 JSON-LD 的 seller 出现中文机构名。
+
+    没有 brand_en 时把原文的半角 / 全角括号统一成英文写法（「Cloady（NeptoLab）」→
+    「Cloady (NeptoLab)」）；中文页原样返回。
+    """
+    raw = str((en or {}).get("brand_en") or deal.get("brand") or "")
+    if not is_en:
+        return raw
+    raw = str(ascii_punct(raw))
+    return re.sub(r"\s*\(([^()]*)\)", r" (\1)", raw).strip()
 
 
 def fav_html(deal: dict, size: int, en: dict | None = None) -> str:
@@ -1498,7 +1550,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
             "category": cat_plain,
             "availability": "https://schema.org/Discontinued" if expired else "https://schema.org/InStock",
             "areaServed": strip_region_bracket(regions) or regions,
-            "seller": {"@type": "Organization", "name": deal.get("brand") or site_name},
+            "seller": {"@type": "Organization", "name": brand_name(deal, en, is_en) or site_name},
         },
     ]
     if deal.get("end"):
@@ -1684,6 +1736,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
       {ui('foot_brand', y=today.year)}
     </span>
     <span class="foot-up">{ui('f_last_verified')} {e(deal.get('last_verified') or added_day(deal, today))}</span>
+    {legal_footer(lang)}
     <a class="foot-top" href="#top">↑</a>
   </div>
 </footer>
@@ -1694,45 +1747,389 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 """
 
 
-def seo_description(*parts: str) -> str:
-    """详情页 meta description：导语打头，不够长就接着用正文首句 / 条件 / 地区补到 120–156 字。
+# SEO 描述：整句收尾，120–156 字。切句只认句末标点，整句放不下才退到逗号 / 分号边界，
+# 绝不出现早先 `desc[:152] + "…"` 那种切在词中间的半句（Hark 复查数出 303 条）。
+_DESC_MIN, _DESC_MAX = 120, 156
+_DESC_ENDERS = "。！？…」』.!?"
+_DESC_CLAUSE_MARKS = "，,；;、：:"
 
-    老规则只取 `highlight or content or title`：导语本身只有二三十字的条目（47 页）
-    描述就跟着只有二三十字，搜索摘要被截得很空。这里按句补足到 120 字以上，
-    再统一裁到 156 字以内，全站 440 个详情页的描述长度都落在健康区间。
+
+def _desc_chunks(parts: tuple[str, ...], is_en: bool) -> list[str]:
+    """把全部素材切成一整句一句的候选块（句末标点留在句尾）。
+
+    中文按「。！？；」断句（；在中文里本来就能结句）；英文只按「. ! ?」断，
+    分号在英文里只是分句，切开再拼回去会变成「days. the bonus」这种小写开头。
     """
-    chunks: list[str] = []
-    total = 0
+    split_re = re.compile(r"(?<=[.!?])\s+") if is_en else re.compile(r"(?<=[。！？；])\s*")
+    out: list[str] = []
     for raw in parts:
         text = re.sub(r"\s+", " ", raw or "").strip()
         if not text:
             continue
-        for sent in _SENT_SPLIT_RE.split(text):
+        for sent in split_re.split(text):
             sent = sent.strip()
-            if not sent:
-                continue
-            chunks.append(sent)
-            total += len(sent)
-            if total >= 120:
+            if sent:
+                out.append(sent)
+    return out
+
+
+def _desc_finish(text: str, end: str) -> str:
+    """段末收口：去掉末尾的逗号顿号，「；」「：」这类不收句的标点换成句号。"""
+    text = (text or "").strip()
+    while text and text[-1] in " ，,、·":
+        text = text[:-1]
+    if text and text[-1] in "；;：:":
+        text = text[:-1].rstrip(" ，,、·") + end
+    return text
+
+
+def _desc_join(prev: str, chunk: str, end: str, is_en: bool) -> str:
+    """两句相接：中文句末标点直接接，英文句末标点补一个空格。"""
+    if not prev:
+        return chunk
+    if prev[-1] in "。！？…":
+        return prev + chunk
+    if prev[-1] in "」』":
+        return prev + end + (" " if is_en else "") + chunk
+    if prev[-1] in ".!?":
+        return prev + " " + chunk
+    if prev[-1] in ";:":
+        return prev + (" " if is_en else "") + chunk
+    return prev + end + (" " if is_en else "") + chunk
+
+
+def _desc_close(text: str, end: str) -> str:
+    """补句末标点：按分句收尾时，最后一句末尾本来是没有标点的。"""
+    return text if text and text[-1] in _DESC_ENDERS else text + end
+
+
+_DESC_PAIRS = (("（", "）"), ("(", ")"), ("「", "」"), ("『", "』"), ("“", "”"))
+
+
+def _desc_balanced(text: str) -> bool:
+    """括号 / 引号是否成对：切点不能落在「（……」中间，否则会出现「（历史最高。」这种残句。"""
+    return all(text.count(a) == text.count(b) for a, b in _DESC_PAIRS)
+
+
+# 收边时要去掉的尾巴：英文的连词 / 介词 / 冠词，中文的连词
+_EN_TAIL_WORD_RE = re.compile(
+    r"\s+(?:and|or|of|the|a|an|to|with|for|from|in|on|at|by|as|that|which|plus|but|so|if|when|than)\s*$",
+    re.I,
+)
+_ZH_TAIL_WORD_RE = re.compile(r"(?:以及|或者|并且|而且|还有|和|与|及|或|并)\s*$")
+
+
+def _desc_soft_cut(text: str, room: int, end: str) -> str:
+    """把一句话按词收短到 room 字以内：括号引号成对，末尾不留连词 / 介词 / 半截词。"""
+    limit = min(room, len(text))
+    head = text[:limit]
+
+    def tidy(piece: str) -> str:
+        piece = piece.rstrip(" ，,、·")
+        for _ in range(3):           # 尾巴上可能叠着两三个虚词：「and the」「of a」
+            trimmed = _EN_TAIL_WORD_RE.sub("", piece)
+            trimmed = _ZH_TAIL_WORD_RE.sub("", trimmed)
+            if trimmed == piece:
                 break
-        if total >= 120:
+            piece = trimmed.rstrip(" ，,、·")
+        return piece
+
+    # 从长到短找空格收口：落在括号引号成对的位置，绝不在英文词中间切开
+    for m in reversed(list(re.finditer(r"\s", head))):
+        cut = tidy(head[: m.start()])
+        if _desc_balanced(cut):
+            return _desc_finish(cut, end)
+    # 连一个成对的空格都没有：去掉末尾没闭合的括号 / 引号（连同里面的内容）
+    while head and not _desc_balanced(head):
+        opens = [head.rfind(c) for c, _ in _DESC_PAIRS]
+        if max(opens) < 0:
             break
+        head = head[: max(opens)].rstrip(" ，,、·")
+    return _desc_finish(tidy(head), end)
+
+
+def _desc_fill(base: str, chunk: str, end: str, is_en: bool) -> tuple[str, bool]:
+    """把 chunk 接到 base 后面：整句装得下就整句，装不下就用它最长的完整分句。
+
+    返回 (接完的文本, 是否用了分句)；一点都接不上就原样返回 base。
+    """
+    cand = _desc_close(_desc_join(base, chunk, end, is_en), end)
+    if len(cand) <= _DESC_MAX:
+        return cand, False
+    best = base
+    for m in re.finditer(f"[{_DESC_CLAUSE_MARKS}]", chunk):
+        head = chunk[: m.end()]
+        if not _desc_balanced(head):
+            continue
+        cand = _desc_close(_desc_join(base, _desc_finish(head, end), end, is_en), end)
+        if len(cand) > _DESC_MAX:
+            break
+        if len(cand) > len(best):
+            best = cand
+    return best, best != base
+
+
+# 描述收口方式计数：构建结束时打印——整句收口 / 用后续整句或完整分句补足 / 只能按词收边
+_DESC_STATS = {"sentence": 0, "clause": 0, "word": 0}
+
+
+def _desc_repair(text: str, end: str) -> str:
+    """收口后兜底：去掉多余的右括号、截掉没闭合的左括号，保证句子不残。"""
+    for left, right in _DESC_PAIRS:
+        while text.count(right) > text.count(left):
+            i = text.rfind(right)
+            text = text[:i] + text[i + 1:]
+    while text and not _desc_balanced(text):
+        pos = max(text.rfind(c) for c, _ in _DESC_PAIRS)
+        if pos < 0:
+            break
+        text = text[:pos].rstrip(" ，,、·")
+    return _desc_close(_desc_finish(text, end), end)
+
+
+def seo_description(*parts: str) -> str:
+    """详情页 meta description：导语打头，补到 120–156 字并以句末标点收尾。
+
+    1. 素材按句末标点切句，整句往描述里加，最后一整句使总长超过 156 字就停在那里；
+    2. 不足 120 字就往后再补：整句装得下用整句，装不下用那一句最长的完整分句
+       （括号、引号内部不切）；
+    3. 仍然不到 120 字才按词收边（英文落在完整词上，末尾虚词去掉），绝不出省略号；
+    4. 结尾一律是句末标点，中文的「；」「：」换成「。」。
+
+    早先的做法是 `desc[:152].rstrip("，；") + "…"`，全站 303 页描述因此截在词中间
+    （Hark 复查点名）。
+    """
+    is_en = CUR_LANG == "en"
+    end = "." if is_en else "。"
+    kept = [c for c in (_desc_finish(x, end) for x in _desc_chunks(parts, is_en)) if c]
+    if not kept:
+        return ""
+
     desc = ""
-    for chunk in chunks:
-        if not desc:
-            desc = chunk
-        elif desc[-1] in "。！？；…」』":
-            # 中文句末标点：直接接，不加空格
-            desc += chunk
-        elif desc[-1] in ".!?;:":
-            # 英文句末标点：补一个空格（切句时把空格吃掉了，且「NOVEMBER15!at」这种不能粘一起）
-            desc += " " + chunk
-        else:
-            # 上一段是个没标点的短语（导语、短句）——补一个句号再接下句，不能无缝粘在一起
-            desc += ("。" if CUR_LANG != "en" else ". ") + chunk
-    if len(desc) > 156:
-        desc = desc[:152].rstrip("，,、 ·；;") + "…"
-    return desc
+    used = 0
+    for chunk in kept:
+        cand = _desc_close(_desc_join(desc, chunk, end, is_en), end)
+        if len(cand) > _DESC_MAX:
+            break
+        desc, used = cand, used + 1
+    if used >= len(kept) or len(desc) >= _DESC_MAX:
+        _DESC_STATS["sentence"] += 1
+        return _desc_repair(desc or kept[0][: _DESC_MAX - 1], end)
+
+    # 整句补到 120 字：先找能整句装下的，再用装不下那一句的完整分句
+    for chunk in kept[used:]:
+        filled, used_clause = _desc_fill(desc, chunk, end, is_en)
+        if len(filled) >= _DESC_MIN:
+            _DESC_STATS["clause" if used_clause else "sentence"] += 1
+            return _desc_repair(filled, end)
+        if len(filled) > len(desc):
+            desc = filled
+
+    # 还没有 120 字：按词收边补足（落在完整词上，不切半截）
+    room = _DESC_MAX - (len(desc) + len(end) + (1 if is_en else 0) if desc else 0)
+    if room >= 24:
+        for chunk in kept[used:]:
+            cand = _desc_close(_desc_join(desc, _desc_soft_cut(chunk, room, end), end, is_en), end)
+            if len(cand) > len(desc):
+                desc = cand
+            if len(desc) >= _DESC_MIN:
+                break
+
+    _DESC_STATS["word"] += 1
+    return _desc_repair(desc, end)
+
+
+# ------------------------------------------- 合规页面（/about/ /privacy/ /disclosure/）
+# AdSense 审核要求的几个静态页：纯静态生成，面包屑 + canonical + hreflang + WebPage
+# 结构化数据；页脚只加一行「关于 · 隐私 · 披露」文字链接，不写免责长句。
+
+
+def legal_path(kind: str, lang: str) -> str:
+    """合规页的相对路径：中文 /about/，英文 /en/about/。"""
+    return ("en/" if lang == "en" else "") + kind + "/"
+
+
+def legal_footer(lang: str) -> str:
+    """页脚那一行极简文字链接（首页 / 分类页 / 详情页 / 合规页共用）。"""
+    is_en = lang == "en"
+    sep = '<span class="foot-legal-sep" aria-hidden="true">·</span>'
+    links = sep.join(
+        f'<a href="/{e(legal_path(kind, lang))}">{e(U[key][1] if is_en else U[key][0])}</a>'
+        for kind, key in LEGAL_LINKS
+    )
+    return f'<span class="foot-legal" {al(*U["legal_nav_aria"])}>{links}</span>'
+
+
+def render_legal_page(kind: str, lang: str, today) -> str:
+    """一条合规页（单语）：顶栏 + 面包屑 + 标题导语 + 分节正文 + 页脚。"""
+    set_lang(lang)
+    is_en = lang == "en"
+    page = LEGAL_PAGES[kind][lang]
+    site_name = "Deal Hunter" if is_en else "羊毛情报局"
+    home = "/en/" if is_en else "/"
+    canon = SITE_URL + legal_path(kind, lang)
+    other_lang = "zh" if is_en else "en"
+    switch_href = "/" + legal_path(kind, other_lang)
+    switch_lang = "zh-CN" if is_en else "en"
+    og_image = OG_IMAGE_EN if is_en else OG_IMAGE
+
+    sections = "".join(
+        f'<section class="dp-sec"><h2>{e(heading)}</h2>'
+        + "".join(f"<p>{e(para)}</p>" for para in paras)
+        + "</section>"
+        for heading, paras in page["sections"]
+    )
+
+    ld = json.dumps(
+        [
+            {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "@id": canon + "#webpage",
+                "url": canon,
+                "name": page["title"],
+                "description": page["desc"],
+                "inLanguage": "en" if is_en else "zh-CN",
+                "isPartOf": {"@type": "WebSite", "name": site_name, "url": SITE_URL + ("en/" if is_en else "")},
+                "breadcrumb": {"@id": canon + "#breadcrumb"},
+                "dateModified": LEGAL_UPDATED,
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "@id": canon + "#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": ui("dp_crumb_home"),
+                        "item": SITE_URL + ("en/" if is_en else ""),
+                    },
+                    {"@type": "ListItem", "position": 2, "name": page["h1"], "item": canon},
+                ],
+            },
+        ],
+        ensure_ascii=False,
+        indent=2,
+    ).replace("</", "<\\/")
+
+    return f"""<!DOCTYPE html>
+<html lang="{"en" if is_en else "zh-CN"}" data-lang="{"en" if is_en else "zh"}" data-today="{today.isoformat()}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>{e(page["title"])}</title>
+<meta name="description" content="{e(page["desc"])}">
+<meta name="author" content="{site_name}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAF9F5">
+<link rel="canonical" href="{canon}">
+<link rel="alternate" hreflang="zh-CN" href="{SITE_URL + legal_path(kind, "zh")}">
+<link rel="alternate" hreflang="en" href="{SITE_URL + legal_path(kind, "en")}">
+<link rel="alternate" hreflang="x-default" href="{SITE_URL + legal_path(kind, "zh")}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{site_name}">
+<meta property="og:locale" content="{"en_US" if is_en else "zh_CN"}">
+<meta property="og:locale:alternate" content="{"zh_CN" if is_en else "en_US"}">
+<meta property="og:title" content="{e(page["title"])}">
+<meta property="og:description" content="{e(page["desc"])}">
+<meta property="og:url" content="{canon}">
+<meta property="og:image" content="{og_image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(page["title"])}">
+<meta name="twitter:description" content="{e(page["desc"])}">
+<meta name="twitter:image" content="{og_image}">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
+
+<script type="application/ld+json">
+{ld}
+</script>
+</head>
+<body class="dp">
+
+{sprite_svg(("chevron",))}
+{vector_defs()}
+
+<header class="topbar">
+  <div class="shell topbar-in">
+    <a class="brand" href="{home}" {al(*U['brand_aria'])}>
+      <span class="brand-mark" aria-hidden="true">
+        {mascot_svg(gid='dpLegalHead')}
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">{ui('brand')}</span>
+        <span class="brand-sub">{ui('brand_sub')}</span>
+      </span>
+    </a>
+    <div class="dp-top">
+      <a class="dp-back" href="{home}">{icon('chevron', 'dp-back-i')}<span>{ui('dp_back')}</span></a>
+      <a class="dp-switch" href="{switch_href}" hreflang="{switch_lang}" {al(*U['dp_switch_aria'])}><span lang="{switch_lang}">{ui('dp_switch')}</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="shell dp-wrap">
+    <nav class="dp-crumbs" {al(*U['dp_crumb_aria'])}>
+      <a href="{home}">{ui('dp_crumb_home')}</a>
+      <span class="dp-sep" aria-hidden="true">/</span>
+      <span class="dp-cur">{e(page["h1"])}</span>
+    </nav>
+
+    <article class="dp-card">
+      <h1 class="dp-title">{e(page["h1"])}</h1>
+      <p class="legal-lead">{e(page["lead"])}</p>
+      <p class="legal-stamp">{ui('legal_updated', d=LEGAL_UPDATED)}</p>
+    </article>
+
+    {sections}
+
+    <nav class="dp-nav" aria-label="{e(ui('legal_nav_aria'))}">
+      <a class="dp-nav-home" href="{home}">{ui('dp_back')}</a>
+      {"".join(f'<a href="/{e(legal_path(kind2, lang))}">{e(U[key][1] if is_en else U[key][0])}</a>' for kind2, key in LEGAL_LINKS if kind2 != kind)}
+    </nav>
+  </div>
+</main>
+
+<footer>
+  <div class="shell foot-line">
+    <span class="foot-brand">
+      <span class="brand-mark" aria-hidden="true">
+        {mascot_svg(gid='dpLegalFoot')}
+      </span>
+      {ui('foot_brand', y=today.year)}
+    </span>
+    {legal_footer(lang)}
+    <a class="foot-top" href="#top">{ui('foot_top')}</a>
+  </div>
+</footer>
+
+</body>
+</html>
+"""
+
+
+def write_legal_pages(today) -> int:
+    """写 6 个合规页：/about/ /privacy/ /disclosure/ 与 /en/ 下的三份。"""
+    count = 0
+    for kind in LEGAL_PAGES:
+        for lang, base in (("zh", ROOT), ("en", ROOT / "en")):
+            out = base / kind / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(
+                compact_html(render_legal_page(kind, lang, today)), encoding="utf-8"
+            )
+            count += 1
+    return count
 
 
 def dp_end_pair(deal: dict) -> tuple[str, str]:
@@ -1758,6 +2155,9 @@ def related_deals(deal: dict, by_cat: dict[str, list[dict]], by_region: dict[str
     老版本按价值取同类前 4，结果 220 个页面里只有 30 个能从其他详情页拿到入链，
     前 5 页各被链 56–66 次。改成「相邻轮转」后每页都是 4 个邻居的前后条，
     再补 2 条同地区，入链分布拉平，也不再让少数页面吃掉全部站内权重。
+
+    候选池先滤掉 `status == "expired"` 的条目：否则 20 个活跃页面的相关推荐里会
+    混进已经结束的活动（Hark 复查点名 jio / mistral / gcp 三条被链了 12–14 次）。
     """
     limit = 6
     picks: list[dict] = []
@@ -1772,15 +2172,16 @@ def related_deals(deal: dict, by_cat: dict[str, list[dict]], by_region: dict[str
             if len(picks) >= limit:
                 return
             cand = pool[(start + off) % n]
-            if cand["id"] in seen:
+            if cand["id"] in seen or cand.get("status") == "expired":
                 continue
             seen.add(cand["id"])
             picks.append(cand)
 
     cat_list = by_cat.get(deal.get("category", ""), [])
+    reg_list = by_region.get(_region_key(deal), [])
     take(cat_list, (1, 2, -1, -2))          # 同类里前后各两条
-    take(by_region.get(_region_key(deal), []), (1, -1))   # 同地区按 id 轮转各一条
-    take(cat_list, (3, 4, -3, -4, 5, 6))    # 同地区不足 2 条时，用同类更远的邻居补齐
+    take(reg_list, (1, -1))                 # 同地区按 id 轮转各一条
+    take(cat_list, (3, 4, -3, -4, 5, 6, -5, -6))   # 同地区不足 2 条时，用同类更远的邻居补齐
     return picks
 
 
@@ -2079,6 +2480,7 @@ def render_category_page(
       </span>
       {ui('foot_brand', y=today.year)}
     </span>
+    {legal_footer(lang)}
     <a class="foot-top" href="#top">↑</a>
   </div>
 </footer>
@@ -2114,33 +2516,62 @@ def write_category_pages(deals: list[dict], en_map: dict, today) -> int:
     return count
 
 
-# 英文页里的中文兜底扫描：CJK 汉字 + 日文假名（全角标点放行，英文里偶尔也会用）
+# 英文页里的中文兜底扫描：CJK 汉字 + 日文假名 + 全角标点（英文页里一律不许出现）
 _EN_CJK_RE = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]")
+_EN_FW_RE = re.compile(r"[\uff00-\uffef\u3000-\u303f]")
+
+
+def _json_strings(node: object, path: str = "") -> list[tuple[str, str]]:
+    """把一段 JSON-LD 里的所有字符串连同它的路径摊平，方便定位到具体字段。"""
+    out: list[tuple[str, str]] = []
+    if isinstance(node, dict):
+        for key, value in node.items():
+            out += _json_strings(value, f"{path}.{key}" if path else key)
+    elif isinstance(node, list):
+        for i, value in enumerate(node):
+            out += _json_strings(value, f"{path}[{i}]")
+    elif isinstance(node, str):
+        out.append((path, node))
+    return out
 
 
 def check_en_pages(paths: list[Path]) -> None:
-    """英文产物里不能再留中日文：命中就列出位置并拒绝发布。
+    """英文产物里不能再留中日文或全角标点：命中就列出位置并拒绝发布。
 
     deals_en.json 漏翻一个字段、或某条只写了中文的 risk / steps，/en/d/<id>/ 就会
-    把中文原文直接漏到英文页上（上一轮 Hark 复查点名了 8 页）。靠人眼抽查不可靠，
-    这里在构建时扫一遍可见文字，命中就报错。
+    把中文原文直接漏到英文页上（上一轮 Hark 复查点名了 8 页）。JSON-LD 里的机构名
+    （seller.name）和英文页里的「（ ）」这类全角标点也是同一类漏网，所以这里连
+    ld+json 一起解析、按字段路径报错。
     唯一的白名单是语言切换徽标「中文」：那是给英文用户回中文站的入口，必须保留。
     """
     hits: list[str] = []
     for path in paths:
+        rel = path.relative_to(ROOT)
         text = path.read_text(encoding="utf-8")
-        # 去掉注释 / script / svg：HTML 注释（AdSense 位置说明是中文）与 JSON-LD 模板说明
-        # 都不是可见文字；JSON-LD 的译文与可见正文同源，图形里的 path 数据也不是文字
+
+        # 1) JSON-LD：解析后逐字段扫（不可见，但结构化数据里出现中文同样算漏翻）
+        for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S):
+            try:
+                parsed = json.loads(block.replace("<\\/", "</"))
+            except json.JSONDecodeError:
+                continue
+            for field, value in _json_strings(parsed):
+                for needle, kind in ((_EN_CJK_RE, "中文"), (_EN_FW_RE, "全角标点")):
+                    m = needle.search(value)
+                    if m:
+                        hits.append(f"{rel}：JSON-LD {field} 里有{kind}「{value[max(0, m.start() - 12): m.start() + 12]}」")
+
+        # 2) 可见正文：去掉注释 / script / svg / data-* 之后扫描
         body = re.sub(r"<!--.*?-->", " ", text, flags=re.S)
         body = re.sub(r"<script\b.*?</script>|<svg\b.*?</svg>", " ", body, flags=re.S)
-        # data-* 是给 JS 读的内部值（筛选用的「需要充值」等中文枚举），页面上并不显示
         body = re.sub(r"\sdata-[a-zA-Z0-9-]+=\"[^\"]*\"", " ", body)
         body = body.replace("中文", "")
-        for m in _EN_CJK_RE.finditer(body):
-            snippet = re.sub(r"\s+", " ", body[max(0, m.start() - 30): m.start() + 30]).strip()
-            hits.append(f"{path.relative_to(ROOT)}：…{snippet}…")
+        for needle, kind in ((_EN_CJK_RE, "中文 / 日文"), (_EN_FW_RE, "全角标点")):
+            for m in needle.finditer(body):
+                snippet = re.sub(r"\s+", " ", body[max(0, m.start() - 30): m.start() + 30]).strip()
+                hits.append(f"{rel}：可见文字里有{kind}…{snippet}…")
     if hits:
-        print("英文页里还有中文 / 日文残留，已停止构建：", file=sys.stderr)
+        print("英文页里还有中文 / 全角标点残留，已停止构建：", file=sys.stderr)
         for line in hits[:20]:
             print("  · " + line, file=sys.stderr)
         raise SystemExit(1)
@@ -2186,9 +2617,57 @@ def validate(deals: list[dict], en_map: dict) -> None:
     for key in en_map:
         if key not in seen:
             errors.append(f"deals_en: 多出未对应的 id {key}")
+    # 英文卡片的价值胶囊：手机端只有 109px，超过 18 个字符就被省略号截断
+    for deal in deals:
+        badge = value_badge(value_pair(deal, en_map.get(deal["id"], {}))[1], "en")
+        if len(badge) > _EN_BADGE_BUDGET:
+            errors.append(
+                f"{deal['id']}: 英文价值徽标 {len(badge)} 字符，超出手机端 {_EN_BADGE_BUDGET} 字符预算（{badge}）"
+            )
     if errors:
         print("数据体检未通过，已停止构建：", file=sys.stderr)
         for line in errors[:40]:
+            print("  · " + line, file=sys.stderr)
+        raise SystemExit(1)
+
+
+def check_descriptions(deals: list[dict], en_map: dict) -> None:
+    """详情页 meta description 体检：120–156 字、不以省略号收尾、括号引号成对。
+
+    描述是按数据拼出来的，新条目一多就可能又拼出半句；这里在构建时全量跑一遍，
+    不过就不发布（Hark 复查的那 303 条硬切就是这么被钉住的）。
+    """
+    bad: list[str] = []
+    _DESC_STATS.update({"sentence": 0, "clause": 0, "word": 0})
+    for lang in ("zh", "en"):
+        set_lang(lang)
+        for deal in deals:
+            en = en_map.get(deal["id"], {}) if lang == "en" else {}
+            pick = (
+                (lambda key: en.get(key) or deal.get(key) or "")
+                if lang == "en"
+                else (lambda key: deal.get(key) or "")
+            )
+            desc = seo_description(
+                pick("highlight"), pick("content"), pick("conditions"),
+                strip_region_bracket(pick("regions")),
+            )
+            problems = []
+            if not (_DESC_MIN <= len(desc) <= _DESC_MAX):
+                problems.append(f"{len(desc)} 字")
+            if desc.endswith("…"):
+                problems.append("以省略号结尾")
+            if desc[-1:] in "；：;:，,":
+                problems.append("以分隔标点结尾")
+            if not _desc_balanced(desc):
+                problems.append("括号引号不成对")
+            if problems:
+                bad.append(f"{lang} {deal['id']}：{"、".join(problems)} → …{desc[-24:]}")
+    set_lang("zh")
+    _DESC_STATS.update({"sentence": 0, "clause": 0, "word": 0})
+    if bad:
+        print(f"meta description 体检未通过（{len(bad)} 页），已停止构建：", file=sys.stderr)
+        for line in bad[:20]:
             print("  · " + line, file=sys.stderr)
         raise SystemExit(1)
 
@@ -2203,6 +2682,8 @@ def main() -> None:
 
     # 数据体检：外链协议、必填字段、日期、枚举；不通过直接拒绝构建。
     validate(deals, load_en())
+    # 描述体检：452 个详情页的 meta description 必须 120–156 字、整句收尾
+    check_descriptions(deals, load_en())
 
     # 图标：构建时落地到 assets/fav/，页面不再请求 google.com
     missing = []
@@ -2452,7 +2933,8 @@ def main() -> None:
                         en.get("title", ""),
                         en.get("highlight", ""),
                         en.get("regions", ""),
-                        deal.get("brand", ""),
+                        # 英文索引里不放中文机构名：brand_en 缺失时才退回原值
+                        en.get("brand_en") or deal.get("brand", ""),
                         COST_EN.get(deal.get("cost", ""), ""),
                         cat_en[0],
                         cat_en[1],
@@ -2829,6 +3311,7 @@ def main() -> None:
       {ui('foot_brand', y=today.year)}
     </span>
     <span class="foot-up">{ui('foot_updated', t=e(last_updated))}</span>
+    {legal_footer(lang)}
     <a class="foot-top" href="#top">{ui('foot_top')}</a>
   </div>
 </footer>
@@ -2847,6 +3330,8 @@ def main() -> None:
     # 单条独立页：每条一份中文 /d/<id>/、一份英文 /en/d/<id>/（含已归档条目）
     set_lang("zh")
     pages = write_deal_pages(deals, en_map, today)
+    # 6 个合规页：/about/ /privacy/ /disclosure/ 与 /en/ 下的三份
+    legal_pages = write_legal_pages(today)
     # 6 大类 × 中英 = 12 个静态目录页
     cat_pages = write_category_pages(deals, en_map, today)
     # 英文产物冒烟：任何中日文残留都要在这里拦住，不带上线
@@ -2854,6 +3339,7 @@ def main() -> None:
         [EN_OUT]
         + sorted(DEALS_DIR_EN.glob("*/index.html"))
         + sorted(CATEGORY_DIR_EN.glob("*/index.html"))
+        + [ROOT / "en" / kind / "index.html" for kind in LEGAL_PAGES]
     )
     # 结构化数据体检：每一段 ld+json 必须是合法 JSON，Offer / HowTo 字段齐全
     schema_errors = check_jsonld(ROOT, expected_howto(deals, en_map))
@@ -2867,6 +3353,11 @@ def main() -> None:
     print(f"index.html + en/index.html written · {len(active)} active / {len(expired)} expired / {len(fresh)} fresh")
     print(f"  单条详情页：{pages} 个（d/ 与 en/d/ 各 {pages // 2} 个）· sitemap.xml 已同步")
     print(f"  分类目录页：{cat_pages} 个（category/ 与 en/category/ 各 {cat_pages // 2} 个）")
+    print(f"  合规页：{legal_pages} 个（about / privacy / disclosure 中英各一份）")
+    print(
+        "  meta description：整句收口 {sentence} 页 · 完整分句收口 {clause} 页 · "
+        "英文按词收边补足 {word} 页；零省略号、零半词".format(**_DESC_STATS)
+    )
     print(f"  英文条目：{len(deals) - len(missing_en)}/{len(deals)} 条有翻译")
     if missing_en:
         print(f"  ! 缺少英文翻译 {len(missing_en)} 条：{', '.join(missing_en[:12])}{' …' if len(missing_en) > 12 else ''}")

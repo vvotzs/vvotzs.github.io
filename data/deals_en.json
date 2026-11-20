@@ -146,7 +146,7 @@
     "highlight": "Open a new account and take $1,000 in direct deposits within 90 days; the bonus lands within 15 days",
     "regions": "[US only] Online applications exclude Alaska, Hawaii and Puerto Rico",
     "value": "$400",
-    "content": "New customers who open Chase Total Checking with the coupon code and complete $1,000 or more of salary/government direct deposits within 90 days get $400, paid within 15 days of qualifying. The account has a $15 monthly fee, waived with $1,000 of monthly direct deposits or another condition.",
+    "content": "New customers who open Chase Total Checking with the coupon code and complete $1,000 or more of salary/government direct deposits within 90 days qualify. The account has a $15 monthly fee, waived with $1,000 of monthly direct deposits or another condition.",
     "conditions": "New Chase checking customers only (not if you closed an account in the last 90 days or were closed for a negative balance within 3 years); one bonus per two years; direct deposits exclude Zelle, transfers and cheque deposits.",
     "steps": [
       "Enter your email on the offer page to get the coupon code",
@@ -448,6 +448,7 @@
   },
   "pingandb-hk-new-customer-nov2026": {
     "title": "[HK] Ping An Digital Bank November new customers: 20% HKD 1-month deposit + HK$200 cash (about HK$1,515 in total)",
+    "brand_en": "PingAnDB (Ping An Digital Bank)",
     "highlight": "Brand-new customers who open with referral code NTB2026 and place a 1-month HKD time deposit get 20% p.a. on the first HK$80,000 (about HK$1,315 of interest in month one); deposit another HK$20,000 by 30 November for an extra HK$200",
     "regions": "[HK] Hong Kong-licensed virtual bank; HK residents or visitors physically in Hong Kong (in person, checked by app location)",
     "value": "About HK$1,515 (≈$194)",
@@ -545,6 +546,7 @@
   },
   "modelscope-amd-100h-gpu": {
     "title": "[CN] ModelScope × AMD developer programme: 100 hours of MI300X (192GB VRAM) free compute",
+    "brand_en": "ModelScope (Alibaba) & AMD",
     "highlight": "Register for the AMD Developer Program and link your ModelScope account for 100 hours of AMD GPU Notebook after approval: MI300X/MI308X, 192GB HBM3 per card, 23 cores / 200GB RAM, billed only while running",
     "regions": "[CN] ModelScope (modelscope.cn, sign up with a +86 number and link Alibaba Cloud real-name verification before launching); AMD developer programme China site developer.amd.com.cn",
     "value": "100 hours of MI300X (about $100)",
@@ -774,6 +776,7 @@
   },
   "aliyun-yungongkaiwu-300": {
     "title": "[CN] Alibaba Cloud \"Cloud Craft\" student verification: ¥300 voucher (every 12 months)",
+    "brand_en": "Alibaba Cloud",
     "highlight": "Students at Chinese universities who complete Alibaba Cloud student verification get one ¥300 cloud voucher every 12 months, valid for a year",
     "regions": "[CN] Alibaba Cloud China site (aliyun.com); Chinese university students who pass student verification (vocational, undergraduate, master's, PhD or part-time postgraduate)",
     "value": "¥300 (≈$42)",
@@ -790,6 +793,7 @@
   },
   "unicom-esim-xianxian-2026": {
     "title": "[CN] China Unicom eSIM launch season 2026: activate eSIM for 100GB of data or a ¥300 roaming voucher",
+    "brand_en": "China Unicom",
     "highlight": "After setting up a Unicom eSIM (new line, physical SIM to eSIM, or number port-in) claim a benefit within 30 days: carrier-supplied models can take 100GB of domestic data or overseas eSIM data and roaming vouchers; self-bought phones choose one of two",
     "regions": "[CN] Mainland China (needs a Unicom number and a China-market phone that supports eSIM; apply at an own-brand store or in the Unicom app)",
     "value": "100GB domestic data / ¥300 roaming voucher (about ¥300)",
@@ -837,6 +841,7 @@
   },
   "antbank-macau-nov2026": {
     "title": "[MO] Ant Bank Macau November account bonus: deposit HK$3,000 for 2 Alibaba shares, keep it 30 days for 2 Xiaomi shares",
+    "brand_en": "Ant Bank (Macau)",
     "highlight": "Open a wealth account in November and net-deposit HK$3,000 for 2 Alibaba (09988.HK) shares; keep the balance 30 days for another 2 Xiaomi (01810.HK) shares, plus up to HKD 150 of trading credits",
     "regions": "[MO] Must apply in person in Macau; mainland residents use an ID card plus a HK/Macau permit (with a Macau endorsement) and an immigration slip from the last 7 days",
     "value": "About HKD 280 (≈$36)",
@@ -965,6 +970,7 @@
   },
   "unicom-cloud-free-ai-desktop": {
     "title": "[CN] Unicom Cloud new customers: 1 month of AI cloud desktop for ¥0 (4 cores 8G + Qwen Office)",
+    "brand_en": "CUCloud (China Unicom Cloud)",
     "highlight": "Double 11 compute festival: new customers get 1 month of a 4-core 8G / 80G system-disk AI cloud desktop with Qwen Office preinstalled for ¥0; pick the \"OpenClaw shell\" image for a free Token Plan Lite",
     "regions": "[CN] Unicom Cloud (cucloud.cn); real-name verification required (face scan in China, passport abroad), new customers only",
     "value": "¥164.67 (about $23)",
@@ -1352,6 +1358,7 @@
   },
   "tencent-tokenhub-new-user-pack": {
     "title": "[CN] Tencent Cloud TokenHub new-user pack: 1 million tokens per model (valid 1 year)",
+    "brand_en": "Tencent Cloud TokenHub",
     "highlight": "Once per main account: 1 million tokens for every language model and every multimodal understanding model, 50–100 credits each for video/3D generation, valid 1 year, no card needed",
     "regions": "[CN] Tencent Cloud TokenHub model platform; needs a Tencent Cloud account (and real-name verification in China)",
     "value": "1 million tokens per model",
@@ -1546,6 +1553,7 @@
   },
   "teleagent-free-cloud-pc": {
     "title": "[CN] China Telecom TeleAgent Xingshen: a Windows cloud PC in the free tier",
+    "brand_en": "TeleAgent (China Telecom)",
     "highlight": "Log in on the web and use the built-in Windows cloud PC (the community measured 4 cores); the free trial tier is ¥0/mo with 3 parallel tasks, long-term memory, a secure sandbox, scheduled tasks and a skills marketplace",
     "regions": "[CN] China Telecom's TeleAgent web and desktop apps; needs a Chinese mobile number to register",
     "value": "Free tier (cloud PC included, about $8)",
@@ -1929,6 +1937,7 @@
   },
   "huawei-codearts-200-voucher": {
     "title": "[CN] Huawei Cloud ¥200 no-threshold voucher: enter the Xiaohongshu Skill contest (to 11/24)",
+    "brand_en": "Huawei Cloud CodeArts",
     "highlight": "Register for the 2026 Huawei Developer Contest · Xiaohongshu Skill Innovation with a real-name main account, then send a command in CodeArts to claim a ¥200 cloud voucher, with 1,000 released each weekday at 10:00",
     "regions": "[CN] Huawei Cloud; needs a mainland-China real-name-verified main account (sub-accounts can't claim)",
     "value": "¥200 (≈$28)",
@@ -1946,6 +1955,7 @@
   },
   "autoclaw-weekly-100m-tokens": {
     "title": "[CN/Global] Zhipu AutoClaw weekly perk: log in for 100 million tokens (to 11/22)",
+    "brand_en": "Zhipu AutoClaw",
     "highlight": "Log in to the AutoClaw client between 00:00 on 16 November and 23:59 on 22 November (Beijing time) for 100M tokens (= 10,000 credits), once per account, all of it expiring at 23:59 on the 22nd",
     "regions": "[CN/Global] AutoClaw for Mac / Windows; sign in with a Zhipu account, new and existing users alike",
     "value": "100 million tokens (10,000 credits)",
@@ -2192,6 +2202,7 @@
   },
   "ymobile-yahoo-store-benefits": {
     "title": "[JP] Y!mobile via the Yahoo! store: up to ¥15,000 PayPay for switching carriers + 6 months of the data-boost option free (eSIM works)",
+    "brand_en": "Y!mobile (Yahoo! Shopping store)",
     "highlight": "Order a SIM-only line (eSIM included) from the Yahoo! store: switching from another carrier with Simple 3 M/L earns ¥15,000 in PayPay and S earns ¥5,000; a new M/L line earns ¥5,000 (¥10,000 for ages 5–18); on top, a Yahoo-only coupon returns up to 20% (capped at ¥6,000 for M/L).",
     "regions": "[JP] Japan; needs a Yahoo! JAPAN ID, and the Y!mobile service must be registered on that same ID. Switching from SoftBank, LINEMO or a SoftBank-network MVNO does not count as another carrier.",
     "value": "Up to about ¥21,000 (≈$136)",
@@ -2275,6 +2286,7 @@
   },
   "workbuddy-hy4-flash-free-nov2026": {
     "title": "[China/International] Tencent WorkBuddy: Hunyuan Hy4 flash free for a limited time (Nov 16–Nov 30, daily allowance)",
+    "brand_en": "Tencent Cloud WorkBuddy",
     "highlight": "Hy4 flash launched inside WorkBuddy; pick it in the model list before 23:59 on Nov 30 and chats cost no credits, with a daily free allowance that resets",
     "regions": "[China/International] WorkBuddy (workbuddy.cn domestic, workbuddy.ai international), desktop client and account required",
     "value": "Free daily allowance (0 credits during the promo)",
@@ -2291,6 +2303,7 @@
   },
   "scnet-maas-new-user-tokens": {
     "title": "[China] SCNet MaaS: new users get 10M tokens, and a 50M-token pack for ¥0.1 (until Dec 31)",
+    "brand_en": "SCNet (China Supercomputing Internet)",
     "highlight": "Register a new phone-number account during the campaign for a 10M-token pack (valid 30 days), then grab DeepSeek-V4.1-Flash-1017 or GLM-5.3-Flash 50M-token packs for ¥0.1 at 10:00 daily",
     "regions": "[China] SCNet platform (phone sign-up plus real-name verification, brand new accounts only)",
     "value": "About ¥20.5 (50M-token pack for ¥0.1) plus 10M tokens (≈$3)",
@@ -2508,7 +2521,7 @@
       "Submit the W-8BEN during the holding period; the share arrives the month after it ends"
     ],
     "risk": "70% of shares are only worth £50-£70. The share is USD-denominated, so FX and market moves apply. £1,000 is locked for three months, which can cost more than the reward. No W-8BEN means no share.",
-    "source": "IG official refer-a-friend terms (checked 2026-11-19) + r/beermoneyuk post"
+    "source": "IG official refer-a-friend terms and free-share probability table (checked 2026-11-19) + r/beermoneyuk discussion (the original post was removed by moderators under the posting-frequency rule and is kept only as a lead; the official terms govern)"
   },
   "schwab-referral-brokerage-1000": {
     "title": "[US] Charles Schwab referral: $100 for a $25,000 net deposit, up to $1,000",
@@ -2538,7 +2551,7 @@
       "Make one card payment of any amount with the Monzo card; the bonus lands straight away"
     ],
     "risk": "The bonus varies by invite and can be as little as £5 or nothing. Skipping the link-then-number order breaks matching. Existing Monzo customers are excluded.",
-    "source": "Monzo official Refer a Friend page and referral terms (v4.0 / 2026-08-13, v1.1 / 2026-10-29, checked 2026-11-19) + r/beermoneyuk post"
+    "source": "Monzo official Refer a Friend page and referral terms (v4.0 / 2026-08-13, v1.1 / 2026-10-29, checked 2026-11-19) + r/beermoneyuk thread"
   },
   "travelgoogoo-visa-free-esim-apac": {
     "title": "[APAC-issued cards] Travelgoogoo x Visa free eSIM: 4GB global + 4GB APAC and a year of unlimited messaging on Infinite",
@@ -2572,6 +2585,7 @@
   },
   "qiniu-conatus-free-100m-daily": {
     "title": "[CN] Qiniu Conatus free model: 100M tokens a day after real-name verification (until Nov 30)",
+    "brand_en": "Qiniu Cloud",
     "highlight": "A 1024 Programmer's Day promo: 100M tokens every day once you pass real-name verification, callable from the OpenAI SDK, Claude Code or Codex; when the quota runs out nothing is charged.",
     "regions": "[CN] A Qiniu account with real-name verification; unverified accounts get no quota and cannot call the model.",
     "value": "100M tokens/day (10B after a ¥100 top-up)",
@@ -2587,6 +2601,7 @@
   },
   "stepfun-stepaudio3-free-preview": {
     "title": "[CN/Global] StepFun StepAudio 3 voice models are free until Nov 23, 11:59 (no card)",
+    "brand_en": "StepFun",
     "highlight": "Realtime duplex voice, TTS with instant voice cloning, sound-effect generation, AI music and ASR all at zero cost until noon on Nov 23; no card and no prepayment.",
     "regions": "[CN/Global] Sign up on the StepFun platform; no credit card and no prepayment. Personal accounts usually need real-name verification before using voice models.",
     "value": "Six voice APIs at 0 (list price from ¥0.65 per session minute)",
@@ -2620,7 +2635,7 @@
     "highlight": "20+ open models such as Kimi K2.5 and MiniMax M2.5 behind one OpenAI-compatible endpoint, usable for agents at 5 requests a minute before the first deposit.",
     "regions": "[Global] Everywhere except mainland China, which the terms exclude.",
     "value": "$4 including the invite code",
-    "content": "HPC-AI.COM launched Model APIs: one OpenAI-compatible endpoint for 20-plus popular open models including Kimi K2.5 and MiniMax M2.5. The launch gives every user $2 of free credit, and signing up with the invite code `HPCAI-MAPI` gives $4 in total (a total balance, not an add-on). At MiniMax 2.5 pricing, $2 is roughly 4.3M input plus 1.07M output tokens, enough for a medium project of tens of thousands of lines.\n\nConnect with base URL `https://api.hpc-ai.com/inference/v1` from the OpenAI SDK or Codex CLI. Before a first deposit you are at L0: 5 requests a minute per account per model, with standard models also capped at 2M tokens a minute; spending alone does not promote an account to L1.",
+    "content": "The launch gives every user $2 of free credit, and signing up with the invite code `HPCAI-MAPI` gives $4 in total (a total balance, not an add-on). Model APIs is a single OpenAI-compatible endpoint that switches between 20-plus popular open models with one key. At MiniMax 2.5 pricing, $2 is roughly 4.3M input plus 1.07M output tokens, enough for a medium project of tens of thousands of lines.\n\nConnect with base URL `https://api.hpc-ai.com/inference/v1` from the OpenAI SDK or Codex CLI. Before a first deposit you are at L0: 5 requests a minute per account per model, with standard models also capped at 2M tokens a minute; spending alone does not promote an account to L1.",
     "conditions": "Register and create an API key. The $2 is once per account and the invite code makes the total $4. HPC-AI says credit is limited and runs out. No expiry is published. The service is not offered in mainland China. Claude Opus 4.6 has a higher L0 token rate; DeepSeek V4 Pro has zero L0 requests per minute.",
     "steps": [
       "Register at hpc-ai.com/models-console (enter the invite code HPCAI-MAPI during signup)",
@@ -2692,6 +2707,7 @@
   },
   "sosim-hk-33-100gb-esim": {
     "title": "[HK] SoSIM new SIM at HK$33: 50GB becomes 100GB plus a free eSIM conversion (until Nov 30)",
+    "brand_en": "SoSIM (3HK Hutchison)",
     "highlight": "A 3HK prepaid card for HK$33, bought as an eSIM and scanned in about ten minutes, with an extra 50GB for new cards (100GB in total) and a free SIM-to-eSIM coupon.",
     "regions": "[HK] 30 days of 50GB local data plus 50GB extra for new cards and 1,500 local minutes; real-name registration is required for local use, while travel-only use does not need it (China, Macau, Japan, Korea, Thailand, Taiwan and 24 hotspots).",
     "value": "HK$33 for 100GB over 30 days (about ¥30)",
@@ -2734,7 +2750,7 @@
       "Check the bonus in the app about seven business days after the first $300 deposit; send a transfer in the same session if you also want the first-transfer discount"
     ],
     "risk": "US only and invitation-based; Remitly alone decides what counts as a qualifying deposit, and a disguised transfer will not pay. The amount is not fixed in the terms, and the first-transfer discount may overlap with our multi-region $20 Remitly entry, so do not count both. The card is not a bank account.",
-    "source": "Remitly Global Card official landing page and Direct Deposit Promotional Terms (2026-11 version) + official press releases (card 2026-07-30, direct deposit 2026-09-29) + visitor submission email (2026-11-19 23:28)"
+    "source": "Remitly Global Card official landing page and Direct Deposit Promotional Terms (2026-11 version) + official press releases (card 2026-07-30, direct deposit 2026-09-29) + visitor submission email (2026-11-19 23:28; the accompanying invite link carried a referral code, so the page links to the official landing page instead)"
   },
   "payangel-referral-10": {
     "title": "[UK/US/CA/AU] PayAngel referrals: £10 / $10 / CAD 10 / AUD 10 per friend, no cap",
@@ -3077,6 +3093,7 @@
   },
   "doubao-work-30day-sub": {
     "title": "[China] Doubao Work: a 30-day subscription for new users on desktop, plus 8,800 credits for 30 days of check-ins",
+    "brand_en": "Doubao (ByteDance)",
     "highlight": "New users of the Doubao Work desktop app get a 30-day subscription with no card. Daily check-ins pay 200 credits (double on Mondays) with milestone bonuses, adding up to 8,800 over 30 days, more than the 8,400 a standard ¥68 plan includes.",
     "regions": "[China] Doubao and Doubao Work desktop apps on Windows and macOS. The entry point does not exist on mobile.",
     "value": "A 30-day standard subscription (¥68/month tier) plus 8,800 credits from 30 days of check-ins",
@@ -3515,6 +3532,7 @@
   },
   "tencent-lighthouse-4c4g-109": {
     "title": "[China] Tencent Cloud Lighthouse 4-core 4 GB 3 Mbps: 109 yuan for the first year (about $15)",
+    "brand_en": "Tencent Cloud",
     "highlight": "The Lighthouse sale page puts a 4-core 4 GB 3 Mbps instance with 300 GB of monthly traffic at 109 yuan for a new customer's first year; 2-core 2 GB 3 Mbps is 68 yuan a year, 2-core 4 GB 6 Mbps is 199 yuan with the same price on renewal, and 2-core 2 GB 4 Mbps is 99 yuan for 15 months, all until 30 December 2026",
     "regions": "[China] Tencent Cloud's mainland site, requires personal or business real-name verification; some tiers offer Beijing, Shanghai or Guangzhou, with separate overseas tiers in Silicon Valley, Tokyo and Bangkok",
     "value": "109 yuan for the first year (about $15); the same tier runs about 660 yuan a year",
@@ -3595,6 +3613,7 @@
   },
   "baidu-qianfan-1m-free-tokens": {
     "title": "[CN] Baidu Qianfan new users: 1M tokens on each of 17 models (17M total, valid 90 days)",
+    "brand_en": "Baidu AI Cloud Qianfan",
     "highlight": "First-time Qianfan users get 1M tokens on each of 17 models, 17M in total and 90 days, including DeepSeek-V3.1 and Kimi-K2",
     "regions": "[CN] Baidu AI Cloud Qianfan (mainland phone number and real-name verification required); API base_url https://qianfan.baidubce.com/v2",
     "value": "17M tokens",

@@ -244,6 +244,13 @@ U: dict[str, tuple[str, str]] = {
     "foot_brand": ("羊毛情报局 · © {y}", "Deal Hunter · © {y}"),
     "foot_updated": ("更新 {t}", "Updated {t}"),
     "foot_top": ("回到顶部 ↑", "Back to top ↑"),
+    # 页脚只加这三个词，不做免责长句（Jun 的偏好：页脚保持紧凑）
+    "legal_about": ("关于", "About"),
+    "legal_privacy": ("隐私", "Privacy"),
+    "legal_disclosure": ("披露", "Disclosure"),
+    "legal_aria": ("站点信息", "Site information"),
+    "legal_updated": ("最后更新 {d}", "Last updated {d}"),
+    "legal_nav_aria": ("站点信息页面", "Site information pages"),
 }
 
 # 参与门槛：数据里存中文原值（筛选按钮 data-value 也用它），展示时按语言取标签
@@ -281,10 +288,10 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
         ),
         "desc": (
             "ChatGPT、Gemini、Claude、Cursor、Copilot 等 AI 工具与智能代理的免费额度、学生优惠和限时折扣，"
-            "逐条核验后收录，标清实际到手价值、可用地区与截止时间。列表按可预期到手价值排序，涵盖 API 额度、"
-            "订阅减免与新品首发活动；已结束的活动全部留在归档里，方便对照往年同期的力度，旧链接也不会失效。",
+            "逐条核验后收录，标清实际到手价值、可用地区与截止时间。列表按可预期到手价值排序，"
+            "涵盖 API 额度、订阅减免与新品首发活动。",
             "Free tiers, student plans and limited-time discounts for ChatGPT, Gemini, Claude, Cursor, Copilot and "
-            "other AI tools — each verified, sorted by expected value, with region and deadline.",
+            "other AI tools, each verified with value and deadline.",
         ),
     },
     "bank": {
@@ -299,10 +306,9 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
         ),
         "desc": (
             "海外银行开户奖励、虚拟卡（U 卡）返现与跨境汇款邀请奖励，含 Wise、Remitly、Taptap Send、Sendwave "
-            "等可双向叠加的通道，写清入金门槛、留存期与到账时间。每条都注明是否需要美国 / 英国 / 德国等区服身份、"
-            "税号或本地地址，以及奖励发放条件与追回条款；需要留存的金额会一并标出机会成本，方便按自己的区服与资金情况挑选。",
-            "Account bonuses, virtual-card cashback and two-sided remittance referrals (Wise, Remitly, Taptap Send, "
-            "Sendwave), with deposit thresholds, holding periods and the region each one needs.",
+            "等可双向叠加的通道，写清入金门槛、留存期与到账时间。每条都注明是否需要美国 / 英国 / 德国等区服身份与税号。",
+            "Account bonuses, virtual-card cashback and two-sided remittance referrals from Wise, Remitly and "
+            "Sendwave, with deposit thresholds and holding periods.",
         ),
     },
     "crypto": {
@@ -319,8 +325,8 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
             "交易所新人奖励、任务空投与积分计划，含 KYC 门槛、交易量要求与代币解锁规则；奖励多为返佣券或代币，"
             "到手金额不等于现金。每条都标出是否需要充值、需要交易量与可提现条件，并注明区服与身份限制；"
             "加密资产价格波动大，请按实际可预期到手价值而不是宣传上限做判断，不要为了奖励去承担超出承受能力的仓位风险。",
-            "Exchange sign-up rewards, quest airdrops and points programs, with KYC steps, volume requirements and "
-            "what can actually be withdrawn; most payouts arrive as tokens or fee vouchers, not cash.",
+            "Exchange sign-up rewards, quest airdrops and points programs, with KYC steps, volume requirements, "
+            "what can be withdrawn and the region each one needs.",
         ),
     },
     "cloud": {
@@ -335,10 +341,10 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
         ),
         "desc": (
             "永久免费实例、新人体验金与黑五主机折扣，覆盖 Oracle、AWS、GCP、Azure、Hetzner、Cloudflare 等主流云与"
-            "主机商，写清配额、到期与回收规则。免费额度通常需要绑卡验证，并有闲置回收或流量上限，页面里逐条写明；"
-            "部署前先看清是否自动续费、需要预留实例与支持哪个区服，避免试用结束后被默默扣费，也避免机器被回收后数据丢失。",
+            "主机商，写清配额、到期与回收规则。免费额度通常需要绑卡验证，并有闲置回收或流量上限，"
+            "避免试用结束后被扣费。",
             "Always-free instances, trial credits and hosting deals from Oracle, AWS, GCP, Azure, Hetzner and "
-            "Cloudflare, with quotas, expiry and reclamation rules spelled out before you deploy.",
+            "Cloudflare, with quotas and expiry rules spelled out.",
         ),
     },
     "esim": {
@@ -353,10 +359,9 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
         ),
         "desc": (
             "全球 eSIM 的免费试用流量与首单折扣，覆盖 Airalo、Holafly、Nomad、Saily、Ubigi 等，逐条标出可用国家或"
-            "地区、流量额度与注册限制。多数免费流量要求新用户身份、绑定支付方式或手机支持 eSIM，页面里都已注明；"
-            "建议先领小额试用测一下当地网速，再决定是否购买大套餐，落地后也能随时切回本地实体卡，不耽误通话与短信验证码。",
+            "地区、流量额度与注册限制。多数免费流量要求新用户身份或绑定支付方式，建议先领小额试用测一下当地网速再决定。",
             "Free trial data and first-order discounts for eSIMs from Airalo, Holafly, Nomad, Saily and Ubigi, "
-            "each labelled with usable countries, data allowance and sign-up limits.",
+            "with usable countries, data allowance and sign-up limits.",
         ),
     },
     "software": {
@@ -374,10 +379,240 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
             "常用工具，写清资格审核与续期方式。学生与教育优惠通常需要校园邮箱或学籍证明，审核通过后按年续期；"
             "商业授权、团队席位与个人版的差别也会标注，选购前先确认自己的用途、人数与是否需要商用授权。",
             "Student plans, developer packs and subscription discounts for JetBrains, Notion, Figma, GitHub and "
-            "more, with eligibility checks, renewal rules and licence differences noted.",
+            "more, with eligibility checks and renewal rules noted.",
         ),
     },
 }
+
+# ---------------------------------------------------------------- 合规页面（AdSense）
+# /about/ /privacy/ /disclosure/ 各一中一英，纯静态生成：面包屑、canonical、hreflang、
+# 一段 WebPage + BreadcrumbList 结构化数据。页脚只放一行「关于 · 隐私 · 披露」文字链接，
+# 不往页脚里塞免责长句（Jun 的要求：页脚保持紧凑、不撑高）。
+# 文案里的事实（纯静态无后端、无自有推广链接、投稿字段）跟实现一致，改实现时同步改这里。
+LEGAL_UPDATED = "2026-11-20"
+
+LEGAL_PAGES: dict[str, dict[str, dict]] = {
+    "about": {
+        "zh": {
+            "title": "关于羊毛情报局 · 人工核验的全球优惠情报",
+            "desc": (
+                "羊毛情报局是一个人工核验的全球优惠情报站，覆盖 AI 免费额度、Crypto 奖励、海外银行与汇款、"
+                "VPS 云服务、eSIM 流量与软件学生福利，每条写明价值、门槛、地区与截止时间，主按钮直达官方活动页。"
+                "过期活动会留在归档页，方便对照往年力度。"
+            ),
+            "h1": "关于羊毛情报局",
+            "lead": "一个人工核验的全球优惠情报站：只收录能追到官方条款的活动。",
+            "sections": [
+                ("这是什么", [
+                    "羊毛情报局是一个人工核验的全球优惠情报站，覆盖六类：AI 工具与智能代理的免费额度、"
+                    "Crypto 活动与空投、海外银行与跨境汇款、VPS 与云服务、eSIM 流量、软件与数字服务优惠。",
+                    "每条都写明可预期到手价值、参与门槛、可用地区与截止时间，主按钮直接指向官方活动页；"
+                    "有社区原帖作为最早情报来源时，另给一个「原文链接」指过去。",
+                ]),
+                ("怎么核验", [
+                    "先追到活动官网的条款页，核对金额、资格、截止时间、发放与追回条件；再读社区实测"
+                    "（美卡论坛、NodeSeek、Linux.do、r/beermoneyuk、OzBargain、X 等），确认活动是否已经失效、"
+                    "有没有隐藏门槛或风控砍单。",
+                    "两边对不上时以官方条款为准，差异写进「风险」一栏；确实核不到的部分标为待核实，不写成确定事实。",
+                ]),
+                ("更新频率", [
+                    "站点每 2.5 小时自动巡检一轮：发现新活动、回溯官网核验、把 7 天内即将截止的条目单独标出。"
+                    "过期活动不会被删掉，而是移入归档页并保留历史记录，旧链接继续可访问。",
+                ]),
+                ("投稿与纠错", [
+                    "发现新活动，或发现某条写错了、链接失效了，都可以写信到 vvotzs@gmail.com，"
+                    "或点首页右下角的「投稿」按钮提交。",
+                    "投稿会先回溯官网核验，通过后才收录，并在「来源」里注明来自投稿。投稿只需要名称、链接，"
+                    "以及可选的地区与说明，不需要提供任何账号信息。",
+                ]),
+            ],
+        },
+        "en": {
+            "title": "About Deal Hunter · verified global deals",
+            "desc": (
+                "Deal Hunter is a hand-checked directory of global deals, each with its value, requirements, "
+                "region and deadline and a link to the official page."
+            ),
+            "h1": "About Deal Hunter",
+            "lead": "A hand-checked directory of global deals: only offers we can trace to official terms.",
+            "sections": [
+                ("What this is", [
+                    "Deal Hunter is a hand-checked directory of global deals in six areas: free tiers for AI tools "
+                    "and agents, crypto campaigns and airdrops, overseas banks and cross-border remittance, "
+                    "VPS and cloud credits, eSIM data, and software or student discounts.",
+                    "Every entry lists the expected value, the requirements, the regions it works in and the "
+                    "deadline, and its main button goes to the official offer page. Where a community thread "
+                    "broke the news first, a second link points to that original post.",
+                ]),
+                ("How we check", [
+                    "We start from the brand's own terms page and verify the amount, eligibility, end date, "
+                    "payout and clawback rules, then read community reports (US Card Forum, NodeSeek, Linux.do, "
+                    "r/beermoneyuk, OzBargain, X) to see whether the offer is already dead, has a hidden catch, "
+                    "or gets declined on risk checks.",
+                    "Where the two disagree, the official terms win and the difference goes into the risk note. "
+                    "Anything we cannot confirm is marked unverified instead of being stated as fact.",
+                ]),
+                ("Update cadence", [
+                    "The site re-checks every 2.5 hours: new offers are found and verified against the official "
+                    "page, and entries ending within 7 days are flagged separately. Expired offers are moved to "
+                    "the archive rather than deleted, so their links keep working.",
+                ]),
+                ("Submissions and corrections", [
+                    "If you spot a new offer, or an entry that is wrong or has a dead link, write to "
+                    "vvotzs@gmail.com or use the Submit button on the home page.",
+                    "Every submission is checked against the official page before it is listed, and the source "
+                    "line says it came from a reader. All we need is a name, a link, and optionally the region "
+                    "and a short note; no account details.",
+                ]),
+            ],
+        },
+    },
+    "privacy": {
+        "zh": {
+            "title": "隐私政策 · 羊毛情报局",
+            "desc": (
+                "羊毛情报局是纯静态站点：没有账号、没有登录、也没有后端数据库，投稿只收名称、链接、地区与说明。"
+                "页面说明统计与 Google AdSense 广告 Cookie 的用法、如何关闭个性化广告，以及联系邮箱。"
+                "投递的记录可随时来信删除，不用于广告画像。"
+            ),
+            "h1": "隐私政策",
+            "lead": "本站是纯静态站点：没有账号、没有后端存储；页面里的 Cookie 只来自统计与广告。",
+            "sections": [
+                ("本站不收集登录信息", [
+                    "羊毛情报局是纯静态站点：没有账号、没有登录，也没有后端数据库。所有页面在发布前就构建成 HTML，"
+                    "浏览本站不需要注册，也不需要提交任何个人信息。",
+                ]),
+                ("统计与广告 Cookie", [
+                    "我们不用自有 Cookie 记录你的身份。为了解访问量、改进内容，可能接入 Google Analytics；"
+                    "如果站内投放 Google AdSense 广告，Google 及其合作伙伴会通过 Cookie 或类似技术，根据你此前"
+                    "对本站或其他网站的访问来投放广告，并收集匿名的访问数据（页面、来源、设备类型与大致地区）。",
+                    "你可以在 Google 广告设置（google.com/settings/ads）里停用个性化广告，或在浏览器里清除、"
+                    "禁用 Cookie；这不会影响你阅读本站内容。",
+                ]),
+                ("投稿信息", [
+                    "通过投稿表单或邮件投稿时，我们只会收到你填写的名称、链接、地区、说明，以及发件邮箱。这些信息"
+                    "仅用于核验活动和必要时联系你，不会公开你的邮箱，也不会用于广告画像。想删除已投稿的记录，"
+                    "来信告知即可。",
+                ]),
+                ("外部链接", [
+                    "站内链接指向品牌官网或社区原帖，这些网站的隐私做法由它们自己负责，请查看各自的隐私政策。",
+                ]),
+                ("联系", [
+                    "隐私相关的问题请写信到 vvotzs@gmail.com。",
+                ]),
+            ],
+        },
+        "en": {
+            "title": "Privacy policy · Deal Hunter",
+            "desc": (
+                "Deal Hunter is a static site with no accounts and no backend. This page covers analytics and "
+                "AdSense cookies, personalised ads and the contact address."
+            ),
+            "h1": "Privacy policy",
+            "lead": "This is a static site: no accounts and no server-side storage; the only cookies come from "
+                    "analytics and ads.",
+            "sections": [
+                ("No sign-in data", [
+                    "Deal Hunter is a static site: there are no accounts, no sign-in and no backend database. "
+                    "Every page is built as plain HTML before publishing, so reading the site needs no sign-up "
+                    "and no personal details.",
+                ]),
+                ("Analytics and advertising cookies", [
+                    "We set no cookies of our own to identify you. To understand traffic and improve the site we "
+                    "may use Google Analytics; if Google AdSense ads run here, Google and its partners may use "
+                    "cookies or similar technologies to serve ads based on your earlier visits to this or other "
+                    "websites, and may collect anonymous data such as page, referrer, device type and rough region.",
+                    "You can turn off personalised advertising in Google Ads Settings (google.com/settings/ads), "
+                    "or clear or block cookies in your browser. Either way the site stays readable.",
+                ]),
+                ("Submissions", [
+                    "When you submit an offer through the form or by email, we receive only the name, link, region "
+                    "and note you enter, plus your sending address. That is used to verify the offer and to reply "
+                    "if needed; your address is never published and never used for ad profiling. Ask us to delete "
+                    "a past submission and we will.",
+                ]),
+                ("External links", [
+                    "Links here point to brand sites or community posts. Their privacy practices are their own; "
+                    "please read their policies.",
+                ]),
+                ("Contact", [
+                    "Privacy questions: vvotzs@gmail.com.",
+                ]),
+            ],
+        },
+    },
+    "disclosure": {
+        "zh": {
+            "title": "链接与收录披露 · 羊毛情报局",
+            "desc": (
+                "羊毛情报局的链接与收录规则：主链接指向官方活动页，社区原帖只作「原文」参考；目前没有自有推广或"
+                "返佣链接，如出现合作链接会明确标注并加 rel=sponsored，投稿里的推荐码不会被采用。"
+                "所有金额、资格、截止时间与发放条件都以品牌官网条款为准。"
+            ),
+            "h1": "链接与收录披露",
+            "lead": "主链接永远指向官方活动页；社区邀请码与推荐链接不会被当成「原文链接」。",
+            "sections": [
+                ("收录与链接", [
+                    "站内条目的主链接是官方活动页。如果活动最早来自社区（论坛、Reddit、X 等），会额外给一个"
+                    "「原文链接」指向那条原帖，方便你核对信息出处。",
+                ]),
+                ("合作与推广链接", [
+                    "目前本站没有与任何品牌的自有推广或返佣链接。今后如出现合作、返佣或推广链接，会在条目里"
+                    "明确标注「合作 / 推广」，并在链接上加 rel=\"sponsored\"；没有标注的条目，就代表我们与"
+                    "品牌方没有报酬关系。",
+                ]),
+                ("邀请与推荐码", [
+                    "他人在社区分享的邀请码、推荐链接（例如某位投稿人自己的推荐码）不会被当作本站的「原文链接」"
+                    "使用，条目只链官方页面；投稿里的推荐码不会被采用。",
+                ]),
+                ("金额与条款", [
+                    "所有金额、资格、截止时间与发放条件都以品牌官网的条款为准。我们尽力核验，但不构成任何承诺，"
+                    "活动可能随时调整或提前结束。",
+                ]),
+                ("纠错", [
+                    "发现条目有误或链接失效，来信 vvotzs@gmail.com。",
+                ]),
+            ],
+        },
+        "en": {
+            "title": "Links and listing disclosure · Deal Hunter",
+            "desc": (
+                "How Deal Hunter links offers: the main link is the official page, community threads are only "
+                "a source reference, and any partner link is labelled sponsored."
+            ),
+            "h1": "Links and listing disclosure",
+            "lead": "The main link always goes to the official offer page; invite codes from the community are "
+                    "never used as a source link.",
+            "sections": [
+                ("Linking", [
+                    "The main link on every entry is the official offer page. If the offer first appeared in a "
+                    "community thread (a forum, Reddit, X), a second link points to that original post so you can "
+                    "check where the information came from.",
+                ]),
+                ("Partner and paid links", [
+                    "There are currently no affiliate or partner links of our own to any brand. If a partner, "
+                    "referral or paid link appears later, it will be labelled as such in the entry and marked "
+                    "rel=\"sponsored\". An entry without that label means we are paid nothing by the brand.",
+                ]),
+                ("Invite and referral codes", [
+                    "Invite codes and referral links shared by other people, such as a submitter's own code, are "
+                    "never used as the source link, and codes inside submissions are not adopted. Entries link to "
+                    "the official page.",
+                ]),
+                ("Amounts and terms", [
+                    "Amounts, eligibility, deadlines and payout conditions follow the brand's own terms. We check "
+                    "them carefully but promise nothing, and an offer can change or end early.",
+                ]),
+                ("Corrections", [
+                    "Spotted an error or a dead link? Write to vvotzs@gmail.com.",
+                ]),
+            ],
+        },
+    },
+}
+
+# 页脚那一行极简文字链接的顺序：(页面 slug, 文案 key)
+LEGAL_LINKS = (("about", "legal_about"), ("privacy", "legal_privacy"), ("disclosure", "legal_disclosure"))
 
 _MON = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 
@@ -392,11 +627,40 @@ def upair(key: str, **fmt) -> tuple[str, str]:
     return (zh.format(**fmt), en.format(**fmt)) if fmt else (zh, en)
 
 
+# 英文页里的全角标点：译文难免从中文站点抄来「（ ）」「；」「，」，在英文页上很扎眼，
+# 读英文数据时统一换成半角（只换标点，不动数字与字母）。check_en_pages() 会在构建产物上
+# 复核一遍，漏网的立刻停下构建。
+_FW_PUNCT = str.maketrans({
+    "（": "(", "）": ")", "【": "[", "】": "]", "《": '"', "》": '"',
+    "「": '"', "」": '"', "『": '"', "』": '"',
+    "，": ",", "。": ".", "、": ",", "：": ":", "；": ";",
+    "！": "!", "？": "?", "“": '"', "”": '"', "‘": "'", "’": "'",
+    "　": " ", "％": "%", "＋": "+", "－": "-", "／": "/", "～": "~",
+    "￥": "¥",
+})
+
+
+def _ascii_punct(value: object) -> object:
+    if isinstance(value, str):
+        return value.translate(_FW_PUNCT)
+    if isinstance(value, list):
+        return [_ascii_punct(v) for v in value]
+    if isinstance(value, dict):
+        return {k: _ascii_punct(v) for k, v in value.items()}
+    return value
+
+
+def ascii_punct(value: object) -> object:
+    """英文页用：全角标点换成半角（数字与字母不动）。"""
+    return _ascii_punct(value)
+
+
 def load_en() -> dict:
-    """读 data/deals_en.json：{id: {title, highlight, regions, value, content, conditions, steps, risk, source}}"""
+    """读 data/deals_en.json：{id: {title, brand_en, highlight, regions, value, content, ...}}"""
     if not EN_DATA.exists():
         return {}
-    return json.loads(EN_DATA.read_text(encoding="utf-8"))
+    data = json.loads(EN_DATA.read_text(encoding="utf-8"))
+    return {key: _ascii_punct(item) for key, item in data.items()}
 
 
 def save_en(data: dict) -> None:

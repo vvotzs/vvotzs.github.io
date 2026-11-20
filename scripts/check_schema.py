@@ -108,6 +108,12 @@ def check_jsonld(root: Path = ROOT, expected_howto: dict[str, bool] | None = Non
             pages.append(p)
     for pattern in ("d/*/index.html", "en/d/*/index.html", "category/*/index.html", "en/category/*/index.html"):
         pages += sorted(root.glob(pattern))
+    # 合规页：/about/ /privacy/ /disclosure/ 与 /en/ 下的三份
+    for slug in ("about", "privacy", "disclosure"):
+        for rel in (f"{slug}/index.html", f"en/{slug}/index.html"):
+            p = root / rel
+            if p.exists():
+                pages.append(p)
 
     if not pages:
         return ["没有找到任何 HTML 产物（先跑 build_site.py）"]
@@ -148,6 +154,13 @@ def check_jsonld(root: Path = ROOT, expected_howto: dict[str, bool] | None = Non
                 errors += [f"{rel}：{msg}" for msg in _howto_errors(howto)]
             if "BreadcrumbList" not in types:
                 errors.append(f"{rel}：缺 BreadcrumbList")
+        elif rel.split("/")[0] in ("about", "privacy", "disclosure") or (
+            rel.startswith("en/") and rel.split("/")[1] in ("about", "privacy", "disclosure")
+        ):
+            # 合规页只要一段 WebPage + BreadcrumbList（没有列表、没有 Offer）
+            for wanted in ("WebPage", "BreadcrumbList"):
+                if wanted not in types:
+                    errors.append(f"{rel}：缺 {wanted}")
         elif "/category/" in rel or rel.startswith("category/"):
             for wanted in ("CollectionPage", "ItemList", "BreadcrumbList"):
                 if wanted not in types:

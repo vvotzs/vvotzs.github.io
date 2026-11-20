@@ -332,7 +332,7 @@
       "把工资或政府福利直存改到该账户，75 天内累计两笔、每笔 $500 以上",
       "直存期结束后留意奖励入账（最长再等 60 天），不要在入账前关户"
     ],
-    "url": "https://www.capitalone.com/bank/checking-accounts/360-checking/",
+    "url": "https://www.capitalone.com/bank/checking-accounts/online-checking-account/",
     "source": "Capital One 官方 360 Checking 奖励条款（MAKE400 截止 2026-12-09 23:59 美东、75 天内两笔 $500 直存）+ 美卡论坛 2026-10-29 起公开链接隐身开户成功的实测帖（2026-11-17 仍在讨论）",
     "risk": "Capital One 对直存描述（payroll descriptor）判定较严，第三方转账可能不算；两笔 $500 要在 75 天内完成，奖励最慢 135 天才到；2024-01-01 后持有过其任何支票户即失去资格；官方写明 offer 仅面向原收件人，转发的链接可能被判无效；奖励按利息报税。",
     "status": "active",
@@ -418,7 +418,7 @@
     "verified": true,
     "last_verified": "2026-11-19",
     "added": "2026-11-18",
-    "content": "新客户开立 Chase Total Checking 并用优惠券代码登记，90 天内完成 $1,000 以上工资/政府类直接存款，即可获得 $400 奖励，达标后 15 天内入账。账户月费 $15，可通过每月 $1,000 直存或其他条件免除。",
+    "content": "新客户开立 Chase Total Checking 并用优惠券代码登记，90 天内完成 $1,000 以上工资/政府类直接存款即达标。账户月费 $15，可通过每月 $1,000 直存或其他条件免除。",
     "conditions": "仅限新 Chase 支票客户（90 天内关过户或 3 年内负余额关户者不符合）；两年内只能领一次开户奖励；直存不含 Zelle、转账、支票存入。",
     "steps": [
       "在活动页填写邮箱获取优惠券代码",
@@ -2105,8 +2105,7 @@
       "首笔 ≥$300 工资到账后约 7 个工作日查 App 内的奖励；想叠首笔汇款优惠就在同一会话里先转一笔"
     ],
     "url": "https://www.remitly.com/us/en/landing/remitly-card",
-    "source_url": "https://www.remitly.com/r/2r22h752",
-    "source": "Remitly Global Card 官方落地页与 Direct Deposit Promotional Terms（2026-11 版）+ 官方新闻稿（2026-07-30 发卡、2026-09-29 工资直入）+ 访客投稿邮件（2026-11-19 23:28）",
+    "source": "Remitly Global Card 官方落地页与 Direct Deposit Promotional Terms（2026-11 版）+ 官方新闻稿（2026-07-30 发卡、2026-09-29 工资直入）+ 访客投稿邮件（2026-11-19 23:28；投稿附带的邀请链接含推荐码，不采用，主按钮改指官方落地页）",
     "risk": "只在美国且要邀请；是否算合规 DD 由 Remitly 全权判断，用转账冒充会拿不到奖励；奖励金额官方未写死；首笔汇款减免与站内 [多区] Remitly $20 条目可能重叠，别重复算；卡不是银行账户，没有存款保险之外的传统银行权益。",
     "added_at": "2026-11-20T01:14:00+08:00",
     "verified": true,
@@ -2230,8 +2229,7 @@
       "持有期内提交 W-8BEN，之后在下一个月末收到免费股票"
     ],
     "url": "https://www.ig.com/uk/about-us/refer-a-friend-terms-and-conditions-freeshare",
-    "source_url": "https://redlib.catsarch.com/r/beermoneyuk/comments/1y05bti/ig_uk_investment_platform_get_a_501000_free_share/",
-    "source": "IG 官方推荐条款（2026-11-19 核验）+ r/beermoneyuk 原帖",
+    "source": "IG 官方推荐条款与免费股票概率表（2026-11-19 核验）+ r/beermoneyuk 公开实测讨论（原帖已被版主按发帖频率规则删除，只作线索；结论以官方条款为准）",
     "risk": "70% 概率只拿 £50–£70；股票以美元计价、有汇率与行情波动，卖出前价值可能低于面值；£1,000 要压 3 个月，资金占用成本可能高于奖励；漏交 W-8BEN 直接没有奖励。",
     "added_at": "2026-11-19T21:31:40+08:00",
     "verified": true,
@@ -5350,7 +5348,7 @@
       "用 Monzo 卡完成一笔任意金额消费，奖励随即入账"
     ],
     "url": "https://monzo.com/refer-a-friend",
-    "source_url": "https://redlib.catsarch.com/r/beermoneyuk/comments/1y07z4j/easy_instant_550_takes_5_mins/",
+    "source_url": "https://www.reddit.com/r/beermoneyuk/comments/1y07z4j/easy_instant_550_takes_5_mins/",
     "source": "Monzo 官方 Refer a Friend 页与推荐条款（v4.0 / 2026-08-13、v1.1 / 2026-10-29，2026-11-19 核验）+ r/beermoneyuk 原帖",
     "risk": "金额随机且逐批变化，可能只有 £5，部分邀请干脆没有奖励；必须先点链接再注册，否则无法匹配；已有 Monzo 账户的老用户不适用。",
     "added_at": "2026-11-19T21:32:20+08:00",
@@ -5716,7 +5714,7 @@
     "regions": "[全球] 除中国大陆（官方条款明确不向 Mainland China 用户提供）",
     "start": "",
     "end": "",
-    "content": "HPC-AI.COM 上线 Model APIs：一套 OpenAI 兼容接口访问 Kimi K2.5、MiniMax M2.5 等 20 余款热门开源模型，官方发布时给所有用户 $2 免费额度，用邀请码 `HPCAI-MAPI` 注册总额度 $4（是总额度，不是叠加）。按 MiniMax 2.5 的价格折算，$2 大约等于 430 万输入 + 107 万输出 token，够跑完一个上万行代码量的中等项目。\n\n接入方式：BaseURL `https://api.hpc-ai.com/inference/v1`，OpenAI SDK / Codex CLI 都能配。首充前为 L0：5 请求/分钟/账号/模型，标准模型另有 200 万 tokens/分钟上限；消费本身不会把账号升到 L1。",
+    "content": "官方发布时给所有用户 $2 免费额度，用邀请码 `HPCAI-MAPI` 注册总额度 $4（是总额度，不是叠加）；接口是 OpenAI 兼容的 Model APIs，一套 key 就能切 20 余款热门开源模型。按 MiniMax 2.5 的价格折算，$2 大约等于 430 万输入 + 107 万输出 token，够跑完一个上万行代码量的中等项目。\n\n接入方式：BaseURL `https://api.hpc-ai.com/inference/v1`，OpenAI SDK / Codex CLI 都能配。首充前为 L0：5 请求/分钟/账号/模型，标准模型另有 200 万 tokens/分钟上限；消费本身不会把账号升到 L1。",
     "conditions": "需注册并创建 API Key；$2 每账号一次性、邀请码总额度 $4；官方写「赠额有限」，用完为止；未公布额度有效期；不向中国大陆提供；Claude Opus 4.6 在 L0 有更高 tokens/分钟，DeepSeek V4 Pro 的 L0 RPM 为 0。",
     "steps": [
       "到 hpc-ai.com/models-console 注册（注册时填邀请码 HPCAI-MAPI）",

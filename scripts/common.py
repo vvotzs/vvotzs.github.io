@@ -42,6 +42,9 @@ DEALS_DIR_EN = ROOT / "en" / "d"
 CATEGORY_DIR = ROOT / "category"
 CATEGORY_DIR_EN = ROOT / "en" / "category"
 
+# 合规页（AdSense 审核要求）：中文 /about/，英文 /en/about/；slug 见 i18n.LEGAL_PAGES
+LEGAL_SLUGS = ("about", "privacy", "disclosure")
+
 
 def deal_path(deal_id: str, lang: str = "zh") -> str:
     """条目的站内相对路径（不带开头的斜杠）：`d/<id>/` 或 `en/d/<id>/`。"""
@@ -113,6 +116,14 @@ def write_sitemap(deals: list[dict], today: date | None = None) -> Path:
         alts = [("zh-Hans", zh), ("en", en), ("x-default", zh)]
         add(zh, alts, cat_last, "daily", "0.9")
         add(en, alts, cat_last, "daily", "0.7")
+
+    # 合规页：about / privacy / disclosure 中英各一份，lastmod 用相同的更新日
+    for slug in LEGAL_SLUGS:
+        zh = SITE_URL + slug + "/"
+        en = SITE_URL + "en/" + slug + "/"
+        alts = [("zh-CN", zh), ("en", en), ("x-default", zh)]
+        add(zh, alts, today_iso, "monthly", "0.4")
+        add(en, alts, today_iso, "monthly", "0.3")
 
     for deal in deals:
         deal_id = str(deal.get("id") or "").strip()
