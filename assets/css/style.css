@@ -305,8 +305,8 @@ a.stats-pill:active{ transform: translateY(0); }
   box-shadow: 0 0 0 3px rgba(245,158,11,.18);
 }
 
-/* 首屏行内的 TG 群徽标：上 Telegram 蓝圆纸飞机、下三人小群（中间亮蓝、两侧纯黑），
-   上下叠放、没有外围胶囊，整枚都是 SVG、没有可见文字。
+/* 首屏行内的 TG 群徽标：黑曜石正圆 + 金属流金外环 + 居中一枚立体黑金纸飞机（亮面 / 暗面 / 尾翼），
+   整枚都是 SVG、没有可见文字。
    盒子只占「标语行高」（桌面 18.2px / 手机 15.9px），徽标本体是 20px / 18px 的正圆，
    用绝对定位垂直居中、上下各溢出约 1px 落在 .hero 的留白里 —— 所以这一行的高度与改动前完全一致。 */
 .hero-tg{
@@ -1218,13 +1218,12 @@ html.js .pager-bar{ display: flex; }
   box-shadow: 0 8px 18px -10px rgba(4,120,87,.8), inset 0 1px 0 rgba(255,255,255,.22);
 }
 .rail a.active svg{ color: #FFFFFF; }
-/* 「发现」一格：动感多舌叠层烈焰（四层颜色 --fl-1…--fl-4 由 symbol 内部读取）。
-   未选中时是整条滑轨里唯一的饱和暖色；选中态（上面那层实心薄荷绿）切成白 / 浅薄荷，
-   白描边把火舌边缘和绿底隔开，缩小到 16px 也不糊。 */
-.rail a[data-target="hot"]{ --fl-1: #FF3D17; --fl-2: #FF981A; --fl-3: #FFE234; --fl-4: #FFF5A8; }
-.rail a[data-target="hot"]:hover{ --fl-1: #FF5A2E; --fl-2: #FFA93A; --fl-3: #FFE96A; --fl-4: #FFFBD0; }
-.rail a[data-target="hot"].active{ --fl-1: #FFFFFF; --fl-2: #A7F3D0; --fl-3: #FFFFFF; --fl-4: #34D399; }
-/* 火焰比其它图标大 1–2px，火舌才看得清 */
+/* 「发现」一格：Google Trends 风格四色上升折线箭头（三段折线 + 实心箭头，
+   颜色由 symbol 内部读取 --tr-1…--tr-4）。未选中时是整条滑轨里唯一的多彩图标；
+   选中态（上面那层实心薄荷绿）整枚切成纯白，绿底上依然锐利，缩小到 16px 也不糊。 */
+.rail a[data-target="hot"]{ --tr-1: #4285F4; --tr-2: #EA4335; --tr-3: #FBBC05; --tr-4: #34A853; }
+.rail a[data-target="hot"].active{ --tr-1: #FFFFFF; --tr-2: #FFFFFF; --tr-3: #FFFFFF; --tr-4: #FFFFFF; }
+/* 折线箭头比其它图标大 1–2px，四段颜色才分得开 */
 .rail a[data-target="hot"] svg{ width: 17px; height: 17px; }
 /* 滑轨容器本身也不做过渡 */
 .rail{ transition: none; }

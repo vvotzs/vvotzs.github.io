@@ -91,17 +91,15 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
     # 新收录：暖色火苗
     "today": (24, '<path d="M12 2.9c2.9 3.1 4.6 5.7 4.6 8.5a4.6 4.6 0 1 1-9.2 0c0-2.8 1.7-5.4 4.6-8.5Z" fill="#FDBA74"/>'
                   '<path d="M12 9.4c1.3 1.5 2 2.7 2 4a2 2 0 1 1-4 0c0-1.3.7-2.5 2-4Z" fill="#FEF3C7"/>', 1.9),
-    # 发现（滑轨唯一的热榜入口）：动感多舌叠层烈焰——外层鲜红、中层亮橘、内层明黄、内芯浅黄，
-    # 左侧再点一颗小火星。四层颜色走 --fl-1 … --fl-4 四个变量，一个 symbol 就能兼顾
-    # 「未选中一眼鲜亮」与「选中态（薄荷绿实心底）白 / 浅薄荷高对比」。
-    "flame": (24, '<g stroke="none">'
-                  '<path fill="var(--fl-1,#FF3D17)" d="M12 21.9C7.9 21.9 5.1 18.9 5.1 15.2c0-2.3 .9-4.1 2-5.9 -.1 1.5 .4 2.5 1.3 3 -.1-2.3 .8-4.7 2.2-6.5 0 1.6 .7 2.7 1.6 3.3 -.2-3 .6-5.2 2-6.4 .4 2 1.2 3.6 2 5.2 .8 1.5 1.4 3.3 1.4 5.4 .6-.6 1-1.2 1.2-1.8 .5 2.2 .1 5.6-1.6 7.8C16 21 14.1 21.9 12 21.9Z"/>'
-                  '<path fill="var(--fl-2,#FF981A)" transform="translate(11.8 22) scale(.72) translate(-12 -22)" d="M12 21.9C7.9 21.9 5.1 18.9 5.1 15.2c0-2.3 .9-4.1 2-5.9 -.1 1.5 .4 2.5 1.3 3 -.1-2.3 .8-4.7 2.2-6.5 0 1.6 .7 2.7 1.6 3.3 -.2-3 .6-5.2 2-6.4 .4 2 1.2 3.6 2 5.2 .8 1.5 1.4 3.3 1.4 5.4 .6-.6 1-1.2 1.2-1.8 .5 2.2 .1 5.6-1.6 7.8C16 21 14.1 21.9 12 21.9Z"/>'
-                  '<path fill="var(--fl-3,#FFE234)" transform="translate(12.1 22) scale(.5) translate(-12 -22)" d="M12 21.9C7.9 21.9 5.1 18.9 5.1 15.2c0-2.3 .9-4.1 2-5.9 -.1 1.5 .4 2.5 1.3 3 -.1-2.3 .8-4.7 2.2-6.5 0 1.6 .7 2.7 1.6 3.3 -.2-3 .6-5.2 2-6.4 .4 2 1.2 3.6 2 5.2 .8 1.5 1.4 3.3 1.4 5.4 .6-.6 1-1.2 1.2-1.8 .5 2.2 .1 5.6-1.6 7.8C16 21 14.1 21.9 12 21.9Z"/>'
-                  '<path fill="var(--fl-4,#FFF5A8)" transform="translate(12 22) scale(.3) translate(-12 -22)" d="M12 21.9C7.9 21.9 5.1 18.9 5.1 15.2c0-2.3 .9-4.1 2-5.9 -.1 1.5 .4 2.5 1.3 3 -.1-2.3 .8-4.7 2.2-6.5 0 1.6 .7 2.7 1.6 3.3 -.2-3 .6-5.2 2-6.4 .4 2 1.2 3.6 2 5.2 .8 1.5 1.4 3.3 1.4 5.4 .6-.6 1-1.2 1.2-1.8 .5 2.2 .1 5.6-1.6 7.8C16 21 14.1 21.9 12 21.9Z"/>'
-                  '<path fill="var(--fl-1,#FF3D17)" d="M5.3 9.6c.7.5 .9 1.4 .4 2.1 -.5 .7 -1.4 .9 -2.1 .4 '
-                  '-.7 -.5 -.9 -1.4 -.4 -2.1 .5 -.7 1.4 -.9 2.1 -.4Z"/>'
-                  '</g>', 1.9),
+    # 发现（滑轨唯一的热榜入口）：Google Trends 风格的四色上升折线箭头——
+    # 蓝 #4285F4 上升段 → 红 #EA4335 下折段 → 黄 #FBBC05 上升段 → 绿 #34A853 实心箭头。
+    # 三段折线各 3.6 的粗描边、圆头圆角，17px 下每段仍是清楚的色块；颜色全走
+    # --tr-1 … --tr-4 四个变量，选中态（薄荷绿实心底）整枚切成纯白，对比拉满。
+    "trends": (24, '<path d="M3.3 18.4 7.7 14.0" stroke="var(--tr-1,#4285F4)" stroke-width="3.6"/>'
+                   '<path d="M7.7 14.0 11.0 17.3" stroke="var(--tr-2,#EA4335)" stroke-width="3.6"/>'
+                   '<path d="M11.0 17.3 17.4 10.9" stroke="var(--tr-3,#FBBC05)" stroke-width="3.6"/>'
+                   '<path d="M22.0 6.5 20.58 12.16 16.34 7.92Z" fill="var(--tr-4,#34A853)" stroke="none"/>',
+             1.9),
     # 榜单：奖杯
     "rank": (24, '<path d="M7.6 3.5h8.8v4.9a4.4 4.4 0 0 1-8.8 0V3.5Z" fill="#FCD34D"/>'
                  '<path d="M7.6 5.1H5.1a2.6 2.6 0 0 0 2.6 4.6"/>'
@@ -238,23 +236,58 @@ def telegram_svg(cls: str = "") -> str:
 # 剪影与蓝底之间留一道极细的底色缝隙，底部贴合正圆内弧。整枚 SVG 没有可见文字，
 # 语义由外层的 aria-label 与 title 承担。1:1 正圆，双端只改边长（手机 18px / 桌面 20px）。
 def hero_tg_badge() -> str:
+    """首屏 TG 群徽标：黑曜石正圆 + 金属流金外环 + 立体黑金纸飞机（全矢量，18/20px 下仍清晰）。
+
+    分层（由外到内）：暗色外缘高光描边 → 奥石渐变底 → 流金环 → 深色内阴影 → 内盘 →
+    三面纸飞机（亮面 / 暗面 / 尾翼 + 折痕线与投影）。渐变 id 统一 `hero-tg-` 前缀，
+    避免与页面其它 SVG（页头页脚 Pickle 精灵等）撞名。
+    """
     return (
         '<svg class="hero-tg-b" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
-        '<defs><clipPath id="hero-tg-clip"><circle cx="12" cy="12" r="11.4"/></clipPath></defs>'
-        '<circle cx="12" cy="12" r="12" fill="#0A8CFF"/>'
-        '<g clip-path="url(#hero-tg-clip)">'
-        '<circle cx="6.95" cy="15.3" r="1.95" fill="#000000"/>'
-        '<path fill="#000000" d="M3.4 20.6v-.4a3.7 3.7 0 0 1 7.4 0v.4Z"/>'
-        '<circle cx="17.05" cy="15.3" r="1.95" fill="#000000"/>'
-        '<path fill="#000000" d="M13.2 20.6v-.4a3.7 3.7 0 0 1 7.4 0v.4Z"/>'
-        '<circle cx="12" cy="15.9" r="2.1" fill="#0044FF" stroke="#0A8CFF" stroke-width="1"/>'
-        '<path fill="#0044FF" stroke="#0A8CFF" stroke-width="1"'
-        ' d="M7.6 22.2c0-2.1 1.9-3.5 4.4-3.5s4.4 1.4 4.4 3.5Z"/>'
-        '</g>'
-        '<path fill="#fff" transform="translate(12 7.9) scale(1.1) translate(-11.75 -12.6)"'
-        ' d="m16.62 9.06-1.53 7.2c-.11.51-.42.63-.85.39l-2.34-1.73-1.13 1.09c-.13.13-.24.24-.48.24'
-        'l.17-2.4 4.38-3.95c.19-.17-.04-.27-.29-.1l-5.41 3.41-2.33-.73c-.5-.16-.51-.5.11-.74'
-        'l9.11-3.51c.42-.15.79.1.65.83z"/>'
+        '<defs>'
+        '<radialGradient id="hero-tg-obs" cx="36%" cy="26%" r="86%">'
+        '<stop offset="0" stop-color="#474A55"/><stop offset=".42" stop-color="#25272D"/>'
+        '<stop offset="1" stop-color="#0B0C0F"/></radialGradient>'
+        '<linearGradient id="hero-tg-rim" x1=".25" y1="0" x2=".75" y2="1">'
+        '<stop offset="0" stop-color="#9A9EA8"/><stop offset=".4" stop-color="#31343C"/>'
+        '<stop offset="1" stop-color="#0A0B0D"/></linearGradient>'
+        '<linearGradient id="hero-tg-ring" x1=".12" y1=".04" x2=".86" y2=".98">'
+        '<stop offset="0" stop-color="#FFFBDF"/><stop offset=".16" stop-color="#FDE9A0"/>'
+        '<stop offset=".34" stop-color="#F7CE58"/><stop offset=".52" stop-color="#E3AC2E"/>'
+        '<stop offset=".66" stop-color="#B8770F"/><stop offset=".8" stop-color="#EBBC3E"/>'
+        '<stop offset="1" stop-color="#FFF6CC"/></linearGradient>'
+        '<radialGradient id="hero-tg-in" cx="38%" cy="24%" r="84%">'
+        '<stop offset="0" stop-color="#30333B"/><stop offset=".45" stop-color="#181A1F"/>'
+        '<stop offset="1" stop-color="#07080A"/></radialGradient>'
+        '<linearGradient id="hero-tg-face" x1=".08" y1=".92" x2=".88" y2=".12">'
+        '<stop offset="0" stop-color="#EFB93B"/><stop offset=".4" stop-color="#FFE595"/>'
+        '<stop offset=".75" stop-color="#FFF9D4"/><stop offset="1" stop-color="#FFFEF4"/></linearGradient>'
+        '<linearGradient id="hero-tg-side" x1=".3" y1="0" x2=".55" y2="1">'
+        '<stop offset="0" stop-color="#FBD372"/><stop offset=".38" stop-color="#DFA227"/>'
+        '<stop offset=".72" stop-color="#B3730F"/><stop offset="1" stop-color="#7E4C09"/></linearGradient>'
+        '<linearGradient id="hero-tg-tail" x1=".15" y1="0" x2=".75" y2="1">'
+        '<stop offset="0" stop-color="#FFE79B"/><stop offset=".45" stop-color="#EDB934"/>'
+        '<stop offset="1" stop-color="#A96C0F"/></linearGradient>'
+        '</defs>'
+        # 圆盘：外缘暗高光 + 黑曜石渐变
+        '<circle cx="12" cy="12" r="11.9" fill="url(#hero-tg-obs)"/>'
+        '<circle cx="12" cy="12" r="11.45" fill="none" stroke="url(#hero-tg-rim)" stroke-width="1.1"/>'
+        # 流金外环 + 内侧压边阴影 + 内盘
+        '<circle cx="12" cy="12" r="10.45" fill="none" stroke="url(#hero-tg-ring)" stroke-width="1.62"/>'
+        '<circle cx="12" cy="12" r="9.72" fill="none" stroke="#000" stroke-opacity=".55" stroke-width=".55"/>'
+        '<circle cx="12" cy="12" r="9.7" fill="url(#hero-tg-in)"/>'
+        # 纸飞机：投影 → 亮面（A-N-C）→ 暗面（N-R-C）→ 尾翼（C-R-B）→ 折痕
+        '<polygon points="4.97,10.86 18.75,6.59 14.85,17.23 9.53,18.56 11.24,13.90"'
+        ' fill="#000" opacity=".5" transform="translate(.45 .6)"/>'
+        '<polygon points="4.97,10.86 18.75,6.59 11.24,13.90" fill="url(#hero-tg-face)"/>'
+        '<polygon points="18.75,6.59 14.85,17.23 11.24,13.90" fill="url(#hero-tg-side)"/>'
+        '<polygon points="11.24,13.90 14.85,17.23 9.53,18.56" fill="url(#hero-tg-tail)"/>'
+        '<polyline points="18.75,6.59 11.24,13.90" fill="none" stroke="#6B4008"'
+        ' stroke-opacity=".75" stroke-width=".34"/>'
+        '<polyline points="11.24,13.90 14.85,17.23" fill="none" stroke="#6B4008"'
+        ' stroke-opacity=".5" stroke-width=".28"/>'
+        '<polyline points="4.97,10.86 18.75,6.59" fill="none" stroke="#FFFBE0"'
+        ' stroke-opacity=".55" stroke-width=".26"/>'
         '</svg>'
     )
 
@@ -292,7 +325,7 @@ def mascot_svg(cls: str = "", gid: str = "mintBody") -> str:
 # 右侧滑轨：新收录 / 高价值榜 / 即将截止 三块板同在页面顶部的一个聚合看板里，
 # 合成一个「发现」锚点指向 .hot-board 顶部（#hot），放在原来「新收录」的位置。
 NAV = [
-    ("hot", "nav_hot", "flame"),
+    ("hot", "nav_hot", "trends"),
     ("ai", "nav_ai", "ai"),
     ("crypto", "nav_crypto", "crypto"),
     ("bank", "nav_bank", "bank"),
