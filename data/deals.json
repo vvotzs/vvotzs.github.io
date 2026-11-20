@@ -5592,7 +5592,7 @@
       "BaseURL 填 https://api.hpc-ai.com/inference/v1，模型填 moonshotai/kimi-k2.7-code 等可调用 ID"
     ],
     "url": "https://www.hpc-ai.com/model-apis",
-    "source_url": "",
+    "source_url": "https://www.hpc-ai.com/blog/Introducing-Model-API",
     "source": "HPC-AI 官方博客 Introducing Model APIs + Quickstart 与 Rate Limit 文档（2026-11-20 核验）+ awesome-free-ai-coding 探针记录（2026-11-19）+ 访客投稿邮件（2026-11-19 19:49）",
     "risk": "明确不服务中国大陆；赠额有限、用尽即止；免费层速率低（5 RPM），不适合批量任务。",
     "added_at": "2026-11-20T01:07:00+08:00",
@@ -6382,7 +6382,7 @@
       "需要给 Claude Code / Codex 用时接 https://api.keenable.ai/mcp"
     ],
     "url": "https://keenable.ai/pricing",
-    "source_url": "https://keenable.ai/pricing",
+    "source_url": "https://perq.sh/offers/keenable-free",
     "source": "Keenable 官方定价页（2026-11-20 实抓，含 Free 100K requests 与 FAQ）+ perq.sh 目录 2026-11-19 复核",
     "risk": "免费额度按组织算、不累积到下月，用超了直接 402 断服务；搜索结果质量与是否带广告/联盟链接需自行判断，接入 agent 前应抽样核对引用来源；官方条款未标活动截止，额度政策随时可能调整。",
     "added_at": "2026-11-20T05:25:30+08:00",
@@ -6412,7 +6412,7 @@
       "控制台查看剩余分钟，估算长期用量再决定是否付费"
     ],
     "url": "https://docs.ai.neevcloud.com/release-notes/nov-2026-release",
-    "source_url": "https://docs.ai.neevcloud.com/release-notes/nov-2026-release",
+    "source_url": "https://perq.sh/offers/neevcloud-sandbox-free",
     "source": "NeevCloud 官方文档 November 2026 Release 说明（2026-11-20 实抓，原文「1,500 free sandbox minutes every month, for every verified account, no card required」）+ perq.sh 目录 2026-11-19 复核",
     "risk": "免费分钟数按规格加权，跑大规格沙箱会成倍消耗；KYC 需提交个人资料；按月重置、不结转，闲置会自动暂停但暂停前的消耗照算；平台较新，长期稳定性与数据留存策略需自行确认。",
     "added_at": "2026-11-20T05:26:10+08:00",
