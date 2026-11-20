@@ -707,9 +707,15 @@ def value_badge(text: str, lang: str = "zh") -> str:
     t = _tight_value(_VAL_PAREN_RE.sub("", t), lang)
     t = _VAL_CLAUSE_RE.sub("", t)
     t = _VAL_EDGE_RE.sub("", " ".join(t.split()))
-    # 手机端胶囊内容宽约 109px：中文 17 个视觉单位 / 英文 21 个字符以内不截
-    budget = 17 if lang == "zh" else 21
-    if _val_width(t) <= budget:
+    # 英文的「a month / a year」尾巴收成 /mo、/yr（中文那头由下面的「每月→/月」管）
+    t = re.sub(r"\s+(?:a|per)\s+month$", "/mo", t, flags=re.I)
+    t = re.sub(r"\s+(?:a|per)\s+year$", "/yr", t, flags=re.I)
+    t = re.sub(r"\s+(?:a|per)\s+day$", "/day", t, flags=re.I)
+    t = re.sub(r"\s+(?:a|per)\s+week$", "/wk", t, flags=re.I)
+    # 手机端胶囊内容宽约 109px：中文 17 个视觉单位 / 英文 20 个字符以内不截；
+    # 结尾是 /mo、/yr 这种单位后缀时多给 3 个字符的余量
+    budget = 17 if lang == "zh" else 20
+    if _val_width(t) <= budget + (3 if re.search(r"/(?:mo|yr|day|wk|月|年|日|周|晚)$", t) else 0):
         return t
 
     money = _BADGE_MONEY_RE.search(t)
@@ -731,19 +737,22 @@ def value_badge(text: str, lang: str = "zh") -> str:
         if t.startswith(pre):
             t, suffix = t[len(pre):].strip(), suf
             break
-    head = re.split(
-        r"\s*(?:[/／+·]|\b(?:for|on|with|plus|from|after|that|when|and|of|at|to)\b)\s*", t
-    )[0].strip()
-    if head:
-        t = head
-    if _val_width(t) + _val_width(suffix) > budget:  # 还是太长：逐词收到预算内
-        words = t.split(" ")
-        out: list[str] = []
-        for w in words:
-            if out and _val_width(" ".join(out + [w])) + _val_width(suffix) > budget:
-                break
-            out.append(w)
-        t = " ".join(out) or words[0]
+    # 先在符号处分段（「4GB global + 4GB APAC」→「4GB global」），
+    # 再在介词前收住（「… plus 15 GB」→ 前半句）；短句宁可整句留着，不把话说半截
+    for _ in range(2):
+        sym = re.split(r"\s*[/／+·]\s*", t)
+        if len(sym) > 1 and sym[0].strip():
+            t = sym[0].strip()
+            continue
+        if _val_width(t) > 23:
+            cut = re.split(
+                r"\s+\b(?:for|on|with|plus|from|after|that|when|and|of|at|to)\b\s*", t
+            )[0].strip()
+            if cut and cut != t:
+                t = cut
+                continue
+        break
+    # 找不到语义断点就整句留着：宁可胶囊略宽，也不输出「Unlimited for 24」这种半截话
     return _VAL_EDGE_RE.sub("", t) + suffix
 
 
