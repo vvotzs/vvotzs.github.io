@@ -100,6 +100,19 @@ button{ font-family: inherit; }
 /* sprite 里的 <svg> 走 <use> 引用，这里只定基本盒模型 */
 .i{ display: block; flex: none; }
 
+/* ---- 3D 小徽标（已核验蓝盾 / 截止沙漏）---------------------------------
+   两枚 symbol 里用的渐变定义在页面里唯一的 .vdefs 容器：0×0 且绝对定位，
+   不占位、不影响 CLS；不能改成 display:none，否则 Chrome/Android 下 url(#id) 会失效。
+   图标本身是行内排字块，vertical-align 让它与旁边的小字基线对齐。 */
+.vdefs{ position: absolute; width: 0; height: 0; overflow: hidden; }
+.ic3d{
+  display: inline-block;
+  width: 13px; height: 13px;
+  flex: none;
+  vertical-align: -2.5px;
+  margin-right: 3px;
+}
+
 /* 单语页面：/ 只渲染中文、/en/ 只渲染英文，DOM 里不再有成对的双语节点，
    所以这里不再需要 .t-zh / .t-en 的显示开关；语言由 URL 决定，切换是整页跳转。 */
 
@@ -208,6 +221,8 @@ button{ font-family: inherit; }
   font-size: 11.5px;
   letter-spacing: -.01em;
 }
+/* 顶栏「即将截止」胶囊前的 3D 沙漏：比文字略高一点点，但仍在胶囊的 1.45 行高里 */
+.stats-pill .ic3d{ width: 12.5px; height: 12.5px; vertical-align: -2px; margin-right: 2px; }
 .stats-pill.mint{ background: #ECFDF5; border-color: #BBF7D0; color: #065F46; }
 .stats-pill.mint b{ color: #047857; }
 .stats-pill.amber{ background: #FEF3C7; border-color: #FDE68A; color: #92400E; }
@@ -791,6 +806,17 @@ html.js .pager-bar{ display: flex; }
 .detail-tags .dcheck{ margin-left: auto; font-size: 10px; font-weight: 600; white-space: nowrap; }
 .detail-tags .dcheck.ok{ color: var(--mint); }
 .detail-tags .dcheck.wait{ color: var(--ink-4); }
+.detail-tags .dcheck .ic3d{ width: 12.5px; height: 12.5px; vertical-align: -2.5px; margin-right: 2px; }
+
+/* 卡片行内的截止沙漏：只在展开态出现。收起态连占位都没有（display:none），
+   所以首屏行高、行宽、换行位置与原来一模一样。 */
+.deadline .dl-hg{ display: none; }
+.card.open .deadline .dl-hg{
+  display: inline-block;
+  width: 11px; height: 11px;
+  vertical-align: -1.5px;
+  margin-right: 2px;
+}
 
 .field{ min-width: 0; }
 .field.wide{ grid-column: 1 / -1; }
@@ -1225,6 +1251,9 @@ html.js .pager-bar{ display: flex; }
 .rail a[data-target="hot"].active{ --tr-1: #FFFFFF; --tr-2: #FFFFFF; --tr-3: #FFFFFF; --tr-4: #FFFFFF; }
 /* 折线箭头比其它图标大 1–2px，四段颜色才分得开 */
 .rail a[data-target="hot"] svg{ width: 17px; height: 17px; }
+/* 「AI」一格：蓝芯芯片图标；未选中是 #3292FF，选中态（薄荷绿实心胶囊）切成纯白 */
+.rail a[data-target="ai"]{ --ai-ic: #3292FF; }
+.rail a[data-target="ai"].active{ --ai-ic: #FFFFFF; }
 /* 滑轨容器本身也不做过渡 */
 .rail{ transition: none; }
 
@@ -1328,6 +1357,8 @@ html.js .pager-bar{ display: flex; }
 }
 .chips{ display: flex; flex-wrap: wrap; gap: 6px; }
 .chip{
+  display: inline-flex;
+  align-items: center;
   border: 1px solid rgba(28,25,23,.1);
   background: #FFFFFF;
   color: var(--ink-2);
@@ -1344,6 +1375,8 @@ html.js .pager-bar{ display: flex; }
   color: #9A3412;
   font-weight: 600;
 }
+/* 筛选 chip 里的小徽标（蓝盾 / 沙漏）：13px，和 11.8px 的文字同高 */
+.chip .ic3d{ width: 13px; height: 13px; vertical-align: -2.5px; margin-right: 4px; }
 
 .sheet-foot{
   display: flex;
@@ -1486,6 +1519,12 @@ footer{
     gap: 2px;
   }
   .topbar-stats .stats-pill b{ font-size: 10px; }
+  /* 375px 顶栏只够一行：胶囊里的沙漏收到 11px，跟 9.5px 的字同高不溢出 */
+  .topbar-stats .stats-pill .ic3d{
+    width: 11px; height: 11px;
+    vertical-align: -1.5px;
+    margin-right: 1px;
+  }
 
   /* ---- 首屏（h1 在基础样式里已 sr-only，这里只管标语与更新时间的手机排版） ----
      Jun 要求把这一行上下留白再收紧：与顶栏之间只留 3px，与下方标签栏之间只靠 .hot-board 的 1px */
@@ -1623,6 +1662,7 @@ footer{
   .detail-tags .dval-k{ font-size: 8.5px; }
   .detail-tags .dval strong{ font-size: 10px; }
   .detail-tags .dcheck{ font-size: 9.5px; }
+  .detail-tags .dcheck .ic3d{ width: 11.5px; height: 11.5px; vertical-align: -2.5px; margin-right: 2px; }
   .field dt{ font-size: 9px; margin-bottom: 1px; }
   .field dd, .field ol{ font-size: 11.5px; line-height: 1.42; }
   .field ol{ padding-left: 14px; }
@@ -1939,27 +1979,32 @@ html.dialog-open{ overflow: hidden; }
 .sd-tg-i{ width: 14px; height: 14px; flex: none; color: #2AABEE; }
 .sd-tg span{ display: block; }
 
-/* 纸飞机发送：薄荷绿主色，唯一的高饱和色块 */
+/* 明黄圆发送徽标（Jun 的原始 SVG）：它就是按钮的脸，34px 点击热区不变 */
 .sd-send{
   flex: none;
   width: 34px;
   height: 34px;
   margin-left: 20px;      /* 与「交流群」胶囊拉开距离，避免误触 */
+  padding: 0;
   border: 0;
   border-radius: 50%;
-  background: linear-gradient(180deg, #22C55E 0%, #16A34A 100%);
+  background: none;
   color: #FFFFFF;
   display: grid;
   place-items: center;
   cursor: pointer;
-  box-shadow: 0 6px 14px -9px rgba(22,163,74,.95), 0 1px 2px rgba(28,25,23,.06);
+  box-shadow: none;
   transition: transform .15s ease, filter .15s ease;
 }
-.sd-send svg{ width: 17px; height: 17px; fill: currentColor; }
-.sd-send:hover{ filter: brightness(1.05); transform: translateY(-1px); }
-.sd-send:active{ transform: translateY(0); }
-.sd-send:focus-visible{ outline: 2px solid rgba(22,163,74,.55); outline-offset: 2px; }
-.sd-send[disabled]{ opacity: .6; cursor: default; transform: none; }
+.sd-send svg{
+  width: 30px; height: 30px;
+  display: block;
+  filter: drop-shadow(0 3px 6px rgba(160,120,10,.26));
+}
+.sd-send:hover{ filter: brightness(1.04); transform: translateY(-1px); }
+.sd-send:active{ transform: translateY(0) scale(.97); }
+.sd-send:focus-visible{ outline: 2px solid rgba(234,179,8,.75); outline-offset: 2px; }
+.sd-send[disabled]{ opacity: .55; cursor: default; transform: none; filter: grayscale(.3); }
 
 /* 表单区：横线分行，左标签右输入，没有任何输入框边框。
    注意这里是 <div> 不是 <form>（安卓 Chrome 见到 <form> 就会弹自动填充条），
@@ -2273,6 +2318,10 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
 .dp-val{ color: #B45309; font-family: var(--mono); font-size: 12px; }
 .dp-ok{ color: var(--mint); }
 .dp-wait{ color: var(--ink-4); }
+/* 详情页「截止时间」前的 3D 沙漏：行内排字块，与 12.3px 的日期基线对齐 */
+.dp-dl .ic3d{ width: 12.5px; height: 12.5px; vertical-align: -2px; margin-right: 4px; }
+/* 详情页「核验状态」前的 3D 蓝盾 */
+.dp-facts .ic3d{ width: 12.5px; height: 12.5px; vertical-align: -2.5px; margin-right: 4px; }
 
 .dp-actions{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
 .dp-btn{

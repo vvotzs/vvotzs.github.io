@@ -35,7 +35,7 @@ robots.txt / sitemap.xml
 ## 投稿（原生弹窗 + Apps Script 直邮）
 
 右侧滑轨正上方的「投稿 / Submit」按钮打开**纯原生 `<dialog>` 弹窗**（Gmail 写信式布局：
-左上 `←` 关闭、右上「TG 交流群 + 纸飞机发送」、横线分行的名称 / 链接 / 地区 / 亮点说明），
+左上 `←` 关闭、右上「TG 交流群 + 明黄圆发送徽标」、横线分行的名称 / 链接 / 地区 / 亮点说明），
 不加载任何第三方脚本，也没有 `Made with …` 水印。
 
 - 接口：Google Apps Script Web App（项目 `Deal Hunter Submit`，账号 `vvotzs@gmail.com`），
@@ -103,9 +103,10 @@ robots.txt / sitemap.xml
 
 - `.hero` 行内（标语与更新时间之间的空档）加了一颗 Telegram 群徽标 `a.hero-tg`，指向与投稿弹窗同一个群
   `https://t.me/+aAqP0DbW_YMxMmNh`（`target="_blank" rel="noopener noreferrer"`）。
-  徽标是纯 SVG、没有可见文字（`hero_tg_badge()`）：黑曜石正圆（径向渐变 `#474A55` → `#25272D` → `#0B0C0F`，外缘一道暗高光），
-  内嵌圈金属流金外环（`#FFFBDF` → `#F7CE58` → `#B8770F` → `#FFF6CC` 线性渐变，环内一道压边阴影），
-  居中一枚三面立体黑金纸飞机（亮面 / 暗面 / 尾翼 + 折痕线与投影），暗底上金面锐利；语义走 `aria-label` + `title`
+  徽标是纯 SVG、没有可见文字（`hero_tg_badge()`）：Jun 发来的群聊图形原样复刻（`viewBox="0 0 12 12"`），
+  两个 `#191919` 实心圆角气泡，右下那枚带一个小尾巴点出「群聊」，没有底色、没有刻度线；
+  原文件的 `<clipPath id="clip0">` 改成页面里唯一的 `id="hero-tg-clip"`（clipPath 的 id 是全文档作用域，
+  撞名会把其中一枚裁没）；语义走 `aria-label` + `title`
   （中英各自输出，复用 `submit_tg_aria`）。桌面 20×20px、≤768px 18×18px，盒子只占标语行高
   （18.2px / 15.9px）并让图形绝对居中溢出约 1px，所以 `.hero` 行高与改动前逐像素一致，不撑行、不换行。
   徽标与 `.hero-meta` 两个 `margin-left:auto` 平分空档，图形正好落在空位中间；另挂一圈透明点击热区。
@@ -115,6 +116,28 @@ robots.txt / sitemap.xml
   这一格的图标是 Google Trends 风格的四色上升折线箭头（`i-trends`：蓝 `#4285F4` 上升 → 红 `#EA4335` 下折 →
   黄 `#FBBC05` 上升 → 绿 `#34A853` 实心箭头，颜色走 `--tr-1…--tr-4`）；选中态在实心薄荷绿底上整枚切成纯白。
   最底部的「顶部 / Top」原位置、原文案不变。
+
+## 手绘小徽标（3D 蓝盾 / 3D 沙漏 / AI 芯片 / 明黄发送）
+
+这四枚都是 Jun 给的参考图手绘 / 原样落地，全部是内联矢量，没多一个请求。
+
+- **3D 蓝盾白勾**（`<symbol id="i-verified-shield">`，24×24）：厚盾面 `vs-face` 渐变（`#8FBEFF` → `#6399FF` →`#4C7DF2`），
+  右下方一块 `vs-side` 深蓝厚边（就是把盾面路径整条 `translate(1.35 .95)` 垫在后面），
+  内凹浅描边槽两道 + 居中纯白对勾（自带蓝调投影与上缘高光）。取代了原来的「✓ 已核验」文字勾号：
+  展开卡片的 `.dcheck`、独立详情页「核验状态」、搜索弹窗「已核验」筛选 chip。
+- **3D 倾斜沙漏**（`<symbol id="i-hourglass">`，24×24）：整体 `rotate(12…)`，上下陶土橙圆角盘 + 两根立柱（`hg-wood` /
+  `hg-wood-dark` 渐变），中间玻璃腔（`hg-glass`）里上是未流完的沙、中间细沙流、下是沙堆（`hg-sand`）。
+  入位：顶栏「即将截止」胶囊（桌面 12.5px / 手机 11px）、搜索弹窗「最近截止」排序 chip、
+  展开卡片行内的截止提示（`.card.open .deadline .dl-hg`，收起态 `display:none`）、详情页「截止时间」。
+- **AI 芯片**（`<symbol id="i-ai">`，512×512）：方芯 + 四则引脚 + 芯内「A」「I」，填充色 `var(--ai-ic, #3292FF)`；
+  右侧滑轨「AI」一格在 `.active`（薄荷绿实心胶囊）时由 CSS 把 `--ai-ic` 切成纯白。
+  `#ai` 分区标题里那枚同 ID 图标没有设 `--ai-ic`，所以一直是默认蓝。
+- **明黄发送徽标**（`send_badge()`，40×40）：`#FEE500` 正圆 + `#191919` 折角纸飞机，路径原样保留。
+  它就是 `#sd-send` 按钮的脸：按钮仍 34×34、`background:none`，SVG 30×30 居中，禁用态靠 `opacity`/`grayscale`，点击热区与提交中态不变。
+
+**渐变必须放在 `.vdefs`**：蓝盾与沙漏的 symbol 在 `display:none` 的精灵里，Chrome/Android 下
+`<use>` 的 `url(#id)` 会失效（跟页头精灵那张白脸同源）。所以渐变单独放一个 `position:absolute;width:0;height:0`
+的可见 `<svg class="vdefs">`（`vector_defs()`，每页一次），既不复重复也不占位、不影响 CLS。
 
 ## 「直达」按钮指向哪
 

@@ -84,6 +84,95 @@ FAV_SIZE = 48
 FAV_QUALITY = 82
 FAV_METHOD = 6
 
+# ------------------------------------------------------- 两枚 3D 质感小徽标
+# 按 Jun 的参考图手绘：都靠「多层实色 + 渐变」堆出立体感，14–16px 下要的还是
+# 一块完整的色块轮廓，所以线条都取整、不留发丝细节。两枚的渐变统一放在页面里
+# 唯一的 <defs> 容器（见 vector_defs()），symbol 里只引用 vs- / hg- 前缀的 id。
+#
+# 已核验：圆润厚实的浅天蓝盾面 + 右下方一块深蓝厚边（就是把盾面整条路径平移
+# 1.35/0.95 垫在后面）+ 内凹浅描边槽 + 居中纯白对勾（自带蓝调投影与上缘高光）。
+_SHIELD_PATH = (
+    'M5.4 3.6Q12 1.95 18.6 3.6Q20 4.25 20 5.9L20 11.9C20 16.5 16.7 19.45 12.35 21.45'
+    'Q12 21.6 11.65 21.45C7.3 19.45 4 16.5 4 11.9L4 5.9Q4 4.25 5.4 3.6Z'
+)
+_SHIELD_INNER = (
+    f'<path d="{_SHIELD_PATH}" fill="url(#vs-side)" stroke="none" transform="translate(1.35 .95)"/>'
+    f'<path d="{_SHIELD_PATH}" fill="url(#vs-face)" stroke="none"/>'
+    '<path d="M5.95 5.5Q12 4.05 18.05 5.5Q18.75 5.85 18.75 6.85L18.75 11.85C18.75 15.6 16.05 18.15 12 20.2'
+    'C7.95 18.15 5.25 15.6 5.25 11.85L5.25 6.85Q5.25 5.85 5.95 5.5Z"'
+    ' fill="none" stroke="#AAC9FF" stroke-opacity=".6" stroke-width=".6"/>'
+    '<path d="M6.55 6.55Q12 5.25 17.45 6.55Q18.05 6.85 18.05 7.65L18.05 11.8C18.05 15.05 15.5 17.35 12 19.2'
+    'C8.5 17.35 5.95 15.05 5.95 11.8L5.95 7.65Q5.95 6.85 6.55 6.55Z"'
+    ' fill="none" stroke="#2F5AD0" stroke-opacity=".16" stroke-width=".5"/>'
+    '<path d="M7.55 12.95 10.25 15.65 16.1 9.1" stroke="#2B55C6" stroke-opacity=".32" stroke-width="3.5"'
+    ' fill="none" transform="translate(.28 .72)"/>'
+    '<path d="M7.55 12.95 10.25 15.65 16.1 9.1" stroke="#FFFFFF" stroke-width="2.6" fill="none"/>'
+    '<path d="M7.55 12.95 10.1 15.4 15.95 8.9" stroke="#FFFFFF" stroke-opacity=".5" stroke-width=".95"'
+    ' fill="none" transform="translate(-.3 -.32)"/>'
+)
+
+# 截止徽标：整体顺时针倾斜 12° 的暖橘木框沙漏——上下两块陶土橙圆角盘 + 两根立柱，
+# 中间玻璃腔（淡蓝白、带白色高光弧），上腔未流完的沙 + 中间细沙流 + 下腔沙堆。
+_HOURGLASS_INNER = (
+    '<g transform="rotate(12 12 12)">'
+    '<rect x="5.35" y="4.6" width="1.55" height="14.9" rx=".78" fill="url(#hg-wood-dark)" stroke="none"/>'
+    '<rect x="17.1" y="4.6" width="1.6" height="14.9" rx=".8" fill="url(#hg-wood-dark)" stroke="none"/>'
+    '<path d="M8.15 5.35 15.85 5.35 15.85 6.55C15.85 8.85 14.45 10.1 13.05 11.35L12.75 11.62 12.75 12.4'
+    ' 13.05 12.65C14.45 13.9 15.85 15.15 15.85 17.45L15.85 18.65 8.15 18.65 8.15 17.45'
+    'C8.15 15.15 9.55 13.9 10.95 12.65L11.25 12.4 11.25 11.62 10.95 11.35'
+    'C9.55 10.1 8.15 8.85 8.15 6.55Z" fill="url(#hg-glass)" stroke="#FFFFFF" stroke-opacity=".9" stroke-width=".5"/>'
+    '<path d="M11.55 11.3h.9v2.75h-.9Z" fill="url(#hg-sand)" stroke="none"/>'
+    '<path d="M8.45 6.9 15.55 6.9C15.45 9 14.05 10.05 12.75 11.1 12.35 11.4 12.05 11.5 12 11.75'
+    ' 11.95 11.5 11.65 11.4 11.25 11.1 9.95 10.05 8.55 9 8.45 6.9Z" fill="url(#hg-sand)" stroke="none"/>'
+    '<path d="M8.35 18.55C8.45 16.35 9.85 14.85 12 14.85 14.15 14.85 15.55 16.35 15.65 18.55Z"'
+    ' fill="url(#hg-sand)" stroke="none"/>'
+    '<path d="M8.85 7.1C8.9 8.75 9.6 9.6 10.3 10.2" stroke="#FFFFFF" stroke-opacity=".95" stroke-width=".55"'
+    ' stroke-linecap="round" fill="none"/>'
+    '<path d="M8.75 18.1C8.85 16.9 9.45 16.1 10.15 15.7" stroke="#FFFFFF" stroke-opacity=".85"'
+    ' stroke-width=".5" stroke-linecap="round" fill="none"/>'
+    '<rect x="4.9" y="2.75" width="14.2" height="2.3" rx="1.15" fill="url(#hg-wood)" stroke="none"/>'
+    '<rect x="4.9" y="18.95" width="14.2" height="2.3" rx="1.15" fill="url(#hg-wood)" stroke="none"/>'
+    '<rect x="5.35" y="3.2" width="13.3" height=".62" rx=".31" fill="#FFD6B8" fill-opacity=".8" stroke="none"/>'
+    '<rect x="5.35" y="19.35" width="13.3" height=".52" rx=".26" fill="#FFD6B8" fill-opacity=".4" stroke="none"/>'
+    '</g>'
+)
+
+# 投稿弹窗右上角的发送徽标（Jun 发来的原始 SVG，viewBox 0 0 40 40）：
+# 明黄 #FEE500 正圆 + #191919 折角纸飞机，路径原样保留。
+SEND_BADGE_PATHS = (
+    '<path d="M20,20m-20,0a20,20 0,1 1,40 0a20,20 0,1 1,-40 0" fill="#FEE500"/>'
+    '<path d="M12.614,12.413C12.148,10.818 13.83,9.445 15.299,10.222L29.148,17.548C31.15,18.607 31.145,21.476'
+    ' 29.139,22.527L15.294,29.779C13.823,30.549 12.148,29.173 12.618,27.58L14.252,22.047L14.298,21.923'
+    'C14.425,21.644 14.681,21.441 14.988,21.386L21.437,20.222C21.518,20.208 21.543,20.18 21.554,20.166'
+    'C21.572,20.142 21.592,20.098 21.592,20.038C21.592,19.978 21.573,19.934 21.555,19.91'
+    'C21.544,19.896 21.518,19.866 21.437,19.851L14.986,18.677C14.635,18.612 14.351,18.356 14.251,18.014'
+    'L12.614,12.413Z" fill="#191919"/>'
+)
+
+# 渐变定义：单独一份 0×0 的可见 svg（见 vector_defs 的 CSS 说明），
+# 页面里只出现一次，symbol 复用同一个 id，220 张卡不会各带一份渐变。
+VECTOR_GRADS = (
+    '<linearGradient id="vs-face" x1=".18" y1="0" x2=".8" y2="1">'
+    '<stop offset="0" stop-color="#8FBEFF"/><stop offset=".42" stop-color="#6399FF"/>'
+    '<stop offset="1" stop-color="#4C7DF2"/></linearGradient>'
+    '<linearGradient id="vs-side" x1=".05" y1=".05" x2=".6" y2="1">'
+    '<stop offset="0" stop-color="#4E80F2"/><stop offset=".5" stop-color="#2E5BD6"/>'
+    '<stop offset="1" stop-color="#1E45BC"/></linearGradient>'
+    '<linearGradient id="hg-wood" x1="0" y1="0" x2=".35" y2="1">'
+    '<stop offset="0" stop-color="#F9B181"/><stop offset=".42" stop-color="#EE8449"/>'
+    '<stop offset="1" stop-color="#BF5528"/></linearGradient>'
+    '<linearGradient id="hg-wood-dark" x1="0" y1="0" x2="1" y2=".25">'
+    '<stop offset="0" stop-color="#F29459"/><stop offset=".5" stop-color="#D2662F"/>'
+    '<stop offset="1" stop-color="#A2451D"/></linearGradient>'
+    '<linearGradient id="hg-sand" x1=".2" y1="0" x2=".7" y2="1">'
+    '<stop offset="0" stop-color="#FFE98C"/><stop offset=".45" stop-color="#FBC846"/>'
+    '<stop offset="1" stop-color="#EFA01F"/></linearGradient>'
+    '<linearGradient id="hg-glass" x1=".1" y1="0" x2=".9" y2="1">'
+    '<stop offset="0" stop-color="#FFFFFF" stop-opacity=".98"/>'
+    '<stop offset=".45" stop-color="#DFEBFB" stop-opacity=".92"/>'
+    '<stop offset="1" stop-color="#C3D9F4" stop-opacity=".9"/></linearGradient>'
+)
+
 # ---------------------------------------------------------------- svg sprite
 # (viewBox 边长, 内部图形, stroke-width)。所有图标统一 currentColor 描边，
 # 有颜色的部位直接在图形上写 fill，跟以前逐处内联的效果一致。
@@ -106,11 +195,19 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
                  '<path d="M16.4 5.1h2.5a2.6 2.6 0 0 1-2.6 4.6"/>'
                  '<path d="M12 12.8v2.4"/><path d="M9.2 15.2h5.6v3.3H9.2z" fill="#FED7AA"/>'
                  '<path d="M7.8 18.5h8.4"/>', 1.9),
-    # AI：圆角徽标 + 粗体 AI
-    "ai": (24, '<rect x="2.4" y="5.2" width="19.2" height="13.6" rx="4.8" fill="#DBEAFE"/>'
-               '<text x="11.2" y="15.6" text-anchor="middle" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif"'
-               ' font-size="10.2" font-weight="800" fill="#1E40AF" stroke="none">AI</text>'
-               '<path d="M19.4 3.1l.55 1.35 1.35.55-1.35.55-.55 1.35-.55-1.35-1.35-.55 1.35-.55.55-1.35Z" fill="#F59E0B"/>', 1.9),
+    # AI：AI 芯片（Jun 的原始 SVG，viewBox 512）：方芯 + 四则引脚 + 芯内「A」「I」。
+    # 默认 #3292FF，滑轨该格选中（薄荷绿实心胶囊）时由 CSS 把 --ai-ic 换成纯白。
+    "ai": (512, '<path d="M384,128L384,384L128,384L128,128L384,128ZM235.75,192L210.82,192L163.48,320L185.98,320'
+                 'L194.91,294.98L251.58,294.98L260.32,320L284.17,320L235.75,192ZM324.09,192L301.69,192L301.69,320'
+                 'L324.09,320L324.09,192ZM223.09,213.48L245.41,277.33L201.14,277.33L223.09,213.48ZM405.33,320L448,320'
+                 'L448,362.67L405.33,362.67L405.33,320ZM149.33,405.33L192,405.33L192,448L149.33,448L149.33,405.33'
+                 'ZM234.67,405.33L277.33,405.33L277.33,448L234.67,448L234.67,405.33ZM149.33,64L192,64L192,106.67'
+                 'L149.33,106.67L149.33,64ZM320,405.33L362.67,405.33L362.67,448L320,448L320,405.33ZM234.67,64L277.33,64'
+                 'L277.33,106.67L234.67,106.67L234.67,64ZM320,64L362.67,64L362.67,106.67L320,106.67L320,64'
+                 'ZM405.33,234.67L448,234.67L448,277.33L405.33,277.33L405.33,234.67ZM64,320L106.67,320L106.67,362.67'
+                 'L64,362.67L64,320ZM405.33,149.33L448,149.33L448,192L405.33,192L405.33,149.33ZM64,234.67L106.67,234.67'
+                 'L106.67,277.33L64,277.33L64,234.67ZM64,149.33L106.67,149.33L106.67,192L64,192L64,149.33Z"'
+                 ' fill="var(--ai-ic, #3292FF)" stroke="none"/>', 0),
     # 币：金币 + ₿
     "crypto": (24, '<circle cx="12" cy="12" r="8.5" fill="#FCD34D"/>'
                    '<path d="M10.6 7.1v9.8M12.4 7.1v9.8" stroke="#92400E" stroke-width="1.15"/>'
@@ -162,6 +259,10 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
     "search": (16, '<circle cx="7" cy="7" r="4.4"/><path d="m10.4 10.4 3 3"/>', 1.6),
     # 风险提示
     "warn": (16, '<path d="M8 2.6 14.2 13H1.8L8 2.6Z"/><path d="M8 6.6v3.1M8 11.6v.1"/>', 1.4),
+    # 已核验：3D 蓝盾白勾（见文件上方 _SHIELD_INNER）
+    "verified-shield": (24, _SHIELD_INNER, 1.9),
+    # 截止：3D 倾斜沙漏（见文件上方 _HOURGLASS_INNER）
+    "hourglass": (24, _HOURGLASS_INNER, 1.9),
     # 投稿：纸飞机 + 暖色尾迹
     "send": (24, '<path d="M20.8 3.5 3.6 10.6c-.9.4-.9 1.6 0 1.9l5.5 2 2 5.5c.4.9 1.6.9 1.9 0l7.1-17.2c.3-.8-.5-1.6-1.3-1.3Z" fill="#FDBA74"/>'
                '<path d="M9.1 14.5 20.3 4.1" stroke="#FFFFFF" stroke-opacity=".85"/>'
@@ -219,6 +320,35 @@ def icon(key: str, cls: str = "") -> str:
     return f'<svg class="i{" " + cls if cls else ""}" aria-hidden="true"><use href="#i-{key}"/></svg>'
 
 
+def icon3d(key: str, cls: str = "") -> str:
+    """3D 小徽标（蓝盾 / 沙漏）：行内排在文字前面，尺寸由 .ic3d 与各处的 class 决定。
+
+    外层 svg 不写 viewBox / focusable：symbol 自带 viewBox，只留 class + aria-hidden，
+    每处引用压到 80 字节上下（一张列表 200+ 处，省下来的都是 HTML 体积）。
+    """
+    return f'<svg class="ic3d{" " + cls if cls else ""}" aria-hidden="true"><use href="#i-{key}"/></svg>'
+
+
+def vector_defs() -> str:
+    """3D 蓝盾 / 3D 沙漏用到的渐变，全页只写一次。
+
+    必须是一个「0×0 但可见」的 svg：放进 display:none 的精灵里，Chrome/Android 会让
+    symbol 内的 url(#id) 失效（跟页头精灵那个坑同源）。所以用 position:absolute 压成
+    0×0，既不占位也不影响 CLS。
+    """
+    return (
+        '<svg class="vdefs" aria-hidden="true" focusable="false">'
+        f"<defs>{VECTOR_GRADS}</defs></svg>"
+    )
+
+
+def send_badge(cls: str = "") -> str:
+    """投稿弹窗发送键的明黄圆徽标（Jun 原始 SVG，viewBox 0 0 40 40）。"""
+    return (
+        f'<svg class="{cls}" viewBox="0 0 40 40" aria-hidden="true" focusable="false">{SEND_BADGE_PATHS}</svg>'
+    )
+
+
 # Telegram 纸飞机（圆底 + 折角）徽标：投稿弹窗顶栏与首屏行内的小徽标共用一份，
 # 保证两处的图形完全一致；颜色走 currentColor，尺寸由各自的 class 决定。
 def telegram_svg(cls: str = "") -> str:
@@ -231,64 +361,31 @@ def telegram_svg(cls: str = "") -> str:
     )
 
 
-# 首屏行内的「Telegram 交流群」圆形徽标（按 Jun 定稿图 1:1 复刻）：
-# 亮蓝正圆里，上半是白色 Telegram 纸飞机，下半是三人小群剪影（中间深蓝、左右纯黑），
-# 剪影与蓝底之间留一道极细的底色缝隙，底部贴合正圆内弧。整枚 SVG 没有可见文字，
-# 语义由外层的 aria-label 与 title 承担。1:1 正圆，双端只改边长（手机 18px / 桌面 20px）。
+# 首屏行内的「Telegram 交流群」群聊徽标（Jun 发来的原始 SVG，viewBox 0 0 12 12）：
+# 两个 #191919 实心圆角气泡（右下那枚带一个小尾巴，点出「群聊」），没有底色也没有
+# 可见文字；语义由外层的 aria-label 与 title 承担。12×12 的图形按 1:1 缩放到
+# 桌面 20px / 手机 18px，比原来那枚黑金立体徽标轻一档，跟首屏那行小字更同高。
+# 原文件的 <clipPath id="clip0"> 改成页面里唯一的 `hero-tg-clip`：clipPath 的 id 是
+# 全文档作用域，跟别的 SVG（Pickle 精灵、3D 蓝盾等）撞名会让其中一枚被裁没。
 def hero_tg_badge() -> str:
-    """首屏 TG 群徽标：黑曜石正圆 + 金属流金外环 + 立体黑金纸飞机（全矢量，18/20px 下仍清晰）。
-
-    分层（由外到内）：暗色外缘高光描边 → 奥石渐变底 → 流金环 → 深色内阴影 → 内盘 →
-    三面纸飞机（亮面 / 暗面 / 尾翼 + 折痕线与投影）。渐变 id 统一 `hero-tg-` 前缀，
-    避免与页面其它 SVG（页头页脚 Pickle 精灵等）撞名。
-    """
     return (
-        '<svg class="hero-tg-b" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
-        '<defs>'
-        '<radialGradient id="hero-tg-obs" cx="36%" cy="26%" r="86%">'
-        '<stop offset="0" stop-color="#474A55"/><stop offset=".42" stop-color="#25272D"/>'
-        '<stop offset="1" stop-color="#0B0C0F"/></radialGradient>'
-        '<linearGradient id="hero-tg-rim" x1=".25" y1="0" x2=".75" y2="1">'
-        '<stop offset="0" stop-color="#8C7C55"/><stop offset=".4" stop-color="#2E2C28"/>'
-        '<stop offset="1" stop-color="#0A0A09"/></linearGradient>'
-        '<linearGradient id="hero-tg-ring" x1=".12" y1=".04" x2=".86" y2=".98">'
-        '<stop offset="0" stop-color="#FFE9A1"/><stop offset=".16" stop-color="#F9D269"/>'
-        '<stop offset=".34" stop-color="#EFBF3E"/><stop offset=".52" stop-color="#D89B1D"/>'
-        '<stop offset=".68" stop-color="#A86C0C"/><stop offset=".84" stop-color="#DFA82C"/>'
-        '<stop offset="1" stop-color="#FFDD88"/></linearGradient>'
-        '<radialGradient id="hero-tg-in" cx="38%" cy="24%" r="84%">'
-        '<stop offset="0" stop-color="#30333B"/><stop offset=".45" stop-color="#181A1F"/>'
-        '<stop offset="1" stop-color="#07080A"/></radialGradient>'
-        '<linearGradient id="hero-tg-face" x1=".08" y1=".92" x2=".88" y2=".12">'
-        '<stop offset="0" stop-color="#EBB237"/><stop offset=".4" stop-color="#FFDE85"/>'
-        '<stop offset=".75" stop-color="#FFF2BE"/><stop offset="1" stop-color="#FFFBDE"/></linearGradient>'
-        '<linearGradient id="hero-tg-side" x1=".3" y1="0" x2=".55" y2="1">'
-        '<stop offset="0" stop-color="#FBD372"/><stop offset=".38" stop-color="#DFA227"/>'
-        '<stop offset=".72" stop-color="#B3730F"/><stop offset="1" stop-color="#7E4C09"/></linearGradient>'
-        '<linearGradient id="hero-tg-tail" x1=".15" y1="0" x2=".75" y2="1">'
-        '<stop offset="0" stop-color="#FFE79B"/><stop offset=".45" stop-color="#EDB934"/>'
-        '<stop offset="1" stop-color="#A96C0F"/></linearGradient>'
-        '</defs>'
-        # 圆盘：外缘暗高光 + 黑曜石渐变
-        '<circle cx="12" cy="12" r="11.9" fill="url(#hero-tg-obs)"/>'
-        '<circle cx="12" cy="12" r="11.45" fill="none" stroke="url(#hero-tg-rim)" stroke-width="1.1"/>'
-        # 流金外环 + 内侧压边阴影 + 内盘
-        '<circle cx="12" cy="12" r="10.42" fill="none" stroke="url(#hero-tg-ring)" stroke-width="1.78"/>'
-        '<circle cx="12" cy="12" r="9.5" fill="none" stroke="#000" stroke-opacity=".58" stroke-width=".6"/>'
-        '<circle cx="12" cy="12" r="9.48" fill="url(#hero-tg-in)"/>'
-        # 纸飞机：投影 → 亮面（A-N-C）→ 暗面（N-R-C）→ 尾翼（C-R-B）→ 折痕
-        '<polygon points="4.97,10.86 18.75,6.59 14.85,17.23 9.53,18.56 11.24,13.90"'
-        ' fill="#000" opacity=".5" transform="translate(.45 .6)"/>'
-        '<polygon points="4.97,10.86 18.75,6.59 11.24,13.90" fill="url(#hero-tg-face)"/>'
-        '<polygon points="18.75,6.59 14.85,17.23 11.24,13.90" fill="url(#hero-tg-side)"/>'
-        '<polygon points="11.24,13.90 14.85,17.23 9.53,18.56" fill="url(#hero-tg-tail)"/>'
-        '<polyline points="18.75,6.59 11.24,13.90" fill="none" stroke="#6B4008"'
-        ' stroke-opacity=".75" stroke-width=".34"/>'
-        '<polyline points="11.24,13.90 14.85,17.23" fill="none" stroke="#6B4008"'
-        ' stroke-opacity=".5" stroke-width=".28"/>'
-        '<polyline points="4.97,10.86 18.75,6.59" fill="none" stroke="#FFFBE0"'
-        ' stroke-opacity=".55" stroke-width=".26"/>'
-        '</svg>'
+        '<svg class="hero-tg-b" viewBox="0 0 12 12" aria-hidden="true" focusable="false">'
+        '<defs><clipPath id="hero-tg-clip"><path d="M-.001 0h12v12h-12z"/></clipPath></defs>'
+        '<g clip-path="url(#hero-tg-clip)" fill="#191919">'
+        '<path d="M7.289 1.233C6.169 1.233 5.143 1.578 4.343 2.149C6.746 2.29 8.654 4.072 8.654 6.249'
+        'C8.654 7.42 8.099 8.476 7.214 9.226C7.239 9.226 7.264 9.228 7.289 9.228C7.6 9.228 7.904 9.201'
+        ' 8.198 9.15L9.852 10.213C10 10.298 10.184 10.192 10.184 10.021V8.349C11.241 7.616 11.917 6.492'
+        ' 11.917 5.231C11.917 3.023 9.845 1.233 7.289 1.233Z"/>'
+        '<path d="M4.035 3.063C3.808 3.063 3.586 3.084 3.37 3.118C1.651 3.389 .347 4.686 .347 6.249'
+        'C.347 7.254 .886 8.15 1.728 8.734V10.066C1.728 10.09 1.733 10.111 1.741 10.13'
+        'C1.743 10.135 1.744 10.139 1.746 10.143C1.756 10.162 1.767 10.179 1.781 10.193L1.783 10.194'
+        'C1.797 10.207 1.814 10.218 1.832 10.226C1.835 10.228 1.84 10.229 1.844 10.231'
+        'C1.863 10.238 1.883 10.243 1.903 10.243C1.91 10.243 1.917 10.241 1.923 10.24'
+        'C1.932 10.239 1.94 10.239 1.948 10.237C1.961 10.234 1.974 10.228 1.987 10.221'
+        'C1.988 10.22 1.99 10.22 1.992 10.219L3.31 9.372C3.544 9.413 3.787 9.434 4.035 9.434'
+        'C4.957 9.434 5.798 9.14 6.444 8.657C6.542 8.584 6.636 8.507 6.724 8.425'
+        'C7.343 7.856 7.724 7.091 7.724 6.249C7.724 4.49 6.072 3.063 4.035 3.063Z"/>'
+        '</g></svg>'
     )
 
 
@@ -439,24 +536,27 @@ def tt(zh: str, en: str) -> str:
 
 
 def deadline_html(deal: dict, today) -> str:
+    # 行内那枚 3D 沙漏只在卡片展开后才出现（CSS `.card.open .dl-hg`）：
+    # 收起态的行高与行宽保持原样，首屏零增高，也不会把「剩余天数」挤到换行。
+    hg = icon3d("hourglass", "hg-i dl-hg")
     end = parse_date(deal.get("end", ""))
     if not end:
-        return f'<span class="deadline">{ui("ongoing")}</span>'
+        return f'<span class="deadline">{hg}{ui("ongoing")}</span>'
     if end < today:
-        return f'<span class="deadline">{bi(short_date(deal["end"]) + " 结束", "Ended " + short_date_en(end))}</span>'
+        return f'<span class="deadline">{hg}{bi(short_date(deal["end"]) + " 结束", "Ended " + short_date_en(end))}</span>'
     # left 是「今天之后还剩几个自然日」：0 = 今天截止、1 = 明天截止。
     # 原来写成 left <= 1 会把「明天截止」也说成今天，用户会当成最后一天。
     left = (end - today).days
     if left == 0:
-        return f'<span class="deadline hot">{ui("ends_today")}</span>'
+        return f'<span class="deadline hot">{hg}{ui("ends_today")}</span>'
     if left == 1:
-        return f'<span class="deadline hot">{ui("ends_tomorrow")}</span>'
+        return f'<span class="deadline hot">{hg}{ui("ends_tomorrow")}</span>'
     if left <= 30:
         return (
-            f'<span class="deadline hot">'
+            f'<span class="deadline hot">{hg}'
             f'{bi(f"剩 {left} 天 · {short_date(deal["end"])}", f"{left} days left · {short_date_en(end)}")}</span>'
         )
-    return f'<span class="deadline">{bi(short_date(deal["end"]) + " 截止", "Ends " + short_date_en(end))}</span>'
+    return f'<span class="deadline">{hg}{bi(short_date(deal["end"]) + " 截止", "Ends " + short_date_en(end))}</span>'
 
 
 def added_day(deal: dict, today) -> str:
@@ -713,7 +813,7 @@ def detail_tags(deal: dict, en: dict) -> str:
     cost_cls = COST_CLASS.get(cost, "cost-invite")
     cost_en = COST_EN.get(cost, cost)
     if deal.get("verified"):
-        check = f'<span class="dcheck ok">{ui("verified")}</span>'
+        check = f'<span class="dcheck ok">{icon3d("verified-shield", "vs-i")}{ui("verified")}</span>'
     else:
         check = f'<span class="dcheck wait">{ui("unverified")}</span>'
     v_zh, v_en = value_pair(deal, en)
@@ -1141,13 +1241,14 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 
     facts = [
         f'<li><span>{ui("dp_facts_status")}</span><b><span class="dp-st {st_cls}">{st_label}</span></b></li>',
-        f'<li><span>{ui("dp_facts_deadline")}</span><b>{e(dp_deadline(deal, today))}</b></li>',
+        f'<li><span>{ui("dp_facts_deadline")}</span><b class="dp-dl">{icon3d("hourglass", "hg-i")}'
+        f'{e(dp_deadline(deal, today))}</b></li>',
         f'<li><span>{ui("dp_facts_period")}</span><b>{dp_period(deal)}</b></li>',
         f'<li><span>{ui("f_regions")}</span><b>{e(regions)}</b></li>',
         f'<li><span>{ui("dp_facts_cost")}</span><b><span class="dtag {cost_cls}">{e(cost_label)}</span></b></li>',
         f'<li><span>{ui("dp_facts_value")}</span><b class="dp-val">{e(value_now)}</b></li>',
         f'<li><span>{ui("dp_facts_check")}</span><b class="{"dp-ok" if deal.get("verified") else "dp-wait"}">'
-        f'{ui("verified") if deal.get("verified") else ui("unverified")}</b></li>',
+        f'{icon3d("verified-shield", "vs-i") + ui("verified") if deal.get("verified") else ui("unverified")}</b></li>',
     ]
 
     # 同类内链：给搜索引擎更多可爬路径，也给读者一个继续逛的入口
@@ -1294,7 +1395,8 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 </head>
 <body class="dp">
 
-{sprite_svg(("external", "archive", "chevron", cat_icon))}
+{sprite_svg(("external", "archive", "chevron", "verified-shield", "hourglass", cat_icon))}
+{vector_defs()}
 
 <header class="topbar">
   <div class="shell topbar-in">
@@ -1853,6 +1955,7 @@ def main() -> None:
 <body>
 
 {sprite_svg()}
+{vector_defs()}
 
 <header class="topbar">
   <div class="shell topbar-in">
@@ -1875,7 +1978,7 @@ def main() -> None:
     </button>
     <div class="topbar-stats">
       <a class="stats-pill mint" href="#ai">{ui('stat_active')} <b>{counts['active']}</b></a>
-      <a class="stats-pill amber" href="#closing">{ui('stat_expiring')} <b>{counts['expiring']}</b></a>
+      <a class="stats-pill amber" href="#closing">{icon3d('hourglass', 'hg-i')}{ui('stat_expiring')} <b>{counts['expiring']}</b></a>
       <a class="stats-pill stone" href="#archive">{ui('stat_archived')} <b>{counts['expired']}</b></a>
     </div>
   </div>
@@ -1949,7 +2052,7 @@ def main() -> None:
       <div class="chips" data-group="sort">
         <button class="chip on" type="button" data-value="value">{ui('sort_value')}</button>
         <button class="chip" type="button" data-value="new">{ui('sort_new')}</button>
-        <button class="chip" type="button" data-value="end">{ui('sort_end')}</button>
+        <button class="chip" type="button" data-value="end">{icon3d('hourglass', 'hg-i')}{ui('sort_end')}</button>
       </div>
     </div>
 
@@ -1982,7 +2085,7 @@ def main() -> None:
       <div class="filter-label">{ui('f_verify')}</div>
       <div class="chips" data-group="verify">
         <button class="chip on" type="button" data-value="all">{ui('all')}</button>
-        <button class="chip" type="button" data-value="1">{bi('已核验', 'Verified')}</button>
+        <button class="chip" type="button" data-value="1">{icon3d('verified-shield', 'vs-i')}{bi('已核验', 'Verified')}</button>
         <button class="chip" type="button" data-value="0">{bi('待核实', 'Unverified')}</button>
       </div>
     </div>
@@ -2034,10 +2137,7 @@ def main() -> None:
       </a>
       <button class="sd-send" type="button"
               {al(*U['submit_send'])}>
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3.4 11.1 20.2 4.2c.8-.3 1.6.5 1.3 1.3l-6.9 16.8c-.3.8-1.5.8-1.9 0l-1.9-5.2-5.2-1.9c-.8-.4-.8-1.6 0-1.9Z" fill="currentColor"/>
-          <path d="M10.8 13.2 20 5.1" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity=".9"/>
-        </svg>
+        {send_badge()}
       </button>
     </div>
 

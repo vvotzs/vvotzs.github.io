@@ -132,7 +132,8 @@ U: dict[str, tuple[str, str]] = {
     "go_official_short": ("官网", "Official"),
     "go_official_aria": ("官网活动页", "Open the official offer page"),
     "actual_value": ("实际价值", "Actual value"),
-    "verified": ("✓ 已核验", "✓ Verified"),
+    # 勾号不再用字符：改由 3D 蓝盾 SVG 承担（见 build_site.icon3d），文字只留语义
+    "verified": ("已核验", "Verified"),
     "unverified": ("待核实", "Unverified"),
     "f_what": ("优惠内容", "What you get"),
     "f_conditions": ("参与条件", "Conditions"),
