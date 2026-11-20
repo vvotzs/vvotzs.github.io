@@ -273,9 +273,9 @@ def hero_tg_badge() -> str:
         '<circle cx="12" cy="12" r="11.9" fill="url(#hero-tg-obs)"/>'
         '<circle cx="12" cy="12" r="11.45" fill="none" stroke="url(#hero-tg-rim)" stroke-width="1.1"/>'
         # 流金外环 + 内侧压边阴影 + 内盘
-        '<circle cx="12" cy="12" r="10.45" fill="none" stroke="url(#hero-tg-ring)" stroke-width="1.62"/>'
-        '<circle cx="12" cy="12" r="9.72" fill="none" stroke="#000" stroke-opacity=".55" stroke-width=".55"/>'
-        '<circle cx="12" cy="12" r="9.7" fill="url(#hero-tg-in)"/>'
+        '<circle cx="12" cy="12" r="10.42" fill="none" stroke="url(#hero-tg-ring)" stroke-width="1.78"/>'
+        '<circle cx="12" cy="12" r="9.5" fill="none" stroke="#000" stroke-opacity=".58" stroke-width=".6"/>'
+        '<circle cx="12" cy="12" r="9.48" fill="url(#hero-tg-in)"/>'
         # 纸飞机：投影 → 亮面（A-N-C）→ 暗面（N-R-C）→ 尾翼（C-R-B）→ 折痕
         '<polygon points="4.97,10.86 18.75,6.59 14.85,17.23 9.53,18.56 11.24,13.90"'
         ' fill="#000" opacity=".5" transform="translate(.45 .6)"/>'
