@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Netlify Server is free during Early Access: long-lived Node servers, WebSockets, in-memory state and long-running AI agents · Deal Hunter</title>
-<meta name="description" content="Netlify Server is entirely free during Early Access: run a long-lived Node process with WebSockets/SSE, connection pools and caches; the free plan gets…">
+<meta name="description" content="Free during Early Access: long-lived Node servers with WebSockets, in-memory state and long-running agent loops; one instance on the free plan">
 <meta name="author" content="Deal Hunter">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2">
@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="zh_CN">
 <meta property="og:title" content="Netlify Server is free during Early Access: long-lived Node servers, WebSockets, in-memory state and long-running AI agents · Deal Hunter">
-<meta property="og:description" content="Netlify Server is entirely free during Early Access: run a long-lived Node process with WebSockets/SSE, connection pools and caches; the free plan gets…">
+<meta property="og:description" content="Free during Early Access: long-lived Node servers with WebSockets, in-memory state and long-running agent loops; one instance on the free plan">
 <meta property="og:url" content="https://vvotzs.github.io/en/d/netlify-server-free-early-access/">
 <meta property="og:image" content="https://vvotzs.github.io/assets/og-cover-en.png">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <meta property="og:image:alt" content="Netlify Server is free during Early Access: long-lived Node servers, WebSockets, in-memory state and long-running AI agents · Deal Hunter">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Netlify Server is free during Early Access: long-lived Node servers, WebSockets, in-memory state and long-running AI agents · Deal Hunter">
-<meta name="twitter:description" content="Netlify Server is entirely free during Early Access: run a long-lived Node process with WebSockets/SSE, connection pools and caches; the free plan gets…">
+<meta name="twitter:description" content="Free during Early Access: long-lived Node servers with WebSockets, in-memory state and long-running agent loops; one instance on the free plan">
 <meta name="twitter:image" content="https://vvotzs.github.io/assets/og-cover-en.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
@@ -41,7 +41,7 @@
 "@id": "https://vvotzs.github.io/en/d/netlify-server-free-early-access/#webpage",
 "url": "https://vvotzs.github.io/en/d/netlify-server-free-early-access/",
 "name": "Netlify Server is free during Early Access: long-lived Node servers, WebSockets, in-memory state and long-running AI agents · Deal Hunter",
-"description": "Netlify Server is entirely free during Early Access: run a long-lived Node process with WebSockets/SSE, connection pools and caches; the free plan gets…",
+"description": "Free during Early Access: long-lived Node servers with WebSockets, in-memory state and long-running agent loops; one instance on the free plan",
 "inLanguage": "en",
 "isPartOf": {
 "@type": "WebSite",
@@ -90,7 +90,7 @@
 "@type": "Offer",
 "@id": "https://vvotzs.github.io/en/d/netlify-server-free-early-access/#offer",
 "name": "Netlify Server is free during Early Access: long-lived Node servers, WebSockets, in-memory state and long-running AI agents",
-"description": "Netlify Server is entirely free during Early Access: run a long-lived Node process with WebSockets/SSE, connection pools and caches; the free plan gets one instance that scales to zero when idle, which suits long-running agents and realtime apps",
+"description": "Free during Early Access: long-lived Node servers with WebSockets, in-memory state and long-running agent loops; one instance on the free plan",
 "url": "https://www.netlify.com/blog/introducing-netlify-server/",
 "category": "VPS & cloud",
 "availability": "https://schema.org/InStock",
@@ -150,7 +150,7 @@
 <a class="dp-btn mint" href="https://www.netlify.com/blog/introducing-netlify-server/" target="_blank" rel="noopener noreferrer">Open the official offer<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a><a class="dp-btn ghost" href="https://www.netlify.com/changelog/2026-11-10-netlify-server-early-access/" target="_blank" rel="noopener noreferrer">Source post<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a>
 </div>
 </article>
-<section class="dp-sec"><h2>Highlight</h2><p class="dp-lead">Netlify Server is entirely free during Early Access: run a long-lived Node process with WebSockets/SSE, connection pools and caches; the free plan gets one instance that scales to zero when idle, which suits long-running agents and realtime apps</p></section><section class="dp-sec"><h2>What you get</h2><p>Netlify launched Netlify Server in Early Access on 2026-11-10: it runs your backend as a long-lived Node.js process that can hold WebSocket and Server-Sent Events connections, keep connection pools and caches in memory, and serve many concurrent requests from one instance. When nothing is using it the server scales to zero after five minutes and wakes on the next request. Netlify states that Netlify Server is free to use during Early Access. Credit-based Free and Personal plans allow one instance, while paid plans and Enterprise with credits allow three. It fits AI workloads well: an agent loop can run for a long time in one process, keep working state in memory and stream progress to the page over a WebSocket, and existing Express, Hono, Fastify or Koa apps deploy unchanged.</p></section><section class="dp-sec"><h2>Conditions</h2><p>The free period lasts only for Early Access; at general availability billing switches to reserved memory (GB-hours) plus active CPU time (vCPU-hours). One instance on Free and Personal, three elsewhere. Servers scale to zero when idle, so the first request waits for a cold start. Bandwidth, function calls and web requests bill as usual on the same project. APIs and behaviour may change during Early Access. Netlify CLI 27.17.0+ is required locally, or run netlify init inside a coding agent.</p></section><section class="dp-sec"><h2>Steps</h2><ol class="dp-steps"><li>Create or open a project on Netlify and confirm it is on a credit-based plan</li><li>Upgrade to Netlify CLI 27.17.0 or later and run netlify init in the project to pull the latest agent skills</li><li>Write the server entry as a long-lived Node process (an existing Express, Hono, Fastify or Koa app works as-is) and deploy it with the project</li><li>Verify long connections and idle scale-down over WebSocket or SSE, and watch instance, memory and CPU usage on the project&#x27;s Server page</li></ol></section><section class="dp-sec is-risk"><h2>Watch out</h2><p>Free has a hard end: after GA you pay for resident memory and CPU, and an always-on backend can generate a bill quickly; the free plan has one instance and scales to zero after five idle minutes, so first requests wait on a cold start; state must live in Netlify Database or Blobs or it is lost when an instance is replaced; APIs and limits can change during Early Access.</p></section>
+<section class="dp-sec"><h2>Highlight</h2><p class="dp-lead">Free during Early Access: long-lived Node servers with WebSockets, in-memory state and long-running agent loops; one instance on the free plan</p></section><section class="dp-sec"><h2>What you get</h2><p>Netlify launched Netlify Server in Early Access on 2026-11-10: it runs your backend as a long-lived Node.js process that can hold WebSocket and Server-Sent Events connections, keep connection pools and caches in memory, and serve many concurrent requests from one instance. When nothing is using it the server scales to zero after five minutes and wakes on the next request. Netlify states that Netlify Server is free to use during Early Access. Credit-based Free and Personal plans allow one instance, while paid plans and Enterprise with credits allow three. It fits AI workloads well: an agent loop can run for a long time in one process, keep working state in memory and stream progress to the page over a WebSocket, and existing Express, Hono, Fastify or Koa apps deploy unchanged.</p></section><section class="dp-sec"><h2>Conditions</h2><p>The free period lasts only for Early Access; at general availability billing switches to reserved memory (GB-hours) plus active CPU time (vCPU-hours). One instance on Free and Personal, three elsewhere. Servers scale to zero when idle, so the first request waits for a cold start. Bandwidth, function calls and web requests bill as usual on the same project. APIs and behaviour may change during Early Access. Netlify CLI 27.17.0+ is required locally, or run netlify init inside a coding agent.</p></section><section class="dp-sec"><h2>Steps</h2><ol class="dp-steps"><li>Create or open a project on Netlify and confirm it is on a credit-based plan</li><li>Upgrade to Netlify CLI 27.17.0 or later and run netlify init in the project to pull the latest agent skills</li><li>Write the server entry as a long-lived Node process (an existing Express, Hono, Fastify or Koa app works as-is) and deploy it with the project</li><li>Verify long connections and idle scale-down over WebSocket or SSE, and watch instance, memory and CPU usage on the project&#x27;s Server page</li></ol></section><section class="dp-sec is-risk"><h2>Watch out</h2><p>Free has a hard end: after GA you pay for resident memory and CPU, and an always-on backend can generate a bill quickly; the free plan has one instance and scales to zero after five idle minutes, so first requests wait on a cold start; state must live in Netlify Database or Blobs or it is lost when an instance is replaced; APIs and limits can change during Early Access.</p></section>
 <section class="dp-sec dp-meta-sec">
 <h2>Source & verification</h2>
 <p class="dp-meta"><span><i>Source</i>Netlify&#x27;s official Introducing Netlify Server post, the 2026-11-10 Early Access changelog and the docs.netlify.com/build/server pricing and limits sections (read 2026-11-20; all state it is free during Early Access)</span><span><i>Last verified</i>2026-11-20</span><span><i>Added</i>2026-11-20</span></p>

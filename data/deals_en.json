@@ -3546,7 +3546,7 @@
   },
   "capital-one-360-checking-400": {
     "title": "[US] Capital One 360 Checking: $400 bonus for two $500 direct deposits in 75 days (code MAKE400, ends Dec 9)",
-    "highlight": "Open a new 360 Checking with code MAKE400 and land two qualifying direct deposits of $500+ each within 75 days to get $400; no monthly fee, no minimum balance, while the CHECKING250 tier pays only $250",
+    "highlight": "$400 for a new 360 Checking with code MAKE400 plus two $500+ direct deposits in 75 days; no monthly fee or minimum balance",
     "regions": "[US] US citizens or green-card holders with an address in the 50 states/DC, a US phone number and an SSN or ITIN",
     "value": "$400",
     "content": "Capital One's 360 Checking sign-up bonus: open a new 360 Checking through the offer page with promo code MAKE400 by 23:59 ET on 2026-12-09, then receive two qualifying direct deposits of $500 or more each within 75 days of opening to earn $400. The account has no monthly fee, no minimum balance and no overdraft fee. Capital One assesses eligibility after the 75-day deposit window and says processing can take up to another 60 days, so payment can land up to 135 days after opening. A separate CHECKING250 tier ($250, no published deadline) has the same requirements and cannot be combined with MAKE400. The older GET400 landing page now shows as expired.",
@@ -3562,7 +3562,7 @@
   },
   "onepay-50-signup-bonus": {
     "title": "[US] OnePay: $50 sign-up bonus and $100 for the referrer ($500 direct deposit or $5,000 month-end balance)",
-    "highlight": "Open OnePay through a referral link, unlock Cash+ within 45 days with $500 of direct deposits in one month or a $5,000 month-end balance, and get $50 cash within 5 days; the referrer gets $100 per successful referral",
+    "highlight": "$50 for opening OnePay through a referral and unlocking Cash+ in 45 days with $500 of direct deposits or a $5,000 balance; referrer gets $100",
     "regions": "[US] Nationwide, online only (OnePay is a fintech; deposit services by Coastal Community Bank / Lead Bank, FDIC members); SSN or ITIN, US phone number and address required",
     "value": "$50",
     "content": "OnePay (formerly One Finance) pays new customers $50 cash for opening a deposit account through an existing customer's referral link (or the in-app offer entry) and unlocking Cash+ within 45 days. There are two ways to unlock: receive $500 or more in qualifying direct deposits in a calendar month, or end a calendar month with a total account balance of $5,000 or more. Rewards are paid as OnePay Points (5,000 points = $50) and usually post within five days of qualifying. The referrer earns $100 per successful referral (down from $200), up to 10 referrals. The account has no monthly fee and pays 3.35% APY on savings.",
@@ -3578,7 +3578,7 @@
   },
   "xiaomi-mimo-tts-free-api": {
     "title": "[Global/CN] Xiaomi MiMo-V2.5-TTS speech API is free for a limited time: three models, RPM 100, no plan credits consumed",
-    "highlight": "The mimo-v2.5-tts (preset voices), -voicedesign (describe a voice in one line) and -voiceclone (clone from a short sample) speech-synthesis models are free for a limited time and do not consume Token Plan credits, at RPM 100 / TPM 10M per model",
+    "highlight": "Three MiMo-V2.5-TTS speech models are free for a limited time and skip Token Plan credits, at RPM 100 and TPM 10M per model",
     "regions": "[Global/CN] Xiaomi MiMo open platform (mimo.mi.com, with separate domestic and overseas sites and billing); sign-up and an API key required, and the domestic site needs a mainland phone number",
     "value": "Free for a limited time",
     "content": "The Xiaomi MiMo open platform lists all three MiMo-V2.5-TTS models as free for a limited time: mimo-v2.5-tts synthesises with preset premium voices (singing mode supported), mimo-v2.5-tts-voicedesign creates a brand-new voice from a text description, and mimo-v2.5-tts-voiceclone clones a target voice from a few audio samples. The official API pricing page, updated 2026-11-18, still marks the whole TTS series as free for a limited time, and the usage-and-quota FAQ (2026-11-19) states that TTS models do not draw on Token Plan credits. Each model lists an 8K-token context, 8K max output, RPM 100 and TPM 10M. The API is OpenAI-SDK compatible with base_url https://api.xiaomimimo.com/v1: put the text to speak in a role=assistant message, and use a role=user message for style instructions such as pace, emotion or character acting.",
@@ -3594,7 +3594,7 @@
   },
   "baidu-qianfan-1m-free-tokens": {
     "title": "[CN] Baidu Qianfan new users: 1M tokens on each of 17 models (17M total, valid 90 days)",
-    "highlight": "Activating Qianfan for the first time automatically grants 1M tokens on each of 17 listed models, including DeepSeek-V3.1, Kimi-K2, Qwen3-Coder-480B and ERNIE-4.5-Turbo; each grant is separate and valid for three months",
+    "highlight": "First-time Qianfan users get 1M tokens on each of 17 models, 17M in total and 90 days, including DeepSeek-V3.1 and Kimi-K2",
     "regions": "[CN] Baidu AI Cloud Qianfan (mainland phone number and real-name verification required); API base_url https://qianfan.baidubce.com/v2",
     "value": "17M tokens",
     "content": "This is Baidu Qianfan's standing new-customer benefit: when you first activate the Qianfan model platform and accept its terms, the platform automatically grants free tokens on a list of models. The official New User Free Quota document (updated 2026-11-11) lists 17 services, each with 1M tokens valid for three months, for 17M tokens in total. The list covers ERNIE-4.5-Turbo-128K, -32K and -VL, ERNIE-X1-Turbo-32K, DeepSeek-R1, DeepSeek-V3, DeepSeek-V3.1 and V3.1-Think, Kimi-K2-Instruct, Qwen3-235B-A22B and 30B-A3B, Qwen3-Coder-30B and 480B, plus the non-chat models bge-large-en, bge-large-zh and qianfan-sug-8k. Each grant is counted separately, and remaining quota and time are shown under Model Square then the model version detail in the console. The API is OpenAI-compatible at base_url https://qianfan.baidubce.com/v2.",
@@ -3610,7 +3610,7 @@
   },
   "roamless-blackfriday50-5off": {
     "title": "[Global] Roamless early Black Friday: 50% off all eSIM plans and FLEX top-ups, up to $25 off per order (code BLACKFRIDAY50)",
-    "highlight": "Enter BLACKFRIDAY50 at checkout for 50% off every country and regional plan plus FLEX pay-as-you-go credit, capped at $25 per order ($50 spend maxes it out); new and existing customers, runs to Cyber Monday 11/30",
+    "highlight": "BLACKFRIDAY50 takes 50% off every Roamless plan and FLEX top-up, capped at $25 per order, for new and existing users until 11/30",
     "regions": "[Global] Roamless app and website across 200+ destinations; an eSIM-capable, carrier-unlocked device is required and both new and existing accounts qualify",
     "value": "$25",
     "content": "Roamless is running an early Black Friday sale (posted on OzBargain 2026-11-20 from the company's email): enter code BLACKFRIDAY50 at checkout in the app or on the website to take 50% off all country and regional data plans and FLEX pay-as-you-go top-ups, capped at $25 per order, so a $50 purchase maxes out the discount. It covers 200+ destinations, works for new and existing customers, and runs until Cyber Monday 2026-11-30. FLEX credit is drawn down per MB at each country's rate and generally does not expire, which makes it a reasonable way to stock up before a trip. It is separate from, and can be combined with, the Roamless new-user free 500MB credit listed elsewhere on this site.",
@@ -3626,7 +3626,7 @@
   },
   "netlify-server-free-early-access": {
     "title": "[Global] Netlify Server is free during Early Access: long-lived Node servers, WebSockets, in-memory state and long-running AI agents",
-    "highlight": "Netlify Server is entirely free during Early Access: run a long-lived Node process with WebSockets/SSE, connection pools and caches; the free plan gets one instance that scales to zero when idle, which suits long-running agents and realtime apps",
+    "highlight": "Free during Early Access: long-lived Node servers with WebSockets, in-memory state and long-running agent loops; one instance on the free plan",
     "regions": "[Global] Netlify (credit-based Free, Personal and Pro plans plus Enterprise with credits); Netlify CLI 27.17.0+ for local work; no credit card needed",
     "value": "Free (Early Access)",
     "content": "Netlify launched Netlify Server in Early Access on 2026-11-10: it runs your backend as a long-lived Node.js process that can hold WebSocket and Server-Sent Events connections, keep connection pools and caches in memory, and serve many concurrent requests from one instance. When nothing is using it the server scales to zero after five minutes and wakes on the next request. Netlify states that Netlify Server is free to use during Early Access. Credit-based Free and Personal plans allow one instance, while paid plans and Enterprise with credits allow three. It fits AI workloads well: an agent loop can run for a long time in one process, keep working state in memory and stream progress to the page over a WebSocket, and existing Express, Hono, Fastify or Koa apps deploy unchanged.",
