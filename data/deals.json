@@ -3675,7 +3675,7 @@
     "brand": "VOXI",
     "domain": "voxi.co.uk",
     "category": "esim",
-    "value": "最高 £20（约 $26）",
+    "value": "最高 £20（约 $26，多数落在 £10 档）",
     "value_num": 26,
     "cost": "需要交易量",
     "highlight": "VOXI 新用户走好友的 Friends with Benefits 链接入网，付满 2 个月账单后，双方各得一张按套餐分档的礼品卡（£10/£15/£20，可选 Amazon、Just Eat 或 PayPal 现金），促销期还会翻倍到最高 £40",
@@ -3698,7 +3698,8 @@
     "last_verified": "2026-11-21",
     "added_at": "2026-11-21T07:52:22+08:00",
     "added": "2026-11-21",
-    "status": "active"
+    "status": "active",
+    "value_expected": 13
   },
   {
     "id": "bitget-wallet-card-usdc",
