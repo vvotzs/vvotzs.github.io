@@ -254,6 +254,15 @@ U: dict[str, tuple[str, str]] = {
     "legal_aria": ("站点信息", "Site information"),
     "legal_updated": ("最后更新 {d}", "Last updated {d}"),
     "legal_nav_aria": ("站点信息页面", "Site information pages"),
+    # 页脚 Cookie 设置按钮（点开同意面板）与推广 / 返佣小标
+    "cookie_settings": ("Cookie 设置", "Cookie Settings"),
+    "cookie_settings_aria": ("打开 Cookie 设置，管理统计与广告同意", "Open Cookie Settings to manage analytics and ads consent"),
+    "aff_badge": ("推广", "Aff"),
+    "aff_badge_full": ("推广链接", "Affiliate link"),
+    "aff_note": (
+        "本条目含推广链接；通过它注册或下单不会增加你的费用。",
+        "This entry contains an affiliate link. Using it costs you nothing extra.",
+    ),
 }
 
 # 参与门槛：数据里存中文原值（筛选按钮 data-value 也用它），展示时按语言取标签
@@ -392,7 +401,7 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
 # 一段 WebPage + BreadcrumbList 结构化数据。页脚只放一行「关于 · 隐私 · 披露」文字链接，
 # 不往页脚里塞免责长句（Jun 的要求：页脚保持紧凑、不撑高）。
 # 文案里的事实（纯静态无后端、无自有推广链接、投稿字段）跟实现一致，改实现时同步改这里。
-LEGAL_UPDATED = "2026-11-20"
+LEGAL_UPDATED = "2026-11-21"
 
 LEGAL_PAGES: dict[str, dict[str, dict]] = {
     "about": {
@@ -474,72 +483,187 @@ LEGAL_PAGES: dict[str, dict[str, dict]] = {
         "zh": {
             "title": "隐私政策 · 羊毛情报局",
             "desc": (
-                "羊毛情报局是纯静态站点：没有账号、没有登录、也没有后端数据库，投稿只收名称、链接、地区与说明。"
-                "页面说明统计与 Google AdSense 广告 Cookie 的用法、如何关闭个性化广告，以及联系邮箱。"
-                "投递的记录可随时来信删除，不用于广告画像。"
+                "羊毛情报局是纯静态站点，没有账号也没有后端数据库。本页完整说明本站当前使用的 Cookie 与本地存储、"
+                "EU/EEA/UK GDPR 与加州 CCPA/CPRA 赋予你的权利、同意管理与随时撤回的方式，以及如何联系我们。"
+                "本站目前不加载任何追踪或广告脚本。"
             ),
             "h1": "隐私政策",
-            "lead": "本站是纯静态站点：没有账号、没有后端存储；页面里的 Cookie 只来自统计与广告。",
+            "lead": "本站是纯静态站点：没有账号、没有后端存储；在开启统计或广告之前，不会加载任何追踪脚本。",
             "sections": [
                 ("本站不收集登录信息", [
                     "羊毛情报局是纯静态站点：没有账号、没有登录，也没有后端数据库。所有页面在发布前就构建成 HTML，"
                     "浏览本站不需要注册，也不需要提交任何个人信息。",
                 ]),
-                ("统计与广告 Cookie", [
-                    "我们不用自有 Cookie 记录你的身份。为了解访问量、改进内容，可能接入 Google Analytics；"
-                    "如果站内投放 Google AdSense 广告，Google 及其合作伙伴会通过 Cookie 或类似技术，根据你此前"
-                    "对本站或其他网站的访问来投放广告，并收集匿名的访问数据（页面、来源、设备类型与大致地区）。",
-                    "你可以在 Google 广告设置（google.com/settings/ads）里停用个性化广告，或在浏览器里清除、"
-                    "禁用 Cookie；这不会影响你阅读本站内容。",
+                ("当前实际使用的存储", [
+                    "截至本页标注的更新日期，本站不加载任何统计、广告或第三方追踪脚本，也不设置任何追踪 Cookie。",
+                    "浏览器里会用到两处本地存储，都属于必要项：一是标签页级别的 sessionStorage（键名 ydj_last_sent），"
+                    "只记录投稿按钮 5 秒防重复的发送时间，关闭标签页即清除；二是本站域名下的 localStorage"
+                    "（键名 dh_consent_v1），只在你调整页脚「Cookie 设置」时写入，内容是必要项、统计与广告两个开关"
+                    "的状态和同意时间。",
+                    "这些值只存在于你的浏览器里，不会上传到本站（本站没有可以接收它们的服务器）。清除浏览器数据即可"
+                    "一并删除。",
+                ]),
+                ("Cookie 设置与同意", [
+                    "页脚的「Cookie 设置」可以随时打开同意面板：选择「仅必要」，或分别允许统计与广告，之后随时回来修改。"
+                    "面板固定悬浮在页面底部，不占用正文空间。",
+                    "在你同意之前，本站不会主动加载任何统计或广告脚本；撤回同意后，已加载的第三方脚本会在下次刷新"
+                    "页面时不再出现。",
+                    "用浏览器隐私模式或禁用本地存储时，本站照常可以阅读，只是同意选择不会跨页面保存。",
+                ]),
+                ("以后可能接入的统计与广告", [
+                    "如果将来接入 Google Analytics 4，它会在你同意「统计」后加载，用于了解匿名访问量与内容偏好；"
+                    "如果站内投放 Google AdSense 广告，它会在你同意「广告」后加载，Google 及其合作伙伴可能通过 Cookie "
+                    "或类似技术，根据你此前对本站或其他网站的访问投放广告，并收集页面、来源、设备类型与大致地区这类"
+                    "匿名数据。",
+                    "你可以在 Google 广告设置（google.com/settings/ads）停用个性化广告，也可以在页脚「Cookie 设置」里"
+                    "撤回同意；这不会影响你阅读本站内容。",
+                ]),
+                ("处理的合法依据（GDPR）", [
+                    "对 EU/EEA/UK 用户，我们按《通用数据保护条例》（GDPR）第 6 条处理数据：必要存储与站点安全运行"
+                    "属于提供你请求的服务所必需、以及我们的正当利益（第 6(1)(b)、6(1)(f) 条）；统计与广告基于你的"
+                    "同意（第 6(1)(a) 条），可以随时撤回，撤回不影响撤回前处理的合法性；投稿信息用于核验活动与必要"
+                    "联系，属于第 6(1)(b)、6(1)(f) 条。",
+                ]),
+                ("你在 GDPR 下的权利", [
+                    "你可以要求访问我们持有的与你有关的个人数据、要求更正或删除、限制或反对处理、以机器可读格式取得"
+                    "副本（数据可携），并可以随时撤回同意。本站不做用户画像，也不做会产生法律效果的自动化决策。",
+                    "如果认为我们的处理违反 GDPR，你可以向所在地的监管机构申诉：英国为信息专员办公室（ICO），"
+                    "EU/EEA 为你所在成员国的数据保护机构。",
+                    "行使上述权利请写信到 vvotzs@gmail.com 并说明请求内容；我们会在收到后一个月内答复，复杂请求最多"
+                    "再延长两个月并告知原因。行使权利不收费。",
+                ]),
+                ("加州居民（CCPA/CPRA）", [
+                    "本站不出售个人信息，也不为跨情境行为广告而共享（share）个人信息；过去 12 个月没有出售或共享，"
+                    "也没有此类计划。本站不建立用户账号，不收集加州法律定义的敏感个人信息，也不掌握客户名单或支付信息。",
+                    "加州居民有权：知情（我们收集的信息类别、来源与用途）、要求删除、要求更正、选择退出出售或共享、"
+                    "限制敏感个人信息的使用，以及不因行使这些权利而受到歧视。由于本站不出售也不共享个人信息，"
+                    "无需另行提供「Do Not Sell or Share My Personal Information」入口；如你仍希望提出请求，直接写信即可。",
+                    "提出请求请写信到 vvotzs@gmail.com，标题写「CCPA request」，说明你想要知情、删除还是更正；"
+                    "我们会在 45 天内答复，必要时再延长 45 天并说明原因。你也可以委托授权代理人提出请求，需要提供"
+                    "书面授权。本站不面向 16 岁以下用户，也不会有意收集儿童的个人信息。",
                 ]),
                 ("投稿信息", [
                     "通过投稿表单或邮件投稿时，我们只会收到你填写的名称、链接、地区、说明，以及发件邮箱。这些信息"
-                    "仅用于核验活动和必要时联系你，不会公开你的邮箱，也不会用于广告画像。想删除已投稿的记录，"
-                    "来信告知即可。",
+                    "仅用于核验活动和必要时联系你，不会公开你的邮箱，也不会用于广告画像；投稿记录保留到核验完成并"
+                    "归档后 24 个月，你可以随时来信要求提前删除。",
+                ]),
+                ("托管与跨境传输", [
+                    "本站由 GitHub Pages 托管（GitHub, Inc.，美国）。访问时 GitHub 会按自己的日志政策处理 IP 地址、"
+                    "请求时间等技术数据，这部分不受本站控制，详见 GitHub 隐私声明（docs.github.com/site-policy）。"
+                    "如果这构成向美国传输数据，依据是提供你请求的页面所必需，或你对统计、广告的同意。",
                 ]),
                 ("外部链接", [
                     "站内链接指向品牌官网或社区原帖，这些网站的隐私做法由它们自己负责，请查看各自的隐私政策。",
                 ]),
+                ("政策更新", [
+                    "本页顶部的日期是最后更新时间。如果以后开启统计或广告、或改变处理方式，我们会先更新本页并调整同意"
+                    "设置，重大变更会在页首注明。",
+                ]),
                 ("联系", [
-                    "隐私相关的问题请写信到 vvotzs@gmail.com。",
+                    "隐私相关的问题、访问或删除请求，请写信到 vvotzs@gmail.com。",
                 ]),
             ],
         },
         "en": {
             "title": "Privacy policy · Deal Hunter",
             "desc": (
-                "Deal Hunter is a static site with no accounts and no backend. This page covers analytics and "
-                "AdSense cookies, personalised ads and the contact address."
+                "Deal Hunter is a static site with no accounts. This policy covers cookies and storage, "
+                "GDPR and CCPA/CPRA rights, consent choices and how to contact us."
             ),
             "h1": "Privacy policy",
-            "lead": "This is a static site: no accounts and no server-side storage; the only cookies come from "
-                    "analytics and ads.",
+            "lead": "A static site with no accounts and no server-side storage; no tracking script loads until you allow analytics or ads.",
             "sections": [
                 ("No sign-in data", [
-                    "Deal Hunter is a static site: there are no accounts, no sign-in and no backend database. "
-                    "Every page is built as plain HTML before publishing, so reading the site needs no sign-up "
-                    "and no personal details.",
+                    "Deal Hunter is a static site: there are no accounts, no sign-in and no backend database. Every page "
+                    "is built as plain HTML before publishing, so reading the site needs no sign-up and no personal details.",
                 ]),
-                ("Analytics and advertising cookies", [
-                    "We set no cookies of our own to identify you. To understand traffic and improve the site we "
-                    "may use Google Analytics; if Google AdSense ads run here, Google and its partners may use "
-                    "cookies or similar technologies to serve ads based on your earlier visits to this or other "
-                    "websites, and may collect anonymous data such as page, referrer, device type and rough region.",
-                    "You can turn off personalised advertising in Google Ads Settings (google.com/settings/ads), "
-                    "or clear or block cookies in your browser. Either way the site stays readable.",
+                ("What we actually store", [
+                    "As of the update date shown on this page, the site loads no analytics, advertising or third-party "
+                    "tracking script, and sets no tracking cookies.",
+                    "Two local values are used, both necessary: a tab-level sessionStorage entry (key ydj_last_sent) that "
+                    "only records when you last sent a submission, so the button ignores double taps for 5 seconds and "
+                    "expires when the tab closes; and a localStorage entry on this site (key dh_consent_v1) written only "
+                    "when you change Cookie Settings, holding the necessary flag, your analytics and ads switches, and the "
+                    "time you chose.",
+                    "Both stay in your browser and are never uploaded here, because there is no server to receive them. "
+                    "Clearing your browser data deletes them.",
+                ]),
+                ("Cookie settings and consent", [
+                    "Cookie Settings in the footer opens the consent panel at any time: choose Essential only, or allow "
+                    "analytics and ads separately, and change it whenever you like. The panel floats over the bottom of "
+                    "the page and takes no space in the layout.",
+                    "No analytics or ad script loads before you agree, and after you withdraw consent any third-party "
+                    "script that was loaded stops appearing on the next page load.",
+                    "With private browsing or storage disabled the site still reads normally; only the saved choice is "
+                    "not kept between pages.",
+                ]),
+                ("Analytics and ads, if we add them", [
+                    "If Google Analytics 4 is added later, it will load only after you allow analytics, to measure "
+                    "anonymous traffic and see which pages help. If Google AdSense ads run here, they will load only "
+                    "after you allow ads; Google and its partners may then use cookies or similar technologies to serve "
+                    "ads based on your earlier visits to this or other websites, and may collect anonymous data such as "
+                    "page, referrer, device type and rough region.",
+                    "You can turn off personalised advertising in Google Ads Settings (google.com/settings/ads), or "
+                    "withdraw consent in Cookie Settings. Either way the site stays readable.",
+                ]),
+                ("Legal bases (GDPR)", [
+                    "For users in the EU/EEA/UK we process data under Article 6 of the General Data Protection Regulation: "
+                    "necessary storage and keeping the site secure are needed to provide the pages you ask for and rest "
+                    "on our legitimate interests (Art. 6(1)(b) and 6(1)(f)); analytics and advertising rest on your "
+                    "consent (Art. 6(1)(a)), which you can withdraw at any time without affecting processing that "
+                    "already happened; submission details are used to verify an offer and reply if needed, under "
+                    "Art. 6(1)(b) and 6(1)(f).",
+                ]),
+                ("Your rights under the GDPR", [
+                    "You can ask for access to the personal data we hold about you, ask us to correct or delete it, "
+                    "restrict or object to processing, receive a portable copy, and withdraw consent at any time. We do "
+                    "not profile readers or make automated decisions with legal effects.",
+                    "If you believe our processing breaks the GDPR, you can complain to your local supervisory "
+                    "authority: the Information Commissioner's Office (ICO) in the UK, or the data protection authority "
+                    "of your EU/EEA member state.",
+                    "To exercise these rights, write to vvotzs@gmail.com with what you want. We answer within one month "
+                    "of receiving the request, and for complex requests may extend that by up to two further months "
+                    "with an explanation. Exercising your rights is free.",
+                ]),
+                ("California residents (CCPA/CPRA)", [
+                    "We do not sell personal information, and we do not share it for cross-context behavioural "
+                    "advertising; we have not done so in the past 12 months and have no plans to. The site has no user "
+                    "accounts, collects no sensitive personal information as defined by California law, and holds no "
+                    "customer lists or payment details.",
+                    "California residents have the right to know (the categories of information collected, their sources "
+                    "and purposes), to delete, to correct, to opt out of sale or sharing, to limit the use of sensitive "
+                    "personal information, and not to be discriminated against for exercising these rights. Because we "
+                    "neither sell nor share personal information, a separate Do Not Sell or Share My Personal "
+                    "Information link is not required; you can still send a request by email.",
+                    "To make a request, write to vvotzs@gmail.com with the subject CCPA request and say whether you want "
+                    "to know, delete or correct. We answer within 45 days, and may extend once by a further 45 days with "
+                    "an explanation. You may use an authorised agent with written permission. The site is not directed "
+                    "at children under 16 and we do not knowingly collect their personal information.",
                 ]),
                 ("Submissions", [
-                    "When you submit an offer through the form or by email, we receive only the name, link, region "
-                    "and note you enter, plus your sending address. That is used to verify the offer and to reply "
-                    "if needed; your address is never published and never used for ad profiling. Ask us to delete "
-                    "a past submission and we will.",
+                    "When you submit an offer through the form or by email, we receive only the name, link, region and "
+                    "note you enter, plus your sending address. That is used to verify the offer and to reply if "
+                    "needed; your address is never published and never used for ad profiling. Submission records are "
+                    "kept for 24 months after verification and archiving, and you can ask us to delete them sooner.",
+                ]),
+                ("Hosting and international transfers", [
+                    "The site is hosted on GitHub Pages (GitHub, Inc., United States). GitHub processes technical data "
+                    "such as IP address and request time under its own logging policy, which is outside our control; see "
+                    "the GitHub Privacy Statement (docs.github.com/site-policy). Where that amounts to a transfer to the "
+                    "United States, it rests on providing the pages you requested or on your consent for analytics and "
+                    "ads.",
                 ]),
                 ("External links", [
-                    "Links here point to brand sites or community posts. Their privacy practices are their own; "
-                    "please read their policies.",
+                    "Links here point to brand sites or community posts. Their privacy practices are their own; please "
+                    "read their policies.",
+                ]),
+                ("Changes to this policy", [
+                    "The date at the top of this page is the last update. If analytics or ads are switched on, or our "
+                    "processing changes, we will update this page and the consent settings first, and note material "
+                    "changes at the top.",
                 ]),
                 ("Contact", [
-                    "Privacy questions: vvotzs@gmail.com.",
+                    "Privacy questions, access or deletion requests: vvotzs@gmail.com.",
                 ]),
             ],
         },
@@ -548,21 +672,27 @@ LEGAL_PAGES: dict[str, dict[str, dict]] = {
         "zh": {
             "title": "链接与收录披露 · 羊毛情报局",
             "desc": (
-                "羊毛情报局的链接与收录规则：主链接指向官方活动页，社区原帖只作「原文」参考；目前没有自有推广或"
-                "返佣链接，如出现合作链接会明确标注并加 rel=sponsored，投稿里的推荐码不会被采用。"
+                "羊毛情报局的链接与收录规则：主链接指向官方活动页，部分活动或产品链接可能包含推广/返佣链接，"
+                "一律标注「推广」并加 rel=sponsored，不增加你的任何费用；未标注的链接没有报酬关系，"
                 "所有金额、资格、截止时间与发放条件都以品牌官网条款为准。"
             ),
             "h1": "链接与收录披露",
-            "lead": "主链接永远指向官方活动页；社区邀请码与推荐链接不会被当成「原文链接」。",
+            "lead": "主链接指向官方活动页；带推广或返佣的链接一律标注「推广」并加 rel=sponsored，不增加你的费用。",
             "sections": [
                 ("收录与链接", [
                     "站内条目的主链接是官方活动页。如果活动最早来自社区（论坛、Reddit、X 等），会额外给一个"
                     "「原文链接」指向那条原帖，方便你核对信息出处。",
                 ]),
-                ("合作与推广链接", [
-                    "目前本站没有与任何品牌的自有推广或返佣链接。今后如出现合作、返佣或推广链接，会在条目里"
-                    "明确标注「合作 / 推广」，并在链接上加 rel=\"sponsored\"；没有标注的条目，就代表我们与"
-                    "品牌方没有报酬关系。",
+                ("推广与返佣链接", [
+                    "部分活动或产品链接可能包含推广或返佣链接（Affiliate / Partner links）。通过这类链接注册、下单"
+                    "或充值，品牌方可能向我们支付一笔佣金；这不会增加你的任何费用，也不改变活动本身的价格、额度、"
+                    "资格或条款。",
+                    "所有推广链接都会在条目里明确标注「推广 / Sponsored」，并带上 rel=\"sponsored noopener\"；"
+                    "没有标注的链接，代表我们与品牌方没有报酬关系。",
+                ]),
+                ("编辑独立性", [
+                    "是否收录、怎么写、价值与风险怎么判断，只看活动能否核到官方条款，与是否有佣金无关。佣金不会让"
+                    "已失效、门槛不清或条款有问题的活动进入站内，也不会让风险提示变轻。",
                 ]),
                 ("邀请与推荐码", [
                     "他人在社区分享的邀请码、推荐链接（例如某位投稿人自己的推荐码）不会被当作本站的「原文链接」"
@@ -580,31 +710,37 @@ LEGAL_PAGES: dict[str, dict[str, dict]] = {
         "en": {
             "title": "Links and listing disclosure · Deal Hunter",
             "desc": (
-                "How Deal Hunter links offers: the main link is the official page, community threads are only "
-                "a source reference, and any partner link is labelled sponsored."
+                "How Deal Hunter links offers: the main link goes to the official page, affiliate links are "
+                "labelled and marked sponsored, at no extra cost to you."
             ),
             "h1": "Links and listing disclosure",
-            "lead": "The main link always goes to the official offer page; invite codes from the community are "
-                    "never used as a source link.",
+            "lead": "The main link goes to the official offer page; affiliate or partner links are always labelled and marked sponsored, at no extra cost to you.",
             "sections": [
                 ("Linking", [
                     "The main link on every entry is the official offer page. If the offer first appeared in a "
                     "community thread (a forum, Reddit, X), a second link points to that original post so you can "
                     "check where the information came from.",
                 ]),
-                ("Partner and paid links", [
-                    "There are currently no affiliate or partner links of our own to any brand. If a partner, "
-                    "referral or paid link appears later, it will be labelled as such in the entry and marked "
-                    "rel=\"sponsored\". An entry without that label means we are paid nothing by the brand.",
+                ("Affiliate and partner links", [
+                    "Some offer or product links may be affiliate or partner links. If you sign up, buy or top up "
+                    "through one of them, the brand may pay us a commission; that adds nothing to your cost and does "
+                    "not change the price, amount, eligibility or terms of the offer itself.",
+                    "Every affiliate link is labelled Sponsored in the entry and marked rel=\"sponsored noopener\". "
+                    "A link without that label means we are paid nothing by the brand.",
+                ]),
+                ("Editorial independence", [
+                    "Whether an offer is listed, how it is described and how its value and risks are judged depend only "
+                    "on whether it can be verified against official terms, never on whether it pays. A commission does "
+                    "not get an expired, unclear or flawed offer listed, and does not soften a risk note.",
                 ]),
                 ("Invite and referral codes", [
-                    "Invite codes and referral links shared by other people, such as a submitter's own code, are "
-                    "never used as the source link, and codes inside submissions are not adopted. Entries link to "
-                    "the official page.",
+                    "Invite codes and referral links shared by other people, such as a submitter's own code, are never "
+                    "used as the source link, and codes inside submissions are not adopted. Entries link to the "
+                    "official page.",
                 ]),
                 ("Amounts and terms", [
-                    "Amounts, eligibility, deadlines and payout conditions follow the brand's own terms. We check "
-                    "them carefully but promise nothing, and an offer can change or end early.",
+                    "Amounts, eligibility, deadlines and payout conditions follow the brand's own terms. We check them "
+                    "carefully but promise nothing, and an offer can change or end early.",
                 ]),
                 ("Corrections", [
                     "Spotted an error or a dead link? Write to vvotzs@gmail.com.",

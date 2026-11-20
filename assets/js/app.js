@@ -32,6 +32,15 @@
     if (img.complete && img.naturalWidth === 0) window.__favFallback(img);
   });
 
+  /* ------------------------------------------------------------ Cookie 同意 */
+  /* 面板、localStorage 与 window.__dhConsent 都在 /assets/js/consent.js（全站共用，含
+     详情 / 分类 / 合规页）。首页这份交互脚本只在同意变化后通知按需加载的模块：
+     以后接 GA4 / AdSense 时实现 window.__dhOnConsent = function (state) {…} 即可，
+     不用在页面其它地方再判断一次。 */
+  document.addEventListener("dh:consent-changed", function (ev) {
+    if (typeof window.__dhOnConsent === "function") window.__dhOnConsent(ev.detail);
+  });
+
   /* ------------------------------------------------------- 语言（中文 / English）*/
   /* 页面是单语的：/ 只有中文、/en/ 只有英文，DOM 里没有成对的中英节点。
      LANG 只用于 JS 自己生成的少量文案（aria-label、提交表单的 lang 字段）；

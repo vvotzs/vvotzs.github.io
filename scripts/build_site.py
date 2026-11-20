@@ -95,6 +95,12 @@ FAV_SIZE = 48
 FAV_QUALITY = 82
 FAV_METHOD = 6
 
+# Cookie 同意开关：目前全站零追踪 / 零广告脚本，首访不主动弹面板（只写进 <html
+# data-consent-required="0">，用户点页脚「Cookie 设置」时才打开）。以后接入
+# GA4 / AdSense 时把这里改成 "1"，consent.js 就会给未做过选择的欧洲首访者弹出面板，
+# 已同意 / 已拒绝的访客不会再被重复打扰。
+CONSENT_REQUIRED = "0"
+
 # ------------------------------------------------------- 两枚 3D 质感小徽标
 # 按 Jun 的参考图手绘：都靠「多层实色 + 渐变」堆出立体感，14–16px 下要的还是
 # 一块完整的色块轮廓，所以线条都取整、不留发丝细节。两枚的渐变统一放在页面里
@@ -1097,6 +1103,26 @@ def main_link(deal: dict) -> str:
     return main_link_kind(deal)[1]
 
 
+def deal_affiliate(deal: dict) -> tuple[bool, str]:
+    """推广 / 返佣条目的主链接：(是否推广条目, 实际跳转地址)。
+
+    `aff_url` 存在时优先用它，只标了 `affiliate: true` 的条目退回官方 `url`；
+    两个字段都没有就返回 (False, "")，现有 236 条数据不会有任何渲染变化。
+    跳转地址同样过 safe_url() 白名单，`javascript:` 这类值不会变成可点链接。
+    """
+    aff_url = safe_url(deal.get("aff_url"))
+    if aff_url:
+        return True, aff_url
+    if deal.get("affiliate"):
+        return True, safe_url(deal.get("url"))
+    return False, ""
+
+
+def link_rel(aff: bool) -> str:
+    """外链 rel：推广链接按广告披露要求标 sponsored，其他链接沿用 nofollow。"""
+    return "sponsored noopener noreferrer" if aff else "noopener nofollow"
+
+
 def official_link(deal: dict) -> str:
     return safe_url(deal.get("url"))
 
@@ -1138,7 +1164,13 @@ def card(deal: dict, en: dict, today) -> str:
     # 外链一律过协议白名单：只有 http(s) 才渲染成可点的 <a>，
     # javascript: / data: 这类值退化成纯文本，不会变成可执行的链接。
     # 只有真原帖才写「原文」，只剩官方活动页的写「官网」，别让人以为点的是原帖。
-    link_kind, link = main_link_kind(deal)
+    # 推广条目（affiliate: true 或带 aff_url）主按钮改用推广链接并在旁边挂「推广」小标，
+    # rel 换成 sponsored；没有推广字段的条目完全走原逻辑。
+    aff, aff_link = deal_affiliate(deal)
+    if aff and aff_link:
+        link_kind, link = "official", aff_link
+    else:
+        link_kind, link = main_link_kind(deal)
     link = safe_url(link)
     if link_kind == "official":
         go_full, go_short = ui("go_official_full"), ui("go_official_short")
@@ -1148,7 +1180,7 @@ def card(deal: dict, en: dict, today) -> str:
         go_aria = al(*U["go_aria"])
     if link:
         go_html = (
-            f'<a class="go" href="{e(link)}" target="_blank" rel="noopener nofollow"\n'
+            f'<a class="go" href="{e(link)}" target="_blank" rel="{link_rel(aff)}"\n'
             f'             {go_aria}><span class="go-full">{go_full}</span>'
             f'<span class="go-short">{go_short}</span>{icon("external")}</a>'
         )
@@ -1174,6 +1206,10 @@ def card(deal: dict, en: dict, today) -> str:
         f'<span class="{value_cls}">{bi(e(badge_zh), e(badge_en))}</span>'
         if (badge_zh or badge_en) else ""
     )
+    aff_html = (
+        f'<span class="aff-tag" {tt(*U["aff_badge_full"])}>{ui("aff_badge")}</span>'
+        if aff else ""
+    )
 
     return f"""<article class="{classes}" id="deal-{deal_id}" data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
@@ -1186,7 +1222,7 @@ def card(deal: dict, en: dict, today) -> str:
           <h3>{title_html}</h3>
           {badge_html}
         </div>
-        <p class="row2"><span class="tag {cost_cls}">{bi(e(cost), e(COST_EN.get(cost, cost)))}</span>{bi(hl_zh, hl_en)}</p>
+        <p class="row2"><span class="tag {cost_cls}">{bi(e(cost), e(COST_EN.get(cost, cost)))}</span>{aff_html}{bi(hl_zh, hl_en)}</p>
         <div class="row3">
           {deadline_html(deal, today)}
           {region_html}
@@ -1409,11 +1445,14 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     if src and official and src.rstrip("/") == official.rstrip("/"):
         src = ""
 
-    # 主按钮：官方活动页；万一条目只填了原帖，就把它当主按钮
+    # 推广条目：主按钮走 aff_url（没有就退回官方 url），rel 换成 sponsored 并附一行小字披露；
+    # 普通条目仍是官方活动页，rel 保持 noopener noreferrer。
+    aff, aff_link = deal_affiliate(deal)
+    main_href = aff_link if (aff and aff_link) else official
     acts = []
-    if official:
+    if main_href:
         acts.append(
-            f'<a class="dp-btn mint" href="{e(official)}" target="_blank" rel="noopener noreferrer">'
+            f'<a class="dp-btn mint" href="{e(main_href)}" target="_blank" rel="{link_rel(aff)}">'
             f'{ui("dp_official")}{icon("external", "dp-ico")}</a>'
         )
     if src:
@@ -1483,6 +1522,14 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
             f'<section class="dp-more" aria-label="{e(ui("dp_related_aria"))}">'
             f'<h2>{ui("dp_more")}</h2><ul>{"".join(rel_items)}</ul></section>'
         )
+
+    aff_badge_html = (
+        f'<span class="dtag aff">{e(ui("aff_badge_full"))}</span>' if aff else ""
+    )
+    aff_note_html = (
+        f'<p class="dp-aff-note">{icon("external", "dp-aff-i")}{e(ui("aff_note"))}</p>'
+        if aff else ""
+    )
 
     home = "/en/" if is_en else "/"
     # 面包屑 / JSON-LD / 页脚导航里的分类名都指向静态分类目录页，
@@ -1611,7 +1658,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     title_tag = f'<span class="rtag">{e(rtag)}</span>' if rtag else ""
 
     return f"""<!DOCTYPE html>
-<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}" data-today="{today.isoformat()}">
+<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}" data-today="{today.isoformat()}" data-consent-required="{CONSENT_REQUIRED}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
@@ -1695,6 +1742,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
           <div class="dp-badges">
             <span class="dtag cat">{icon(cat_icon, 'dp-cat-i')}{cat_label}</span>
             <span class="dp-st {st_cls}">{st_label}</span>
+            {aff_badge_html}
           </div>
         </div>
       </div>
@@ -1705,6 +1753,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 
       <div class="dp-actions">
         {''.join(acts)}
+        {aff_note_html}
       </div>
     </article>
 
@@ -1742,6 +1791,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 </footer>
 
 {DP_FAV_JS}
+<script src="/assets/js/consent.js?v={asset_ver('assets/js/consent.js')}" defer></script>
 </body>
 </html>
 """
@@ -1982,14 +2032,25 @@ def legal_path(kind: str, lang: str) -> str:
 
 
 def legal_footer(lang: str) -> str:
-    """页脚那一行极简文字链接（首页 / 分类页 / 详情页 / 合规页共用）。"""
+    """页脚那一行极简文字链接（首页 / 分类页 / 详情页 / 合规页共用）。
+
+    末尾的「Cookie 设置」沿用同一行小字，不额外占高度；它打开同意面板，
+    面板本身是 position: fixed 的抽屉，打开前后都不推动页面（零 CLS）。
+    """
     is_en = lang == "en"
     sep = '<span class="foot-legal-sep" aria-hidden="true">·</span>'
     links = sep.join(
         f'<a href="/{e(legal_path(kind, lang))}">{e(U[key][1] if is_en else U[key][0])}</a>'
         for kind, key in LEGAL_LINKS
     )
-    return f'<span class="foot-legal" {al(*U["legal_nav_aria"])}>{links}</span>'
+    cookie = (
+        f'<button class="foot-cookie" type="button" data-consent-open '
+        f'{al(*U["cookie_settings_aria"])}>{e(ui("cookie_settings"))}</button>'
+    )
+    return (
+        f'<span class="foot-legal" {al(*U["legal_nav_aria"])}>'
+        f'{links}{sep}{cookie}</span>'
+    )
 
 
 def render_legal_page(kind: str, lang: str, today) -> str:
@@ -2047,7 +2108,7 @@ def render_legal_page(kind: str, lang: str, today) -> str:
     ).replace("</", "<\\/")
 
     return f"""<!DOCTYPE html>
-<html lang="{"en" if is_en else "zh-CN"}" data-lang="{"en" if is_en else "zh"}" data-today="{today.isoformat()}">
+<html lang="{"en" if is_en else "zh-CN"}" data-lang="{"en" if is_en else "zh"}" data-today="{today.isoformat()}" data-consent-required="{CONSENT_REQUIRED}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
@@ -2146,6 +2207,7 @@ def render_legal_page(kind: str, lang: str, today) -> str:
   </div>
 </footer>
 
+<script src="/assets/js/consent.js?v={asset_ver('assets/js/consent.js')}" defer></script>
 </body>
 </html>
 """
@@ -2290,12 +2352,14 @@ def cat_row(deal: dict, en: dict, lang: str, today) -> str:
     dl = short_deadline(deal, today)[1 if is_en else 0]
     end = parse_date(deal.get("end", ""))
     hot = " hot" if end and 0 <= (end - today).days <= EXPIRING_DAYS else ""
+    aff, _ = deal_affiliate(deal)
+    aff_tag = f'<span class="aff-tag">{e(U["aff_badge"][1 if is_en else 0])}</span>' if aff else ""
     return (
         f'<li><a class="cat-card" href="/{e(deal_path(deal["id"], lang))}">'
         f'<span class="cat-crow">{fav_html(deal, 26, en)}<span class="cat-cmain">'
         f'<span class="cat-ct">{tag}{e(title)}</span>'
         f'<span class="cat-csub"><b class="cat-cv" title="{e(value_now)}">{e(value_badge(value_now, lang))}</b>'
-        f'<span class="tag {cost_cls}">{e(cost_label)}</span>'
+        f'<span class="tag {cost_cls}">{e(cost_label)}</span>{aff_tag}'
         f'<span class="cat-cdl{hot}">{e(dl)}</span></span></span></span>'
         f'<span class="cat-snip">{e(highlight)}</span>'
         f'<span class="cat-region">{e(regions)}</span>'
@@ -2412,7 +2476,7 @@ def render_category_page(
     ).replace("</", "<\\/")
 
     return f"""<!DOCTYPE html>
-<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}" data-today="{today.isoformat()}">
+<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}" data-today="{today.isoformat()}" data-consent-required="{CONSENT_REQUIRED}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
@@ -2519,6 +2583,7 @@ def render_category_page(
 </footer>
 
 {DP_FAV_JS}
+<script src="/assets/js/consent.js?v={asset_ver('assets/js/consent.js')}" defer></script>
 </body>
 </html>
 """
@@ -2631,7 +2696,7 @@ def validate(deals: list[dict], en_map: dict) -> None:
         if tag in seen:
             errors.append(f"{tag}: id 重复")
         seen.add(tag)
-        for key in ("url", "source_url"):
+        for key in ("url", "source_url", "aff_url"):
             raw = str(deal.get(key) or "").strip()
             if raw and not safe_url(raw):
                 errors.append(f"{tag}: {key} 不是 http(s) 链接（{raw[:40]}）")
@@ -3053,7 +3118,7 @@ def main() -> None:
         switch_hreflang = "zh-CN" if is_en else "en"
 
         head = f"""<!DOCTYPE html>
-<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}" data-today="{today.isoformat()}">
+<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}" data-today="{today.isoformat()}" data-consent-required="{CONSENT_REQUIRED}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
@@ -3351,6 +3416,7 @@ def main() -> None:
 
 <script id="search-index" type="application/json">{search_json}</script>
 <script src="/assets/js/app.js?v={asset_ver('assets/js/app.js')}" defer></script>
+<script src="/assets/js/consent.js?v={asset_ver('assets/js/consent.js')}" defer></script>
 </body>
 </html>
 """

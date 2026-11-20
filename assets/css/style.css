@@ -1480,6 +1480,21 @@ footer{
 .foot-legal a{ color: inherit; text-decoration: none; }
 .foot-legal a:hover{ color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
 .foot-legal-sep{ color: var(--ink-4); }
+/* 页脚「Cookie 设置」：与旁边三个链接同一号小字，按钮壳清零，不额外占高度 */
+.foot-cookie{
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  line-height: inherit;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.foot-cookie:hover{ color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.foot-cookie:focus-visible{ outline: 2px solid var(--mint); outline-offset: 2px; border-radius: 4px; }
 
 /* 合规页（/about/ /privacy/ /disclosure/）：沿用详情页的窄容器与分节卡片 */
 .legal-lead{ margin: 8px 0 0; font-size: 13.6px; line-height: 1.68; color: var(--ink-2); }
@@ -1891,11 +1906,13 @@ footer{
   .rail a.rail-top svg{ width: 15px; height: 15px; }
   .rail-sep{ margin: 3px 5px; }
 
-  /* 375px 一行放得下：品牌（153px）+ 关于·隐私·披露（9px 下英 122 / 中 63）+ 间距，
-     页脚高度与改动前一致；右下角滑轨本身有「顶部」，页脚这颗在手机上省掉，不重复。 */
-  .foot-line{ gap: 8px; font-size: 11px; flex-wrap: wrap; }
+  /* 375px 一行放得下：品牌（143px）+ 关于·隐私·披露·Cookie 设置（9px 下英 154 / 中 112），
+     页脚高度与改动前一致（首页 41px、其余 37px）；右下角滑轨本身有「顶部」，
+     页脚这颗在手机上省掉，不重复。分隔点两侧各收 1px，英文页也留出安全余量。 */
+  .foot-line{ gap: 5px; font-size: 11px; flex-wrap: wrap; }
   .foot-up{ display: none; }
-  .foot-legal{ gap: 3px; font-size: 9px; }
+  .foot-legal{ gap: 2px; font-size: 9px; }
+  .foot-legal-sep{ margin: 0 -1px; }
   .foot-top{ display: none; }
   /* 手机端两个 .shell 各带 4px 底边距（共 8px），页脚再让 4px，档案区到页脚收到 ~12px */
   footer{ margin-top: 4px; }
@@ -2634,4 +2651,133 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
   .cat-lead{ font-size: 12.6px; }
   .cat-list{ grid-template-columns: 1fr; }
   .cat-card{ padding: 9px 11px 10px; border-radius: 13px; }
+}
+
+/* ------------------------------------------------- cookie 同意抽屉（零 CLS） */
+/* 固定在视口底部、默认 visibility:hidden：打开 / 关闭都不进入文档流，
+   页面高度与首屏位置不变（CLS = 0）。z-index 低于投稿弹窗（90），高于语言徽标与滑轨。 */
+.consent{
+  position: fixed;
+  inset: 0;
+  z-index: 85;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .16s ease, visibility .16s ease;
+}
+.consent.is-open{ visibility: visible; pointer-events: auto; opacity: 1; }
+.consent-scrim{
+  position: absolute;
+  inset: 0;
+  background: rgba(28,25,23,.26);
+  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(1.5px);
+}
+.consent-card{
+  position: relative;
+  width: min(468px, calc(100% - 20px));
+  margin: 0 10px calc(10px + env(safe-area-inset-bottom, 0px));
+  max-height: calc(100dvh - 34px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px 16px 12px;
+  border: 1px solid rgba(28,25,23,.10);
+  border-radius: 18px;
+  background: #FAF9F5;
+  box-shadow: 0 20px 46px -18px rgba(28,25,23,.34);
+  transform: translateY(10px);
+  transition: transform .18s ease;
+}
+.consent.is-open .consent-card{ transform: none; }
+.consent-head{ display: flex; align-items: center; gap: 8px; }
+.consent-title{ margin: 0; font-size: 14.5px; font-weight: 700; color: var(--ink); letter-spacing: 0; }
+.consent-x{
+  margin-left: auto;
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border: 0; border-radius: 999px;
+  background: transparent; color: var(--ink-3);
+  cursor: pointer;
+}
+.consent-x:hover{ background: #F1EDE5; color: var(--ink); }
+.consent-x svg{ width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.consent-lead{ margin: 6px 0 0; font-size: 11.8px; line-height: 1.6; color: var(--ink-2); }
+.consent-list{ margin: 8px 0 0; padding: 0; list-style: none; }
+.consent-row{
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(28,25,23,.07);
+}
+.consent-row:first-child{ border-top: 0; }
+.consent-copy{ min-width: 0; }
+.consent-copy b{ display: block; font-size: 12.4px; font-weight: 650; color: var(--ink); }
+.consent-copy small{ display: block; margin-top: 1px; font-size: 10.8px; line-height: 1.5; color: var(--ink-3); }
+.consent-always{
+  margin-left: auto; flex: none;
+  font-size: 10px; font-weight: 600; color: var(--mint);
+  background: var(--mint-soft); border: 1px solid var(--mint-line);
+  border-radius: 999px; padding: 2px 8px; white-space: nowrap;
+}
+.consent-sw{ margin-left: auto; flex: none; position: relative; display: inline-flex; cursor: pointer; }
+.consent-sw input{ position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.consent-track{
+  width: 40px; height: 23px; border-radius: 999px;
+  background: #E7E2D9; border: 1px solid rgba(28,25,23,.08);
+  transition: background .16s ease;
+  display: block;
+}
+.consent-track i{
+  display: block; width: 17px; height: 17px; margin: 2px;
+  border-radius: 999px; background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(28,25,23,.22);
+  transition: transform .16s ease;
+}
+.consent-sw input:checked + .consent-track{ background: var(--mint); border-color: var(--mint); }
+.consent-sw input:checked + .consent-track i{ transform: translateX(17px); }
+.consent-sw input:focus-visible + .consent-track{ outline: 2px solid var(--mint); outline-offset: 2px; }
+.consent-actions{ display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+.consent-btn{
+  flex: 1 1 0; min-width: 96px; height: 34px;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0 12px; border-radius: 999px;
+  border: 1px solid var(--line); background: #FFFFFF;
+  color: var(--ink-2); font-size: 12px; font-weight: 650;
+  cursor: pointer; white-space: nowrap;
+}
+.consent-btn:hover{ border-color: rgba(28,25,23,.18); color: var(--ink); }
+.consent-btn:focus-visible, .consent-x:focus-visible{ outline: 2px solid var(--mint); outline-offset: 2px; }
+.consent-btn.mint{
+  color: #FFFFFF; border-color: transparent;
+  background: linear-gradient(180deg, #12B981, #059669);
+  box-shadow: 0 8px 18px -12px rgba(5,150,105,.9);
+}
+.consent-foot{ margin: 9px 0 0; font-size: 10.6px; color: var(--ink-3); }
+.consent-foot a{ color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.consent-foot a:hover{ color: var(--ink); }
+
+/* 推广链接小标：卡片第二行、详情页徽标行各一处，克制不抢标题 */
+.aff-tag{
+  display: inline-block;
+  font-size: 9.4px; font-weight: 600; line-height: 1.5;
+  padding: 1px 6px; margin-right: 5px;
+  border-radius: 999px; border: 1px solid #FED7AA;
+  color: #B45309; background: #FFF7ED;
+  white-space: nowrap; vertical-align: 1px;
+}
+.dp-badges .dtag.aff{ color: #B45309; background: #FFF7ED; border-color: #FED7AA; }
+.dp-aff-note{
+  flex: 1 1 100%;
+  display: flex; align-items: center; gap: 5px;
+  margin: 2px 0 0;
+  font-size: 11.2px; line-height: 1.55; color: var(--ink-3);
+}
+.dp-aff-i{ width: 11px; height: 11px; flex: none; }
+
+@media (max-width: 480px){
+  .consent-card{ width: calc(100% - 12px); margin: 0 6px calc(6px + env(safe-area-inset-bottom, 0px)); padding: 12px 13px 10px; border-radius: 16px; }
+  .consent-title{ font-size: 14px; }
+  .consent-btn{ min-width: 0; font-size: 11.5px; padding: 0 10px; }
 }
