@@ -1971,6 +1971,7 @@ def render_legal_page(kind: str, lang: str, today) -> str:
     other_lang = "zh" if is_en else "en"
     switch_href = "/" + legal_path(kind, other_lang)
     switch_lang = "zh-CN" if is_en else "en"
+    switch_aria = ui("page_switch_aria_zh") if is_en else ui("page_switch_aria")
     og_image = OG_IMAGE_EN if is_en else OG_IMAGE
 
     sections = "".join(
@@ -2072,7 +2073,7 @@ def render_legal_page(kind: str, lang: str, today) -> str:
     </a>
     <div class="dp-top">
       <a class="dp-back" href="{home}">{icon('chevron', 'dp-back-i')}<span>{ui('dp_back')}</span></a>
-      <a class="dp-switch" href="{switch_href}" hreflang="{switch_lang}" {al(*U['dp_switch_aria'])}><span lang="{switch_lang}">{ui('dp_switch')}</span></a>
+      <a class="dp-switch" href="{switch_href}" hreflang="{switch_lang}" {al(switch_aria, switch_aria)}><span lang="{switch_lang}">{ui('dp_switch')}</span></a>
     </div>
   </div>
 </header>

@@ -191,6 +191,9 @@ U: dict[str, tuple[str, str]] = {
     "dp_crumb_aria": ("面包屑", "Breadcrumb"),
     "dp_crumb_home": ("首页", "Home"),
     "dp_switch_aria": ("查看这一条的英文版", "Read this deal in English"),
+    # 合规页（about / privacy / disclosure）用「这一页」而不是「这一条」
+    "page_switch_aria": ("查看这一页的英文版", "Read this page in English"),
+    "page_switch_aria_zh": ("查看这一页的中文版", "Read this page in Chinese"),
     "dp_switch_aria_zh": ("查看这一条的中文版", "Read this deal in Chinese"),
     "dp_switch": ("EN", "中文"),
     "dp_status_active": ("进行中", "Live"),
