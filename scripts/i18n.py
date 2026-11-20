@@ -209,11 +209,14 @@ U: dict[str, tuple[str, str]] = {
     "dp_source_block": ("来源与核验", "Source & verification"),
     "dp_official": ("前往官方活动页", "Open the official offer"),
     "dp_source_post": ("来源原帖", "Source post"),
-    "dp_more": ("更多{cat}优惠", "More {cat} deals"),
+    "dp_more": ("相关推荐", "Related deals"),
     "dp_more_all": ("查看全部优惠", "Browse all deals"),
     "dp_permalink": ("详情页", "Detail page"),
+    # 首页 220 个「详情页 ↗」链向不同条目，读屏 / 搜索却念成同一句：
+    # 给每条带上标题做 aria-label，可见文字保持简洁不变。
+    "dp_permalink_aria": ("{t} · 详情页", "{t} · detail page"),
     "dp_link_aria": ("在新标签页打开", "opens in a new tab"),
-    "dp_related_aria": ("同类优惠", "Related deals"),
+    "dp_related_aria": ("相关推荐", "Related deals"),
     "dp_deadline_left": ("{d} 截止 · 剩 {n} 天", "Ends {d} · {n} days left"),
     "dp_deadline_only": ("{d} 截止", "Ends {d}"),
     "dp_deadline_ended": ("已于 {d} 结束", "Ended {d}"),

@@ -1932,7 +1932,7 @@
     "highlight": "Register for the 2026 Huawei Developer Contest · Xiaohongshu Skill Innovation with a real-name main account, then send a command in CodeArts to claim a ¥200 cloud voucher, with 1,000 released each weekday at 10:00",
     "regions": "[CN] Huawei Cloud; needs a mainland-China real-name-verified main account (sub-accounts can't claim)",
     "value": "¥200 (≈$28)",
-    "content": "The 2026 Huawei Developer Contest · Xiaohongshu Skill Innovation (co-hosted by Huawei and Xiaohongshu, with a ¥500,000 prize pool) gives every registered entrant a ¥200 no-threshold Huawei Cloud voucher. Registration and submissions close 2026-11-24 23:59; vouchers are released at 10:00 on each weekday from 11-12 to 11-24, 1,000 a day, first come first served. To claim: register with the real-name main account, then send the command \"帮我领取华为开发者大赛·小红书skill创新赛华为云代金券\" in the CodeArts chat and the voucher lands in your Huawei Cloud account. Hands-on notes: the voucher is valid to 2026-12-31 (per the billing centre), works for Flexus and other cloud servers, but not for domain registration or flash-sale items, and doesn't stack with other discounts.",
+    "content": "The 2026 Huawei Developer Contest · Xiaohongshu Skill Innovation (co-hosted by Huawei and Xiaohongshu, with a ¥500,000 prize pool) gives every registered entrant a ¥200 no-threshold Huawei Cloud voucher. Registration and submissions close 2026-11-24 23:59; vouchers are released at 10:00 on each weekday from 11-12 to 11-24, 1,000 a day, first come first served. To claim: register with the real-name main account, then send the contest voucher command in the CodeArts chat (the exact command text is quoted in the source post; copy it from there or from the Chinese version of this page) and the voucher lands in your Huawei Cloud account. Hands-on notes: the voucher is valid to 2026-12-31 (per the billing centre), works for Flexus and other cloud servers, but not for domain registration or flash-sale items, and doesn't stack with other discounts.",
     "conditions": "Must first register for the contest with a real-name Huawei Cloud main account (no registration, no voucher, and sub-accounts don't qualify); one per person and not stackable with the ¥100 tier; 1,000 a day at 10:00, otherwise wait for the next weekday; the voucher lasts about 3 months per the billing centre and is reclaimed after that; CodeArts' personal trial opens free, and claiming uses a small amount of CodeArts points.",
     "steps": [
       "Register and complete real-name verification for the contest with the main account at developer.huaweicloud.com/competition/information/1300000350/html1",
@@ -2178,13 +2178,13 @@
     "highlight": "On a 5/10/15/25/35 GB voice SIM or voice eSIM the monthly fee drops by ¥475/700/800/1,000/1,200 for months 1–3; the 15 GB plan also gets 5 GB extra for 3 months, and stacked with the call-option discount that is 20 GB with unlimited 5-minute calls for about ¥800 a month.",
     "regions": "[JP] Japan, ordered on the official IIJmio site (iijmio.jp) as a new line or MNP transfer; voice eSIM qualifies; orders through BIC SIM or JAL Mobile do not",
     "value": "Up to ¥3,600 (≈$23)",
-    "content": "IIJ started the IIJmio Giga Plan half-price campaign on 2026-11-05 with no announced end date. It applies to the voice SIM and voice eSIM versions of the Giga Plan at 5, 10, 15, 25 and 35 GB, whether you are a new customer, transferring in with MNP, or moving from an old plan (Minimum Start, Light Start, Family Share, metered). For months 1–3 from activation the monthly fee is cut by ¥475 (5 GB), ¥700 (10 GB), ¥800 (15 GB), ¥1,000 (25 GB) or ¥1,200 (35 GB), tax included. Choosing 15 GB also adds 5 GB for up to three months, so you use 20 GB. The simultaneous call-option discount campaign makes the 通話定額 5-minute+, 10-minute+ and unlimited options free for up to three months, so 15 GB (20 GB) plus the 20 GB unlimited-call bundle comes to about ¥800 a month (¥700 with the family discount). The first month is prorated by days, and the discount never exceeds that month's bill or rolls over.",
+    "content": "IIJ started the IIJmio Giga Plan half-price campaign on 2026-11-05 with no announced end date. It applies to the voice SIM and voice eSIM versions of the Giga Plan at 5, 10, 15, 25 and 35 GB, whether you are a new customer, transferring in with MNP, or moving from an old plan (Minimum Start, Light Start, Family Share, metered). For months 1–3 from activation the monthly fee is cut by ¥475 (5 GB), ¥700 (10 GB), ¥800 (15 GB), ¥1,000 (25 GB) or ¥1,200 (35 GB), tax included. Choosing 15 GB also adds 5 GB for up to three months, so you use 20 GB. The simultaneous call-option discount campaign makes the flat-rate call option (5-minute+, 10-minute+ and unlimited tiers) free for up to three months, so 15 GB (20 GB) plus the 20 GB unlimited-call bundle comes to about ¥800 a month (¥700 with the family discount). The first month is prorated by days, and the discount never exceeds that month's bill or rolls over.",
     "conditions": "Order a 5/10/15/25/35 GB voice SIM or voice eSIM during the campaign and activate it. Keep the same data tier until the benefit ends: changing capacity, switching to a data/SMS-only SIM or cancelling ends the discount (switching between a physical SIM and eSIM keeps it). Taking this campaign on 25 GB disqualifies the separate 25 GB trial discount. Not valid through BIC SIM or JAL Mobile, and not for capacity changes by existing Giga Plan customers. In a prorated first month the discount is capped at the amount billed.",
     "steps": [
       "On iijmio.jp pick the Giga Plan, choose voice eSIM or voice SIM, and a 5/10/15/25/35 GB tier",
       "Order as a new line or MNP transfer (or switch from an old plan in My IIJmio) and finish identity verification and payment setup",
       "Activate the eSIM profile; the discount starts automatically from the activation month, with no separate application",
-      "Add the call-option (通話定額オプション) while the campaign runs to get up to three months of it free",
+      "Add the flat-rate call option (Tsūwa Teigaku) while the campaign runs to get up to three months of it free",
       "Keep the same tier through month three; after that the normal fees apply (5 GB ¥950 / 10 GB ¥1,400 / 15 GB ¥1,600 / 25 GB ¥2,000 / 35 GB ¥2,400)"
     ],
     "risk": "You need a Japanese address, Japanese payment method and identity verification, so it is effectively closed to overseas users. The end date is unannounced and can come at any time. Only three months are discounted — from month four you pay full price, so work out the long-run cost. Changing capacity or SIM type voids the discount, and a prorated first month can make the discount look smaller than advertised.",
@@ -2195,7 +2195,7 @@
     "highlight": "Order a SIM-only line (eSIM included) from the Yahoo! store: switching from another carrier with Simple 3 M/L earns ¥15,000 in PayPay and S earns ¥5,000; a new M/L line earns ¥5,000 (¥10,000 for ages 5–18); on top, a Yahoo-only coupon returns up to 20% (capped at ¥6,000 for M/L).",
     "regions": "[JP] Japan; needs a Yahoo! JAPAN ID, and the Y!mobile service must be registered on that same ID. Switching from SoftBank, LINEMO or a SoftBank-network MVNO does not count as another carrier.",
     "value": "Up to about ¥21,000 (≈$136)",
-    "content": "These are SoftBank's Y!mobile sign-up benefits at the official Y!mobile online store on Yahoo! Shopping (ワイモバイル公式オンラインストア ヤフー店), with no announced end date. Two layers. First, the SIM contract benefit: order a SIM-only line (physical SIM or eSIM) from this page and join the Data Boost option (¥550/month, free for the first six months from the month after joining) and you get PayPay points worth ¥15,000 for switching from another carrier onto Simple 3 M or L, or ¥5,000 on Simple 3 S; a new M/L line gets ¥5,000, and ages 5–18 get ¥10,000 (new S lines are excluded). Points go to the Yahoo! JAPAN ID used for the service registration, at the end of the month after next. Second, the Yahoo-only coupon: claim it before ordering, and the fourth month after ordering, Yahoo! Shopping purchases get up to 20% back, capped at ¥6,000 for Simple 3 M/L and ¥500 for S.",
+    "content": "These are SoftBank's Y!mobile sign-up benefits at the official Y!mobile online store on Yahoo! Shopping, with no announced end date. Two layers. First, the SIM contract benefit: order a SIM-only line (physical SIM or eSIM) from this page and join the Data Boost option (¥550/month, free for the first six months from the month after joining) and you get PayPay points worth ¥15,000 for switching from another carrier onto Simple 3 M or L, or ¥5,000 on Simple 3 S; a new M/L line gets ¥5,000, and ages 5–18 get ¥10,000 (new S lines are excluded). Points go to the Yahoo! JAPAN ID used for the service registration, at the end of the month after next. Second, the Yahoo-only coupon: claim it before ordering, and the fourth month after ordering, Yahoo! Shopping purchases get up to 20% back, capped at ¥6,000 for Simple 3 M/L and ¥500 for S.",
     "conditions": "You must order from this page and add the Data Boost option (¥550/month) at the time of ordering — without it none of the SIM contract points are paid. SIM-only contracts must complete Y!mobile service registration by the end of the month after ordering. One line per name. Switching from SoftBank, LINEMO or a SoftBank-network MVNO is excluded. PayPay points cannot be withdrawn or transferred and need the Yahoo! JAPAN ID linked to a PayPay account. The coupon must be claimed before ordering and only applies to that fourth month's Yahoo! Shopping spend.",
     "steps": [
       "Claim the Yahoo-only coupon on this page first — claiming after ordering does not count",
@@ -2884,7 +2884,7 @@
     "title": "[Global] S.Space by the AutoGen team: 30-day Max trial, no card",
     "highlight": "A workspace where people and their own agents share rooms, built by AutoGen's creators: every new account starts a 30-day Max trial with no card, and you plug in your own Claude Code or Codex.",
     "regions": "[Global] Sign-up only. The Sutando agent currently needs the macOS app; web and iPhone users can join rooms but cannot run a local agent",
-    "value": "30-day Max trial (Max pricing not public; 待核实)",
+    "value": "30-day Max trial (Max pricing not public; pricing unconfirmed)",
     "content": "S.Space comes from AG2ai, the company of AutoGen's creator Chi Wang and co-creator Qingyun Wu. It launched publicly on 2026-11-02 and topped Product Hunt on 11-18. The product puts people and their agents into shared rooms: each person runs an agent called Sutando on macOS whose core is a real Claude Code or Codex session on their own subscription, so there is no per-token API key. Agents from other apps (ChatGPT's Dot, Grok Bot, Muse, Claude and others) join by adding S.Space as an MCP server at https://mcp.s.space/mcp. Agents ask each other for data, outputs land in shared Commons docs and tables, and anything leaving the room needs a human approval.\n\nOfficial pricing plus third-party checks on 2026-11-19: the Free plan is $0, lets you join rooms and run Sutando on your own subscription, and includes no usage credits. Every new account gets a 30-day Max trial with no credit card. Plus, Pro and Max prices are not published on the public pages and are bought inside sutando.s.space; cloud tools are charged per use (for example $5 per market map, $0.15 per qualified lead, $20 per competitor sweep), and the managed Gemini voice key needs a paid plan. Sutando itself is MIT open source.",
     "conditions": "Register for a 30-day Max trial with no card. Sutando runs only on the macOS 12+ app (Apple Silicon or Intel); Windows and Linux users can join rooms from web or iPhone and connect agents from other apps. The Free plan includes no usage credits, and cloud tools and managed voice need a paid plan or purchased credits. Rooms with agents are not end-to-end encrypted for now.",
     "steps": [
@@ -3040,7 +3040,7 @@
       "Use the allowance before 11/22 and cancel the subscription once it reverts if you do not need it"
     ],
     "risk": "The $500 is a usage cap, not cash, and cannot be read as a 20% discount on real money. The 5-hour and weekly limits are real and heavy users will hit them, users report 529 errors at peak times, and the allowance drops after 11/22, so do not budget against it.",
-    "source": "OpenCode official Go docs (read 2026-11-20: \"Higher usage limits apply through November 22, 2026\") plus the official X phase-two announcement (2026-11-18) and reports from 模真真 and AI Promo Now ($500 on Go, $1,000 on Go Plus)"
+    "source": "OpenCode official Go docs (read 2026-11-20: \"Higher usage limits apply through November 22, 2026\") plus the official X phase-two announcement (2026-11-18) and reports from MoZhenZhen and AI Promo Now ($500 on Go, $1,000 on Go Plus)"
   },
   "exa-api-40-credits-codes": {
     "title": "[Global] Exa search API: two stackable $20 codes plus $10 of free credit a month",
@@ -3057,7 +3057,7 @@
     ],
     "url": "https://dashboard.exa.ai/billing",
     "risk": "Both codes are unofficial and can be withdrawn or capped. Some accounts hit a non-prepaid card check that virtual cards fail. The credits are API usage, not cash, and usage beyond the allowance bills at $4 per 1,000 requests.",
-    "source": "NodeSeek 情报帖 (2026-11-06, with the codes and failure reports) plus tahoo.tech testing (2026-11-03, two codes taking the balance from $20 to $60) and AIdeal's re-check of the official Free tier terms (2026-11-18)"
+    "source": "NodeSeek thread (2026-11-06, with the codes and failure reports) plus tahoo.tech testing (2026-11-03, two codes taking the balance from $20 to $60) and AIdeal's re-check of the official Free tier terms (2026-11-18)"
   },
   "gravatar-free-domain-1y": {
     "title": "[Global] Gravatar: a free top-level domain for one year (.bio, .link, .social and more, usable as a Bluesky handle)",
@@ -3089,7 +3089,7 @@
       "Run everyday tasks on the 0.01x models and use the gift credits within 30 days"
     ],
     "risk": "The promotion can change or end early, so the client's own display is the source of truth. Gift credits expire in 30 days and skip Pro models and video generation. A missed day delays milestone progress. The desktop entry point is China-only, so accounts elsewhere may not see it.",
-    "source": "Tencent News / 新京报 report on 2026-10-30 (official Doubao terms for the 30-day trial and the 8,800 check-in credits) plus 每日经济新闻 on the 2026-11-12 update and an mmmy.net hands-on post on 2026-11-13"
+    "source": "Tencent News and The Beijing News report on 2026-10-30 (official Doubao terms for the 30-day trial and the 8,800 check-in credits) plus National Business Daily on the 2026-11-12 update and an mmmy.net hands-on post on 2026-11-13"
   },
   "quilter-invest-isa-100": {
     "title": "[UK] Quilter Invest: open an ISA with £1,000, hold it 4 months, get £100 cashback via TopCashback (≈$130)",
@@ -3205,7 +3205,8 @@
       "Receive the eSIM QR code by email and install it"
     ],
     "url": "https://esim-san.jp/",
-    "source": "eSIM-san official live campaign list (updated 13 Nov), cross-checked via sp1.jp (19 Nov 2026) and Coupon World (14 Nov 2026)"
+    "source": "eSIM-san official live campaign list (updated 13 Nov), cross-checked via sp1.jp (19 Nov 2026) and Coupon World (14 Nov 2026)",
+    "risk": "Only the 1GB / 1 day tier is free, so treat it as a test card; skip the code at checkout and you pay with no refund later. The 1GB / 3 day tier does not qualify and is easy to buy by mistake, and a local Japanese eSIM is for landing-day testing rather than your main travel data."
   },
   "codex-students-100": {
     "title": "[US/Canada] Codex for Students: $100 of credits (2,500 credits, valid 12 months)",
@@ -3413,7 +3414,7 @@
       "Spend the day's credits before midnight since they do not carry over"
     ],
     "risk": "50 credits a day go fast on serious work; Veo 3.1 Fast, Veo 3.1 Quality and Omni Flash 1.1 retire on 5 December 2026, so older tutorials pick models that will be gone; free users are throttled during the 22:00-01:00 Beijing peak.",
-    "source": "Google Flow official help pages on credits and availability (updated November 2026, read 2026-11-20) + MoviAI and ミーネクスト write-ups (2026-11-05, 2026-11-19)"
+    "source": "Google Flow official help pages on credits and availability (updated November 2026, read 2026-11-20) + MoviAI and Mi-Next write-ups (2026-11-05, 2026-11-19)"
   },
   "yepapi-5-free-credit": {
     "title": "[Global] YepAPI: $5 of credit on sign-up with no card, one key for 190 data endpoints and 139 LLMs",
@@ -3478,7 +3479,7 @@
       "Use the points within 30 days before they expire"
     ],
     "risk": "The draw is not guaranteed and odds apply per scratch; raising your odds means opening a card and setting up credit, so do not spend more just to scratch; points cannot be withdrawn or transferred; overseas physical stores are excluded from this card.",
-    "source": "PayPay official press release (2026-11-12) + PayPay Scratch Card campaign page (read 2026-11-20, campaign starts 20 Nov 00:00) + クポミル and nocash.news round-ups (2026-11-16)"
+    "source": "PayPay official press release (2026-11-12) + PayPay Scratch Card campaign page (read 2026-11-20, campaign starts 20 Nov 00:00) + Kupomiru and nocash.news round-ups (2026-11-16)"
   },
   "racknerd-black-friday-2026": {
     "title": "[Global] RackNerd Black Friday VPS: 1 GB / 20 GB SSD / 3 TB a month for $15.98 a year, same price on renewal",

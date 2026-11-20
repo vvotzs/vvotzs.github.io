@@ -2,6 +2,7 @@
   {
     "id": "clearstreet-3pct-cash-match",
     "title": "[美区] Clear Street 券商 3% 现金配比：最高 $10,000（净入金 $5,000 起，须留存 5 年）",
+    "highlight": "11/9–12/31 开户首存，14 天内净入金 $5,000 起给 3% 现金配比（上限 $10,000），配比与本金须留存 5 年",
     "brand": "Clear Street",
     "domain": "clearstreet.com",
     "category": "bank",
@@ -125,6 +126,7 @@
   {
     "id": "raisin-stack-welcome-bonus-1000",
     "title": "[美区] Raisin STACK 开户奖：最高 $1,000（存 $10,000 起、锁 90 天，11/30 前首笔入金）",
+    "highlight": "填码 STACK，11/30 前首笔入金、14 天内累计存 $10,000 并锁 90 天得 $40–$900，叠加 CD 档最高 $1,000",
     "brand": "Raisin",
     "domain": "raisin.com",
     "category": "bank",
@@ -1554,6 +1556,7 @@
   {
     "id": "ethena-pay-virtual-visa-4pct",
     "title": "[非美 47 国] Ethena Pay 免费虚拟 Visa 卡：月前 $2,500 消费返 4% AVAX",
+    "highlight": "非美国人士可用：虚拟 Visa 零开卡零月费，每月前 $2,500 消费返 4% AVAX（约 $100/月），可绑 Apple / Google Pay",
     "brand": "Ethena Pay",
     "domain": "pay.ethena.fi",
     "category": "crypto",
@@ -1583,6 +1586,7 @@
   {
     "id": "schwab-referral-brokerage-1000",
     "title": "[美区] Charles Schwab 推荐开户：净入金 $25,000 起送 $100，最高 $1,000",
+    "highlight": "用推荐码开券商账户、45 天内净入金 $25,000 起，按档送 $100–$1,000；净入金要在 Schwab 留存一年",
     "brand": "Charles Schwab",
     "domain": "schwab.com",
     "category": "bank",
@@ -1707,6 +1711,7 @@
   {
     "id": "uq-oyakouenwari-1100",
     "title": "[日区] UQ mobile 親子応援割：月租直减 1,100 円 × 12 个月，コミコミ 再送 300GB（3 年有效）",
+    "highlight": "家里有 5–18 岁成员：新办 UQ mobile 次月起 12 个月每月减 1,100 円，コミコミ 另送 3 年有效的 300GB",
     "brand": "UQ mobile（KDDI）",
     "domain": "uqwimax.jp",
     "category": "esim",
@@ -2207,6 +2212,7 @@
   {
     "id": "ig-uk-refer-free-share-1000",
     "title": "[英区] IG 分享结单推荐好友：新客随机拿 £50–£1,000 美股，邀请人 £100 现金",
+    "highlight": "投 £1,000 并持有 3 个月，抽一只 £50–£1,000 美股（七成只有 £50–£70），须交 W-8BEN；邀请人拿 £100",
     "brand": "IG",
     "domain": "ig.com",
     "category": "bank",
@@ -4180,6 +4186,7 @@
   {
     "id": "bitel-peru-esim-7days-unlimited",
     "title": "[秘鲁] Bitel eSIM 新线：7 天无限流量 + 无限本地通话短信，另加 30 天套餐期",
+    "highlight": "11 月内激活秘鲁 Bitel 后付费 eSIM 新线，额外送 7 天无限流量 + 无限本地通话短信，叠在原 30 天套餐上",
     "brand": "Bitel",
     "domain": "bitel.com.pe",
     "category": "esim",
@@ -5325,6 +5332,7 @@
   {
     "id": "monzo-uk-referral-bonus",
     "title": "[英区] Monzo 推荐开户：双方各得 £5–£50（金额视邀请批次而定）",
+    "highlight": "先填手机号再开户、存钱并刷一笔实体卡，双方各得奖励；金额看邀请批次，£5–£50 不等",
     "brand": "Monzo",
     "domain": "monzo.com",
     "category": "bank",
@@ -6225,6 +6233,7 @@
   {
     "id": "bamboosim-bfcm-45off",
     "title": "[全球] BambooSIM 黑五：旅行 eSIM 45% off（两张 50% off）+ 老客 100 张免费过境 eSIM",
+    "highlight": "码 BFCMO50：旅行 eSIM 单张 45% off、两张 50% off；过去一年买过的老客可领 100 张免费过境 eSIM 之一",
     "brand": "BambooSIM",
     "domain": "bamboosim.com",
     "category": "esim",
@@ -6254,6 +6263,7 @@
   {
     "id": "travelgoogoo-visa-free-esim-apac",
     "title": "[亚太发卡] Travelgoogoo × Visa 免费 eSIM：Infinite 4GB 全球 + 4GB 亚太 + 全年无限消息",
+    "highlight": "亚太发行的 Visa 卡输入 16 位卡号即领 365 天 eSIM：Infinite 4GB 全球 + 4GB 亚太 + 全年无限消息，仅 $1 验卡预授权",
     "brand": "Travelgoogoo",
     "domain": "travelgoogoo.com",
     "category": "esim",
@@ -6370,6 +6380,7 @@
   {
     "id": "capy-free-local-agent",
     "title": "[全球] Capy：桌面 AI 编程代理，免费版每月 100 次代码审查、3 款模型任意用",
+    "highlight": "免费版在自己电脑上跑代理，每月 100 次代码审查，Particle-1 / DeepSeek V4.1 Flash / GLM 5.3 三款模型随便用",
     "brand": "Capy",
     "domain": "capy.ai",
     "category": "ai",
@@ -6399,6 +6410,7 @@
   {
     "id": "tesseract-free-desktop-agent",
     "title": "[全球] Tesseract：免费桌面 AI 代理，一句话出 PPT / 网站 / Logo / 视频",
+    "highlight": "不卖订阅：挂自己的 Claude / ChatGPT 订阅就免费用，一句话直接出 PPT、网站、Logo 与视频",
     "brand": "Tesseract",
     "domain": "tesseract.dev",
     "category": "ai",
@@ -6428,6 +6440,7 @@
   {
     "id": "pollyreach-free-credits-number",
     "title": "[全球] PollyReach：给 AI 代理配一个真实电话号码，注册送 200 credits + 免费号码",
+    "highlight": "注册即送 200 credits + 一个免费美国号码，不绑卡；AI 代理能自己打电话订位、过 IVR，附录音与逐字稿",
     "brand": "PollyReach",
     "domain": "pollyreach.ai",
     "category": "ai",
@@ -6457,6 +6470,7 @@
   {
     "id": "instabox-free-cloud-machine",
     "title": "[全球] InstaBox 免费云电脑：4 vCPU / 8GiB，预装 Claude Code 与 Codex，免绑卡",
+    "highlight": "免费 1 台 4 vCPU / 8 GiB 云电脑，预装 Claude Code 与 Codex，GitHub 登录即可开，闲置自动暂停不计费",
     "brand": "InstaBox",
     "domain": "instabox.sh",
     "category": "cloud",

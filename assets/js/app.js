@@ -16,6 +16,9 @@
   var PAGE_SIZE_LG = 8;         // 桌面端双列网格一页 8 条
   var TODAY_WINDOW_DAYS = 2;    // 与 scripts/common.py 的 TODAY_WINDOW_DAYS 保持一致
   var mqMobile = window.matchMedia("(max-width: 768px)");
+  /* 系统开了「减少动态效果」就不滚动动画：滚动仍到位，只是不滑。 */
+  var mqReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  function scrollBehavior() { return mqReduce.matches ? "auto" : "smooth"; }
 
   /* ------------------------------------------------------------ favicons */
   /* 图标已在构建时缓存到 assets/fav/，加载失败就退回首字母块，不再请求第三方。 */
@@ -358,7 +361,7 @@
     var barH = mqMobile.matches ? 64 : 68;
     if (rect.top >= barH && rect.top <= window.innerHeight - 140) return;
     var top = window.scrollY + rect.top - barH;
-    window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+    window.scrollTo({ top: Math.max(top, 0), behavior: scrollBehavior() });
   }
 
   /* 顶部 tab、右侧滑轨里指向热榜的入口都落到同一块板 */
@@ -514,7 +517,7 @@
     ev.preventDefault();
 
     openCard(target);
-    revealDeal(target, "smooth", 90);
+    revealDeal(target, scrollBehavior(), 90);
     target.classList.remove("flash");
     void target.offsetWidth;
     target.classList.add("flash");
@@ -559,7 +562,11 @@
     // 只要当前停在看板内的任一块板，就高亮这唯一的一格。
     var target = BOARD_TARGET[current] ? "hot" : current;
     navLinks.forEach(function (a) {
-      a.classList.toggle("active", a.dataset.target === target);
+      var on = a.dataset.target === target;
+      a.classList.toggle("active", on);
+      /* 光换颜色读屏用户不知道自己在哪：当前分区同时打上 aria-current。 */
+      if (on) a.setAttribute("aria-current", "location");
+      else a.removeAttribute("aria-current");
     });
   }
 
@@ -583,11 +590,12 @@
         var rect = hotBoard.getBoundingClientRect();
         var barH = mqMobile.matches ? 64 : 68;
         var top = window.scrollY + rect.top - barH;
-        window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+        window.scrollTo({ top: Math.max(top, 0), behavior: scrollBehavior() });
         if (history.replaceState) history.replaceState(null, "", "#hot");
       }
-      navLinks.forEach(function (x) { x.classList.remove("active"); });
+      navLinks.forEach(function (x) { x.classList.remove("active"); x.removeAttribute("aria-current"); });
       a.classList.add("active");
+      a.setAttribute("aria-current", "location");
       navJumpUntil = performance.now() + 700;
       setTimeout(syncNav, 760);
     });
@@ -751,9 +759,9 @@
   /* ------------------------------------------- 深链接：/ #deal-<id> 直接展开 */
   function openFromHash() {
     var m = /^#deal-(.+)$/.exec(location.hash || "");
-    if (!m) return;
+    if (!m) return false;
     var target = document.getElementById("deal-" + m[1]);
-    if (!target) return;
+    if (!target) return false;
     document.documentElement.classList.add("deep-link");
     openCard(target);
     revealDeal(target, "auto", 80);
@@ -761,7 +769,20 @@
       revealDeal(target, "auto", 80);
       setTimeout(function () { document.documentElement.classList.remove("deep-link"); }, 80);
     });
+    return true;
   }
+
+  /* 同一页里 hash 变了（点页内链接、浏览器前进 / 后退、手改地址）也要落到对应位置：
+     老版本只在首次加载时看一次 hash，跳到 #deal-<id> 时卡片并不会展开、也不会滚过去。 */
+  window.addEventListener("hashchange", function () {
+    if (openFromHash()) return;
+    var id = (location.hash || "").slice(1).replace(/^expiring$/, "closing");
+    if (id && showTab(id)) {
+      scrollToBoard();
+      return;
+    }
+    syncNav();
+  });
 
   /* ---------------------------------------------------------------- init */
   /* 语言切换：整页跳到另一语言版本（/ ↔ /en/），带上当前查询参数与 #hash。
@@ -1003,7 +1024,7 @@
       body.set("region", (regionEl.value || "").trim());
       body.set("notes", (notesEl.value || "").trim());
       body.set("lang", LANG);
-      /* 蜜罐与停留时长一起带给 Apps Script：服务端再按 hp_x7 非空 / elapsed_ms < 1200 拦一次 */
+      /* 蜜罐与停留时长一起带给 Apps Script：服务端再按 hp_x7 非空 / elapsed_ms < 1500 拦一次 */
       body.set("hp_x7", hpEl ? hpEl.value : "");
       body.set("elapsed_ms", String(openedAt ? Date.now() - openedAt : 0));
 

@@ -679,10 +679,22 @@ _BADGE_MONEY_RE = re.compile(
     r"|[£€¥₹₩]\s*\d[\d,]*(?:\.\d+)?"
     r"|\d[\d,]*(?:\.\d+)?\s*(?:USDT|USD|HKD|AUD|CAD|EUR|GBP)"
 )
+# 紧跟在金额后面的型号 / 规格记号（GLM-5.3、GPT-5、H100、v2）：带着它才说得清
+# 这笔额度是给哪个模型的，「$500/mo」去掉它就成了通用额度。
+_MODEL_AFTER_RE = re.compile(
+    r"\s*(?:of|on|for)?\s*([A-Za-z][A-Za-z0-9.\-]*)"
+)
+# 期间词：判定「/月」「/年」这类单位，以及它是挂在哪个金额上
+_VAL_PERIOD_RE = re.compile(
+    r"(月用量|年用量|每月|每年|每日|每周|每晚|/月|/年|/mo\b|/yr\b|monthly|per month|a month|per year|a year)",
+    re.I,
+)
 _VAL_PAREN_RE = re.compile(r"[（(][^（）()]*[）)]")
 # 句末逗号只认「全角，」和「后面跟空格的半角 ,」——“100,000”里的千位逗号不能当分句
 _VAL_CLAUSE_RE = re.compile(r"\s*(?:[；;，]|,(?=\s)).*$")
 _VAL_EDGE_RE = re.compile(r"^[\s/／·→+、]+|[\s/／·→+、]+$")
+# 句子切分：中英文句末标点后切开（保留标点），给详情页描述拼句子用
+_SENT_SPLIT_RE = re.compile(r"(?<=[。！？；!?;])\s*|(?<=[.])\s+")
 
 
 def _val_width(s: str) -> int:
@@ -718,17 +730,36 @@ def value_badge(text: str, lang: str = "zh") -> str:
     if _val_width(t) <= budget + (3 if re.search(r"/(?:mo|yr|day|wk|月|年|日|周|晚)$", t) else 0):
         return t
 
-    money = _BADGE_MONEY_RE.search(t)
-    if money:
-        core = re.sub(r"((?:US|HK|A|C|NZ)?\$|[£€¥₹₩])\s+", r"\1", money.group(0))
-        low = t.lower()
-        if "月用量" in t or "每月" in t or "/月" in t or "monthly" in low or "per month" in low:
-            return f"{core}/mo" if lang == "en" else f"{core}/月"
-        if (
-            "每年" in t or "/年" in t or "a year" in low or "yearly" in low
-            or "per year" in low or "/yr" in low
-        ):
-            return f"{core}/yr" if lang == "en" else f"{core}/年"
+    amounts = list(_BADGE_MONEY_RE.finditer(t))
+    if amounts:
+        def _cash(match: re.Match) -> str:
+            return re.sub(r"((?:US|HK|A|C|NZ)?\$|[£€¥₹₩])\s+", r"\1", match.group(0))
+
+        core = _cash(amounts[0])
+        period = _VAL_PERIOD_RE.search(t)
+        if period:
+            # 期间词只属于离它最近的那个金额。原文「$40 兑换码 + 每月 $10」里 /月 是 $10 的，
+            # 一律套到第一个金额上就会变成「$40/月」——金额与期间张冠李戴。
+            near = [a for a in amounts if a.end() <= period.start()]
+            far = [a for a in amounts if a.start() >= period.end()]
+            cands = [(period.start() - near[-1].end(), near[-1])] if near else []
+            cands += [(far[0].start() - period.end(), far[0])] if far else []
+            owner = min(cands, key=lambda c: c[0])[1] if cands else amounts[0]
+            word = period.group(1).lower()
+            if "month" in word or word in ("月用量", "每月", "/月", "/mo"):
+                unit = "/mo" if lang == "en" else "/月"
+            elif "year" in word or word in ("年用量", "每年", "/年", "/yr"):
+                unit = "/yr" if lang == "en" else "/年"
+            else:
+                unit = ""   # 每日 / 每周 / 每晚没有短单位，就只留金额
+            if owner is not amounts[0]:
+                # 一次性部分 + 持续的每月部分，两段都留着：$40 + $10/月
+                return f"{core} + {_cash(owner)}{unit}"
+            model = _MODEL_AFTER_RE.match(t[owner.end():])
+            # 只收带数字的型号记号（GLM-5.3 / GPT-5 / H100）；「monthly」「Go」这类词不算
+            if model and re.search(r"\d", model.group(1)):
+                core = f"{core} {model.group(1)}"
+            return f"{core}{unit}"
         return core
     # 没有金额（免费 / 流量 / 名额类）：先把开头的时间状语收成后缀
     # （「每月 100,000 次请求」→「100,000 次请求/月」），再从分隔符或介词前收住
@@ -1126,7 +1157,8 @@ def card(deal: dict, en: dict, today) -> str:
         <span>{bi(e(deal['risk']), e(en.get('risk') or deal['risk']))}</span>
       </div>
       <div class="detail-foot">
-        <a class="dlink" href="/{deal_path(deal_id, CUR_LANG)}">{ui("dp_permalink")} \u2197</a>
+        <a class="dlink" href="/{deal_path(deal_id, CUR_LANG)}"
+           {al(*upair('dp_permalink_aria', t=title_text))}>{ui("dp_permalink")} \u2197</a>
         <span>{bi(e(f"{U['f_source'][0]} · {deal['source']}"), e(f"{U['f_source'][1]} · {en.get('source') or deal['source']}"))}</span>
         <span>{bi(e(f"{U['f_last_verified'][0]} · {deal['last_verified']}"), e(f"{U['f_last_verified'][1]} · {deal['last_verified']}"))}</span>
         <span>{bi(e(f"{U['f_added'][0]} · {added_day(deal, today)}"), e(f"{U['f_added'][1]} · {added_day(deal, today)}"))}</span>
@@ -1373,9 +1405,9 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         f'{icon3d("verified-shield", "vs-i") + ui("verified") if deal.get("verified") else ui("unverified")}</b></li>',
     ]
 
-    # 同类内链：给搜索引擎更多可爬路径，也给读者一个继续逛的入口
+    # 内链：给搜索引擎更多可爬路径，也给读者一个继续逛的入口
     rel_items = []
-    for rel_deal in related[:4]:
+    for rel_deal in related:
         rel_en = en_map.get(rel_deal["id"], {})
         rel_raw = (rel_en.get("title") or rel_deal.get("title", "")) if is_en else rel_deal.get("title", "")
         rel_rtag, rel_title = title_parts(rel_raw)
@@ -1390,7 +1422,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     if rel_items:
         rel_html = (
             f'<section class="dp-more" aria-label="{e(ui("dp_related_aria"))}">'
-            f'<h2>{ui("dp_more", cat=cat_label)}</h2><ul>{"".join(rel_items)}</ul></section>'
+            f'<h2>{ui("dp_more")}</h2><ul>{"".join(rel_items)}</ul></section>'
         )
 
     home = "/en/" if is_en else "/"
@@ -1402,9 +1434,9 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     site_name = "Deal Hunter" if is_en else "羊毛情报局"
     seo_title = f"{title_text} · {site_name}"
 
-    desc = re.sub(r"\s+", " ", highlight or content or title_text).strip()
-    if len(desc) > 156:
-        desc = desc[:152].rstrip("，,、 ·") + "…"
+    desc = seo_description(highlight, content, conditions, strip_region_bracket(regions))
+    if not desc:
+        desc = re.sub(r"\s+", " ", title_text).strip()
 
     og_image = OG_IMAGE_EN if is_en else OG_IMAGE
     og_locale = "en_US" if is_en else "zh_CN"
@@ -1607,9 +1639,94 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 """
 
 
+def seo_description(*parts: str) -> str:
+    """详情页 meta description：导语打头，不够长就接着用正文首句 / 条件 / 地区补到 120–156 字。
+
+    老规则只取 `highlight or content or title`：导语本身只有二三十字的条目（47 页）
+    描述就跟着只有二三十字，搜索摘要被截得很空。这里按句补足到 120 字以上，
+    再统一裁到 156 字以内，全站 440 个详情页的描述长度都落在健康区间。
+    """
+    chunks: list[str] = []
+    total = 0
+    for raw in parts:
+        text = re.sub(r"\s+", " ", raw or "").strip()
+        if not text:
+            continue
+        for sent in _SENT_SPLIT_RE.split(text):
+            sent = sent.strip()
+            if not sent:
+                continue
+            chunks.append(sent)
+            total += len(sent)
+            if total >= 120:
+                break
+        if total >= 120:
+            break
+    desc = ""
+    for chunk in chunks:
+        if not desc:
+            desc = chunk
+        elif desc[-1] in "。！？；…」』":
+            # 中文句末标点：直接接，不加空格
+            desc += chunk
+        elif desc[-1] in ".!?;:":
+            # 英文句末标点：补一个空格（切句时把空格吃掉了，且「NOVEMBER15!at」这种不能粘一起）
+            desc += " " + chunk
+        else:
+            # 上一段是个没标点的短语（导语、短句）——补一个句号再接下句，不能无缝粘在一起
+            desc += ("。" if CUR_LANG != "en" else ". ") + chunk
+    if len(desc) > 156:
+        desc = desc[:152].rstrip("，,、 ·；;") + "…"
+    return desc
+
+
 def dp_end_pair(deal: dict) -> tuple[str, str]:
     end = parse_date(deal.get("end", ""))
     return short_date(deal.get("end")), short_date_en(end) if end else ""
+
+
+def _region_key(deal: dict) -> str:
+    """地区标签（[美区] / [英区] / [全球]…）：详情页「同地区」内链的依据。
+
+    标题前的方括号与 regions 字段开头是同一个标签，优先用标题那个（更干净）。
+    """
+    rtag, _ = title_parts(deal.get("title", ""))
+    if rtag:
+        return rtag
+    m = re.match(r"^\s*\[([^\]]{1,24})\]", str(deal.get("regions") or ""))
+    return m.group(1) if m else ""
+
+
+def related_deals(deal: dict, by_cat: dict[str, list[dict]], by_region: dict[str, list[dict]]) -> list[dict]:
+    """详情页底部内链：同分类里相邻的 4 条 + 同地区 2 条，按条目 id 轮转。
+
+    老版本按价值取同类前 4，结果 220 个页面里只有 30 个能从其他详情页拿到入链，
+    前 5 页各被链 56–66 次。改成「相邻轮转」后每页都是 4 个邻居的前后条，
+    再补 2 条同地区，入链分布拉平，也不再让少数页面吃掉全部站内权重。
+    """
+    limit = 6
+    picks: list[dict] = []
+    seen = {deal["id"]}
+
+    def take(pool: list[dict], offsets: tuple[int, ...]) -> None:
+        n = len(pool)
+        if not n:
+            return
+        start = next((i for i, d in enumerate(pool) if d["id"] == deal["id"]), 0)
+        for off in offsets:
+            if len(picks) >= limit:
+                return
+            cand = pool[(start + off) % n]
+            if cand["id"] in seen:
+                continue
+            seen.add(cand["id"])
+            picks.append(cand)
+
+    cat_list = by_cat.get(deal.get("category", ""), [])
+    take(cat_list, (1, 2, -1, -2))          # 同类里前后各两条
+    take(by_region.get(_region_key(deal), []), (1, -1))   # 同地区按 id 轮转各一条
+    take(cat_list, (3, 4, -3, -4, 5, 6))    # 同地区不足 2 条时，用同类更远的邻居补齐
+    return picks
 
 
 def write_deal_pages(deals: list[dict], en_map: dict, today) -> int:
@@ -1619,17 +1736,18 @@ def write_deal_pages(deals: list[dict], en_map: dict, today) -> int:
             shutil.rmtree(base)
         base.mkdir(parents=True, exist_ok=True)
 
+    # 内链的两个池子都按 id 排序：轮转相邻才稳定（与价值、入库时间无关）
     by_cat: dict[str, list[dict]] = {}
-    for deal in deals:
+    by_region: dict[str, list[dict]] = {}
+    for deal in sorted(deals, key=lambda d: d["id"]):
         by_cat.setdefault(deal.get("category", ""), []).append(deal)
+        key = _region_key(deal)
+        if key:
+            by_region.setdefault(key, []).append(deal)
 
     count = 0
     for deal in deals:
-        related = [
-            d
-            for d in sorted(by_cat.get(deal.get("category", ""), []), key=value_expected, reverse=True)
-            if d["id"] != deal["id"]
-        ]
+        related = related_deals(deal, by_cat, by_region)
         en = en_map.get(deal["id"], {})
         for lang, base in (("zh", DEALS_DIR), ("en", DEALS_DIR_EN)):
             out = base / deal["id"] / "index.html"
@@ -1637,6 +1755,38 @@ def write_deal_pages(deals: list[dict], en_map: dict, today) -> int:
             out.write_text(compact_html(render_deal_page(deal, en, lang, today, en_map, related)), encoding="utf-8")
             count += 1
     return count
+
+
+# 英文页里的中文兜底扫描：CJK 汉字 + 日文假名（全角标点放行，英文里偶尔也会用）
+_EN_CJK_RE = re.compile(r"[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]")
+
+
+def check_en_pages(paths: list[Path]) -> None:
+    """英文产物里不能再留中日文：命中就列出位置并拒绝发布。
+
+    deals_en.json 漏翻一个字段、或某条只写了中文的 risk / steps，/en/d/<id>/ 就会
+    把中文原文直接漏到英文页上（上一轮 Hark 复查点名了 8 页）。靠人眼抽查不可靠，
+    这里在构建时扫一遍可见文字，命中就报错。
+    唯一的白名单是语言切换徽标「中文」：那是给英文用户回中文站的入口，必须保留。
+    """
+    hits: list[str] = []
+    for path in paths:
+        text = path.read_text(encoding="utf-8")
+        # 去掉注释 / script / svg：HTML 注释（AdSense 位置说明是中文）与 JSON-LD 模板说明
+        # 都不是可见文字；JSON-LD 的译文与可见正文同源，图形里的 path 数据也不是文字
+        body = re.sub(r"<!--.*?-->", " ", text, flags=re.S)
+        body = re.sub(r"<script\b.*?</script>|<svg\b.*?</svg>", " ", body, flags=re.S)
+        # data-* 是给 JS 读的内部值（筛选用的「需要充值」等中文枚举），页面上并不显示
+        body = re.sub(r"\sdata-[a-zA-Z0-9-]+=\"[^\"]*\"", " ", body)
+        body = body.replace("中文", "")
+        for m in _EN_CJK_RE.finditer(body):
+            snippet = re.sub(r"\s+", " ", body[max(0, m.start() - 30): m.start() + 30]).strip()
+            hits.append(f"{path.relative_to(ROOT)}：…{snippet}…")
+    if hits:
+        print("英文页里还有中文 / 日文残留，已停止构建：", file=sys.stderr)
+        for line in hits[:20]:
+            print("  · " + line, file=sys.stderr)
+        raise SystemExit(1)
 
 
 def validate(deals: list[dict], en_map: dict) -> None:
@@ -1801,7 +1951,10 @@ def main() -> None:
     # 手机首屏只放一行：更新时间的短写法（11-19 03:20）免得挤占卡片宽度
     beijing_short = beijing_time[5:] if re.match(r"^\d{4}-\d{2}-\d{2}", beijing_time) else beijing_time
     counts = {
-        "active": len(active),
+        # 三个胶囊对应详情页上的三种状态，相加正好等于全站条目数：
+        #   active（进行中）+ expiring_soon（7 天内到期）+ expired（已归档）。
+        # 以前 active 用的是「未过期」全量（含 expiring_soon），219+8+3=228 与 220 对不上。
+        "active": len([d for d in active if d["status"] == "active"]),
         "expiring": len(closing_pool),
         "expired": len(expired),
         "total": len(deals),
@@ -2099,7 +2252,7 @@ def main() -> None:
       <kbd>⌘K</kbd>
     </button>
     <div class="topbar-stats">
-      <a class="stats-pill mint" href="#ai">{ui('stat_active')} <b>{counts['active']}</b></a>
+      <a class="stats-pill mint" href="#fresh">{ui('stat_active')} <b>{counts['active']}</b></a>
       <a class="stats-pill amber" href="#closing">{icon3d('hourglass', 'hg-i')}{ui('stat_expiring')} <b>{counts['expiring']}</b></a>
       <a class="stats-pill stone" href="#archive">{ui('stat_archived')} <b>{counts['expired']}</b></a>
     </div>
@@ -2337,6 +2490,8 @@ def main() -> None:
     # 单条独立页：每条一份中文 /d/<id>/、一份英文 /en/d/<id>/（含已归档条目）
     set_lang("zh")
     pages = write_deal_pages(deals, en_map, today)
+    # 英文产物冒烟：任何中日文残留都要在这里拦住，不带上线
+    check_en_pages([EN_OUT] + sorted(DEALS_DIR_EN.glob("*/index.html")))
     # sitemap 与详情页同时生成，保证「数据里有几条」与「站点上有几页」永远对得上
     write_sitemap(deals, today)
     print(f"index.html + en/index.html written · {len(active)} active / {len(expired)} expired / {len(fresh)} fresh")
