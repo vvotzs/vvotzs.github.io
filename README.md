@@ -13,18 +13,20 @@
 ```
 index.html              # 中文静态页面（纯中文 DOM，由脚本生成，卡片全部是真 HTML，利于 SEO）
 en/index.html           # 英文静态页面（纯英文 DOM，英文 title / description / OG，方便分享到英文社区）
+d/<id>/index.html       # 每条优惠的中文独立详情页（含已归档条目，页顶挂归档提示），给外链与搜索长尾一个稳定落脚点
+en/d/<id>/index.html    # 每条优惠的英文独立详情页（title / description / canonical / hreflang / og / JSON-LD 各自独立）
 assets/css/style.css    # 视觉与交互样式
 assets/js/app.js        # 手风琴 / 搜索筛选 / 移动端分页 / 滑轨高亮 / URL 状态同步 / 语言跳转
 assets/fav/<domain>.webp # 构建时缓存到本地的站点图标（48×48 WebP，境内直连即可显示，不依赖 google.com）
 assets/og-cover.png     # 1200×630 中文社交分享封面（scripts/make_og_cover.py 生成）
 assets/og-cover-en.png  # 1200×630 英文社交分享封面（/en/ 的 og:image，同一脚本 `en` 参数生成）
 data/deals.json         # 优惠条目（中文 12 项标准字段；抽奖 / 阶梯类另有 value_expected）
-data/deals_en.json      # 150 条英文翻译，按 id 对应 deals.json（title / highlight / regions / value / content / conditions / steps / risk / source）
+data/deals_en.json      # 全部条目的英文翻译，按 id 对应 deals.json（title / highlight / regions / value / content / conditions / steps / risk / source）
 data/meta.json          # 统计与最后更新时间
 scripts/common.py          # 共用常量与函数（北京时间、类别、状态、value_expected）
 scripts/i18n.py            # 界面文案的中英对照表、类别 / 门槛英文标签、英文日期格式
 scripts/maintain_deals.py  # 去重、状态标记、归档、meta 与 sitemap（含 /en/ 与 hreflang）
-scripts/build_site.py      # 由 deals.json + deals_en.json 生成中英两个 index.html（含图标下载）
+scripts/build_site.py      # 由 deals.json + deals_en.json 生成中英两个 index.html、全部 /d/<id>/ 与 /en/d/<id>/ 详情页，并重建 sitemap.xml
 scripts/make_og_cover.py   # 生成中英两张分享封面（`python3 scripts/make_og_cover.py` 全出，加 `en` 只出英文）
 docs/workflows-reference/daily-rebuild.yml  # 每日重建工作流模板（不放进 .github/workflows）
 robots.txt / sitemap.xml
