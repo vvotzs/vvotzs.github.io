@@ -2252,7 +2252,7 @@ def main() -> None:
       <kbd>⌘K</kbd>
     </button>
     <div class="topbar-stats">
-      <a class="stats-pill mint" href="#fresh">{ui('stat_active')} <b>{counts['active']}</b></a>
+      <a class="stats-pill mint" href="#fresh" {tt(*upair('stat_active_hint', d=EXPIRING_DAYS, n=counts['expiring']))}>{ui('stat_active')} <b>{counts['active']}</b></a>
       <a class="stats-pill amber" href="#closing">{icon3d('hourglass', 'hg-i')}{ui('stat_expiring')} <b>{counts['expiring']}</b></a>
       <a class="stats-pill stone" href="#archive">{ui('stat_archived')} <b>{counts['expired']}</b></a>
     </div>

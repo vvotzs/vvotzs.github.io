@@ -23,6 +23,9 @@ U: dict[str, tuple[str, str]] = {
     "search_open": ("搜索优惠、可用地区、类别…", "Search deals, regions, categories…"),
     "search_open_aria": ("搜索优惠、可用地区、类别", "Search deals, regions and categories"),
     "stat_active": ("进行中", "Live"),
+    # 顶栏胶囊只数 status=active；7 天内到期的那批单独算在「即将截止」里，
+    # 悬停 / 读屏能看到这个口径，三个数字相加才等于全站条目数。
+    "stat_active_hint": ("不含 {d} 天内即将截止的 {n} 条", "Excludes the {n} ending within {d} days"),
     "stat_expiring": ("即将截止", "Ending"),
     "stat_archived": ("已归档", "Archived"),
     "lang_switch": ("EN", "中文"),
