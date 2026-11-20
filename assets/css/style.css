@@ -925,7 +925,7 @@ html.js .pager-bar{ display: flex; }
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 16px;
-  margin: 6px 0 4px;
+  margin: 2px 0 4px;
 }
 .hot-panel{ min-width: 0; }
 .hot-tabs-mobile{ display: none; }
@@ -933,9 +933,14 @@ html.js .pager-bar{ display: flex; }
 .hot-tablist{
   display: flex;
   align-items: stretch;
+  /* 两半边（左：新收录 / 高价值榜，右：即将截止 / 抽奖）各自在本半边内居中 */
+  justify-content: center;
   gap: 18px;
   /* 角标上浮的余量（收紧后只留 2px） */
   padding-top: 2px;
+  /* 每个 tab 右侧都留了 --tab-badge-space（17px）给角标，整组居中时这截留白会把
+     文字重心往左拽 8px 左右；左侧补回同样一格，文字才真正落在半边中央 */
+  padding-left: 18px;
   border-bottom: 1px solid rgba(28,25,23,.08);
 }
 /* tab 计数角标：贴按钮右上角悬浮的圆润小胶囊（参考手机桌面图标角标）。
