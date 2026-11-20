@@ -50,7 +50,7 @@ robots.txt / sitemap.xml
   提交同时带上 `elapsed_ms`（弹窗打开到点提交的毫秒数）。同一份表单 5 秒内重复提交只发第一次
   （`app.js` 的 `COOLDOWN_MS`），起点存在 `sessionStorage` 的 `ydj_last_sent`，刷新页面或点「再投一条」后仍然生效，
   只有请求失败才清零。
-- 服务端参考实现：`docs/apps-script-submit.gs`（蜜罐、`elapsed_ms < 1200`、`CacheService` 每分钟限流、
+- 服务端参考实现：`docs/apps-script-submit.gs`（蜜罐、`elapsed_ms < 1500`、`CacheService` 每分钟限流、
   `MailApp.getRemainingDailyQuota()` 检查与同链接去重）。线上 Web App 仍是旧版参数，未重新部署，避免中断现有直邮。
 - 没有 `<form>`：弹窗内容用 `<div class="sd-form">` 承载，发送按钮（`type="button"`）与单行字段的 Enter
   在 `app.js` 里触发同一段提交逻辑（校验、蜜罐、5 秒冷却、提交中态、回执都不变），多行说明框的 Enter 仍是换行。
@@ -163,3 +163,7 @@ python3 scripts/build_site.py       # 再生成中英两个页面（会顺便把
 - 参与门槛分五类：真正免费 / 免费试用 / 需要充值 / 需要交易量 / 需要邀请条件。
 - 过期活动全部保留进归档，不再自动清理：历史条目是 SEO 长尾流量的落地页，也方便对照往年同期活动。
 - 英文翻译保留所有优惠码、金额、百分比与限制条件，不做本地化改写（金额仍是原币种）。
+  英文页不允许中日文残留：构建结束会扫一遍 `/en/` 与 `/en/d/**`（去掉注释 / script / svg / `data-*` 后的可见文字），
+  命中就让构建失败；语言切换徽标「中文」是唯一白名单（`check_en_pages()`）。品牌中文名仍留在 JSON-LD 的 `seller.name` 与搜索索引里，那是数据不是漏翻。
+- 详情页底部内链固定「同类相邻 4 条 + 同地区 2 条」，按条目 id 轮转（`related_deals()`），让每个页面都有入链；
+  首页 220+ 个「详情页 ↗」的可见文字保持一致，`aria-label` 带条目标题，读屏与搜索能分清指向哪一条。
