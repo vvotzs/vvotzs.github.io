@@ -4065,5 +4065,59 @@
     ],
     "risk": "The amount is random and usually 10 to 20 pounds, so do not create multiple accounts chasing 200 or the anti-fraud check will close them; shipping and taxes come out of your pocket; the credit can expire in 90 days; live auctions invite impulse bids; a UK number and address are hard requirements.",
     "source": "Whatnot official help centre Buyer Referral Program terms cross-checked against beermoneyuk and GetQuids (rechecked 24 October 2026)"
+  },
+  "alibabacloud-intl-200-credit": {
+    "title": "[Global/Intl] Alibaba Cloud International: $200 instant credit for new users, apply before first purchase (60-day validity)",
+    "brand_en": "Alibaba Cloud International",
+    "highlight": "New Alibaba Cloud International accounts registered after 2025-04-01 with no paid order can apply with a short business description before their first purchase and get $200 in credits once approved (no minimum spend, valid 60 days), plus up to 3 months of spend-based credits",
+    "regions": "[Global/Intl] Alibaba Cloud International (alibabacloud.com), separate from the China site aliyun.com; needs a verified phone number, registration after 2025-04-01 and a $0 payment history; resellers, channel partners and KA/KP accounts excluded",
+    "value": "$200 (≈¥1,430)",
+    "content": "Alibaba Cloud International offers a $200 first-purchase credit to new users who registered after 1 April 2025 and have no paid order on the account. You must apply on the campaign page before your first purchase, giving a company or project name, business phone number, website and a business description of 100 words or less. Alibaba Cloud reviews the application manually within 3 business days and issues the $200 as a coupon. There is no minimum spend, the coupon is valid for 60 days, and it works for both prepaid and pay-as-you-go billing.\n\nAccounts that receive the $200 within the campaign window (by credit issue date, 2026-07-01 to 2026-12-31) also get automatic monthly credits based on eligible spend for up to 3 months: 5% for $800–4,000 monthly spend (up to $200), 10% for $4,000–8,000 (up to $800), 15% for $8,000–80,000 (up to $12,000) and 20% above $80,000 (up to $50,000), paid as monthly coupons.\n\nThe credit does not cover domains, cloud communication, CDN or Alibaba Cloud Academy products, cannot be used on orders placed through third-party agents or resellers, is not refundable and cannot be transferred or cashed out. Alibaba Cloud has not published a fixed end date for the $200 credit and may change the rules, quota or amounts at any time.",
+    "conditions": "Alibaba Cloud International accounts only: registered after 2025-04-01, no paid order above $0, phone number verified, and not a reseller, channel partner or KA/KP customer. You must apply before your first purchase; buying anything first forfeits eligibility. The application needs genuine business or project details (company name, business phone, website, project description) and takes about 3 business days to review. Some products are excluded (domains, cloud communication, CDN, Academy). The credit expires after 60 days and cannot be refunded or transferred.",
+    "steps": [
+      "Open the Alibaba Cloud International $200 campaign page and sign in or register an account (phone verification)",
+      "Click Apply for $200 Credits and fill in the company/project name, business phone, website and a short business description",
+      "Wait for the manual review, about 3 business days, and watch the phone number and email you submitted",
+      "Confirm the $200 coupon in the console (valid 60 days)",
+      "Spend it within 60 days on Model Studio (Qwen/Wan), ECS or other eligible products"
+    ],
+    "risk": "There is a manual review: purely personal applications, inaccurate details or no visible business need get rejected. The credit is only valid for 60 days, so unused value is lost. Orders paid with the credit are not refundable. Domains, CDN, cloud communication and some other categories are excluded. Alibaba Cloud can change the rules or end the campaign at any time, and issuance depends on human approval.",
+    "source": "Alibaba Cloud International $200 Instant Credit campaign page and FAQ (read 2026-11-21) + taskpanel / FreeAIHub cross-checks + X lead @Jack1472004 (2026-11-19)"
+  },
+  "ovhcloud-black-friday-2026": {
+    "title": "[US] OVHcloud Black Friday: up to 20% off dedicated servers plus free $24 setup, KS-1-B $20.40/mo first year",
+    "brand_en": "OVHcloud",
+    "highlight": "OVHcloud US Black Friday: the KS-1-B dedicated server (Xeon D-2123IT / 32GB ECC / 2x4TB HDD / 500Mbps unmetered) is $20.40/mo for the first year with the $24 setup fee waived, select dedicated servers are up to 20% off, and up to $300 in Public Cloud credit is included",
+    "regions": "[US] OVHcloud US (us.ovhcloud.com), separate from the European site ovhcloud.com with its own pricing and promotions; KS-1-B and similar specials are limited to the Vint Hill (Virginia) and Hillsboro (Oregon) US data centers",
+    "value": "$67 saved in year one",
+    "content": "OVHcloud US Black Friday runs from 11:00 a.m. ET on 2026-11-17 to 3:00 p.m. ET on 2026-12-01: up to 20% off select dedicated servers and free setup fees on selected models. The Eco-line KS-1-B in the Vint Hill and Hillsboro US data centers is $20.40/month for the first year (15% off the $24 list price, for up to 12 months) and the usual $24 setup fee is waived. Configuration: Intel Xeon D-2123IT 4 cores/8 threads, 32–64GB DDR4 ECC, 2x500GB up to 2x4TB HDD in soft RAID, 500Mbps unmetered bandwidth, 1 IPv4 and full root.\n\nThe same page also offers up to $300 in Public Cloud credit, a free 30-day Public VCFaaS trial, up to 3 months of Premium Autobackup and Snapshot backup for VPS, free setup on selected RISE and SYS models, and limited SKUs such as KS-LE-5. All offers apply to new orders only (not renewals) and to base configurations only; add-on options are excluded, stock is limited, and the price returns to list after 12 months.",
+    "conditions": "Requires an OVHcloud US account (us.ovhcloud.com; European accounts do not carry over). KS-1-B, RISE-GAME-2 and SYS-GAME-2 specials are only available in the Vint Hill and Hillsboro US data centers. New orders only, renewals excluded. Base configurations only; add-ons get no discount. Standard pricing applies after 12 months. Stock is limited. Payment and account terms follow OVHcloud US conditions.",
+    "steps": [
+      "Register or sign in to an OVHcloud US account (us.ovhcloud.com)",
+      "Open the Deals page, or go straight to the Eco Kimsufi KS-1-B configuration page",
+      "Pick Vint Hill or Hillsboro and keep the base configuration (add-ons are excluded from the discount)",
+      "At checkout confirm the setup fee is waived and the first-year price shows $20.40/mo",
+      "From month 12 the price returns to $24/mo, so cancel in the console if you no longer need it"
+    ],
+    "risk": "The machine ships with a single IPv4; extra IPs cost more. Storage is HDD in soft RAID rather than NVMe, so disk I/O is modest. US data centers have high latency from mainland China and are a poor fit for sites aimed at Chinese visitors. The price rises 15% after 12 months and renews automatically unless cancelled. Dedicated servers usually deploy instantly, but limited stock can cause delays.",
+    "source": "OVHcloud US Deals page and Eco KS-1-B configuration page (prices, specs and promotional terms read 2026-11-21) + LowEndTalk order thread 2026-11-20"
+  },
+  "l53-ggff-free-domain-2y-2026": {
+    "title": "[Global] L53 Black Friday: free 2-year .ggff.net subdomain (Cloudflare-ready, code kxu26bf8k2y)",
+    "brand_en": "L53",
+    "highlight": "L53 Black Friday: order a .ggff.net subdomain for 2 years in the client area and enter code kxu26bf8k2y at checkout to pay $0; one per user for new and existing customers, with NS changes so it can be hosted on Cloudflare Free",
+    "regions": "[Global] L53 (operated by 1024 Ltd, UK) client area customer.l53.net; .ggff.net suffix; registering with an overseas IP and a US address is recommended",
+    "value": "≈$20 value (2 years free)",
+    "content": "L53's annual Black Friday offer runs from 2026-11-20 to 2026-12-03: register an account at the customer.l53.net client area, order a .ggff.net subdomain for a 2-year term and enter promo code kxu26bf8k2y at checkout to pay $0. New and existing users can both take part, one domain per user, while stock lasts.\n\n.ggff.net is listed in the Public Suffix List, so you can change the NS records and host the domain on Cloudflare Free (with its CDN and WAF). The provider also offers other suffixes such as .filegear-sg.me. Registering with an overseas IP (US is best) and US address details, plus a Gmail or Outlook mailbox, tends to pass risk checks more easily.\n\nNote that for a promotional name without a paid registration fee, L53 reserves the right to point the domain at its own IP addresses or show ads; full control of DNS and transfers requires payment, and free registrations cannot be renewed for free at a low price.",
+    "conditions": "You need an L53 client account first. The code works once per user and covers one domain. You must choose the 2-year term before entering the code or it will not apply. US address details and an overseas IP are recommended to avoid risk-control blocks. Free service has no SLA: L53 may reject or terminate a registration within 30 days of service start, and the upstream domain owner can reclaim subdomains at any time. Free renewals are not available.",
+    "steps": [
+      "Open customer.l53.net and register an account (overseas IP and US address recommended)",
+      "Go to Order, then Domain Registration, and search for the .ggff.net prefix you want",
+      "Set the registration term to 2 Years",
+      "Enter kxu26bf8k2y in the Apply Promo Code field at checkout and confirm the total becomes $0.00",
+      "Place the order, then add the domain in Cloudflare and switch the NS records as instructed"
+    ],
+    "risk": "The subdomain is still owned by L53 and can be reclaimed or suspended at any time, so it is unsuitable for a main or brand site. Renewals are not free. The free-service terms let L53 show ads on or redirect promotional domains. The code is single-use and stock is limited, so it can expire early. Inaccurate details or a flagged IP can get the account removed.",
+    "source": "L53 official client area and registration terms (checked 2026-11-21) + Lengxi blog post 2026-11-20 with the tested code and 11/20–12/3 dates + NodeLoc Black Friday thread"
   }
 }
