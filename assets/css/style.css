@@ -445,29 +445,39 @@ main{ padding-bottom: 0; }
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-top: 9px;
+  margin-top: 6px;
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: .02em;
   color: var(--ink-3);
 }
 .pager-label{ min-width: 46px; text-align: center; font-feature-settings: "tnum"; }
+/* 左右翻页键：正圆胶囊 —— 暖白底 + 薄荷细边 + 深薄荷箭头，禁用态退成柔和浅灰 */
 .pager-bar .pg{
   width: 30px;
-  height: 28px;
+  height: 30px;
   display: grid;
   place-items: center;
-  border-radius: 9px;
-  border: 1px solid var(--line);
-  background: #FFFFFF;
-  color: var(--ink-2);
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid #A7F3D0;
+  background: #FFFDF9;
+  color: #047857;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1;
-  box-shadow: var(--shadow-1);
+  box-shadow: 0 1px 2px rgba(28,25,23,.03);
+  transition: background .18s ease, border-color .18s ease, color .18s ease;
 }
-.pager-bar .pg:disabled{ opacity: .3; cursor: default; box-shadow: none; }
-.pager-bar .pg:active:not(:disabled){ background: var(--amber-soft); border-color: var(--amber-line); }
+.pager-bar .pg:hover:not(:disabled){ background: var(--mint-soft); border-color: #6EE7B7; }
+.pager-bar .pg:disabled{
+  color: var(--ink-4);
+  border-color: var(--line);
+  background: #FBFAF6;
+  cursor: default;
+  box-shadow: none;
+}
+.pager-bar .pg:active:not(:disabled){ background: #DCFCE7; border-color: #6EE7B7; color: #065F46; }
 
 /* ------------------------------------------------------------------ cards */
 
@@ -1490,8 +1500,9 @@ footer{
 }
 
 @media (max-width: 768px){
-  /* --jump-row：手机端热点条的锁高（单行标题 + 价值行），分区面板按它算行高 */
-  :root{ --topbar: 54px; --jump-row: 38px; }
+  /* --jump-row：手机端热点条的锁高（单行标题 + 价值行）；--jump-gap：聚合小卡的网格缝。
+     两者与 .module.hot-strip 的 min-height 共用，改一处四处聚合分区依旧等高 */
+  :root{ --topbar: 54px; --jump-row: 36px; --jump-gap: 4px; }
   /* 手机首屏（CLS）：构建期 /rank 与 /lottery 已带 hidden，只有 /closing 需要靠这里先隐住。
      app.js 的 applyBoard() 把板子切到终态后给 <html> 加 .board-ready，这条就不再生效。
      桌面端两块板本来就是 fresh + closing 并列，不需要这条规则。 */
@@ -1540,12 +1551,12 @@ footer{
   }
 
   /* ---- 首屏（h1 在基础样式里已 sr-only，这里只管标语与更新时间的手机排版） ----
-     Jun 要求把这一行上下留白再收紧：与顶栏之间只留 3px，与下方标签栏之间只靠 .hot-board 的 1px */
+     Jun 要求这一行上下留白再收紧：与顶栏、与下方标签栏之间都不再额外留白 */
   .hero{
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 3px 0 0;
+    padding: 0;
     flex-wrap: nowrap;
   }
   .hero-tag{
@@ -1572,8 +1583,8 @@ footer{
   .hm-short{ display: inline; }
 
   /* ---- 分区 ---- */
-  .module{ padding: 12px 0 2px; }
-  .module-head{ margin-bottom: 8px; gap: 8px; }
+  .module{ padding: 10px 0 0; }
+  .module-head{ margin-bottom: 5px; gap: 8px; }
   .module-badge{ width: 22px; height: 22px; border-radius: 7px; }
   .module-badge svg{ width: 15px; height: 15px; }
   .module h2{ font-size: 16px; }
@@ -1592,14 +1603,14 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 6px;
+    gap: 4px;
   }
   html.js .pager-bar{ display: flex; }
   .more{ display: none !important; }
 
-  /* 手机端未展开卡片外高实测 81px（含上下各 1px 边框）→ 内容区 79px */
-  .card{ contain-intrinsic-size: auto 79px; }
-  .card-head{ padding: 9px 10px; gap: 8px; }
+  /* 手机端未展开卡片外高实测 78px（含上下各 1px 边框）→ 内容区 76px */
+  .card{ contain-intrinsic-size: auto 76px; }
+  .card-head{ padding: 8px 10px; gap: 8px; }
   .card-head .fav,
   .card-head .fav-fallback{ width: 22px; height: 22px; border-radius: 6px; margin-top: 0; }
   .row1{ align-items: center; gap: 6px; }
@@ -1620,7 +1631,7 @@ footer{
     font-size: 10.4px;
     gap: 4px;
     flex-wrap: nowrap;
-    margin-top: 5px;
+    margin-top: 4px;
   }
   /* 截止时间在前、地区在后，并一行；左侧长文本省略，右侧胶囊不被挤 */
   .row3 .region{
@@ -1685,7 +1696,7 @@ footer{
   /* ---- 热榜：单板 4 tab，板内不再固定高度 ---- */
   .hot-board{
     display: block;
-    margin: 1px 0 5px;
+    margin: 0;
     gap: 0;
   }
   .hot-tabs-mobile{
@@ -1696,7 +1707,7 @@ footer{
     /* 角标上浮的余量（收紧到 1px，再小就会被上一行压住） */
     padding-top: 1px;
     border-bottom: 1px solid rgba(28,25,23,.08);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
   /* 四个 tab 按文字宽度排开，余量均分到彼此的间隙里（四段间距一致）；
      数字浮在各自右上角、不占行内宽度，所以 360px / 375px 上文字与角标都完整，
@@ -1734,11 +1745,11 @@ footer{
      下方正文不会整块上跳。min-height 放在分区上而不是面板上：隐藏的分区是
      display:none，不占位，另一个面板不会因此多出一块空白。
      +2px 是像素取整余量（高价值榜实测 215px，其余 214px），取 216 后四个分区完全等高。 */
-  .module.hot-strip{ min-height: calc(5 * var(--jump-row) + 4 * 6px + 2px); }
+  .module.hot-strip{ min-height: calc(5 * var(--jump-row) + 4 * var(--jump-gap) + 2px); }
   .module.hot-strip .track{
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px;
+    gap: var(--jump-gap);
     overflow: visible;
     scroll-snap-type: none;
   }
@@ -1752,7 +1763,7 @@ footer{
     align-items: center;
     gap: 5px;
     min-height: var(--jump-row);
-    padding: 5px 7px;
+    padding: 4px 7px;
     border-radius: 10px;
     border: 1px solid var(--line);
     background: #FFFFFF;
@@ -1875,8 +1886,8 @@ footer{
   .foot-up{ display: none; }
   .foot-legal{ gap: 3px; font-size: 9px; }
   .foot-top{ display: none; }
-  /* 手机端两个 .shell 各带 4px 底边距（共 8px），页脚再让 8px，档案区到页脚仍是 ~16px */
-  footer{ margin-top: 8px; }
+  /* 手机端两个 .shell 各带 4px 底边距（共 8px），页脚再让 4px，档案区到页脚收到 ~12px */
+  footer{ margin-top: 4px; }
 
   /* 右下角语言徽标：再收小一圈，正好落在右侧 44px 滑轨与正文之间 */
   .lang-switch{
