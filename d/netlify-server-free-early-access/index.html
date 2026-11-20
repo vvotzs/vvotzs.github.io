@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-lang="zh" data-today="2026-11-21">
+<html lang="zh-CN" data-lang="zh" data-today="2026-11-21" data-consent-required="0">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
@@ -32,7 +32,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=c6cd7a72">
+<link rel="stylesheet" href="/assets/css/style.css?v=b2cdc727">
 <script type="application/ld+json">
 [
 {
@@ -177,7 +177,7 @@
 <li><span>状态</span><b><span class="dp-st is-live">进行中</span></b></li><li><span>截止时间</span><b class="dp-dl"><svg class="ic3d hg-i" aria-hidden="true"><use href="#i-hourglass"/></svg>长期有效</b></li><li><span>活动时间</span><b>2026-11-10 → 长期 / 官方未公布</b></li><li><span>适用国家或地区</span><b>[全球] Netlify（credit 制 Free / Personal / Pro 与开启 credit 的 Enterprise 均可），本地需 Netlify CLI 27.17.0+，无需信用卡</b></li><li><span>参与门槛</span><b><span class="dtag cost-free">真正免费</span></b></li><li><span>实际价值</span><b class="dp-val">免费（Early Access）</b></li><li><span>核验状态</span><b class="dp-ok"><svg class="ic3d vs-i" aria-hidden="true"><use href="#i-verified-shield"/></svg>已核验</b></li>
 </ul>
 <div class="dp-actions">
-<a class="dp-btn mint" href="https://www.netlify.com/blog/introducing-netlify-server/" target="_blank" rel="noopener noreferrer">前往官方活动页<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a><a class="dp-btn ghost" href="https://www.netlify.com/changelog/2026-11-10-netlify-server-early-access/" target="_blank" rel="noopener noreferrer">来源原帖<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a>
+<a class="dp-btn mint" href="https://www.netlify.com/blog/introducing-netlify-server/" target="_blank" rel="noopener nofollow">前往官方活动页<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a><a class="dp-btn ghost" href="https://www.netlify.com/changelog/2026-11-10-netlify-server-early-access/" target="_blank" rel="noopener noreferrer">来源原帖<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a>
 </div>
 </article>
 <section class="dp-sec"><h2>亮点</h2><p class="dp-lead">Early Access 期间 Netlify Server 完全免费：可跑常驻 Node 进程、WebSocket / SSE、连接池与缓存，免费套餐 1 实例、闲时自动缩容到 0，适合长跑 Agent 与实时应用</p></section><section class="dp-sec"><h2>优惠内容</h2><p>Netlify 在 2026-11-10 上线 Netlify Server（Early Access）：把后端跑成一个长驻 Node.js 进程，天然支持 WebSocket 与 Server-Sent Events、内存里的连接池与缓存、单实例并发处理大量请求，空闲 5 分钟后自动缩容到 0 再由请求唤醒。官方明确写明「Early Access 期间免费」，credit 制 Free 与 Personal 套餐可开 1 个实例、其他付费与 Enterprise（开启 credit）可到 3 个实例。对 AI 场景特别有用：Agent 循环可以在一个进程里跑很久、把中间状态留在内存、同时用 WebSocket 把进度推给页面；既有的 Express / Hono / Fastify / Koa 应用可以原样部署。</p></section><section class="dp-sec"><h2>参与条件</h2><p>免费只限 Early Access 期间，GA 后改为按「预留内存 GB-小时 + 活跃 CPU vCPU-小时」两表计费；Free 与 Personal 1 实例、其他 3 实例；空闲即缩容，冷启动仍需等待；带宽、函数调用、请求数等其他计量项照常计费并计入同一项目；Early Access 的 API 与行为可能随时调整；需 Netlify CLI 27.17.0+ 或在代码 Agent 里执行 netlify init。</p></section><section class="dp-sec"><h2>参与步骤</h2><ol class="dp-steps"><li>在 Netlify 站点上创建或打开一个项目，确认使用 credit 制套餐</li><li>本地升级到 Netlify CLI 27.17.0 以上，在项目里 netlify init 拉取最新 agent skills</li><li>写好 server 入口（Node 长驻进程，可直接跑现有 Express / Hono / Fastify / Koa 应用）并随项目部署</li><li>用 WebSocket 或 SSE 验证长连接与空闲缩容行为，在项目 Server 页面看实例与内存/CPU 用量</li></ol></section><section class="dp-sec is-risk"><h2>风险提示</h2><p>免费有明确期限：GA 后按常驻内存与 CPU 计费，常跑的后端很容易出账单；Free 档只有 1 实例且空闲 5 分钟即缩容，首请求要等冷启动；代码与数据库状态需放 Netlify Database / Blobs，否则实例被替换会丢；Early Access 期间接口与限制可能改动。</p></section>
@@ -202,10 +202,11 @@
 羊毛情报局 · © 2026
 </span>
 <span class="foot-up">最后验证 2026-11-20</span>
-<span class="foot-legal" aria-label="站点信息页面"><a href="/about/">关于</a><span class="foot-legal-sep" aria-hidden="true">·</span><a href="/privacy/">隐私</a><span class="foot-legal-sep" aria-hidden="true">·</span><a href="/disclosure/">披露</a></span>
+<span class="foot-legal" aria-label="站点信息页面"><a href="/about/">关于</a><span class="foot-legal-sep" aria-hidden="true">·</span><a href="/privacy/">隐私</a><span class="foot-legal-sep" aria-hidden="true">·</span><a href="/disclosure/">披露</a><span class="foot-legal-sep" aria-hidden="true">·</span><button class="foot-cookie" type="button" data-consent-open aria-label="打开 Cookie 设置，管理统计与广告同意">Cookie 设置</button></span>
 <a class="foot-top" href="#top">↑</a>
 </div>
 </footer>
 <script>window.__favFallback=function(i){i.style.display='none';var f=i.nextElementSibling;if(f&&f.classList.contains('fav-fallback'))f.style.display='grid';};</script>
+<script src="/assets/js/consent.js?v=f57a1b92" defer></script>
 </body>
 </html>

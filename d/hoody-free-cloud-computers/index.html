@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-lang="zh" data-today="2026-11-21">
+<html lang="zh-CN" data-lang="zh" data-today="2026-11-21" data-consent-required="0">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
@@ -32,7 +32,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=c6cd7a72">
+<link rel="stylesheet" href="/assets/css/style.css?v=b2cdc727">
 <script type="application/ld+json">
 [
 {
@@ -177,7 +177,7 @@
 <li><span>状态</span><b><span class="dp-st is-live">进行中</span></b></li><li><span>截止时间</span><b class="dp-dl"><svg class="ic3d hg-i" aria-hidden="true"><use href="#i-hourglass"/></svg>长期有效</b></li><li><span>活动时间</span><b>官方未公布 → 长期 / 官方未公布</b></li><li><span>适用国家或地区</span><b>[全球] Hoody 共享主机（可请求偏好区域，实际以容量与 fallback 为准）；免费档不含虚拟机（KVM）</b></li><li><span>参与门槛</span><b><span class="dtag cost-free">真正免费</span></b></li><li><span>实际价值</span><b class="dp-val">≈$10 · 3 台云电脑（2 核/3GB/20GB 共享）</b></li><li><span>核验状态</span><b class="dp-ok"><svg class="ic3d vs-i" aria-hidden="true"><use href="#i-verified-shield"/></svg>已核验</b></li>
 </ul>
 <div class="dp-actions">
-<a class="dp-btn mint" href="https://hoody.com/pricing" target="_blank" rel="noopener noreferrer">前往官方活动页<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a>
+<a class="dp-btn mint" href="https://hoody.com/pricing" target="_blank" rel="noopener nofollow">前往官方活动页<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a>
 </div>
 </article>
 <section class="dp-sec"><h2>亮点</h2><p class="dp-lead">注册即得 3 台 Linux 云电脑，合计 2 核 CPU / 3GB 内存 / 20GB 存储、10Mbps 带宽，完整 root + systemd，免绑卡、无试用期限制，还带 5 个 .hoody.bot 机器人域名</p></section><section class="dp-sec"><h2>优惠内容</h2><p>Hoody 是一个把「每台云电脑当成一个可访问 URL 的 Linux 主机」来卖的平台，免费档 $0/月、不绑卡、不过期：最多 3 台电脑共享 2 核 CPU、3GB 内存、20GB 存储与 10Mbps 带宽，每台保留 2 个快照，附带 5 个 .hoody.bot 机器人域名、5 个 Realm 和免费 Hoody AI 额度。有 root 和 systemd，能跑代码、浏览器、GUI 桌面、定时任务、HTTP 服务（绑定端口即自动公开 URL），也能挂云存储（S3、Google Drive、Dropbox、WebDAV 等）备份。适合练手、跑小脚本、放个临时站点或用浏览器自动化。付费档 Plus $10/月给 12 台（3 核/6GB/75GB，可选 8 个区域）。</p></section><section class="dp-sec"><h2>参与条件</h2><p>免费档资源在三台电脑之间共享总配额；主机与他人共享、容量有限，领取时区域只是「偏好」；不含虚拟机（需要 Bare Metal 付费档）；Hoody AI 免费额度的模型与可用性不保证；账号活跃度与容量限制随时可能调整。</p></section><section class="dp-sec"><h2>参与步骤</h2><ol class="dp-steps"><li>打开 hoody.com 注册（不需要信用卡）</li><li>领取免费服务器，进入 web 终端或 SSH 登录</li><li>装依赖、跑脚本；需要对外服务时把端口一绑，URL 自动公开</li><li>重要文件同步到外部存储，避免随实例清理丢失</li></ol></section><section class="dp-sec is-risk"><h2>风险提示</h2><p>免费档无 SLA、共享主机，资源随时可能被回收或调整；不要把唯一副本的重要数据放在上面；平台较新，条款与免费政策可能变动。</p></section>
@@ -202,10 +202,11 @@
 羊毛情报局 · © 2026
 </span>
 <span class="foot-up">最后验证 2026-11-19</span>
-<span class="foot-legal" aria-label="站点信息页面"><a href="/about/">关于</a><span class="foot-legal-sep" aria-hidden="true">·</span><a href="/privacy/">隐私</a><span class="foot-legal-sep" aria-hidden="true">·</span><a href="/disclosure/">披露</a></span>
+<span class="foot-legal" aria-label="站点信息页面"><a href="/about/">关于</a><span class="foot-legal-sep" aria-hidden="true">·</span><a href="/privacy/">隐私</a><span class="foot-legal-sep" aria-hidden="true">·</span><a href="/disclosure/">披露</a><span class="foot-legal-sep" aria-hidden="true">·</span><button class="foot-cookie" type="button" data-consent-open aria-label="打开 Cookie 设置，管理统计与广告同意">Cookie 设置</button></span>
 <a class="foot-top" href="#top">↑</a>
 </div>
 </footer>
 <script>window.__favFallback=function(i){i.style.display='none';var f=i.nextElementSibling;if(f&&f.classList.contains('fav-fallback'))f.style.display='grid';};</script>
+<script src="/assets/js/consent.js?v=f57a1b92" defer></script>
 </body>
 </html>
