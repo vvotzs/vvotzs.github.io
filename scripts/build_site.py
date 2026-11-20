@@ -1860,7 +1860,7 @@ def cat_row(deal: dict, en: dict, lang: str, today) -> str:
         f'<li><a class="cat-card" href="/{e(deal_path(deal["id"], lang))}">'
         f'<span class="cat-crow">{fav_html(deal, 26, en)}<span class="cat-cmain">'
         f'<span class="cat-ct">{tag}{e(title)}</span>'
-        f'<span class="cat-csub"><b class="cat-cv">{e(_tight_value(value_now, lang))}</b>'
+        f'<span class="cat-csub"><b class="cat-cv" title="{e(value_now)}">{e(value_badge(value_now, lang))}</b>'
         f'<span class="tag {cost_cls}">{e(cost_label)}</span>'
         f'<span class="cat-cdl{hot}">{e(dl)}</span></span></span></span>'
         f'<span class="cat-snip">{e(highlight)}</span>'
