@@ -153,6 +153,29 @@ robots.txt / sitemap.xml
 
 按钮文案跟着去向变：`source_url` 与 `url` 不同时写「原文 ↗ / Source ↗」；确实只有官方活动页可点（包括 `url` 本身就是第三方报道或论坛帖的情形）时写「官网 ↗ / Official ↗」，不再让官方页冒充原帖。构建结束会打印「原文 / 官网」各多少条。
 
+## 推广 / 返佣链接（affiliate）
+
+默认不带推广字段，渲染与以前完全一样。要给某条接推广：
+
+- `data/deals.json` 里加 `"affiliate": true`（或直接加 `"aff_url"`）：有 `aff_url` 时主按钮用它的地址，
+  只标 `affiliate` 时退回官方 `url`；
+- 卡片主按钮与详情页「前往官方活动页」自动加 `rel="sponsored noopener noreferrer"`，卡片第二行、
+  分类目录行与详情页徽标行显示「推广 / Aff（全称 Affiliate link）」小标，详情页按钮下多一行
+  「不增加你的费用」披露；
+- `aff_url` 同样过 http(s) 白名单，`javascript:` 这类值会让构建直接失败；
+- 对读者的口径同步写在 `/disclosure/` 与 `/en/disclosure/`。
+
+## Cookie 同意与合规页
+
+- 页脚「Cookie 设置 / Cookie Settings」打开全站共用的 `assets/js/consent.js` 抽屉（`position: fixed`，零 CLS）；
+  选择存在 `localStorage["dh_consent_v1"]`（`necessary / analytics / ads / ts`），并暴露 `window.__dhConsent`
+  （`get / has / allows / set / open`）与 `dh:consent-changed` 事件。以后接 GA4 / AdSense 时按
+  `__dhConsent.allows("analytics")` / `allows("ads")` 加载即可。
+- 目前全站零追踪脚本、零广告脚本，`scripts/build_site.py` 的 `CONSENT_REQUIRED = "0"`：首访不弹面板；
+  真接了统计 / 广告后改成 `"1"`，未做过选择的 EU/EEA/UK/CH 访客（按浏览器时区粗略判断）首访才会自动弹出。
+- 隐私政策（`/privacy/`、`/en/privacy/`）覆盖 GDPR 与 CCPA/CPRA 条款；事实口径跟实现一致，
+  改实现时同步改 `scripts/i18n.py` 的 `LEGAL_PAGES` 与 `LEGAL_UPDATED`。
+
 ## 日常维护
 
 ```bash
