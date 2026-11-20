@@ -3828,7 +3828,7 @@
     "highlight": "Swiss Caffeine (an AI app-building platform) is running a Black Friday code: any account without an active subscription enters BLACKFRIDAY under its avatar and gets a month of Studio, 100 credits a month, with Claude Fable 5.1, Opus 5.5 and GPT-6 Astra selectable after linking a card; community tests put the usable value around 115 credits, roughly $20-27",
     "regions": "[Global] Sign up with any email; redeeming needs a card check (virtual cards, UnionPay and Bybit cards passed in community tests, with about a $1 hold); most regions outside the US and EU can register",
     "value": "One month of Studio ($25 a month, 100 credits plus 15 signup credits)",
-    "content": "From 13 November Caffeine has been pushing the code BLACKFRIDAY on X and LinkedIn: anyone without an active subscription tries the paid features free for a month, first-timers and returning users alike. The official help centre (updated 17 November) confirms Studio at $25 a month, or $20 on annual billing, with 100 credits a month, plus 15 welcome credits at signup valid for 30 days, so a month works out to about 115 credits.\n\nThe path is: sign up with Gmail, click the avatar, Use Code, enter BLACKFRIDAY, then verify a card. linux.do, nodeloc and NodeSeek all carried it the same night, and their notes line up: Bybit, Gate and UnionPay cards passed with only a $1 hold; some who cancelled the renewal saw the credits pulled while cancelling under another reason kept them; the app exposes a single auto-routed model with no separate model picker; Caffeine also runs CYBERWEEK26 at $120 for the first year on annual billing instead of $240.",
+    "content": "From 13 November Caffeine has been pushing the code BLACKFRIDAY on X and LinkedIn: anyone without an active subscription tries the paid features free for a month, first-timers and returning users alike. The official help centre (updated 17 November) confirms Studio at $25 a month, or $20 on annual billing, with 100 credits a month, plus 15 welcome credits at signup valid for 30 days, so a month works out to about 115 credits.\n\nThe path is: sign up with Gmail, click the avatar, Use Code, enter BLACKFRIDAY, then verify a card. linux.do, nodeloc and NodeSeek all carried it the same night, and their notes line up: Bybit, Gate and UnionPay cards passed with only a $1 hold; some who cancelled the renewal saw the credits pulled while cancelling under another reason kept them; the app exposes a single auto-routed model with no separate model picker; Caffeine also runs CYBERWEEK26 at $120 for the first year on annual billing instead of $240.\n\nRecheck at 04:00 on 21 November 2026: a linux.do thread from 21:19 shows BLACKFRIDAY already returning unavailable for some accounts, with a reply suggesting HALLOWEEN26 as a working alternative for one month of Studio, confirmed by several users; another reply warns to switch off auto top-up of credits as well as auto-renewal, since it is on by default and will buy credits with your card once the allowance runs out.",
     "conditions": "Only for accounts without an active subscription, though returning users qualify as long as nothing is active; redeeming needs a card, with about a $1 authorisation; Studio renews at $25 a month, so cancel it; community reports show some accounts losing credits after cancelling, so use them first; credits only build apps and go live inside Caffeine, they are neither cash nor general API quota.",
     "steps": [
       "Sign up at caffeine.ai with Gmail, without touching a paid plan first",
@@ -3836,7 +3836,7 @@
       "Link the card, then check the subscription page shows a one-month Studio trial",
       "Use the credits, then cancel the renewal, since some accounts lose credits on cancelling"
     ],
-    "risk": "A card is required and it renews at $25 a month; several users report credits vanishing after cancellation, so the real value is roughly $20-27; there is a single auto-routed model and no selectable API, so it suits trying app building rather than acting as general quota; the code's end date is unpublished.",
+    "risk": "A card is required and it renews at $25 a month; several users report credits vanishing after cancellation, so the real value is roughly $20-27; there is a single auto-routed model and no selectable API, so it suits trying app building rather than acting as general quota; the code's end date is unpublished. Since 21:19 some accounts see BLACKFRIDAY as unavailable and can try HALLOWEEN26; auto top-up of credits is on by default and should be switched off too.",
     "source": "Caffeine Black Friday posts on X and LinkedIn (from 13 Nov 2026) + official help centre Plans and Pricing (updated 17 Nov 2026) + same-night tests on linux.do, nodeloc and NodeSeek"
   },
   "moomoo-us-black-friday-2026": {
@@ -3951,5 +3951,119 @@
     ],
     "risk": "Evening throttling and packet loss recur across reviews, with 4 dollars 200M and poor at peak as a direct quote; the provider is new and run by one person, so it could disappear; Premium restocks sell out in minutes, so missing one is normal; 30Mbps only covers personal proxying; the official price could not be read, so check the checkout page before ordering.",
     "source": "Submitted tip (21 Nov 2026, 00:39) + VPSding stock tracker (snapshot 21 Nov 2026, 01:26) + SpaceVPS pricing + NodeSeek and 1A2X review threads and replies (10-14 Nov 2026)"
+  },
+  "etrade-premium-savings-200": {
+    "title": "[US] E*TRADE Premium Savings: $200 cash for $20,000 plus 4.25% APY for six months (code SAVE200, ends Nov 30)",
+    "highlight": "Open a new Premium Savings with code SAVE200, deposit $20,000 of new money within 30 days and hold 45 days more for $200; new accounts also lock 4.25% APY for six months (about 11x the national average) with no minimum balance",
+    "regions": "[US] US residents; deposits held at Morgan Stanley Private Bank, N.A. and FDIC insured",
+    "value": "$200 cash plus 4.25% APY for six months (about $425 of interest on $20,000)",
+    "content": "E*TRADE, part of Morgan Stanley, is running a new-customer Premium Savings offer. Read from the official page at us.etrade.com/promo/savings on 21 November 2026: open a new Premium Savings before 30 November 2026 with promo code SAVE200, deposit at least $20,000 of net-new funds within 30 days (money moved from your own E*TRADE or Morgan Stanley accounts does not count), then keep the average balance for another 45 days; the bonus posts within 30 days of the end of that maintenance period, roughly day 105. The same account gets the new-account 4.25% APY for six months, which the terms apply to accounts opened and funded between 22 September and 30 November 2026, then it falls back to the base rate shown on the bank rates page.\n\nAlso checked: E*TRADE's $400 Max-Rate Checking offer with code MAXRATE26 went offline on 16 November 2026; the official us.etrade.com/promo/checking-offer now returns a Promotion Expired page, so it is not listed this round.\n\nSafety: this is a deposit account at Morgan Stanley Private Bank, N.A. with FDIC insurance, not an investment product.",
+    "conditions": "New Premium Savings accounts only (an existing PSA is ineligible); the promo code must be entered when opening; at least $20,000 of net-new funds within 30 days; 45 further days of qualifying average balance; one cash-bonus offer at a time and a lifetime limit of two PSA bonuses; non-US residents, including anyone who later changes to a foreign address, are excluded; the bonus is interest income reported on a 1099-INT.",
+    "steps": [
+      "Open the account at us.etrade.com/promo/savings and enter promo code SAVE200",
+      "Move at least $20,000 from an outside bank within 30 days, not from your own Morgan Stanley or E*TRADE accounts",
+      "Keep the average balance for 45 days after the funding period",
+      "Collect the $200 around day 105 and keep the account open through the six-month rate period"
+    ],
+    "risk": "Roughly $20,000 is tied up for about 75 days, so weigh the opportunity cost; the bonus takes about three and a half months to arrive; the 4.25% APY only holds six months; non-US residents cannot open the account; closing early or dropping the balance forfeits the bonus.",
+    "source": "E*TRADE official /promo/savings offer page and /bank/bank-rates (read 21 November 2026)"
+  },
+  "citic-visa-30pct-overseas-2026h2": {
+    "title": "[China] China CITIC Bank Visa cards: up to 30% back on overseas spending, capped at $300 a month (to Dec 31, enrollment required)",
+    "highlight": "Overseas Visa purchases of $50 or more earn a random rebate of up to 30%, plus 10% above $8,000 a month, 10% above $1,000 on flights and hotels and 10% above $5,000 on tuition, with all four combined capped at $300 a month per household; first Apple Pay bind adds $5",
+    "regions": "[China] Visa credit cards issued by China CITIC Bank in mainland China (including the Xiaoyaoyou series); overseas and Hong Kong, Macau and Taiwan Visa transactions",
+    "value": "Random rebate up to 30% on purchases of $50+, plus tiered, travel and tuition rebates, capped at $300 per household per month",
+    "content": "Read from the official China CITIC Bank card centre page for the Xiaoyaoyou Visa series on 21 November 2026, the offer runs 1 July to 31 December 2026 and only counts transactions after you enrol in the Dongka Kongjian app:\n\n- Per-transaction rebate: overseas Visa purchases of $50 or more get a random rebate of up to 30%, capped at $50 per household per month, with a $40,000 monthly pool;\n- High-spend rebate: 10% on the portion above $8,000 of a calendar month's total, capped at $200 per household per month, with a $45,000 pool (flight, hotel, tuition and rent merchant codes excluded);\n- Travel rebate: 10% above $1,000 a month at designated airlines and hotels, capped at $50;\n- Tuition rebate: 10% above $5,000 a month at overseas education and rent merchant codes, capped at $100;\n- All four together are capped at $300 per household per month; a first Apple Pay bind plus $5.01 of overseas spending adds $5 per card (23 January to 31 December 2026, $120,000 pool, stackable).\n\nThe card centre's overview page still links the 1 January to 30 June edition of the 30% offer, while the Xiaoyaoyou product page states 1 July to 31 December with the amounts above; confirm the current announcement inside the app before spending.",
+    "conditions": "Must be a China CITIC Bank Visa credit card (dual-brand cards must route through Visa); enrolment is mandatory and prior transactions do not count; primary and supplementary cards enrol separately; cash advances, transfers, pre-authorisations, refunds and reversals are excluded; monthly pools are first come, first served; cashback posts within 60 days after the month ends (Apple Pay within seven days).",
+    "steps": [
+      "Enrol in the Dongka Kongjian app: All services, business travel, overseas zone, cross-border travel, Visa global spending rebate",
+      "Spend overseas or on cross-border e-commerce through the Visa network, at least $50 per transaction",
+      "Concentrate large spending in one calendar month to pass $8,000 for the extra 10%",
+      "Check the cashback posting after the following month and watch the USD billing on repayment"
+    ],
+    "risk": "The per-transaction rebate is random and usually lands in the 1% to 5% range, not 30%; monthly pools run out; forgetting to enrol means no rebate at all; high-spend rebates are paid by transaction volume ranking; do not overspend to chase rebates, and foreign transactions still carry conversion costs.",
+    "source": "China CITIC Bank card centre product page (Xiaoyaoyou Visa, 1 July to 31 December terms), the overseas offers overview page, and a linux.do welfare thread (19 November 2026)",
+    "brand_en": "China CITIC Bank"
+  },
+  "nodeseek-blackfriday-lottery-2026": {
+    "title": "[China] NodeSeek Black Friday giveaways: a year of BandwagonHost MEGABOX, a year of LAX.AN4.Pro MALIBU and 16 MeowBox Dallas boxes (drawn Nov 27)",
+    "highlight": "Reply with the password phrase to enter, drawn on Black Friday, 27 November: 16 one-year MeowBox Lite boxes in Dallas, a one-year LAX.AN4.Pro MALIBU with root, and a one-year BandwagonHost MEGABOX",
+    "regions": "[China] Giveaways inside NodeSeek forum threads (account required, trade sections have level limits); prizes are VPS boxes in Dallas and Los Angeles",
+    "value": "A year of MEGABOX-PRO (about $49), a year of MALIBU access and 16 MeowBox-Dallas Lite boxes (1C/512M/7G/512G)",
+    "content": "NodeSeek user ICMP gave away machines on 20 November 2026 in three threads, all drawn on Black Friday:\n\n- First: a MeowBox-Dallas Lite with 1 core, 512MB RAM, 7GB disk, 512GB monthly transfer, one IPv4, no IPv6, in Dallas, valid one year, 16 units, any phrase counts, with a KVM and AMD EPYC hardware report attached;\n- Second: a one-year LAX.AN4.Pro MALIBU delivered as root; the poster says the account holds other products and the email cannot be changed, so it is access only, not ownership; phrase is the Chinese for happy Black Friday;\n- Third: a one-year BandwagonHost MEGABOX with a casual phrase, already past 1,500 replies at this check.\n\nAll three sit in the general section and cost nothing to enter; the draw is on 27 November 2026. MEGABOX-PRO lists at $49 a year with 2 AMD cores, 2GB RAM, 40GB disk, 2TB transfer and 2.5Gbps on the Los Angeles DC1 line.",
+    "conditions": "A NodeSeek account able to reply is required; the phrase must be posted in each thread to count; the MALIBU prize is root access only and the email cannot be transferred; prizes have no SLA and no data guarantee, so back up anything important; no late entries after the draw.",
+    "steps": [
+      "Log in to NodeSeek and open the three threads (post-1067920, post-1067958, post-1068007)",
+      "Reply with each thread's phrase",
+      "Check the results on 27 November and message the poster if you win",
+      "Change the password and run a health check before storing anything important"
+    ],
+    "risk": "Odds are tiny, with over 1,500 replies chasing one MEGABOX; the MALIBU box cannot change email and is shared with the original owner, so it can be taken back; all prizes are small unsupported boxes; do not post your email or contact details in the threads.",
+    "source": "Three NodeSeek threads read in full on 20 November 2026 (post-1067920, post-1067958, post-1068007); MEGABOX-PRO pricing from a BandwagonHost limited-plan price table"
+  },
+  "dstatus-f1x-1yuan-lifetime": {
+    "title": "[Global] DStatus monitoring panel: a 1 yuan lifetime licence with code F1x (normally 69 yuan, 200 codes) and a free five-node tier",
+    "highlight": "After the panel was cracked the developer put out a celebration code: 1 yuan instead of 69 for a permanent 10-node licence, limited to 200; a free tier with five nodes includes the full probing feature set",
+    "regions": "[Global] Self-hosted panel (needs your own Linux, Synology, OpenWrt, macOS or Windows machine)",
+    "value": "69 yuan down to 1 yuan (permanent 10-node licence, about 68 yuan or $9.50 saved)",
+    "content": "The DStatus author posted on NodeSeek on 21 November 2026 that the panel had been cracked, and marked the occasion with a code: buy the personal edition in the user centre and enter F1x, which drops the 69 yuan price to 1 yuan for a permanent 10-node licence, limited to 200 codes. Anyone who does not want to pay can register for a free permanent five-node licence; the author says the recent feature drop moved the full probing set, billing, traffic and network quality, the built-in AI operations assistant and MCP access for Claude and Codex into the free tier, leaving only cloud services and node count as the difference. There is also a draw for three permanent 100-node licences, opened on 25 November 2026 at 09:00.\n\nThe official pricing page, read on 21 November 2026, matches: registering grants a free licence for five nodes with the full probing feature set and a small AI allowance; the personal edition is a one-off payment for 10, 20 or 50 nodes; the professional edition is annual; the permanent edition is one-off. The page also states that a one-off payment covers the software and all future updates, while the built-in AI allowance and hosted status pages are cloud services currently included as a limited-time gift and may be sold separately later. The price table itself is rendered dynamically, so the 69 yuan tier and the 1 yuan redemption were not readable on the page and are recorded from the author's post.",
+    "conditions": "An account at dstatus.sh is needed for the free licence or a purchase; code F1x applies to the 10-node personal edition and is limited to 200 uses; a one-off payment does not permanently include the built-in AI allowance or hosted status pages; self-hosting needs your own machine and command line; do not activate one licence on several instances at once or the anti-abuse check will trip.",
+    "steps": [
+      "Register at dstatus.sh and claim the free five-node licence first",
+      "For 10 nodes, buy the personal edition in the user centre, enter F1x and confirm the price shows 1 yuan before paying",
+      "Deploy the panel per the official docs and paste the licence key in the admin panel",
+      "Reply in the giveaway thread for a shot at the 100-node licence on 25 November"
+    ],
+    "risk": "A one-person or very small project with long-term maintenance resting on one developer; the built-in AI allowance and hosted pages are gifts that may later be charged; the code is limited and may already be gone; the pricing page is dynamic, so confirm the 1 yuan at checkout; the panel agent runs on the monitored machines, so review its permissions.",
+    "source": "DStatus official pricing page read 21 November 2026 and the author's NodeSeek thread post-1069027"
+  },
+  "nodeseek-ytnet-hk-bgp-secondhand": {
+    "title": "[Hong Kong] NodeSeek resale: yt.net HK.BGP.BF at 89.1 yuan a year, asking 90 with push (1C1G/10G/300G/200M, 50 IX ports)",
+    "highlight": "1 core, 1GB RAM, 10GB disk, 300GB monthly transfer at 200Mbps on Hong Kong BGP with 50 IX ports included; 90 yuan including the push fee, and the seller confirms a dedicated egress IP",
+    "regions": "[Hong Kong] Hong Kong BGP line; the buyer needs a verified yt.net account to receive the push",
+    "start": "2026-11-21",
+    "value": "90 yuan with push",
+    "content": "A NodeSeek trade thread from 21 November 2026 (post-1069091) offers a yt.net HK.BGP.BF annual plan at 89.1: 1 core, 1GB RAM, 10GB disk, 300GB monthly transfer, 200Mbps and 50 IX ports. The seller asks 90 yuan including the push fee and says the buyer should bring a verified account. In the replies, asked whether the egress is a dedicated IP, the seller answers that it is; another reply calls it a sweet spot for light users because 300GB a month at 200Mbps lines up with the front-end; asked why he is selling, the seller says he has been selling it all along, that it has been listed for ten years. There is no sold marker in the thread as of this check.\n\nOn price: 89.1 a year resold at 90 simply folds the push fee into an at-cost transfer, so the only real advantage is that it is in stock and comes with 50 IX ports.",
+    "conditions": "A resale, so the buyer needs a verified yt.net account willing to accept a push; 90 yuan including the push fee; the thread does not state the expiry or remaining period, so confirm before paying and price the remainder as annual fee times days left over 365; use the forum escrow if possible; the original buyer is an individual, so the provider will not honour resale support.",
+    "steps": [
+      "Open post-1069091 and confirm it is still available (no sold marker)",
+      "Message the seller for the expiry date, remaining days, push method and whether the fee is included",
+      "Make sure your yt.net account is verified and can accept a push",
+      "After the transfer, change the password and test the 200Mbps link and IX connectivity"
+    ],
+    "risk": "No expiry date in the thread, so the remaining value is unclear; the seller says it has been listed for a long time, which can hint at a line or provider problem; Hong Kong BGP is not mainland-optimised (no CN2 or 9929 promise); 200Mbps with 300GB only suits light use; after a push the provider usually only supports the account holder.",
+    "source": "NodeSeek trade thread post-1069091 (21 November 2026), opening post and replies"
+  },
+  "openrouter-ling32-ernie55-free": {
+    "title": "[Global] OpenRouter adds two free million-token models: Ling 3.2 Flash and ERNIE-5.5 Flash Preview",
+    "highlight": "inclusionAI Ling 3.2 Flash (live 13 November) and Baidu ERNIE-5.5-Flash-Preview (live 10 November) both sit on OpenRouter as :free variants with million-token context and an OpenAI-compatible endpoint",
+    "regions": "[Global] An OpenRouter account (Google or GitHub sign-in, no card required); :free models are rate limited and regional availability varies",
+    "value": "Free API access with 1M context (prompt and completion both at $0)",
+    "content": "Read from OpenRouter's model API on 21 November 2026: of 476 models on the platform, 15 charge nothing for both prompt and completion tokens. The newest additions are inclusionAI's Ling 3.2 Flash, live since 13 November with a 1,048,576-token context, and Baidu's ERNIE-5.5-Flash-Preview, live since 10 November with 1,024,000 tokens. Both answer through the standard OpenAI-compatible interface with model ids inclusionai/ling-3.2-flash:free and baidu/ernie-5.5-flash-preview:free.\n\nCompared with the existing OpenRouter entry for Qwen4-Max and Hy4 Flash, these are different models that only appeared on 10 and 13 November, so this is a new listing rather than a duplicate.",
+    "conditions": "An OpenRouter account and API key are needed (Google or GitHub sign-in, no card); :free variants share platform capacity and are rate limited per minute and per day; some free models allow requests to be used for training, so keep sensitive content off them; any model can be withdrawn or repriced.",
+    "steps": [
+      "Sign in at openrouter.ai and create an API key",
+      "Use model inclusionai/ling-3.2-flash:free or baidu/ernie-5.5-flash-preview:free",
+      "Point an OpenAI-compatible client at https://openrouter.ai/api/v1",
+      "Send a small request first to see the rate limits before wiring it into a workflow"
+    ],
+    "risk": "Free capacity is congested at peak and returns 429s; there is no SLA and models can disappear; free requests may be used for training; a 1M context label says nothing about real throughput or stability.",
+    "source": "OpenRouter model API (https://openrouter.ai/api/v1/models) read 21 November 2026, plus the two :free model pages"
+  },
+  "whatnot-uk-credit-10-200": {
+    "title": "[UK] Whatnot new-user credit of 10 to 200 pounds on sign-up, no minimum spend (95% get under 20)",
+    "highlight": "New UK users get a random 10 to 200 pounds of Whatnot credit after verifying a UK mobile number, revealed during sign-up; no minimum order, the credit covers the item price only and shipping starts around 3.38 pounds",
+    "regions": "[UK] UK residents with a UK mobile number; credit only works with sellers billing in GBP",
+    "value": "10 to 200 pounds of shopping credit (about 95% get under 20, only 0.2% get 200)",
+    "content": "Whatnot's Buyer Referral Program gives brand-new users a randomly determined credit of 10 to 200 pounds after they sign up through a referral link and verify their phone number; the amount is shown during sign-up and no promo code is needed. The official help centre terms match the UK deal sites that rechecked it in October 2026: no minimum order value; the credit only covers the item subtotal of an eligible order and not shipping, fees or taxes; the credit is issued in GBP and can only be used with sellers transacting in GBP; it may expire 90 days after issue; it has no cash value. The terms also state the distribution, with about 95% of new users receiving under 20 pounds and about 0.2% receiving 200.",
+    "conditions": "Brand-new Whatnot users only; UK mobile number and UK delivery address; sign-up must go through the invite link; shipping, fees, taxes and Free Pickup orders are excluded; GBP credit works only with GBP sellers; no cash value and not transferable; may expire after 90 days.",
+    "steps": [
+      "Register a Whatnot buyer account with a UK mobile number through an invite link",
+      "Verify the phone number and note the credit amount shown during sign-up",
+      "Pick an item from a GBP seller outside Live so only the item price is charged to the credit",
+      "Cover the shipping yourself, from about 3.38 pounds, and use the credit within 90 days"
+    ],
+    "risk": "The amount is random and usually 10 to 20 pounds, so do not create multiple accounts chasing 200 or the anti-fraud check will close them; shipping and taxes come out of your pocket; the credit can expire in 90 days; live auctions invite impulse bids; a UK number and address are hard requirements.",
+    "source": "Whatnot official help centre Buyer Referral Program terms cross-checked against beermoneyuk and GetQuids (rechecked 24 October 2026)"
   }
 }
