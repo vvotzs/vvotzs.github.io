@@ -1752,6 +1752,9 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 _DESC_MIN, _DESC_MAX = 120, 156
 _DESC_ENDERS = "。！？…」』.!?"
 _DESC_CLAUSE_MARKS = "，,；;、：:"
+# 补句时最小增量：太短的分句残头（「ahamo。」）不加，凑不出 120 字宁可短一点也不写废话
+_DESC_ADD_CLAUSE = 15
+_DESC_ADD_WORD = 8
 
 
 def _desc_chunks(parts: tuple[str, ...], is_en: bool) -> list[str]:
@@ -1806,6 +1809,16 @@ def _desc_close(text: str, end: str) -> str:
 _DESC_PAIRS = (("（", "）"), ("(", ")"), ("「", "」"), ("『", "』"), ("“", "”"))
 
 
+def _desc_clause_cuts(text: str):
+    """分句切点：逗号 / 分号 / 冒号 / 顿号，但跳过数字里的千分位逗号（$1,000 不能切成 $1）。"""
+    for m in re.finditer(f"[{_DESC_CLAUSE_MARKS}]", text):
+        i = m.start()
+        # 千分位逗号（$1,000）与时刻冒号（23:59）都不是分句边界，切开数值就毁了
+        if 0 < i < len(text) - 1 and text[i - 1].isdigit() and text[i + 1].isdigit():
+            continue
+        yield m
+
+
 def _desc_balanced(text: str) -> bool:
     """括号 / 引号是否成对：切点不能落在「（……」中间，否则会出现「（历史最高。」这种残句。"""
     return all(text.count(a) == text.count(b) for a, b in _DESC_PAIRS)
@@ -1813,7 +1826,8 @@ def _desc_balanced(text: str) -> bool:
 
 # 收边时要去掉的尾巴：英文的连词 / 介词 / 冠词，中文的连词
 _EN_TAIL_WORD_RE = re.compile(
-    r"\s+(?:and|or|of|the|a|an|to|with|for|from|in|on|at|by|as|that|which|plus|but|so|if|when|than)\s*$",
+    r"\s+(?:and|or|of|the|a|an|to|with|for|from|in|on|at|by|as|that|which|plus|but|so|if|when|than"
+    r"|is|are|was|were|be|been|has|have|had|will|can|may|not)\s*$",
     re.I,
 )
 _ZH_TAIL_WORD_RE = re.compile(r"(?:以及|或者|并且|而且|还有|和|与|及|或|并)\s*$")
@@ -1857,14 +1871,15 @@ def _desc_fill(base: str, chunk: str, end: str, is_en: bool) -> tuple[str, bool]
     if len(cand) <= _DESC_MAX:
         return cand, False
     best = base
-    for m in re.finditer(f"[{_DESC_CLAUSE_MARKS}]", chunk):
+    for m in _desc_clause_cuts(chunk):
         head = chunk[: m.end()]
         if not _desc_balanced(head):
             continue
         cand = _desc_close(_desc_join(base, _desc_finish(head, end), end, is_en), end)
         if len(cand) > _DESC_MAX:
             break
-        if len(cand) > len(best):
+        # 只加「有内容」的分句：像「ahamo。」这种两三个字的残头宁可不要
+        if len(cand) - len(base) >= _DESC_ADD_CLAUSE and len(cand) > len(best):
             best = cand
     return best, best != base
 
@@ -1916,26 +1931,43 @@ def seo_description(*parts: str) -> str:
         _DESC_STATS["sentence"] += 1
         return _desc_repair(desc or kept[0][: _DESC_MAX - 1], end)
 
-    # 整句补到 120 字：先找能整句装下的，再用装不下那一句的完整分句
-    for chunk in kept[used:]:
-        filled, used_clause = _desc_fill(desc, chunk, end, is_en)
-        if len(filled) >= _DESC_MIN:
+    # 整句补到 120 字：能整句装下就整句，装不下用这一句最长的完整分句（括号引号内不切）
+    idx = used
+    clause_at = None
+    while idx < len(kept) and len(desc) < _DESC_MIN:
+        desc, used_clause = _desc_fill(desc, kept[idx], end, is_en)
+        if used_clause and clause_at is None:
+            clause_at = idx
+        idx += 1
+        if len(desc) >= _DESC_MIN:
             _DESC_STATS["clause" if used_clause else "sentence"] += 1
-            return _desc_repair(filled, end)
-        if len(filled) > len(desc):
-            desc = filled
+            return _desc_repair(desc, end)
+    # 词边界补用哪一句：用过分句的话，从它的下一句起（避免把同一句的开头再写一遍）；
+    # 一句都没用上就从第一句装不下的那句起
+    idx = (clause_at + 1) if clause_at is not None else used
 
-    # 还没有 120 字：按词收边补足（落在完整词上，不切半截）
-    room = _DESC_MAX - (len(desc) + len(end) + (1 if is_en else 0) if desc else 0)
-    if room >= 24:
-        for chunk in kept[used:]:
-            cand = _desc_close(_desc_join(desc, _desc_soft_cut(chunk, room, end), end, is_en), end)
-            if len(cand) > len(desc):
-                desc = cand
+    # 还不到 120 字：按词收边补足。从第一句没能整句塞进去的那句起往后找，
+    # 先要求「有内容」的增量，
+    # 仍不到 120 字再放宽到任意增量（都落在完整词上，末尾虚词已去掉）
+    word_used = False
+    for min_add in (_DESC_ADD_WORD, 1):
+        for j in range(max(idx, 0), len(kept)):
             if len(desc) >= _DESC_MIN:
                 break
-
-    _DESC_STATS["word"] += 1
+            room = _DESC_MAX - (len(desc) + len(end) + (1 if is_en else 0))
+            if room < 8:
+                break
+            piece = _desc_soft_cut(kept[j], room, end)
+            core = piece.strip(" 。.，,")
+            if not core or core in desc:
+                continue
+            cand = _desc_close(_desc_join(desc, piece, end, is_en), end)
+            if len(cand) - len(desc) >= min_add and len(cand) > len(desc):
+                desc = cand
+                word_used = True
+        if len(desc) >= _DESC_MIN:
+            break
+    _DESC_STATS["word" if word_used else "sentence"] += 1
     return _desc_repair(desc, end)
 
 
