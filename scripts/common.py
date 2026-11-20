@@ -38,6 +38,10 @@ OG_IMAGE_EN = SITE_URL + "assets/og-cover-en.png"
 DEALS_DIR = ROOT / "d"
 DEALS_DIR_EN = ROOT / "en" / "d"
 
+# 静态分类目录页：中文 /category/<slug>/，英文 /en/category/<slug>/
+CATEGORY_DIR = ROOT / "category"
+CATEGORY_DIR_EN = ROOT / "en" / "category"
+
 
 def deal_path(deal_id: str, lang: str = "zh") -> str:
     """条目的站内相对路径（不带开头的斜杠）：`d/<id>/` 或 `en/d/<id>/`。"""
@@ -48,8 +52,17 @@ def deal_url(deal_id: str, lang: str = "zh") -> str:
     return SITE_URL + deal_path(deal_id, lang)
 
 
+def cat_path(slug: str, lang: str = "zh") -> str:
+    """分类目录页的站内相对路径：`category/<slug>/` 或 `en/category/<slug>/`。"""
+    return ("en/" if lang == "en" else "") + f"category/{slug}/"
+
+
+def cat_url(slug: str, lang: str = "zh") -> str:
+    return SITE_URL + cat_path(slug, lang)
+
+
 def write_sitemap(deals: list[dict], today: date | None = None) -> Path:
-    """写 sitemap.xml：首页中英两版 + 全部条目的中英详情页。
+    """写 sitemap.xml：首页中英两版 + 全部分类目录页 + 全部条目的中英详情页。
 
     maintain_deals.py（每轮巡检）与 build_site.py（每次构建）都调这里，
     保证「数据里有多少条」与「sitemap 里有多少个详情页」永远一致；
@@ -86,6 +99,20 @@ def write_sitemap(deals: list[dict], today: date | None = None) -> Path:
 
     add(home_zh, home_alt, today_iso, "daily", "1.0")
     add(home_en, home_alt, today_iso, "daily", "0.8")
+
+    # 分类目录页：每个分类中英各一份，lastmod 取该分类里最新一次核验 / 收录的日期
+    for slug in CAT_META:
+        cat_last = max(
+            (str(d.get("last_verified") or added_date(d) or today_iso)[:10]
+             for d in deals if d.get("category") == slug),
+            default=today_iso,
+        )
+        zh = cat_url(slug, "zh")
+        en = cat_url(slug, "en")
+        # 目录页的 hreflang 用 zh-Hans（与页面 <head> 里的声明一致），中文是简体
+        alts = [("zh-Hans", zh), ("en", en), ("x-default", zh)]
+        add(zh, alts, cat_last, "daily", "0.9")
+        add(en, alts, cat_last, "daily", "0.7")
 
     for deal in deals:
         deal_id = str(deal.get("id") or "").strip()

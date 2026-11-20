@@ -15,6 +15,8 @@ index.html              # 中文静态页面（纯中文 DOM，由脚本生成�
 en/index.html           # 英文静态页面（纯英文 DOM，英文 title / description / OG，方便分享到英文社区）
 d/<id>/index.html       # 每条优惠的中文独立详情页（含已归档条目，页顶挂归档提示），给外链与搜索长尾一个稳定落脚点
 en/d/<id>/index.html    # 每条优惠的英文独立详情页（title / description / canonical / hreflang / og / JSON-LD 各自独立）
+category/<slug>/index.html     # 6 大类的中文静态目录页（banner 面包屑 / 导语 / 全部活跃优惠 / 其他分类导航）
+en/category/<slug>/index.html  # 同上，纯英文；slug 取 ai / crypto / bank / cloud / esim / software
 assets/css/style.css    # 视觉与交互样式
 assets/js/app.js        # 手风琴 / 搜索筛选 / 移动端分页 / 滑轨高亮 / URL 状态同步 / 语言跳转
 assets/fav/<domain>.webp # 构建时缓存到本地的站点图标（48×48 WebP，境内直连即可显示，不依赖 google.com）
@@ -26,7 +28,8 @@ data/meta.json          # 统计与最后更新时间
 scripts/common.py          # 共用常量与函数（北京时间、类别、状态、value_expected）
 scripts/i18n.py            # 界面文案的中英对照表、类别 / 门槛英文标签、英文日期格式
 scripts/maintain_deals.py  # 去重、状态标记、归档、meta 与 sitemap（含 /en/ 与 hreflang）
-scripts/build_site.py      # 由 deals.json + deals_en.json 生成中英两个 index.html、全部 /d/<id>/ 与 /en/d/<id>/ 详情页，并重建 sitemap.xml
+scripts/build_site.py      # 由 deals.json + deals_en.json 生成中英两个 index.html、全部 /d/<id>/ 与 /en/d/<id>/ 详情页、12 个分类目录页，并重建 sitemap.xml
+scripts/check_schema.py    # 结构化数据体检：每段 ld+json 必须合法 JSON，Offer / HowTo 字段齐全（构建时自动跑，也可单独跑）
 scripts/make_og_cover.py   # 生成中英两张分享封面（`python3 scripts/make_og_cover.py` 全出，加 `en` 只出英文）
 docs/workflows-reference/daily-rebuild.yml  # 每日重建工作流模板（不放进 .github/workflows）
 robots.txt / sitemap.xml
@@ -167,3 +170,18 @@ python3 scripts/build_site.py       # 再生成中英两个页面（会顺便把
   命中就让构建失败；语言切换徽标「中文」是唯一白名单（`check_en_pages()`）。品牌中文名仍留在 JSON-LD 的 `seller.name` 与搜索索引里，那是数据不是漏翻。
 - 详情页底部内链固定「同类相邻 4 条 + 同地区 2 条」，按条目 id 轮转（`related_deals()`），让每个页面都有入链；
   首页 220+ 个「详情页 ↗」的可见文字保持一致，`aria-label` 带条目标题，读屏与搜索能分清指向哪一条。
+
+## 分类目录页 / 替代优惠 / HowTo 结构化数据
+
+- **分类目录页**（`/category/<slug>/`、`/en/category/<slug>/`，共 12 页）：分类标题、导语与独立 meta description
+  收在 `scripts/i18n.py` 的 `CATEGORY_PAGE`（中英成对，中文 description ≥120 字）；列表只收当前活跃条目
+  （`status != expired`），按可预期价值降序、同价值新收录在前，每条带图标、价值、门槛、截止、地区与直达详情页的内链；
+  页底是其余 5 个分类的横向切换条。详情页面包屑、JSON-LD `BreadcrumbList` 与页底「查看全部优惠」都指向这里，
+  `sitemap.xml` 也写入 12 个 URL（`<lastmod>` 取该分类最新核验日）。
+- **已归档详情页的「替代优惠」**：仅 `status == "expired"` 时渲染（`alternative_deals()`），放在标题 / 状态提示之后、
+  参与步骤之前，最多 3 条同分类活跃优惠 + 一个直达分类目录页的按钮，避免过期页把人直接送走。
+- **HowTo JSON-LD**：有参与步骤（`steps` 非空）的详情页在 `Offer` 之外多输出一份 `HowTo`（`name` / `description` /
+  `step[]` 为 `HowToStep`，每步带 `text`），整段 JSON 统一把 `</` 转义成 `<\/`，不会提前结束 `<script>`。
+- **构建时体检**：`scripts/check_schema.py` 扫全部产物（首页、详情页、分类页），每段 `ld+json` 必须是合法 JSON，
+  详情页必须有 `Offer` + `BreadcrumbList`、有步骤的还必须有字段完整的 `HowTo`，不通过就让构建失败（`check_jsonld()`）。
+  单独体检：`python3 scripts/check_schema.py`（加 `--list` 顺便列出各页结构化数据类型）。

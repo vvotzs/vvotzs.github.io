@@ -220,6 +220,23 @@ U: dict[str, tuple[str, str]] = {
     "dp_permalink_aria": ("{t} · 详情页", "{t} · detail page"),
     "dp_link_aria": ("在新标签页打开", "opens in a new tab"),
     "dp_related_aria": ("相关推荐", "Related deals"),
+    # 分类目录页（/category/<slug>/ 与 /en/category/<slug>/）
+    "cat_count": ("{n} 条进行中的优惠", "{n} live offers"),
+    "cat_sort_note": ("按可预期到手价值排序", "Sorted by expected value"),
+    "cat_other": ("浏览其他分类", "Browse other categories"),
+    "cat_aria": ("分类目录", "Category contents"),
+    "cat_all_home": ("首页看全部优惠", "All deals on the home page"),
+    "cat_empty": ("该分类暂无进行中的优惠", "No live offers in this category yet"),
+    "cat_archive_note": ("该分类另有 {n} 条已结束活动，仍保留在归档里可随时回查。",
+                         "{n} ended offers from this category are kept in the archive."),
+    "cat_archive_link": ("查看归档", "Open the archive"),
+    "cat_open": ("查看该分类全部优惠", "Browse this category"),
+    "cat_switch_aria": ("查看这一分类的英文版", "Read this category in English"),
+    "cat_switch_aria_zh": ("查看这一分类的中文版", "Read this category in Chinese"),
+    # 已归档详情页顶部的「替代优惠」模块
+    "alt_head": ("该活动已结束，推荐查看同类最新替代优惠",
+                 "This offer has ended — check out active alternatives in the same category"),
+    "alt_aria": ("同类替代优惠", "Alternative offers in the same category"),
     "dp_deadline_left": ("{d} 截止 · 剩 {n} 天", "Ends {d} · {n} days left"),
     "dp_deadline_only": ("{d} 截止", "Ends {d}"),
     "dp_deadline_ended": ("已于 {d} 结束", "Ended {d}"),
@@ -246,6 +263,120 @@ CAT_EN = {
     "cloud": ("VPS & cloud", "cloud VPS hosting server"),
     "esim": ("eSIM", "eSIM data plan roaming"),
     "software": ("Software", "software digital services"),
+}
+
+# 分类目录页文案：每个分类一份独立标题 / 导语 / meta description（中英各一）。
+# 英文元数据只用于 /en/category/<slug>/，不得出现中文（check_en_pages 会扫）。
+# desc 就是那一页的 meta description：中文≥120 字、英文≥120 字符，各自独立不靠拼接。
+CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
+    "ai": {
+        "h1": ("AI 工具：免费额度与折扣", "AI tools: free credits & discounts"),
+        "title": ("AI 工具免费额度与优惠合集 · 羊毛情报局",
+                  "AI tools with free credits & discounts · Deal Hunter"),
+        "lead": (
+            "ChatGPT、Gemini、Claude、Cursor、Copilot 等 AI 工具与智能代理的免费额度、学生优惠和限时折扣，"
+            "逐条核验后收录，标清实际到手价值、可用地区与截止时间。",
+            "Free tiers, student plans and limited-time discounts for ChatGPT, Gemini, Claude, Cursor, "
+            "Copilot and other AI tools and agents — each one verified, with expected value, region and deadline.",
+        ),
+        "desc": (
+            "ChatGPT、Gemini、Claude、Cursor、Copilot 等 AI 工具与智能代理的免费额度、学生优惠和限时折扣，"
+            "逐条核验后收录，标清实际到手价值、可用地区与截止时间。列表按可预期到手价值排序，涵盖 API 额度、"
+            "订阅减免与新品首发活动；已结束的活动全部留在归档里，方便对照往年同期的力度，旧链接也不会失效。",
+            "Free tiers, student plans and limited-time discounts for ChatGPT, Gemini, Claude, Cursor, Copilot and "
+            "other AI tools — each verified, sorted by expected value, with region and deadline.",
+        ),
+    },
+    "bank": {
+        "h1": ("海外银行、U 卡与跨境汇款", "Banks, cards & cross-border remittance"),
+        "title": ("海外银行开户 / U 卡返现 / 跨境汇款优惠合集 · 羊毛情报局",
+                  "Bank bonuses, card cashback & remittance offers · Deal Hunter"),
+        "lead": (
+            "海外银行开户奖励、虚拟卡（U 卡）返现与跨境汇款邀请奖励，含 Wise、Remitly、Taptap Send、"
+            "Sendwave 等可双向叠加的通道，写清入金门槛、留存期与到账时间。",
+            "Account bonuses, virtual-card cashback and two-sided referral rewards from Wise, Remitly, "
+            "Taptap Send, Sendwave and more — with deposit thresholds, holding periods and payout timing.",
+        ),
+        "desc": (
+            "海外银行开户奖励、虚拟卡（U 卡）返现与跨境汇款邀请奖励，含 Wise、Remitly、Taptap Send、Sendwave "
+            "等可双向叠加的通道，写清入金门槛、留存期与到账时间。每条都注明是否需要美国 / 英国 / 德国等区服身份、"
+            "税号或本地地址，以及奖励发放条件与追回条款；需要留存的金额会一并标出机会成本，方便按自己的区服与资金情况挑选。",
+            "Account bonuses, virtual-card cashback and two-sided remittance referrals (Wise, Remitly, Taptap Send, "
+            "Sendwave), with deposit thresholds, holding periods and the region each one needs.",
+        ),
+    },
+    "crypto": {
+        "h1": ("Crypto 空投、积分与交易所奖励", "Crypto airdrops, points & exchange rewards"),
+        "title": ("Crypto 空投 / 积分任务 / 交易所新人奖励合集 · 羊毛情报局",
+                  "Crypto airdrops, points and exchange sign-up rewards · Deal Hunter"),
+        "lead": (
+            "交易所新人奖励、任务空投与积分计划，含 KYC 门槛、交易量要求与代币解锁规则；"
+            "奖励多为返佣券或代币，到手金额不等于现金。",
+            "Exchange sign-up rewards, quest airdrops and points programs, with KYC steps, volume requirements "
+            "and token unlock rules — most payouts arrive as fee vouchers or tokens, not cash.",
+        ),
+        "desc": (
+            "交易所新人奖励、任务空投与积分计划，含 KYC 门槛、交易量要求与代币解锁规则；奖励多为返佣券或代币，"
+            "到手金额不等于现金。每条都标出是否需要充值、需要交易量与可提现条件，并注明区服与身份限制；"
+            "加密资产价格波动大，请按实际可预期到手价值而不是宣传上限做判断，不要为了奖励去承担超出承受能力的仓位风险。",
+            "Exchange sign-up rewards, quest airdrops and points programs, with KYC steps, volume requirements and "
+            "what can actually be withdrawn; most payouts arrive as tokens or fee vouchers, not cash.",
+        ),
+    },
+    "cloud": {
+        "h1": ("VPS 与云服务额度", "VPS & cloud credits"),
+        "title": ("VPS 永久免费实例 / 云服务体验金 / 黑五主机折扣合集 · 羊毛情报局",
+                  "Free VPS instances, cloud credits and hosting deals · Deal Hunter"),
+        "lead": (
+            "永久免费实例、新人体验金与黑五主机折扣，覆盖 Oracle、AWS、GCP、Azure、Hetzner、Cloudflare "
+            "等主流云与主机商，写清配额、到期与回收规则。",
+            "Always-free instances, trial credits and Black Friday hosting deals from Oracle, AWS, GCP, Azure, "
+            "Hetzner, Cloudflare and more — with quotas, expiry and reclamation rules spelled out.",
+        ),
+        "desc": (
+            "永久免费实例、新人体验金与黑五主机折扣，覆盖 Oracle、AWS、GCP、Azure、Hetzner、Cloudflare 等主流云与"
+            "主机商，写清配额、到期与回收规则。免费额度通常需要绑卡验证，并有闲置回收或流量上限，页面里逐条写明；"
+            "部署前先看清是否自动续费、需要预留实例与支持哪个区服，避免试用结束后被默默扣费，也避免机器被回收后数据丢失。",
+            "Always-free instances, trial credits and hosting deals from Oracle, AWS, GCP, Azure, Hetzner and "
+            "Cloudflare, with quotas, expiry and reclamation rules spelled out before you deploy.",
+        ),
+    },
+    "esim": {
+        "h1": ("eSIM 免费流量与首单折扣", "eSIM free data & first-order discounts"),
+        "title": ("eSIM 免费流量 / 首单折扣与可用国家整理 · 羊毛情报局",
+                  "Free eSIM data, first-order discounts and coverage · Deal Hunter"),
+        "lead": (
+            "全球 eSIM 的免费试用流量与首单折扣，覆盖 Airalo、Holafly、Nomad、Saily、Ubigi 等，"
+            "逐条标出可用国家或地区、流量额度与注册限制。",
+            "Free trial data and first-order discounts for eSIMs from Airalo, Holafly, Nomad, Saily, Ubigi and "
+            "others, each labelled with usable countries, data allowance and sign-up limits.",
+        ),
+        "desc": (
+            "全球 eSIM 的免费试用流量与首单折扣，覆盖 Airalo、Holafly、Nomad、Saily、Ubigi 等，逐条标出可用国家或"
+            "地区、流量额度与注册限制。多数免费流量要求新用户身份、绑定支付方式或手机支持 eSIM，页面里都已注明；"
+            "建议先领小额试用测一下当地网速，再决定是否购买大套餐，落地后也能随时切回本地实体卡，不耽误通话与短信验证码。",
+            "Free trial data and first-order discounts for eSIMs from Airalo, Holafly, Nomad, Saily and Ubigi, "
+            "each labelled with usable countries, data allowance and sign-up limits.",
+        ),
+    },
+    "software": {
+        "h1": ("软件与数字服务优惠", "Software & digital services"),
+        "title": ("学生免费计划 / 开发者礼包 / 订阅折扣合集 · 羊毛情报局",
+                  "Student plans, developer packs and subscription deals · Deal Hunter"),
+        "lead": (
+            "学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠，覆盖 JetBrains、Notion、Figma、"
+            "GitHub 等常用工具，写清资格审核与续期方式。",
+            "Student plans, developer packs, Black Friday subscription deals and other digital services from "
+            "JetBrains, Notion, Figma, GitHub and more, with eligibility checks and renewal rules.",
+        ),
+        "desc": (
+            "学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠，覆盖 JetBrains、Notion、Figma、GitHub 等"
+            "常用工具，写清资格审核与续期方式。学生与教育优惠通常需要校园邮箱或学籍证明，审核通过后按年续期；"
+            "商业授权、团队席位与个人版的差别也会标注，选购前先确认自己的用途、人数与是否需要商用授权。",
+            "Student plans, developer packs and subscription discounts for JetBrains, Notion, Figma, GitHub and "
+            "more, with eligibility checks, renewal rules and licence differences noted.",
+        ),
+    },
 }
 
 _MON = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")

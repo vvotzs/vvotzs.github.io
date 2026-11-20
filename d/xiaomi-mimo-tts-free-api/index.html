@@ -32,7 +32,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=e87beb3f">
+<link rel="stylesheet" href="/assets/css/style.css?v=b1c76d4e">
 <script type="application/ld+json">
 [
 {
@@ -76,7 +76,7 @@
 "@type": "ListItem",
 "position": 2,
 "name": "AI 工具",
-"item": "https://vvotzs.github.io/#ai"
+"item": "https://vvotzs.github.io/category/ai/"
 },
 {
 "@type": "ListItem",
@@ -99,6 +99,36 @@
 "@type": "Organization",
 "name": "Xiaomi MiMo"
 }
+},
+{
+"@context": "https://schema.org",
+"@type": "HowTo",
+"name": "小米 MiMo-V2.5-TTS 语音合成 API 限时免费：3 个模型、RPM 100、不耗套餐额度",
+"description": "mimo-v2.5-tts（预置精品音色）、-voicedesign（一句话设计音色）、-voiceclone（少样本复刻）三个语音合成模型 API 限时免费，不消耗 Token Plan 的 Credit，单模型 RPM 100 / TPM 10M",
+"inLanguage": "zh-CN",
+"mainEntityOfPage": "https://vvotzs.github.io/d/xiaomi-mimo-tts-free-api/",
+"step": [
+{
+"@type": "HowToStep",
+"position": 1,
+"text": "在 mimo.mi.com 注册开放平台账号并创建 API Key"
+},
+{
+"@type": "HowToStep",
+"position": 2,
+"text": "用 OpenAI SDK 指向 base_url https://api.xiaomimimo.com/v1，model 填 mimo-v2.5-tts（或 -voicedesign / -voiceclone）"
+},
+{
+"@type": "HowToStep",
+"position": 3,
+"text": "把待合成文本放进 role=assistant，风格要求放进 role=user，audio 里指定格式与音色"
+},
+{
+"@type": "HowToStep",
+"position": 4,
+"text": "在控制台「账单明细」核对用量仍为 0，确认限时免费仍生效"
+}
+]
 }
 ]
 </script>
@@ -128,7 +158,7 @@
 <nav class="dp-crumbs" aria-label="面包屑">
 <a href="/">首页</a>
 <span class="dp-sep" aria-hidden="true">/</span>
-<a href="/#ai">AI 工具</a>
+<a href="/category/ai/">AI 工具</a>
 <span class="dp-sep" aria-hidden="true">/</span>
 <span class="dp-cur">小米 MiMo-V2.5-TTS 语音合成 API 限时免费：3 个模型、RPM 100、不耗套餐额度</span>
 </nav>
@@ -158,7 +188,7 @@
 <section class="dp-more" aria-label="相关推荐"><h2>相关推荐</h2><ul><li><a href="/d/yepapi-5-free-credit/"><span class="dp-rel-t"><i>全球</i>YepAPI：注册送 $5 额度、免绑卡，190 个数据接口 + 139 个 LLM 一把钥匙</span><span class="dp-rel-v">$5 额度</span></a></li><li><a href="/d/zcode-daily-build-cards/"><span class="dp-rel-t"><i>全球/中国区</i>ZCode 每晚发卡：工作日 3 亿 / 周末 5 亿 GLM-5.3-Flash Token（免绑卡）</span><span class="dp-rel-v">每晚 3 亿 Token</span></a></li><li><a href="/d/xiaomi-india-google-ai-pro-3m/"><span class="dp-rel-t"><i>印度区</i>小米/红米印度设备 × Google AI Pro：免费 3 个月</span><span class="dp-rel-v">$60</span></a></li><li><a href="/d/workbuddy-hy4-flash-free-nov2026/"><span class="dp-rel-t"><i>中国区/国际版</i>腾讯 WorkBuddy：混元 Hy4 flash 限时免费（11/16–11/30，额度每日发放）</span><span class="dp-rel-v">≈$5</span></a></li><li><a href="/d/agnes-ai-flash-free-api/"><span class="dp-rel-t"><i>全球/中国站</i>Agnes AI Flash 全系 $0：文本 + 图片 + 视频免费 API（OpenAI 兼容）</span><span class="dp-rel-v">$0</span></a></li><li><a href="/d/amd-ai-developer-program-credits/"><span class="dp-rel-t"><i>全球</i>AMD AI Developer Program：$100 云 GPU 额度 + $50 Fireworks 额度 + Token Lab 免费 API</span><span class="dp-rel-v">$150 额度</span></a></li></ul></section>
 <nav class="dp-nav" aria-label="面包屑">
 <a class="dp-nav-home" href="/">返回首页</a>
-<a href="/#ai">查看全部优惠</a>
+<a href="/category/ai/">查看全部优惠</a>
 <a href="/en/d/xiaomi-mimo-tts-free-api/" hreflang="en">EN</a>
 </nav>
 </div>

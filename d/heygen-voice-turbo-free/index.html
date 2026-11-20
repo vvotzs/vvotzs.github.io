@@ -32,7 +32,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=e87beb3f">
+<link rel="stylesheet" href="/assets/css/style.css?v=b1c76d4e">
 <script type="application/ld+json">
 [
 {
@@ -76,7 +76,7 @@
 "@type": "ListItem",
 "position": 2,
 "name": "AI 工具",
-"item": "https://vvotzs.github.io/#ai"
+"item": "https://vvotzs.github.io/category/ai/"
 },
 {
 "@type": "ListItem",
@@ -100,6 +100,31 @@
 "name": "HeyGen"
 },
 "validThrough": "2026-11-30T23:59:59+08:00"
+},
+{
+"@context": "https://schema.org",
+"@type": "HowTo",
+"name": "HeyGen Voice Turbo 免费到 11/30：公开音色 + 即时克隆、免绑卡",
+"description": "Artificial Analysis 排名第一的 TTS 模型，模型名写 heygen-voice-1-turbo-free 就不计费，公开音色和即时克隆都能用。HeyGen 官方文档：HeyGen Voice Turbo Free 免费开放到 2026-11-30。",
+"inLanguage": "zh-CN",
+"mainEntityOfPage": "https://vvotzs.github.io/d/heygen-voice-turbo-free/",
+"step": [
+{
+"@type": "HowToStep",
+"position": 1,
+"text": "到 developers.heygen.com 注册并创建 API Key（免费账号即可）"
+},
+{
+"@type": "HowToStep",
+"position": 2,
+"text": "POST https://api.heygen.com/v3/models/audio/tts，body 里 model 填 heygen-voice-1-turbo-free"
+},
+{
+"@type": "HowToStep",
+"position": 3,
+"text": "先用公开音色（voice_id 见文档示例）跑通，再换成自己的即时克隆音色"
+}
+]
 }
 ]
 </script>
@@ -129,7 +154,7 @@
 <nav class="dp-crumbs" aria-label="面包屑">
 <a href="/">首页</a>
 <span class="dp-sep" aria-hidden="true">/</span>
-<a href="/#ai">AI 工具</a>
+<a href="/category/ai/">AI 工具</a>
 <span class="dp-sep" aria-hidden="true">/</span>
 <span class="dp-cur">HeyGen Voice Turbo 免费到 11/30：公开音色 + 即时克隆、免绑卡</span>
 </nav>
@@ -160,7 +185,7 @@
 <section class="dp-more" aria-label="相关推荐"><h2>相关推荐</h2><ul><li><a href="/d/hpc-ai-model-apis-2-credit/"><span class="dp-rel-t"><i>全球</i>HPC-AI Model APIs：注册送 $2（邀请码 HPCAI-MAPI 拿 $4，OpenAI 兼容）</span><span class="dp-rel-v">$4</span></a></li><li><a href="/d/inception-mercury-100m-free-tokens/"><span class="dp-rel-t"><i>全球</i>Inception Mercury 3：新账号送 1 亿免费 tokens（免绑卡，OpenAI 兼容）</span><span class="dp-rel-v">≈$30</span></a></li><li><a href="/d/hark-pro-free-agent/"><span class="dp-rel-t"><i>美/英/欧区</i>Hark Pro：全功能永久免费的个人 AI 代理，自带云端电脑代下单</span><span class="dp-rel-v">≈$10</span></a></li><li><a href="/d/google-flow-daily-50-credits/"><span class="dp-rel-t"><i>全球</i>Google Flow 每日送 50 credits：不订阅也能生成 8 秒 Veo 3.1 Lite 视频 5 条</span><span class="dp-rel-v">≈$10</span></a></li><li><a href="/d/hoody-free-cloud-computers/"><span class="dp-rel-t"><i>全球</i>Hoody 免费 3 台 Linux 云电脑：不绑卡、不过期（含 root）</span><span class="dp-rel-v">≈$10</span></a></li><li><a href="/d/gravatar-free-domain-1y/"><span class="dp-rel-t"><i>全球</i>Gravatar：免费领一级域名 1 年（.bio / .link / .social 等，可当 Bluesky 号）</span><span class="dp-rel-v">首年免费域名</span></a></li></ul></section>
 <nav class="dp-nav" aria-label="面包屑">
 <a class="dp-nav-home" href="/">返回首页</a>
-<a href="/#ai">查看全部优惠</a>
+<a href="/category/ai/">查看全部优惠</a>
 <a href="/en/d/heygen-voice-turbo-free/" hreflang="en">EN</a>
 </nav>
 </div>

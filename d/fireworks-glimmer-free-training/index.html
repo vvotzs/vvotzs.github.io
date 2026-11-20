@@ -32,7 +32,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=e87beb3f">
+<link rel="stylesheet" href="/assets/css/style.css?v=b1c76d4e">
 <script type="application/ld+json">
 [
 {
@@ -76,7 +76,7 @@
 "@type": "ListItem",
 "position": 2,
 "name": "AI 工具",
-"item": "https://vvotzs.github.io/#ai"
+"item": "https://vvotzs.github.io/category/ai/"
 },
 {
 "@type": "ListItem",
@@ -100,6 +100,41 @@
 "name": "Fireworks AI"
 },
 "validThrough": "2026-11-30T23:59:59+08:00"
+},
+{
+"@context": "https://schema.org",
+"@type": "HowTo",
+"name": "Fireworks Free Weights Club：Muse Glimmer 30B 训练全免（SFT/DPO/RL，至 11/30）",
+"description": "Fireworks 的 Free Weights Club 首期：多模态 Muse Glimmer 30B 用 SFT、DPO、RL 训练都不要钱，到 2026-11-30 截止，免绑卡；拿来跑自己的 LoRA 微调实验够了。Fireworks 官方博客《Train Muse Glimmer for f…",
+"inLanguage": "zh-CN",
+"mainEntityOfPage": "https://vvotzs.github.io/d/fireworks-glimmer-free-training/",
+"step": [
+{
+"@type": "HowToStep",
+"position": 1,
+"text": "注册 Fireworks 账号（免绑卡）"
+},
+{
+"@type": "HowToStep",
+"position": 2,
+"text": "在 Managed Training 或 Serverless Training API 里选 `accounts/fireworks/models/muse-glimmer-30b`"
+},
+{
+"@type": "HowToStep",
+"position": 3,
+"text": "准备 chat JSONL 数据，启动 LoRA SFT（可用官方 cookbook 的 muse_glimmer starter）"
+},
+{
+"@type": "HowToStep",
+"position": 4,
+"text": "看 launch 打印的采样 token 费用行，确认只有评估采样计费"
+},
+{
+"@type": "HowToStep",
+"position": 5,
+"text": "把训练好的 LoRA promote 成模型；要对外服务再开 on-demand 部署"
+}
+]
 }
 ]
 </script>
@@ -129,7 +164,7 @@
 <nav class="dp-crumbs" aria-label="面包屑">
 <a href="/">首页</a>
 <span class="dp-sep" aria-hidden="true">/</span>
-<a href="/#ai">AI 工具</a>
+<a href="/category/ai/">AI 工具</a>
 <span class="dp-sep" aria-hidden="true">/</span>
 <span class="dp-cur">Fireworks Free Weights Club：Muse Glimmer 30B 训练全免（SFT/DPO/RL，至 11/30）</span>
 </nav>
@@ -160,7 +195,7 @@
 <section class="dp-more" aria-label="相关推荐"><h2>相关推荐</h2><ul><li><a href="/d/foxl-200-credits/"><span class="dp-rel-t"><i>全球</i>Foxl v0.10.7：新账号送 200 credits，每邀请一位好友再 +100（免 Key、免订阅）</span><span class="dp-rel-v">≈$5</span></a></li><li><a href="/d/freebuff-free-coding-agent/"><span class="dp-rel-t"><i>全球</i>Freebuff：广告养活的免费编码代理，每天 100 Freebucks、免绑卡免 Key</span><span class="dp-rel-v">免费</span></a></li><li><a href="/d/exa-api-40-credits-codes/"><span class="dp-rel-t"><i>全球</i>Exa 搜索 API：两个 $20 兑换码可叠 + 每月 $10 免费额度</span><span class="dp-rel-v">$40 + $10/月</span></a></li><li><a href="/d/envato-minimax-h3-unlimited-24h/"><span class="dp-rel-t"><i>全球</i>Envato × MiniMax H3：24 小时不限量视频生成，免费账号也能用</span><span class="dp-rel-v">24 小时不限量</span></a></li><li><a href="/d/firsty-free-esim-global/"><span class="dp-rel-t"><i>全球</i>Firsty 免费 eSIM：看广告换流量，每天最高 360MB（176 国）</span><span class="dp-rel-v">≈$1</span></a></li><li><a href="/d/firefox-builtin-vpn-unlimited-2027/"><span class="dp-rel-t"><i>全球</i>Firefox 内置 VPN 无限流量：免费开放到 2027-01-31</span><span class="dp-rel-v">≈$5</span></a></li></ul></section>
 <nav class="dp-nav" aria-label="面包屑">
 <a class="dp-nav-home" href="/">返回首页</a>
-<a href="/#ai">查看全部优惠</a>
+<a href="/category/ai/">查看全部优惠</a>
 <a href="/en/d/fireworks-glimmer-free-training/" hreflang="en">EN</a>
 </nav>
 </div>

@@ -36,6 +36,8 @@ if str(ROOT / "scripts") not in sys.path:
 
 from common import (  # noqa: E402
     CAT_META,
+    CATEGORY_DIR,
+    CATEGORY_DIR_EN,
     CLOSING_SLOTS,
     CLOSING_WINDOW_DAYS,
     DATA,
@@ -51,6 +53,8 @@ from common import (  # noqa: E402
     TODAY_WINDOW_DAYS,
     TZ,
     added_date,
+    cat_path,
+    cat_url,
     compute_status,
     deal_path,
     deal_url,
@@ -63,6 +67,7 @@ from common import (  # noqa: E402
     write_sitemap,
 )
 from i18n import (  # noqa: E402
+    CATEGORY_PAGE,
     CAT_EN,
     COST_EN,
     U,
@@ -70,6 +75,7 @@ from i18n import (  # noqa: E402
     short_date_en,
     upair,
 )
+from check_schema import check_jsonld, expected_howto  # noqa: E402
 
 # 英文版页面：/en/index.html（纯英文 DOM），中文首页 /index.html（纯中文 DOM）。
 # 两页各自独立，语言切换直接跳转；老外链 /?lang=en 由 <head> 里的极短脚本转到 /en/。
@@ -1308,7 +1314,8 @@ def dp_status(deal: dict) -> tuple[str, str]:
     return ui("dp_status_active"), "is-live"
 
 
-def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, related: list[dict]) -> str:
+def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, related: list[dict],
+                     alternatives: list[dict] | None = None) -> str:
     """一条优惠的完整独立页：头部要点 + 全部字段 + 官方/原帖入口 + 同类内链。"""
     set_lang(lang)
     is_en = lang == "en"
@@ -1426,6 +1433,9 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         )
 
     home = "/en/" if is_en else "/"
+    # 面包屑 / JSON-LD / 页脚导航里的分类名都指向静态分类目录页，
+    # 不再回首页锚点：目录页能接住「AI 工具有哪些免费额度」这类分类级搜索。
+    cat_href = "/" + cat_path(cat, lang) if cat in CAT_META else home + "#" + cat
     other = "/d/" if is_en else "/en/d/"
     switch_href = other + deal_id + "/"
     switch_lang = "zh-CN" if is_en else "en"
@@ -1473,7 +1483,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
                     "@type": "ListItem",
                     "position": 2,
                     "name": cat_plain,
-                    "item": SITE_URL + ("en/" if is_en else "") + "#" + cat,
+                    "item": cat_url(cat, lang) if cat in CAT_META else SITE_URL + ("en/" if is_en else "") + "#" + cat,
                 },
                 {"@type": "ListItem", "position": 3, "name": title_text},
             ],
@@ -1493,6 +1503,25 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     ]
     if deal.get("end"):
         ld[2]["validThrough"] = str(deal["end"]) + "T23:59:59+08:00"
+    # HowTo：只要这一条有参与步骤就额外输出一份（与 Offer 并列，不抢它的位置）。
+    # step 里的 text 用同一条清洗过的步骤文案；整段 JSON 最后统一把 `</` 转成 `<\/`，
+    # 所以步骤里出现 `</script>` 之类也不会提前结束 JSON-LD 块。
+    howto_steps = [re.sub(r"\s+", " ", str(s)).strip() for s in steps if str(s).strip()]
+    if howto_steps:
+        ld.append(
+            {
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                "name": title_text,
+                "description": desc,
+                "inLanguage": "en" if is_en else "zh-CN",
+                "mainEntityOfPage": canon,
+                "step": [
+                    {"@type": "HowToStep", "position": i, "text": text}
+                    for i, text in enumerate(howto_steps, start=1)
+                ],
+            }
+        )
     jsonld = json.dumps(ld, ensure_ascii=False, indent=2).replace("</", "<\\/")
 
     archive_html = ""
@@ -1501,6 +1530,30 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         archive_html = (
             f'<p class="dp-note is-archive">{icon("archive", "dp-ico")}'
             f'<span>{ui("dp_archived", d=bi(end_zh, end_en))}</span></p>'
+        )
+
+    alt_html = ""
+    if expired and alternatives:
+        alt_items = []
+        for alt in alternatives:
+            alt_en = en_map.get(alt["id"], {})
+            a_raw = (alt_en.get("title") or alt.get("title", "")) if is_en else alt.get("title", "")
+            a_rtag, a_title = title_parts(a_raw)
+            a_val = value_pair(alt, alt_en)[1 if is_en else 0]
+            a_dl = short_deadline(alt, today)[1 if is_en else 0]
+            a_tag = f'<i>{e(a_rtag)}</i>' if a_rtag else ""
+            alt_items.append(
+                f'<li><a class="dp-alt-card" href="/{e(deal_path(alt["id"], lang))}">'
+                f'<span class="dp-alt-t">{a_tag}{e(a_title)}</span>'
+                f'<span class="dp-alt-m"><span class="dp-alt-v">{e(value_badge(a_val, lang))}</span>'
+                f'<span class="dp-alt-d">{e(a_dl)}</span></span></a></li>'
+            )
+        alt_html = (
+            f'<section class="dp-alt" aria-label="{e(ui("alt_aria"))}">'
+            f'<p class="dp-alt-head">{icon("archive", "dp-alt-i")}<span>{ui("alt_head")}</span></p>'
+            f'<ul class="dp-alt-list">{"".join(alt_items)}</ul>'
+            f'<a class="dp-alt-more" href="{cat_href}">{ui("cat_open")}{icon("chevron", "dp-alt-arr")}</a>'
+            f"</section>"
         )
 
     title_tag = f'<span class="rtag">{e(rtag)}</span>' if rtag else ""
@@ -1575,7 +1628,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     <nav class="dp-crumbs" {al(*U['dp_crumb_aria'])}>
       <a href="{home}">{ui('dp_crumb_home')}</a>
       <span class="dp-sep" aria-hidden="true">/</span>
-      <a href="{home}#{cat}">{cat_label}</a>
+      <a href="{cat_href}">{cat_label}</a>
       <span class="dp-sep" aria-hidden="true">/</span>
       <span class="dp-cur">{e(title_text)}</span>
     </nav>
@@ -1603,6 +1656,8 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
       </div>
     </article>
 
+    {alt_html}
+
     {''.join(secs)}
 
     <section class="dp-sec dp-meta-sec">
@@ -1614,7 +1669,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 
     <nav class="dp-nav" aria-label="{e(ui('dp_crumb_aria'))}">
       <a class="dp-nav-home" href="{home}">{ui('dp_back')}</a>
-      <a href="{home}#{cat}">{ui('dp_more_all')}</a>
+      <a href="{cat_href}">{ui('dp_more_all')}</a>
       <a href="{switch_href}" hreflang="{switch_lang}">{ui('dp_switch')}</a>
     </nav>
   </div>
@@ -1729,6 +1784,23 @@ def related_deals(deal: dict, by_cat: dict[str, list[dict]], by_region: dict[str
     return picks
 
 
+def alternative_deals(deal: dict, by_cat: dict[str, list[dict]], limit: int = 3) -> list[dict]:
+    """已归档详情页顶上「替代优惠」的候选：同分类里当前仍在进行的条目。
+
+    先按可预期到手价值取高价值，再用入库时间兜底：两次稳定排序保证同一份数据
+    每次构建挑出同一组（静态页不能因为字典顺序不同而每天换一批推荐）。
+    已过期 / 已归档的条目不进候选，否则又把人指向另一个已经结束的活动。
+    """
+    pool = [
+        d
+        for d in by_cat.get(deal.get("category", ""), [])
+        if d["id"] != deal["id"] and d.get("status") != "expired"
+    ]
+    pool.sort(key=lambda d: str(d.get("added_at") or d.get("added") or ""), reverse=True)
+    pool.sort(key=lambda d: value_expected(d), reverse=True)
+    return pool[:limit]
+
+
 def write_deal_pages(deals: list[dict], en_map: dict, today) -> int:
     """重建 d/ 与 en/d/：先整个删掉旧目录（清掉已不存在条目的残留），再逐条写。"""
     for base in (DEALS_DIR, DEALS_DIR_EN):
@@ -1748,11 +1820,296 @@ def write_deal_pages(deals: list[dict], en_map: dict, today) -> int:
     count = 0
     for deal in deals:
         related = related_deals(deal, by_cat, by_region)
+        alternatives = alternative_deals(deal, by_cat)
         en = en_map.get(deal["id"], {})
         for lang, base in (("zh", DEALS_DIR), ("en", DEALS_DIR_EN)):
             out = base / deal["id"] / "index.html"
             out.parent.mkdir(parents=True, exist_ok=True)
-            out.write_text(compact_html(render_deal_page(deal, en, lang, today, en_map, related)), encoding="utf-8")
+            out.write_text(
+                compact_html(render_deal_page(deal, en, lang, today, en_map, related, alternatives)),
+                encoding="utf-8",
+            )
+            count += 1
+    return count
+
+
+# ---------------------------------------------------- 静态分类目录页 /category/<slug>/
+# 12 个纯静态目录页（6 大分类 × 中英各一份）：给「AI 工具有哪些免费额度」这类
+# 分类级搜索一个独立落地页，也给详情页面包屑一个比首页锚点更准的去处。
+# 页面结构与详情页同源（同一个 .dp 窄容器、同一套 token），只是把单条内容换成列表。
+CAT_PAGE_ICONS = ("external", "archive", "chevron", *CAT_ICON.values())
+
+
+def cat_row(deal: dict, en: dict, lang: str, today) -> str:
+    """目录页的一条：图标 + 标题 + 价值 / 门槛 / 截止 + 原标题行 + 地区。"""
+    is_en = lang == "en"
+    raw = (en.get("title") or deal.get("title", "")) if is_en else deal.get("title", "")
+    rtag, title = title_parts(raw)
+    tag = f'<i>{e(rtag)}</i>' if rtag else ""
+    value_now = value_pair(deal, en)[1 if is_en else 0]
+    cost = deal.get("cost", "")
+    cost_cls = COST_CLASS.get(cost, "cost-invite")
+    cost_label = (COST_EN.get(cost, cost) if is_en else cost)
+    highlight = (en.get("highlight") or deal.get("highlight") or "") if is_en else (deal.get("highlight") or "")
+    regions = (en.get("regions") or deal.get("regions", "")) if is_en else deal.get("regions", "")
+    regions = strip_region_bracket(regions)
+    dl = short_deadline(deal, today)[1 if is_en else 0]
+    end = parse_date(deal.get("end", ""))
+    hot = " hot" if end and 0 <= (end - today).days <= EXPIRING_DAYS else ""
+    return (
+        f'<li><a class="cat-card" href="/{e(deal_path(deal["id"], lang))}">'
+        f'<span class="cat-crow">{fav_html(deal, 26, en)}<span class="cat-cmain">'
+        f'<span class="cat-ct">{tag}{e(title)}</span>'
+        f'<span class="cat-csub"><b class="cat-cv">{e(_tight_value(value_now, lang))}</b>'
+        f'<span class="tag {cost_cls}">{e(cost_label)}</span>'
+        f'<span class="cat-cdl{hot}">{e(dl)}</span></span></span></span>'
+        f'<span class="cat-snip">{e(highlight)}</span>'
+        f'<span class="cat-region">{e(regions)}</span>'
+        f"</a></li>"
+    )
+
+
+def render_category_page(
+    slug: str, cat_deals: list[dict], expired_n: int, en_map: dict, today, lang: str
+) -> str:
+    """一个分类目录页（单语）：面包屑 + 标题导语 + 全部活跃条目 + 其他分类导航。"""
+    set_lang(lang)
+    is_en = lang == "en"
+    pick = 1 if is_en else 0
+    meta = CATEGORY_PAGE[slug]
+    h1 = meta["h1"][pick]
+    seo_title = meta["title"][pick]
+    lead = meta["lead"][pick]
+    desc = meta["desc"][pick]
+
+    site_name = "Deal Hunter" if is_en else "羊毛情报局"
+    home = "/en/" if is_en else "/"
+    canon = cat_url(slug, lang)
+    other_lang = "zh" if is_en else "en"
+    switch_href = "/" + cat_path(slug, other_lang)
+    switch_lang = "zh-CN" if is_en else "en"
+    switch_aria = ui("cat_switch_aria_zh") if is_en else ui("cat_switch_aria")
+    cat_icon = CAT_ICON.get(slug, "software")
+    og_image = OG_IMAGE_EN if is_en else OG_IMAGE
+    og_locale = "en_US" if is_en else "zh_CN"
+    og_locale_alt = "zh_CN" if is_en else "en_US"
+
+    lastmod = max(
+        (str(d.get("last_verified") or added_day(d, today))[:10] for d in cat_deals),
+        default=today.isoformat(),
+    )
+
+    rows = "".join(cat_row(d, en_map.get(d["id"], {}), lang, today) for d in cat_deals)
+    if not rows:
+        rows = f'<li class="cat-empty">{ui("cat_empty")}</li>'
+
+    # 其他 5 个分类的横向切换条（不包含当前分类），图标与首页分区一致
+    chips = []
+    for other_slug, other_meta in CAT_META.items():
+        if other_slug == slug:
+            continue
+        label = CAT_EN.get(other_slug, (other_meta["label"], ""))[0] if is_en else other_meta["label"]
+        chips.append(
+            f'<a class="cat-chip" href="/{e(cat_path(other_slug, lang))}">'
+            f'{icon(CAT_ICON.get(other_slug, "software"), "cat-chip-i")}<span>{e(label)}</span></a>'
+        )
+
+    archive_line = ""
+    if expired_n:
+        archive_line = (
+            f'<p class="cat-arch">{icon("archive", "cat-arch-i")}'
+            f'<span>{ui("cat_archive_note", n=expired_n)}</span>'
+            f'<a href="{home}#archive">{ui("cat_archive_link")}</a></p>'
+        )
+
+    items = []
+    for i, deal in enumerate(cat_deals, start=1):
+        en = en_map.get(deal["id"], {})
+        name = (en.get("title") or deal.get("title", "")) if is_en else deal.get("title", "")
+        _, name = title_parts(name)
+        items.append(
+            {"@type": "ListItem", "position": i, "name": name, "url": deal_url(deal["id"], lang)}
+        )
+
+    ld = json.dumps(
+        [
+            {
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                "@id": canon + "#webpage",
+                "url": canon,
+                "name": seo_title,
+                "description": desc,
+                "inLanguage": "en" if is_en else "zh-CN",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": site_name,
+                    "url": SITE_URL + ("en/" if is_en else ""),
+                },
+                "breadcrumb": {"@id": canon + "#breadcrumb"},
+                "mainEntity": {"@id": canon + "#itemlist"},
+                "dateModified": lastmod,
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "@id": canon + "#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": ui("dp_crumb_home"),
+                        "item": SITE_URL + ("en/" if is_en else ""),
+                    },
+                    {"@type": "ListItem", "position": 2, "name": h1, "item": canon},
+                ],
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "@id": canon + "#itemlist",
+                "name": h1,
+                "numberOfItems": len(cat_deals),
+                "itemListElement": items,
+            },
+        ],
+        ensure_ascii=False,
+        indent=2,
+    ).replace("</", "<\\/")
+
+    return f"""<!DOCTYPE html>
+<html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}" data-today="{today.isoformat()}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>{e(seo_title)}</title>
+<meta name="description" content="{e(desc)}">
+<meta name="author" content="{site_name}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#FAF7F2">
+<link rel="canonical" href="{canon}">
+<link rel="alternate" hreflang="zh-Hans" href="{cat_url(slug, 'zh')}">
+<link rel="alternate" hreflang="en" href="{cat_url(slug, 'en')}">
+<link rel="alternate" hreflang="x-default" href="{cat_url(slug, 'zh')}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{site_name}">
+<meta property="og:locale" content="{og_locale}">
+<meta property="og:locale:alternate" content="{og_locale_alt}">
+<meta property="og:title" content="{e(seo_title)}">
+<meta property="og:description" content="{e(desc)}">
+<meta property="og:url" content="{canon}">
+<meta property="og:image" content="{og_image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{e(h1)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(seo_title)}">
+<meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:image" content="{og_image}">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
+
+<script type="application/ld+json">
+{ld}
+</script>
+</head>
+<body class="dp cat">
+
+{sprite_svg(CAT_PAGE_ICONS)}
+
+<header class="topbar">
+  <div class="shell topbar-in">
+    <a class="brand" href="{home}" {al(*U['brand_aria'])}>
+      <span class="brand-mark" aria-hidden="true">
+        {mascot_svg(gid='dpCatHead')}
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">{ui('brand')}</span>
+        <span class="brand-sub">{ui('brand_sub')}</span>
+      </span>
+    </a>
+    <div class="dp-top">
+      <a class="dp-back" href="{home}">{icon('chevron', 'dp-back-i')}<span>{ui('dp_back')}</span></a>
+      <a class="dp-switch" href="{switch_href}" hreflang="{switch_lang}" {al(switch_aria, switch_aria)}><span lang="{switch_lang}">{ui('dp_switch')}</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="shell dp-wrap">
+    <nav class="dp-crumbs" {al(*U['dp_crumb_aria'])}>
+      <a href="{home}">{ui('dp_crumb_home')}</a>
+      <span class="dp-sep" aria-hidden="true">/</span>
+      <span class="dp-cur">{e(h1)}</span>
+    </nav>
+
+    <header class="cat-head">
+      <h1 class="cat-h1"><span class="cat-h1-i" aria-hidden="true">{icon(cat_icon)}</span>{e(h1)}</h1>
+      <p class="cat-meta"><span class="cat-count">{ui('cat_count', n=len(cat_deals))}</span>
+        <span class="cat-dot" aria-hidden="true">·</span>
+        <span class="cat-sortnote">{ui('cat_sort_note')}</span></p>
+      <p class="cat-lead">{e(lead)}</p>
+    </header>
+
+    <ul class="cat-list">
+      {rows}
+    </ul>
+
+    {archive_line}
+
+    <nav class="cat-switch" aria-label="{e(ui('cat_aria'))}">
+      <h2>{ui('cat_other')}</h2>
+      <div class="cat-chips">{''.join(chips)}</div>
+      <a class="cat-home" href="{home}">{ui('cat_all_home')}{icon('chevron', 'cat-home-i')}</a>
+    </nav>
+  </div>
+</main>
+
+<footer>
+  <div class="shell foot-line">
+    <span class="foot-brand">
+      <span class="brand-mark" aria-hidden="true">
+        {mascot_svg(gid='dpCatFoot')}
+      </span>
+      {ui('foot_brand', y=today.year)}
+    </span>
+    <a class="foot-top" href="#top">↑</a>
+  </div>
+</footer>
+
+{DP_FAV_JS}
+</body>
+</html>
+"""
+
+
+def write_category_pages(deals: list[dict], en_map: dict, today) -> int:
+    """重建 category/ 与 en/category/：先整目录删掉，再按 6 个分类各写中英两份。"""
+    for base in (CATEGORY_DIR, CATEGORY_DIR_EN):
+        if base.exists():
+            shutil.rmtree(base)
+        base.mkdir(parents=True, exist_ok=True)
+
+    count = 0
+    for slug in CAT_META:
+        cat_deals = [d for d in deals if d.get("category") == slug and d.get("status") != "expired"]
+        # 高价值在前；同一价值档里新收录的在前（两次稳定排序）
+        cat_deals.sort(key=lambda d: str(d.get("added_at") or d.get("added") or ""), reverse=True)
+        cat_deals.sort(key=value_expected, reverse=True)
+        expired_n = len([d for d in deals if d.get("category") == slug and d.get("status") == "expired"])
+        for lang, base in (("zh", CATEGORY_DIR), ("en", CATEGORY_DIR_EN)):
+            out = base / slug / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(
+                compact_html(render_category_page(slug, cat_deals, expired_n, en_map, today, lang)),
+                encoding="utf-8",
+            )
             count += 1
     return count
 
@@ -2490,12 +2847,26 @@ def main() -> None:
     # 单条独立页：每条一份中文 /d/<id>/、一份英文 /en/d/<id>/（含已归档条目）
     set_lang("zh")
     pages = write_deal_pages(deals, en_map, today)
+    # 6 大类 × 中英 = 12 个静态目录页
+    cat_pages = write_category_pages(deals, en_map, today)
     # 英文产物冒烟：任何中日文残留都要在这里拦住，不带上线
-    check_en_pages([EN_OUT] + sorted(DEALS_DIR_EN.glob("*/index.html")))
+    check_en_pages(
+        [EN_OUT]
+        + sorted(DEALS_DIR_EN.glob("*/index.html"))
+        + sorted(CATEGORY_DIR_EN.glob("*/index.html"))
+    )
+    # 结构化数据体检：每一段 ld+json 必须是合法 JSON，Offer / HowTo 字段齐全
+    schema_errors = check_jsonld(ROOT, expected_howto(deals, en_map))
+    if schema_errors:
+        print("JSON-LD 体检未通过，已停止构建：", file=sys.stderr)
+        for line in schema_errors[:20]:
+            print("  · " + line, file=sys.stderr)
+        raise SystemExit(1)
     # sitemap 与详情页同时生成，保证「数据里有几条」与「站点上有几页」永远对得上
     write_sitemap(deals, today)
     print(f"index.html + en/index.html written · {len(active)} active / {len(expired)} expired / {len(fresh)} fresh")
     print(f"  单条详情页：{pages} 个（d/ 与 en/d/ 各 {pages // 2} 个）· sitemap.xml 已同步")
+    print(f"  分类目录页：{cat_pages} 个（category/ 与 en/category/ 各 {cat_pages // 2} 个）")
     print(f"  英文条目：{len(deals) - len(missing_en)}/{len(deals)} 条有翻译")
     if missing_en:
         print(f"  ! 缺少英文翻译 {len(missing_en)} 条：{', '.join(missing_en[:12])}{' …' if len(missing_en) > 12 else ''}")

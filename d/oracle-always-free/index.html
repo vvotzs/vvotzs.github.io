@@ -32,7 +32,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=e87beb3f">
+<link rel="stylesheet" href="/assets/css/style.css?v=b1c76d4e">
 <script type="application/ld+json">
 [
 {
@@ -76,7 +76,7 @@
 "@type": "ListItem",
 "position": 2,
 "name": "VPS 与云服务",
-"item": "https://vvotzs.github.io/#cloud"
+"item": "https://vvotzs.github.io/category/cloud/"
 },
 {
 "@type": "ListItem",
@@ -99,6 +99,36 @@
 "@type": "Organization",
 "name": "Oracle"
 }
+},
+{
+"@context": "https://schema.org",
+"@type": "HowTo",
+"name": "Oracle Cloud 永久免费：2 核 ARM + 200GB",
+"description": "长期免费 2 OCPU/12GB ARM 或 2 台 AMD 小机，另送 $300/30 天。Oracle Cloud Always Free 包含：每月 1,500 OCPU 小时 + 9,000 GB 小时（等效 2 OCPU / 12GB 内存的 ARM A1 实例）、最多 2 台 AMD 微实例…",
+"inLanguage": "zh-CN",
+"mainEntityOfPage": "https://vvotzs.github.io/d/oracle-always-free/",
+"step": [
+{
+"@type": "HowToStep",
+"position": 1,
+"text": "注册 Oracle Cloud，选择合适的主区域（决定延迟与可开型号）"
+},
+{
+"@type": "HowToStep",
+"position": 2,
+"text": "在 Compute 里创建 VM.Standard.A1.Flex（2 OCPU/12GB）或微实例"
+},
+{
+"@type": "HowToStep",
+"position": 3,
+"text": "挂载 200GB 块存储内的引导卷"
+},
+{
+"@type": "HowToStep",
+"position": 4,
+"text": "试用期结束前把 A1 控制在 2 OCPU/12GB 内以免被删"
+}
+]
 }
 ]
 </script>
@@ -128,7 +158,7 @@
 <nav class="dp-crumbs" aria-label="面包屑">
 <a href="/">首页</a>
 <span class="dp-sep" aria-hidden="true">/</span>
-<a href="/#cloud">VPS 与云服务</a>
+<a href="/category/cloud/">VPS 与云服务</a>
 <span class="dp-sep" aria-hidden="true">/</span>
 <span class="dp-cur">Oracle Cloud 永久免费：2 核 ARM + 200GB</span>
 </nav>
@@ -158,7 +188,7 @@
 <section class="dp-more" aria-label="相关推荐"><h2>相关推荐</h2><ul><li><a href="/d/racknerd-black-friday-2026/"><span class="dp-rel-t"><i>全球</i>RackNerd 黑五 VPS：1 GB / 20 GB SSD / 3 TB 月流量 $15.98 年付，续费同价</span><span class="dp-rel-v">≈$1</span></a></li><li><a href="/d/scnet-maas-new-user-tokens/"><span class="dp-rel-t"><i>中国区</i>超算互联网 MaaS：新客领 1000 万 Token，首单 ¥0.1 秒 5000 万 Token（至 12/31）</span><span class="dp-rel-v">≈$3</span></a></li><li><a href="/d/netlify-server-free-early-access/"><span class="dp-rel-t"><i>全球</i>Netlify Server Early Access 期间免费：常驻 Node 服务、WebSocket、内存状态与长跑 AI Agent</span><span class="dp-rel-v">免费</span></a></li><li><a href="/d/neevcloud-1500-sandbox-min/"><span class="dp-rel-t"><i>全球</i>NeevCloud：每个认证账号每月 1,500 分钟免费沙箱（免绑卡）</span><span class="dp-rel-v">1,500 沙箱分钟/月</span></a></li><li><a href="/d/pelago-krisflyer-esim/"><span class="dp-rel-t"><i>全球</i>Pelago × KrisFlyer：免费 2GB 全球 eSIM（118 国 / 3 天）</span><span class="dp-rel-v">≈$10</span></a></li><li><a href="/d/opera-android-free-esim-3gb/"><span class="dp-rel-t"><i>全球</i>Opera 安卓浏览器内置 eSIM：3GB / 3 天免费（47 个目的地）</span><span class="dp-rel-v">≈$10</span></a></li></ul></section>
 <nav class="dp-nav" aria-label="面包屑">
 <a class="dp-nav-home" href="/">返回首页</a>
-<a href="/#cloud">查看全部优惠</a>
+<a href="/category/cloud/">查看全部优惠</a>
 <a href="/en/d/oracle-always-free/" hreflang="en">EN</a>
 </nav>
 </div>
