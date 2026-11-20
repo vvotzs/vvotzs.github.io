@@ -86,12 +86,13 @@ U: dict[str, tuple[str, str]] = {
                       "Ranked by expected cash value (lotteries by expected value, not the headline cap)."),
     "mod_closing": ("即将截止", "Closing soon"),
     # 「即将截止」的口径说明：tab 上的 ⓘ 点开就是这个（也留在分区头里给搜索引擎与读屏）。
-    "closing_info": ("{d} 天内到期的排最前，不足 {n} 条时用 {w} 天内的补足；小徽标标出这批用到的窗口（{d}天 / {w}天），顶栏数字只数 {d} 天内。",
-                     "{d}-day deals appear first, filled to {n} from the {w}-day window; the small badge shows the window this batch used ({d}d / {w}d), and the top bar counts {d}-day deals only."),
-    # tab 上的动态小徽标：全部落在 {d} 天内 → 「{d}天」；用到 {w} 天窗口补足 → 「{w}天」。
-    "closing_badge_d": ("{d}天", "{d}d"),
-    "closing_badge_w": ("{w}天", "{w}d"),
-    "closing_info_aria": ("即将截止的排序与计数口径", "How closing-soon deals are ranked"),
+    "closing_info": ("{d} 天内到期的排最前，不足 {n} 条时用 {w} 天内的补足；tab 上那颗小日历里的数字就是这批用到的窗口（{d} / {w}），顶栏数字只数 {d} 天内。",
+                     "{d}-day deals come first, filled to {n} from the {w}-day window; the number in the little calendar shows the window this batch used ({d} / {w}), and the top-bar number counts {d}-day deals only."),
+    # tab 上迷你日历里印的窗口天数：{d} 或 {w}（中英文同一个写法，不带单位）。
+    "closing_badge_d": ("{d}", "{d}"),
+    "closing_badge_w": ("{w}", "{w}"),
+    "closing_info_aria": ("即将截止的排序与计数口径（这批用到 {n} 天窗口）",
+                          "How closing-soon deals are ranked (this batch uses the {n}-day window)"),
     "mod_lottery": ("抽奖 / 高上限", "Lotteries & high caps"),
     "mod_lottery_desc": ("上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。",
                          "High headline caps where the payout is luck-based; ranked by cap — don't budget on it."),

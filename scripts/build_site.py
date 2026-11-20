@@ -210,6 +210,25 @@ def icon(key: str, cls: str = "") -> str:
     return f'<svg class="i{" " + cls if cls else ""}" aria-hidden="true"><use href="#i-{key}"/></svg>'
 
 
+def calendar_badge(num: int, tone: str = "amber") -> str:
+    """迷你日历小标：日历框里直接印数字（参考 Jun 的日历 App 图标）。
+
+    15×16 的内联 SVG，不引额外请求；只能画在页面上，不走 <use>。
+    tone="amber"（默认七天窗口）或 "mint"（这批用到了三十天窗口补足）。
+    """
+    ink, head = ("#B45309", "#F59E0B") if tone == "amber" else ("#047857", "#10B981")
+    return (
+        '<svg class="cal" viewBox="0 0 15 16" aria-hidden="true" focusable="false">'
+        f'<rect x="1.1" y="2.6" width="12.8" height="12.4" rx="2.6" fill="#FFFDF9" '
+        f'stroke="{ink}" stroke-width="1.2"/>'
+        f'<path d="M1.1 5.2a2.6 2.6 0 0 1 2.6-2.6h7.6a2.6 2.6 0 0 1 2.6 2.6v1.1H1.1z" fill="{head}"/>'
+        f'<rect x="4.1" y="1" width="1.5" height="2.9" rx=".75" fill="{ink}"/>'
+        f'<rect x="9.4" y="1" width="1.5" height="2.9" rx=".75" fill="{ink}"/>'
+        f'<text x="7.5" y="13.8" text-anchor="middle" font-family="Menlo, Consolas, monospace" '
+        f'font-size="7" font-weight="700" fill="{ink}">{num}</text></svg>'
+    )
+
+
 def mascot_svg(cls: str = "", gid: str = "mintBody") -> str:
     """内联完整的小精灵：渐变、腮红、高光都在，直接画在页面上（不走 <use>）。"""
     body = _MASCOT_BODY.replace("{gid}", gid)
@@ -1522,32 +1541,27 @@ def main() -> None:
             "lottery": len(lottery),
         }
 
+        # tab 上的计数：不再占行内宽度，改成贴按钮右上角悬浮的小胶囊（见 CSS .hot-tab b）。
+        # 标签文字在前、数字在后，读屏仍是「新收录 10」。
         def hot_tab(anchor: str, key: str, on: bool) -> str:
             cls = "hot-tab on" if on else "hot-tab"
             cur = ' aria-current="true"' if on else ""
             return (
                 f'<a class="{cls}" href="#{anchor}" data-tab="{anchor}"{cur}>'
-                f'{ui(key)} <b data-tabcount="{anchor}">{tab_counts[anchor]}</b></a>'
+                f'{ui(key)}<b data-tabcount="{anchor}">{tab_counts[anchor]}</b></a>'
             )
 
-        # 「即将截止」tab：标签 + 动态小徽标 + 一个小巧的 ⓘ。
-        # 徽标只说明「当前这批条目落在哪个窗口」，构建期按实际展示的条目算：
-        #   全部在 EXPIRING_DAYS 天内 → 「7天 / 7d」；用到 8～30 天窗口补足 → 「30天 / 30d」。
-        # 徽标本身不是交互元素，留在 <a> 里（点了就是切 tab）；ⓘ 是独立 <button>
-        # ——<a> 里不能嵌按钮，否则键盘 / 读屏都会把它当成链接的一部分。
-        badge_html = (
-            '<span class="closing-badge">'
-            + ui(
-                "closing_badge_w" if closing_used_window else "closing_badge_d",
-                d=EXPIRING_DAYS,
-                w=CLOSING_WINDOW_DAYS,
-            )
-            + "</span>"
-        )
+        # 「即将截止」tab：标签 + 一颗迷你日历小标。
+        # 日历里直接印窗口天数（7 / 30，中英文同一个写法，不带「天」也不带 ⓘ）：
+        #   这批全部落在 EXPIRING_DAYS 天内 → 「7」暖橙；用到 8～30 天窗口补足 → 「30」薄荷绿。
+        # 小标本身是按钮：点一下弹口径吐司；不再额外占一行宽度写「30天 / 30d」或单独 ⓘ。
+        # 它必须是独立 <button>——<a> 里不能嵌按钮，否则键盘 / 读屏会把它当成链接的一部分。
+        window_days = CLOSING_WINDOW_DAYS if closing_used_window else EXPIRING_DAYS
         info_btn = (
-            '<button class="closing-info" type="button" aria-expanded="false" '
+            '<button class="closing-cal" type="button" aria-expanded="false" '
             'aria-controls="closing-toast" '
-            f'{al(*U["closing_info_aria"])}>{icon("info")}</button>'
+            f'{al(*upair("closing_info_aria", n=window_days))}>'
+            f'{calendar_badge(window_days, "mint" if closing_used_window else "amber")}</button>'
         )
 
         def closing_tab(key: str, on: bool) -> str:
@@ -1556,7 +1570,7 @@ def main() -> None:
             return (
                 '<span class="hot-tab-unit">'
                 f'<a class="{cls}" href="#closing" data-tab="closing"{cur}>'
-                f'{ui(key)} <b data-tabcount="closing">{tab_counts["closing"]}</b>{badge_html}</a>'
+                f'{ui(key)}<b data-tabcount="closing">{tab_counts["closing"]}</b></a>'
                 f'{info_btn}</span>'
             )
 
@@ -1813,7 +1827,7 @@ def main() -> None:
      否则读屏会把整条链接按目标语言念（例如中文页把「EN」念成英文单词）。 -->
 <a class="lang-switch" id="lang-switch" href="{switch_href}" hreflang="{switch_hreflang}" {al(*U['lang_switch_aria'])}><span lang="{switch_hreflang}">{ui('lang_switch')}</span></a>
 
-<!-- 「即将截止」口径吐司：tab 上的 ⓘ 点开显示，3.5 秒自动消失，点空白 / 再点一次也关。
+<!-- 「即将截止」口径吐司：点 tab 上那颗迷你日历显示，3.5 秒自动消失，点空白 / 再点一次也关。
      固定定位 + JS 量位置，不占文档流，手机 375px 下也不会挤出横向滚动条。 -->
 <div class="closing-toast" id="closing-toast" role="status" aria-live="polite" hidden>{ui('closing_info', d=EXPIRING_DAYS, n=CLOSING_SLOTS, w=CLOSING_WINDOW_DAYS)}</div>
 

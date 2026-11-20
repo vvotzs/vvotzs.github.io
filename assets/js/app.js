@@ -377,13 +377,13 @@
     if (history.replaceState) history.replaceState(null, "", "#" + id);
   });
 
-  /* ------------------------------------ 「即将截止」口径吐司：点 ⓘ 弹出，3.5 秒自己走 */
+  /* ------------------------- 「即将截止」口径吐司：点迷你日历小标弹出，3.5 秒自己走 */
   var closingToast = document.getElementById("closing-toast");
-  var closingInfoBtns = $$(".closing-info");
+  var closingInfoBtns = $$(".closing-cal");
   var closingToastTimer = null;
   var closingInfoOn = null;
 
-  /* 吐司挂在 ⓘ 下方，左右都夹进视口：375px 窄屏也不会挤出横向滚动条；
+  /* 吐司挂在小日历下方，左右都夹进视口：375px 窄屏也不会挤出横向滚动条；
      万一下方放不下（键盘弹起 / 屏很矮）就翻到按钮上方。 */
   function placeClosingToast(btn) {
     if (!closingToast || !btn) return;
@@ -426,7 +426,7 @@
 
   closingInfoBtns.forEach(function (btn) {
     btn.addEventListener("click", function (ev) {
-      // ⓘ 在 tab 旁边：别顺带切 tab、也别顺带收起展开的卡片
+      // 小日历在 tab 旁边：别顺带切 tab、也别顺带收起展开的卡片
       ev.preventDefault();
       ev.stopPropagation();
       if (closingInfoOn === btn) hideClosingToast();
@@ -445,7 +445,7 @@
     // 点空白处关（捕获阶段先看一眼：点在 ⓘ / 吐司本身就别关）
     document.addEventListener("click", function (ev) {
       if (!closingInfoOn) return;
-      if (ev.target.closest && ev.target.closest(".closing-info, #closing-toast")) return;
+      if (ev.target.closest && ev.target.closest(".closing-cal, #closing-toast")) return;
       hideClosingToast();
     }, true);
   }

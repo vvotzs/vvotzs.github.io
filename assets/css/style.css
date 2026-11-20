@@ -934,14 +934,19 @@ html.js .pager-bar{ display: flex; }
   display: flex;
   align-items: stretch;
   gap: 18px;
+  /* 角标上浮的余量：不留就会被上一行内容压住 / 被裁切 */
+  padding-top: 4px;
   border-bottom: 1px solid rgba(28,25,23,.08);
 }
+/* tab 计数角标：贴按钮右上角悬浮的圆润小胶囊（参考手机桌面图标角标）。
+   绝对定位、不占行内宽度，所以 360px 上四个 tab 也不会被数字挤扁；
+   右侧的 --tab-badge-space 是给它的站位，选中的下划线也只画到文字为止。 */
 .hot-tab{
+  --tab-badge-space: 20px;
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 7px 0 9px;
+  padding: 7px var(--tab-badge-space) 9px 0;
   font-size: 13.5px;
   font-weight: 600;
   letter-spacing: -.01em;
@@ -950,72 +955,76 @@ html.js .pager-bar{ display: flex; }
   transition: color .16s ease;
 }
 .hot-tab b{
-  font-family: var(--mono);
-  font-size: 10.5px;
-  font-weight: 600;
-  color: var(--ink-4);
-  padding: 0 5px;
+  position: absolute;
+  top: -2px;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
   border-radius: 999px;
-  background: #F1EFE8;
-  line-height: 1.6;
+  background: #FFFFFF;
+  color: var(--amber-deep);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  box-shadow: 0 0 0 1px rgba(180,83,9,.22), 0 0 0 2.5px #FAF9F5;
+  transition: color .16s ease, background .16s ease, box-shadow .16s ease;
 }
 .hot-tab:hover{ color: var(--ink-2); }
 .hot-tab.on{ color: var(--ink); }
-.hot-tab.on b{ color: #92400E; background: #FEF3C7; }
+.hot-tab.on b{
+  color: #fff;
+  background: linear-gradient(180deg, #C2410C 0%, #B45309 100%);
+  box-shadow: 0 0 0 2.5px #FAF9F5, 0 2px 6px -2px rgba(180,83,9,.5);
+}
 .hot-tab.on::after{
   content: "";
   position: absolute;
   left: 0;
-  right: 0;
+  right: var(--tab-badge-space);
   bottom: -1px;
   height: 2.5px;
   border-radius: 2px;
   background: linear-gradient(90deg, #FBBF24, #EA580C);
 }
 
-/* 「即将截止」tab 的动态小徽标 + ⓘ
-   徽标（7天 / 30天）只说这批条目用到的窗口，是非交互内容，跟着 <a> 切 tab；
-   ⓘ 是独立 <button>，点开口径吐司。<a> 里不嵌按钮，键盘与读屏不会把两者混成一样东西。 */
-.hot-tab-unit{ display: inline-flex; align-items: stretch; gap: 4px; min-width: 0; }
-.closing-badge{
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  margin-left: 5px;
-  padding: 1px 5px 0;
-  border: 1px solid rgba(245,158,11,.28);
-  border-radius: 999px;
-  background: linear-gradient(180deg, #FFFCF4 0%, #FDF1DC 100%);
-  color: var(--amber-deep);
-  font-family: var(--mono);
-  font-size: 9.5px;
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: 0;
-  white-space: nowrap;
-}
-.closing-info{
+/* 「即将截止」tab 的迷你日历小标
+   日历框里直接印 7 / 30（暖橙 = 这批全部落在七天窗口，薄荷绿 = 用到三十天窗口补足），
+   点它就是口径吐司；不再额外写「30天 / 30d」或单独一颗 ⓘ，占地不到 20px。
+   这颗小标的右上角就是整组 tab（标签 + 日历）的计数角标位置。 */
+.hot-tab-unit{ --cal-space: 35px; position: relative; display: inline-flex; align-items: stretch; gap: 3px; min-width: 0; padding-right: 16px; }
+/* 日历的 <a> 不再单独定位：角标站在整组最右的留白里，下划线以整组为准 */
+.hot-tab-unit > .hot-tab{ position: static; --tab-badge-space: 1px; padding-right: 1px; }
+.hot-tab-unit > .hot-tab b{ top: -2px; right: 0; }
+/* 下划线画到日历为止，不伸进右侧那格角标留白 */
+.hot-tab-unit > .hot-tab.on::after{ right: 17px; }
+.closing-cal{
   position: relative;
+  top: 1px;
   align-self: center;
   flex: none;
   display: grid;
   place-items: center;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   padding: 0;
-  border: 1px solid rgba(28,25,23,.14);
-  border-radius: 50%;
-  background: #FFFDF9;
-  color: var(--ink-4);
+  border: 0;
+  border-radius: 5px;
+  background: none;
   cursor: pointer;
-  transition: color .16s ease, border-color .16s ease, background .16s ease;
+  transition: transform .16s ease, filter .16s ease;
 }
-.closing-info svg{ width: 11px; height: 11px; }
-/* 视觉 15px，热区 25×33：手指点得到，又不至于盖住旁边的 tab */
-.closing-info::before{ content: ""; position: absolute; inset: -9px -5px; }
-.closing-info:hover{ color: var(--amber-deep); border-color: rgba(245,158,11,.45); background: #FFF8EC; }
-.closing-info:focus-visible{ outline: 2px solid rgba(245,158,11,.55); outline-offset: 2px; }
-.closing-info[aria-expanded="true"]{ color: #B45309; border-color: rgba(245,158,11,.55); background: #FEF3C7; }
+.closing-cal .cal{ display: block; width: 15px; height: 16px; }
+/* 视觉 15×16，热区 25×34：手指点得到，又不至于盖住旁边的 tab */
+.closing-cal::before{ content: ""; position: absolute; inset: -9px -5px; }
+.closing-cal:hover{ transform: translateY(-.5px); filter: saturate(1.06); }
+.closing-cal:focus-visible{ outline: 2px solid rgba(245,158,11,.55); outline-offset: 2px; }
+.closing-cal[aria-expanded="true"]{ filter: saturate(1.15) brightness(.98); }
 
 /* 口径吐司：固定定位 + JS 量位置，不占文档流；3.5 秒自动消失，点空白 / 再点一次也关 */
 .closing-toast{
@@ -1153,12 +1162,15 @@ html.js .pager-bar{ display: flex; }
   white-space: nowrap;
 }
 .rail a:hover{ color: var(--ink); background: rgba(28,25,23,.045); }
+/* 当前所在分区：饱和的薄荷绿实心胶囊 + 白图标白文字，一眼就能看出来
+   （旧版是极淡的薄荷底 + 浅绿描边，截图里几乎看不出高亮） */
 .rail a.active{
-  color: #065F46;
-  background: var(--mint-soft);
-  box-shadow: inset 0 0 0 1px var(--mint-line), 0 6px 16px -12px rgba(5,150,105,.65);
+  color: #FFFFFF;
+  font-weight: 600;
+  background: linear-gradient(180deg, #059669 0%, #047857 100%);
+  box-shadow: 0 8px 18px -10px rgba(4,120,87,.8), inset 0 1px 0 rgba(255,255,255,.22);
 }
-.rail a.active svg{ color: #B45309; }
+.rail a.active svg{ color: #FFFFFF; }
 
 .rail-sep{
   height: 1px;
@@ -1376,7 +1388,8 @@ footer{
 }
 
 @media (max-width: 768px){
-  :root{ --topbar: 54px; }
+  /* --jump-row：手机端热点条的锁高（单行标题 + 价值行），分区面板按它算行高 */
+  :root{ --topbar: 54px; --jump-row: 38px; }
   /* 手机首屏（CLS）：构建期 /rank 与 /lottery 已带 hidden，只有 /closing 需要靠这里先隐住。
      app.js 的 applyBoard() 把板子切到终态后给 <html> 加 .board-ready，这条就不再生效。
      桌面端两块板本来就是 fresh + closing 并列，不需要这条规则。 */
@@ -1562,28 +1575,35 @@ footer{
   .hot-tabs-mobile{
     display: flex;
     align-items: stretch;
+    justify-content: space-between;
     gap: 2px;
+    /* 角标上浮的余量 */
+    padding-top: 4px;
     border-bottom: 1px solid rgba(28,25,23,.08);
     margin-bottom: 8px;
   }
+  /* 四个 tab 按文字宽度排开，余量均分到彼此的间隙里（四段间距一致）；
+     数字浮在各自右上角、不占行内宽度，所以 360px / 375px 上文字与角标都完整，
+     不会再出现「高价值榜 1」那种末位被挤掉的裁切 */
   .hot-tabs-mobile .hot-tab{
-    flex: 1 1 0;
-    justify-content: center;
-    gap: 3px;
-    padding: 6px 0 8px;
+    --tab-badge-space: 18px;
+    flex: 0 0 auto;
+    padding: 6px var(--tab-badge-space) 8px 0;
     font-size: 12.5px;
   }
-  .hot-tabs-mobile .hot-tab b{ font-size: 9.5px; padding: 0 2px; }
-  .hot-tabs-mobile .hot-tab-unit{ flex: 0 0 auto; gap: 2px; }
-  .hot-tabs-mobile .hot-tab-unit > .hot-tab{ flex: 0 0 auto; }
-  .hot-tabs-mobile .closing-badge{ margin-left: 2px; padding: 1px 3px 0; font-size: 8.5px; }
-  .hot-tabs-mobile .closing-info{ width: 13px; height: 13px; }
-  .hot-tabs-mobile .closing-info svg{ width: 9px; height: 9px; }
+  .hot-tabs-mobile .hot-tab b{ min-width: 14px; height: 14px; padding: 0 3px; font-size: 8.5px; top: -1px; }
+  .hot-tabs-mobile .hot-tab-unit{ flex: 0 0 auto; gap: 3px; }
+  .hot-tabs-mobile .hot-tab-unit > .hot-tab{ flex: 0 0 auto; --tab-badge-space: 1px; padding-right: 1px; }
+  .hot-tabs-mobile .hot-tab-unit > .hot-tab b{ top: -2px; right: 0; }
+  /* 日历小标在手机上再收半号，但仍保持两数位可读 */
+  .hot-tabs-mobile .closing-cal{ width: 16px; height: 16px; top: 1px; }
+  .hot-tabs-mobile .closing-cal .cal{ width: 15px; height: 16px; }
+  /* 下划线就是文字本身那么宽，四个 tab 观感一致（不再固定 30px 居中） */
   .hot-tabs-mobile .hot-tab.on::after{
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-    width: 30px;
+    left: 0;
+    right: var(--tab-badge-space);
+    width: auto;
+    transform: none;
   }
   .hot-panel .hot-tablist{ display: none; }
   .hot-panel-body{
@@ -1594,6 +1614,11 @@ footer{
   .hot-panel-body:empty{ display: none; }
 
   .module.hot-strip{ padding: 0; }
+  /* 四个聚合分区统一按 5 行（10 条）锁高：抽奖只有 8 条（4 行），切过去时
+     下方正文不会整块上跳。min-height 放在分区上而不是面板上：隐藏的分区是
+     display:none，不占位，另一个面板不会因此多出一块空白。
+     +2px 是像素取整余量（高价值榜实测 215px，其余 214px），取 216 后四个分区完全等高。 */
+  .module.hot-strip{ min-height: calc(5 * var(--jump-row) + 4 * 6px + 2px); }
   .module.hot-strip .track{
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1610,7 +1635,7 @@ footer{
     display: flex;
     align-items: center;
     gap: 5px;
-    min-height: 38px;
+    min-height: var(--jump-row);
     padding: 5px 7px;
     border-radius: 10px;
     border: 1px solid var(--line);
@@ -1745,8 +1770,8 @@ footer{
 /* 窄屏（iPhone SE / 360 级）：先舍「已归档」胶囊，保证 🥒 羊毛情报局 完整不截断 */
 @media (max-width: 379px){
   .topbar-stats .stats-pill.stone{ display: none; }
-  /* 「即将截止」多了小徽标 + ⓘ，窄屏上把 tab 字号收半号，四个 tab 一行不换不溢 */
-  .hot-tabs-mobile .hot-tab{ font-size: 12px; gap: 2px; }
+  /* 「即将截止」现在只有一颗小 ⓘ，窄屏上把 tab 字号收半号，四个 tab 一行不换不溢 */
+  .hot-tabs-mobile .hot-tab{ font-size: 12px; --tab-badge-space: 17px; }
 }
 
 @media (prefers-reduced-motion: reduce){
