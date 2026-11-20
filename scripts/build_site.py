@@ -1367,7 +1367,8 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         f'<li><span>{ui("dp_facts_period")}</span><b>{dp_period(deal)}</b></li>',
         f'<li><span>{ui("f_regions")}</span><b>{e(regions)}</b></li>',
         f'<li><span>{ui("dp_facts_cost")}</span><b><span class="dtag {cost_cls}">{e(cost_label)}</span></b></li>',
-        f'<li><span>{ui("dp_facts_value")}</span><b class="dp-val">{e(value_now)}</b></li>',
+        # 详情页的「实际价值」跟卡片用同一套收窄，符号两侧的松散空格一致
+        f'<li><span>{ui("dp_facts_value")}</span><b class="dp-val">{e(_tight_value(value_now, CUR_LANG))}</b></li>',
         f'<li><span>{ui("dp_facts_check")}</span><b class="{"dp-ok" if deal.get("verified") else "dp-wait"}">'
         f'{icon3d("verified-shield", "vs-i") + ui("verified") if deal.get("verified") else ui("unverified")}</b></li>',
     ]
