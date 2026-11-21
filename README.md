@@ -36,7 +36,14 @@ scripts/make_og_cover.py   # 生成中英两张分享封面（`python3 scripts/m
 docs/workflows-reference/daily-rebuild.yml  # 每日重建工作流模板（不放进 .github/workflows）
 ads.txt                        # AdSense 发布商授权文件（当前只有注释，拿到 pub-… 后取消注释填 ID）
 robots.txt / sitemap.xml
+reports/score_explain.csv # 构建时写的内部回测表（不进 sitemap、不被页面链接、.gitignore 忽略，线上不存在）
 ```
+
+**首页瘦身（2026-11-21）**：首页的分类 module 只内联「四个聚合分区用到的卡 + 每类按 S 前
+24 条」（`HOME_CAT_CARDS`，合计约 144 张），其余全部由 `/category/<slug>/` 承接；每个
+模块底部有一颗「查看全部 N 条 · 分类名 →」。搜索仍覆盖全库：索引拆成 `t/h/k/c/p`
+五张表，搜索或筛时把首页没内联的在效条目补成一行轻量结果行（点进 `/d/<id>/`），
+平时不为全库铺 DOM。验收口径：gzip ≤ 250KB、DOM ≤ 1.3 万、CLS = 0。
 
 ## 投稿（原生弹窗 + Apps Script 直邮）
 
