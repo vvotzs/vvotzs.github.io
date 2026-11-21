@@ -2397,19 +2397,32 @@ def bank_needs_local_identity(deal: dict) -> bool:
     return any(key in text for key in BANK_LOCAL_ID_KEYS)
 
 
+def is_backlogged_deal(deal: dict) -> bool:
+    """低通过率 / 长期积压的申请类条目：热度不高、几乎没人成功，排到同分类最后。"""
+    text = " ".join(
+        str(deal.get(k) or "")
+        for k in ("title", "conditions", "risk", "highlight", "regions", "url", "source_url")
+    ).lower()
+    keys = (
+        "eu.org", "nic.eu.org", "长期积压", "严重积压", "积压", "审批积压",
+        "极难通过", "极难下号", "极低概率", "几乎不下号", "排队数月", "数月排队",
+    )
+    return any(key in text for key in keys)
+
+
 def order_category_deals(deals: list[dict], slug: str) -> list[dict]:
-    """分类列表排序：价值降序 + 新收录在前；AI 全球优先；银行按本地身份门槛分两段。"""
+    """分类列表排序：价值降序 + 新收录在前；AI 全球优先；银行按本地身份门槛分两段；低通过率沉底。"""
     ordered = list(deals)
     ordered.sort(key=lambda d: str(d.get("added_at") or d.get("added") or ""), reverse=True)
     ordered.sort(key=value_expected, reverse=True)
     if slug == "ai":
         # 稳定排序：全球通用在前，地区分服在后，两部分内部次序不变
         ordered.sort(key=lambda d: 0 if is_global_deal(d) else 1)
-        return ordered
-    if slug == "bank":
+    elif slug == "bank":
         # 稳定排序：不需要 SSN / ITIN / 本地身份的通用优惠在前，需门槛的落在中后段
         ordered.sort(key=lambda d: 1 if bank_needs_local_identity(d) else 0)
-        return ordered
+    # 所有分类最后兜底：长期积压 / 极难通过的申请类项目沉到分类最后
+    ordered.sort(key=lambda d: 1 if is_backlogged_deal(d) else 0)
     return ordered
 
 
