@@ -4741,5 +4741,73 @@
     ],
     "risk": "The free period can end at any time, after which a running site consumes credits, and a site left running keeps spending them. Only a platform subdomain is offered, with no custom domain or ICP filing. 10 GB a day and 100 QPS per site are not enough for a real service. Projects with a database or a non-Node backend cannot be deployed. Links are private by default, so switch to public before sharing.",
     "source": "free8.net thread on TRAE site building and deployment (2026-11-19) plus the official TRAE deploy documentation and the official community tutorial (checked 2026-11-21)"
+  },
+  "uu-remote-vip-annual-half-2026": {
+    "title": "[China] NetEase UU Remote: VIP annual plan at half price, 119 yuan a year (238 normally, register before Dec 1)",
+    "brand_en": "NetEase UU Remote",
+    "highlight": "Accounts registered before Dec 1 can claim a half-price annual voucher in the app's message center: VIP drops from 238 to 119 yuan for the year (about 9.9 a month), while basic remote control stays free with no time limit",
+    "regions": "[China] NetEase UU Remote clients for Windows, macOS, iOS, Android and TV; the account must be registered before the December 1, 2026 launch, and the voucher is claimed from the message center inside the app",
+    "value": "119 yuan saved (119 yuan for the year)",
+    "content": "NetEase announced on November 19, 2026 that UU Remote launches VIP and SVIP tiers on December 1, and promised that basic remote control stays free with no cap on sessions or hours, no queue and no ads, at 1080p 30fps. The notice says users who registered before the December 1 launch can claim a half-price annual voucher; NetEase's own reply on V2EX put the price at 119 yuan a year, about 9.9 a month, claimed from the message center inside the client.\n\nPaid tiers, cross-checked against the announcement and coverage by ITHome and V2EX: VIP is 238 yuan a year (30 yuan a month) and adds 4K, 144fps, up to 500Mbps, true-colour mode, HDR, a wireless second screen and multi-screen control; SVIP is 758 yuan a year (98 yuan a month) and adds global relay nodes on top of VIP.\n\nIn practice: install the client and register an account now, and the half-price annual voucher can be claimed before December 1. If you do not want to pay, do nothing and the free tier keeps working; nothing is charged automatically. Checked on November 21, 2026.",
+    "conditions": "The offer goes to accounts registered before the December 1, 2026 launch and must be claimed from the message center in the client; if the entry is missing, ask support to register it. The annual plan is paid up front and the half price applies to this first year only; renewals follow the official price. 4K, 144fps, 500Mbps and the second screen need VIP or above; the free tier stays at 1080p 30fps and roughly 8Mbps.",
+    "steps": [
+      "Download the Windows or macOS client from uuyc.163.com and register with a phone number or WeChat",
+      "Update to the latest client and open the message center for the VIP launch notice and the half-price voucher",
+      "Claim it and pay 119 yuan for the VIP annual plan, or keep using the free tier",
+      "Consider SVIP at 758 yuan a year only if you need global relay nodes"
+    ],
+    "risk": "The 4K and 144fps benefits only matter if you pay; the free tier already covers ordinary office remote control. The voucher lives in the in-app message center, so older clients may not show it. The annual plan is paid in full and the refund policy is not published. Only SVIP has global nodes.",
+    "source": "NetEase UU Remote official notice, November 19, 2026 (uuyc.163.com/blog/20261118-dwdsa.html), plus the official reply on V2EX confirming 119 yuan a year and the 2Libra thread of November 19, 2026"
+  },
+  "lenny-product-pass-2026": {
+    "title": "[Global] Lenny's Product Pass: 34 tools free for a year with a $200 annual or $400 Insider subscription (Cursor Pro and Google AI Pro are Insider only)",
+    "brand_en": "Lenny's Product Pass",
+    "highlight": "Subscribe to Lenny's Newsletter at $200 a year or Insider at $400 and claim a year of 34 AI and product tools; the Insider-only set alone (Cursor Pro, Google AI Pro, Supabase Pro, ElevenLabs) is worth more than $1,200",
+    "regions": "[Global] Requires a paid Substack subscription (Annual $200 a year or Insider $400 a year) with an international card; most partner offers are limited to new customers of that product",
+    "value": "About $1,200+ (Insider-only tools; the official page claims $40,000+)",
+    "content": "Lenny's Product Pass comes with a paid Lenny's Newsletter subscription: the official page lists 34 products and claims more than $40,000 of value, unlocked by Annual ($200 a year) or Insider ($400 a year) plans, claimed one by one from the dashboard with the subscribing email. Monthly subscribers are not eligible.\n\nThe $40,000 headline needs a discount: most of it is enterprise-scale seats such as PostHog Scale ($16,500) and Intercom Fin ($7,140) that an individual cannot use. What matters for a solo builder is the Insider-only tier: Cursor Pro (about $240 a year), Google AI Pro ($240 a year, including Gemini), Supabase Pro ($300 a year), Canva Business ($200), ElevenLabs Creator ($264 a year), Gamma, Lovable and n8n Cloud, plus 40 percent off Stripe Atlas, which together already exceed $1,200. Annual subscribers share Granola Business, Linear Business, Notion Business, Framer, Replit, Railway, Mobbin and Runway on a first-come basis, roughly 16 offers per drop.\n\nKey limits: every product offer is for new customers only, so anything you have already paid for or trialled with an offer code does not count; codes stay valid only while the subscription is active and are revoked on cancellation, refund or chargeback; the collection rotates about every six months, so renewing in year two brings a new set rather than a second free year of the same products. Checked on November 21, 2026.",
+    "conditions": "Requires the Annual ($200 a year) or Insider ($400 a year) plan; monthly plans are excluded. Claim with the subscribing email; accepting the Product Pass terms makes the subscription non-refundable. Each partner offer is claimed separately with its own deadline and eligibility, and most are for new customers of that product. Codes are revoked if the subscription lapses. Reselling, sharing or opening multiple accounts can lead to access being withdrawn.",
+    "steps": [
+      "Pick Annual at $200 or Insider at $400 on lennysnewsletter.com",
+      "Sign in to lennysproductpass.com with the subscribing email and accept the terms (no refund afterwards)",
+      "Claim the codes you want from the dashboard, starting with in-demand ones like Cursor Pro and Google AI Pro",
+      "Redeem each code on the partner's site; the free year starts on the day you redeem it"
+    ],
+    "risk": "The $40,000 figure includes enterprise seats an individual will not use; the new-customer rule excludes tools you already pay for; the subscription fee is not refundable after accepting terms; codes die with the subscription; popular products run out; the $200 tier covers only part of the collection on a first-come basis; the collection rotates every six months.",
+    "source": "Official lennysproductpass.com terms and FAQ read on November 21, 2026, plus Lenny's Newsletter launch post of July 28, 2026 (tiers, 34-product list) and the 2Libra thread of November 20, 2026"
+  },
+  "spaceship-com-3-60-com67": {
+    "title": "[Global] Spaceship: .com domain for $3.60 in the first year with code COM67 (about 65% off)",
+    "brand_en": "Spaceship",
+    "highlight": "The official promo page lists .com at $3.60 for the first year with code COM67, down from $10.38 (about 65% off); one code per order, renewals go back to full price",
+    "regions": "[Global] New .com registrations at spaceship.com (part of the Namecheap group), paid by major card or PayPal; premium domains excluded",
+    "value": "$6.78 saved ($3.60 first year, was $10.38)",
+    "content": "A 2Libra thread collected 2026 domain promo codes for Spaceship and Dynadot. Checking Spaceship's official promo page (spaceship.com/promos) on November 21, 2026, the live offer is .com for $3.60 in the first year with code COM67, marked as a limited-time 65 percent discount against a list price of $10.38; .si is also on offer at $6.48 a year with code SIREGSPS26. The COMPROS code at about $2.90 mentioned in the thread was no longer visible, so the official page at checkout time is the reference.\n\nThe official terms are narrow: first-year registrations only, renewals at the regular price, one code per order and per domain, premium domains excluded, and the final price is the one shown at checkout. It suits a personal site or project domain for a cheap first year; holding it longer means budgeting the renewal, which starts around $10.38 a year for .com.",
+    "conditions": "New .com registrations in the first year only. At checkout, click Add promo code above the order total and enter COM67. One code per order. Premium and high-value domains are excluded. Renewals carry no discount and start at about $10.38 a year.",
+    "steps": [
+      "Search for the .com you want on spaceship.com and add it to the cart",
+      "Click Add promo code above the order total and enter COM67",
+      "Confirm the total drops to $3.60 for the year before paying",
+      "Note the renewal price and budget for the regular rate"
+    ],
+    "risk": "Only the first year is cheap; renewals return to $10 or more. Older codes in the thread may have expired, so trust the official promo page at checkout. Premium domains are excluded and the offer can change at any time.",
+    "source": "Spaceship official promo page and terms read on November 21, 2026 (.com code COM67 at $3.60 a year), plus the 2Libra 2026 Spaceship and Dynadot code thread of October 27, 2026"
+  },
+  "azure-for-students-100": {
+    "title": "[Global] Azure for Students: $100 credit plus 65 always-free services, no card needed",
+    "brand_en": "Microsoft Azure",
+    "highlight": "Students verify with a school email and get $100 of credit for 12 months, 20+ popular services free for 12 months and 65 always-free services, with no credit card at sign-up",
+    "regions": "[Global] Full-time university students who can verify with a school email; one account per person; the credit must be used within 12 months",
+    "value": "$100 credit (12 months)",
+    "content": "Azure for Students is Microsoft's standing student programme. The official page says no credit card is required, gives $100 of credit to use within 12 months, adds monthly free amounts on 20-plus popular services for 12 months for new Azure customers, and 65 always-free services; students can renew yearly while enrolled. Typical free allowances include 750 hours a month each of B1s, B2pts v2 and B2ats v2 virtual machines on Linux or Windows, 100,000 vCore seconds a month of serverless Azure SQL, and access to Azure OpenAI, Foundry and AI Search.\n\nA 2Libra thread reports that student verification has been easy lately: a code to a school email is enough, and a few retries clear the temporary-unavailable message. Comments also mention failures when a school has reclaimed the email or the school is not on the list. Running out of the $100 credit does not trigger a charge; the subscription is disabled and Microsoft emails you about moving to pay-as-you-go. Checked on November 21, 2026.",
+    "conditions": "Full-time university students only, verified with a school email; one Azure for Students account per person; the $100 credit is valid for 12 months and cannot be spent on third-party Azure Marketplace offers; running out does not charge you automatically, and continuing requires upgrading to pay-as-you-go; monthly free amounts reset and do not roll over.",
+    "steps": [
+      "Open azure.microsoft.com/free/students and click Activate",
+      "Sign in with a Microsoft account using the school email and complete student verification with the emailed code",
+      "Create resources in the Azure portal, preferring always-free and 12-month free tiers",
+      "When the credit is nearly gone, use the email notice to decide whether to move to pay-as-you-go"
+    ],
+    "risk": "Verification fails if the school has reclaimed the email or the school is not listed; the $100 lasts 12 months only; going past the free allowances requires a paid upgrade; multiple accounts per person can trigger fraud checks.",
+    "source": "Azure for Students official page and FAQ read on November 21, 2026 ($100 credit, no card, 65 always-free services), plus the 2Libra verification thread of November 18, 2026 with comment reports"
   }
 }
