@@ -29,6 +29,7 @@ from common import (  # noqa: E402
     EXPIRING_DAYS,
     META,
     compute_status,
+    dedup_key,
     ensure_added_at,
     now_local,
     parse_date,
@@ -145,6 +146,8 @@ def main() -> int:
         print("  - 入库时间：为新条目补写了 added_at")
 
     for deal in deals:
+        # 去重键每轮重算：手工追加的条目不用记着填，改了品牌 / 分类 / 区域也会自动跟上
+        deal["dedup_key"] = dedup_key(deal)
         deal.setdefault("last_verified", "待核实")
         if deal["status"] == "expired":
             deal["value_num"] = 0

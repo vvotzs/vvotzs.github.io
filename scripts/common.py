@@ -6,6 +6,7 @@ maintain_deals.py 与 build_site.py 共用，避免两处口径不一致。
 """
 from __future__ import annotations
 
+import re
 from datetime import date, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -247,3 +248,149 @@ def value_expected(deal: dict) -> float:
     if isinstance(value, (int, float)):
         return float(value)
     return float(deal.get("value_num") or 0)
+
+
+# ---------------------------------------------------------------- 去重键 dedup_key
+# 格式 brand|category|market|offer_type，全部小写 ASCII，四段都不为空：
+#   brand       品牌规范 slug（共用同一张表的标定值，见 BRAND_SLUGS）
+#   category    六个分类之一（ai / crypto / bank / cloud / esim / software）
+#               保留分类是为了让「同一家银行的存款奖」与「同一家交易所的空投」
+#               不会因为品牌相同撞成同一条。
+#   market      国家 / 地区代号，ISO 3166-1 alpha-2 小写（gb、us、ae…），多市场按
+#               字母序用 - 连接；全球 = global，多区不定 = multi，
+#               EEA / 亚太 / 东南亚 / 亚洲另有 eea、apac、sea、asia。
+#               子区域（us-la、jp-tyo、cn-4837）一律收绠到国家级，子区域差异留在
+#               offer_type 里，否则同一个活动换城市就会绕过判重。
+#   offer_type  活动本身的 slug：条目 id 去掉开头的品牌 / 来源站 / 市场标记后的剩余部分。
+MARKET_TAGS = {
+    "全球": ["GLOBAL"], "全球站": ["GLOBAL"], "全球/国际站": ["GLOBAL"],
+    "全球/按发卡地": ["GLOBAL"], "全球/中国站": ["GLOBAL"], "全球/中国区": ["GLOBAL"],
+    "中国区/全球": ["GLOBAL"], "中国区/国际版": ["GLOBAL"], "瑞士/全球": ["GLOBAL"],
+    "英区": ["GB"], "仅限美国": ["US"], "美区": ["US"], "中国区": ["CN"],
+    "日区": ["JP"], "日本区": ["JP"], "香港": ["HK"], "澳门": ["MO"],
+    "阿联酋": ["AE"], "韩区": ["KR"], "印度区": ["IN"], "泰区": ["TH"],
+    "新加坡": ["SG"], "缅区": ["MM"], "菲区": ["PH"], "澳区": ["AU"],
+    "法区": ["FR"], "德区": ["DE"], "荷区": ["NL"], "波区": ["PL"],
+    "克区": ["HR"], "爱尔兰": ["IE"], "沙特": ["SA"], "卡塔尔": ["QA"],
+    "黎巴嫩": ["LB"], "马来": ["MY"], "印尼": ["ID"], "秘鲁": ["PE"],
+    "亚太发卡": ["APAC"], "亚洲 12 国": ["ASIA"], "欧区": ["EEA"],
+    "EEA 欧区": ["EEA"], "欧区 17 国": ["EEA"], "欧洲+英国": ["EEA", "GB"],
+    "多区": ["MULTI"], "美区/多区": ["MULTI"], "非美 47 国": ["MULTI"],
+    "美/加区": ["US", "CA"], "美区/日本": ["US", "JP"], "美区/欧区": ["US", "EEA"],
+    "英区/欧区": ["GB", "EEA"], "美/英/欧区": ["US", "GB", "EEA"],
+    "英/美/加/澳": ["GB", "US", "CA", "AU"], "美/加/日/新/墨/澳": ["US", "CA", "JP", "SG", "MX", "AU"],
+    "日/韩/美/加/澳/印": ["JP", "KR", "US", "CA", "AU", "IN"], "日区/韩区": ["JP", "KR"],
+    "台/泰/马/越": ["TW", "TH", "MY", "VN"],
+}
+
+# 品牌规范 slug：中文名、带符号或容易拆错的名字在这里定死，其余走默认规则
+# （品牌名第一个 ASCII 词，取不到就用 id 的第一个词）。
+BRAND_SLUGS = {
+    "中信银行": "citic", "中国工商银行": "icbc", "中国银行": "boc",
+    "中国联通": "unicom", "中国电信香港 CTExcel": "ctexcel",
+    "中国电信 星辰": "teleagent", "平安数字银行（PingAnDB）": "pingandb",
+    "螞蟻銀行（澳門）": "antbank", "阿里云国际站": "alibabacloud", "阿里云": "aliyun",
+    "腾讯云": "tencentcloud", "腾讯云 TokenHub": "tencentcloud",
+    "腾讯云 WorkBuddy": "tencentcloud", "百度智能云千帆": "baidu-qianfan",
+    "联通云（CUCloud）": "cucloud", "网易 UU 远程": "netease-uu",
+    "华为云 CodeArts": "huaweicloud", "智谱 AutoClaw（澳龙）": "zhipu",
+    "阶跃星辰 StepFun": "stepfun", "小米 MiMo": "xiaomi", "小米 × Google": "xiaomi",
+    "さくらのAI Engine": "sakura-ai", "超算互联网 SCNet": "scnet", "七牛云": "qiniu",
+    "ModelScope 魔搭 × AMD": "modelscope", "八达通 Octopus": "octopus",
+    "我们WON모바일 (Woori Bank)": "wooriwon-mobile", "U.S. Bank": "usbank",
+    "E*TRADE": "etrade", "J.P. Morgan Personal Investing": "jpmorgan",
+    "Charles Schwab": "schwab", "Bank of America": "bofa", "Wells Fargo": "wellsfargo",
+    "first direct": "firstdirect", "Co-operative Bank": "coop-bank",
+    "Al Rajhi Bank": "alrajhi", "e& UAE (etisalat)": "eand", "e& UAE": "eand",
+    "Y!mobile": "ymobile", "Y!mobile（Yahoo!ショッピング店）": "ymobile",
+    "UQ mobile": "uq-mobile", "UQ mobile（KDDI）": "uq-mobile",
+    "LG HelloVision Hello Mobile": "hellomobile", "LG AI Research": "lgai",
+    "Kite × Bitrefill": "kite", "GigSky × Visa": "gigsky", "GigSky": "gigsky",
+    "SoSIM（和记电讯 3HK）": "sosim", "SoSIM (3HK)": "sosim", "True Corporation": "true",
+    "Apple Card（Goldman Sachs 发行）": "apple", "Rakuten × Alliant Credit Union": "rakuten",
+    "Amazon Music": "amazon", "Google Cloud": "google", "Google Gemini": "google",
+    "Google Flow": "google", "Microsoft Azure": "microsoft", "Nous Research": "nous",
+    "Cognition / Poke": "cognition", "American Express": "amex", "A1 Hrvatska": "a1",
+    "TD Bank": "td", "Citizens Bank": "citizens", "Ally Bank": "ally", "PNC Bank": "pnc", "KT M mobile": "kt", "kt M mobile": "kt",
+}
+
+MARKET_TOKENS = {
+    "us", "uk", "gb", "cn", "hk", "mo", "tw", "jp", "kr", "sg", "my", "th",
+    "vn", "ph", "id", "in", "mm", "lb", "qa", "ae", "sa", "il", "au", "nz",
+    "ca", "mx", "br", "pe", "ch", "ie", "nl", "be", "pl", "cz", "sk", "hu",
+    "ro", "hr", "de", "fr", "es", "it", "pt", "at", "dk", "se", "fi", "no",
+    "gr", "ee", "lt", "lv", "bg", "cy", "mt", "tr", "eg", "eu", "eea", "sea",
+    "apac", "asia", "global", "multi", "la", "tyo", "las", "4837",
+}
+SOURCE_PREFIXES = {"nodeseek", "vps-taxi", "reddit", "hackernews", "hn", "tg", "telegram"}
+OFFER_STOP = {"bank", "card", "app", "official", "com", "www"}
+
+
+def _tokens(text: str) -> list[str]:
+    return [t for t in re.split(r"[^a-z0-9]+", str(text or "").lower()) if t]
+
+
+def market_codes(deal: dict) -> list[str]:
+    """从标题开头的 [区域] 标签取市场代号；取不到时退回 regions 字段的标签写法。"""
+    text = str(deal.get("title") or "")
+    match = re.match(r"^\s*[\[【]([^\]】]{1,32})[\]】]", text)
+    tag = match.group(1).strip() if match else ""
+    if tag in MARKET_TAGS:
+        return MARKET_TAGS[tag]
+    if tag:
+        # 标签写成其它组合时按分隔符拆开逐段翻译，漏掉的段直接忽略
+        codes: list[str] = []
+        for piece in re.split(r"[/、，,+＋]", tag):
+            piece = piece.strip()
+            if piece in MARKET_TAGS:
+                codes.extend(MARKET_TAGS[piece])
+                continue
+            for key, val in MARKET_TAGS.items():
+                if not key.endswith("国") and piece.startswith(key):
+                    codes.extend(val)
+                    break
+        if codes:
+            return codes
+    return ["MULTI"]
+
+
+def market_code(deal: dict) -> str:
+    codes = market_codes(deal)
+    if "GLOBAL" in codes:
+        return "global"
+    if "MULTI" in codes or not codes:
+        return "multi"
+    return "-".join(sorted({c.lower() for c in codes}))
+
+
+def brand_slug(deal: dict) -> str:
+    brand = str(deal.get("brand") or "").strip()
+    if brand in BRAND_SLUGS:
+        return BRAND_SLUGS[brand]
+    words = [w for w in _tokens(brand) if w not in MARKET_TOKENS and len(w) > 1]
+    if not words:
+        words = [w for w in _tokens(brand) if w not in MARKET_TOKENS]
+    if words:
+        slug = "-".join(words[:2])
+        return slug if len(slug) <= 12 else words[0]
+    ids = _tokens(deal.get("id"))
+    return ids[0] if ids else "unknown"
+
+
+def offer_slug(deal: dict, brand: str | None = None) -> str:
+    """活动 slug：id 去掉开头的品牌 / 来源站 / 市场 / 通用词。"""
+    brand = brand or brand_slug(deal)
+    compact = brand.replace("-", "")
+    tokens = _tokens(deal.get("id"))
+    drop = set(_tokens(brand)) | MARKET_TOKENS | SOURCE_PREFIXES | OFFER_STOP
+    while tokens and (tokens[0] in drop or tokens[0] in compact):
+        tokens.pop(0)
+    slug = "-".join(tokens)
+    return slug or "-".join(_tokens(deal.get("id"))) or "offer"
+
+
+def dedup_key(deal: dict) -> str:
+    """brand|category|market|offer_type；四个字段都不为空，可直接入库。"""
+    brand = brand_slug(deal)
+    category = str(deal.get("category") or "").strip().lower() or "unknown"
+    return "|".join([brand, category, market_code(deal), offer_slug(deal, brand)])

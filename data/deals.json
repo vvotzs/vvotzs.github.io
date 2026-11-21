@@ -1,6 +1,7 @@
 [
  {
   "id": "clearstreet-3pct-cash-match",
+  "dedup_key": "clear-street|bank|us|3pct-cash-match",
   "title": "[美区] Clear Street 券商 3% 现金配比：最高 $10,000（净入金 $5,000 起，须留存 5 年）",
   "highlight": "11/9–12/31 开户首存，14 天内净入金 $5,000 起给 3% 现金配比（上限 $10,000），配比与本金须留存 5 年",
   "brand": "Clear Street",
@@ -32,11 +33,17 @@
   "status": "active",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需美国税号与住址"
+  "kyc_note": "需美国税号与住址",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_address",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "tastytrade-sweetbonus-2000",
-  "dedup_key": "tastytrade|bank|us|sweetbonus-2000-2026",
+  "dedup_key": "tastytrade|bank|us|sweetbonus-2000",
   "title": "[美区] tastytrade SWEETBONUS：入金 $2,500 起，最高 $2,000 现金（11/30 前首笔入金，锁 12 个月）",
   "brand": "tastytrade",
   "domain": "tastytrade.com",
@@ -68,7 +75,13 @@
   "added_at": "2026-11-21T16:50:00+08:00",
   "kyc_level": "foreign_only",
   "kyc_note": "仅美国合法居民",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "bmo-relationship-checking-2000",
@@ -104,10 +117,17 @@
   "added_at": "2026-11-21T16:53:00+08:00",
   "kyc_level": "foreign_only",
   "kyc_note": "需美国 BMO 客户与专属 promo code",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "coinbase-new-user-bonus",
+  "dedup_key": "coinbase|crypto|us|new-user-bonus",
   "title": "[美区] Coinbase 新用户首购随机 BTC 奖励",
   "brand": "Coinbase",
   "domain": "coinbase.com",
@@ -140,6 +160,7 @@
  },
  {
   "id": "usbank-business-checking-1500",
+  "dedup_key": "usbank|bank|us|business-checking-1500",
   "title": "[美区] U.S. Bank 商业银行账户：开户奖最高 $1,500 + Bill Pay $250",
   "brand": "U.S. Bank",
   "domain": "usbank.com",
@@ -170,10 +191,17 @@
   "source_url": "https://www.doctorofcredit.com/u-s-bank-400-900-business-checking-bonus/",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需 SSN/EIN 与美国网点所在州"
+  "kyc_note": "需 SSN/EIN 与美国网点所在州",
+  "identity_requirement": "business",
+  "residency_requirement": "local_address",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "lenny-product-pass-2026",
+  "dedup_key": "lenny|software|global|product-pass-2026",
   "title": "[全球] Lenny's Product Pass：年付 $200／Insider $400 换 34 款工具一年（Cursor Pro、Google AI Pro 仅 Insider）",
   "highlight": "订阅 Lenny's Newsletter 年付 $200 或 Insider $400，按档领 34 款工具一年免费或大额折扣；Insider 独有的 Cursor Pro、Google AI Pro、Supabase Pro、ElevenLabs 等合计已超 $1,200",
   "brand": "Lenny's Product Pass",
@@ -208,6 +236,7 @@
  },
  {
   "id": "binance-lite-vouchers",
+  "dedup_key": "binance|crypto|global|lite-vouchers",
   "title": "[全球站] Binance 新手任务：最高 $1,100 手续费券",
   "brand": "Binance",
   "domain": "binance.com",
@@ -241,6 +270,7 @@
  },
  {
   "id": "raisin-stack-welcome-bonus-1000",
+  "dedup_key": "raisin|bank|us|stack-welcome-bonus-1000",
   "title": "[美区] Raisin STACK 开户奖：最高 $1,000（存 $10,000 起、锁 90 天，11/30 前首笔入金）",
   "highlight": "填码 STACK，11/30 前首笔入金、14 天内累计存 $10,000 并锁 90 天得 $40–$900，叠加 CD 档最高 $1,000",
   "brand": "Raisin",
@@ -273,10 +303,17 @@
   "status": "active",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需 SSN/ITIN"
+  "kyc_note": "需 SSN/ITIN",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "apple-card-double-daily-cash",
+  "dedup_key": "apple|bank|us|double-daily-cash",
   "title": "[美区] Apple Card 双倍 Daily Cash：新卡首年最高 6% 返现、额外返现上限 $1,000（12/10 前走专属链接申请）",
   "highlight": "12/10 前通过专属活动链接申请并开卡，首 12 个月返现翻倍：Apple 及指定商户 6%、Apple Pay 4%、实体卡 2%，额外返现合计最多 $1,000",
   "brand": "Apple Card（Goldman Sachs 发行）",
@@ -308,10 +345,15 @@
   "status": "active",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需 SSN/ITIN 与美国信用记录"
+  "kyc_note": "需 SSN/ITIN 与美国信用记录",
+  "identity_requirement": "local_id",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "jetbrains-student-pack",
+  "dedup_key": "jetbrains|software|global|student-pack",
   "title": "[全球] JetBrains 学生包：全家桶免费",
   "brand": "JetBrains",
   "domain": "jetbrains.com",
@@ -343,7 +385,7 @@
  },
  {
   "id": "openai-academic-researchers-plus-2026",
-  "dedup_key": "openai|ai|multi|academic-researchers-50k-2026",
+  "dedup_key": "openai|ai|multi|academic-researchers-plus-2026",
   "title": "[多区] OpenAI 学术研究者计划：11/23 开放 5 万份，每份 3 个 ChatGPT Plus 席位免费用 12 个月",
   "brand": "OpenAI",
   "domain": "openai.com",
@@ -378,6 +420,7 @@
  },
  {
   "id": "hsbc-premier-switch-500",
+  "dedup_key": "hsbc|bank|gb|premier-switch-500",
   "title": "[英区] HSBC Premier 转户奖 £500：年收入或资产满 £10 万才够门槛（CASS 全转）",
   "brand": "HSBC UK",
   "domain": "hsbc.co.uk",
@@ -408,10 +451,17 @@
   "status": "active",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需英国居民与 £10 万收入/资产"
+  "kyc_note": "需英国居民与 £10 万收入/资产",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "hostinger-black-friday",
+  "dedup_key": "hostinger|cloud|global|black-friday",
   "title": "[全球] Hostinger 黑五：主机低至 $1.99/月",
   "brand": "Hostinger",
   "domain": "hostinger.com",
@@ -475,11 +525,17 @@
   "added_at": "2026-11-21T16:49:00+08:00",
   "kyc_level": "foreign_only",
   "kyc_note": "需美国注册公司与 EIN，个体户不行",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "business",
+  "residency_requirement": "local_address",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "boa-advantage-tiered-1000",
-  "dedup_key": "bofa|bank|us|advantage-tiered-1000",
+  "dedup_key": "bofa|bank|us|boa-advantage-tiered-1000",
   "title": "[美区] Bank of America Advantage 分层开户奖：公开档最高 $500，定向版 $1,000（1/31/2027 前开户）",
   "brand": "Bank of America",
   "domain": "bankofamerica.com",
@@ -511,10 +567,17 @@
   "added_at": "2026-11-21T16:52:00+08:00",
   "kyc_level": "foreign_only",
   "kyc_note": "需 SSN/ITIN 与美国地址",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "bybit-referral-tasks",
+  "dedup_key": "bybit|crypto|global|referral-tasks",
   "title": "[全球站] Bybit 推荐任务：双方各得最高 250 USDT",
   "brand": "Bybit",
   "domain": "bybit.com",
@@ -548,6 +611,7 @@
  },
  {
   "id": "chatgpt-pro-business-api-credits",
+  "dedup_key": "openai|ai|multi|chatgpt-pro-business-api-credits",
   "title": "[多区] ChatGPT Pro / Business 订阅附赠 API 额度：每月最高 $500",
   "brand": "OpenAI",
   "domain": "openai.com",
@@ -582,6 +646,7 @@
  },
  {
   "id": "okx-new-user-bonus",
+  "dedup_key": "okx|crypto|eea|new-user-bonus",
   "title": "[EEA 欧区] OKX 新用户礼包（分档任务制）",
   "brand": "OKX",
   "domain": "okx.com",
@@ -615,6 +680,7 @@
  },
  {
   "id": "adcb-emirati-youth-ai-cashback",
+  "dedup_key": "adcb|bank|ae|emirati-youth-ai-cashback",
   "title": "[阿联酋] ADCB Emirati Youth：AI 订阅返现最高 AED 400 + 迎新 AED 300–700",
   "brand": "ADCB",
   "domain": "adcb.com",
@@ -643,10 +709,22 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "citizen_only",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "AE"
+  ]
  },
  {
   "id": "capital-one-360-checking-400",
+  "dedup_key": "capital-one|bank|us|360-checking-400",
   "title": "[美区] Capital One 360 Checking 开户 $400：75 天内两笔 $500 直存（码 MAKE400，12/9 截止）",
   "brand": "Capital One",
   "domain": "capitalone.com",
@@ -677,10 +755,18 @@
   "source_url": "https://www.uscardforum.com/t/topic/542973",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需 SSN/ITIN、美国地址与手机号"
+  "kyc_note": "需 SSN/ITIN、美国地址与手机号",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "citizens-bank-400-checking",
+  "dedup_key": "citizens|bank|us|400-checking",
   "title": "[美区] Citizens Bank 首个支票账户：单笔直存 $1,000 得 $400（至 12/20）",
   "brand": "Citizens Bank",
   "domain": "citizensbank.com",
@@ -712,10 +798,17 @@
   "source_url": "https://www.perkful.app/bank-bonuses/citizens-personal-checking-bonus/",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需 SSN/ITIN 与当地州地址"
+  "kyc_note": "需 SSN/ITIN 与当地州地址",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_address",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "sofi-checking-400-direct-deposit",
+  "dedup_key": "sofi|bank|us|checking-400-direct-deposit",
   "title": "[美区] SoFi 支票账户直存奖：25 天存 $5,000 得 $400（至 12/31）",
   "brand": "SoFi",
   "domain": "sofi.com",
@@ -746,7 +839,13 @@
   "source_url": "https://www.doctorofcredit.com/sofi-checking-5000-direct-deposit-required/",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需美国身份与地址"
+  "kyc_note": "需美国身份与地址",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "pnc-virtual-wallet-400",
@@ -782,7 +881,13 @@
   "added_at": "2026-11-21T16:54:00+08:00",
   "kyc_level": "foreign_only",
   "kyc_note": "需美国税号与地址，非居民线上多被拒",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_address",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "etrade-max-rate-checking-400",
@@ -818,10 +923,17 @@
   "added_at": "2026-11-21T16:51:00+08:00",
   "kyc_level": "foreign_only",
   "kyc_note": "需美国税号与地址",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_address",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "chase-total-checking-400",
+  "dedup_key": "chase|bank|us|total-checking-400",
   "title": "[仅限美国] Chase Total Checking $400 开户奖励",
   "brand": "Chase",
   "domain": "chase.com",
@@ -852,10 +964,17 @@
   "source_url": "https://www.doctorofcredit.com/chase-400-checking-bonus/",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需 SSN/ITIN 与美国地址"
+  "kyc_note": "需 SSN/ITIN 与美国地址",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_address",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "barclays-uk-switch-300",
+  "dedup_key": "barclays|bank|gb|switch-300",
   "title": "[英区] Barclays 转户奖最高 £300：£150 开户 + 每月 £30 连发 5 个月（10/27 起）",
   "brand": "Barclays",
   "domain": "barclays.co.uk",
@@ -885,11 +1004,22 @@
   "added": "2026-11-20",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "santander-everyday-switch-240",
-  "dedup_key": "santander|bank|uk|switch-240",
+  "dedup_key": "santander|bank|gb|everyday-switch-240",
   "title": "[英区] Santander Everyday 转户奖 £240：转户 + 2 个家庭直扣 + 存入 £1,500（10/27 起）",
   "brand": "Santander UK",
   "domain": "santander.co.uk",
@@ -920,7 +1050,13 @@
   "added_at": "2026-11-19T11:52:23+08:00",
   "source_url": "https://www.santander.co.uk/about-santander/santander-launches-240-switcher-offer/",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "wells-fargo-everyday-checking-325",
@@ -956,10 +1092,17 @@
   "added_at": "2026-11-21T16:48:00+08:00",
   "kyc_level": "foreign_only",
   "kyc_note": "需 SSN/ITIN 与美国地址，且排除签 W-8 的非居民",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "ally-spending-300",
+  "dedup_key": "ally|bank|us|spending-300",
   "title": "[美区] Ally 支票账户 $300：每月直存 $1,000 连拿 6 个月（码 ALLY300，至 11/30）",
   "brand": "Ally Bank",
   "domain": "ally.com",
@@ -990,10 +1133,17 @@
   "source_url": "https://www.perkful.app/bank-bonuses/ally-bank-spending-account-bonus/",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需美国身份与地址"
+  "kyc_note": "需美国身份与地址",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_address",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "surfshark-black-friday",
+  "dedup_key": "surfshark|software|global|black-friday",
   "title": "[全球] Surfshark 黑五：2 年 $2.49/月 + 3 个月",
   "brand": "Surfshark",
   "domain": "surfshark.com",
@@ -1026,7 +1176,7 @@
  },
  {
   "id": "citic-visa-30pct-overseas-2026h2",
-  "dedup_key": "citic|bank|cn|visa-overseas-30pct-2026h2",
+  "dedup_key": "citic|bank|cn|visa-30pct-overseas-2026h2",
   "title": "[中国区] 中信银行 Visa 信用卡境外消费笔笔最高返 30%：月返上限 $300（至 12/31，需报名）",
   "brand": "中信银行",
   "domain": "creditcard.ecitic.com",
@@ -1055,10 +1205,17 @@
   "added_at": "2026-11-21T04:06:00+08:00",
   "added": "2026-11-21",
   "kyc_level": "cn_ok",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "CN"
+  ]
  },
  {
   "id": "td-bank-checking-300",
+  "dedup_key": "td|bank|us|checking-300",
   "title": "[美区] TD Bank 新支票账户：$300 / $200 直存奖励（至 2027-01-30）",
   "brand": "TD Bank",
   "domain": "td.com",
@@ -1089,7 +1246,13 @@
   "source_url": "",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需美国当地州地址"
+  "kyc_note": "需美国当地州地址",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_address",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "amex-rewards-checking-300",
@@ -1125,10 +1288,17 @@
   "added_at": "2026-11-21T16:55:00+08:00",
   "kyc_level": "foreign_only",
   "kyc_note": "需已有 Amex 美国卡或储蓄/CD 关系",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_address",
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "oracle-always-free",
+  "dedup_key": "oracle|cloud|global|always-free",
   "title": "[全球] Oracle Cloud 永久免费：2 核 ARM + 200GB",
   "brand": "Oracle",
   "domain": "oracle.com",
@@ -1162,6 +1332,7 @@
  },
  {
   "id": "gcp-300-credit",
+  "dedup_key": "google|cloud|global|gcp-300-credit",
   "title": "[全球] Google Cloud 新客 $300 / 90 天",
   "brand": "Google Cloud",
   "domain": "cloud.google.com",
@@ -1194,6 +1365,7 @@
  },
  {
   "id": "vultr-credit",
+  "dedup_key": "vultr|cloud|global|credit",
   "title": "[全球] Vultr 新客最高 $300 体验金",
   "brand": "Vultr",
   "domain": "vultr.com",
@@ -1225,7 +1397,7 @@
  },
  {
   "id": "hsbc-uk-bank-account-switch-220",
-  "dedup_key": "hsbc|bank|uk|switch-220",
+  "dedup_key": "hsbc|bank|gb|account-switch-220",
   "title": "[英区] HSBC Bank Account 转户奖 £220：App 开户 + 2 个直扣 + 存 £2,000 + 刷卡 £500",
   "brand": "HSBC UK",
   "domain": "hsbc.co.uk",
@@ -1255,11 +1427,21 @@
   "status": "active",
   "added_at": "2026-11-19T11:52:23+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "first-direct-1st-account-switch-210",
-  "dedup_key": "firstdirect|bank|uk|switch-210",
+  "dedup_key": "firstdirect|bank|gb|1st-account-switch-210",
   "title": "[英区] first direct 1st Account 转户奖 £210（£175 + £35 加码，12/2 前开户）",
   "brand": "first direct",
   "domain": "firstdirect.com",
@@ -1288,11 +1470,17 @@
   "status": "active",
   "added_at": "2026-11-19T11:52:23+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "club-lloyds-switch-200",
-  "dedup_key": "lloyds|bank|uk|switch-200",
+  "dedup_key": "lloyds-bank|bank|gb|club-lloyds-switch-200",
   "title": "[英区] Club Lloyds 转户奖 £200：开新账户 + 3 个有效直扣（至 2027-01-08）",
   "brand": "Lloyds Bank",
   "domain": "lloydsbank.com",
@@ -1321,11 +1509,16 @@
   "status": "active",
   "added_at": "2026-11-19T11:52:23+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "natwest-select-switch-200",
-  "dedup_key": "natwest|bank|uk|switch-200",
+  "dedup_key": "natwest|bank|gb|select-switch-200",
   "title": "[英区] NatWest Select / Reward 转户奖 £200：不用直扣，存 £1,250 + 登录 App",
   "brand": "NatWest",
   "domain": "natwest.com",
@@ -1356,10 +1549,21 @@
   "added_at": "2026-11-19T11:52:23+08:00",
   "source_url": "https://www.natwestgroup.com/news-and-insights/news-room/press-releases/our-updates/2026/may/natwest-offers-200-cash-to-customers-who-switch-their-bank-accou.html",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "rbs-select-reward-switch-200",
+  "dedup_key": "royal-bank|bank|gb|rbs-select-reward-switch-200",
   "title": "[英区] RBS Select / Reward 转户奖 £200：CASS 全转 + 存 £1,250 留 24 小时 + 登录 App（60 天内）",
   "brand": "Royal Bank of Scotland",
   "domain": "rbs.co.uk",
@@ -1389,10 +1593,21 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "investengine-referral-20-200",
+  "dedup_key": "investengine|bank|gb|referral-20-200",
   "title": "[英区] InvestEngine 推荐投资：投入 £100 抽 £20–£200 奖励（75% 落在 £20–£24），须持有 12 个月",
   "brand": "InvestEngine",
   "domain": "investengine.com",
@@ -1423,11 +1638,17 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "za-bank-mgm-welcome-2000",
-  "dedup_key": "zabank|bank|hk|mgm-2000",
+  "dedup_key": "za-bank|bank|hk|mgm-welcome-2000",
   "title": "[香港] ZA Bank 众安银行新客迎新：HK$2,000 券包 + 20% 定存加息 + USD 30 美股券（11/19 起）",
   "brand": "ZA Bank",
   "domain": "za.group",
@@ -1458,11 +1679,20 @@
   "added_at": "2026-11-19T11:52:23+08:00",
   "kyc_level": "cn_ok",
   "utility": 0,
-  "kyc_note": "访港旅客可用内地证件开户"
+  "kyc_note": "访港旅客可用内地证件开户",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "HK"
+  ]
  },
  {
   "id": "coop-bank-switch-200",
-  "dedup_key": "coop-bank|bank|uk|switch-200",
+  "dedup_key": "coop-bank|bank|gb|switch-200",
   "title": "[英区] Co-op Bank 转户奖：先拿 £125，再连拿 3 个月 £25（合计最高 £200）",
   "brand": "Co-operative Bank",
   "domain": "co-operativebank.co.uk",
@@ -1491,10 +1721,17 @@
   "added": "2026-11-20",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "google-ai-student",
+  "dedup_key": "google|ai|multi|ai-student",
   "title": "[美区/多区] Google AI 学生计划：12 个月免费",
   "brand": "Google",
   "domain": "gemini.google.com",
@@ -1529,6 +1766,7 @@
  },
  {
   "id": "thai-aipass-free-ai-models",
+  "dedup_key": "aipass|ai|th|thai-aipass-free-ai-models",
   "title": "[泰区] 泰国 TH-AI Passport（AiPASS）：30+ AI 模型免费用到 2027-08-31",
   "brand": "AiPASS",
   "domain": "aipass.go.th",
@@ -1562,6 +1800,7 @@
  },
  {
   "id": "kiro-students-year-1000",
+  "dedup_key": "kiro-aws|ai|global|students-year-1000",
   "title": "[全球] Kiro 学生版一年免费：每月 1,000 credits（价值约 $240）",
   "brand": "Kiro (AWS)",
   "domain": "kiro.dev",
@@ -1596,6 +1835,7 @@
  },
  {
   "id": "wio-creators-12-months-free",
+  "dedup_key": "wio-bank|bank|ae|creators-12-months-free",
   "title": "[阿联酋] Wio「创作者套餐」：商业账户 12 个月免月费（促销码 WIOCREATE）",
   "brand": "Wio Bank",
   "domain": "wio.io",
@@ -1624,11 +1864,20 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "business",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "AE"
+  ]
  },
  {
   "id": "nationwide-flexaccount-switch-175",
-  "dedup_key": "nationwide|bank|uk|switch-175",
+  "dedup_key": "nationwide|bank|gb|flexaccount-switch-175",
   "title": "[英区] Nationwide FlexAccount 转户奖 £175：2 个直扣 + 存 £1,000 + 刷 1 笔",
   "brand": "Nationwide",
   "domain": "nationwide.co.uk",
@@ -1657,10 +1906,17 @@
   "status": "active",
   "added_at": "2026-11-19T11:52:23+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "nordvpn-black-friday-2026",
+  "dedup_key": "nordvpn|software|global|black-friday-2026",
   "title": "[全球] NordVPN 黑五：2 年 Basic $2.99/月 + 送 3 个月（省约 $232）",
   "brand": "NordVPN",
   "domain": "nordvpn.com",
@@ -1694,7 +1950,7 @@
  },
  {
   "id": "etrade-premium-savings-200",
-  "dedup_key": "etrade|bank|us|premium-savings-save200",
+  "dedup_key": "etrade|bank|us|premium-savings-200",
   "title": "[美区] E*TRADE Premium Savings：存 $20,000 送 $200 现金 + 前 6 个月 4.25% APY（码 SAVE200，11/30 截止）",
   "brand": "E*TRADE",
   "domain": "us.etrade.com",
@@ -1724,10 +1980,17 @@
   "added": "2026-11-21",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需美国居民身份"
+  "kyc_note": "需美国居民身份",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "trading212-au-bonus-shares",
+  "dedup_key": "trading-212|bank|au|bonus-shares",
   "title": "[澳区] Trading 212 邀请开户：投 A$100 双方各得 A$20–A$200 免费碎股（12/8 截止）",
   "brand": "Trading 212",
   "domain": "trading212.com",
@@ -1757,10 +2020,17 @@
   "added_at": "2026-11-19T07:58:34+08:00",
   "added": "2026-11-19",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "AU"
+  ]
  },
  {
   "id": "github-student-pack",
+  "dedup_key": "github|software|global|student-pack",
   "title": "[全球] GitHub Student Developer Pack",
   "brand": "GitHub",
   "domain": "github.com",
@@ -1792,6 +2062,7 @@
  },
  {
   "id": "rakuten-alliant-checking-200",
+  "dedup_key": "rakuten|bank|us|alliant-checking-200",
   "title": "[美区] Rakuten × Alliant 高息支票账户：$200 返现（或 2 万 Amex/Bilt 积分）",
   "brand": "Rakuten × Alliant Credit Union",
   "domain": "rakuten.com",
@@ -1823,10 +2094,17 @@
   "source_url": "https://stackthedeal.com/bank-bonuses/rakuten-alliant-credit-union-checking-200/",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需美国居民或 U.S. Person"
+  "kyc_note": "需美国居民或 U.S. Person",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "deepgram-200-free-credit",
+  "dedup_key": "deepgram|ai|global|200-free-credit",
   "title": "[全球] Deepgram $200 免费额度：免绑卡、不过期（约 700 小时转写）",
   "brand": "Deepgram",
   "domain": "deepgram.com",
@@ -1859,7 +2137,7 @@
  },
  {
   "id": "alibabacloud-intl-200-credit",
-  "dedup_key": "alibabacloud|cloud|global|200-instant-credit",
+  "dedup_key": "alibabacloud|cloud|global|intl-200-credit",
   "title": "[全球/国际站] 阿里云国际站新客 $200 算力金：首购前申领、无最低消费（60 天有效）",
   "brand": "阿里云国际站",
   "domain": "alibabacloud.com",
@@ -1894,6 +2172,7 @@
  },
  {
   "id": "pingandb-hk-new-customer-nov2026",
+  "dedup_key": "pingandb|bank|hk|new-customer-nov2026",
   "title": "[香港] 平安数字银行 11 月新客：1 个月 20% 港元定存 + HK$200 现金（合计约 HK$1,515）",
   "brand": "平安数字银行（PingAnDB）",
   "domain": "pingandb.com",
@@ -1925,10 +2204,20 @@
   "source_url": "https://www.media-outreach.com/news/hong-kong/2026/11/04/499193/%e5%b9%b3%e5%ae%89%e6%95%b8%e5%ad%97%e9%8a%80%e8%a1%8c%e5%b8%b6%e4%be%86%e3%80%8c%e5%b9%b4%e5%ba%a6%e6%9c%80%e9%ab%98%e6%81%af%e8%bf%8e%e6%96%b0%e5%84%aa%e6%83%a0%e3%80%8d-%e6%96%b0%e5%ae%a2%e4%ba%ab/",
   "kyc_level": "cn_ok",
   "utility": 0,
-  "kyc_note": "需本人到港，App 定位核验"
+  "kyc_note": "需本人到港，App 定位核验",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "HK"
+  ]
  },
  {
   "id": "robinhood-uk-free-stock",
+  "dedup_key": "robinhood|bank|gb|free-stock",
   "title": "[英区] Robinhood UK 新客送碎股：存 £1 抽 $7–$175（96% 得 $7–$8）",
   "brand": "Robinhood UK",
   "domain": "robinhood.com",
@@ -1958,11 +2247,21 @@
   "status": "active",
   "added_at": "2026-11-19T09:52:44+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "amd-ai-developer-program-credits",
-  "dedup_key": "amd|ai|global|developer-program",
+  "dedup_key": "amd|ai|global|ai-developer-program-credits",
   "title": "[全球] AMD AI Developer Program：$100 云 GPU 额度 + $50 Fireworks 额度 + Token Lab 免费 API",
   "brand": "AMD",
   "domain": "amd.com",
@@ -2027,6 +2326,7 @@
  },
  {
   "id": "wooriwon-mobile-black-friday",
+  "dedup_key": "won-woori|esim|kr|wooriwon-mobile-black-friday",
   "title": "[韩区] 우리WON모바일 黑五：11 款套餐「体感 0 元」，6 个月 꿀머니 + 5 万 Naver Pay + eSIM 开通费全免",
   "brand": "우리WON모바일 (Woori Bank)",
   "domain": "wooriwonmobile.com",
@@ -2075,10 +2375,18 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到该品牌实体 eUICC 写入实测。",
-  "euicc_note_en": "No third-party eUICC test found for this brand."
+  "euicc_note_en": "No third-party eUICC test found for this brand.",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "KR"
+  ]
  },
  {
   "id": "ymobile-yahoo-store-benefits",
+  "dedup_key": "ymobile|esim|jp|yahoo-store-benefits",
   "title": "[日区] Y!mobile × Yahoo! 购物店：他社转网最高 1.5 万円 PayPay + 数据增量选项 6 个月免费（eSIM 可）",
   "brand": "Y!mobile（Yahoo!ショッピング店）",
   "domain": "ymobile-store.yahoo.co.jp",
@@ -2127,10 +2435,18 @@
   "euicc_compat": "unknown",
   "euicc_note": "日本运营商普遍有 EID 白名单（社区资料），本条未见逐条实测。",
   "euicc_note_en": "Japanese carriers generally use EID whitelists; no per-brand test found.",
-  "euicc_source": "iecho.cc/eSIM 转 SIM 实体卡（2025-02 更新）"
+  "euicc_source": "iecho.cc/eSIM 转 SIM 实体卡（2025-02 更新）",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "JP"
+  ]
  },
  {
   "id": "jpm-personal-investing-invest-1000-100",
+  "dedup_key": "jpmorgan|bank|gb|personal-investing-invest-1000-100",
   "title": "[英区] J.P. Morgan 个人投资：11/30 前单笔投入 £1,000 留 6 个月，送 £100 现金",
   "brand": "J.P. Morgan Personal Investing",
   "domain": "personalinvesting.jpmorgan.com",
@@ -2160,10 +2476,17 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "bybit-eu-card-welcome-120",
+  "dedup_key": "bybit|bank|eea|welcome-120",
   "title": "[欧区] Bybit EU 卡新客：€120 返现 + 订阅实付返还最高 €50",
   "brand": "Bybit EU",
   "domain": "bybit.eu",
@@ -2195,11 +2518,22 @@
   "added_at": "2026-11-19T03:23:12+08:00",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "仅 EEA 居民"
+  "kyc_note": "仅 EEA 居民",
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "EEA",
+   "-MT"
+  ]
  },
  {
   "id": "quilter-invest-isa-100",
-  "dedup_key": "quilter|bank|uk|invest-isa-cashback-100",
+  "dedup_key": "quilter|bank|gb|invest-isa-100",
   "title": "[英区] Quilter Invest：开 ISA 存 £1,000 留 4 个月，TopCashback 返 £100（≈$130）",
   "brand": "Quilter Invest",
   "domain": "quilter.com",
@@ -2227,11 +2561,17 @@
   "added": "2026-11-20",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "uq-mobile-sim-debut-20000",
-  "dedup_key": "uq-mobile|bank|jp|sim-debut-20000",
+  "dedup_key": "uq-mobile|esim|jp|sim-debut-20000",
   "title": "[日区] UQ mobile SIM 出道活动：他社转网只办 SIM/eSIM，返 2 万日元 au PAY（≈$130）",
   "brand": "UQ mobile",
   "domain": "uqmobile.jp",
@@ -2279,11 +2619,18 @@
   "euicc_compat": "unknown",
   "euicc_note": "日本运营商普遍有 EID 白名单（社区资料），本条未见逐条实测。",
   "euicc_note_en": "Japanese carriers generally use EID whitelists; no per-brand test found.",
-  "euicc_source": "iecho.cc（2025-02 更新）"
+  "euicc_source": "iecho.cc（2025-02 更新）",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "JP"
+  ]
  },
  {
   "id": "ahamo-mnp-20000-points",
-  "dedup_key": "ahamo|esim|jp|mnp-20000",
+  "dedup_key": "ahamo|esim|jp|mnp-20000-points",
   "title": "[日区] ahamo 转网送 2 万 d 积分：只办 SIM/eSIM，4,000pt×5 个月（≈$130）",
   "brand": "ahamo",
   "domain": "ahamo.com",
@@ -2331,10 +2678,18 @@
   "euicc_compat": "unknown",
   "euicc_note": "日本运营商普遍有 EID 白名单（社区资料），本条未见逐条实测。",
   "euicc_note_en": "Japanese carriers generally use EID whitelists; no per-brand test found.",
-  "euicc_source": "iecho.cc（2025-02 更新）"
+  "euicc_source": "iecho.cc（2025-02 更新）",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "JP"
+  ]
  },
  {
   "id": "freetrade-free-share-10-100",
+  "dedup_key": "freetrade|bank|gb|share-10-100",
   "title": "[英区] Freetrade 免费股票 £10–£100：存 £50 即送一只随机碎股，卖出后 180 天可提现",
   "brand": "Freetrade",
   "domain": "freetrade.io",
@@ -2365,10 +2720,21 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "raisin-uk-refer-friend-100",
+  "dedup_key": "raisin|bank|gb|refer-friend-100",
   "title": "[英区] Raisin UK 推荐 £100：首笔就开 1 年期以上定存 £10,000，双方各得 £100",
   "brand": "Raisin UK",
   "domain": "raisin.com",
@@ -2398,10 +2764,17 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "fidelity-uk-refer-100-amazon",
+  "dedup_key": "fidelity|bank|gb|refer-100-amazon",
   "title": "[英区] Fidelity 推荐开户：一次性投入 £5,000 开 ISA / SIPP / 投资账户，双方各得 £100 亚马逊卡",
   "brand": "Fidelity International",
   "domain": "fidelity.co.uk",
@@ -2431,10 +2804,17 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "tide-business-referral-100",
+  "dedup_key": "tide|bank|gb|business-referral-100",
   "title": "[英区] Tide 企业账户推荐奖 £100：双方各得，新户 3 个月内刷 Tide 卡 £500",
   "brand": "Tide",
   "domain": "tide.co",
@@ -2464,10 +2844,21 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "business",
+  "residency_requirement": "local_address",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "hellomobile-foreigner-180k-naverpay",
+  "dedup_key": "hellomobile|esim|kr|foreigner-180k-naverpay",
   "title": "[韩区] 你好移动（헬로모바일）外国人专享：6 个月共 18 万韩元 Naver Pay + 每月多 15GB",
   "brand": "LG HelloVision Hello Mobile",
   "domain": "direct.lghellovision.net",
@@ -2515,10 +2906,18 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到该品牌实体 eUICC 写入实测。",
-  "euicc_note_en": "No third-party eUICC test found for this brand."
+  "euicc_note_en": "No third-party eUICC test found for this brand.",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "KR"
+  ]
  },
  {
   "id": "elevenlabs-black-friday-creator",
+  "dedup_key": "elevenlabs|software|global|black-friday-creator",
   "title": "[全球] ElevenLabs 黑五：Creator 年付首年 $99（约 55% off，至 12/1）",
   "brand": "ElevenLabs",
   "domain": "elevenlabs.io",
@@ -2551,6 +2950,7 @@
  },
  {
   "id": "notion-education",
+  "dedup_key": "notion|software|global|education",
   "title": "[全球] Notion 教育计划：Plus 版免费",
   "brand": "Notion",
   "domain": "notion.com",
@@ -2616,6 +3016,7 @@
  },
  {
   "id": "uu-remote-vip-annual-half-2026",
+  "dedup_key": "netease-uu|software|cn|remote-vip-annual-half-2026",
   "title": "[中国区] 网易 UU 远程 VIP 年卡五折：¥119/年（原价 ¥238，12/1 前注册可领）",
   "highlight": "12/1 前注册的账号可在客户端「消息中心」领年卡五折券：VIP 年卡 ¥238 折后 ¥119（约 ¥9.9/月），基础远控继续免费不限时",
   "brand": "网易 UU 远程",
@@ -2650,6 +3051,7 @@
  },
  {
   "id": "modelscope-amd-100h-gpu",
+  "dedup_key": "modelscope|cloud|cn|amd-100h-gpu",
   "title": "[中国区] 魔搭 × AMD 开发者计划：100 小时 MI300X（192GB 显存）免费算力",
   "brand": "ModelScope 魔搭 × AMD",
   "domain": "modelscope.cn",
@@ -2683,6 +3085,7 @@
  },
  {
   "id": "ethena-pay-virtual-visa-4pct",
+  "dedup_key": "ethena-pay|crypto|multi|virtual-visa-4pct",
   "title": "[非美 47 国] Ethena Pay 免费虚拟 Visa 卡：月前 $2,500 消费返 4% AVAX",
   "highlight": "非美国人士可用：虚拟 Visa 零开卡零月费，每月前 $2,500 消费返 4% AVAX（约 $100/月），可绑 Apple / Google Pay",
   "brand": "Ethena Pay",
@@ -2715,6 +3118,7 @@
  },
  {
   "id": "schwab-referral-brokerage-1000",
+  "dedup_key": "schwab|bank|us|referral-brokerage-1000",
   "title": "[美区] Charles Schwab 推荐开户：净入金 $25,000 起送 $100，最高 $1,000",
   "highlight": "用推荐码开券商账户、45 天内净入金 $25,000 起，按档送 $100–$1,000；净入金要在 Schwab 留存一年",
   "brand": "Charles Schwab",
@@ -2744,11 +3148,17 @@
   "status": "active",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需美国居民身份"
+  "kyc_note": "需美国居民身份",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "chatgpt-business-plugin-credits",
-  "dedup_key": "openai|ai|multi|business-plugin-credits",
+  "dedup_key": "openai|ai|multi|chatgpt-business-plugin-credits",
   "title": "[多区] ChatGPT Business 装插件领额度：PayPal / Oracle 各 $50、HubSpot $25、Klaviyo $50",
   "brand": "OpenAI",
   "domain": "help.openai.com",
@@ -2783,7 +3193,7 @@
  },
  {
   "id": "codex-students-100",
-  "dedup_key": "openai|ai|us-ca|codex-student-100",
+  "dedup_key": "openai|ai|ca-us|codex-students-100",
   "title": "[美/加区] Codex 学生认证送 $100 额度（2,500 credits，12 个月有效）",
   "brand": "OpenAI",
   "domain": "openai.com",
@@ -2818,6 +3228,7 @@
  },
  {
   "id": "upsolve-free-1000-credits",
+  "dedup_key": "upsolve-ai|ai|global|free-1000-credits",
   "title": "[全球] Upsolve 免费版：1000 一次性 Credits（约 500 次数据分析问答，≈$100），免绑卡还带 MCP + CLI",
   "highlight": "注册即得 $0 免费版：1000 一次性 Credits（按超量价 $0.10/credit 折合约 $100），不用信用卡；CLI 与远程 MCP 服务器都能直接挂到 Claude / Cursor / Codex",
   "brand": "Upsolve AI",
@@ -2852,6 +3263,7 @@
  },
  {
   "id": "azure-for-students-100",
+  "dedup_key": "microsoft|cloud|global|azure-for-students-100",
   "title": "[全球] Azure 学生版：$100 额度 + 65 项永久免费服务（免绑卡，学校邮箱认证）",
   "highlight": "在校生用学校邮箱注册即得 $100 额度（12 个月内用完）+ 20 多项热门服务 12 个月免费 + 65 项永久免费，全程不用绑卡",
   "brand": "Microsoft Azure",
@@ -2886,6 +3298,7 @@
  },
  {
   "id": "shopify-uk-1-pound-3-months",
+  "dedup_key": "shopify|software|gb|1-pound-3-months",
   "title": "[英区] Shopify 建站：3 天免费后 £1/月连用 3 个月（原价 £25/月）",
   "brand": "Shopify",
   "domain": "shopify.com",
@@ -2919,6 +3332,7 @@
  },
  {
   "id": "amazon-prime-young-adults",
+  "dedup_key": "amazon|software|us|prime-young-adults",
   "title": "[美区] Amazon Prime for Young Adults：18–24 岁/学生 6 个月 $0 试用",
   "brand": "Amazon",
   "domain": "amazon.com",
@@ -2951,6 +3365,7 @@
  },
  {
   "id": "uq-oyakouenwari-1100",
+  "dedup_key": "uq-mobile|esim|jp|oyakouenwari-1100",
   "title": "[日区] UQ mobile 親子応援割：月租直减 1,100 円 × 12 个月，コミコミ 再送 300GB（3 年有效）",
   "highlight": "家里有 5–18 岁成员：新办 UQ mobile 次月起 12 个月每月减 1,100 円，コミコミ 另送 3 年有效的 300GB",
   "brand": "UQ mobile（KDDI）",
@@ -2999,11 +3414,17 @@
   "euicc_compat": "unknown",
   "euicc_note": "日本运营商普遍有 EID 白名单（社区资料），本条未见逐条实测。",
   "euicc_note_en": "Japanese carriers generally use EID whitelists; no per-brand test found.",
-  "euicc_source": "iecho.cc（2025-02 更新）"
+  "euicc_source": "iecho.cc（2025-02 更新）",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "JP"
+  ]
  },
  {
   "id": "ymobile-parent-child-discount",
-  "dedup_key": "ymobile|esim|jp|parent-child-1100x12",
+  "dedup_key": "ymobile|esim|jp|parent-child-discount",
   "title": "[日区] ワイモバ親子割：5–18 岁及家人转网，月租直减 1,100 日元 × 12 个月（约 ¥13,200）",
   "brand": "Y!mobile",
   "domain": "ymobile.jp",
@@ -3051,10 +3472,17 @@
   "euicc_compat": "unknown",
   "euicc_note": "日本运营商普遍有 EID 白名单（社区资料），本条未见逐条实测。",
   "euicc_note_en": "Japanese carriers generally use EID whitelists; no per-brand test found.",
-  "euicc_source": "iecho.cc（2025-02 更新）"
+  "euicc_source": "iecho.cc（2025-02 更新）",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "JP"
+  ]
  },
  {
   "id": "tencent-lighthouse-4c4g-109",
+  "dedup_key": "tencentcloud|cloud|cn|lighthouse-4c4g-109",
   "title": "[中国区] 腾讯云轻量 4 核 4G 3M 新用户首年 109 元/年（≈$15）",
   "brand": "腾讯云",
   "domain": "cloud.tencent.com",
@@ -3088,6 +3516,7 @@
  },
  {
   "id": "dxo-black-friday-2026",
+  "dedup_key": "dxo|software|global|black-friday-2026",
   "title": "[全球] DxO 黑五：修图软件全线最高 5 折（11/17–11/29，最高省 $75）",
   "brand": "DxO",
   "domain": "dxo.com",
@@ -3120,6 +3549,7 @@
  },
  {
   "id": "wise-invite",
+  "dedup_key": "wise|bank|eea-gb|invite",
   "title": "[英区/欧区] Wise 邀请：免费实体卡或 £500 免手续费",
   "brand": "Wise",
   "domain": "wise.com",
@@ -3149,11 +3579,17 @@
   "added_at": "2026-11-12T00:00:00+08:00",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "外区 Wise 可能抽查当地居留许可证"
+  "kyc_note": "外区 Wise 可能抽查当地居留许可证",
+  "identity_requirement": "photo_id",
+  "geo_restriction": [
+   "EEA",
+   "GB"
+  ],
+  "residency_requirement": "local_address"
  },
  {
   "id": "icbc-global-travel-plus-2pct",
-  "dedup_key": "icbc|bank|cn|global-travel-plus-2pct-2026",
+  "dedup_key": "icbc|bank|cn|travel-plus-2pct",
   "title": "[中国区] 工银环球旅行 Plus 信用卡境外消费返 2%：白金卡每月上限 ¥500（至 12/31）",
   "brand": "中国工商银行",
   "domain": "icbc.com.cn",
@@ -3185,10 +3621,17 @@
   "added_at": "2026-11-21T16:57:00+08:00",
   "kyc_level": "cn_ok",
   "kyc_note": "持大陆工行环球旅行 Plus 卡即可",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "CN"
+  ]
  },
  {
   "id": "amazon-prime-uk-young-adults-6m",
+  "dedup_key": "amazon|software|gb|prime-uk-young-adults-6m",
   "title": "[英区] Amazon Prime 学生/18–24 岁：6 个月免费，之后 £4.49/月半价",
   "brand": "Amazon",
   "domain": "amazon.co.uk",
@@ -3257,6 +3700,7 @@
  },
  {
   "id": "ifast-golden-ticket-50",
+  "dedup_key": "ifast-bank|bank|gb|golden-ticket-50",
   "title": "[英区] iFAST Global Bank 金票推荐：入金 £1,000 留 60 天，双方各得 £50（11/30 截止）",
   "brand": "iFAST Global Bank",
   "domain": "ifastgb.com",
@@ -3289,10 +3733,16 @@
   "source_url": "https://www.nodeseek.com/post-1024268-1",
   "kyc_level": "cn_ok",
   "utility": 0,
-  "kyc_note": "内地用户可远程开户"
+  "kyc_note": "内地用户可远程开户",
+  "identity_requirement": "photo_id",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "att-us-free-trial-30d",
+  "dedup_key": "t|esim|us|att-us-free-trial-30d",
   "title": "[美区] AT&T 30 天免费试用：100GB + 25GB 热点（eSIM，无需信用卡）",
   "brand": "AT&T",
   "domain": "att.com",
@@ -3343,10 +3793,20 @@
   "euicc_note_en": "US carriers generally use EID whitelists, so a third-party eUICC needs its IMEI and EID registered with customer service first.",
   "euicc_source": "iecho.cc（2025-02 更新）",
   "vowifi_note": "官方列中国不可用",
-  "vowifi_note_en": "China excluded by AT&T"
+  "vowifi_note_en": "China excluded by AT&T",
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "chase-uk-referral-50",
+  "dedup_key": "chase|bank|gb|referral-50",
   "title": "[英区] Chase UK 推荐开户 £50：App 内填推荐码 + 30 天内入金 £1,000，双方各得 £50",
   "brand": "Chase UK",
   "domain": "chase.co.uk",
@@ -3376,10 +3836,22 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "chip-uk-referral-50",
+  "dedup_key": "chip|bank|gb|referral-50",
   "title": "[英区] Chip 推荐开户 £50：存 £1,000 留 90 天（推荐后 120 天内完成），双方各得 £50",
   "brand": "Chip",
   "domain": "getchip.uk",
@@ -3409,10 +3881,21 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "wealthify-referral-50",
+  "dedup_key": "wealthify|bank|gb|referral-50",
   "title": "[英区] Wealthify 推荐投资 £50：ISA 存 £1,000 / GIA 或 SIPP 存 £5,000，再持有 6 个月",
   "brand": "Wealthify",
   "domain": "wealthify.com",
@@ -3442,10 +3925,17 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "xiaomi-india-google-ai-pro-3m",
+  "dedup_key": "xiaomi|ai|in|india-google-ai-pro-3m",
   "title": "[印度区] 小米/红米印度设备 × Google AI Pro：免费 3 个月",
   "brand": "Xiaomi × Google",
   "domain": "mi.com",
@@ -3479,6 +3969,7 @@
  },
  {
   "id": "zalando-plus-spotify-duolingo",
+  "dedup_key": "zalando-plus|software|eea|spotify-duolingo",
   "title": "[欧区 17 国] Zalando Plus 免费会员：Spotify Premium 最多 5 个月 + Super Duolingo 最多 4 个月",
   "brand": "Zalando Plus",
   "domain": "zalando.de",
@@ -3512,6 +4003,7 @@
  },
  {
   "id": "vercel-ai-gateway-5-monthly",
+  "dedup_key": "vercel|ai|global|ai-gateway-5-monthly",
   "title": "[全球] Vercel AI Gateway：每 30 天 $5 免费额度，token 按上游原价 0 加价",
   "brand": "Vercel",
   "domain": "vercel.com",
@@ -3544,7 +4036,7 @@
  },
  {
   "id": "nodeseek-legend-sg-2c2g-secondhand",
-  "dedup_key": "legendvps|cloud|sg|secondhand-evo-2-2g",
+  "dedup_key": "legend-vps|cloud|sg|2c2g-secondhand",
   "title": "[新加坡] NodeSeek 二手：Legend VPS SG-Evo-2-2G，剩 614 天明盘 ¥400（社区担心清退）",
   "brand": "Legend VPS",
   "domain": "nodeseek.com",
@@ -3578,7 +4070,7 @@
  },
  {
   "id": "lemfi-eu-referral-50",
-  "dedup_key": "lemfi|bank|eu|referral-50",
+  "dedup_key": "lemfi|bank|eea|referral-50",
   "title": "[欧区] LemFi 邀请：欧洲注册双方各得 €50 LemFi Cash（首笔须汇欧元区以外）",
   "brand": "LemFi",
   "domain": "lemfi.com",
@@ -3609,11 +4101,22 @@
   "added_at": "2026-11-19T11:52:23+08:00",
   "source_url": "https://www.nodeseek.com/post-1029968-1",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "EEA"
+  ]
  },
  {
   "id": "chatgpt-student-credits-fr",
-  "dedup_key": "openai|ai|fr|student-50-eur",
+  "dedup_key": "openai|ai|fr|chatgpt-student-credits-fr",
   "title": "[法区] 法国学生领 €50 ChatGPT 额度（UNiDAYS 认证，约 1,250 credits）",
   "brand": "OpenAI",
   "domain": "openai.com",
@@ -3679,10 +4182,21 @@
   "added": "2026-11-21",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需 SSN，大陆不可开户"
+  "kyc_note": "需 SSN，大陆不可开户",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "remitly-us-global-card",
+  "dedup_key": "remitly|bank|us|remitly-us-global-card",
   "title": "[美区] Remitly Global Card 借记卡 + 银行账户：工资直入 $300 送开卡奖励、无月费",
   "brand": "Remitly",
   "domain": "remitly.com",
@@ -3710,10 +4224,21 @@
   "added": "2026-11-20",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "revolut-referral",
+  "dedup_key": "revolut|bank|multi|referral",
   "title": "[多区] Revolut 邀请好友（金额因地区浮动）",
   "brand": "Revolut",
   "domain": "revolut.com",
@@ -3744,10 +4269,25 @@
   "added_at": "2026-11-10T00:00:00+08:00",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "Revolut 要求当地合法居留证明"
+  "kyc_note": "Revolut 要求当地合法居留证明",
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "AU",
+   "EEA",
+   "GB",
+   "SG",
+   "US"
+  ]
  },
  {
   "id": "worldremit-quidco-uk-cashback",
+  "dedup_key": "worldremit|bank|gb|quidco-uk-cashback",
   "title": "[英区] WorldRemit × Quidco 返现：首笔 ≥£25 返 £37.50–£40 + £10 推荐券",
   "brand": "WorldRemit",
   "domain": "worldremit.com",
@@ -3779,10 +4319,17 @@
   "added_at": "2026-11-19T02:57:48+08:00",
   "source_url": "https://bankboost.co.uk/tools/cashback/worldremit",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "lemfi-uk-referral-50",
+  "dedup_key": "lemfi|bank|gb|referral-50",
   "title": "[英区] LemFi 邀请：双方各得 £50 LemFi Cash（每笔 £50 抵 £5）",
   "brand": "LemFi",
   "domain": "lemfi.com",
@@ -3812,10 +4359,22 @@
   "status": "active",
   "added_at": "2026-11-19T02:57:48+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "ig-uk-refer-free-share-1000",
+  "dedup_key": "ig|bank|gb|refer-free-share-1000",
   "title": "[英区] IG 分享结单推荐好友：新客随机拿 £50–£1,000 美股，邀请人 £100 现金",
   "highlight": "投 £1,000 并持有 3 个月，抽一只 £50–£1,000 美股（七成只有 £50–£70），须交 W-8BEN；邀请人拿 £100",
   "brand": "IG",
@@ -3843,11 +4402,17 @@
   "added": "2026-11-19",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "sspace-30day-max-trial",
-  "dedup_key": "sspace|ai|global|30day-max-trial",
+  "dedup_key": "space-ag2|ai|global|sspace-30day-max-trial",
   "title": "[全球] S.Space（AutoGen 团队）：新账号 30 天 Max 试用、免绑卡",
   "brand": "S.Space (AG2)",
   "domain": "s.space",
@@ -3914,6 +4479,7 @@
  },
  {
   "id": "onepay-50-signup-bonus",
+  "dedup_key": "onepay|bank|us|50-signup-bonus",
   "title": "[美区] OnePay 开户 $50 + 邀请人同得 $100（直存 $500 或月末余额 $5,000 解锁 Cash+）",
   "brand": "OnePay",
   "domain": "onepay.com",
@@ -3944,7 +4510,18 @@
   "source_url": "https://www.onepay.com/help-center/articles/rewards-earning-rewards-refer-a-friend",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "需 SSN/ITIN"
+  "kyc_note": "需 SSN/ITIN",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "raksmart-black-friday-2026-vps",
@@ -4016,7 +4593,7 @@
  },
  {
   "id": "nodeseek-racknerd-5c6g-secondhand",
-  "dedup_key": "racknerd|cloud|us|secondhand-5c6g",
+  "dedup_key": "racknerd|cloud|us|5c6g-secondhand",
   "title": "[美区] NodeSeek 二手：RackNerd 黑五款 5 核／6GB 两年付 $89.46（≈$44.73/年），私聊议价",
   "brand": "RackNerd",
   "domain": "racknerd.com",
@@ -4050,6 +4627,7 @@
  },
  {
   "id": "starryblu-60sgd-signup",
+  "dedup_key": "starryblu|bank|global|60sgd-signup",
   "title": "[全球] Starryblu 新人最高 S$60 消费券：邀请注册即得，护照可开新加坡账户与卡",
   "brand": "Starryblu",
   "domain": "starryblu.com",
@@ -4081,10 +4659,20 @@
   "status": "active",
   "kyc_level": "cn_ok",
   "kyc_note": "大陆护照 + 身份证地址证明",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "any_number",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "proton-black-friday-2026",
+  "dedup_key": "proton|software|global|black-friday-2026",
   "title": "[全球] Proton 黑五：Unlimited 首年 $77.88（5 折，省 $42）",
   "brand": "Proton",
   "domain": "proton.me",
@@ -4117,6 +4705,7 @@
  },
  {
   "id": "aliyun-yungongkaiwu-300",
+  "dedup_key": "aliyun|cloud|cn|yungongkaiwu-300",
   "title": "[中国区] 阿里云「云工开物」学生认证：¥300 优惠券（每 12 个月）",
   "brand": "阿里云",
   "domain": "aliyun.com",
@@ -4149,6 +4738,7 @@
  },
  {
   "id": "unicom-esim-xianxian-2026",
+  "dedup_key": "unicom|esim|cn|esim-xianxian-2026",
   "title": "[中国区] 联通 eSIM 尝鲜季 2026：开通 eSIM 免费领 100GB 流量或 300 元漫游券",
   "brand": "中国联通",
   "domain": "10010.com",
@@ -4196,10 +4786,18 @@
   "euicc_compat": "blocked",
   "euicc_note": "第三方 eUICC（eSTK / 9eSIM）没有国内运营商 CI 证书，且国内 eSIM 要求机卡锁定并报备 IMEI-EID，写不进去。",
   "euicc_note_en": "Third-party eUICCs (eSTK, 9eSIM) lack the Chinese carrier CI certificates, and mainland eSIM requires device-card locking with IMEI-EID registration, so they cannot be written.",
-  "euicc_source": "iecho.cc + 中国移动 5G 手机白皮书（2026 版）报道"
+  "euicc_source": "iecho.cc + 中国移动 5G 手机白皮书（2026 版）报道",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "CN"
+  ]
  },
  {
   "id": "ashampoo-photo-optimizer-11-free",
+  "dedup_key": "ashampoo|software|global|photo-optimizer-11-free",
   "title": "[全球] Ashampoo Photo Optimizer 11：免费终身授权（原价 $40，11/30 前兑换）",
   "brand": "Ashampoo",
   "domain": "ashampoo.com",
@@ -4233,6 +4831,7 @@
  },
  {
   "id": "perplexity-nvidia-rtx",
+  "dedup_key": "perplexity|ai|us|nvidia-rtx",
   "title": "[美区] Perplexity Pro × NVIDIA：2 个月 + 3,000 积分",
   "brand": "Perplexity",
   "domain": "perplexity.ai",
@@ -4264,6 +4863,7 @@
  },
  {
   "id": "verizon-free-trial-30d",
+  "dedup_key": "verizon|esim|us|free-trial-30d",
   "title": "[美区] Verizon 30 天免费试用：最高 100GB 5G 流量（eSIM，免信用卡）",
   "brand": "Verizon",
   "domain": "verizon.com",
@@ -4310,11 +4910,20 @@
   "euicc_compat": "whitelist",
   "euicc_note": "美系运营商普遍采用 EID 白名单，第三方 eUICC 需客服登记 IMEI+EID。",
   "euicc_note_en": "US carriers generally use EID whitelists; a third-party eUICC needs its IMEI and EID registered.",
-  "euicc_source": "iecho.cc（2025-02 更新）"
+  "euicc_source": "iecho.cc（2025-02 更新）",
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "exa-api-40-credits-codes",
-  "dedup_key": "exa|ai|global|40-credits-codes",
+  "dedup_key": "exa|ai|global|api-40-credits-codes",
   "title": "[全球] Exa 搜索 API：两个 $20 兑换码可叠 + 每月 $10 免费额度",
   "brand": "Exa",
   "domain": "exa.ai",
@@ -4346,6 +4955,7 @@
  },
  {
   "id": "amazon-music-unlimited-3m-free",
+  "dedup_key": "amazon|software|us|music-unlimited-3m-free",
   "title": "[美区] Amazon Music Unlimited 黑五：新用户 3 个月 $0（价值 $38.97）",
   "brand": "Amazon Music",
   "domain": "amazon.com",
@@ -4379,6 +4989,7 @@
  },
  {
   "id": "oaknorth-referral-30",
+  "dedup_key": "oaknorth|bank|gb|referral-30",
   "title": "[英区] OakNorth 推荐储蓄 £30：存 £2,000 留 30 天，双方各 £30（再开第二个账户各多 £10）",
   "brand": "OakNorth",
   "domain": "oaknorth.co.uk",
@@ -4408,10 +5019,17 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "lloyds-uk-refer-friend-30",
+  "dedup_key": "lloyds-bank|bank|gb|refer-friend-30",
   "title": "[英区] Lloyds 推荐开户 £30：全新客户用推荐链接在 App 开活期，不转户、不存钱、无直扣",
   "brand": "Lloyds Bank",
   "domain": "lloydsbank.com",
@@ -4441,10 +5059,20 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "ymobile-sim-trial-two-months-free",
+  "dedup_key": "ymobile|esim|jp|sim-trial-two-months-free",
   "title": "[日区] ワイモバイル SIM / eSIM 免费试用 2 个月：30GB/月 + 事务手续费 0 円",
   "brand": "Y!mobile",
   "domain": "ymobile.jp",
@@ -4491,10 +5119,21 @@
   "euicc_compat": "unknown",
   "euicc_note": "日本运营商普遍有 EID 白名单（社区资料），本条未见逐条实测。",
   "euicc_note_en": "Japanese carriers generally use EID whitelists; no per-brand test found.",
-  "euicc_source": "iecho.cc（2025-02 更新）"
+  "euicc_source": "iecho.cc（2025-02 更新）",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "geo_restriction": [
+   "JP"
+  ]
  },
  {
   "id": "antbank-macau-nov2026",
+  "dedup_key": "antbank|bank|mo|macau-nov2026",
   "title": "[澳门] 澳门蚂蚁银行 11 月开户礼：入金 3,000 港币送 2 股阿里，留存 30 天再送 2 股小米",
   "brand": "螞蟻銀行（澳門）",
   "domain": "antbank.mo",
@@ -4524,10 +5163,20 @@
   "added_at": "2026-11-19T02:16:53+08:00",
   "kyc_level": "cn_ok",
   "utility": 0,
-  "kyc_note": "需本人到澳门，身份证 + 港澳通行证"
+  "kyc_note": "需本人到澳门，身份证 + 港澳通行证",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "MO"
+  ]
  },
  {
   "id": "revolut-mobile-ireland",
+  "dedup_key": "revolut|esim|ie|mobile-ireland",
   "title": "[爱尔兰] Revolut Mobile eSIM：前 2.5 万名 €9.99/月（原价 €12.99），含 20GB 英欧漫游",
   "brand": "Revolut",
   "domain": "revolut.com",
@@ -4573,10 +5222,22 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测；App 内激活流程可能只认原生 eSIM。",
-  "euicc_note_en": "No third-party eUICC test found; the in-app activation may only accept native eSIM."
+  "euicc_note_en": "No third-party eUICC test found; the in-app activation may only accept native eSIM.",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "IE"
+  ]
  },
  {
   "id": "makefun-ai-agent-bounties-usdc",
+  "dedup_key": "make-fun|crypto|global|ai-agent-bounties-usdc",
   "title": "[全球] make.fun：AI 智能体接编程悬赏赢 USDC，大部分免费参加 + Top-1000 参与奖",
   "brand": "make.fun",
   "domain": "make.fun",
@@ -4610,6 +5271,7 @@
  },
  {
   "id": "paypal-uk-25-invite",
+  "dedup_key": "paypal|bank|gb|25-invite",
   "title": "[英区] PayPal UK 邀好友：新客消费 £10 双方各得 £25（至 12/31）",
   "brand": "PayPal",
   "domain": "paypal.com",
@@ -4638,11 +5300,17 @@
   "status": "active",
   "added_at": "2026-11-19T09:52:44+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "tsb-uk-25-amazon-gift-card",
-  "dedup_key": "tsb|bank|uk|25-amazon-gift-card",
+  "dedup_key": "tsb-bank|bank|gb|25-amazon-gift-card",
   "title": "[英区] TSB Spend & Save 开户送 £25 Amazon 礼品卡（12/16 前，刷 3 笔）",
   "brand": "TSB Bank",
   "domain": "tsb.co.uk",
@@ -4673,10 +5341,17 @@
   "status": "active",
   "added_at": "2026-11-20T03:35:00+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "gigsky-usbank-altitude",
+  "dedup_key": "usbank|esim|us|gigsky-usbank-altitude",
   "title": "[美区] GigSky × U.S. Bank：5GB eSIM 免费领",
   "brand": "U.S. Bank",
   "domain": "usbank.com",
@@ -4707,10 +5382,21 @@
   "source_url": "https://www.insideflyer.com/posts/gigsky-esim-perk-ends-for-altitude-connect-card/",
   "kyc_level": "foreign_only",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_address",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "qiniu-conatus-free-100m-daily",
+  "dedup_key": "qiniu|ai|cn|conatus-free-100m-daily",
   "title": "[中国区] 七牛云 Conatus 融合模型：实名后每天免费 1 亿 Token（至 11/30）",
   "brand": "七牛云",
   "domain": "qiniu.com",
@@ -4743,6 +5429,7 @@
  },
  {
   "id": "inception-mercury-100m-free-tokens",
+  "dedup_key": "inception|ai|global|mercury-100m-free-tokens",
   "title": "[全球] Inception Mercury 3：新账号送 1 亿免费 tokens（免绑卡，OpenAI 兼容）",
   "brand": "Inception Labs",
   "domain": "inceptionlabs.ai",
@@ -4775,6 +5462,7 @@
  },
  {
   "id": "alrajhi-gigsky-free-unlimited-esim",
+  "dedup_key": "alrajhi|esim|sa|gigsky-free-unlimited-esim",
   "title": "[沙特] Al Rajhi 银行卡 × GigSky：免费无限流量 eSIM 3–7 天（有效至 2027-04-13）",
   "brand": "Al Rajhi Bank",
   "domain": "alrajhibank.com.sa",
@@ -4804,11 +5492,21 @@
   "status": "active",
   "kyc_level": "foreign_only",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "SA"
+  ]
  },
  {
   "id": "boc-unionpay-overseas-3pct",
-  "dedup_key": "boc|bank|cn|unionpay-overseas-3pct-2026",
+  "dedup_key": "boc|bank|cn|unionpay-overseas-3pct",
   "title": "[中国区] 中国银行银联信用卡境外线下消费返 3% 消费金：每月上限 ¥200（至 12/31，需报名）",
   "brand": "中国银行",
   "domain": "boc.cn",
@@ -4840,11 +5538,17 @@
   "added_at": "2026-11-21T16:56:00+08:00",
   "kyc_level": "cn_ok",
   "kyc_note": "持大陆中行银联信用卡即可，报名走中行 App/公众号",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "CN"
+  ]
  },
  {
   "id": "nodeseek-matrixidc-4837-1c2g-secondhand",
-  "dedup_key": "matrixidc|cloud|cn-4837|secondhand-1c2g",
+  "dedup_key": "matrixidc|cloud|cn|1c2g-secondhand",
   "title": "[中国区] NodeSeek 二手：MatrixIDC 4837 轻量 1C2G／1.5T，剩余价值 ¥186.57 减 10 出（¥176.57）",
   "brand": "MatrixIDC",
   "domain": "nodeseek.com",
@@ -4878,6 +5582,7 @@
  },
  {
   "id": "airvoice-us-free-trial-10gb",
+  "dedup_key": "airvoice|esim|us|free-trial-10gb",
   "title": "[美区] AirVoice Wireless 免费试用 eSIM：10GB / 30 天 + 美国号无限通话短信",
   "brand": "AirVoice Wireless",
   "domain": "airvoicewireless.com",
@@ -4924,10 +5629,20 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测；美系 MVNO 多沿用 EID 白名单。",
-  "euicc_note_en": "No third-party eUICC test found; US MVNOs often inherit EID whitelists."
+  "euicc_note_en": "No third-party eUICC test found; US MVNOs often inherit EID whitelists.",
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "play-pl-prepaid-esim-rwk",
+  "dedup_key": "play-p4|esim|pl|prepaid-esim-rwk",
   "title": "[波区] Play 波兰预付 eSIM：线上开卡强制实名，100 zł 充值给 365 天有效期",
   "brand": "Play (P4)",
   "domain": "play.pl",
@@ -4976,10 +5691,19 @@
   "euicc_compat": "blocked",
   "euicc_note": "社区 2026-09 实测：Play 屏蔽 9eSIM 的 EID，需换 eSTK（G+D 芯片）等卡才能写入。",
   "euicc_note_en": "Community test in September 2026: Play blocks the 9eSIM EID; an eSTK (G+D chip) card is needed.",
-  "euicc_source": "nodeseek.com/post-956192-1（2026-09-29）"
+  "euicc_source": "nodeseek.com/post-956192-1（2026-09-29）",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "PL"
+  ]
  },
  {
   "id": "voxi-friends-with-benefits-20",
+  "dedup_key": "voxi|esim|gb|friends-with-benefits-20",
   "title": "[英区] VOXI Friends with Benefits：双方各得最高 £20 礼品卡（朋友付满 2 个月）",
   "brand": "VOXI",
   "domain": "voxi.co.uk",
@@ -5030,10 +5754,22 @@
   "euicc_note_en": "Writing Vodafone UK family profiles to blank cards often conflicts with ARA-M, but no VOXI-specific test found.",
   "euicc_source": "nodeseek 沃达丰写卡讨论（2026-06）",
   "vowifi_note": "漫游时禁止使用",
-  "vowifi_note_en": "not allowed while roaming"
+  "vowifi_note_en": "not allowed while roaming",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "bitget-wallet-card-usdc",
+  "dedup_key": "bitget|crypto|multi|wallet-card-usdc",
   "title": "[多区] Bitget Wallet Card 开卡礼：消费 $5 得 5 USDC（最高累计 $25）",
   "brand": "Bitget Wallet",
   "domain": "bitget.com",
@@ -5068,7 +5804,7 @@
  },
  {
   "id": "airalo-black25-unlimited",
-  "dedup_key": "airalo|esim|global|black25",
+  "dedup_key": "airalo|esim|global|black25-unlimited",
   "title": "[全球] Airalo 黑五 BLACK25：Unlimited 套餐 25% off（至 11/30，可 365 天内激活）",
   "brand": "Airalo",
   "domain": "airalo.com",
@@ -5098,10 +5834,15 @@
   "added_at": "2026-11-19T11:52:23+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "roamless-blackfriday50-5off",
+  "dedup_key": "roamless|esim|global|blackfriday50-5off",
   "title": "[全球] Roamless 早鸟黑五 5 折：全部 eSIM 套餐与 FLEX 随用随充，单笔最多减 $25（码 BLACKFRIDAY50）",
   "brand": "Roamless",
   "domain": "roamless.com",
@@ -5132,10 +5873,19 @@
   "source_url": "https://www.ozbargain.com.au/deals/roamless.com",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "airtel-postpaid-free-roaming",
+  "dedup_key": "airtel|esim|in|postpaid-free-roaming",
   "title": "[印度区] Airtel 后付费：每年 1 次免费国际漫游（5GB / 5 天）",
   "brand": "Airtel",
   "domain": "airtel.in",
@@ -5182,10 +5932,22 @@
   "euicc_note": "未查到实体 eUICC 写入实测。",
   "euicc_note_en": "No third-party eUICC test found.",
   "vowifi_note": "国际漫游不可用",
-  "vowifi_note_en": "not available on international roaming"
+  "vowifi_note_en": "not available on international roaming",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "IN"
+  ]
  },
  {
   "id": "gigsky-visa-complimentary-data",
+  "dedup_key": "gigsky|esim|global|visa-complimentary-data",
   "title": "[全球/按发卡地] GigSky × Visa：合格 Visa 卡免费 1–3GB 全球流量 + 指定目的地 7 天无限",
   "brand": "GigSky × Visa",
   "domain": "gigsky.com",
@@ -5215,11 +5977,20 @@
   "added_at": "2026-11-19T05:49:57+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "telnyx-pretrial-25-ai",
-  "dedup_key": "telnyx|ai|global|pretrial-25",
+  "dedup_key": "telnyx|ai|global|pretrial-25-ai",
   "title": "[全球] Telnyx 新账号送 $25 AI 额度 + 1 个美国号码（免绑卡，OpenAI 兼容）",
   "brand": "Telnyx",
   "domain": "telnyx.com",
@@ -5253,7 +6024,7 @@
  },
  {
   "id": "caffeine-blackfriday-studio-1m",
-  "dedup_key": "caffeine|ai|global|blackfriday-studio",
+  "dedup_key": "caffeine|ai|global|blackfriday-studio-1m",
   "title": "[全球] Caffeine 黑五码 BLACKFRIDAY：Studio 免费 1 个月（$25/月，含 100 credits）",
   "brand": "Caffeine",
   "domain": "caffeine.ai",
@@ -5287,6 +6058,7 @@
  },
  {
   "id": "atom-flexi-friday-100gb-spin",
+  "dedup_key": "atom|esim|mm|flexi-friday-100gb-spin",
   "title": "[缅区] ATOM「Flexi Friday」：周五买 FlexiPlan 包抽最高 100GB 流量",
   "brand": "ATOM",
   "domain": "atom.com.mm",
@@ -5332,10 +6104,22 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测。",
-  "euicc_note_en": "No third-party eUICC test found."
+  "euicc_note_en": "No third-party eUICC test found.",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "MM"
+  ]
  },
  {
   "id": "unicom-cloud-free-ai-desktop",
+  "dedup_key": "cucloud|cloud|cn|unicom-cloud-free-ai-desktop",
   "title": "[中国区] 联通云新客：0 元用 1 个月 AI 云桌面（4 核 8G + 千问办公）",
   "brand": "联通云（CUCloud）",
   "domain": "cucloud.cn",
@@ -5370,6 +6154,7 @@
  },
  {
   "id": "iijmio-gigaplan-half-price",
+  "dedup_key": "iijmio|esim|jp|gigaplan-half-price",
   "title": "[日区] IIJmio ギガプラン 半价活动：语音 SIM / eSIM 前 3 个月月租减半（最低 475 円）",
   "brand": "IIJmio",
   "domain": "iijmio.jp",
@@ -5402,10 +6187,18 @@
   "source_url": "https://www.iijmio.jp/info/iij/1793256547.html",
   "kyc_level": "foreign_only",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "JP"
+  ]
  },
  {
   "id": "talkmobile-150gb-half-price-3m",
+  "dedup_key": "talkmobile|esim|gb|150gb-half-price-3m",
   "title": "[英区] Talkmobile 150GB 首 3 个月 £5.97/月：12 个月合约，之后 £11.95",
   "brand": "Talkmobile",
   "domain": "talkmobile.co.uk",
@@ -5437,11 +6230,18 @@
   "kyc_level": "foreign_only",
   "vowifi": "n/a",
   "utility": 0,
-  "kyc_note": "需英国地址、英国银行卡与信用检查"
+  "kyc_note": "需英国地址、英国银行卡与信用检查",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "vps-taxi-24-softbank-secondhand",
-  "dedup_key": "vps-taxi|cloud|us-la|softbank-24-secondhand",
+  "dedup_key": "vps-taxi|cloud|jp-us|24-softbank-secondhand",
   "title": "[美区/日本] NodeSeek 二手：VPS.taxi 年付 $24 机（LA 三网 9929／JP 软银）原价 ¥150.85 出，2027-10-30 到期",
   "brand": "VPS.taxi",
   "domain": "vps.taxi",
@@ -5475,6 +6275,7 @@
  },
  {
   "id": "heygen-voice-turbo-free",
+  "dedup_key": "heygen|ai|global|voice-turbo-free",
   "title": "[全球] HeyGen Voice Turbo 免费到 11/30：公开音色 + 即时克隆、免绑卡",
   "brand": "HeyGen",
   "domain": "developers.heygen.com",
@@ -5507,7 +6308,7 @@
  },
  {
   "id": "fireworks-glimmer-free-training",
-  "dedup_key": "fireworks|ai|global|glimmer-free-train",
+  "dedup_key": "fireworks-ai|ai|global|glimmer-free-training",
   "title": "[全球] Fireworks Free Weights Club：Muse Glimmer 30B 训练全免（SFT/DPO/RL，至 11/30）",
   "brand": "Fireworks AI",
   "domain": "fireworks.ai",
@@ -5542,6 +6343,7 @@
  },
  {
   "id": "swarms-cloud-black-friday",
+  "dedup_key": "swarms-cloud|ai|global|black-friday",
   "title": "[全球] Swarms Cloud 黑五：$15 免费积分 + 充值 20% 加赠（至 12/2）",
   "brand": "Swarms Cloud",
   "domain": "swarms.world",
@@ -5574,7 +6376,7 @@
  },
  {
   "id": "l53-ggff-free-domain-2y-2026",
-  "dedup_key": "l53|software|global|ggff-free-domain-2026",
+  "dedup_key": "l53|software|global|ggff-free-domain-2y-2026",
   "title": "[全球] L53 黑五：.ggff.net 二级域名免费注册 2 年（可托管 Cloudflare，码 kxu26bf8k2y）",
   "brand": "L53",
   "domain": "l53.net",
@@ -5609,6 +6411,7 @@
  },
  {
   "id": "taptap-send-uk-first-transfer",
+  "dedup_key": "taptap-send|bank|gb|first-transfer",
   "title": "[英区] TapTap Send 首笔奖励：通用 £5，汇土耳其最高 £20（码待核实）",
   "brand": "TapTap Send",
   "domain": "taptapsend.com",
@@ -5638,10 +6441,21 @@
   "status": "active",
   "added_at": "2026-11-19T02:57:48+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "revolut-uk-signup-20",
+  "dedup_key": "revolut|bank|gb|signup-20",
   "title": "[英区] Revolut 开户奖励 £20：首笔消费 ≥£1，截至 12/31",
   "brand": "Revolut",
   "domain": "revolut.com",
@@ -5672,11 +6486,22 @@
   "added_at": "2026-11-19T02:57:48+08:00",
   "kyc_level": "foreign_only",
   "utility": 0,
-  "kyc_note": "Revolut 要求当地合法居留证明"
+  "kyc_note": "Revolut 要求当地合法居留证明",
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "EEA",
+   "GB"
+  ]
  },
  {
   "id": "vercel-parallel-search-free",
-  "dedup_key": "vercel|ai|global|parallel-search-fast-free",
+  "dedup_key": "vercel|ai|global|parallel-search-free",
   "title": "[全球] Vercel AI Gateway × Parallel 联网搜索：fast 模式免费用到 2027-01-31",
   "brand": "Vercel",
   "domain": "vercel.com",
@@ -5710,6 +6535,7 @@
  },
  {
   "id": "remitly-first-transfer",
+  "dedup_key": "remitly|bank|multi|first-transfer",
   "title": "[多区] Remitly 首笔汇款减 $20",
   "brand": "Remitly",
   "domain": "remitly.com",
@@ -5738,10 +6564,25 @@
   "status": "active",
   "added_at": "2026-11-15T00:00:00+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "AU",
+   "CA",
+   "EEA",
+   "GB",
+   "US"
+  ]
  },
  {
   "id": "sendwave-referral",
+  "dedup_key": "sendwave|bank|eea-us|referral",
   "title": "[美区/欧区] Sendwave 邀请：双方各得转账抵扣",
   "brand": "Sendwave",
   "domain": "sendwave.com",
@@ -5770,10 +6611,22 @@
   "status": "active",
   "added_at": "2026-11-19T01:20:37+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "EEA",
+   "US"
+  ]
  },
  {
   "id": "gigsky-free-esim",
+  "dedup_key": "gigsky|esim|multi|free-esim",
   "title": "[多区] GigSky 免费 eSIM：100MB / 7 天 / 125 国",
   "brand": "GigSky",
   "domain": "gigsky.com",
@@ -5804,10 +6657,18 @@
   "added_at": "2026-11-17T00:00:00+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "worldremit-uk-refer-a-friend",
+  "dedup_key": "worldremit|bank|gb|refer-a-friend",
   "title": "[英区] WorldRemit 邀请好友：新客 £10 券、邀请人 £20 券",
   "brand": "WorldRemit",
   "domain": "worldremit.com",
@@ -5837,10 +6698,17 @@
   "status": "active",
   "added_at": "2026-11-19T02:57:48+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "ria-uk-refer-a-friend-20",
+  "dedup_key": "ria-money|bank|gb|refer-a-friend-20",
   "title": "[英区] Ria 邀请：App 首笔 ≥£50 双方各 £20 抵扣（另 £4+£6 加码）",
   "brand": "Ria Money Transfer",
   "domain": "riamoneytransfer.com",
@@ -5871,10 +6739,21 @@
   "added_at": "2026-11-19T02:57:48+08:00",
   "source_url": "https://www.nodeseek.com/post-990051-1",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "lg-exaone-25-free-api",
+  "dedup_key": "lgai|ai|global|exaone-25-free-api",
   "title": "[全球] LG K-EXAONE 2.5 API 免费开放：750B 参数 / 512K 上下文 / OpenAI 兼容",
   "brand": "LG AI Research",
   "domain": "exaone.ai",
@@ -5909,7 +6788,7 @@
  },
  {
   "id": "aws-kiro-free-500-trial-credits",
-  "dedup_key": "aws-kiro|ai|global|free-50-credits-500-trial",
+  "dedup_key": "aws-kiro|ai|global|free-500-trial-credits",
   "title": "[全球] AWS Kiro：永久免费 50 credits/月，首次升 Pro 当月免费 + 500 credits",
   "brand": "AWS Kiro",
   "domain": "kiro.dev",
@@ -5944,6 +6823,7 @@
  },
  {
   "id": "dusk-bot-free",
+  "dedup_key": "dusk-bot|ai|global|free",
   "title": "[全球] dusk bot：免费开源的 Grok Bot 替代，用你已有的 ChatGPT / Claude 订阅养一队 AI 助手",
   "brand": "dusk bot",
   "domain": "dusk.bot",
@@ -5978,6 +6858,7 @@
  },
  {
   "id": "scalekit-agentkit-free-tier",
+  "dedup_key": "scalekit|ai|global|agentkit-free-tier",
   "title": "[全球] Scalekit AgentKit：MCP 网关免费层，每月 1 万次工具调用",
   "brand": "Scalekit",
   "domain": "scalekit.com",
@@ -6012,6 +6893,7 @@
  },
  {
   "id": "gemini-tasks-free-jpkr",
+  "dedup_key": "google|ai|au-ca-in-jp-kr-us|gemini-tasks-free-jpkr",
   "title": "[日/韩/美/加/澳/印] Gemini「Tasks」免费开放：把订位、比价、整理账单丢给它后台做完",
   "brand": "Google Gemini",
   "domain": "gemini.google",
@@ -6045,6 +6927,7 @@
  },
  {
   "id": "jetbrains-junie-lite-free",
+  "dedup_key": "jetbrains|ai|global|junie-lite-free",
   "title": "[全球] JetBrains Junie Lite：免费 AI 编码代理，每个 JetBrains 账号都有（免绑卡）",
   "brand": "JetBrains",
   "domain": "jetbrains.com",
@@ -6077,6 +6960,7 @@
  },
  {
   "id": "railway-referral-20",
+  "dedup_key": "railway|cloud|global|referral-20",
   "title": "[全球] Railway 推荐 $20 额度：新号升级付费计划后抵一个月 Pro",
   "brand": "Railway",
   "domain": "railway.com",
@@ -6144,7 +7028,7 @@
  },
  {
   "id": "octopus-mobile-welcome-150",
-  "dedup_key": "octopus|bank|hk|mobile-welcome-150-2026",
+  "dedup_key": "octopus|bank|hk|mobile-welcome-150",
   "title": "[香港] 手机八达通新客迎新 HK$150 增值额：加卡 + 单笔 HK$100 消费 + 登记（至 2027-01-03）",
   "brand": "八达通 Octopus",
   "domain": "octopus.com.hk",
@@ -6176,10 +7060,21 @@
   "added_at": "2026-11-21T16:45:00+08:00",
   "kyc_level": "cn_ok_extra",
   "kyc_note": "需八达通 App/银包，Android 还需 Google Wallet",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "HK"
+  ]
  },
  {
   "id": "baidu-qianfan-1m-free-tokens",
+  "dedup_key": "baidu-qianfan|ai|cn|1m-free-tokens",
   "title": "[中国区] 百度千帆新用户：17 个模型各 100 万 Tokens（合计 1700 万，90 天有效）",
   "brand": "百度智能云千帆",
   "domain": "cloud.baidu.com",
@@ -6213,7 +7108,7 @@
  },
  {
   "id": "bytevirt-tokyo-512m-premium",
-  "dedup_key": "bytevirt|cloud|jp-tyo|512m-premium",
+  "dedup_key": "bytevirt|cloud|jp|tokyo-512m-premium",
   "title": "[日本区] ByteVirt 东京 Premium 512M 补货：$16.88/半年（≈$2.81/月，中国优化线路）",
   "brand": "ByteVirt",
   "domain": "bytevirt.com",
@@ -6247,7 +7142,7 @@
  },
  {
   "id": "nodeseek-bandwagon-20g-cn2gia-secondhand",
-  "dedup_key": "bandwagonhost|cloud|us|secondhand-20g-cn2gia",
+  "dedup_key": "bandwagonhost|cloud|us|20g-cn2gia-secondhand",
   "title": "[美区] NodeSeek 二手：搬瓦工 SPECIAL 20G CN2 GIA ECOMMERCE 季付 $50，¥120 出（只能改邮）",
   "brand": "BandwagonHost",
   "domain": "bandwagonhost.com",
@@ -6281,7 +7176,7 @@
  },
  {
   "id": "nodeseek-recloud-de-9929-2c2g-secondhand",
-  "dedup_key": "recloud|cloud|de|secondhand-2c2g-9929",
+  "dedup_key": "recloud|cloud|de|9929-2c2g-secondhand",
   "title": "[德区] NodeSeek 二手：ReCloud 德国 9929 2C2G／4TB，¥120 原邮（续费 ¥30/月，到期 12-25）",
   "brand": "ReCloud",
   "domain": "nodeseek.com",
@@ -6315,6 +7210,7 @@
  },
  {
   "id": "airalo-first-order",
+  "dedup_key": "airalo|esim|global|first-order",
   "title": "[全球] Airalo 首单 15% off（11 月码）",
   "brand": "Airalo",
   "domain": "airalo.com",
@@ -6344,10 +7240,15 @@
   "added_at": "2026-11-16T00:00:00+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "ktm-mobi-japan-esim-1plus1-zero",
+  "dedup_key": "kt|esim|kr|ktm-mobi-japan-esim-1plus1-zero",
   "title": "[韩区] kt M모바일 mobi：日本 eSIM 3 天「1+1」0 韩元（直营店首购专享）",
   "brand": "kt M mobile",
   "domain": "ktmmobile.com",
@@ -6375,13 +7276,23 @@
   "last_verified": "2026-11-21",
   "added": "2026-11-21",
   "status": "active",
-  "kyc_level": "foreign_only",
+  "kyc_level": "cn_ok_extra",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "phone",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "KR"
+  ]
  },
  {
   "id": "kast-5pct-fiat-funding-nov2026",
-  "dedup_key": "kast|bank|global|5pct-fiat-funding",
+  "dedup_key": "kast|bank|global|5pct-fiat-funding-nov2026",
   "title": "[全球] KAST 法币入金 5% 返现：单笔 ≥$50，每人上限 $15（11/18–12/9）",
   "brand": "KAST",
   "domain": "kast.xyz",
@@ -6411,10 +7322,20 @@
   "added": "2026-11-20",
   "kyc_level": "cn_ok_extra",
   "utility": 0,
-  "kyc_note": "护照 KYC，需海外银行入金"
+  "kyc_note": "护照 KYC，需海外银行入金",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "umobile-ultra5g-tourist-esim-my",
+  "dedup_key": "mobile|esim|my|umobile-ultra5g-tourist-esim-my",
   "title": "[马来] U Mobile 免费游客 eSIM：100GB / 24 小时（4 个机场扫码即取）",
   "brand": "U Mobile",
   "domain": "u.com.my",
@@ -6442,14 +7363,21 @@
   "last_verified": "2026-11-21",
   "added": "2026-11-21",
   "status": "active",
-  "kyc_level": "foreign_only",
+  "kyc_level": "cn_ok_extra",
   "vowifi": "n/a",
   "utility": 0,
-  "kyc_note": "须本人到马来西亚机场扫码"
+  "kyc_note": "须本人到马来西亚机场扫码",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "MY"
+  ]
  },
  {
   "id": "webull-uk-5-free-shares",
-  "dedup_key": "webull|bank|uk|5-free-shares",
+  "dedup_key": "webull|bank|gb|5-free-shares",
   "title": "[英区] Webull UK：存 £500 留 60 天送 5 股碎股（多数约 $3/股，最高 $300）",
   "brand": "Webull",
   "domain": "webull.com",
@@ -6478,10 +7406,21 @@
   "added": "2026-11-20",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "flexiroam-mastercard-gdr-3gb",
+  "dedup_key": "flexiroam|esim|global|mastercard-gdr-3gb",
   "title": "[全球] FlexiRoam × Mastercard 免费 3GB / 15 天全球漫游 eSIM",
   "brand": "FlexiRoam",
   "domain": "flexiroam.com",
@@ -6512,10 +7451,20 @@
   "source_url": "https://milelion.com/2026/02/04/guide-free-flexiroam-data-roaming-plans-for-mastercards/",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "openrouter-qwen4-max-free",
+  "dedup_key": "openrouter|ai|global|qwen4-max-free",
   "title": "[全球] OpenRouter 免费旗舰模型：Qwen4-Max / Hy4 Flash（100 万上下文，$0 API）",
   "brand": "OpenRouter",
   "domain": "openrouter.ai",
@@ -6548,6 +7497,7 @@
  },
  {
   "id": "cricket-free-trial-14d",
+  "dedup_key": "cricket|esim|us|free-trial-14d",
   "title": "[美区] Cricket 14 天免费试用：3GB + 无限通话短信（eSIM，免信用卡）",
   "brand": "Cricket Wireless",
   "domain": "cricketwireless.com",
@@ -6594,7 +7544,16 @@
   "euicc_compat": "whitelist",
   "euicc_note": "跑 AT&T 网络，美系 EID 白名单同样适用，第三方 eUICC 需客服登记。",
   "euicc_note_en": "Runs on AT&T, so the same US EID whitelist applies and a third-party eUICC needs registration.",
-  "euicc_source": "iecho.cc（2025-02 更新）"
+  "euicc_source": "iecho.cc（2025-02 更新）",
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "spellar-chrome-300-minutes",
@@ -6632,6 +7591,7 @@
  },
  {
   "id": "racknerd-black-friday-2026",
+  "dedup_key": "racknerd|cloud|global|black-friday-2026",
   "title": "[全球] RackNerd 黑五 VPS：1 GB / 20 GB SSD / 3 TB 月流量 $15.98 年付，续费同价",
   "brand": "RackNerd",
   "domain": "racknerd.com",
@@ -6665,7 +7625,7 @@
  },
  {
   "id": "openrouter-ling32-ernie55-free",
-  "dedup_key": "openrouter|ai|global|ling-3.2-flash+ernie-5.5-flash-free",
+  "dedup_key": "openrouter|ai|global|ling32-ernie55-free",
   "title": "[全球] OpenRouter 新增两款 100 万上下文免费模型：Ling 3.2 Flash 与 ERNIE-5.5 Flash Preview",
   "brand": "OpenRouter",
   "domain": "openrouter.ai",
@@ -6698,7 +7658,7 @@
  },
  {
   "id": "smarthost-las-vegas-x3700",
-  "dedup_key": "smarthost|cloud|us-las|x3700-ryzen-1395",
+  "dedup_key": "smarthost|cloud|us|vegas-x3700",
   "title": "[美区] SmartHost 拉斯维加斯 X3700 Ryzen：1C1G／20G NVMe／2T 流量年付 $13.95",
   "brand": "SmartHost",
   "domain": "smarthost.net",
@@ -6731,6 +7691,7 @@
  },
  {
   "id": "vodafone-nl-prepaid-esim",
+  "dedup_key": "vodafone|esim|nl|prepaid-esim",
   "title": "[荷区] Vodafone 荷兰预付 eSIM：€14 起含荷兰号码、0 月租，每 6 个月一笔付费即可保号",
   "brand": "Vodafone Netherlands",
   "domain": "vodafone.nl",
@@ -6781,10 +7742,19 @@
   "euicc_note_en": "Community test in September 2026: 9eSIM cannot write this Dutch Vodafone card; an eSTK-class card is needed.",
   "euicc_source": "nodeseek.com/post-956192-1（2026-09-29）",
   "vowifi_note": "仅荷兰 IP，海外不可用",
-  "vowifi_note_en": "Dutch IP only, not from abroad"
+  "vowifi_note_en": "Dutch IP only, not from abroad",
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "NL"
+  ]
  },
  {
   "id": "topcashback-uk-signup-10",
+  "dedup_key": "topcashback|bank|gb|signup-10",
   "title": "[英区] TopCashback UK：新会员 £10 注册奖励（11/16–11/29 注册）",
   "brand": "TopCashback UK",
   "domain": "topcashback.co.uk",
@@ -6813,10 +7783,16 @@
   "status": "active",
   "added_at": "2026-11-19T02:16:53+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "residency_requirement": "local_resident",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "paypay-super-matsuri-scratch-2026",
+  "dedup_key": "paypay|software|jp|super-matsuri-scratch-2026",
   "title": "[日区] 超 PayPay 祭 2026：扫码抽奖最高全额返还（11/20–12/27），PayPay Credit 半价概率、卡片碰一碰必中",
   "brand": "PayPay",
   "domain": "paypay.ne.jp",
@@ -6851,6 +7827,7 @@
  },
  {
   "id": "skrill-uk-raf-10-off-100",
+  "dedup_key": "skrill|bank|gb|raf-10-off-100",
   "title": "[英区] Skrill 跨区汇款 £100 减 £10（可开万事达卡）",
   "brand": "Skrill",
   "domain": "skrill.com",
@@ -6882,11 +7859,17 @@
   "status": "active",
   "added_at": "2026-11-19T12:55:55+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_address",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "nodeseek-ytnet-hk-bgp-secondhand",
-  "dedup_key": "nodeseek|cloud|hk|ytnet-hk-bgp-bf-89.1",
+  "dedup_key": "yt-net|cloud|hk|bgp-secondhand",
   "title": "[香港] NodeSeek 二手：yt.net HK.BGP.BF 年付 ¥89.1，明盘 ¥90 包 push（1C1G/10G/300G/200M，带 50 个 IX 端口）",
   "brand": "yt.net",
   "domain": "yt.net",
@@ -6920,7 +7903,7 @@
  },
  {
   "id": "whatnot-uk-credit-10-200",
-  "dedup_key": "whatnot|software|uk|new-buyer-credit-10-200",
+  "dedup_key": "whatnot|software|gb|credit-10-200",
   "title": "[英区] Whatnot 新用户免费额度 £10–£200：注册验号即送、无最低消费（95% 拿 £20 以内）",
   "brand": "Whatnot",
   "domain": "whatnot.com",
@@ -6954,6 +7937,7 @@
  },
  {
   "id": "currensea-referral-10",
+  "dedup_key": "currensea|bank|gb|referral-10",
   "title": "[英区] Currensea 推荐 £10：境外刷卡满 £100，双方各返 £10（免订阅卡也可参加）",
   "brand": "Currensea",
   "domain": "currensea.com",
@@ -6983,10 +7967,21 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "quidco-refer-10",
+  "dedup_key": "quidco|bank|gb|refer-10",
   "title": "[英区] Quidco 返现网推荐奖 £10：新会员攒到 £5 确认返现即到账",
   "brand": "Quidco",
   "domain": "quidco.com",
@@ -7016,10 +8011,16 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "residency_requirement": "local_resident",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "clearpay-invite-10",
+  "dedup_key": "clearpay|bank|gb|invite-10",
   "title": "[英区] Clearpay 邀请好友：新客得 £10 抵扣券（满 £50 可用，90 天有效）",
   "brand": "Clearpay",
   "domain": "clearpay.co.uk",
@@ -7049,10 +8050,21 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "names-free-co-uk-domain",
+  "dedup_key": "names-co|software|gb|free-co-uk-domain",
   "title": "[英区] Names.co.uk 免费 .co.uk 域名 1 年（.com 同时 £1.99）",
   "brand": "Names.co.uk",
   "domain": "names.co.uk",
@@ -7086,6 +8098,7 @@
  },
  {
   "id": "ctexcel-hk-gba-prepaid",
+  "dedup_key": "ctexcel|esim|hk|gba-prepaid",
   "title": "[香港] 中国电信香港大湾区储值卡：HK$100 面值 +852 号码，180 天充 HK$50 保号（eSIM 须到港线下开通）",
   "brand": "中国电信香港 CTExcel",
   "domain": "ctexcel.com.hk",
@@ -7133,10 +8146,16 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测；蓝卡本身要线下办 eSIM，写卡路径未验证。",
-  "euicc_note_en": "No third-party eUICC test found; the blue card's eSIM is issued in store, so the blank-card route is unverified."
+  "euicc_note_en": "No third-party eUICC test found; the blue card's eSIM is issued in store, so the blank-card route is unverified.",
+  "identity_requirement": "local_id",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "HK"
+  ]
  },
  {
   "id": "etisalat-wasel-flexi-10gb-esim",
+  "dedup_key": "eand|esim|ae|etisalat-wasel-flexi-10gb-esim",
   "title": "[阿联酋] e&（etisalat）eSIM 新开 Wasel Flexi 送 10GB 本地流量",
   "brand": "e& UAE (etisalat)",
   "domain": "eand.ae",
@@ -7182,10 +8201,22 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测。",
-  "euicc_note_en": "No third-party eUICC test found."
+  "euicc_note_en": "No third-party eUICC test found.",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "AE"
+  ]
  },
  {
   "id": "du-uae-free-tourist-esim",
+  "dedup_key": "du|esim|ae|uae-free-tourist-esim",
   "title": "[阿联酋] du 免费游客 eSIM：10GB / 24 小时（落地扫码即得）",
   "brand": "du",
   "domain": "du.ae",
@@ -7213,13 +8244,22 @@
   "risk": "只有 24 小时，落地当天用掉最划算；数据仅限阿联酋本地，去沙特或欧洲不能漫游；同一护照上限 2 张；需在境内激活，出发前装不了。",
   "status": "active",
   "added_at": "2026-11-19T03:04:36+08:00",
-  "kyc_level": "foreign_only",
+  "kyc_level": "cn_ok_extra",
   "vowifi": "n/a",
   "utility": 0,
-  "kyc_note": "须入境阿联酋后领取"
+  "kyc_note": "须入境阿联酋后领取",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "AE"
+  ]
  },
  {
   "id": "eand-uae-free-visitor-line-esim",
+  "dedup_key": "eand|esim|ae|uae-free-visitor-line-esim",
   "title": "[阿联酋] e&（etisalat）Free Visitor Line eSIM：10GB / 24 小时，AED 0",
   "brand": "e& UAE",
   "domain": "eand.ae",
@@ -7247,7 +8287,7 @@
   "risk": "只有 24 小时；到期后套餐外流量按量计费（第三方指南称约 AED 1.05/20MB、每日封顶 AED 9.45，待核实），建议到期前关数据或先买套餐；eSIM 必须在阿联酋境内申请。",
   "status": "active",
   "added_at": "2026-11-19T03:04:36+08:00",
-  "kyc_level": "foreign_only",
+  "kyc_level": "cn_ok_extra",
   "vowifi": "unknown",
   "utility": 0,
   "kyc_note": "须入境阿联酋后激活",
@@ -7266,10 +8306,19 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测；需现场人脸核验，写卡路径未验证。",
-  "euicc_note_en": "No third-party eUICC test found; on-site face checks make the blank-card route unverified."
+  "euicc_note_en": "No third-party eUICC test found; on-site face checks make the blank-card route unverified.",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "AE"
+  ]
  },
  {
   "id": "nestdaddy-mcp-free",
+  "dedup_key": "nestdaddy|ai|global|mcp-free",
   "title": "[全球] NestDaddy MCP：给 AI 接上「今天的互联网」，每月 1,000 次免费、免绑卡",
   "brand": "NestDaddy",
   "domain": "nestdaddy.com",
@@ -7304,6 +8353,7 @@
  },
  {
   "id": "saily-us-number-annual",
+  "dedup_key": "saily|esim|us|number-annual",
   "title": "[美区] Saily 美国 +1 号码：年付 $11.99 起，收短信不限量（App 内云开）",
   "brand": "Saily",
   "domain": "saily.com",
@@ -7334,10 +8384,20 @@
   "kyc_level": "cn_ok",
   "vowifi": "false",
   "utility": 0,
-  "kyc_note": "护照 + 人脸 KYC"
+  "kyc_note": "护照 + 人脸 KYC",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "1free-eu-host-vps",
+  "dedup_key": "1free|cloud|global|host-vps",
   "title": "[全球] 1free.eu 永久免费虚拟主机 + VPS S 30 天免费（免信用卡）",
   "brand": "1Free.eu",
   "domain": "1free.eu",
@@ -7370,6 +8430,7 @@
  },
  {
   "id": "ace-money-transfer-uk-india-10",
+  "dedup_key": "ace-money|bank|gb|transfer-uk-india-10",
   "title": "[英区] ACE Money Transfer 首笔汇印度 £10（单笔 £100 起）",
   "brand": "ACE Money Transfer",
   "domain": "acemoneytransfer.com",
@@ -7399,10 +8460,20 @@
   "status": "active",
   "added_at": "2026-11-19T02:57:48+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "AU",
+   "CA",
+   "EEA",
+   "GB"
+  ]
  },
  {
   "id": "bitel-peru-esim-7days-unlimited",
+  "dedup_key": "bitel|esim|pe|peru-esim-7days-unlimited",
   "title": "[秘鲁] Bitel eSIM 新线：7 天无限流量 + 无限本地通话短信，另加 30 天套餐期",
   "highlight": "11 月内激活秘鲁 Bitel 后付费 eSIM 新线，额外送 7 天无限流量 + 无限本地通话短信，叠在原 30 天套餐上",
   "brand": "Bitel",
@@ -7450,7 +8521,18 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测。",
-  "euicc_note_en": "No third-party eUICC test found."
+  "euicc_note_en": "No third-party eUICC test found.",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "PE"
+  ]
  },
  {
   "id": "doubao-work-30day-sub",
@@ -7488,6 +8570,7 @@
  },
  {
   "id": "pelago-krisflyer-esim",
+  "dedup_key": "pelago|esim|global|krisflyer-esim",
   "title": "[全球] Pelago × KrisFlyer：免费 2GB 全球 eSIM（118 国 / 3 天）",
   "brand": "Pelago",
   "domain": "pelago.com",
@@ -7517,10 +8600,18 @@
   "added_at": "2026-11-19T02:16:53+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "tencent-tokenhub-new-user-pack",
+  "dedup_key": "tencentcloud|ai|cn|tokenhub-new-user-pack",
   "title": "[中国区] 腾讯云 TokenHub 新人免费包：每个模型 100 万 Tokens（1 年有效）",
   "brand": "腾讯云 TokenHub",
   "domain": "cloud.tencent.com",
@@ -7553,7 +8644,7 @@
  },
  {
   "id": "klook-data-bank-gift",
-  "dedup_key": "klook|esim|sea|databank-gift",
+  "dedup_key": "klook|esim|my-th-tw-vn|data-bank-gift",
   "title": "[台/泰/马/越] Klook Data Bank 上线礼：免费领 0.5–50GB 旅行数据（至 12/31）",
   "brand": "Klook",
   "domain": "klook.com",
@@ -7582,13 +8673,26 @@
   "risk": "礼盒随机，多数是小额（0.5–3GB）；必须买 eSIM 才能用，单独领不到免费流量；居住地按 Klook 账户判定，中国大陆账户看不到入口；数据不是现金、不可提现，180 天不用会消失。",
   "status": "active",
   "added_at": "2026-11-19T11:52:23+08:00",
-  "kyc_level": "cn_ok_extra",
+  "kyc_level": "foreign_only",
   "vowifi": "n/a",
   "utility": 0,
-  "kyc_note": "账户居住地须为台/泰/马/越"
+  "kyc_note": "账户居住地须为台/泰/马/越",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "MY",
+   "TH",
+   "TW",
+   "VN"
+  ]
  },
  {
   "id": "taptap-send-referral",
+  "dedup_key": "taptap-send|bank|multi|referral",
   "title": "[多区] Taptap Send 新客 $10 抵扣 + 邀请返 $20",
   "brand": "Taptap Send",
   "domain": "taptapsend.com",
@@ -7617,10 +8721,27 @@
   "status": "active",
   "added_at": "2026-11-15T00:00:00+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "DE",
+   "ES",
+   "FR",
+   "GB",
+   "IT",
+   "NL",
+   "US"
+  ]
  },
  {
   "id": "nomad-trial-esim",
+  "dedup_key": "nomad|esim|global|trial-esim",
   "title": "[全球] Nomad 免费试用 eSIM：1GB / 3 天",
   "brand": "Nomad",
   "domain": "nomadesim.com",
@@ -7650,10 +8771,18 @@
   "added_at": "2026-11-19T01:20:37+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "saily-referral",
+  "dedup_key": "saily|esim|global|referral",
   "title": "[全球] Saily eSIM 推荐：$5 / Ultra 档 $10",
   "brand": "Saily",
   "domain": "saily.com",
@@ -7683,10 +8812,19 @@
   "added_at": "2026-11-12T00:00:00+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "ubigi-welcome",
+  "dedup_key": "ubigi|esim|multi|welcome",
   "title": "[多区] Ubigi 首单 10% + 邀请 20% off",
   "brand": "Ubigi",
   "domain": "ubigi.com",
@@ -7715,10 +8853,19 @@
   "added_at": "2026-11-14T00:00:00+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "redbull-mobile-free-esim",
+  "dedup_key": "red-bull|esim|global|mobile-free-esim",
   "title": "[全球] Red Bull MOBILE 免费 1.1GB 全球 eSIM（约 1 年有效 / 奥地利号段）",
   "brand": "Red Bull MOBILE",
   "domain": "redbullmobile.com",
@@ -7750,10 +8897,18 @@
   "source_url": "https://www.uscardforum.com/t/topic/533715",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "moneygram-uk-invite-friends",
+  "dedup_key": "moneygram|bank|gb|invite-friends",
   "title": "[英区] MoneyGram 邀请好友：新客首笔汇款折扣（约 £10，金额待核实）",
   "brand": "MoneyGram",
   "domain": "moneygram.com",
@@ -7783,10 +8938,21 @@
   "status": "active",
   "added_at": "2026-11-19T02:57:48+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "opera-android-free-esim-3gb",
+  "dedup_key": "opera|esim|global|android-free-esim-3gb",
   "title": "[全球] Opera 安卓浏览器内置 eSIM：3GB / 3 天免费（47 个目的地）",
   "brand": "Opera",
   "domain": "opera.com",
@@ -7818,10 +8984,27 @@
   "kyc_level": "cn_ok_extra",
   "vowifi": "n/a",
   "utility": 0,
-  "kyc_note": "免费额度只在 11 个市场发放"
+  "kyc_note": "免费额度只在 11 个市场发放",
+  "platform_requirement": [
+   "android"
+  ],
+  "geo_restriction": [
+   "AE",
+   "BR",
+   "CA",
+   "DE",
+   "FR",
+   "GB",
+   "NL",
+   "NO",
+   "PL",
+   "SE",
+   "US"
+  ]
  },
  {
   "id": "remitly-uk-cashback",
+  "dedup_key": "remitly|bank|gb|cashback",
   "title": "[英区] Remitly 新客汇款返现：TopCashback £8 / Quidco £6.40（可叠首笔优惠）",
   "brand": "Remitly",
   "domain": "remitly.com",
@@ -7851,10 +9034,17 @@
   "status": "active",
   "added_at": "2026-11-19T03:04:36+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "hoody-free-cloud-computers",
+  "dedup_key": "hoody|cloud|global|free-cloud-computers",
   "title": "[全球] Hoody 免费 3 台 Linux 云电脑：不绑卡、不过期（含 root）",
   "brand": "Hoody",
   "domain": "hoody.com",
@@ -7887,7 +9077,7 @@
  },
  {
   "id": "hark-pro-free-agent",
-  "dedup_key": "hark|ai|us-uk-eu|free-pro-agent",
+  "dedup_key": "hark|ai|eea-gb-us|pro-free-agent",
   "title": "[美/英/欧区] Hark Pro：全功能永久免费的个人 AI 代理，自带云端电脑代下单",
   "brand": "Hark",
   "domain": "hark.com",
@@ -7923,6 +9113,7 @@
  },
  {
   "id": "payangel-referral-10",
+  "dedup_key": "payangel|bank|au-ca-gb-us|referral-10",
   "title": "[英/美/加/澳] PayAngel 推荐好友：每人 £10 / $10 / CAD 10 / AUD 10，不封顶",
   "brand": "PayAngel",
   "domain": "payangel.com",
@@ -7951,11 +9142,25 @@
   "added": "2026-11-20",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "AU",
+   "CA",
+   "EEA",
+   "GB",
+   "US"
+  ]
  },
  {
   "id": "agnes-ai-flash-free-api",
-  "dedup_key": "agnes|ai|global|flash-free-api",
+  "dedup_key": "agnes-ai|ai|global|flash-free-api",
   "title": "[全球/中国站] Agnes AI Flash 全系 $0：文本 + 图片 + 视频免费 API（OpenAI 兼容）",
   "brand": "Agnes AI",
   "domain": "agnes-ai.com",
@@ -8021,7 +9226,7 @@
  },
  {
   "id": "infomaniak-ai-1m-credits",
-  "dedup_key": "infomaniak|ai|ch|1m-credits",
+  "dedup_key": "infomaniak|ai|global|ai-1m-credits",
   "title": "[瑞士/全球] Infomaniak AI Services 送 100 万 credits：可试用 1 个月（需绑卡）",
   "brand": "Infomaniak",
   "domain": "infomaniak.com",
@@ -8055,7 +9260,7 @@
  },
  {
   "id": "zcode-daily-build-cards",
-  "dedup_key": "zcode|ai|global|daily-300m-tokens",
+  "dedup_key": "zcode|ai|global|daily-build-cards",
   "title": "[全球/中国区] ZCode 每晚发卡：工作日 3 亿 / 周末 5 亿 GLM-5.3-Flash Token（免绑卡）",
   "brand": "ZCode",
   "domain": "zcode.z.ai",
@@ -8089,6 +9294,7 @@
  },
  {
   "id": "google-flow-daily-50-credits",
+  "dedup_key": "google|ai|global|flow-daily-50-credits",
   "title": "[全球] Google Flow 每日送 50 credits：不订阅也能生成 8 秒 Veo 3.1 Lite 视频 5 条",
   "brand": "Google Flow",
   "domain": "labs.google",
@@ -8122,6 +9328,7 @@
  },
  {
   "id": "altare-always-free-container",
+  "dedup_key": "altare|cloud|global|always-free-container",
   "title": "[全球] Altare Always Free：每团队永久免费 6 GB 内存 / 1.5 核 / 10 GB 磁盘，最多 4 台容器",
   "brand": "Altare",
   "domain": "altare.gg",
@@ -8188,7 +9395,7 @@
  },
  {
   "id": "dstatus-f1x-1yuan-lifetime",
-  "dedup_key": "dstatus|software|global|f1x-1yuan-lifetime-10nodes",
+  "dedup_key": "dstatus|software|global|f1x-1yuan-lifetime",
   "title": "[全球] DStatus 探针 1 元永久授权：优惠码 F1x（原价 69 元、限量 200 份），免费版另送 5 节点",
   "brand": "DStatus",
   "domain": "dstatus.sh",
@@ -8222,6 +9429,7 @@
  },
  {
   "id": "rebtel-invite-10",
+  "dedup_key": "rebtel|esim|global|invite-10",
   "title": "[全球] Rebtel 邀请：双方各得 $10 国际通话信用（朋友首笔 ≥$1）",
   "brand": "Rebtel",
   "domain": "rebtel.com",
@@ -8252,10 +9460,21 @@
   "status": "active",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "phone",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "any_number",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "digitalplat-freedomain-dpdns",
+  "dedup_key": "digitalplat|cloud|global|freedomain-dpdns",
   "title": "[全球] DigitalPlat FreeDomain 免费域名：.dpdns.org / .qzz.io 免注册费，可接 Cloudflare",
   "brand": "DigitalPlat",
   "domain": "digitalplat.org",
@@ -8288,6 +9507,7 @@
  },
  {
   "id": "touch-lebanon-magic-welcome-3gb",
+  "dedup_key": "touch|esim|lb|lebanon-magic-welcome-3gb",
   "title": "[黎巴嫩] touch 新卡欢迎礼：3GB/月 × 3 个月（$7 买 Magic 预付费卡）",
   "brand": "touch",
   "domain": "touch.com.lb",
@@ -8333,11 +9553,18 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测。",
-  "euicc_note_en": "No third-party eUICC test found."
+  "euicc_note_en": "No third-party eUICC test found.",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "LB"
+  ]
  },
  {
   "id": "meta-muse-referral-1b-tokens",
-  "dedup_key": "meta-muse|ai|us-ca-jp-sg-mx-au|1b-tokens-referral",
+  "dedup_key": "meta|ai|au-ca-jp-mx-sg-us|muse-referral-1b-tokens",
   "title": "[美/加/日/新/墨/澳] Meta Muse：注册 48 小时内填邀请码，双方各得 10 亿 Tokens",
   "brand": "Meta",
   "domain": "muse.ai",
@@ -8371,6 +9598,7 @@
  },
  {
   "id": "sosim-hk-33-100gb-esim",
+  "dedup_key": "sosim|esim|hk|33-100gb-esim",
   "title": "[香港] SoSIM 新卡 HK$33：50GB 变 100GB + 免费转 eSIM（至 11/30）",
   "brand": "SoSIM（和记电讯 3HK）",
   "domain": "sosimhk.com",
@@ -8420,10 +9648,19 @@
   "euicc_note": "未查到 SoSIM 逐条写卡实测；香港卡普遍可用第三方 eUICC，但未验证。",
   "euicc_note_en": "No SoSIM-specific write test found; Hong Kong cards usually accept third-party eUICCs, but this is unverified.",
   "vowifi_note": "仅香港境内",
-  "vowifi_note_en": "Hong Kong only"
+  "vowifi_note_en": "Hong Kong only",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "HK"
+  ]
  },
  {
   "id": "teleagent-free-cloud-pc",
+  "dedup_key": "teleagent|ai|cn|free-cloud-pc",
   "title": "[中国区] 中国电信 TeleAgent 星辰：免费版内置 Windows 云电脑",
   "brand": "TeleAgent（中国电信 星辰）",
   "domain": "ta.teleai.com.cn",
@@ -8457,6 +9694,7 @@
  },
  {
   "id": "a1-croatia-prepaid-esim",
+  "dedup_key": "a1|esim|hr|croatia-prepaid-esim",
   "title": "[克区] A1 克罗地亚预付 eSIM：€3 云开 +385 号码、€3 返话费，€2 起续 92 天",
   "brand": "A1 Hrvatska",
   "domain": "a1.hr",
@@ -8505,10 +9743,19 @@
   "euicc_compat": "partial",
   "euicc_note": "2026-07 社区实测：9eSIM 能写入但不兼容，联网不可用，建议换 eSTK。",
   "euicc_note_en": "Community test in July 2026: 9eSIM can write the profile but it is incompatible and will not go online, so use eSTK.",
-  "euicc_source": "nodeseek.com/post-848446-1（2026-07-30）"
+  "euicc_source": "nodeseek.com/post-848446-1（2026-07-30）",
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "HR"
+  ]
  },
  {
   "id": "zilch-refer-5",
+  "dedup_key": "zilch|bank|gb|refer-5",
   "title": "[英区] Zilch 推荐好友：双方各得 £5 Rewards，朋友首笔 Tap and Pay 即解锁",
   "brand": "Zilch",
   "domain": "zilch.com",
@@ -8538,10 +9785,21 @@
   "added": "2026-11-21",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "spaceship-com-3-60-com67",
+  "dedup_key": "spaceship|software|global|3-60-com67",
   "title": "[全球] Spaceship .com 域名首年 $3.60（码 COM67，约 65% off）",
   "highlight": "官方促销页现列 .com 用码 COM67 首年 $3.60（划线原价 $10.38，约 65% off），一单限一张码，续费回原价",
   "brand": "Spaceship",
@@ -8576,6 +9834,7 @@
  },
  {
   "id": "singlife-nomad-free-1gb-esim",
+  "dedup_key": "singlife|esim|sg|nomad-free-1gb-esim",
   "title": "[新加坡] Singlife 旅险 × Nomad：投保免费送 1GB 全球 eSIM（至 12/31）",
   "brand": "Singlife",
   "domain": "singlife.com",
@@ -8605,10 +9864,20 @@
   "status": "active",
   "kyc_level": "foreign_only",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "SG"
+  ]
  },
  {
   "id": "cloady-free-tier",
+  "dedup_key": "cloady|cloud|global|free-tier",
   "title": "[全球] Cloady 免费容器云：0.5 vCPU / 1GB 内存 / 5GB SSD，免绑卡",
   "brand": "Cloady（NeptoLab）",
   "domain": "cloady.com",
@@ -8642,6 +9911,7 @@
  },
  {
   "id": "smarterasp-60-day-free-windows",
+  "dedup_key": "smarterasp|cloud|global|60-day-free-windows",
   "title": "[全球] SmarterASP.NET 60 天免费 Windows 主机：ASP.NET/.NET 到 Node，免绑卡",
   "brand": "SmarterASP.NET",
   "domain": "smarterasp.net",
@@ -8675,6 +9945,7 @@
  },
  {
   "id": "workbuddy-hy4-flash-free-nov2026",
+  "dedup_key": "tencentcloud|ai|global|workbuddy-hy4-flash-free-nov2026",
   "title": "[中国区/国际版] 腾讯 WorkBuddy：混元 Hy4 flash 限时免费（11/16–11/30，额度每日发放）",
   "brand": "腾讯云 WorkBuddy",
   "domain": "workbuddy.cn",
@@ -8708,7 +9979,7 @@
  },
  {
   "id": "woori-bank-esim-1gb",
-  "dedup_key": "wooribank|esim|kr|exchange-1gb",
+  "dedup_key": "woori-bank|esim|kr|esim-1gb",
   "title": "[韩区] 友利银行（우리은행）换汇即送 1GB 海外 eSIM（11/17–12/31，限 2 万名）",
   "brand": "Woori Bank",
   "domain": "wooribank.com",
@@ -8739,10 +10010,21 @@
   "source_url": "https://www.financialpost.co.kr/news/articleView.html?idxno=301539",
   "kyc_level": "foreign_only",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "KR"
+  ]
  },
  {
   "id": "firefox-builtin-vpn-unlimited-2027",
+  "dedup_key": "mozilla|software|global|firefox-builtin-vpn-unlimited-2027",
   "title": "[全球] Firefox 内置 VPN 无限流量：免费开放到 2027-01-31",
   "brand": "Mozilla Firefox",
   "domain": "mozilla.org",
@@ -8776,6 +10058,7 @@
  },
  {
   "id": "simular-box-free",
+  "dedup_key": "box-by|ai|global|simular-box-free",
   "title": "[全球] box by Simular：免费云端 Linux 桌面（5,000 credits ≈ 50 小时 / 90 天）",
   "brand": "box by Simular",
   "domain": "simular.ai",
@@ -8808,6 +10091,7 @@
  },
  {
   "id": "horizon-free-europe-esim",
+  "dedup_key": "horizon-esim|esim|eea-gb|free-europe-esim",
   "title": "[欧洲+英国] Horizon 免费 1GB eSIM（30 天 / 33 国）",
   "brand": "Horizon eSIM",
   "domain": "horizonesim.com",
@@ -8838,10 +10122,22 @@
   "source_url": "https://www.nodeseek.com/post-1055219-1",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "any_number",
+  "geo_restriction": [
+   "CH",
+   "EEA",
+   "GB"
+  ]
  },
  {
   "id": "kolet-virgin-atlantic-free-esim",
+  "dedup_key": "kolet|esim|global|virgin-atlantic-free-esim",
   "title": "[全球] Kolet × Virgin Atlantic：1GB 免费 eSIM（约 2 天）",
   "brand": "Kolet",
   "domain": "kolet.com",
@@ -8872,10 +10168,19 @@
   "source_url": "https://www.nodeseek.com/post-1051360-1",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "any_number",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "nala-uk-first-transfer-5",
+  "dedup_key": "nala|bank|gb|first-transfer-5",
   "title": "[英区] NALA 首笔汇款奖励：£5（原 £10，近期缩水）",
   "brand": "NALA",
   "domain": "nala.money",
@@ -8906,10 +10211,22 @@
   "added_at": "2026-11-19T02:57:48+08:00",
   "source_url": "https://www.nodeseek.com/post-1048953-1",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "xl-indonesia-free-esim-5gb",
+  "dedup_key": "xl-axiata|esim|id|indonesia-free-esim-5gb",
   "title": "[印尼] XL 免费 eSIM：5GB / 7 天 + Gemini 3.1 Pro 与 400GB 云盘",
   "brand": "XL Axiata",
   "domain": "xl.co.id",
@@ -8955,10 +10272,21 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测。",
-  "euicc_note_en": "No third-party eUICC test found."
+  "euicc_note_en": "No third-party eUICC test found.",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "geo_restriction": [
+   "ID"
+  ]
  },
  {
   "id": "garuda-esim-free-2gb",
+  "dedup_key": "garuda|esim|global|esim-free-2gb",
   "title": "[全球] Garuda eSIM（Yoowifi）：鹰航乘客免费 2GB / 7 天（160+ 国）",
   "brand": "Garuda Indonesia × Yoowifi",
   "domain": "yoowifi.com",
@@ -8988,11 +10316,18 @@
   "added_at": "2026-11-19T03:16:09+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "sesame-voice-ai-free",
-  "dedup_key": "sesame|ai|multi-region|free-30min-voice-sesame-link",
+  "dedup_key": "sesame|ai|multi|voice-ai-free",
   "title": "[多区] Sesame：真人级语音 AI 每天免费 30 分钟，打电话遥控 Claude Code",
   "brand": "Sesame",
   "domain": "sesame.com",
@@ -9027,6 +10362,7 @@
  },
  {
   "id": "monzo-uk-referral-bonus",
+  "dedup_key": "monzo|bank|gb|referral-bonus",
   "title": "[英区] Monzo 推荐开户：双方各得 £5–£50（金额视邀请批次而定）",
   "highlight": "先填手机号再开户、存钱并刷一笔实体卡，双方各得奖励；金额看邀请批次，£5–£50 不等",
   "brand": "Monzo",
@@ -9055,10 +10391,22 @@
   "added": "2026-11-19",
   "status": "active",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "any_number",
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "bitrefill-free-1gb-esim",
+  "dedup_key": "bitrefill|esim|global|free-1gb-esim",
   "title": "[全球] Bitrefill App 免费领 1GB eSIM（每账号一次，无需优惠码）",
   "brand": "Bitrefill",
   "domain": "bitrefill.com",
@@ -9088,10 +10436,18 @@
   "status": "active",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "starryblu-free-virtual-card",
+  "dedup_key": "starryblu|bank|global|free-virtual-card",
   "title": "[全球] Starryblu 免费虚拟 Mastercard：新加坡 Wotransfer 发行、护照可开（需排队）",
   "brand": "Starryblu",
   "domain": "starryblu.com",
@@ -9122,11 +10478,20 @@
   "status": "active",
   "kyc_level": "cn_ok",
   "utility": 1,
-  "kyc_note": "大陆护照 + 国内地址证明"
+  "kyc_note": "大陆护照 + 国内地址证明",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "any_number",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "onlook-free-designer-desktop",
-  "dedup_key": "onlook|ai|global|free-desktop",
+  "dedup_key": "onlook|ai|global|free-designer-desktop",
   "title": "[全球] Onlook（YC W25）开源 agentic 设计工具：桌面版免费",
   "brand": "Onlook",
   "domain": "onlook.com",
@@ -9160,7 +10525,7 @@
  },
  {
   "id": "foxl-200-credits",
-  "dedup_key": "foxl|ai|global|200-credits-invite",
+  "dedup_key": "foxl|ai|global|200-credits",
   "title": "[全球] Foxl v0.10.7：新账号送 200 credits，每邀请一位好友再 +100（免 Key、免订阅）",
   "brand": "Foxl",
   "domain": "foxl.ai",
@@ -9194,7 +10559,7 @@
  },
  {
   "id": "easysim-free-1gb-esim",
-  "dedup_key": "easysim|esim|global|free-1gb",
+  "dedup_key": "easysim|esim|global|free-1gb-esim",
   "title": "[全球] EasySIM 免费领 1GB eSIM：190+ 国家可用（每手机号一次，先到先得）",
   "brand": "EasySIM",
   "domain": "easysim.ai",
@@ -9224,10 +10589,20 @@
   "status": "active",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "phone",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "any_number",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "yepapi-5-free-credit",
+  "dedup_key": "yepapi|ai|global|5-free-credit",
   "title": "[全球] YepAPI：注册送 $5 额度、免绑卡，190 个数据接口 + 139 个 LLM 一把钥匙",
   "brand": "YepAPI",
   "domain": "yepapi.com",
@@ -9261,6 +10636,7 @@
  },
  {
   "id": "uupay-new-user-1usdt-card",
+  "dedup_key": "uupay|bank|global|new-user-1usdt-card",
   "title": "[全球] UUPAY：新用户 1 USDT 开虚拟卡再返 1 USDT，充值 0 手续费",
   "brand": "UUPAY",
   "domain": "uupay.com",
@@ -9291,10 +10667,16 @@
   "added_at": "2026-11-20T09:29:00+08:00",
   "kyc_level": "cn_ok",
   "utility": 0,
-  "kyc_note": "大陆身份证可 KYC"
+  "kyc_note": "大陆身份证可 KYC",
+  "identity_requirement": "photo_id",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "celesto-5-trial-credit",
+  "dedup_key": "celesto|cloud|global|5-trial-credit",
   "title": "[全球] Celesto：免绑卡 $5 云电脑额度（AI Agent 沙盒，≈333 小时 Micro；CI runner 比 GitHub 官方便宜近 90%）",
   "highlight": "注册即送 $5 Micro 运行额度、不用信用卡，30 天内可用；Micro 1 vCPU / 2 GB / 20 GB 每小时 $0.015，等于 333 小时，可挂 2 台保留型沙盒",
   "brand": "Celesto",
@@ -9329,7 +10711,7 @@
  },
  {
   "id": "nodeseek-dedirock-1c2g-2t-secondhand",
-  "dedup_key": "dedirock|cloud|us-la|secondhand-1c2g-2t",
+  "dedup_key": "dedirock|cloud|us|1c2g-2t-secondhand",
   "title": "[美区] NodeSeek 二手：DediRock 1C2G／2TB 洛杉矶年付 $6.5 机，明盘 ¥20（push 费 $5 自理）",
   "brand": "DediRock",
   "domain": "dedirock.com",
@@ -9363,7 +10745,7 @@
  },
  {
   "id": "deapi-5-free-credits",
-  "dedup_key": "deapi|ai|global|5-credit",
+  "dedup_key": "deapi|ai|global|5-free-credits",
   "title": "[全球] deAPI 注册送 $5 额度：一个 Key 调 100+ 开源生成模型（图像／视频／语音／音乐），免绑卡",
   "brand": "deAPI",
   "domain": "deapi.ai",
@@ -9397,7 +10779,7 @@
  },
  {
   "id": "mixroute-5-free-credits",
-  "dedup_key": "mixroute|ai|global|5-credit",
+  "dedup_key": "mixroute|ai|global|5-free-credits",
   "title": "[全球] MixRoute 注册送 $5：250+ 模型 OpenAI 兼容网关，官方价 0 加价、免绑卡",
   "brand": "MixRoute",
   "domain": "mixroute.ai",
@@ -9431,7 +10813,7 @@
  },
  {
   "id": "usims-free-esim-1gb",
-  "dedup_key": "usims|esim|global|free-first-gb",
+  "dedup_key": "usims|esim|global|free-esim-1gb",
   "title": "[全球] USIMS 首 1GB 免费 eSIM：120+ 国可用，另有常开低速免费档（需非 +86 号验证）",
   "brand": "USIMS",
   "domain": "usims.com",
@@ -9463,10 +10845,20 @@
   "kyc_level": "cn_ok_extra",
   "kyc_note": "需非 +86 号码收验证码；须 eSIM 机型",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "phone",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "specific_country",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "yahoo-japan-agent-i-stamp-rally",
+  "dedup_key": "yahoo-japan|software|jp|agent-i-stamp-rally",
   "title": "[日区] Yahoo! JAPAN「Agent i」集章：5 次抽奖 + 完走 50 円 PayPay（先到 2 万名）",
   "brand": "Yahoo! JAPAN",
   "domain": "stamp.yahoo.co.jp",
@@ -9500,6 +10892,7 @@
  },
  {
   "id": "jetpac-eterna-free-esim",
+  "dedup_key": "jetpac|esim|global|eterna-free-esim",
   "title": "[全球] Jetpac Eterna 终身免费 eSIM：每年 4×100MB",
   "brand": "Jetpac",
   "domain": "jetpacglobal.com",
@@ -9531,10 +10924,29 @@
   "kyc_level": "cn_ok_extra",
   "vowifi": "n/a",
   "utility": 0,
-  "kyc_note": "仅 10 个合资格国家，其余进等候名单"
+  "kyc_note": "仅 10 个合资格国家，其余进等候名单",
+  "identity_requirement": "phone",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "specific_country",
+  "geo_restriction": [
+   "AU",
+   "CA",
+   "DE",
+   "ES",
+   "FR",
+   "GB",
+   "IT",
+   "NL",
+   "NZ",
+   "US"
+  ]
  },
  {
   "id": "eskimo-free-esim",
+  "dedup_key": "eskimo|esim|global|free-esim",
   "title": "[全球] Eskimo 免费 500MB 全球 eSIM（126 国 / 无到期日）",
   "brand": "Eskimo",
   "domain": "eskimo.travel",
@@ -9565,11 +10977,18 @@
   "added_at": "2026-11-19T02:16:53+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "pickle-ai-free-agent-jpkr",
-  "dedup_key": "pickle|ai|jp-kr|free-daily-limit-reset-ticket",
+  "dedup_key": "pickle|ai|jp-kr|ai-free-agent-jpkr",
   "title": "[日区/韩区] Pickle：能代打电话、云端浏览器办事的免费 AI 代理",
   "brand": "Pickle",
   "domain": "pickle.com",
@@ -9605,6 +11024,7 @@
  },
  {
   "id": "hpc-ai-model-apis-2-credit",
+  "dedup_key": "hpc-ai|ai|global|model-apis-2-credit",
   "title": "[全球] HPC-AI Model APIs：注册送 $2（邀请码 HPCAI-MAPI 拿 $4，OpenAI 兼容）",
   "brand": "HPC-AI",
   "domain": "hpc-ai.com",
@@ -9637,7 +11057,7 @@
  },
  {
   "id": "airtel-jio-bogo-recharge",
-  "dedup_key": "airtel|esim|in|bogo-349",
+  "dedup_key": "airtel|esim|in|jio-bogo-recharge",
   "title": "[印度区] Airtel / Jio 充值 1+1 免费：₹349 与 ₹399 套餐买一送一（有效期翻倍到 56 天）",
   "brand": "Airtel",
   "domain": "airtel.in",
@@ -9668,11 +11088,22 @@
   "status": "active",
   "kyc_level": "foreign_only",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "IN"
+  ]
  },
  {
   "id": "shandun-us-8off-4usd",
-  "dedup_key": "shandun|cloud|us|8off-us-series",
+  "dedup_key": "shandun|cloud|us|8off-4usd",
   "title": "[美区] 闪盾 ShanDun 美国系列 8 折：$4/月（原价 $4.99），9929 高防／4837 双 ISP 有货",
   "brand": "ShanDun",
   "domain": "shandun.net",
@@ -9706,6 +11137,7 @@
  },
  {
   "id": "mypal-kolet-free-1gb-esim",
+  "dedup_key": "philippine|esim|ph|mypal-kolet-free-1gb-esim",
   "title": "[菲区] 菲航 myPAL eSIM × Kolet：免费 1GB / 48 小时，全球 190 国可用（支持中国大陆漫游）",
   "brand": "Philippine Airlines",
   "domain": "philippineairlines.com",
@@ -9735,10 +11167,18 @@
   "status": "active",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "sosim-hk-esim-33-number",
+  "dedup_key": "sosim|esim|hk|esim-33-number",
   "title": "[香港] 3HK SoSIM eSIM：HK$33 云开 +852 号码（50GB/30 天），保号增值即可",
   "brand": "SoSIM (3HK)",
   "domain": "sosimhk.com",
@@ -9787,7 +11227,15 @@
   "euicc_note": "未查到 SoSIM 逐条写卡实测；香港卡普遍可用第三方 eUICC，但未验证。",
   "euicc_note_en": "No SoSIM-specific write test found; Hong Kong cards usually accept third-party eUICCs, but this is unverified.",
   "vowifi_note": "仅香港境内",
-  "vowifi_note_en": "Hong Kong only"
+  "vowifi_note_en": "Hong Kong only",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "HK"
+  ]
  },
  {
   "id": "qianfan-20-voucher-nov2026",
@@ -9825,6 +11273,7 @@
  },
  {
   "id": "scnet-maas-new-user-tokens",
+  "dedup_key": "scnet|cloud|cn|maas-new-user-tokens",
   "title": "[中国区] 超算互联网 MaaS：新客领 1000 万 Token，首单 ¥0.1 秒 5000 万 Token（至 12/31）",
   "brand": "超算互联网 SCNet",
   "domain": "scnet.cn",
@@ -9859,7 +11308,7 @@
  },
  {
   "id": "esim-san-japan-free-1gb",
-  "dedup_key": "esim-san|esim|jp|free-1gb-1day",
+  "dedup_key": "esim-san|esim|jp|japan-free-1gb",
   "title": "[日区] eSIM-san 免费试用：日本 eSIM 1GB / 1 天 0 日元（LINE 取码，每人一次）",
   "brand": "eSIM-san",
   "domain": "esim-san.jp",
@@ -9890,10 +11339,17 @@
   "status": "active",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "JP"
+  ]
  },
  {
   "id": "gohub-free-trial-esim",
+  "dedup_key": "gohub|esim|asia|free-trial-esim",
   "title": "[亚洲 12 国] GoHub 免费试用 eSIM：300MB / 1 天",
   "brand": "GoHub",
   "domain": "gohub.com",
@@ -9924,10 +11380,18 @@
   "source_url": "https://www.nodeseek.com/post-1055219-1",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "ASIA"
+  ]
  },
  {
   "id": "gomoworld-free-trial-esim",
+  "dedup_key": "gomoworld|esim|multi|free-trial-esim",
   "title": "[多区] GoMoWorld 免费试用 eSIM：最高 1GB / 1 天",
   "brand": "GoMoWorld",
   "domain": "gomoworld.com",
@@ -9958,10 +11422,18 @@
   "source_url": "https://www.nodeseek.com/post-1055219-1",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "roroesim-cs-trial-300mb",
+  "dedup_key": "roro-esim|esim|global|cs-trial-300mb",
   "title": "[全球] Roro eSIM 客服申请 300MB 测试流量（800 天）",
   "brand": "Roro eSIM",
   "domain": "roroesim.com",
@@ -9992,10 +11464,18 @@
   "source_url": "https://forum.naixi.net/thread-16230-1-1.html",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "ooredoo-qatar-easysim-welcome",
+  "dedup_key": "ooredoo|esim|qa|qatar-easysim-welcome",
   "title": "[卡塔尔] Ooredoo EasySIM 欢迎礼：免费新卡 + 300MB / 3 天",
   "brand": "Ooredoo Qatar",
   "domain": "ooredoo.qa",
@@ -10041,10 +11521,21 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测。",
-  "euicc_note_en": "No third-party eUICC test found."
+  "euicc_note_en": "No third-party eUICC test found.",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "local_number",
+  "geo_restriction": [
+   "QA"
+  ]
  },
  {
   "id": "iroamly-free-500mb-trial",
+  "dedup_key": "iroamly|esim|global|free-500mb-trial",
   "title": "[全球] iRoamly 免费试用 eSIM：500MB / 1 天（100+ 目的地）",
   "brand": "iRoamly",
   "domain": "iroamly.com",
@@ -10075,11 +11566,18 @@
   "added_at": "2026-11-19T03:04:36+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "tabstack-free-10k-credits",
-  "dedup_key": "tabstack|ai|global|10k-free-credits",
+  "dedup_key": "tabstack|ai|global|free-10k-credits",
   "title": "[全球] Tabstack（Mozilla）：新账号 10,000 credits 免费、免绑卡",
   "brand": "Tabstack",
   "domain": "tabstack.ai",
@@ -10113,6 +11611,7 @@
  },
  {
   "id": "true-tat-asean-tourist-sim-8gb",
+  "dedup_key": "true|esim|th|tat-asean-tourist-sim-8gb",
   "title": "[泰区] True × 泰国旅游局：东盟 / 印度旅客免费 True 5G 游客 SIM，8GB / 1 天 + ฿10,000 优惠券",
   "brand": "True Corporation",
   "domain": "true.th",
@@ -10161,10 +11660,19 @@
   "euicc_note": "未查到实体 eUICC 写入实测；实为机场柜台实体卡。",
   "euicc_note_en": "No third-party eUICC test found; this is a physical SIM handed out at the airport.",
   "vowifi_note": "须在泰国完成实名后开启",
-  "vowifi_note_en": "enable in Thailand after the ID check"
+  "vowifi_note_en": "enable in Thailand after the ID check",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "IN",
+   "SEA"
+  ]
  },
  {
   "id": "eskimo-referral-500mb",
+  "dedup_key": "eskimo|esim|global|referral-500mb",
   "title": "[全球] Eskimo 邀请码：新用户多领 500MB（邀请人同得，可累计）",
   "brand": "Eskimo",
   "domain": "eskimo.travel",
@@ -10194,10 +11702,18 @@
   "added_at": "2026-11-19T03:09:47+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "roamless-free-trial-500mb",
+  "dedup_key": "roamless|esim|global|free-trial-500mb",
   "title": "[全球] Roamless 新用户免费 500MB（$1.25 额度 / 不过期 / 200+ 目的地）",
   "brand": "Roamless",
   "domain": "roamless.com",
@@ -10227,11 +11743,18 @@
   "added_at": "2026-11-19T03:16:09+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "sakura-ai-engine-glm-deepseek-free",
-  "dedup_key": "sakura-ai-engine|ai|jp|3000-req-free",
+  "dedup_key": "sakura-ai|ai|jp|engine-glm-deepseek-free",
   "title": "[日本区] さくらのAI Engine 免费层：GLM-5.3-Flash／DeepSeek-V4.1-Flash 每月 3,000 次免费调用",
   "brand": "さくらのAI Engine",
   "domain": "ai.sakura.ad.jp",
@@ -10266,6 +11789,7 @@
  },
  {
   "id": "dito-esim-cloud-number-63",
+  "dedup_key": "dito|esim|ph|esim-cloud-number-63",
   "title": "[菲区] DITO 可云开 eSIM：₱99 拿 +63 真号码，年保号约 ₱10–20（大陆可收短信）",
   "brand": "DITO Telecommunity",
   "domain": "dito.ph",
@@ -10313,10 +11837,20 @@
   "euicc_compat": "works",
   "euicc_note": "9eSIM V3、Xesim 均有写入成功实测；写入后仍要在 DITO App 完成护照实名。",
   "euicc_note_en": "9eSIM V3 and Xesim both write DITO successfully; passport registration in the DITO app is still required afterwards.",
-  "euicc_source": "rinfinity.net DITO 教程（2026-10）+ 0xmason.com 实测（2026-09）"
+  "euicc_source": "rinfinity.net DITO 教程（2026-10）+ 0xmason.com 实测（2026-09）",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "PH"
+  ]
  },
  {
   "id": "mpt-po-pyaw-po-ya-10x-data",
+  "dedup_key": "mpt|esim|mm|po-pyaw-po-ya-10x-data",
   "title": "[缅区] MPT「Po Pyaw, Po Ya」：本地通话满 5 分钟，按通话时长送 10 倍流量",
   "brand": "MPT",
   "domain": "mpt.com.mm",
@@ -10362,10 +11896,18 @@
   "comm_verified": "2026-11-21",
   "euicc_compat": "unknown",
   "euicc_note": "未查到实体 eUICC 写入实测。",
-  "euicc_note_en": "No third-party eUICC test found."
+  "euicc_note_en": "No third-party eUICC test found.",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "MM"
+  ]
  },
  {
   "id": "roami-free-100mb-esim",
+  "dedup_key": "roami|esim|global|free-100mb-esim",
   "title": "[全球] Roami 免费 100MB eSIM（200+ 国 / 7 天）",
   "brand": "Roami",
   "domain": "roamiapp.com",
@@ -10396,10 +11938,18 @@
   "source_url": "https://www.nodeseek.com/post-1055219-1",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "keepgo-free-trial-100mb",
+  "dedup_key": "keepgo|esim|global|free-trial-100mb",
   "title": "[全球] Keepgo 免费试用 eSIM：100MB / 7 天（终身流量同一张卡）",
   "brand": "Keepgo",
   "domain": "keepgo.com",
@@ -10430,10 +11980,18 @@
   "added_at": "2026-11-19T03:06:09+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "firsty-free-esim-global",
+  "dedup_key": "firsty|esim|global|free-esim-global",
   "title": "[全球] Firsty 免费 eSIM：看广告换流量，每天最高 360MB（176 国）",
   "brand": "Firsty",
   "domain": "firsty.app",
@@ -10462,10 +12020,18 @@
   "added_at": "2026-11-19T09:52:44+08:00",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "call-e-free-credits",
+  "dedup_key": "call-ai|ai|ca-us|e-free-credits",
   "title": "[美/加区] CALL-E：让你的 AI 助手代打真实电话（新用户 100 免费额度）",
   "brand": "CALL-E (AI Rudder)",
   "domain": "heycall-e.com",
@@ -10500,6 +12066,7 @@
  },
  {
   "id": "rankspot-1-credit",
+  "dedup_key": "rankspot|ai|global|1-credit",
   "title": "[全球] RankSpot：给 agent 的 SEO 执行层，注册送 $1 额度、按月零订阅",
   "brand": "RankSpot",
   "domain": "rankspot.ai",
@@ -10534,6 +12101,7 @@
  },
  {
   "id": "asda-mobile-payg-esim",
+  "dedup_key": "asda-mobile|esim|gb|payg-esim",
   "title": "[英区] Asda Mobile 预付 eSIM：0 月租、10p/条短信，180 天一次付费动作保号，含免费 Wi-Fi 通话",
   "brand": "Asda Mobile",
   "domain": "asda.com",
@@ -10565,10 +12133,19 @@
   "kyc_level": "none",
   "kyc_note": "不看证件，但充值仅接受英国地址登记的卡",
   "vowifi": "true",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "lebara-uk-payg-esim",
+  "dedup_key": "lebara|esim|gb|payg-esim",
   "title": "[英区] Lebara 英国预付 eSIM：0 月租、19p/条短信，90 天一次付费动作保号",
   "brand": "Lebara UK",
   "domain": "lebara.co.uk",
@@ -10617,10 +12194,19 @@
   "euicc_compat": "unknown",
   "euicc_note": "跑 Vodafone 英国网，白卡写 Vodafone 系配置易与 ARA-M 冲突，但无 Lebara 逐条实测。",
   "euicc_note_en": "Runs on Vodafone UK; blank cards often conflict with ARA-M on Vodafone profiles, but no Lebara-specific test found.",
-  "euicc_source": "nodeseek 沃达丰写卡讨论（2026-06）"
+  "euicc_source": "nodeseek 沃达丰写卡讨论（2026-06）",
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "GB"
+  ]
  },
  {
   "id": "bamboosim-bfcm-45off",
+  "dedup_key": "bamboosim|esim|global|bfcm-45off",
   "title": "[全球] BambooSIM 黑五：旅行 eSIM 45% off（两张 50% off）+ 老客 100 张免费过境 eSIM",
   "highlight": "码 BFCMO50：旅行 eSIM 单张 45% off、两张 50% off；过去一年买过的老客可领 100 张免费过境 eSIM 之一",
   "brand": "BambooSIM",
@@ -10650,10 +12236,15 @@
   "status": "active",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "travelgoogoo-visa-free-esim-apac",
+  "dedup_key": "travelgoogoo|esim|apac|visa-free-esim-apac",
   "title": "[亚太发卡] Travelgoogoo × Visa 免费 eSIM：Infinite 4GB 全球 + 4GB 亚太 + 全年无限消息",
   "highlight": "亚太发行的 Visa 卡输入 16 位卡号即领 365 天 eSIM：Infinite 4GB 全球 + 4GB 亚太 + 全年无限消息，仅 $1 验卡预授权",
   "brand": "Travelgoogoo",
@@ -10683,10 +12274,19 @@
   "status": "active",
   "kyc_level": "none",
   "vowifi": "n/a",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "APAC"
+  ]
  },
  {
   "id": "github-copilot-free",
+  "dedup_key": "github|ai|global|copilot-free",
   "title": "[全球] GitHub Copilot 免费版",
   "brand": "GitHub",
   "domain": "github.com",
@@ -10718,6 +12318,7 @@
  },
  {
   "id": "cursor-free-plan",
+  "dedup_key": "cursor|ai|global|free-plan",
   "title": "[全球] Cursor 免费版（含 Grok / Composer 模型）",
   "brand": "Cursor",
   "domain": "cursor.com",
@@ -10749,6 +12350,7 @@
  },
  {
   "id": "cloudflare-workers-free",
+  "dedup_key": "cloudflare|cloud|global|workers-free",
   "title": "[全球] Cloudflare Workers 免费层",
   "brand": "Cloudflare",
   "domain": "cloudflare.com",
@@ -10780,6 +12382,7 @@
  },
  {
   "id": "capy-free-local-agent",
+  "dedup_key": "capy|ai|global|free-local-agent",
   "title": "[全球] Capy：桌面 AI 编程代理，免费版每月 100 次代码审查、3 款模型任意用",
   "highlight": "免费版在自己电脑上跑代理，每月 100 次代码审查，Particle-1 / DeepSeek V4.1 Flash / GLM 5.3 三款模型随便用",
   "brand": "Capy",
@@ -10812,6 +12415,7 @@
  },
  {
   "id": "tesseract-free-desktop-agent",
+  "dedup_key": "tesseract|ai|global|free-desktop-agent",
   "title": "[全球] Tesseract：免费桌面 AI 代理，一句话出 PPT / 网站 / Logo / 视频",
   "highlight": "不卖订阅：挂自己的 Claude / ChatGPT 订阅就免费用，一句话直接出 PPT、网站、Logo 与视频",
   "brand": "Tesseract",
@@ -10844,6 +12448,7 @@
  },
  {
   "id": "pollyreach-free-credits-number",
+  "dedup_key": "pollyreach|ai|global|free-credits-number",
   "title": "[全球] PollyReach：给 AI 代理配一个真实电话号码，注册送 200 credits + 免费号码",
   "highlight": "注册即送 200 credits + 一个免费美国号码，不绑卡；AI 代理能自己打电话订位、过 IVR，附录音与逐字稿",
   "brand": "PollyReach",
@@ -10876,6 +12481,7 @@
  },
  {
   "id": "instabox-free-cloud-machine",
+  "dedup_key": "instabox|cloud|global|free-cloud-machine",
   "title": "[全球] InstaBox 免费云电脑：4 vCPU / 8GiB，预装 Claude Code 与 Codex，免绑卡",
   "highlight": "免费 1 台 4 vCPU / 8 GiB 云电脑，预装 Claude Code 与 Codex，GitHub 登录即可开，闲置自动暂停不计费",
   "brand": "InstaBox",
@@ -10972,7 +12578,7 @@
  },
  {
   "id": "freebuff-free-coding-agent",
-  "dedup_key": "freebuff|ai|global|free-coding-agent",
+  "dedup_key": "freebuff|ai|global|coding-agent",
   "title": "[全球] Freebuff：广告养活的免费编码代理，每天 100 Freebucks、免绑卡免 Key",
   "brand": "Freebuff",
   "domain": "freebuff.com",
@@ -11004,6 +12610,7 @@
  },
  {
   "id": "xiaomi-mimo-tts-free-api",
+  "dedup_key": "xiaomi-mimo|ai|global|tts-free-api",
   "title": "[全球/中国区] 小米 MiMo-V2.5-TTS 语音合成 API 限时免费：3 个模型、RPM 100、不耗套餐额度",
   "brand": "Xiaomi MiMo",
   "domain": "mimo.mi.com",
@@ -11037,6 +12644,7 @@
  },
  {
   "id": "netlify-server-free-early-access",
+  "dedup_key": "netlify|cloud|global|server-free-early-access",
   "title": "[全球] Netlify Server Early Access 期间免费：常驻 Node 服务、WebSocket、内存状态与长跑 AI Agent",
   "brand": "Netlify",
   "domain": "netlify.com",
@@ -11070,6 +12678,7 @@
  },
  {
   "id": "wispr-flow-free-dictation",
+  "dedup_key": "wispr-flow|ai|global|free-dictation",
   "title": "[全球] Wispr Flow 语音听写免费版：Mac/Win/手机全平台，另带会议记录",
   "brand": "Wispr Flow",
   "domain": "wisprflow.ai",
@@ -11103,6 +12712,7 @@
  },
  {
   "id": "lxi-be-free-hosting-5gb",
+  "dedup_key": "lxi|cloud|global|free-hosting-5gb",
   "title": "[全球] LXI.be 永久免费主机：5GB 空间 + 无限流量 + PHP/MySQL，免绑卡",
   "brand": "LXI.be",
   "domain": "lxi.be",
@@ -11136,6 +12746,7 @@
  },
  {
   "id": "antideploy-free-1vcpu-1gb",
+  "dedup_key": "antideploy|cloud|global|free-1vcpu-1gb",
   "title": "[全球] Antideploy 免费 1 核 1G 应用：送 1 个 Postgres + 无限静态站，免绑卡",
   "brand": "Antideploy",
   "domain": "antideploy.com",
@@ -11169,6 +12780,7 @@
  },
  {
   "id": "trae-oneclick-deploy-free",
+  "dedup_key": "trae|cloud|cn|oneclick-deploy-free",
   "title": "[中国区] TRAE 一键部署限免：静态站 / Node 应用免费上线，单站 10GB/日",
   "brand": "TRAE",
   "domain": "trae.cn",
@@ -11202,6 +12814,7 @@
  },
  {
   "id": "bot-hosting-net-free-panel",
+  "dedup_key": "bot-hosting|cloud|global|net-free-panel",
   "title": "[全球] bot-hosting.net 免费面板机：256MB / 任意运行时（Node、Python），免绑卡挂 24 小时",
   "brand": "bot-hosting.net",
   "domain": "bot-hosting.net",
@@ -11234,6 +12847,7 @@
  },
  {
   "id": "katabump-free-pterodactyl-panel",
+  "dedup_key": "katabump|cloud|global|free-pterodactyl-panel",
   "title": "[全球] KataBump 免费翼龙面板机：308MB / 716MB，Node.js 与 Python 可跑常驻进程",
   "brand": "KataBump",
   "domain": "katabump.com",
@@ -11266,6 +12880,7 @@
  },
  {
   "id": "waifly-free-nodejs-panel",
+  "dedup_key": "waifly|cloud|global|free-nodejs-panel",
   "title": "[全球] Waifly 永久免费 Node.js 面板机：300MB 内存 + 1GB 存储 + 1 个 MySQL",
   "brand": "Waifly",
   "domain": "waifly.com",
@@ -11298,6 +12913,7 @@
  },
  {
   "id": "wispbyte-free-24-7-panel",
+  "dedup_key": "wispbyte|cloud|global|free-24-7-panel",
   "title": "[全球] Wispbyte 免费 24/7 面板机：512MB 内存 + 1GB 硬盘，免绑卡、登录保活",
   "brand": "Wispbyte",
   "domain": "wispbyte.com",
@@ -11330,6 +12946,7 @@
  },
  {
   "id": "vyce-cloud-free-vps",
+  "dedup_key": "vyce-cloud|cloud|global|free-vps",
   "title": "[全球] Vyce.cloud 免费 VPS：1 核 2GB + 6GB 盘，root SSH 与公网 IPv6（需续期）",
   "brand": "Vyce.cloud",
   "domain": "vyce.cloud",
@@ -11362,6 +12979,7 @@
  },
  {
   "id": "poke-devin-bots-free-credits",
+  "dedup_key": "cognition|ai|global|poke-devin-bots-free-credits",
   "title": "[全球] Poke × Devin Bots：跟 Poke 讲想法，免费拿 Devin Bot + 1 个月 Max（$200）+ 最高 $10,000 额度",
   "brand": "Cognition / Poke",
   "domain": "poke.com",
@@ -11430,7 +13048,7 @@
  },
  {
   "id": "kite-bitrefill-3pct-kite",
-  "dedup_key": "kite|bitrefill|global|campaign-1124",
+  "dedup_key": "kite|crypto|global|bitrefill-3pct-kite",
   "title": "[全球] Kite × Bitrefill：AI 代理买礼品卡返 3% $KITE（上限 $5）+ 抽 5 人全额返还（上限 $100）",
   "brand": "Kite × Bitrefill",
   "domain": "bitrefill.com",
@@ -11465,7 +13083,7 @@
  },
  {
   "id": "google-ai-blackfriday-annual-50",
-  "dedup_key": "google|ai|multi|ai-blackfriday-annual-50-2026",
+  "dedup_key": "google|ai|multi|ai-blackfriday-annual-50",
   "title": "[多区] Google AI Plus / AI Pro 年付黑五最高 5 折：美区 Pro 首年 $99.99（老用户至 11/26）",
   "brand": "Google",
   "domain": "one.google.com",
@@ -11536,6 +13154,7 @@
  },
  {
   "id": "stepfun-stepaudio3-free-preview",
+  "dedup_key": "stepfun|ai|global|stepaudio3-free-preview",
   "title": "[中国区/全球] 阶跃星辰 StepAudio 3 语音全系限免（延至 11/23 11:59，免绑卡）",
   "brand": "阶跃星辰 StepFun",
   "domain": "platform.stepfun.com",
@@ -11568,6 +13187,7 @@
  },
  {
   "id": "huawei-codearts-200-voucher",
+  "dedup_key": "huaweicloud|cloud|cn|codearts-200-voucher",
   "title": "[中国区] 华为云 200 元无门槛代金券：报名小红书 Skill 创新赛即可领（至 11/24）",
   "brand": "华为云 CodeArts",
   "domain": "huaweicloud.com",
@@ -11602,6 +13222,7 @@
  },
  {
   "id": "nous-portal-qwen4-max-free",
+  "dedup_key": "nous|ai|global|portal-qwen4-max-free",
   "title": "[全球] Nous Portal：Qwen4-Max 免费 5 天（原生视觉 + 100 万上下文）",
   "brand": "Nous Research",
   "domain": "portal.nousresearch.com",
@@ -11634,7 +13255,7 @@
  },
  {
   "id": "gate-convert-new-user-20usdt",
-  "dedup_key": "gate|bank|global|convert-new-user-20usdt",
+  "dedup_key": "gate|crypto|global|convert-new-user-20usdt",
   "title": "[全球站] Gate 闪兑新客：$1 换 20 USDT + 每日签到 10 WLFI（11/19–11/26）",
   "brand": "Gate",
   "domain": "gate.com",
@@ -11668,6 +13289,7 @@
  },
  {
   "id": "sendwave-latam-tshirt",
+  "dedup_key": "sendwave|bank|us|latam-tshirt",
   "title": "[仅限美国] Sendwave 拉美邀请：3 人换限量 T 恤",
   "brand": "Sendwave",
   "domain": "sendwave.com",
@@ -11696,10 +13318,21 @@
   "status": "expiring_soon",
   "added_at": "2026-11-19T01:20:37+08:00",
   "kyc_level": "foreign_only",
-  "utility": 0
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "US"
+  ]
  },
  {
   "id": "databasemart-black-friday-vps",
+  "dedup_key": "database|cloud|global|databasemart-black-friday-vps",
   "title": "[全球] Database Mart 黑五 VPS：$1.25/月起（最高 75% off，至 11/28）",
   "brand": "Database Mart",
   "domain": "databasemart.com",
@@ -11732,7 +13365,7 @@
  },
  {
   "id": "ahanow-100k-credits-nov2026",
-  "dedup_key": "ahanow|ai|global|100k-signup-credits",
+  "dedup_key": "ahanow|ai|global|100k-credits-nov2026",
   "title": "[全球] AhaNow 新注册送 10 万 Credits：截图／脚本 3 分钟出产品解说视频（11/26 前）",
   "brand": "AhaNow",
   "domain": "ahanow.ai",
@@ -11766,6 +13399,7 @@
  },
  {
   "id": "autoclaw-weekly-100m-tokens",
+  "dedup_key": "zhipu|ai|global|autoclaw-weekly-100m-tokens",
   "title": "[中国区/全球] 智谱 AutoClaw 每周福利：登录领 1 亿 Tokens（至 11/22）",
   "brand": "智谱 AutoClaw（澳龙）",
   "domain": "autoclaw.zhipuai.cn",
@@ -11798,6 +13432,7 @@
  },
  {
   "id": "jio-google-ai-pro-expired",
+  "dedup_key": "jio|ai|in|google-ai-pro-expired",
   "title": "[印度区] Jio × Google AI Pro：18 个月免费",
   "brand": "Jio",
   "domain": "jio.com",
@@ -11827,6 +13462,7 @@
  },
  {
   "id": "gcp-gemini-credit-expired",
+  "dedup_key": "google|cloud|global|gcp-gemini-credit-expired",
   "title": "[全球] Google Cloud $300 额度可用于 Gemini",
   "brand": "Google Cloud",
   "domain": "cloud.google.com",
@@ -11857,6 +13493,7 @@
  },
  {
   "id": "mistral-vibe-pro-lechonk-3m",
+  "dedup_key": "mistral-ai|ai|eea|vibe-pro-lechonk-3m",
   "title": "[欧区] Mistral Vibe Pro：欧洲开发者凭码 LECHONK 免费 3 个月（$45）",
   "brand": "Mistral AI",
   "domain": "mistral.ai",
@@ -11891,6 +13528,7 @@
  },
  {
   "id": "envato-minimax-h3-unlimited-24h",
+  "dedup_key": "envato|ai|global|minimax-h3-unlimited-24h",
   "title": "[全球] Envato × MiniMax H3：24 小时不限量视频生成，免费账号也能用",
   "brand": "Envato",
   "domain": "elements.envato.com",
