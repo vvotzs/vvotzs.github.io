@@ -65,7 +65,7 @@
     "source_url": "https://usdailyrewards.com/tastytrade-bonus/",
     "risk": "资金要锁 12 个月，等于用流动性换 2% 左右收益；提前取出或转出会被扣回奖励；入金如果买股票要自负涨跌；只限美国居民，非居民无法参加；30 天窗口按清算时间算，踩线转账可能不计入档位。",
     "status": "active",
-    "added_at": "2026-11-21T17:46:00+08:00",
+    "added_at": "2026-11-21T16:50:00+08:00",
     "kyc_level": "foreign_only",
     "kyc_note": "仅美国合法居民",
     "utility": 0
@@ -101,7 +101,7 @@
     "source_url": "https://www.yunjumin.com/1527.html",
     "risk": "必须有 BMO 寄送的专属 promo code，没有 mailer 的拿不到；Relationship Checking 月费 $25；货基那 $1,000 要 $150,000 新资金，普通人基本无缘；直存 $20,000 门槛对多数人过高；有 DP 反映 BMO 关户后退款麻烦。",
     "status": "active",
-    "added_at": "2026-11-21T17:49:00+08:00",
+    "added_at": "2026-11-21T16:53:00+08:00",
     "kyc_level": "foreign_only",
     "kyc_note": "需美国 BMO 客户与专属 promo code",
     "utility": 0
@@ -371,7 +371,7 @@
     "source_url": "https://usdailyrewards.com/chatgpt-plus-free-academic-researchers/",
     "risk": "学生不能自己申请，只能被导师或博后加成合作者；5 万份先到先得，开放当天可能很快抢完；帮助中心目前仍写「申请已关闭、只收 waitlist」，以 11/23 实际开放为准；一份 3 席同日到期；到期前会问是否续用，别在非 $0 页面误付款。",
     "status": "active",
-    "added_at": "2026-11-21T17:43:00+08:00",
+    "added_at": "2026-11-21T16:47:00+08:00",
     "kyc_level": "foreign_only",
     "kyc_note": "需海外合资格高校研究型教职/博后",
     "utility": 0
@@ -472,7 +472,7 @@
     "source_url": "https://usdailyrewards.com/mercury-business-checking/",
     "risk": "必须走推荐/活动链接，官网自助注册拿不到 $500；个体户不符合，需要已注册公司与 EIN；2026-11-06 条款新增余额保持要求，具体天数以落地页为准；Mercury 可审公司资料并拒批；奖励按其他收入发 1099-MISC，要报税。",
     "status": "active",
-    "added_at": "2026-11-21T17:45:00+08:00",
+    "added_at": "2026-11-21T16:49:00+08:00",
     "kyc_level": "foreign_only",
     "kyc_note": "需美国注册公司与 EIN，个体户不行",
     "utility": 0
@@ -508,7 +508,7 @@
     "source_url": "https://www.yunjumin.com/1496.html",
     "risk": "$1,000 档要收到 BofA 直接邀请，公开渠道只有最高 $500；12 个月内有过 BofA 支票账户直接失去资格；直存定义严格，转账与 Zelle 不算；月费不豁免会吃掉一两成奖励；奖励按利息收入报税（1099-INT）。",
     "status": "active",
-    "added_at": "2026-11-21T17:48:00+08:00",
+    "added_at": "2026-11-21T16:52:00+08:00",
     "kyc_level": "foreign_only",
     "kyc_note": "需 SSN/ITIN 与美国地址",
     "utility": 0
@@ -779,7 +779,7 @@
     "source_url": "https://www.yunjumin.com/6035.html",
     "risk": "Performance Select 月费 $25，不满足免月费条件会持续吃钱；开户后换产品可能失去资格；直存定义严，转账与 P2P 不算；$400 档需要 60 天内 $5,000 直存，对普通工资党不轻松；奖励应税。",
     "status": "active",
-    "added_at": "2026-11-21T17:50:00+08:00",
+    "added_at": "2026-11-21T16:54:00+08:00",
     "kyc_level": "foreign_only",
     "kyc_note": "需美国税号与地址，非居民线上多被拒",
     "utility": 0
@@ -815,7 +815,7 @@
     "source_url": "https://usdailyrewards.com/etrade-checking-bonus/",
     "risk": "优惠码事后不能补，开户时漏填就白开；E*Trade 风控严格，入金后立刻全额转出易被锁户甚至拒发奖励；条款写明「只维持很低余额、不做日常交易」可被认定为 gaming；奖励应税；非居民不符合。",
     "status": "active",
-    "added_at": "2026-11-21T17:47:00+08:00",
+    "added_at": "2026-11-21T16:51:00+08:00",
     "kyc_level": "foreign_only",
     "kyc_note": "需美国税号与地址",
     "utility": 0
@@ -953,7 +953,7 @@
     "source_url": "https://usdailyrewards.com/wells-fargo-checking/",
     "risk": "第三方攻略写的 $500 与官方页现在的 $325 不一致，金额以自己申请页上写的为准；$15 月费不豁免会吃掉大半奖励；奖励属应税收入（1099-INT）；提前关户可能被追回；非居民签 W-8 直接不符合资格。",
     "status": "active",
-    "added_at": "2026-11-21T17:44:00+08:00",
+    "added_at": "2026-11-21T16:48:00+08:00",
     "kyc_level": "foreign_only",
     "kyc_note": "需 SSN/ITIN 与美国地址，且排除签 W-8 的非居民",
     "utility": 0
@@ -1122,7 +1122,7 @@
     "source_url": "https://www.yunjumin.com/2912.html",
     "risk": "只对已有 Amex 关系的人开放，且线上申请要过 3 个月卡龄，很多人直接被挡；$7,500 直存门槛对普通工资党偏高；直存定义严，P2P 与转账都不算；开户后 60 天不入金会被关户；奖励按利息报税。",
     "status": "active",
-    "added_at": "2026-11-21T17:51:00+08:00",
+    "added_at": "2026-11-21T16:55:00+08:00",
     "kyc_level": "foreign_only",
     "kyc_note": "需已有 Amex 美国卡或储蓄/CD 关系",
     "utility": 0
@@ -3065,7 +3065,7 @@
     "source_url": "https://www.flyert.com/a-524385-1.html",
     "risk": "只限环球旅行 Plus 这一款卡，普卡与其他工行卡不适用；资金池按月先到先得，大额消费撞上池子用完就拿不到；第三方支付转接一律不算，海淘顺手用支付宝就白刷；境外交易仍有货币转换成本，2% 未必覆盖全部费用。",
     "status": "active",
-    "added_at": "2026-11-21T17:53:00+08:00",
+    "added_at": "2026-11-21T16:57:00+08:00",
     "kyc_level": "cn_ok",
     "kyc_note": "持大陆工行环球旅行 Plus 卡即可",
     "utility": 0
@@ -4634,7 +4634,7 @@
     "source_url": "https://www.flyert.com/a-524651-1.html",
     "risk": "必须先报名，漏报名等于白刷；奖励池按月先到先得，月底大额消费可能已无额度；条款写「有机会」返，非保证；只认银联线下清算，网付与第三方支付渠道不算；境外消费本身有货币转换费，3% 返现前先算净成本；退款会扣回已返消费金。",
     "status": "active",
-    "added_at": "2026-11-21T17:52:00+08:00",
+    "added_at": "2026-11-21T16:56:00+08:00",
     "kyc_level": "cn_ok",
     "kyc_note": "持大陆中行银联信用卡即可，报名走中行 App/公众号",
     "utility": 0
@@ -5884,7 +5884,7 @@
     "source_url": "https://ecitizen.forum/topic/755/%E6%89%8B%E6%9C%BA%E5%85%AB%E8%BE%BE%E9%80%9A%E6%96%B0%E5%AE%A2%E8%BF%8E%E6%96%B0-hk-150-%E6%97%85%E5%AE%A2%E7%89%88-app-%E5%8A%A0%E7%9A%84%E5%8D%A1%E4%B8%8D%E7%AE%97",
     "risk": "旅客版八达通被排除，不少人按网上教程用旅客 App 开卡结果拿不到；Android 机型需 GMS 与 Google Wallet，国行机常常缺；13,210 个名额先到先得；登记与消费顺序、卡号填写错误都会导致无奖赏；奖赏不折现，领奖前移卡/退款会被没收。",
     "status": "active",
-    "added_at": "2026-11-21T17:41:00+08:00",
+    "added_at": "2026-11-21T16:45:00+08:00",
     "kyc_level": "cn_ok_extra",
     "kyc_note": "需八达通 App/银包，Android 还需 Google Wallet",
     "utility": 0
@@ -9003,7 +9003,7 @@
     "source_url": "https://ecitizen.forum/topic/575/usims-%E5%87%BA%E4%BA%86%E6%B0%B8%E4%B9%85%E5%85%8D%E8%B4%B9%E4%BD%8E%E9%80%9F-esim",
     "risk": "低速档只有 128kbps，视频和热点基本用不了；官方未承诺常开档长期有效，随时会停；+86 号码不能注册，虚拟号通过率低；首 1GB 是限时新客礼，用完后按套餐价续；eSIM 机型与网络锁限制照旧。",
     "status": "active",
-    "added_at": "2026-11-21T17:42:00+08:00",
+    "added_at": "2026-11-21T16:46:00+08:00",
     "kyc_level": "cn_ok_extra",
     "kyc_note": "需非 +86 号码收验证码；须 eSIM 机型",
     "vowifi": "n/a",
@@ -10936,7 +10936,7 @@
     "source_url": "https://ecitizen.forum/topic/758/google-one-%E9%BB%91%E4%BA%94-pro-%E5%B9%B4%E4%BB%98%E4%BA%94%E6%8A%98-%E7%BE%8E%E5%8C%BA-99-%E7%BE%8E%E5%85%83%E4%B8%80%E5%B9%B4",
     "risk": "折扣按账号与区服浮动，宣传的 5 折不是人人有；年付首年到期自动按原价扣费，容易忘；学生价与家庭组可能比这档更便宜；部分地区或支付方式在结账页看不到年付折扣；换区、换支付方式可能丢资格。",
     "status": "expiring_soon",
-    "added_at": "2026-11-21T17:40:00+08:00",
+    "added_at": "2026-11-21T16:44:00+08:00",
     "kyc_level": "cn_ok_extra",
     "kyc_note": "需已有付费订阅与可用的 Google 支付方式",
     "utility": 0
