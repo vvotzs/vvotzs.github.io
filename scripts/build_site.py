@@ -2367,6 +2367,52 @@ def cat_row(deal: dict, en: dict, lang: str, today) -> str:
     )
 
 
+def is_global_deal(deal: dict) -> bool:
+    """全球通用条目：regions 里写了“全球”，或标题以 [全球 开头。"""
+    regions = str(deal.get("regions") or "")
+    title = str(deal.get("title") or "").lstrip()
+    return ("全球" in regions) or title.startswith("[全球")
+
+
+# 需要本地身份 / 税号 / 高资产门槛才能开的银行类关键词（命中则放银行分区中后段）
+BANK_LOCAL_ID_KEYS = (
+    "SSN", "ITIN", "美国身份", "美国居民", "英国居民", "本地身份",
+    "当地税号", "居民身份", "绿卡", "永居", "高额资产", "资产门槛", "年薪",
+    "国籍", "公民", "国民",
+)
+BANK_LOCAL_ID_NEGATIONS = (
+    "无需 SSN", "无需SSN", "不需要 SSN", "不需要SSN", "免 SSN", "免SSN",
+    "不需 SSN", "不需SSN", "无需 ITIN", "无需ITIN", "不需要 ITIN", "不需要ITIN",
+    "无需美国身份", "不需要美国身份", "无资产门槛", "无需资产",
+)
+
+
+def bank_needs_local_identity(deal: dict) -> bool:
+    """US Bank 这类要 SSN / ITIN / 当地身份 / 高资产才开的优惠，普适性低，排到银行分区中部。"""
+    text = " ".join(
+        str(deal.get(k) or "") for k in ("title", "conditions", "highlight", "risk", "regions")
+    )
+    for neg in BANK_LOCAL_ID_NEGATIONS:
+        text = text.replace(neg, "")
+    return any(key in text for key in BANK_LOCAL_ID_KEYS)
+
+
+def order_category_deals(deals: list[dict], slug: str) -> list[dict]:
+    """分类列表排序：价值降序 + 新收录在前；AI 全球优先；银行按本地身份门槛分两段。"""
+    ordered = list(deals)
+    ordered.sort(key=lambda d: str(d.get("added_at") or d.get("added") or ""), reverse=True)
+    ordered.sort(key=value_expected, reverse=True)
+    if slug == "ai":
+        # 稳定排序：全球通用在前，地区分服在后，两部分内部次序不变
+        ordered.sort(key=lambda d: 0 if is_global_deal(d) else 1)
+        return ordered
+    if slug == "bank":
+        # 稳定排序：不需要 SSN / ITIN / 本地身份的通用优惠在前，需门槛的落在中后段
+        ordered.sort(key=lambda d: 1 if bank_needs_local_identity(d) else 0)
+        return ordered
+    return ordered
+
+
 def render_category_page(
     slug: str, cat_deals: list[dict], expired_n: int, en_map: dict, today, lang: str
 ) -> str:
@@ -2599,9 +2645,8 @@ def write_category_pages(deals: list[dict], en_map: dict, today) -> int:
     count = 0
     for slug in CAT_META:
         cat_deals = [d for d in deals if d.get("category") == slug and d.get("status") != "expired"]
-        # 高价值在前；同一价值档里新收录的在前（两次稳定排序）
-        cat_deals.sort(key=lambda d: str(d.get("added_at") or d.get("added") or ""), reverse=True)
-        cat_deals.sort(key=value_expected, reverse=True)
+        # 高价值在前；同一价值档里新收录的在前；AI 分类再让全球通用排在地区分服之前
+        cat_deals = order_category_deals(cat_deals, slug)
         expired_n = len([d for d in deals if d.get("category") == slug and d.get("status") == "expired"])
         for lang, base in (("zh", CATEGORY_DIR), ("en", CATEGORY_DIR_EN)):
             out = base / slug / "index.html"
@@ -2828,14 +2873,75 @@ def main() -> None:
     fresh_pool = [d for d in active if (stamp := added_stamp(d)) and stamp >= cutoff]
     fresh_pool.sort(key=lambda d: (-value_expected(d), idx_of.get(d["id"], 0)))
     fresh_pool.sort(key=lambda d: d.get("added_at") or d.get("added") or "", reverse=True)
-    fresh = fresh_pool[:10]
-    # 今天没有新条目时也保证板子不空
+
+    # 「最新收录」10 格的来源去重：同一个论坛 / 站点在里面最多出现两次。
+    # 很多条目是从社区原帖收录的，首页反复出现同一家论坛，对方会以为被盯着抓、
+    # 转头屏蔽我们的抓取；分类分区仍是全量收录，这里只约束首页这 10 格。
+    def fresh_source_domain(deal: dict) -> str:
+        """条目来源域名：优先 source_url（社区原帖），否则 url；归一化常见前缀与社交站。"""
+        from urllib.parse import urlsplit
+
+        raw = (deal.get("source_url") or deal.get("url") or "").strip()
+        host = ""
+        try:
+            host = (urlsplit(raw).hostname or "").lower()
+        except ValueError:
+            host = ""
+        for prefix in ("www.", "m.", "old.", "amp.", "mobile."):
+            if host.startswith(prefix):
+                host = host[len(prefix):]
+        if host in ("twitter.com", "x.com"):
+            host = "x.com"
+        if host == "reddit.com" or host.endswith(".reddit.com"):
+            host = "reddit.com"
+        return host or f"unknown:{deal.get('id', '')}"
+
+    def pick_fresh(pool: list[dict], filler: list[dict], slots: int = 10) -> list[dict]:
+        """两轮挑选：先每域名 1 条，再从剩余里补，同一域名最多 2 条，最后才兜底。"""
+        chosen: list[dict] = []
+        picked: set[str] = set()
+        counts: dict[str, int] = {}
+
+        for deal in pool:
+            if len(chosen) >= slots:
+                break
+            domain = fresh_source_domain(deal)
+            if counts.get(domain):
+                continue
+            chosen.append(deal)
+            picked.add(deal["id"])
+            counts[domain] = 1
+
+        for deal in pool:
+            if len(chosen) >= slots:
+                break
+            if deal["id"] in picked:
+                continue
+            domain = fresh_source_domain(deal)
+            if counts.get(domain, 0) >= 2:
+                continue
+            chosen.append(deal)
+            picked.add(deal["id"])
+            counts[domain] = counts.get(domain, 0) + 1
+
+        for deal in filler:
+            if len(chosen) >= slots:
+                break
+            if deal["id"] in picked:
+                continue
+            chosen.append(deal)
+            picked.add(deal["id"])
+
+        chosen.sort(key=lambda d: d.get("added_at") or d.get("added") or "", reverse=True)
+        return chosen
+
+    active_by_time = sorted(
+        active, key=lambda d: d.get("added_at") or d.get("added") or "", reverse=True
+    )
+    fresh = pick_fresh(fresh_pool, active_by_time)
+    # 今天没有新条目时也保证板子不空（同样走两轮去重）
     if not fresh:
-        fresh = sorted(
-            active,
-            key=lambda d: (d.get("added_at") or d.get("added") or "",),
-            reverse=True,
-        )[:10]
+        fresh = pick_fresh(active_by_time, active_by_time)
 
     # 高价值榜：按可预期到手金额（不是上限）排
     leaderboard = sorted(active, key=lambda d: (value_expected(d), d.get("value_num") or 0), reverse=True)[:10]
@@ -2878,7 +2984,7 @@ def main() -> None:
     )[:8]
 
     by_cat = {
-        k: sorted([d for d in active if d["category"] == k], key=value_expected, reverse=True)
+        k: order_category_deals([d for d in active if d["category"] == k], k)
         for k in CAT_META
     }
 
