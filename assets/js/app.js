@@ -57,36 +57,63 @@
   }
 
   /* ------------------------------------------------------- 搜索索引（JSON） */
-  /* 首页只内联每类前 24 条（Hark 第七轮定稿的瘦身口径），索引因此分五部分：
-       t 标题 · h 其余检索词 · k 条目所属分类 · c 分类词表（按分类只存一次）·
-       p 首页没内联的在效条目：搜到时补一行轻量卡，点进它的 /d/<id>/ 独立页。
+  /* 首页只内联每类前 24 条（Hark 第七轮定稿的瘦身口径），索引因此只带四部分：
+       h 检索词 · c 分类词表（按分类只存一次）· t 标题（只给未内联的在效条目）·
+       p 未内联条目：搜到时补一行轻量卡，点进它的 /d/<id>/ 独立页。
+     内联卡片的标题直接从 DOM 的 h3 上取，不在索引里再存一份。
      旧格式（{id: 文本} 或 {zh:…, en:…}）也还能读。 */
   var SEARCH = {};
   var TITLES = {};
   var POOL = {};
   var CATQ = {};
+  var RAW_HAY = {};
+  var OLD_FLAT = null;
   var indexEl = $("#search-index");
   if (indexEl) {
     var rawIndex = null;
     try { rawIndex = JSON.parse(indexEl.textContent) || {}; } catch (err) { rawIndex = null; }
     if (rawIndex) {
       var legacy = rawIndex.zh || rawIndex.en ? (rawIndex[LANG] || rawIndex.zh || {}) : null;
-      if (rawIndex.t) {
+      if (rawIndex.h) {
         CATQ = rawIndex.c || {};
-        TITLES = rawIndex.t;
-        var catsOf = rawIndex.k || {};
-        var hayOf = rawIndex.h || {};
-        Object.keys(TITLES).forEach(function (id) {
-          var cat = catsOf[id] || "";
-          SEARCH[id] = (TITLES[id] + " " + (hayOf[id] || "") + " " + (CATQ[cat] || "")).toLowerCase();
-        });
+        RAW_HAY = rawIndex.h;
+        TITLES = rawIndex.t || {};
         POOL = rawIndex.p || {};
+        // 旧版带 k（条目分类）的索引：这里只记下来，下面拼检索串时补进去
+        var kMap = rawIndex.k || {};
+        Object.keys(kMap).forEach(function (id) {
+          if (RAW_HAY[id] !== undefined) RAW_HAY[id] += " " + (CATQ[kMap[id]] || "");
+        });
       } else if (legacy) {
-        Object.keys(legacy).forEach(function (id) { SEARCH[id] = String(legacy[id]).toLowerCase(); });
+        OLD_FLAT = legacy;
       } else {
-        Object.keys(rawIndex).forEach(function (id) { SEARCH[id] = String(rawIndex[id]).toLowerCase(); });
+        OLD_FLAT = rawIndex;
       }
     }
+  }
+
+  /* 拼检索串：标题（未内联的来自索引，内联的取自卡片 h3）+ 其余检索词 + 分类词表。
+     在 modules 建好后跑一次（内联卡片的 h3 那时已经在 DOM 里）。 */
+  function buildSearch() {
+    if (OLD_FLAT) {
+      Object.keys(OLD_FLAT).forEach(function (id) { SEARCH[id] = String(OLD_FLAT[id]).toLowerCase(); });
+      return;
+    }
+    function add(id, title, cat) {
+      if (!id) return;
+      SEARCH[id] = ((title || "") + " " + (SEARCH[id] || "") + " " + (CATQ[cat] || ""))
+        .replace(/\s+/g, " ")
+        .trim()
+        .toLowerCase();
+    }
+    Object.keys(RAW_HAY).forEach(function (id) { SEARCH[id] = RAW_HAY[id]; });
+    Object.keys(POOL).forEach(function (id) { add(id, TITLES[id] || "", POOL[id][0]); });
+    modules.forEach(function (m) {
+      m.items.forEach(function (card) {
+        var h3 = card.querySelector("h3");
+        add(card.dataset.key, h3 ? h3.textContent : "", card.dataset.cat);
+      });
+    });
   }
 
   /* 未内联条目按分类分好：搜索 / 筛选时直接往对应分区的轨道里补结果行 */
@@ -186,6 +213,9 @@
       total: 0
     };
   });
+
+  /* 检索串要等 modules 建好再拼：内联卡片的标题从卡上的 h3 取，不占索引体积 */
+  buildSearch();
 
   /* 板子 tab 上的条数、顶部「匹配 N 条」都是静态节点：初始化时查一次表，
      以后 render 直接改文字，不要再对整个 1.9 MB 文档做 querySelectorAll。 */

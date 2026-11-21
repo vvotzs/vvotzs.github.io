@@ -115,6 +115,11 @@ CONSENT_REQUIRED = "0"
 HOME_CAT_CARDS = 24
 HOME_ARCHIVE_CARDS = 24
 
+# 搜索索引里只收导语的头一小段：整段导语占 ~30K 字、gzip 多 +20KB，而常见关键词
+# （开户 / 试用 / 邀请 等）几乎都出现在前 60 个字内；截到前 N 字后「开户」「试用」
+# 这类词的命中条数与全文入库时一致，页尾体积却只多 ~7KB。
+SEARCH_HIGHLIGHT_CHARS = 40
+
 # 评分解释表：构建时落到 reports/score_explain.csv，只做内部回测用，
 # 不进 sitemap、不被任何页面链接，也不进仓库（.gitignore + robots.txt 双保险）。
 SCORE_REPORT = ROOT / "reports" / "score_explain.csv"
@@ -3581,20 +3586,17 @@ def main() -> None:
             ]
         )
 
-        # 搜索索引：分五张表存，只存当前页面的语言。首页只内联每类前 24 条，
-        # 但搜索必须仍能搜全库，所以：
-        #   t 标题（顶部那行文字，也是未内联条目结果行的标题）
-        #   h 其余检索词（品牌 / 地区 / 门槛）；分类词表按分类存一次，不再每条重复
-        #   k 条目所属分类（拼检索串时补上该分类的词表）
-        #   p 首页没内联的在效条目：搜到时出一行轻量卡，点进它的 /d/<id>/ 独立页，
-        #     不再把整张卡塞进首页（那样等于没瘦身）
-        # 早期版本的索引是 {id: "检索词"} 或 {zh:…, en:…}，app.js 仍能读，这里只写新格式。
+        # 搜索索引：只存当前页面的语言，四张表越小越好（它占首页 1/4 体积）。
+        # 首页只内联每类前 24 条，但搜索必须仍能搜全库，所以：
+        #   h 检索词（品牌 / 地区 / 门槛 / 导语头一段）；分类词表 c 按分类存一次
+        #   t 标题：只给「首页没内联的在效条目」；内联卡片的标题 app.js 直接从 DOM 的 h3 上取
+        #   p 首页没内联的在效条目：搜到时出一行轻量卡，点进它的 /d/<id>/ 独立页
+        # 早期版本的索引是 {id: "检索词"}、{zh:…, en:…} 或带 k 的 {t,h,k,c,p}，app.js 都能读。
         def _clean(value: object) -> str:
             return re.sub(r"\s+", " ", str(value or "")).strip()
 
         search_t: dict[str, str] = {}
         search_h: dict[str, str] = {}
-        search_k: dict[str, str] = {}
         search_p: dict[str, list] = {}
         for deal in deals:
             slug = deal.get("category", "")
@@ -3605,18 +3607,23 @@ def main() -> None:
                     en.get("brand_en") or deal.get("brand", ""),
                     en.get("regions") or deal.get("regions", ""),
                     COST_EN.get(deal.get("cost", ""), ""),
+                    (en.get("highlight") or "")[:SEARCH_HIGHLIGHT_CHARS],
                 )
                 cost_label = COST_EN.get(deal.get("cost", ""), deal.get("cost", ""))
             else:
                 title = deal.get("title", "")
-                words = (deal.get("brand", ""), deal.get("regions", ""), deal.get("cost", ""))
+                words = (
+                    deal.get("brand", ""),
+                    deal.get("regions", ""),
+                    deal.get("cost", ""),
+                    (deal.get("highlight") or "")[:SEARCH_HIGHLIGHT_CHARS],
+                )
                 cost_label = deal.get("cost", "")
-            search_t[deal["id"]] = _clean(title)
             search_h[deal["id"]] = _clean(" ".join(str(w) for w in words))
-            search_k[deal["id"]] = slug
             # 已归档条目不进结果行：它们有独立页，归档区也自己列着，不混进在效搜索
             if deal["id"] in inline_ids or deal.get("status") == "expired":
                 continue
+            search_t[deal["id"]] = _clean(title)
             v_zh, v_en = value_pair(deal, en)
             fav = fav_name(deal.get("domain", ""))
             search_p[deal["id"]] = [
@@ -3637,7 +3644,7 @@ def main() -> None:
             for slug, meta in CAT_META.items()
         }
         search_json = json.dumps(
-            {"t": search_t, "h": search_h, "k": search_k, "c": search_c, "p": search_p},
+            {"t": search_t, "h": search_h, "c": search_c, "p": search_p},
             ensure_ascii=False, separators=(",", ":"),
         ).replace("</", "<\\/")
 
