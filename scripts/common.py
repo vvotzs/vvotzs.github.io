@@ -19,6 +19,8 @@ TODAY_WINDOW_DAYS = 2      # 「今日最新」= 最近 48 小时
 EXPIRING_DAYS = 7          # 「即将截止」标记阈值（<= 7 天）
 CLOSING_WINDOW_DAYS = 30   # 「即将截止」分区展示 30 天内到期的活动
 CLOSING_SLOTS = 10         # 「即将截止」热榜面板固定排 10 条（7 天内不足时用 8～30 天补足）
+FRESH_SLOTS = 10           # 「最新收录」热榜面板固定 10 格
+FRESH_PER_CATEGORY = 2     # 「最新收录」10 格里同一分类最多 2 条（防止某一类霸屏）
 # 过期活动永久保留：作为 SEO 长尾落地页与查档页持续沉淀，任何条目都不再被删除。
 ARCHIVE_RETENTION = "permanent"   # 写入 meta.json 的 archive_retention_days
 

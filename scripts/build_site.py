@@ -45,6 +45,8 @@ from common import (  # noqa: E402
     DEALS_DIR_EN,
     EXPIRING_DAYS,
     FAV_DIR,
+    FRESH_PER_CATEGORY,
+    FRESH_SLOTS,
     META,
     OG_IMAGE,
     OG_IMAGE_EN,
@@ -2909,41 +2911,70 @@ def main() -> None:
             host = "reddit.com"
         return host or f"unknown:{deal.get('id', '')}"
 
-    def pick_fresh(pool: list[dict], filler: list[dict], slots: int = 10) -> list[dict]:
-        """两轮挑选：先每域名 1 条，再从剩余里补，同一域名最多 2 条，最后才兜底。"""
+    def pick_fresh(pool: list[dict], filler: list[dict], slots: int = FRESH_SLOTS) -> list[dict]:
+        """两轮挑选：先每域名 1 条，再从剩余里补，同一域名最多 2 条，最后才兜底。
+
+        同时硬性约束同一分类在 10 格里最多 FRESH_PER_CATEGORY 条。原来只限域名，
+        同一天批量收录一批免费面板（全是 cloud）就能把「最新收录」整板占满，
+        读者看不到其他类的新条目；分类分区仍是全量收录，这里只约束首页这 10 格。
+        挑选次序仍是入库时间倒序：够格的条目先到先得，被拦住的是超配额的那几条。
+        """
         chosen: list[dict] = []
         picked: set[str] = set()
         counts: dict[str, int] = {}
+        cat_counts: dict[str, int] = {}
+
+        def category_of(deal: dict) -> str:
+            return deal.get("category") or "other"
+
+        def has_room(deal: dict) -> bool:
+            return cat_counts.get(category_of(deal), 0) < FRESH_PER_CATEGORY
+
+        def take(deal: dict) -> None:
+            domain = fresh_source_domain(deal)
+            chosen.append(deal)
+            picked.add(deal["id"])
+            counts[domain] = counts.get(domain, 0) + 1
+            cat = category_of(deal)
+            cat_counts[cat] = cat_counts.get(cat, 0) + 1
 
         for deal in pool:
             if len(chosen) >= slots:
                 break
             domain = fresh_source_domain(deal)
-            if counts.get(domain):
+            if counts.get(domain) or not has_room(deal):
                 continue
-            chosen.append(deal)
-            picked.add(deal["id"])
-            counts[domain] = 1
+            take(deal)
 
         for deal in pool:
             if len(chosen) >= slots:
                 break
-            if deal["id"] in picked:
+            if deal["id"] in picked or not has_room(deal):
                 continue
             domain = fresh_source_domain(deal)
             if counts.get(domain, 0) >= 2:
                 continue
-            chosen.append(deal)
-            picked.add(deal["id"])
-            counts[domain] = counts.get(domain, 0) + 1
+            take(deal)
 
+        # 兜底：48 小时内条目不够凑满时，从全量在效条目里按时间倒序补，
+        # 分类上限同样生效，域名上限同样生效。
         for deal in filler:
             if len(chosen) >= slots:
                 break
-            if deal["id"] in picked:
+            if deal["id"] in picked or not has_room(deal):
                 continue
-            chosen.append(deal)
-            picked.add(deal["id"])
+            domain = fresh_source_domain(deal)
+            if counts.get(domain, 0) >= 2:
+                continue
+            take(deal)
+
+        # 再兜底：只放开域名上限（分类仍是硬约束），保证板子凑满 10 格。
+        for deal in filler:
+            if len(chosen) >= slots:
+                break
+            if deal["id"] in picked or not has_room(deal):
+                continue
+            take(deal)
 
         chosen.sort(key=lambda d: d.get("added_at") or d.get("added") or "", reverse=True)
         return chosen
@@ -2952,6 +2983,13 @@ def main() -> None:
         active, key=lambda d: d.get("added_at") or d.get("added") or "", reverse=True
     )
     fresh = pick_fresh(fresh_pool, active_by_time)
+    if len(fresh) < FRESH_SLOTS:
+        cats = {d.get("category") or "other" for d in active}
+        print(
+            f"注意：在效条目只覆盖 {len(cats)} 个分类，最新收录仅凑到 {len(fresh)} 条"
+            f"（分类上限 {FRESH_PER_CATEGORY} 条/类）",
+            file=sys.stderr,
+        )
     # 今天没有新条目时也保证板子不空（同样走两轮去重）
     if not fresh:
         fresh = pick_fresh(active_by_time, active_by_time)
