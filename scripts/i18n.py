@@ -28,6 +28,8 @@ U: dict[str, tuple[str, str]] = {
     "stat_active_hint": ("不含 {d} 天内即将截止的 {n} 条", "Excludes the {n} ending within {d} days"),
     "stat_expiring": ("即将截止", "Ending"),
     "stat_archived": ("已归档", "Archived"),
+    # 胶囊组正下方那行 10px 小字：说明站内排序是 AI 综合打分的结果（不另起区块）
+    "stat_rank_note": ("排序由 AI 综合打分生成", "Ranked by AI scoring"),
     "lang_switch": ("EN", "中文"),
     "lang_switch_aria": ("切换为英文版", "Switch to Chinese"),
     # 首屏

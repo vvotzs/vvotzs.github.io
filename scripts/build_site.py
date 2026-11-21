@@ -3581,9 +3581,12 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
       <kbd>⌘K</kbd>
     </button>
     <div class="topbar-stats">
-      <a class="stats-pill mint" href="#fresh" {tt(*upair('stat_active_hint', d=EXPIRING_DAYS, n=counts['expiring']))}>{ui('stat_active')} <b>{counts['active']}</b></a>
-      <a class="stats-pill amber" href="#closing">{icon3d('hourglass', 'hg-i')}{ui('stat_expiring')} <b>{counts['expiring']}</b></a>
-      <a class="stats-pill stone" href="#archive">{ui('stat_archived')} <b>{counts['expired']}</b></a>
+      <div class="topbar-pills">
+        <a class="stats-pill mint" href="#fresh" {tt(*upair('stat_active_hint', d=EXPIRING_DAYS, n=counts['expiring']))}>{ui('stat_active')} <b>{counts['active']}</b></a>
+        <a class="stats-pill amber" href="#closing">{icon3d('hourglass', 'hg-i')}{ui('stat_expiring')} <b>{counts['expiring']}</b></a>
+        <a class="stats-pill stone" href="#archive">{ui('stat_archived')} <b>{counts['expired']}</b></a>
+      </div>
+      <span class="topbar-rank-note">{ui('stat_rank_note')}</span>
     </div>
   </div>
 </header>

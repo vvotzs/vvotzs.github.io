@@ -196,9 +196,26 @@ button{ font-family: inherit; }
 }
 .topbar-stats{
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex: 0 0 auto;
+}
+/* 胶囊仍在同一行；小字贴着这一行的正下方，和胶囊共用同一个容器，不另起区块 */
+.topbar-pills{
+  display: flex;
   align-items: center;
   gap: 6px;
-  flex: 0 0 auto;
+}
+.topbar-rank-note{
+  font-size: 10.5px;
+  line-height: 1;
+  color: var(--ink-3);
+  letter-spacing: .01em;
+  white-space: nowrap;
+  text-align: right;
+  /* 右移进胶囊圆角的 3px，视觉上与胶囊里的字右对齐而不是与胶囊边对齐 */
+  padding-right: 3px;
 }
 
 /* 统计徽标：全站只在顶栏保留这一份 */
@@ -1551,7 +1568,13 @@ footer{
   .search-btn kbd{ display: none; }
   .search-btn .sb-text{ display: none; }
   .search-btn .sb-q{ gap: 0; }
-  .topbar-stats{ display: flex; gap: 3px; flex: 0 0 auto; }
+  .topbar-stats{ display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex: 0 0 auto; }
+  .topbar-stats .topbar-pills{ display: flex; align-items: center; gap: 3px; }
+  /* 胶囊下方那行 AI 打分小字：375px 下只占一个小圆点行高，不撑高 54px 顶栏 */
+  .topbar-stats .topbar-rank-note{
+    font-size: 10px;
+    padding-right: 2px;
+  }
   .topbar-stats .stats-pill{
     padding: 1px 5px;
     font-size: 9.5px;
