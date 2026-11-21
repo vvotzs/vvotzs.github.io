@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-21T10:30:00Z",
+  "generated_at": "2026-11-21T10:45:00Z",
   "_meta": {
     "title": "羊毛情报局采集源表（P0/P1/P2 分层调度）",
-    "basis": "Hark 第七轮合并定稿（2026-11-21）+ Jun 2026-11-21 新增 18 个数字充值/礼品卡平台与 12 个英文合作活动词",
+    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual",
     "cadence": {
       "rounds_per_day": 7,
       "round_times_local": [
@@ -23,8 +23,8 @@
     },
     "tier_policy": {
       "P0": "每轮都跑（cadence 2h，priority 3，≤6 个）：投稿队列、X 检索、可直抓的 TG 优惠频道、HN/Show HN、GitHub Trending",
-      "P1": "每日轮换（cadence 24h，priority 2）：核心论坛、海外羊毛站、Reddit、AI 首发榜、18 个数字充值平台的 8 个高频平台",
-      "P2": "每周长尾（cadence 168h，priority 1）：其余外语社区、小众博客、长尾平台，总数 ≤49（= 每周 7 天 × 每天 7 个 P2 源位）",
+      "P1": "每日轮换（cadence 24h，priority 2，≤35 个）：核心论坛、海外羊毛站、Reddit、AI 首发榜，以及 3 个 search_group 充值源 topup-telecom / topup-game / topup-giftcard",
+      "P2": "每周长尾（cadence 168h，priority 1）：其余外语社区、小众博客、长尾平台（含 topup-longtail 与 coinsbee-blog），总数 ≤49（= 每周 7 天 × 每天 7 个 P2 源位）",
       "priority": "priority 由 tier 推导（P0=3 / P1=2 / P2=1），不单独存；本表不存主观可信度评语，也不存 data_quality",
       "categories": "表示该源最强的情报主题，仅用于关键词组匹配；所有源仍按全品类原则抓取，不把站点窄化成单一分类",
       "entry_type": "rss > md > list > search：有 feed 用 feed，Discourse 用 /latest.md，无入口才走站内关键词检索"
@@ -33,24 +33,29 @@
     "keyword_rotation": {
       "rule": "本轮组号 g = round_index % 6，6 组依次为 境外金融 → 数字居民 → 通信资源 → AI 与软件 → 云计算 → 返利羊毛；每个 search 源只用 1 组、最多 3 个词并用 OR 连接，源分类与当前组不匹配时顺延到下一个匹配的组",
       "p0_exception": "P0 里的 X 公开检索仍需关键词（其余 P0 都是直抓入口，不用关键词）",
-      "commerce": "keyword_pool=commerce 的 18 个平台用 commerce_keywords 里 12 个英文合作活动词，每轮取 3 个同轮轮转，重点搜近 30 天的具体优惠与联名合作，不把平台商品页当成优惠收录"
+      "append_en": "通信资源 / AI 与软件 / 返利羊毛 三组带英文切片 append_en（每切片 ≤3 词），只给 lang≠zh 的源用，切片序号 = (round_index div 6) mod 切片数，仍只发 1 条查询；境外金融 / 数字居民 / 云计算 不动",
+      "term_sets": "search_group 充值源不用 6 组轮转词，改读 term_sets.topup 的 T0/T1（按一年第几天 mod 2 轮换），零结果后下次走 fallback；原 commerce_keywords 12 词已并入 T0/T1 与上述英文切片（promo code / limited time offer 质量差未落位，按 Hark Q3 弃用）"
     },
     "capacity": {
       "slots_per_day": 84,
       "P0_slots_per_day": 42,
       "P2_slots_per_day": 7,
       "P1_slots_per_day": 35,
-      "note": "P1 现有 39 个而每日 P1 源位 35 个，P1 实际轮询周期约 39/35≈1.11 天（不会积压，只是比 24h 略慢）；如要严格 24h，可把 4 个 P1 移到 P2（P2 需先腾出配额）或改每轮 13 个源"
+      "note": "P1 34 个 ≤ 每日 P1 源位 35 个 → 严格 24h 轮完；P2 41 个 ≤ 49；每轮仍 12 个源，不需要第一周临时提到 13 个（那只在 P1 仍超 35 时才需要）"
     },
-    "writeback": "plan_round.py --mark-done / --mark-hit 回写 last_crawled_at 与 last_hit_at；P0 14 天无产出→P1、P1 30 天→P2、P2 90 天→paused（升级只能人工）",
+    "writeback": "plan_round.py --mark-done / --mark-hit / --mark-zero 回写 last_crawled_at、last_hit_at 与 zero_streak；P0 14 天无产出→P1、P1 30 天→P2、P2 90 天→paused（manual 源不参与；升级只能人工）",
     "paused_policy": "paused_sources 不进调度、不占 P2 配额；恢复用 plan_round.py 的 --activate 或人工移回 sources",
     "counts": {
-      "scheduled": 94,
+      "scheduled": 81,
       "P0": 6,
-      "P1": 39,
-      "P2": 49,
+      "P1": 34,
+      "P2": 41,
+      "manual": 5,
       "paused": 11
-    }
+    },
+    "search_group": "entries[].kind=search_group：domains 最多 4 个，整组每轮只发 1 条 `(site:a OR site:b …) (词集)` 查询；after_date = last_crawled_at − 1 天（首抓取今天 − 30 天）；blocked 域名只核验不抓取（优先合作方/发行方官方页，否则每天最多 1 次浏览器开 verify_urls）；「这组有产出」= 至少 1 条结果 URL 落在组内域名、其 url 与 dedup_key 都不在 deals/candidates，且按 Q4(e) 写成候选/条目，满足才 --mark-hit；discovered_from 写 `<组id>:<域名>`；零结果用 --mark-zero，下次自动改用 fallback 词集",
+    "manual_policy": "status=manual 的源留在表内注明手动，但不进调度、不占 P1/P2 源位、不参与降频，只在线索出现时人工核",
+    "updated_at": "2026-11-21T10:45:00Z"
   },
   "keyword_groups": [
     {
@@ -107,7 +112,13 @@
         "免费号码",
         "运营商优惠"
       ],
-      "usage": "论坛/社区站内检索（site: + 3 词 OR）"
+      "usage": "论坛/社区/海外站站内检索（site: + 3 词 OR）；lang≠zh 的源改用 append_en 英文切片",
+      "append_en": [
+        [
+          "free eSIM",
+          "top up bonus"
+        ]
+      ]
     },
     {
       "key": "ai_software",
@@ -125,7 +136,14 @@
         "Lifetime Deal",
         "Trial"
       ],
-      "usage": "论坛/社区站内检索（site: + 3 词 OR）"
+      "usage": "论坛/社区站内检索（site: + 3 词 OR）",
+      "append_en": [
+        [
+          "gift card bonus",
+          "free game credits",
+          "app exclusive offer"
+        ]
+      ]
     },
     {
       "key": "cloud",
@@ -166,27 +184,20 @@
         "免绑卡",
         "限时活动"
       ],
-      "usage": "全品类兜底组：任何分类的源都可匹配"
+      "usage": "全品类兜底组：任何分类的源都可匹配",
+      "append_en": [
+        [
+          "referral program",
+          "loyalty rewards",
+          "cashback promotion"
+        ],
+        [
+          "welcome bonus",
+          "first order discount"
+        ]
+      ]
     }
   ],
-  "commerce_keywords": {
-    "label": "合作/活动英文词（数字充值·礼品卡·游戏·通信消费平台）",
-    "terms": [
-      "welcome bonus",
-      "first order discount",
-      "top up bonus",
-      "cashback promotion",
-      "gift card bonus",
-      "free game credits",
-      "promo code",
-      "referral program",
-      "loyalty rewards",
-      "limited time offer",
-      "free eSIM",
-      "app exclusive offer"
-    ],
-    "note": "只用于 keyword_pool=commerce 的 18 个平台，每轮取 3 个与中文组一起轮转；平台本身的商品页不算优惠，须搜到近 30 天的具体优惠、折扣码或联名合作活动才收录。"
-  },
   "sources": [
     {
       "id": "gmail-submissions",
@@ -872,111 +883,43 @@
       "last_hit_at": "2026-11-13T09:30:00Z"
     },
     {
-      "id": "coinsbee",
-      "name": "CoinsBee",
-      "url": "https://www.coinsbee.com/",
+      "id": "topup-telecom",
+      "name": "数字充值 · 通信（Ding / MobileTopUp）",
+      "url": "https://www.ding.com/",
       "tier": "P1",
       "entry_type": "search",
       "cadence_h": 24,
       "categories": [
-        "crypto",
-        "software"
+        "esim"
       ],
       "lang": "en",
       "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T02:30:00Z",
-      "last_hit_at": "2026-11-13T04:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.coinsbee.com"
-      ]
-    },
-    {
-      "id": "cryptorefills",
-      "name": "Cryptorefills",
-      "url": "https://cryptorefills.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "crypto",
-        "software"
+      "added_at": "2026-11-21T10:45:00Z",
+      "last_crawled_at": null,
+      "last_hit_at": null,
+      "keyword_pool": "topup",
+      "entries": [
+        {
+          "kind": "search_group",
+          "domains": [
+            "ding.com",
+            "mobiletopup.com"
+          ],
+          "term_set": "topup"
+        }
       ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T03:06:55Z",
-      "last_hit_at": "2026-11-12T23:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "cryptorefills.com"
-      ]
-    },
-    {
-      "id": "recharge",
-      "name": "Recharge.com",
-      "url": "https://www.recharge.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "esim",
-        "software"
+      "blocked": [
+        "ding.com",
+        "mobiletopup.com"
       ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T03:43:50Z",
-      "last_hit_at": "2026-11-12T18:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.recharge.com"
-      ]
+      "verify_urls": {
+        "ding.com": "https://www.ding.com/promotions"
+      },
+      "note": "两域名直连 403/429（2026-11-21 实测），只做核验不抓取：优先运营商官方公告，否则每天最多 1 次浏览器开 verify_urls"
     },
     {
-      "id": "offgamers",
-      "name": "OffGamers",
-      "url": "https://www.offgamers.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T04:20:46Z",
-      "last_hit_at": "2026-11-12T13:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.offgamers.com"
-      ]
-    },
-    {
-      "id": "moogold",
-      "name": "MooGold",
-      "url": "https://www.moogold.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T04:57:41Z",
-      "last_hit_at": "2026-11-12T08:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.moogold.com"
-      ]
-    },
-    {
-      "id": "codashop",
-      "name": "Codashop",
+      "id": "topup-game",
+      "name": "数字充值 · 游戏（Codashop / UniPin / Razer Gold / MooGold）",
       "url": "https://www.codashop.com/",
       "tier": "P1",
       "entry_type": "search",
@@ -986,53 +929,105 @@
       ],
       "lang": "en",
       "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T05:34:36Z",
-      "last_hit_at": "2026-11-12T03:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.codashop.com"
-      ]
+      "added_at": "2026-11-21T10:45:00Z",
+      "last_crawled_at": null,
+      "last_hit_at": null,
+      "keyword_pool": "topup",
+      "entries": [
+        {
+          "kind": "search_group",
+          "domains": [
+            "codashop.com",
+            "unipin.com",
+            "gold.razer.com",
+            "moogold.com"
+          ],
+          "term_set": "topup"
+        }
+      ],
+      "note": "Codashop 活动页路径未摸清（/en/promotions 404），暂不写 verify_urls；候选以游戏商/发行方官方公告为准"
     },
     {
-      "id": "unipin",
-      "name": "UniPin",
-      "url": "https://www.unipin.com/",
+      "id": "topup-giftcard",
+      "name": "数字充值 · 礼品卡（CoinsBee / Cryptorefills / Recharge / OffGamers）",
+      "url": "https://www.coinsbee.com/",
       "tier": "P1",
       "entry_type": "search",
       "cadence_h": 24,
       "categories": [
-        "software"
+        "software",
+        "crypto"
       ],
       "lang": "en",
       "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T06:11:32Z",
-      "last_hit_at": "2026-11-11T22:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.unipin.com"
-      ]
+      "added_at": "2026-11-21T10:45:00Z",
+      "last_crawled_at": null,
+      "last_hit_at": null,
+      "keyword_pool": "topup",
+      "entries": [
+        {
+          "kind": "search_group",
+          "domains": [
+            "coinsbee.com",
+            "cryptorefills.com",
+            "recharge.com",
+            "offgamers.com"
+          ],
+          "term_set": "topup"
+        }
+      ],
+      "note": "四站均可直连，但按 search_group 统一走 1 条查询；CoinsBee 博客另由 coinsbee-blog 的 rss 覆盖"
     },
     {
-      "id": "razer-gold",
-      "name": "Razer Gold",
-      "url": "https://gold.razer.com/",
-      "tier": "P1",
+      "id": "topup-longtail",
+      "name": "数字充值 · 长尾（LootBar / BitTopup / Dundle）",
+      "url": "https://www.lootbar.gg/",
+      "tier": "P2",
       "entry_type": "search",
-      "cadence_h": 24,
+      "cadence_h": 168,
       "categories": [
+        "software",
+        "crypto"
+      ],
+      "lang": "en",
+      "status": "active",
+      "added_at": "2026-11-21T10:45:00Z",
+      "last_crawled_at": null,
+      "last_hit_at": null,
+      "keyword_pool": "topup",
+      "entries": [
+        {
+          "kind": "search_group",
+          "domains": [
+            "lootbar.gg",
+            "bittopup.com",
+            "dundle.com"
+          ],
+          "term_set": "topup"
+        }
+      ],
+      "blocked": [
+        "bittopup.com",
+        "dundle.com"
+      ],
+      "note": "bittopup 直连 403、dundle 429（2026-11-21 实测），只做核验不抓取"
+    },
+    {
+      "id": "coinsbee-blog",
+      "name": "CoinsBee 博客（18 站里唯一真 RSS）",
+      "url": "https://blog.coinsbee.com/feed",
+      "tier": "P2",
+      "entry_type": "rss",
+      "cadence_h": 168,
+      "categories": [
+        "crypto",
         "software"
       ],
       "lang": "en",
       "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T06:48:27Z",
-      "last_hit_at": "2026-11-11T17:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "gold.razer.com"
-      ]
+      "added_at": "2026-11-21T10:45:00Z",
+      "last_crawled_at": null,
+      "last_hit_at": null
     },
     {
       "id": "mykeyvans",
@@ -1732,109 +1727,6 @@
       ]
     },
     {
-      "id": "ding",
-      "name": "Ding",
-      "url": "https://www.ding.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "esim",
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T00:12:51Z",
-      "last_hit_at": "2026-11-17T07:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.ding.com"
-      ]
-    },
-    {
-      "id": "lootbar",
-      "name": "LootBar",
-      "url": "https://www.lootbar.gg/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T03:38:34Z",
-      "last_hit_at": "2026-11-16T16:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.lootbar.gg"
-      ]
-    },
-    {
-      "id": "bittopup",
-      "name": "BitTopup",
-      "url": "https://www.bittopup.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "crypto"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T07:04:17Z",
-      "last_hit_at": "2026-11-16T01:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.bittopup.com"
-      ]
-    },
-    {
-      "id": "dundle",
-      "name": "Dundle",
-      "url": "https://www.dundle.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "esim"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T10:30:00Z",
-      "last_hit_at": "2026-11-15T10:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.dundle.com"
-      ]
-    },
-    {
-      "id": "mobiletopup",
-      "name": "MobileTopUp（英）",
-      "url": "https://www.mobiletopup.co.uk/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "esim"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T13:55:42Z",
-      "last_hit_at": "2026-11-14T19:30:00Z",
-      "keyword_pool": "commerce",
-      "search_domains": [
-        "www.mobiletopup.co.uk"
-      ]
-    },
-    {
       "id": "eneba",
       "name": "Eneba",
       "url": "https://www.eneba.com/",
@@ -1845,14 +1737,14 @@
         "software"
       ],
       "lang": "en",
-      "status": "active",
+      "status": "manual",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-20T17:21:25Z",
       "last_hit_at": "2026-11-14T04:30:00Z",
-      "keyword_pool": "commerce",
       "search_domains": [
         "www.eneba.com"
-      ]
+      ],
+      "manual_note": "二手游戏 key 站：卖家是第三方，活动真伪难判，只在线索出现时人工核（Hark Q4(d)）"
     },
     {
       "id": "g2a",
@@ -1865,14 +1757,14 @@
         "software"
       ],
       "lang": "en",
-      "status": "active",
+      "status": "manual",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-20T20:47:08Z",
       "last_hit_at": "2026-11-13T13:30:00Z",
-      "keyword_pool": "commerce",
       "search_domains": [
         "www.g2a.com"
-      ]
+      ],
+      "manual_note": "二手游戏 key 站（直连 403）：卖家第三方，只人工核"
     },
     {
       "id": "kinguin",
@@ -1885,14 +1777,14 @@
         "software"
       ],
       "lang": "en",
-      "status": "active",
+      "status": "manual",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-21T00:12:51Z",
       "last_hit_at": "2026-11-12T22:30:00Z",
-      "keyword_pool": "commerce",
       "search_domains": [
         "www.kinguin.net"
-      ]
+      ],
+      "manual_note": "二手游戏 key 站（直连 403）：卖家第三方，只人工核"
     },
     {
       "id": "g2g",
@@ -1905,14 +1797,14 @@
         "software"
       ],
       "lang": "en",
-      "status": "active",
+      "status": "manual",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-21T03:38:34Z",
       "last_hit_at": "2026-11-12T07:30:00Z",
-      "keyword_pool": "commerce",
       "search_domains": [
         "www.g2g.com"
-      ]
+      ],
+      "manual_note": "游戏代练/账号与 key 市场：卖家第三方，只人工核"
     },
     {
       "id": "u7buy",
@@ -1925,14 +1817,14 @@
         "software"
       ],
       "lang": "en",
-      "status": "active",
+      "status": "manual",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-21T07:04:17Z",
       "last_hit_at": "2026-11-11T16:30:00Z",
-      "keyword_pool": "commerce",
       "search_domains": [
         "www.u7buy.com"
-      ]
+      ],
+      "manual_note": "游戏币/代充市场：卖家第三方，只人工核"
     }
   ],
   "paused_sources": [
@@ -2154,5 +2046,36 @@
       "paused_at": "2026-11-21T04:30:00Z",
       "paused_reason": "P2 配额已满；中东分区优惠密度低（r/dubai 已覆盖）"
     }
-  ]
+  ],
+  "term_sets": {
+    "topup": {
+      "label": "数字充值/礼品卡/游戏·通信合作活动词（search_group 专用）",
+      "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6，也不增加搜索次数；零结果后下次走 fallback",
+      "T0": [
+        "bonus",
+        "promo",
+        "promotion",
+        "top up bonus",
+        "bonus diamonds",
+        "free game credits",
+        "partnership"
+      ],
+      "T1": [
+        "bonus",
+        "promo",
+        "offer",
+        "welcome bonus",
+        "first order discount",
+        "gift card bonus",
+        "cashback",
+        "app exclusive"
+      ],
+      "fallback": [
+        "bonus",
+        "promo",
+        "promotion",
+        "offer"
+      ]
+    }
+  }
 }

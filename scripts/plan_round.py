@@ -8,17 +8,22 @@
     python3 scripts/plan_round.py --status           # 表况、到期数、下一轮时间
     python3 scripts/plan_round.py --validate         # 只校验 data/sources.json
 
-    # 抓到后回写（只有这两个命令会改文件）
+    # 抓到后回写（只有这几个命令会改文件）
     python3 scripts/plan_round.py --mark-done uscardforum,nodeseek
     python3 scripts/plan_round.py --mark-hit  uscardforum,nodeseek
+    python3 scripts/plan_round.py --mark-zero topup-game          # 整组零结果，下次自动走 fallback 词
     python3 scripts/plan_round.py --mark-hit  uscardforum --apply-downgrades
 
-规则来自 Hark 第七轮合并定稿（2026-11-21）：
+规则来自 Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：
   · 2.5 小时一轮，北京时间 07:30 / 10:00 / 12:30 / 15:00 / 17:30 / 20:00 / 22:30，01:00–07:30 休眠
   · 每轮 12 个到期源 + 4 条待重核老条目
   · 选源顺序：全部到期 P0 → P1（按逾期倍数）→ P2；P2 每轮保底 1 个，保证每周 49 个 P2 轮完一遍
   · 关键词 6 组按 round_index % 6 轮转，只用于 search 类入口，P0 不用关键词
-  · 数字充值/礼品卡平台另用 12 个英文合作活动词（keyword_pool=commerce）
+  · 6 组里 通信资源 / AI 与软件 / 返利羊毛 带英文切片（append_en），只给 lang != zh 的源用，
+    切片序号 = (r div 6) mod 切片数，仍只发 1 条查询
+  · 数字充值/礼品卡平台已合并成 4 个 search_group + 1 个 rss：整组只发 1 条
+    `(site:a OR site:b …) (词集)` 查询，词集来自顶层 term_sets.topup 的 T0/T1（按年日 mod 2 轮换，
+    不占 r mod 6），零结果后改用 fallback；二手 key 五家 status=manual，不调度
   · 回写 last_crawled_at / last_hit_at；P0 连续 14 天无产出降 P1、P1 30 天降 P2、P2 90 天暂停
 
 数据契约见 data/sources.json 的 _meta 字段；校验失败一律退出码 2。
@@ -49,13 +54,16 @@ PER_ROUND_SOURCES = 12
 PER_ROUND_RECHECK = 4
 P2_RESERVE_PER_ROUND = 1          # P2 每轮保底 1 个 → 每周 49 个 P2 源位
 P2_ACTIVE_CAP = 49                # 全库调度中的 P2 上限（避免每周积压）
+P1_ACTIVE_CAP = 35                # P1 上限：每轮 12 个源时每日 P1 源位 35 个，正好 24h 轮完
+FIRST_LOOKBACK_DAYS = 30          # search_group 首抓回看 30 天
+GROUP_TERMS_MAX = 3               # 轮转组每次查询最多 3 个词
 
 TIER_ORDER = ("P0", "P1", "P2")
 TIER_PRIORITY = {"P0": 3, "P1": 2, "P2": 1}
 TIER_CADENCE = {"P0": 2, "P1": 24, "P2": 168}
 
 ENTRY_TYPES = ("rss", "md", "list", "search")
-STATUSES = ("active", "paused")
+STATUSES = ("active", "paused", "manual")   # manual：留在表里但完全不进调度（二手 key 五家）
 CATEGORIES = ("ai", "bank", "cloud", "crypto", "esim", "software")
 
 # 降频阈值（天）
@@ -142,7 +150,28 @@ def validate(doc) -> list[str]:
         errors.append("paused_sources 必须是数组")
 
     seen: set[str] = set()
-    tier_count = {t: 0 for t in TIER_ORDER}
+    tier_count = {t: 0 for t in TIER_ORDER}   # 只统计 status=active 的源
+    manual_count = 0
+
+    term_sets = doc.get("term_sets")
+    if not isinstance(term_sets, dict) or not term_sets:
+        errors.append("term_sets 必须是非空对象（如 topup: {T0, T1, fallback}）")
+        term_sets = {}
+    else:
+        for name, spec in term_sets.items():
+            if not isinstance(spec, dict):
+                errors.append(f"term_sets[{name!r}] 必须是对象")
+                continue
+            for key in ("T0", "T1"):
+                vals = spec.get(key)
+                if not isinstance(vals, list) or not vals:
+                    errors.append(f"term_sets[{name!r}].{key} 必须是非空数组")
+                elif any(not isinstance(v, str) or not v.strip() for v in vals):
+                    errors.append(f"term_sets[{name!r}].{key} 只能是非空字符串")
+            fb = spec.get("fallback")
+            if fb is not None and (not isinstance(fb, list) or not fb):
+                errors.append(f"term_sets[{name!r}].fallback 必须是非空数组")
+
     for idx, src in enumerate(sources):
         where = f"sources[{idx}]"
         if not isinstance(src, dict):
@@ -160,10 +189,15 @@ def validate(doc) -> list[str]:
             if key not in src:
                 errors.append(f"{where} 缺少字段 {key}")
         tier = src.get("tier")
+        status = src.get("status")
         if tier not in TIER_ORDER:
             errors.append(f"{where} tier 非法：{tier!r}")
-        else:
+        elif status == "active":
             tier_count[tier] += 1
+        elif status == "manual":
+            manual_count += 1
+            if not (src.get("manual_note") or src.get("note")):
+                errors.append(f"{where} status=manual 必须写 manual_note 说明为什么不自动巡检")
         if src.get("entry_type") not in ENTRY_TYPES:
             errors.append(f"{where} entry_type 非法：{src.get('entry_type')!r}")
         if src.get("status") not in STATUSES:
@@ -171,7 +205,7 @@ def validate(doc) -> list[str]:
         cad = src.get("cadence_h")
         if not isinstance(cad, int) or cad <= 0:
             errors.append(f"{where} cadence_h 必须是正整数")
-        elif tier in TIER_CADENCE and cad != TIER_CADENCE[tier]:
+        elif status == "active" and tier in TIER_CADENCE and cad != TIER_CADENCE[tier]:
             errors.append(
                 f"{where} cadence_h={cad} 与 {tier} 默认 {TIER_CADENCE[tier]} 不一致"
                 "（如需覆盖请显式加 cadence_override=true）"
@@ -183,8 +217,11 @@ def validate(doc) -> list[str]:
             bad = [c for c in cats if c not in CATEGORIES]
             if bad:
                 errors.append(f"{where} categories 含未知分类：{bad}")
-        if src.get("keyword_pool") not in (None, "group", "commerce"):
-            errors.append(f"{where} keyword_pool 只能是 group / commerce")
+        if src.get("keyword_pool") not in (None, "group") and src.get("keyword_pool") not in term_sets:
+            errors.append(
+                f"{where} keyword_pool={src.get('keyword_pool')!r} 非法"
+                f"（只能是 group 或 term_sets 里的键：{', '.join(term_sets) or '无'}）"
+            )
         for key in ("last_crawled_at", "last_hit_at", "added_at"):
             if src.get(key) is not None:
                 try:
@@ -195,6 +232,46 @@ def validate(doc) -> list[str]:
             domains = src.get("search_domains")
             if domains is not None and (not isinstance(domains, list) or not domains):
                 errors.append(f"{where} search_domains 必须是非空数组")
+            entries = src.get("entries")
+            if entries is not None:
+                if not isinstance(entries, list) or not entries:
+                    errors.append(f"{where} entries 必须是非空数组")
+                else:
+                    for ei, ent in enumerate(entries):
+                        ewhere = f"{where} entries[{ei}]"
+                        if not isinstance(ent, dict):
+                            errors.append(f"{ewhere} 必须是对象")
+                            continue
+                        if ent.get("kind") != "search_group":
+                            errors.append(f"{ewhere} kind 目前只支持 search_group，当前 {ent.get('kind')!r}")
+                        doms = ent.get("domains")
+                        if not isinstance(doms, list) or not doms:
+                            errors.append(f"{ewhere} domains 必须是非空数组")
+                        elif len(doms) > 4:
+                            errors.append(
+                                f"{ewhere} domains 最多 4 个，当前 {len(doms)} 个"
+                                "（一次查询只发 1 条 site: 组合，超了要拆组）"
+                            )
+                        elif any(not isinstance(d, str) or not d.strip() for d in doms):
+                            errors.append(f"{ewhere} domains 只能是非空字符串")
+                        ts = ent.get("term_set")
+                        if not ts:
+                            errors.append(f"{ewhere} 缺少 term_set")
+                        elif ts not in term_sets:
+                            errors.append(f"{ewhere} term_set={ts!r} 不在 term_sets 里")
+            blocked = src.get("blocked")
+            if blocked is not None and (
+                not isinstance(blocked, list) or any(not isinstance(b, str) for b in blocked)
+            ):
+                errors.append(f"{where} blocked 必须是字符串数组（直连 403/429 的域名）")
+            vurls = src.get("verify_urls")
+            if vurls is not None and (
+                not isinstance(vurls, dict) or any(not isinstance(v, str) for v in vurls.values())
+            ):
+                errors.append(f"{where} verify_urls 必须是 {{域名: URL}} 对象")
+        zero_streak = src.get("zero_streak")
+        if zero_streak is not None and (not isinstance(zero_streak, int) or zero_streak < 0):
+            errors.append(f"{where} zero_streak 必须是非负整数")
 
     for idx, src in enumerate(paused):
         where = f"paused_sources[{idx}]"
@@ -237,12 +314,22 @@ def validate(doc) -> list[str]:
                 errors.append(f"关键词组 {g.get('key')!r} 没有 terms")
             if not g.get("categories"):
                 errors.append(f"关键词组 {g.get('key')!r} 没有 categories")
+            slices = g.get("append_en")
+            if slices is not None:
+                if not isinstance(slices, list):
+                    errors.append(f"关键词组 {g.get('key')!r} 的 append_en 必须是切片数组")
+                else:
+                    for si, sl in enumerate(slices):
+                        if not isinstance(sl, list) or not sl:
+                            errors.append(f"关键词组 {g.get('key')!r} append_en[{si}] 必须是非空数组")
+                        elif len(sl) > GROUP_TERMS_MAX:
+                            errors.append(
+                                f"关键词组 {g.get('key')!r} append_en[{si}] 最多 {GROUP_TERMS_MAX} 个词，"
+                                f"当前 {len(sl)}"
+                            )
+                        elif any(not isinstance(v, str) or not v.strip() for v in sl):
+                            errors.append(f"关键词组 {g.get('key')!r} append_en[{si}] 只能是非空字符串")
 
-    commerce = doc.get("commerce_keywords")
-    if not isinstance(commerce, dict) or not isinstance(commerce.get("terms"), list):
-        errors.append("commerce_keywords.terms 必须是数组")
-    elif len(commerce["terms"]) != 12:
-        errors.append(f"commerce_keywords 必须正好 12 个词，当前 {len(commerce['terms'])}")
     return errors
 
 
@@ -339,8 +426,25 @@ def pick_terms(terms: list[str], offset: int, count: int = 3) -> list[str]:
     return [terms[(start + i) % len(terms)] for i in range(count)]
 
 
+def search_group_domains(src: dict) -> list[str]:
+    """取 entries 里 search_group 的域名（最多 4 个），没有则空。"""
+    for entry in src.get("entries") or []:
+        if isinstance(entry, dict) and entry.get("kind") == "search_group":
+            return [str(d) for d in entry.get("domains") or []]
+    return []
+
+
+def term_set_name(src: dict) -> str | None:
+    """取 search_group 的 term_set（如 topup）；没有则 None。"""
+    for entry in src.get("entries") or []:
+        if isinstance(entry, dict) and entry.get("kind") == "search_group":
+            ts = entry.get("term_set")
+            return str(ts) if ts else None
+    return None
+
+
 def search_domains(src: dict) -> list[str]:
-    domains = src.get("search_domains")
+    domains = search_group_domains(src) or src.get("search_domains")
     if domains:
         return list(domains)
     host = str(src.get("url", ""))
@@ -348,27 +452,65 @@ def search_domains(src: dict) -> list[str]:
     return [host] if host else []
 
 
+def quote_term(term: str) -> str:
+    """英文多词短语加引号（如 "top up bonus"）；中文/混排不加，避免切词后零召回。"""
+    t = str(term).strip()
+    if not t:
+        return t
+    if '"' in t:
+        return t
+    return f'"{t}"' if (" " in t and t.isascii()) else t
+
+
 def build_query(src: dict, terms: list[str]) -> str:
     domains = search_domains(src)
     site = " OR ".join(f"site:{d}" for d in domains)
     if not terms:
         return f"({site})"
-    return f"({site}) ({' OR '.join(terms)})"
+    return f"({site}) ({' OR '.join(quote_term(t) for t in terms)})"
 
 
-def plan_keywords(doc: dict, src: dict, r: int, ordinal: int) -> dict:
+def topup_variant(now: datetime) -> str:
+    """充值词集按「一年第几天 mod 2」轮换 T0 / T1，不占 r mod 6。"""
+    return "T0" if now.astimezone(TZ).timetuple().tm_yday % 2 == 0 else "T1"
+
+
+def plan_keywords(doc: dict, src: dict, r: int, ordinal: int, now: datetime) -> dict:
     """给本轮这个源分配关键词。ordinal 用于错开同轮不同源的取词位置。"""
     cats = src.get("categories", [])
-    if src.get("keyword_pool") == "commerce":
-        terms = doc["commerce_keywords"]["terms"]
-        picked = pick_terms(terms, r + ordinal)
+    tset = term_set_name(src) or (
+        src.get("keyword_pool") if src.get("keyword_pool") not in (None, "group") else None
+    )
+    if tset:
+        spec = (doc.get("term_sets") or {}).get(tset) or {}
+        variant = topup_variant(now)
+        streak = int(src.get("zero_streak") or 0)
+        if streak > 0 and spec.get("fallback"):
+            variant = "fallback"
+        terms = [str(t) for t in (spec.get(variant) or spec.get("fallback") or [])]
         return {
-            "pool": "commerce",
-            "group": doc["commerce_keywords"].get("label", "commerce"),
+            "pool": "term_set",
+            "group": spec.get("label") or f"独立词集 {tset}",
+            "group_key": tset,
+            "variant": variant,
+            "terms": terms,
+            "fallback_terms": [str(t) for t in spec.get("fallback") or []],
+            "zero_streak": streak,
+            "query": build_query(src, terms),
+        }
+    group = group_for_categories(doc, r % 6, cats)
+    slices = group.get("append_en") or []
+    if slices and str(src.get("lang") or "") != "zh":
+        idx = (r // 6) % len(slices)
+        picked = [str(t) for t in slices[idx]][:GROUP_TERMS_MAX]
+        return {
+            "pool": "group_en",
+            "group": group.get("name") or group.get("key"),
+            "group_key": group.get("key"),
+            "slice": idx,
             "terms": picked,
             "query": build_query(src, picked),
         }
-    group = group_for_categories(doc, r % 6, cats)
     picked = pick_terms(group["terms"], r // 6 + ordinal)
     return {
         "pool": "group",
@@ -383,10 +525,16 @@ def plan_keywords(doc: dict, src: dict, r: int, ordinal: int) -> dict:
 # 选源
 # --------------------------------------------------------------------------- #
 
+def after_date_for(src: dict, now: datetime) -> str:
+    """search_group 的时间窗：已抓过用 last_crawled_at − 1 天，首抓用今天 − 30 天。"""
+    lc = last_crawled(src)
+    base = (lc - timedelta(days=1)) if lc else (now - timedelta(days=FIRST_LOOKBACK_DAYS))
+    return base.astimezone(TZ).strftime("%Y-%m-%d")
+
+
 def select_sources(doc: dict, now: datetime, r: int) -> dict:
     active = [s for s in doc["sources"] if s.get("status") == "active"]
     due = [s for s in active if is_due(s, now)]
-
     by_tier = {t: [s for s in due if s["tier"] == t] for t in TIER_ORDER}
     for t in TIER_ORDER:
         by_tier[t].sort(key=lambda s: (-overdue_ratio(s, now), s["id"]))
@@ -423,6 +571,8 @@ def select_sources(doc: dict, now: datetime, r: int) -> dict:
 
     rows = []
     for ordinal, src in enumerate(selected):
+        od = overdue_hours(src, now)
+        first_crawl = od >= 1e8      # last_crawled_at 为空：新源首抓
         row = {
             "id": src["id"],
             "name": src["name"],
@@ -434,7 +584,8 @@ def select_sources(doc: dict, now: datetime, r: int) -> dict:
             "categories": src["categories"],
             "lang": src["lang"],
             "cadence_h": src["cadence_h"],
-            "overdue_h": round(overdue_hours(src, now), 1),
+            "overdue_h": None if first_crawl else round(od, 1),
+            "first_crawl": first_crawl,
             "last_crawled_at": src.get("last_crawled_at"),
             "tool": src.get("tool") or ("web_search" if src["entry_type"] == "search" else "web_fetch"),
         }
@@ -445,11 +596,29 @@ def select_sources(doc: dict, now: datetime, r: int) -> dict:
             )
             row["query"] = src.get("query")
         elif src["entry_type"] == "search":
-            kw = plan_keywords(doc, src, r, ordinal)
+            kw = plan_keywords(doc, src, r, ordinal, now)
             row["keyword_pool"] = kw["pool"]
             row["keyword_group"] = kw["group"]
             row["keywords"] = kw["terms"]
             row["query"] = src.get("query") or kw["query"]
+            if kw.get("variant"):
+                row["term_set"] = kw["group_key"]
+                row["term_variant"] = kw["variant"]
+                row["fallback_terms"] = kw.get("fallback_terms") or []
+                row["zero_streak"] = kw.get("zero_streak", 0)
+            if kw.get("slice") is not None:
+                row["lang_slice"] = kw["slice"]
+            group_domains = search_group_domains(src)
+            if group_domains:
+                row["search_group"] = {
+                    "domains": group_domains,
+                    "blocked": list(src.get("blocked") or []),
+                    "verify_urls": dict(src.get("verify_urls") or {}),
+                    "after_date": after_date_for(src, now),
+                    "discovered_from_hint": f"{src['id']}:{group_domains[0]}（或组内实际命中的域名）",
+                    "hit_rule": "结果 URL 落在组内域名、url 与 dedup_key 都不在 deals/candidates，"
+                                "且按 Q4(e) 写成候选/条目，才 --mark-hit；零结果用 --mark-zero 下次走 fallback",
+                }
             if src.get("tool") == "x-search":
                 row["query"] = " OR ".join(kw["terms"])
                 row["command"] = f"x-search {row['query']}"
@@ -591,7 +760,10 @@ def build_plan(doc: dict, now: datetime) -> dict:
     sel = select_sources(doc, now, r)
     groups = doc["keyword_groups"]
     g = groups[r % len(groups)]
-    commerce_terms = doc["commerce_keywords"]["terms"]
+    slices = g.get("append_en") or []
+    slice_idx = (r // len(groups)) % len(slices) if slices else None
+    topup_spec = (doc.get("term_sets") or {}).get("topup") or {}
+    variant = topup_variant(now)
     plan = {
         "schema": 1,
         "generated_at": fmt_ts(now),
@@ -600,8 +772,21 @@ def build_plan(doc: dict, now: datetime) -> dict:
             "slot_at": fmt_local(info["slot_at"]),
             "next_slot_at": info["next_slot_at_local"],
             "in_sleep_window": info["in_sleep_window"],
-            "keyword_group": {"key": g.get("key"), "name": g.get("name"), "terms": g["terms"]},
-            "commerce_keywords": pick_terms(commerce_terms, r),
+            "keyword_group": {
+                "key": g.get("key"),
+                "name": g.get("name"),
+                "terms": g["terms"],
+                "en_slice": slices[slice_idx] if slice_idx is not None else [],
+                "en_slice_index": slice_idx,
+                "en_slice_note": "只用于 lang != zh 的源；中文论坛仍用中文 terms" if slices else None,
+            },
+            "term_set": {
+                "name": "topup",
+                "variant": variant,
+                "terms": topup_spec.get(variant, []),
+                "fallback": topup_spec.get("fallback", []),
+                "rule": "按一年第几天 mod 2 轮换 T0/T1，不占 r mod 6；零结果下次走 fallback",
+            },
         },
         "sources": sel["sources"],
         "recheck": select_rechecks(doc, now, r),
@@ -610,7 +795,13 @@ def build_plan(doc: dict, now: datetime) -> dict:
         "totals": {
             "active_sources": sum(1 for s in doc["sources"] if s.get("status") == "active"),
             "paused_sources": len(doc.get("paused_sources", [])),
-            **{f"tier_{t}": sum(1 for s in doc["sources"] if s["tier"] == t) for t in TIER_ORDER},
+            "manual_sources": sum(1 for s in doc["sources"] if s.get("status") == "manual"),
+            **{
+                f"tier_{t}": sum(
+                    1 for s in doc["sources"] if s["tier"] == t and s.get("status") == "active"
+                )
+                for t in TIER_ORDER
+            },
         },
     }
     return plan
@@ -623,15 +814,28 @@ def print_plan_text(plan: dict) -> None:
         print("！当前处于 01:00–07:30 休眠窗口，不应开跑；下一轮请等 07:30")
     print(f"关键词组：{rnd['keyword_group']['name']}（{rnd['keyword_group']['key']}）")
     print(f"本组词：{' / '.join(rnd['keyword_group']['terms'])}")
-    print(f"合作活动词：{' / '.join(rnd['commerce_keywords'])}")
+    if rnd["keyword_group"].get("en_slice"):
+        print(f"英文切片（只给 lang≠zh 的源）：{' / '.join(rnd['keyword_group']['en_slice'])}")
+    ts = rnd["term_set"]
+    print(f"充值词集：{ts['name']} · {ts['variant']}：{' / '.join(ts['terms'])}")
+    print(f"  零结果时下次走 fallback：{' / '.join(ts['fallback'])}")
     print()
-    print(f"本轮 12 个源（到期 P0 {plan['due_counts']['P0']} / P1 {plan['due_counts']['P1']}"
+    print(f"本轮 {len(plan['sources'])} 个源（到期 P0 {plan['due_counts']['P0']} / P1 {plan['due_counts']['P1']}"
           f" / P2 {plan['due_counts']['P2']}，未排上 P1 {plan['deferred']['P1']}、P2 {plan['deferred']['P2']}）")
     for i, s in enumerate(plan["sources"], 1):
-        head = f"{i:>2}. [{s['tier']}·P{s['priority']}] {s['name']}（{s['entry_type']}，逾期 {s['overdue_h']}h）"
+        od = "首抓（回看 30 天）" if s.get("first_crawl") else f"逾期 {s['overdue_h']}h"
+        head = f"{i:>2}. [{s['tier']}·P{s['priority']}] {s['name']}（{s['entry_type']}，{od}）"
         print(head)
         if s["entry_type"] == "search":
             print(f"     查询：{s.get('query')}")
+            if s.get("search_group"):
+                grp = s["search_group"]
+                print(f"     整组 1 条查询｜域名 {', '.join(grp['domains'])}｜after_date {grp['after_date']}")
+                if grp.get("blocked"):
+                    print(f"     直连 blocked（只核验不抓取）：{', '.join(grp['blocked'])}")
+                if grp.get("verify_urls"):
+                    print(f"     核验页：{grp['verify_urls']}")
+                print(f"     记录：discovered_from 写 {grp['discovered_from_hint']}；{grp['hit_rule']}")
             if s.get("command"):
                 print(f"     命令：{s['command']}")
         else:
@@ -643,7 +847,7 @@ def print_plan_text(plan: dict) -> None:
     print()
     t = plan["totals"]
     print(f"表况：调度中 {t['active_sources']}（P0 {t['tier_P0']} / P1 {t['tier_P1']} / P2 {t['tier_P2']}）"
-          f"，暂停留档 {t['paused_sources']}")
+          f"，手动不调度 {t['manual_sources']}，暂停留档 {t['paused_sources']}")
 
 
 # --------------------------------------------------------------------------- #
@@ -668,6 +872,7 @@ def cmd_mark(doc: dict, ids: list[str], now: datetime, hit: bool) -> int:
         src["last_crawled_at"] = stamp
         if hit:
             src["last_hit_at"] = stamp
+            src["zero_streak"] = 0
         ok += 1
     if missing:
         print(f"未找到这些 id：{', '.join(missing)}", file=sys.stderr)
@@ -675,9 +880,31 @@ def cmd_mark(doc: dict, ids: list[str], now: datetime, hit: bool) -> int:
     return 0 if not missing else 1
 
 
+def cmd_mark_zero(doc: dict, ids: list[str], now: datetime) -> int:
+    """整组零结果：记 zero_streak，下次自动改用 fallback 词集。"""
+    ok, missing = 0, []
+    for sid in ids:
+        src = find_source(doc, sid)
+        if not src:
+            missing.append(sid)
+            continue
+        stamp = fmt_ts(now)
+        src["last_crawled_at"] = stamp
+        src["zero_streak"] = int(src.get("zero_streak") or 0) + 1
+        src["last_zero_at"] = stamp
+        ok += 1
+        print(f"  {sid}: zero_streak={src['zero_streak']}，下次用 fallback 词集")
+    if missing:
+        print(f"未找到这些 id：{', '.join(missing)}", file=sys.stderr)
+    print(f"已记 {ok} 个源零结果 → {fmt_local(now)}")
+    return 0 if not missing else 1
+
+
 def cmd_downgrades(doc: dict, now: datetime, write: bool) -> int:
     changes = []
     for src in list(doc["sources"]):
+        if src.get("status") != "active":
+            continue          # manual 源不调度，也不参与降频
         tier = src["tier"]
         ref = parse_ts(src.get("last_hit_at")) or parse_ts(src.get("last_crawled_at")) or parse_ts(src.get("added_at"))
         if ref is None:
@@ -719,7 +946,7 @@ def cmd_downgrades(doc: dict, now: datetime, write: bool) -> int:
     if not changes:
         print("没有触发降频的源（阈值：P0 14 天 / P1 30 天 / P2 90 天无产出）")
         return 0
-    print(f"{'已应用' if write else '预览（未写盘，加 --apply-downgrades 与 --write 才落盘）'} {len(changes)} 处降频：")
+    print(f"{'已应用' if write else '预览（未写盘，加 --write 才落盘）'} {len(changes)} 处降频：")
     for sid, what, days in changes:
         print(f"  {sid}: {what}（{days} 天无产出）")
     return 0
@@ -780,10 +1007,12 @@ def cmd_status(doc: dict, now: datetime) -> int:
         print(f"  {t}（priority {TIER_PRIORITY[t]}，{TIER_CADENCE[t]}h）：{len(rows)} 个，到期 {len(due)}")
     p1 = sum(1 for s in active if s["tier"] == "P1")
     p0 = sum(1 for s in active if s["tier"] == "P0")
+    manual = sum(1 for s in doc["sources"] if s.get("status") == "manual")
     p1_slots = PER_ROUND_SOURCES * ROUNDS_PER_DAY - p0 * ROUNDS_PER_DAY - P2_RESERVE_PER_ROUND * ROUNDS_PER_DAY
+    print(f"  手动不调度（status=manual）：{manual} 个")
     print(f"  暂停留档：{len(doc.get('paused_sources', []))} 个")
     print(f"  每日源位 {PER_ROUND_SOURCES * ROUNDS_PER_DAY} = P0 {p0 * ROUNDS_PER_DAY} + P1 {p1_slots} + P2 {P2_RESERVE_PER_ROUND * ROUNDS_PER_DAY}"
-          f"；P1 现有 {p1} 个 → 实际轮询周期约 {p1 / max(1, p1_slots) * 24:.1f}h")
+          f"；P1 现有 {p1} 个（上限 {P1_ACTIVE_CAP}）→ 实际轮询周期约 {p1 / max(1, p1_slots) * 24:.1f}h")
     print(f"  P2 上限 {P2_ACTIVE_CAP}，当前 {sum(1 for s in active if s['tier'] == 'P2')}")
     return 0
 
@@ -802,6 +1031,7 @@ def main(argv=None) -> int:
     ap.add_argument("--validate", action="store_true", help="只校验 schema 与配额")
     ap.add_argument("--mark-done", metavar="IDS", help="确认这些源已抓（写 last_crawled_at）")
     ap.add_argument("--mark-hit", metavar="IDS", help="这些源本轮有新产出（写 last_crawled_at + last_hit_at）")
+    ap.add_argument("--mark-zero", metavar="IDS", help="这些 search_group 本轮零结果（记 zero_streak，下次改用 fallback 词集）")
     ap.add_argument("--apply-downgrades", action="store_true", help="按无产出天数自动降频/暂停")
     ap.add_argument("--pause", metavar="IDS", help="人工把这些源移入 paused_sources")
     ap.add_argument("--activate", metavar="IDS", help="把 paused_sources 里的源恢复到调度")
@@ -827,9 +1057,15 @@ def main(argv=None) -> int:
         return 2
 
     if args.validate:
-        tiers = {t: sum(1 for s in doc["sources"] if s["tier"] == t) for t in TIER_ORDER}
-        print(f"校验通过：调度中 {len(doc['sources'])} 个（P0 {tiers['P0']} / P1 {tiers['P1']}"
-              f" / P2 {tiers['P2']}，P2 上限 {P2_ACTIVE_CAP}），暂停留档 {len(doc.get('paused_sources', []))} 个")
+        tiers = {t: sum(1 for s in doc["sources"] if s["tier"] == t and s.get("status") == "active")
+                 for t in TIER_ORDER}
+        manual = sum(1 for s in doc["sources"] if s.get("status") == "manual")
+        print(f"校验通过：调度中 {tiers['P0'] + tiers['P1'] + tiers['P2']} 个"
+              f"（P0 {tiers['P0']} / P1 {tiers['P1']} / P2 {tiers['P2']}，P2 上限 {P2_ACTIVE_CAP}），"
+              f"手动不调度 {manual} 个，暂停留档 {len(doc.get('paused_sources', []))} 个")
+        if tiers["P1"] > P1_ACTIVE_CAP:
+            print(f"  提醒：P1 现有 {tiers['P1']} 个 > 上限 {P1_ACTIVE_CAP}，每轮 12 个源时轮不到 24h；"
+                  "把 last_hit 最旧的降到 P2 或移入 paused_sources")
         return 0
 
     if args.status:
@@ -854,6 +1090,12 @@ def main(argv=None) -> int:
         changed = changed or rc == 0
         if rc != 0:
             return rc
+    if args.mark_zero:
+        ids = [x.strip() for x in args.mark_zero.split(",") if x.strip()]
+        rc = cmd_mark_zero(doc, ids, now)
+        changed = changed or rc == 0
+        if rc != 0:
+            return rc
     if args.apply_downgrades:
         target = doc if args.write else copy.deepcopy(doc)
         cmd_downgrades(target, now, write=args.write)
@@ -861,7 +1103,7 @@ def main(argv=None) -> int:
     if changed:
         save_json(path, doc)
 
-    if args.mark_done or args.mark_hit or args.apply_downgrades or args.pause or args.activate:
+    if args.mark_done or args.mark_hit or args.mark_zero or args.apply_downgrades or args.pause or args.activate:
         return 0
 
     plan = build_plan(doc, now)
