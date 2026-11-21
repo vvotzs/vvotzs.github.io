@@ -217,10 +217,11 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T07:30:00Z",
-      "last_hit_at": "2026-11-21T08:30:00Z",
+      "last_crawled_at": "2026-11-21T23:40:33Z",
+      "last_hit_at": "2026-11-21T23:40:33Z",
       "tool": "gog-gmail",
-      "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d"
+      "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
+      "zero_streak": 0
     },
     {
       "id": "x-deals",
@@ -240,7 +241,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T07:33:00Z",
+      "last_crawled_at": "2026-11-21T23:40:33Z",
       "last_hit_at": "2026-11-21T03:30:00Z",
       "search_domains": [
         "x.com"
@@ -261,7 +262,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T07:36:00Z",
+      "last_crawled_at": "2026-11-21T23:40:33Z",
       "last_hit_at": "2026-11-20T22:30:00Z",
       "entry_url": "https://tg.docofcard.com/rss.json"
     },
@@ -280,7 +281,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T07:39:00Z",
+      "last_crawled_at": "2026-11-21T23:40:33Z",
       "last_hit_at": "2026-11-20T17:30:00Z",
       "entry_url": "https://mini.appdo.xyz/rss.json"
     },
@@ -299,7 +300,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T07:42:00Z",
+      "last_crawled_at": "2026-11-21T23:40:33Z",
       "last_hit_at": "2026-11-20T12:30:00Z",
       "entry_url": "https://news.ycombinator.com/rss"
     },
@@ -318,7 +319,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T07:45:00Z",
+      "last_crawled_at": "2026-11-21T23:40:33Z",
       "last_hit_at": "2026-11-20T07:30:00Z"
     },
     {
@@ -335,7 +336,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T07:25:23Z",
+      "last_crawled_at": "2026-11-21T23:40:33Z",
       "last_hit_at": "2026-11-19T15:30:00Z",
       "entry_url": "https://www.uscardforum.com/latest.md"
     },
@@ -895,8 +896,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": null,
-      "last_hit_at": null,
+      "last_crawled_at": "2026-11-21T23:40:33Z",
+      "last_hit_at": "2026-11-21T23:40:33Z",
       "keyword_pool": "topup",
       "entries": [
         {
@@ -915,7 +916,8 @@
       "verify_urls": {
         "ding.com": "https://www.ding.com/promotions"
       },
-      "note": "两域名直连 403/429（2026-11-21 实测），只做核验不抓取：优先运营商官方公告，否则每天最多 1 次浏览器开 verify_urls"
+      "note": "两域名直连 403/429（2026-11-21 实测），只做核验不抓取：优先运营商官方公告，否则每天最多 1 次浏览器开 verify_urls",
+      "zero_streak": 0
     },
     {
       "id": "topup-game",
@@ -930,8 +932,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": null,
-      "last_hit_at": null,
+      "last_crawled_at": "2026-11-21T23:40:33Z",
+      "last_hit_at": "2026-11-21T23:40:33Z",
       "keyword_pool": "topup",
       "entries": [
         {
@@ -945,7 +947,8 @@
           "term_set": "topup"
         }
       ],
-      "note": "Codashop 活动页路径未摸清（/en/promotions 404），暂不写 verify_urls；候选以游戏商/发行方官方公告为准"
+      "note": "Codashop 活动页路径未摸清（/en/promotions 404），暂不写 verify_urls；候选以游戏商/发行方官方公告为准",
+      "zero_streak": 0
     },
     {
       "id": "topup-giftcard",
@@ -961,7 +964,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": null,
+      "last_crawled_at": "2026-11-21T23:40:33Z",
       "last_hit_at": null,
       "keyword_pool": "topup",
       "entries": [
@@ -976,7 +979,9 @@
           "term_set": "topup"
         }
       ],
-      "note": "四站均可直连，但按 search_group 统一走 1 条查询；CoinsBee 博客另由 coinsbee-blog 的 rss 覆盖"
+      "note": "四站均可直连，但按 search_group 统一走 1 条查询；CoinsBee 博客另由 coinsbee-blog 的 rss 覆盖",
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-21T23:40:33Z"
     },
     {
       "id": "topup-longtail",
@@ -1839,7 +1844,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": null,
+      "last_crawled_at": "2026-11-21T23:40:33Z",
       "last_hit_at": null,
       "keyword_pool": "ota_airline",
       "entries": [
@@ -1874,7 +1879,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": null,
+      "last_crawled_at": "2026-11-21T23:40:33Z",
       "last_hit_at": null,
       "keyword_pool": "airline_esim",
       "entries": [
