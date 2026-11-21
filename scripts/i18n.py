@@ -305,8 +305,8 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
             "AI 工具大全：ChatGPT、Gemini、Claude、Cursor、Copilot 等 AI 工具与智能代理的免费额度、学生优惠和"
             "限时折扣，逐条核验后收录，标清实际到手价值、可用地区与截止时间。列表按可预期到手价值排序，"
             "涵盖 API 额度、订阅减免与新品首发活动。",
-            "Free tiers, student plans and limited-time discounts for ChatGPT, Gemini, Claude, Cursor, Copilot and "
-            "other AI tools, each verified with value and deadline.",
+            "AI Tools & Credits: free tiers, student plans and discounts for ChatGPT, Gemini, Claude, Cursor and "
+            "Copilot, each verified with value and deadline.",
         ),
     },
     "bank": {
@@ -324,8 +324,8 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
             "海外银行·U卡·跨境汇款：开户奖励、虚拟卡（U 卡）返现与跨境汇款邀请奖励，含 Wise、Remitly、"
             "Taptap Send、Sendwave "
             "等可双向叠加的通道，写清入金门槛、留存期与到账时间。每条都注明是否需要美国 / 英国 / 德国等区服身份与税号。",
-            "Account bonuses, virtual-card cashback and two-sided remittance referrals from Wise, Remitly and "
-            "Sendwave, with deposit thresholds and holding periods.",
+            "Global Banks, Cards & Transfers: account bonuses, virtual-card cashback and two-sided remittance "
+            "referrals, with deposit thresholds and holding periods.",
         ),
     },
     "crypto": {
@@ -340,11 +340,11 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
             "or tokens, not cash.",
         ),
         "desc": (
-            "交易所新人奖励、任务空投与积分计划，含 KYC 门槛、交易量要求与代币解锁规则；奖励多为返佣券或代币，"
-            "到手金额不等于现金。每条都标出是否需要充值、需要交易量与可提现条件，并注明区服与身份限制；"
-            "加密资产价格波动大，请按实际可预期到手价值而不是宣传上限做判断，不要为了奖励去承担超出承受能力的仓位风险。",
-            "Exchange sign-up rewards, quest airdrops and points programs, with KYC steps, volume requirements, "
-            "what can be withdrawn and the region each one needs.",
+            "Crypto 空投与积分：交易所新人奖励、任务空投与积分计划，含 KYC 门槛、交易量要求与代币解锁规则；奖励多为"
+            "返佣券或代币，到手金额不等于现金。每条标出充值、交易量与可提现条件，并注明区服与身份限制；"
+            "加密资产波动大，请按可预期到手价值而不是宣传上限判断。",
+            "Crypto Airdrops & Points: exchange sign-up rewards, quest airdrops and points programs, with KYC "
+            "steps, volume requirements and what can be withdrawn.",
         ),
     },
     "cloud": {
@@ -359,11 +359,11 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
             "spelled out.",
         ),
         "desc": (
-            "永久免费实例、新人体验金与黑五主机折扣，覆盖 Oracle、AWS、GCP、Azure、Hetzner、Cloudflare 等主流云与"
-            "主机商，写清配额、到期与回收规则。免费额度通常需要绑卡验证，并有闲置回收或流量上限，"
-            "避免试用结束后被扣费。",
-            "Always-free instances, trial credits and hosting deals from Oracle, AWS, GCP, Azure, Hetzner and "
-            "Cloudflare, with quotas and expiry rules spelled out.",
+            "全球 VPS 与云资源：永久免费实例、新人体验金与黑五主机折扣，覆盖 Oracle、AWS、GCP、Azure、Hetzner、"
+            "Cloudflare 等主流云与主机商，写清配额、到期与回收规则。免费额度通常需要绑卡验证，并有闲置回收或"
+            "流量上限，避免试用结束后被扣费。",
+            "Global VPS & Cloud: always-free instances, trial credits and hosting deals from Oracle, AWS, GCP, "
+            "Azure, Hetzner and Cloudflare, with quotas spelled out.",
         ),
     },
     "esim": {
@@ -377,10 +377,11 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
             "Saily, Ubigi and others, each labelled with usable countries, data allowance and sign-up limits.",
         ),
         "desc": (
-            "全球 eSIM 的免费试用流量与首单折扣，覆盖 Airalo、Holafly、Nomad、Saily、Ubigi 等，逐条标出可用国家或"
-            "地区、流量额度与注册限制。多数免费流量要求新用户身份或绑定支付方式，建议先领小额试用测一下当地网速再决定。",
-            "Free trial data and first-order discounts for eSIMs from Airalo, Holafly, Nomad, Saily and Ubigi, "
-            "with usable countries, data allowance and sign-up limits.",
+            "全球 eSIM 指南：免费试用流量与首单折扣，覆盖 Airalo、Holafly、Nomad、Saily、Ubigi 等，逐条标出可用"
+            "国家或地区、流量额度与注册限制。多数免费流量要求新用户身份或绑定支付方式，建议先领小额试用测一下"
+            "当地网速再决定。",
+            "Global eSIM Guide: free trial data and first-order discounts from Airalo, Holafly, Nomad, Saily and "
+            "Ubigi, with usable countries and sign-up limits.",
         ),
     },
     "software": {
@@ -395,11 +396,11 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
             "and renewal rules.",
         ),
         "desc": (
-            "学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠，覆盖 JetBrains、Notion、Figma、GitHub 等"
-            "常用工具，写清资格审核与续期方式。学生与教育优惠通常需要校园邮箱或学籍证明，审核通过后按年续期；"
-            "商业授权、团队席位与个人版的差别也会标注，选购前先确认自己的用途、人数与是否需要商用授权。",
-            "Student plans, developer packs and subscription discounts for JetBrains, Notion, Figma, GitHub and "
-            "more, with eligibility checks and renewal rules noted.",
+            "软件与数字服务：学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠，覆盖 JetBrains、Notion、"
+            "Figma、GitHub 等常用工具，写清资格审核与续期方式。学生与教育优惠通常需要校园邮箱或学籍证明，"
+            "审核通过后按年续期；商业授权与团队席位另作标注。",
+            "Software & Digital Services: student plans, developer packs and subscription discounts for JetBrains, "
+            "Notion, Figma, GitHub and more, with renewal rules.",
         ),
     },
 }
