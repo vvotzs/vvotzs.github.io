@@ -1617,6 +1617,12 @@ footer{
     gap: 4px;
     -webkit-overflow-scrolling: touch;
   }
+  /* 首帧别摊成「一长条」：app.js 是 defer，手机上常常先把未分页的 HTML 画出来——
+     这时几十张 .card 全是 .track 的直接子元素，单列排下去会把整站拉成两万多像素
+     的长条（2026-11-21 手机实拍）。这里只留第 1 页的 5 张（= data-per="5"），
+     第 6 张起先藏；分页后卡片都进了 .page，选择器匹配不到，第 2 页及以后照常显示。
+     关掉 JS 的浏览器由首页 <noscript> 里的同一条规则还原成完整列表。 */
+  .module:not(.hot-strip) .track > .card:nth-child(n + 6){ display: none; }
   html.js .page{
     flex: 0 0 100%;
     width: 100%;
@@ -1628,6 +1634,13 @@ footer{
     gap: 4px;
   }
   html.js .pager-bar{ display: flex; }
+  /* 翻页条（页码 + 左右键）在 app.js 接管前是不显示的，分页完成后才出现，
+     占 30px 高 + 4px 上级间距；不先占位的话，首屏每过一个分区就被推下 34px。
+     这里只隐藏内容、保留位置，JS 接管时同高度换成可见，这段位移就归零。 */
+  html:not(.js) .module:not(.hot-strip) .pager-bar{
+    display: flex;
+    visibility: hidden;
+  }
   /* 翻页条离上面卡片 4px；到下一个分区标题 7px（下一区自己的 6px padding + 分区分隔线） */
   .pager-bar{ margin-top: 4px; }
   .more{ display: none !important; }

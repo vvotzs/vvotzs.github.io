@@ -3274,6 +3274,8 @@ def main() -> None:
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
+<noscript><style>.module:not(.hot-strip) .track > .card:nth-child(n + 6){{ display: block; }}
+html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></noscript>
 
 <!-- Google AdSense：开通后把脚本放在这里，并给 .ad-slot 容器填入广告单元
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
