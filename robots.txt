@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# 内部回测表（reports/score_explain.csv）不对外：文件本身也不提交进仓库，
+# 这里再屏蔽一层，防止以后误提交后被搜索引擎或爬虫当内容抓走。
+Disallow: /reports/
+
 Sitemap: https://vvotzs.github.io/sitemap.xml

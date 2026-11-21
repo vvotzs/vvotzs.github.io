@@ -57,15 +57,115 @@
   }
 
   /* ------------------------------------------------------- 搜索索引（JSON） */
-  /* 每页只带自己语言的索引（扁平 {id: 文本}）；旧的双语嵌套格式也能读。 */
+  /* 首页只内联每类前 24 条（Hark 第七轮定稿的瘦身口径），索引因此分五部分：
+       t 标题 · h 其余检索词 · k 条目所属分类 · c 分类词表（按分类只存一次）·
+       p 首页没内联的在效条目：搜到时补一行轻量卡，点进它的 /d/<id>/ 独立页。
+     旧格式（{id: 文本} 或 {zh:…, en:…}）也还能读。 */
   var SEARCH = {};
+  var TITLES = {};
+  var POOL = {};
+  var CATQ = {};
   var indexEl = $("#search-index");
   if (indexEl) {
-    try {
-      var rawIndex = JSON.parse(indexEl.textContent) || {};
-      var flat = rawIndex.zh || rawIndex.en ? (rawIndex[LANG] || rawIndex.zh || {}) : rawIndex;
-      Object.keys(flat).forEach(function (id) { SEARCH[id] = String(flat[id]).toLowerCase(); });
-    } catch (err) { SEARCH = {}; }
+    var rawIndex = null;
+    try { rawIndex = JSON.parse(indexEl.textContent) || {}; } catch (err) { rawIndex = null; }
+    if (rawIndex) {
+      var legacy = rawIndex.zh || rawIndex.en ? (rawIndex[LANG] || rawIndex.zh || {}) : null;
+      if (rawIndex.t) {
+        CATQ = rawIndex.c || {};
+        TITLES = rawIndex.t;
+        var catsOf = rawIndex.k || {};
+        var hayOf = rawIndex.h || {};
+        Object.keys(TITLES).forEach(function (id) {
+          var cat = catsOf[id] || "";
+          SEARCH[id] = (TITLES[id] + " " + (hayOf[id] || "") + " " + (CATQ[cat] || "")).toLowerCase();
+        });
+        POOL = rawIndex.p || {};
+      } else if (legacy) {
+        Object.keys(legacy).forEach(function (id) { SEARCH[id] = String(legacy[id]).toLowerCase(); });
+      } else {
+        Object.keys(rawIndex).forEach(function (id) { SEARCH[id] = String(rawIndex[id]).toLowerCase(); });
+      }
+    }
+  }
+
+  /* 未内联条目按分类分好：搜索 / 筛选时直接往对应分区的轨道里补结果行 */
+  var POOL_BY_CAT = {};
+  Object.keys(POOL).forEach(function (id) {
+    var cat = POOL[id][0];
+    (POOL_BY_CAT[cat] = POOL_BY_CAT[cat] || []).push(id);
+  });
+  var DETAIL_BASE = /^\/en(\/|$)/.test(location.pathname) ? "/en/d/" : "/d/";
+  var HITS = {};
+
+  /* 一条「首页没内联」的搜索结果行：图标 + 标题 + 价值 / 门槛 / 截止，点进独立详情页。
+     字段顺序见 build_site.py 的 search_p：[cat, cost, verified, added_at, end,
+     value_exp, fav, monogram, value_text, deadline]。 */
+  function hitEl(id) {
+    var d = POOL[id];
+    if (!d) return null;
+    if (HITS[id]) return HITS[id];
+    var a = document.createElement("a");
+    a.className = "hit";
+    a.href = DETAIL_BASE + encodeURIComponent(id) + "/";
+    a.dataset.key = id;
+    a.dataset.cat = d[0];
+    a.dataset.cost = d[1];
+    a.dataset.verified = d[2];
+    a.dataset.addedAt = d[3];
+    a.dataset.added = String(d[3] || "").slice(0, 10);
+    a.dataset.end = d[4];
+    a.dataset.valExp = d[5];
+    if (d[6]) {
+      var img = document.createElement("img");
+      img.className = "fav";
+      img.src = "/assets/fav/" + d[6] + ".webp";
+      img.width = 22;
+      img.height = 22;
+      img.alt = "";
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.onerror = function () { if (window.__favFallback) window.__favFallback(img); };
+      a.appendChild(img);
+      var fb = document.createElement("span");
+      fb.className = "fav-fallback";
+      fb.style.display = "none";
+      fb.setAttribute("aria-hidden", "true");
+      fb.textContent = d[7] || "?";
+      a.appendChild(fb);
+    } else {
+      var letter = document.createElement("span");
+      letter.className = "fav-fallback";
+      letter.style.display = "grid";
+      letter.setAttribute("aria-hidden", "true");
+      letter.textContent = d[7] || "?";
+      a.appendChild(letter);
+    }
+    var main = document.createElement("span");
+    main.className = "hit-main";
+    var title = document.createElement("span");
+    title.className = "hit-t";
+    title.textContent = TITLES[id] || id;
+    var meta = document.createElement("span");
+    meta.className = "hit-m";
+    meta.textContent = [d[8], d[1], d[9]].filter(Boolean).join(" · ");
+    main.appendChild(title);
+    main.appendChild(meta);
+    var go = document.createElement("span");
+    go.className = "hit-go";
+    go.setAttribute("aria-hidden", "true");
+    go.textContent = "\u2197";
+    a.appendChild(main);
+    a.appendChild(go);
+    HITS[id] = a;
+    return a;
+  }
+
+  /* 有没有在搜索 / 筛：只有这种时候才把未内联的条目补成结果行，
+     平时首页就是每类那 24 条，不为全库铺 DOM。 */
+  function isFiltering() {
+    return !!(state.q || state.time !== "all" || state.cat !== "all"
+              || state.cost !== "all" || state.verify !== "all");
   }
 
   /* ------------------------------------------------------------- modules */
@@ -254,9 +354,18 @@
   function render() {
     var seen = {};
     var matchedTotal = 0;
+    /* 搜索 / 筛选时把「首页没内联的在效条目」补进来：一行轻量卡，点进独立页。
+       平时（默认状态）不补，首页只画每类前 24 条。 */
+    var deep = isFiltering();
 
     modules.forEach(function (m) {
       var visible = m.items.filter(matches);
+      if (deep && !m.isJump && m.anchor !== "archive") {
+        (POOL_BY_CAT[m.anchor] || []).forEach(function (id) {
+          var el = hitEl(id);
+          if (el && matches(el)) visible.push(el);
+        });
+      }
       if (!m.isJump) sortCards(visible, m.anchor);
       m.total = visible.length;
 
@@ -806,8 +915,15 @@
   function openFromHash() {
     var m = /^#deal-(.+)$/.exec(location.hash || "");
     if (!m) return false;
-    var target = document.getElementById("deal-" + m[1]);
-    if (!target) return false;
+    var key = m[1];
+    try { key = decodeURIComponent(key); } catch (err) { /* 不是编码过的就算了 */ }
+    var target = document.getElementById("deal-" + key);
+    if (!target) {
+      /* 首页只内联每类前 24 条：老链接 /#deal-<id> 指向没内联的条目时，
+         直接落到它的独立详情页，不会变成一次「点了没反应」。 */
+      location.replace(DETAIL_BASE + encodeURIComponent(key) + "/");
+      return true;
+    }
     document.documentElement.classList.add("deep-link");
     openCard(target);
     revealDeal(target, "auto", 80);

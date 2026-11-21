@@ -32,7 +32,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=eacc671f">
+<link rel="stylesheet" href="/assets/css/style.css?v=899620b0">
 <meta name="dh-votes-base" content="https://script.google.com/macros/s/AKfycbytBigdTS4LTwtRh6K_jiTPXHOf-6MvljhVuYFDZ9VLfUuTmzgNqNATK_oX2UELJzCJTg/exec">
 <script type="application/ld+json">
 [
@@ -186,7 +186,7 @@
 <div class="dp-actions">
 <a class="dp-btn mint" href="https://fireworks.ai/blog/train-muse-glimmer-for-free" target="_blank" rel="noopener nofollow">Open the official offer<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a><a class="dp-btn ghost" href="https://docs.fireworks.ai/fine-tuning/training-api/cookbook/muse-glimmer" target="_blank" rel="noopener noreferrer">Source post<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a>
 </div>
-<div class="dp-vote"><div class="vote-bar" data-vote="fireworks-glimmer-free-training"><button class="vb up" type="button" data-v="1" aria-pressed="false" aria-label="This deal is useful"><span aria-hidden="true">👍</span><span class="vb-n" data-n="up">–</span></button><button class="vb down" type="button" data-v="-1" aria-pressed="false" aria-label="This deal is not useful"><span aria-hidden="true">👎</span><span class="vb-n" data-n="down">–</span></button><span class="vote-why" hidden></span></div></div>
+<div class="dp-vote"><div class="vote-bar" data-vote="fireworks-glimmer-free-training"><button class="vb up" type="button" data-v="1" aria-pressed="false" aria-label="This deal is useful"><span aria-hidden="true">👍</span><span class="vb-n" data-n="up">–</span></button><button class="vb down" type="button" data-v="-1" aria-pressed="false" aria-label="This deal is not useful"><span aria-hidden="true">👎</span><span class="vb-n" data-n="down">–</span></button></div></div>
 </article>
 <section class="dp-sec"><h2>Highlight</h2><p class="dp-lead">Fireworks&#x27; Free Weights Club opens with multimodal Muse Glimmer 30B: SFT, DPO and RL training are free through 2026-11-30 with no credit card, enough for your own LoRA experiments.</p></section><section class="dp-sec"><h2>What you get</h2><p>Fireworks&#x27; post &quot;Train Muse Glimmer for free&quot; announced the first Free Weights Club offer: Muse Glimmer 30B, a multimodal 30B-class model, is free to train with supervised fine-tuning, DPO and RL through 2026-11-30, with no credit card. You can run SFT through Managed Training in the app or API, or write your own loop with the Serverless Training API. The docs and cookbook add one detail: LoRA SFT is free in the UI and the Serverless Training API for jobs started before 2026-12-01T00:00:00-08:00, and the starter script refuses to launch after that unless you pass --allow-paid.
 The published experiment trains a LoRA adapter on Kalshi prediction questions in one pass and lifts accuracy on unseen topics from 53.2% (base) to 58.3%, 11.2 points ahead of the Jev comparison. Training produces a LoRA adapter you can promote to a model, but serving it still needs an on-demand deployment billed per GPU-hour.</p></section><section class="dp-sec"><h2>Conditions</h2><p>Register a Fireworks account; no card. Only training is free: inference, including evaluation sampling during a training run, is billed per token. Muse Glimmer 30B left serverless inference on 2026-09-25, so serving a tuned model needs an on-demand deployment. The blog says SFT, DPO and RL are all free while the cookbook only states LoRA SFT, so check the billing note on the job screen for DPO and RL.</p></section><section class="dp-sec"><h2>Steps</h2><ol class="dp-steps"><li>Register a Fireworks account (no card)</li><li>In Managed Training or the Serverless Training API, pick accounts/fireworks/models/muse-glimmer-30b</li><li>Prepare chat JSONL data and start a LoRA SFT job (the muse_glimmer starter in the cookbook works)</li><li>Read the cost line the launcher prints and confirm only evaluation sampling is billed</li><li>Promote the LoRA adapter to a model; open an on-demand deployment only if you need to serve it</li></ol></section><section class="dp-sec is-risk"><h2>Watch out</h2><p>Only training is free; inference and evaluation sampling are charged and a large eval run will create a bill. Serving the tuned model bills per GPU-hour. The blog and docs differ on whether DPO and RL are covered. Jobs started after 11-30 are no longer free.</p></section>
@@ -217,6 +217,6 @@ Deal Hunter · © 2026
 </footer>
 <script>window.__favFallback=function(i){i.style.display='none';var f=i.nextElementSibling;if(f&&f.classList.contains('fav-fallback'))f.style.display='grid';};</script>
 <script src="/assets/js/consent.js?v=f57a1b92" defer></script>
-<script src="/assets/js/votes.js?v=1d310f38" defer></script>
+<script src="/assets/js/votes.js?v=4b6aff83" defer></script>
 </body>
 </html>

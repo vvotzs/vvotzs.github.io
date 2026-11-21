@@ -6,7 +6,8 @@
 
 工程要点：
   · 时区统一北京时间（见 scripts/common.py）；
-  · 分类区渲染完整 12 字段卡片，每个活动只出现一次（#deal-<id>）；
+  · 分类区渲染完整 12 字段卡片，每个活动只出现一次（#deal-<id>）；首页每个分类只内联
+    按 S 分排序的前 24 条（再加四个聚合分区用到的条目），其余由分类目录页承接；
   · 顶部热榜板（新收录 / 高价值榜 | 即将截止 / 抽奖）与各分区用精简跳转卡，
     点一下滚到分类区那张卡片并展开，这样 index.html 不重复三遍详情；
   · 所有图标抽成一份 <svg> sprite，卡片里只剩 <use href="#i-xxx">；
@@ -17,9 +18,9 @@
 """
 from __future__ import annotations
 
+import csv
 import hashlib
 import html
-import io
 import json
 import math
 import re
@@ -105,6 +106,18 @@ FAV_METHOD = 6
 # GA4 / AdSense 时把这里改成 "1"，consent.js 就会给未做过选择的欧洲首访者弹出面板，
 # 已同意 / 已拒绝的访客不会再被重复打扰。
 CONSENT_REQUIRED = "0"
+
+# ------------------------------------------------ 首页瘦身（2026-11-21 第七轮定稿）
+# 分类区只内联按 S 分排序的前 N 条，其余全部交给分类目录页 /category/<slug>/ 承接；
+# 四个聚合分区（新收录 / 高价值榜 / 即将截止 / 抽奖）用到的条目另外并入对应分类，
+# 保证点跳转卡一定能滚到那张卡（#deal-<id> 必须存在）。
+# 验收口径：首页 gzip ≤ 250KB、DOM ≤ 1.3 万、CLS = 0。
+HOME_CAT_CARDS = 24
+HOME_ARCHIVE_CARDS = 24
+
+# 评分解释表：构建时落到 reports/score_explain.csv，只做内部回测用，
+# 不进 sitemap、不被任何页面链接，也不进仓库（.gitignore + robots.txt 双保险）。
+SCORE_REPORT = ROOT / "reports" / "score_explain.csv"
 
 # ------------------------------------------------------- 两枚 3D 质感小徽标
 # 按 Jun 的参考图手绘：都靠「多层实色 + 渐变」堆出立体感，14–16px 下要的还是
@@ -1314,7 +1327,14 @@ def module_html(
     jump: bool = False,
     strip: bool = False,
     hidden: bool = False,
+    cat_slug: str | None = None,
+    total: int | None = None,
 ) -> str:
+    """一个分区。cat_slug 给出时，底部渲染「查看全部 N 条 · 分类名 →」指向分类目录页。
+
+    N 是该分类在效条目的实数（total），与本页内联的条数（deals）不是一回事：
+    首页只内联前 HOME_CAT_CARDS 条，剩下的都在分类页上。
+    """
     if jump:
         cards = [
             jump_card(deal, en_map.get(deal["id"], {}), today, rank=i if ranked else None)
@@ -1330,6 +1350,21 @@ def module_html(
     # 说明文字统一留在标题行里（热榜条没有标题行，跟着一起隐藏），
     # 手机端「即将截止」的口径改由 tab 上的 ⓘ 吐司说明，不再占一行高度。
     desc_html = f'<p class="module-desc">{bi(*desc)}</p>'
+    # 分类模块底部的「查看全部 N 条 · 分类名 →」。锚文本带分类名（头部关键词），
+    # 英文页用 CAT_EN 里的新分类名，零中文。
+    tail = ""
+    if cat_slug:
+        cat_name = (CAT_EN.get(cat_slug, (CAT_META[cat_slug]["label"], ""))[0]
+                    if CUR_LANG == "en" else CAT_META[cat_slug]["label"])
+        n = len(deals) if total is None else total
+        tail = (
+            f'<a class="see-all" href="/{e(cat_path(cat_slug, CUR_LANG))}" '
+            f'{al(*upair("see_all_aria", name=cat_name))}>'
+            f'{ui("see_all", n=n, name=e(cat_name))}</a>'
+        )
+    elif total is not None and total > len(deals):
+        # 归档区没有独立页面：超上限时只给一句说明，不造假链接
+        tail = f'<p class="all-note">{ui("archive_capped", n=total, m=len(deals))}</p>'
     return f"""
   <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-per="{per_page}" data-per-lg="{per_page_lg}"{' data-kind="jump"' if jump else ''}{' hidden' if hidden else ''}>
     <header class="module-head">
@@ -1347,6 +1382,7 @@ def module_html(
     </div>
     <p class="module-empty" style="display:none">{ui("mod_empty")}</p>
     <button class="more" type="button" data-more hidden></button>
+    {tail}
   </section>"""
 
 
@@ -2460,6 +2496,10 @@ _COST_FACTOR = {
 }
 _KYC_FACTOR = {"none": 1.00, "cn_ok": 0.95, "cn_ok_extra": 0.80, "foreign_only": 0.50}
 
+# 赞踩的双重门槛：全站有效票数 / 单条票数（口径见 docs/scoring.md）
+VOTE_SITE_GATE = 100
+VOTE_ITEM_GATE = 10
+
 
 def load_votes_snapshot() -> None:
     """读取 data/votes_snapshot.json（GAS 导出后由定时任务更新）。
@@ -2547,13 +2587,16 @@ def score_deal(deal: dict, today) -> dict:
     ):
         r = 1.10
     mult = max(0.2, a * e * g * h * t * l)
+    # 赞踩：双重门槛（第七轮定稿）。全站先满 100 票，单条再满 10 票才算数——
+    # 只有全站门槛时，一条 1 票的条目也能拿到 ±40 的量级，足以撬动整个分类排序；
+    # 单条门槛挡住这种噪音，夹紧到 [-20, +12] 后单条最多只能动一档，翻不了盘。
     vote = 0.0
     up = down = 0
-    if VOTE_TOTAL >= 100:
+    if VOTE_TOTAL >= VOTE_SITE_GATE:
         up, down = VOTE_ITEMS.get(deal["id"], [0, 0])
         n = up + down
-        if n:
-            vote = 40.0 * (up - 0.7 * n) / (n + 5)
+        if n >= VOTE_ITEM_GATE:
+            vote = max(-20.0, min(12.0, 40.0 * (up - 0.7 * n) / (n + 10)))
     fresh = 0.0
     if deal.get("status") != "expired":
         added_age = _days_since(deal.get("added_at") or deal.get("added"), today)
@@ -2612,7 +2655,11 @@ def diversity_guard(ordered: list[dict]) -> list[dict]:
 
 
 def vote_bar(deal_id: str) -> str:
-    """紧凑的赞/踩胶囊：只显示票数，不重排；原因选项由 votes.js 就地展开。"""
+    """紧凑的赞/踩胶囊：只显示票数，不重排；原因气泡由 votes.js 就地展开。
+
+    理由气泡的容器（.vote-why）不再写进 HTML：首页 144 张卡、678 个详情页都挂一份空
+    节点，DOM 数会被这 1 个节点/处顶上去；votes.js 的 whyOf() 在真要用的时候再建。
+    """
     zh = CUR_LANG != "en"
     up_aria = "这条优惠有用" if zh else "This deal is useful"
     down_aria = "这条优惠没用" if zh else "This deal is not useful"
@@ -2622,7 +2669,6 @@ def vote_bar(deal_id: str) -> str:
         '<span aria-hidden="true">👍</span><span class="vb-n" data-n="up">–</span></button>'
         f'<button class="vb down" type="button" data-v="-1" aria-pressed="false" aria-label="{down_aria}">'
         '<span aria-hidden="true">👎</span><span class="vb-n" data-n="down">–</span></button>'
-        '<span class="vote-why" hidden></span>'
         "</div>"
     )
 
@@ -2727,8 +2773,8 @@ def order_category_deals(deals: list[dict], slug: str, today=None) -> list[dict]
     一期静态分（318 条实测标定）：
       S = (20 + V + 15·U) × max(0.2, A × E × G × H × T × L) × R_t + Vote + Fresh
     排序键 (-round(S,1), -value_expected, -added_at, id)；每个分类前 10 条同一
-    服务商最多 2 条，超出的顺延到第 11 位起。Vote 在本期由快照提供，全站满
-    100 票前恒为 0。
+    服务商最多 2 条，超出的顺延到第 11 位起。Vote 由快照提供，全站满 100 票且单条满
+    10 票才生效（双重门槛，见 docs/scoring.md），所以现在恒为 0。
     """
     today = today or today_local()
     scored = [(score_deal(d, today), d) for d in deals]
@@ -3370,6 +3416,26 @@ def main() -> None:
         for k in CAT_META
     }
 
+    # 首页只内联「四个聚合分区用到的卡 + 每个分类按 S 前 HOME_CAT_CARDS 条」：
+    #   · 聚合分区用的是跳转卡，点下去要滚到 #deal-<id>，所以它用到的条目必须有一张真卡在页上；
+    #   · 其余按 S 分排好序取前 24 条，剩下的全部交给分类目录页。
+    # 并入的聚合条目按它原本的 S 名次插回去，不堆到末尾，分类内仍是「好条目在前」。
+    agg_ids = {d["id"] for d in (*fresh, *leaderboard, *closing, *lottery)}
+    home_by_cat: dict[str, list[dict]] = {}
+    for slug, ordered in by_cat.items():
+        pos = {d["id"]: i for i, d in enumerate(ordered)}
+        keep = ordered[:HOME_CAT_CARDS]
+        keep_ids = {d["id"] for d in keep}
+        merged = keep + [d for d in ordered if d["id"] in agg_ids and d["id"] not in keep_ids]
+        if len(merged) > len(keep):
+            merged.sort(key=lambda d: pos[d["id"]])
+        home_by_cat[slug] = merged
+    # 内联条目的 id：搜索索引只给「没内联的」条目出轻量结果行，避免同一张卡两处出现
+    inline_ids = {d["id"] for lst in home_by_cat.values() for d in lst}
+    # 归档区没有独立页面，超过上限就只列最近的 24 条（当前全站只有 4 条过期条目）
+    archive_all = sorted(expired, key=lambda d: d.get("end") or "", reverse=True)
+    archive_inline = archive_all[:HOME_ARCHIVE_CARDS]
+
     last_updated = meta.get("last_updated_human") or now_local().strftime("%Y-%m-%d %H:%M")
     beijing_time = last_updated if re.match(r"^\d{4}-\d{2}-\d{2}", last_updated) else now_local().strftime("%Y-%m-%d %H:%M")
     # 手机首屏只放一行：更新时间的短写法（11-19 03:20）免得挤占卡片宽度
@@ -3386,6 +3452,8 @@ def main() -> None:
 
     en_map = load_en()
     missing_en = [d["id"] for d in deals if d["id"] not in en_map]
+    # 内部回测表：每次构建都落一份，给「改了公式前后前 20 名怎么变」留底
+    score_rows = write_score_explain(deals, en_map, today)
 
     def render_page(lang: str) -> str:
         """整页渲染：先定语言，rail / 热榜 / 分区 / 搜索索引 / head 全部只出这一页的语言。"""
@@ -3494,52 +3562,84 @@ def main() -> None:
 
         modules = "".join(
             [
-                module_html("ai", "ai", U["mod_ai"], U["mod_ai_desc"], by_cat["ai"], en_map, today),
-                module_html("crypto", "crypto", U["mod_crypto"], U["mod_crypto_desc"], by_cat["crypto"], en_map, today),
-                module_html("bank", "bank", U["mod_bank"], U["mod_bank_desc"], by_cat["bank"], en_map, today),
-                module_html("cloud", "cloud", U["mod_cloud"], U["mod_cloud_desc"], by_cat["cloud"], en_map, today),
-                module_html("esim", "esim", U["mod_esim"], U["mod_esim_desc"], by_cat["esim"], en_map, today),
-                module_html("software", "software", U["mod_software"], U["mod_software_desc"], by_cat["software"], en_map, today),
+                module_html("ai", "ai", U["mod_ai"], U["mod_ai_desc"], home_by_cat["ai"], en_map, today,
+                            cat_slug="ai", total=len(by_cat["ai"])),
+                module_html("crypto", "crypto", U["mod_crypto"], U["mod_crypto_desc"], home_by_cat["crypto"], en_map, today,
+                            cat_slug="crypto", total=len(by_cat["crypto"])),
+                module_html("bank", "bank", U["mod_bank"], U["mod_bank_desc"], home_by_cat["bank"], en_map, today,
+                            cat_slug="bank", total=len(by_cat["bank"])),
+                module_html("cloud", "cloud", U["mod_cloud"], U["mod_cloud_desc"], home_by_cat["cloud"], en_map, today,
+                            cat_slug="cloud", total=len(by_cat["cloud"])),
+                module_html("esim", "esim", U["mod_esim"], U["mod_esim_desc"], home_by_cat["esim"], en_map, today,
+                            cat_slug="esim", total=len(by_cat["esim"])),
+                module_html("software", "software", U["mod_software"], U["mod_software_desc"], home_by_cat["software"], en_map, today,
+                            cat_slug="software", total=len(by_cat["software"])),
                 module_html(
                     "archive", "archive", U["mod_archive"], U["mod_archive_desc"],
-                    sorted(expired, key=lambda d: d.get("end") or "", reverse=True), en_map, today,
+                    archive_inline, en_map, today, total=len(archive_all),
                 ),
             ]
         )
 
-        # 搜索索引：每张卡只留 data-key，搜索文本统一放在这段 JSON 里（只存当前页面的语言）
-        search_map: dict[str, str] = {}
+        # 搜索索引：分五张表存，只存当前页面的语言。首页只内联每类前 24 条，
+        # 但搜索必须仍能搜全库，所以：
+        #   t 标题（顶部那行文字，也是未内联条目结果行的标题）
+        #   h 其余检索词（品牌 / 地区 / 门槛）；分类词表按分类存一次，不再每条重复
+        #   k 条目所属分类（拼检索串时补上该分类的词表）
+        #   p 首页没内联的在效条目：搜到时出一行轻量卡，点进它的 /d/<id>/ 独立页，
+        #     不再把整张卡塞进首页（那样等于没瘦身）
+        # 早期版本的索引是 {id: "检索词"} 或 {zh:…, en:…}，app.js 仍能读，这里只写新格式。
+        def _clean(value: object) -> str:
+            return re.sub(r"\s+", " ", str(value or "")).strip()
+
+        search_t: dict[str, str] = {}
+        search_h: dict[str, str] = {}
+        search_k: dict[str, str] = {}
+        search_p: dict[str, list] = {}
         for deal in deals:
-            cat_meta = CAT_META.get(deal.get("category", ""), {"label": "", "search": ""})
-            cat_en = CAT_EN.get(deal.get("category", ""), ("", ""))
+            slug = deal.get("category", "")
             en = en_map.get(deal["id"], {})
             if is_en:
-                haystack = " ".join(
-                    [
-                        en.get("title", ""),
-                        en.get("highlight", ""),
-                        en.get("regions", ""),
-                        # 英文索引里不放中文机构名：brand_en 缺失时才退回原值
-                        en.get("brand_en") or deal.get("brand", ""),
-                        COST_EN.get(deal.get("cost", ""), ""),
-                        cat_en[0],
-                        cat_en[1],
-                    ]
+                title = en.get("title") or deal.get("title", "")
+                words = (
+                    en.get("brand_en") or deal.get("brand", ""),
+                    en.get("regions") or deal.get("regions", ""),
+                    COST_EN.get(deal.get("cost", ""), ""),
                 )
+                cost_label = COST_EN.get(deal.get("cost", ""), deal.get("cost", ""))
             else:
-                haystack = " ".join(
-                    [
-                        deal.get("title", ""),
-                        deal.get("highlight", ""),
-                        deal.get("regions", ""),
-                        deal.get("brand", ""),
-                        deal.get("cost", ""),
-                        cat_meta.get("label", ""),
-                        cat_meta.get("search", ""),
-                    ]
-                )
-            search_map[deal["id"]] = re.sub(r"\s+", " ", haystack).strip()
-        search_json = json.dumps(search_map, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+                title = deal.get("title", "")
+                words = (deal.get("brand", ""), deal.get("regions", ""), deal.get("cost", ""))
+                cost_label = deal.get("cost", "")
+            search_t[deal["id"]] = _clean(title)
+            search_h[deal["id"]] = _clean(" ".join(str(w) for w in words))
+            search_k[deal["id"]] = slug
+            # 已归档条目不进结果行：它们有独立页，归档区也自己列着，不混进在效搜索
+            if deal["id"] in inline_ids or deal.get("status") == "expired":
+                continue
+            v_zh, v_en = value_pair(deal, en)
+            fav = fav_name(deal.get("domain", ""))
+            search_p[deal["id"]] = [
+                slug,
+                cost_label,
+                1 if deal.get("verified") else 0,
+                str(deal.get("added_at") or added_day(deal, today)),
+                str(deal.get("end") or ""),
+                f"{value_expected(deal):g}",
+                fav if (FAV_DIR / f"{fav}.webp").exists() else "",
+                monogram_for(deal, en),
+                value_badge(v_en if is_en else v_zh, "en" if is_en else "zh"),
+                short_deadline(deal, today)[1 if is_en else 0],
+            ]
+        search_c = {
+            slug: (f"{CAT_EN.get(slug, ('', ''))[0]} {CAT_EN.get(slug, ('', ''))[1]}" if is_en
+                   else f"{meta['label']} {meta.get('search', '')}")
+            for slug, meta in CAT_META.items()
+        }
+        search_json = json.dumps(
+            {"t": search_t, "h": search_h, "k": search_k, "c": search_c, "p": search_p},
+            ensure_ascii=False, separators=(",", ":"),
+        ).replace("</", "<\\/")
 
 
         title = EN_TITLE if is_en else "羊毛情报局 · 全球优惠 / 免费额度 / 限时活动情报"
@@ -3952,6 +4052,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
         "  meta description：整句收口 {sentence} 页 · 完整分句收口 {clause} 页 · "
         "英文按词收边补足 {word} 页；零省略号、零半词".format(**_DESC_STATS)
     )
+    print(f"  内部回测表：reports/score_explain.csv（{score_rows} 行，不进站点 / sitemap）")
     print(f"  英文条目：{len(deals) - len(missing_en)}/{len(deals)} 条有翻译")
     if missing_en:
         print(f"  ! 缺少英文翻译 {len(missing_en)} 条：{', '.join(missing_en[:12])}{' …' if len(missing_en) > 12 else ''}")
@@ -3967,6 +4068,38 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
     if "--explain" in sys.argv:
         explain_scoring(deals, today)
 
+
+
+def write_score_explain(deals: list[dict], en_map: dict, today) -> int:
+    """构建时输出内部回测表 `reports/score_explain.csv`（每次构建都重写）。
+
+    列：id、标题、分类、V、U、A、E、G、H、T、L、R_t、Vote、Fresh、S、分类内名次。
+    改公式后拿两版的前 20 名直接对比，就是回测；分数本身不在页面上显示。
+    只落在 `reports/` 下：不进 sitemap、没有任何页面链接、也不进仓库
+    （.gitignore 忽略 + robots.txt 屏蔽，双保险）。
+    """
+    SCORE_REPORT.parent.mkdir(parents=True, exist_ok=True)
+    active = [d for d in deals if d.get("status") != "expired"]
+    rows: list[list[str]] = []
+    for slug in CAT_META:
+        ordered = order_category_deals([d for d in active if d.get("category") == slug], slug, today)
+        for rank, deal in enumerate(ordered, 1):
+            sc = score_deal(deal, today)
+            en = en_map.get(deal["id"], {})
+            title = str(deal.get("title") or en.get("title") or "")
+            rows.append(
+                [deal["id"], title, slug]
+                + [f"{sc[k]:.3f}" for k in ("V", "U", "A", "E", "G", "H", "T", "L", "R", "vote", "fresh")]
+                + [f"{sc['S']:.2f}", str(rank)]
+            )
+    with SCORE_REPORT.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.writer(fh)
+        writer.writerow(
+            ["id", "title", "category", "V", "U", "A", "E", "G", "H", "T", "L",
+             "R_t", "Vote", "Fresh", "S", "rank_in_category"]
+        )
+        writer.writerows(rows)
+    return len(rows)
 
 
 def explain_scoring(deals: list[dict], today) -> None:

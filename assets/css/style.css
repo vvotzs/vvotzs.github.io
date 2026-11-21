@@ -507,6 +507,80 @@ main{ padding-bottom: 0; }
 }
 .pager-bar .pg:active:not(:disabled){ background: #DCFCE7; border-color: #6EE7B7; color: #065F46; }
 
+/* ------------------------------------------- 首页瘦身：查看全部 / 搜索结果行 */
+/* 首页每个分类只内联按 S 分前 24 条，其余全部在分类目录页；底部这颗胶囊是那批条目的去路。
+   锚文本带分类名（头部关键词），给分类页一条站内锚文本；窄屏折两行也不挤破卡片。 */
+.see-all{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 30px;
+  margin: 8px auto 2px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #BBF7D0;
+  background: #F0FDF7;
+  color: #065F46;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  box-shadow: 0 1px 2px rgba(28,25,23,.03);
+  transition: background .16s ease, border-color .16s ease, color .16s ease;
+}
+.see-all:hover{ background: var(--mint-soft); border-color: #6EE7B7; color: #047857; }
+.see-all:active{ background: #DCFCE7; }
+/* 归档区没有独立页面：超过内联上限时只放这一句，不造假链接 */
+.all-note{ margin: 8px 0 2px; text-align: center; color: var(--ink-3); font-size: 11.5px; }
+
+/* 搜索结果里「首页没内联」的条目：一行轻量卡，点进它的 /d/<id>/ 独立页。
+   它跟完整卡同处一条轨道，data-* 属性一样，筛选 / 排序 / 翻页都照旧。 */
+.hit{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 8px 10px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: var(--shadow-1);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .16s ease, background .16s ease;
+}
+.hit:hover{ border-color: #BBF7D0; background: #FFFDF9; }
+.hit .fav,
+.hit .fav-fallback{
+  width: 22px; height: 22px; margin-top: 0; border-radius: 6px; font-size: 10.5px;
+}
+.hit-main{ flex: 1 1 auto; min-width: 0; display: block; }
+.hit-t{
+  display: block;
+  font-size: 12.4px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.hit-m{
+  display: block;
+  margin-top: 2px;
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--ink-3);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.hit-go{ flex: none; color: var(--ink-4); font-size: 12px; line-height: 1; }
+
 /* ------------------------------------------------------------------ cards */
 
 /* 无 JS 时退化为双列网格平铺；有 JS 时同一 .track 变成横向吸附翻页 */
@@ -541,6 +615,19 @@ html.js .page{
   gap: 12px;
 }
 html.js .pager-bar{ display: flex; }
+
+/* 桌面首帧防抖（CLS）：app.js 是 defer，页面常常在它切页前就先画出来。
+   两件事会让分页完成后整页往上/往下跳（1280px 实测 CLS 0.0041）：
+     1. 未分页时 29 张卡全摊在双列网格里，分页后第 1 页只有 8 张（data-per-lg="8"）——
+        这里同样只留第 1 页的 8 张，分页后卡片进了 .page，选择器不再匹配；
+        手机（≤768px）由下面媒体查询里的 n + 6 覆盖成 5 张；关掉 JS 的浏览器由首页
+        <noscript> 里的同一条规则还原成完整列表。
+     2. 翻页条在 app.js 接管前不显示，接管后凭空多出 30px + 6px——这里只藏内容、留位置。 */
+.module:not(.hot-strip) .track > .card:nth-child(n + 9){ display: none; }
+html:not(.js) .module:not(.hot-strip) .pager-bar{
+  display: flex;
+  visibility: hidden;
+}
 
 .card{
   position: relative;
@@ -1680,6 +1767,10 @@ footer{
   }
   /* 翻页条离上面卡片 4px；到下一个分区标题 7px（下一区自己的 6px padding + 分区分隔线） */
   .pager-bar{ margin-top: 4px; }
+  /* 「查看全部 N 条」胶囊：手机上字号与内边距各收一档，长英文分类名折两行也不挤破卡片 */
+  .see-all{ margin-top: 6px; min-height: 28px; padding: 5px 12px; font-size: 11.5px; }
+  .hit{ padding: 7px 9px; }
+  .hit-t{ font-size: 12px; }
   .more{ display: none !important; }
 
   /* 手机端未展开卡片外高实测 78px（含上下各 1px 边框）→ 内容区 76px */

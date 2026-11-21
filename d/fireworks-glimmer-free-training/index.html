@@ -32,7 +32,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/css/style.css?v=eacc671f">
+<link rel="stylesheet" href="/assets/css/style.css?v=899620b0">
 <meta name="dh-votes-base" content="https://script.google.com/macros/s/AKfycbytBigdTS4LTwtRh6K_jiTPXHOf-6MvljhVuYFDZ9VLfUuTmzgNqNATK_oX2UELJzCJTg/exec">
 <script type="application/ld+json">
 [
@@ -186,7 +186,7 @@
 <div class="dp-actions">
 <a class="dp-btn mint" href="https://fireworks.ai/blog/train-muse-glimmer-for-free" target="_blank" rel="noopener nofollow">前往官方活动页<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a><a class="dp-btn ghost" href="https://docs.fireworks.ai/fine-tuning/training-api/cookbook/muse-glimmer" target="_blank" rel="noopener noreferrer">来源原帖<svg class="i dp-ico" aria-hidden="true"><use href="#i-external"/></svg></a>
 </div>
-<div class="dp-vote"><div class="vote-bar" data-vote="fireworks-glimmer-free-training"><button class="vb up" type="button" data-v="1" aria-pressed="false" aria-label="这条优惠有用"><span aria-hidden="true">👍</span><span class="vb-n" data-n="up">–</span></button><button class="vb down" type="button" data-v="-1" aria-pressed="false" aria-label="这条优惠没用"><span aria-hidden="true">👎</span><span class="vb-n" data-n="down">–</span></button><span class="vote-why" hidden></span></div></div>
+<div class="dp-vote"><div class="vote-bar" data-vote="fireworks-glimmer-free-training"><button class="vb up" type="button" data-v="1" aria-pressed="false" aria-label="这条优惠有用"><span aria-hidden="true">👍</span><span class="vb-n" data-n="up">–</span></button><button class="vb down" type="button" data-v="-1" aria-pressed="false" aria-label="这条优惠没用"><span aria-hidden="true">👎</span><span class="vb-n" data-n="down">–</span></button></div></div>
 </article>
 <section class="dp-sec"><h2>亮点</h2><p class="dp-lead">Fireworks 的 Free Weights Club 首期：多模态 Muse Glimmer 30B 用 SFT、DPO、RL 训练都不要钱，到 2026-11-30 截止，免绑卡；拿来跑自己的 LoRA 微调实验够了</p></section><section class="dp-sec"><h2>优惠内容</h2><p>Fireworks 官方博客《Train Muse Glimmer for free》宣布 Free Weights Club 首期活动：Muse Glimmer 30B（多模态、30B 量级）在 2026-11-30 前用监督微调（SFT）、DPO 与 RL 训练全部免费，无需信用卡，可用 Managed Training（网页端或 API）跑 SFT，也可用 Serverless Training API 自己写训练循环。官方文档与 cookbook 另有一句补充：LoRA SFT 在 UI 与 Serverless Training API 上免费，仅对 `2026-12-01T00:00:00-08:00` 之前启动的 LoRA SFT 任务生效，脚本默认拒绝在该时间之后启动（除非加 `--allow-paid`）。
 官方给的样板实验：用 Kalshi 预测题的 cookbook 训练一轮 LoRA，在未见过的题目上把准确率从 base 的 53.2% 提到 58.3%，比对照组 Jev 高 11.2 个百分点。训练产物是 LoRA adapter，可以 promote 成模型，但要对外提供服务仍需 on-demand 部署（按 GPU 小时计费）。</p></section><section class="dp-sec"><h2>参与条件</h2><p>注册 Fireworks 账号，免绑卡；免费只覆盖「训练」——推理、包括训练中的评估采样都按 token 单独计费；Serverless 上 Muse Glimmer 30B 自 2026-09-25 起已下架，服务调优后的模型需要 on-demand 部署；博客写 SFT/DPO/RL 全免，但 cookbook 只明确 LoRA SFT 免费，DPO/RL 请以任务创建页的计费提示为准。</p></section><section class="dp-sec"><h2>参与步骤</h2><ol class="dp-steps"><li>注册 Fireworks 账号（免绑卡）</li><li>在 Managed Training 或 Serverless Training API 里选 `accounts/fireworks/models/muse-glimmer-30b`</li><li>准备 chat JSONL 数据，启动 LoRA SFT（可用官方 cookbook 的 muse_glimmer starter）</li><li>看 launch 打印的采样 token 费用行，确认只有评估采样计费</li><li>把训练好的 LoRA promote 成模型；要对外服务再开 on-demand 部署</li></ol></section><section class="dp-sec is-risk"><h2>风险提示</h2><p>只免训练，推理和评估采样照价收费，跑大评估集会出账单；训练完要上线还得按 GPU 小时部署；博客与文档对 DPO/RL 是否覆盖口径不一致；11-30 之后启动的任务不再免费。</p></section>
@@ -217,6 +217,6 @@
 </footer>
 <script>window.__favFallback=function(i){i.style.display='none';var f=i.nextElementSibling;if(f&&f.classList.contains('fav-fallback'))f.style.display='grid';};</script>
 <script src="/assets/js/consent.js?v=f57a1b92" defer></script>
-<script src="/assets/js/votes.js?v=1d310f38" defer></script>
+<script src="/assets/js/votes.js?v=4b6aff83" defer></script>
 </body>
 </html>

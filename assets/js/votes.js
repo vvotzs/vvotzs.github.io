@@ -77,6 +77,19 @@
     });
   }
 
+  /* 理由气泡的容器不再写进 HTML（首页 144 张卡就是 144 个空节点，DOM 数直接顶到 1.3 万
+     上限），等真要显示理由时才建：只在 showWhy() 里调。 */
+  function whyOf(bar) {
+    var why = bar.querySelector(".vote-why");
+    if (!why) {
+      why = document.createElement("span");
+      why.className = "vote-why";
+      why.hidden = true;
+      bar.appendChild(why);
+    }
+    return why;
+  }
+
   function paintPressed(id) {
     var state = myVotes[id] || { v: 0, reason: "none" };
     box(id).forEach(function (b) {
@@ -101,7 +114,7 @@
     : { claimed: "已领到", useless: "没用", expired: "已失效", inaccurate: "信息不准" };
 
   function showWhy(bar, v, reason) {
-    var why = bar.querySelector(".vote-why");
+    var why = whyOf(bar);
     if (!why) return;
     var keys = v === 1 ? ["claimed"] : ["useless", "expired", "inaccurate"];
     why.textContent = "";

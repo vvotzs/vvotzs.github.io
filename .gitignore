@@ -14,3 +14,6 @@ scripts/__pycache__/
 # 构建产物 / 本地预览
 build/
 tmp/
+
+# 内部回测表（build_site.py 每次构建重写；只给本地 / 提交前对比用，不上线）
+reports/
