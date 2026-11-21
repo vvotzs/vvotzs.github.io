@@ -251,6 +251,13 @@ KYC.update(
 )
 
 KYC_NOTES: dict[str, str] = {
+    "a1-croatia-prepaid-esim": "下单只填姓名/邮箱/电话，未见证件上传",
+    "vodafone-nl-prepaid-esim": "无需证件，线上付款即开",
+    "asda-mobile-payg-esim": "不看证件，但充值仅接受英国地址登记的卡",
+    "lebara-uk-payg-esim": "不看证件，但非英国卡/地址常被反欺诈拦下",
+    "play-pl-prepaid-esim-rwk": "护照 + 人脸拍照验证，需 PESEL 或证件号",
+    "ctexcel-hk-gba-prepaid": "eSIM 须到香港湾仔服务点线下办理，实名可用旅行证件",
+    "starryblu-60sgd-signup": "大陆护照 + 身份证地址证明",
     "clearstreet-3pct-cash-match": "需美国税号与住址",
     "usbank-business-checking-1500": "需 SSN/EIN 与美国网点所在州",
     "raisin-stack-welcome-bonus-1000": "需 SSN/ITIN",
@@ -341,6 +348,16 @@ KYC_NOTES.update(
     }
 )
 
+KYC.update({
+    "a1-croatia-prepaid-esim": "none",
+    "vodafone-nl-prepaid-esim": "none",
+    "asda-mobile-payg-esim": "none",
+    "lebara-uk-payg-esim": "none",
+    "play-pl-prepaid-esim-rwk": "cn_ok",
+    "ctexcel-hk-gba-prepaid": "foreign_only",
+    "starryblu-60sgd-signup": "cn_ok",
+})
+
 # ------------------------------------------------------------------ vowifi
 VOWIFI: dict[str, str] = {}
 
@@ -377,6 +394,8 @@ _NUMBERED = {
 }
 VOWIFI.update({i: "unknown" for i in _NUMBERED})
 VOWIFI["saily-us-number-annual"] = "false"  # App 内 VoIP，不是运营商 VoWiFi
+VOWIFI["asda-mobile-payg-esim"] = "true"  # 官方 Wi-Fi 通话对所有客户免费
+VOWIFI.update({i: "unknown" for i in ("a1-croatia-prepaid-esim","vodafone-nl-prepaid-esim","lebara-uk-payg-esim","play-pl-prepaid-esim-rwk","ctexcel-hk-gba-prepaid")})
 
 # ---------------------------------------------------------------- utility
 UTILITY = {
@@ -398,6 +417,7 @@ UTILITY = {
     "sosim-hk-esim-33-number",
     # 免费虚拟卡
     "starryblu-free-virtual-card",
+    "a1-croatia-prepaid-esim",
 }
 
 # 需要补「抽查居留」提示的条目
