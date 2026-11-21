@@ -204,7 +204,7 @@ def main() -> int:
         print("dry-run：未写入任何文件")
         return 0
 
-    DATA.write_text(json.dumps(deals, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    DATA.write_text(json.dumps(deals, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     META.write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     write_sitemap(deals, today)
     print(f"已写入 {DATA.name}、{META.name}、sitemap.xml（含中英详情页）")

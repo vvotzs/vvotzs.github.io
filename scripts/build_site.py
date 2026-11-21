@@ -3099,6 +3099,19 @@ def validate(deals: list[dict], en_map: dict) -> None:
             errors.append(
                 f"{deal['id']}: 英文价值徽标 {len(badge)} 字符，超出手机端 {_EN_BADGE_BUDGET} 字符预算（{badge}）"
             )
+    # 参与资格：Bank / eSIM 必填 geo_restriction（标定脚本每次都写），漏填不阻断构建，
+    # 但要报出来——否则新条目会悄悄少掉详情页的「参与资格」区块（见 docs/eligibility-fields.md）
+    missing_elig = [
+        d["id"] for d in deals
+        if d.get("category") in ("bank", "esim") and not d.get("geo_restriction")
+    ]
+    if missing_elig:
+        print(
+            f"  ! 参与资格字段未填 {len(missing_elig)} 条（Bank/eSIM 应全量标定）："
+            + ", ".join(missing_elig[:8]) + ("…" if len(missing_elig) > 8 else ""),
+            file=sys.stderr,
+        )
+
     if errors:
         print("数据体检未通过，已停止构建：", file=sys.stderr)
         for line in errors[:40]:

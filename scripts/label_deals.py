@@ -468,7 +468,7 @@ def main() -> None:
                 d["risk"] = (d.get("risk") or "").rstrip("。") + "。" + note if d.get("risk") else note
 
     DATA.write_text(
-        json.dumps(deals, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        json.dumps(deals, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
     )
     from collections import Counter
 
