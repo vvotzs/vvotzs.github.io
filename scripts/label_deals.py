@@ -303,6 +303,44 @@ KYC_NOTES: dict[str, str] = {
     "klook-data-bank-gift": "账户居住地须为台/泰/马/越",
 }
 
+# ---------------------------------------------------------------- 2026-11-21 五站首轮深挖新增
+KYC.update(
+    {
+        "google-ai-blackfriday-annual-50": "cn_ok_extra",
+        "octopus-mobile-welcome-150": "cn_ok_extra",
+        "usims-free-esim-1gb": "cn_ok_extra",
+        "openai-academic-researchers-plus-2026": "foreign_only",
+        "wells-fargo-everyday-checking-325": "foreign_only",
+        "mercury-business-checking-500": "foreign_only",
+        "tastytrade-sweetbonus-2000": "foreign_only",
+        "etrade-max-rate-checking-400": "foreign_only",
+        "boa-advantage-tiered-1000": "foreign_only",
+        "bmo-relationship-checking-2000": "foreign_only",
+        "pnc-virtual-wallet-400": "foreign_only",
+        "amex-rewards-checking-300": "foreign_only",
+        "boc-unionpay-overseas-3pct": "cn_ok",
+        "icbc-global-travel-plus-2pct": "cn_ok",
+    }
+)
+KYC_NOTES.update(
+    {
+        "google-ai-blackfriday-annual-50": "需已有付费订阅与可用的 Google 支付方式",
+        "octopus-mobile-welcome-150": "需八达通 App/银包，Android 还需 Google Wallet",
+        "usims-free-esim-1gb": "需非 +86 号码收验证码；须 eSIM 机型",
+        "openai-academic-researchers-plus-2026": "需海外合资格高校研究型教职/博后",
+        "wells-fargo-everyday-checking-325": "需 SSN/ITIN 与美国地址，且排除签 W-8 的非居民",
+        "mercury-business-checking-500": "需美国注册公司与 EIN，个体户不行",
+        "tastytrade-sweetbonus-2000": "仅美国合法居民",
+        "etrade-max-rate-checking-400": "需美国税号与地址",
+        "boa-advantage-tiered-1000": "需 SSN/ITIN 与美国地址",
+        "bmo-relationship-checking-2000": "需美国 BMO 客户与专属 promo code",
+        "pnc-virtual-wallet-400": "需美国税号与地址，非居民线上多被拒",
+        "amex-rewards-checking-300": "需已有 Amex 美国卡或储蓄/CD 关系",
+        "boc-unionpay-overseas-3pct": "持大陆中行银联信用卡即可，报名走中行 App/公众号",
+        "icbc-global-travel-plus-2pct": "持大陆工行环球旅行 Plus 卡即可",
+    }
+)
+
 # ------------------------------------------------------------------ vowifi
 VOWIFI: dict[str, str] = {}
 

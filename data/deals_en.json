@@ -5183,5 +5183,244 @@
     ],
     "risk": "Earnings are entirely unguaranteed: the platform calls a bounty a competition rather than a wage, an entry outside the paid places earns nothing, and participation rewards are often under a cent; model calls are your own cost and can exceed the reward; submitting requires public source and full session transcripts, exposing your code and prompts; claiming needs a sanctions screen and possibly a US tax form, and unclaimed rewards return to the funder; the platform only launched in November 2026, so its long-term policies and payout reliability are untested.",
     "source": "make.fun official homepage and documentation (checked 21 November 2026: most bounties free, rewards in on-chain escrow, $5,967.50 paid to 413 accounts, public repo plus transcripts required, rewards by rank) + official X account @makefunai announcement of 18 November 2026 (top-1,000 participation reward, claim from $0.25) + official escrow repository github.com/makefunai/prize-escrow"
+  },
+  "tastytrade-sweetbonus-2000": {
+    "title": "[US] tastytrade SWEETBONUS: fund $2,500 for $50 up to $2,000 cash (first deposit by 30 November, 12-month hold)",
+    "highlight": "New users enter SWEETBONUS and a first deposit before 30 November; net deposits within 30 days of $2,500, $5,000, $25,000 or $100,000 pay $50, $100, $500 or $2,000, and both deposits and bonus must stay for 12 months",
+    "regions": "[US] Legal US residents aged 18 or over; individual cash, margin and portfolio margin accounts only, with IRAs and trust accounts excluded",
+    "value": "Up to $2,000",
+    "content": "tastytrade's official Sweet Bonus terms, read 21 November 2026, run from 1 October to 30 November 2026 at 23:59 CT: new platform users enter the code SWEETBONUS when applying and must make a first deposit inside the promotional period, after which a 30-calendar-day funding window sets the tier on total net deposits across qualifying accounts. Deposits of $2,500 to $4,999 pay $50, $5,000 to $24,999 pay $100, $25,000 to $99,999 pay $500 and $100,000 or more pay $2,000, with the bonus paid in one lump after the window closes. The qualifying deposits and the bonus must remain in the account for 12 months from the first deposit and the bonus is not withdrawable before then; withdrawing early triggers a clawback, although trading losses do not count as withdrawals. IRAs and trust accounts are excluded, one bonus per person and household, and no other tastytrade promotion can be combined; incoming ACATS transfers are free and tastytrade reimburses up to $75 of the sending broker's fee per $2,000 transferred.",
+    "conditions": "Never opened or funded a tastytrade account in any capacity and never received a new-account bonus from tastytrade; legal US resident aged 18 or over; the first deposit must land, and fully settle, within 1 October to 30 November 2026; only individual cash, margin and portfolio margin accounts count, with IRAs and trusts excluded; deposits and bonus are locked for 12 months; one bonus per customer and household.",
+    "steps": [
+      "Open an individual cash or margin account and enter SWEETBONUS when applying or under Manage on the account summary page",
+      "Make the first deposit before 23:59 CT on 30 November",
+      "Fund to your target tier within 30 days of that first deposit, leaving time for transfers to settle",
+      "Leave deposits and bonus untouched for 12 months, then withdraw freely"
+    ],
+    "risk": "Money is locked for 12 months, trading liquidity for roughly a 2% return; early withdrawals or transfers claw the bonus back; if you invest the deposit, market losses are yours; US residency is required; the 30-day window counts settled funds, so a transfer that clears late misses the tier.",
+    "source": "tastytrade's official Sweet Bonus page and Promotion Terms (read 21 November 2026: 1 October to 30 November, four tiers, 30-day funding window, 12-month hold, IRAs excluded) with usdailyrewards (15 October) and Finder (5 November) cross-checks",
+    "brand_en": "tastytrade"
+  },
+  "bmo-relationship-checking-2000": {
+    "title": "[US] BMO Relationship Checking up to $1,000 plus $1,000 on Growth Money Market (own promo code needed, to 2 March 2027)",
+    "highlight": "Open BMO Relationship Checking and take $10,000, $15,000 or $20,000 in qualifying direct deposits within 90 days for $600, $800 or $1,000; add a Growth Money Market with $150,000 of new money for another $1,000",
+    "regions": "[US] New BMO personal customers in the United States; a unique promo code from a BMO mailer, email or QR code is required",
+    "value": "Up to $2,000 ($1,000 checking plus $1,000 money market)",
+    "content": "BMO's official Relationship Checking limited-time offer page, read 21 November 2026, runs from 9 September 2026 to 2 March 2027: new personal customers who open BMO Relationship Checking and log in to BMO Digital Banking at least once within 90 days earn $600 for $10,000 to $14,999.99 of qualifying direct deposits, $800 for $15,000 to $19,999.99 and $1,000 for $20,000 or more. Opening a Growth Money Market at the same time and depositing $150,000 or more in new money within 45 days, then holding that balance from day 46 to day 90, adds another $1,000 for a combined maximum of $2,000. Both accounts must be opened at the same time and the unique promo code can only be used once. Relationship Checking carries a $25 monthly fee.",
+    "conditions": "New BMO personal checking clients only, including joint owners, and anyone who held or closed a BMO personal checking account in the past 12 months is excluded; the unique promo code from BMO's mailer, email or QR code is mandatory and there is no public universal code; qualifying direct deposits must reach the chosen tier within 90 days plus one digital banking login; the money market bonus needs $150,000 in new money within 45 days held through day 90; opening the accounts at different times forfeits the second bonus.",
+    "steps": [
+      "Find the unique promo code or QR code on your BMO mailer or email",
+      "Open BMO Relationship Checking with that code, adding Growth Money Market at the same time if you want both bonuses",
+      "Bring in the qualifying direct deposits for your tier within 90 days and log in to digital banking once",
+      "For the money market bonus, deposit $150,000 of new money within 45 days and hold it to day 90"
+    ],
+    "risk": "Without BMO's mailed code you cannot claim the offer; the $25 monthly fee applies to Relationship Checking; the $1,000 money market bonus needs $150,000, which most people cannot reach; the $20,000 direct deposit tier is steep; community reports mention difficulty getting refunds after closing a BMO account.",
+    "source": "BMO's official Relationship Checking Limited Time Offer page and legal terms (read 21 November 2026: 9 September 2026 to 2 March 2027, $600/$800/$1,000 tiers, $1,000 Growth Money Market bonus, unique code required) plus yunjumin (22 September 2026, with ITIN notes and closure risk)",
+    "brand_en": "BMO"
+  },
+  "openai-academic-researchers-plus-2026": {
+    "title": "[Multi-region] OpenAI for academic researchers: 50,000 grants open on 23 November, each with three free ChatGPT Plus seats for 12 months",
+    "highlight": "Research faculty and postdocs can apply first come first served from 23 November; each grant covers the applicant plus two same-institution collaborators (research students allowed) with a free Plus seat for 12 months and no API credits",
+    "regions": "[Multi-region] Eligible universities outside mainland China and Hong Kong (US and Canadian institutions qualify); applicants must be research faculty or postdocs with publications in the last three years in biology, chemistry and materials, computer science, earth and planetary science, engineering, mathematics or physics",
+    "value": "≈$720 (three seats at $20 a month for 12 months)",
+    "content": "OpenAI announced on 16 November 2026 that it is expanding ChatGPT for Academic Researchers toward 200,000 researchers: the next round opens on Monday 23 November with 50,000 grants awarded first come first served instead of by lottery. Each grant covers the recipient and up to two collaborators from the same institution, three ChatGPT Plus seats in total, free for 12 months. This round provides Plus rather than the Pro access given in the summer pilot, because OpenAI found most pilot users stayed within Plus limits. The programme runs in a separate research workspace, does not train models on project data by default, includes training, and excludes API credits. People already on the waitlist who qualify will be emailed before applications open.",
+    "conditions": "Applicants must be research faculty or postdocs at a qualifying institution, with publications in an eligible field in the past three years, planning to use ChatGPT for academic research. Collaborators must be from the same institution and verify with a school email address; research students can be collaborators but cannot apply alone. Mainland China and Hong Kong are outside the programme. Meeting the criteria does not guarantee approval and the 50,000 grants run out in application order. All three seats share one end date, joining later does not restart the 12 months, API credits are excluded, and you should not confirm a payment page that is not $0.",
+    "steps": [
+      "Prepare a school email address and your publications from the past three years",
+      "Apply on 23 November through the programme link in OpenAI's announcement, signed in with the school email",
+      "Complete the SheerID verification with the same email used to apply",
+      "After approval, set up the Academic Researcher workspace and invite two same-institution collaborators"
+    ],
+    "risk": "Students cannot apply on their own and must be added by a supervisor or postdoc; 50,000 grants go first come first served and may run out on the day; the help centre still says applications are closed and only a waitlist is open, so treat 23 November as the real start; all three seats expire together; do not confirm a non-zero payment page.",
+    "source": "OpenAI announcement Broadening access to AI for scientists (16 November 2026: 50,000 grants, first come first served, Plus seats, up to two collaborators), the OpenAI Help Center programme page (updated 19 November 2026) and a usdailyrewards guide (20 November 2026)",
+    "brand_en": "OpenAI"
+  },
+  "mercury-business-checking-500": {
+    "title": "[US] Mercury business checking $500: deposit $5,000 within 90 days (open by 30 November, referral link required)",
+    "highlight": "Open a $0-monthly-fee Mercury business account by 30 November, deposit $5,000 within 90 days and hold the balance for $500; no payroll direct deposit needed, but you must sign up through a referral or offer link",
+    "regions": "[US] Companies formed in the United States such as LLCs and C-Corps, with formation documents, an EIN and an owner's ID; sole proprietorships are not accepted",
+    "value": "$500",
+    "content": "Mercury, a fintech whose banking is provided by Choice Financial Group and Column N.A., has brought back a $500 business account bonus: open an account by 30 November 2026 and deposit $5,000 within 90 days to earn $500, with no payroll direct deposit, no monthly fee and no minimum balance. Mercury's Referred Customer Agreement, updated 27 August 2026, states that customers must arrive through a designated referral or offer link, and that signing up on Mercury's general website does not qualify, nor may the link be changed after registration. Thresholds and any balance holding period are those shown on your own referral landing page; terms updated on 6 November added a continuous $5,000 balance requirement, which community trackers describe as 30 consecutive days. One bonus per person and per business, and the account must stay in good standing through the 90-day eligibility period and payout.",
+    "conditions": "New Mercury customers with no prior Mercury account or relationship; sign-up must start from an offer or referral link; the company must be formed in the US with an EIN (a completed Form SS-4 works while the EIN is pending, with the document due within 90 days); formation documents and IDs for the controller and any owner with 25% or more are required; the balance threshold and holding period follow your landing page; one bonus per person or entity.",
+    "steps": [
+      "Enter Mercury through the offer link and confirm the page shows the $500 bonus and the 30 November deadline",
+      "Open the $0 monthly basic business account and upload formation documents, EIN and IDs",
+      "After approval, move $5,000 in within 90 days by ACH or wire",
+      "Keep the balance as your landing page requires and use the account normally until the bonus is paid"
+    ],
+    "risk": "Signing up on the general website forfeits the $500, so the first link you use matters; sole proprietors are not eligible; a balance holding requirement was added in November and the exact period follows the landing page; Mercury reviews company documents and can decline; the bonus is reported as other income on a 1099-MISC.",
+    "source": "Mercury's Referred Customer Agreement (27 August 2026: referral link required, 90-day eligibility period, landing-page thresholds) plus Doctor of Credit (30 October 2026, updated 6 November with the holding requirement) and usdailyrewards and US Credit Card Guide (1 and 2 November 2026, 30 November deadline)",
+    "brand_en": "Mercury"
+  },
+  "boa-advantage-tiered-1000": {
+    "title": "[US] Bank of America Advantage tiered bonus: up to $500 publicly, $1,000 on a targeted invite (open by 31 January 2027)",
+    "highlight": "Open an Advantage checking account from the offer page and take $2,000, $5,000 or $10,000 in qualifying direct deposits within 90 days for $100, $300 or $500; a targeted version pays $1,000 on $15,000",
+    "regions": "[US] US residents with an SSN or ITIN and a US address; open online through the offer page or in a branch with a Bank of America or Merrill associate",
+    "value": "$100 to $500 publicly; $1,000 on a targeted invite",
+    "content": "Bank of America's official offer page, read 21 November 2026, is titled Up to $1,000 Tiered Checking offer: open an Advantage SafeBalance, Advantage Plus or Advantage Relationship personal checking account through the page by 31 January 2027 and receive qualifying direct deposits within 90 days, with the bonus set by the 90-day total. The public bonus chart pays $100 for $2,000 to $4,999, $300 for $5,000 to $9,999 and $500 for $10,000 or more; a separate targeted version, seen only by customers who receive a direct communication or the in-app offer, pays $1,000 for $15,000 or more. Bonuses are paid within 60 days after the deposit period, with community data points usually 1 to 2 weeks after qualifying. Monthly fees are $4.95 for SafeBalance, $12 for Advantage Plus (rising to $15 from 19 February 2027) and $25 for Advantage Relationship, each waivable through direct deposits, balances or Preferred Rewards.",
+    "conditions": "New checking customers only, and anyone who owned or co-owned a Bank of America personal checking account in the past 12 months is excluded; enrolment must go through the offer page or a Bank of America or Merrill associate, and SafeBalance for Family Banking does not qualify; qualifying direct deposits must be regular income such as salary, pension or Social Security paid by an employer or payer using your account and routing numbers, while teller, wire, debit-card, ATM, online and mobile transfers and transfers from a bank, brokerage or Merrill account do not count; the $1,000 tier needs a targeted invite; one bonus per customer and no combination with other checking offers.",
+    "steps": [
+      "Enrol and open an Advantage account through the offer page or with a Bank of America or Merrill associate, confirming the offer code is attached",
+      "Route salary or other qualifying direct deposits into the new account within 90 days to reach your tier",
+      "Keep the account in good standing while the bonus is paid within 60 days after the 90-day period",
+      "Meet the chosen account's fee waiver so the $4.95 to $25 monthly fee does not eat the bonus"
+    ],
+    "risk": "The $1,000 tier requires a direct invitation and the public offer tops out at $500; any Bank of America checking account in the past 12 months disqualifies you; direct deposit rules are strict and transfers or Zelle do not count; an unwaived monthly fee takes a chunk of the bonus; the bonus is taxable interest reported on a 1099-INT.",
+    "source": "Bank of America's official offer page and terms (read 21 November 2026: open by 31 January 2027, 90-day direct deposits, paid within 60 days, targeted version described) plus USCard.io (13 October 2026 bonus chart check), usdailyrewards' bonus roundup (18 November 2026) and yunjumin (16 October 2026, including the $1,000 targeted tier and ITIN experience)",
+    "brand_en": "Bank of America"
+  },
+  "pnc-virtual-wallet-400": {
+    "title": "[US] PNC Virtual Wallet bonus: $100 or up to $400 ($500 or $5,000 of direct deposits within 60 days, to 7 January 2027)",
+    "highlight": "Open Virtual Wallet by 7 January 2027 and take $500 of direct deposits into the Spend account within 60 days for $100, or open Virtual Wallet with Performance Select and take $5,000 for $400, paid 60 to 90 days after qualifying",
+    "regions": "[US] US residents and new PNC personal checking customers, requiring a US tax ID and address; non-resident online applications are usually declined",
+    "value": "Up to $400",
+    "content": "PNC's official checking bonus page, read 21 November 2026, runs from 1 September 2026 to 7 January 2027: open Virtual Wallet and receive at least $500 in qualifying direct deposits into the Spend account within 60 days for $100, or open Virtual Wallet with Performance Select and receive at least $5,000 within 60 days for $400. The reward is credited 60 to 90 days after qualifying as Credits Check Reward, and the account must stay open. Virtual Wallet carries a $7 monthly fee and Performance Select $25, both waivable. You must remain in the account product you opened, since switching products after opening can change eligibility and the reward amount.",
+    "conditions": "New PNC personal checking customers only: anyone who or any signer who already has a PNC consumer checking account, closed one in the past 12 months, or received a PNC promotional premium in the past 24 months is ineligible, and multiple accounts with the same signers earn only one reward; apply online from the offer page or bring the coupon code to a branch; qualifying direct deposits must be recurring payroll, pension or Social Security payments from an employer or agency into the Spend account, while cash advances, wires, person-to-person transfers, account transfers and branch, ATM or mobile deposits do not count.",
+    "steps": [
+      "Open Virtual Wallet online from the PNC offer page, or take the code to a branch",
+      "Bring $500 or $5,000 of qualifying direct deposits into the Spend account within 60 days",
+      "Keep the account and product unchanged and wait 60 to 90 days for the reward",
+      "Meet the fee waiver for your tier, especially the $25 monthly fee on Performance Select"
+    ],
+    "risk": "Performance Select charges $25 a month unless waived, which can outweigh the reward; changing products after opening can cost you the bonus; direct deposit rules are strict and transfers or P2P payments do not count; reaching $400 needs $5,000 of deposits in 60 days, which is hard on a normal salary; the bonus is taxable.",
+    "source": "PNC's official bonus offer page and legal disclosures (read 21 November 2026: 1 September 2026 to 7 January 2027, $100 and $400 tiers, 60-day deposits, 60 to 90 day payout) plus yunjumin (11 September 2026, with ITIN and non-resident limits)",
+    "brand_en": "PNC Bank"
+  },
+  "etrade-max-rate-checking-400": {
+    "title": "[US] E*Trade Max-Rate Checking $400: two $1,500 direct deposits (code MAXRATE26, open by 10 January 2027)",
+    "highlight": "Open Max-Rate Checking online with code MAXRATE26 and take two direct deposits of $1,500 or more within 90 days for $400, paid around day 120; no monthly fee, no minimum balance and global ATM fees refunded",
+    "regions": "[US] Online applications nationwide through Morgan Stanley Private Bank, an FDIC member; a US tax ID and address are required",
+    "value": "$400",
+    "content": "E*Trade, through Morgan Stanley Private Bank, raised the Max-Rate Checking bonus from $300 to $400: open online by 10 January 2027 and enter MAXRATE26 during the application (it cannot be added later), then receive at least two direct deposits of $1,500 or more each within 90 days of opening; the bonus posts around day 120 as DIRECT DEPOSIT BONUS DOLLARS. The account has no monthly fee and no minimum balance, refunds ATM fees worldwide, and pays 2.00% APY on balances above $10,000 (0.05% below that). E*Trade checks ChexSystems but community reports say applications clear even with a freeze; anyone who held an E*Trade Checking or Max-Rate Checking account in the past 12 months is ineligible. The account can be opened unfunded but must be funded within 90 days or it is closed.",
+    "conditions": "New customers only, with no E*Trade checking account including joint accounts in the past 12 months; the code MAXRATE26 must be entered at opening; two qualifying direct deposits of $1,500 or more each must land within 90 days, counting only payroll, pension and government ACH payments, while account transfers, Zelle, RTP, wires and cheques do not; the account must stay in good standing through the 90 days and the payout; one bonus per person, and a joint account pays the first applicant only.",
+    "steps": [
+      "Open Max-Rate Checking online from the offer page, entering MAXRATE26 and saving a screenshot",
+      "Confirm the limited-time promotional offer email arrives, and contact support if it does not",
+      "Route two paychecks of $1,500 or more each into the account within 90 days",
+      "Use it as a normal checking account with bill payments and card purchases, then check for the bonus around day 120"
+    ],
+    "url": "https://us.etrade.com/bank/max-rate-checking",
+    "risk": "The code cannot be added after opening, so a missed code wastes the application; E*Trade is strict on risk and locking, and moving all the money out at once can restrict the account or forfeit the bonus; the terms name low-balance, no-activity behaviour as possible gaming; the bonus is taxable; non-residents do not qualify.",
+    "source": "E*Trade's official Max-Rate Checking product page and offer terms (checked 20 October 2026: MAXRATE26, 10 January 2027, two $1,500 deposits) plus StackTheDeal (20 October 2026) and usdailyrewards (21 October 2026, with lock-up and direct-deposit data points)",
+    "brand_en": "E*TRADE"
+  },
+  "wells-fargo-everyday-checking-325": {
+    "title": "[US] Wells Fargo Everyday Checking $325: $1,000 in qualifying electronic deposits within 90 days (open by 13 January 2027)",
+    "highlight": "Apply from the official offer page so the code is attached, then take $1,000 in qualifying electronic deposits within 90 days for $325, paid within 30 days; the $15 monthly fee is waived with $500 of monthly deposits or a $1,500 daily balance",
+    "regions": "[US] US residents with an SSN or tax ID; the terms exclude non-resident aliens and foreign entities signing any version of IRS Form W-8",
+    "value": "$325",
+    "content": "Wells Fargo's official offer page (accountoffers.wellsfargo.com/checkingoffer, read 21 November 2026) offers $325 to new checking customers who open Everyday Checking with at least $25, use the bonus offer code by 13 January 2027 and receive $1,000 or more in qualifying electronic deposits within 90 calendar days; the bonus is paid within 30 days of qualifying. Qualifying deposits include ACH payroll and government payments, RTP and FedNow instant payments, and third-party credits pushed to a debit card, while account-to-account transfers, mobile cheque deposits, Zelle and branch or ATM deposits do not count, and Early Pay Day deposits count only once they post. The $15 monthly fee is waived with $500 of monthly electronic deposits, a $1,500 daily balance, $5,000 in combined balances, or a primary owner aged 17 to 24. Several guides in mid-November described a $500 version ending 12 January; the official page rechecked on 19 November showed only $325 ending 13 January, so this entry follows the official page.",
+    "conditions": "New checking customers who are the primary owner only; not available to anyone who received a Wells Fargo consumer checking bonus in the past 12 months, to employees, or to non-resident aliens and foreign entities signing Form W-8. Online applications can only open Everyday Checking, while branch applications may choose other eligible accounts but need a code by email first. The offer cannot be combined with other deposit offers, is one per customer, and the account must not be closed or restricted at payout.",
+    "steps": [
+      "Open Everyday Checking from accountoffers.wellsfargo.com/checkingoffer so the code is applied automatically",
+      "Deposit at least $25 and route payroll or other qualifying electronic deposits into the account",
+      "Reach $1,000 within 90 days and check for the bonus within the following 30 days",
+      "Pick a fee waiver that fits you so the $15 monthly fee does not eat the bonus"
+    ],
+    "risk": "Third-party guides still quote $500 while the official page now shows $325, so trust the amount on your own application; the $15 monthly fee can eat most of the bonus; the bonus is taxable on a 1099-INT; closing early can trigger a clawback; non-residents signing Form W-8 are excluded outright.",
+    "source": "Wells Fargo official offer page and terms (read 21 November 2026: $325, open by 13 January 2027, $1,000 in 90 days, Form W-8 signers excluded), Credit Guru (19 November 2026 recheck showing only $325 on the page) and usdailyrewards and Doctor of Credit (10 November 2026 reports of a $500 version)",
+    "brand_en": "Wells Fargo"
+  },
+  "amex-rewards-checking-300": {
+    "title": "[US] Amex Rewards Checking $300: $7,500 of direct deposits within 90 days (open by 1 February 2027)",
+    "highlight": "Amex US consumer cardholders and Amex savings customers who open their first Rewards Checking by 1 February 2027 and take $7,500 of qualifying direct deposits within 90 days get $300 within 8 to 12 weeks, with no monthly fee or minimum balance",
+    "regions": "[US] US holders of an Amex consumer card as primary or additional card member, or customers with an Amex High Yield Savings account or CD; a US tax ID and address are required",
+    "value": "$300",
+    "content": "American Express's official welcome bonus terms, read 21 November 2026, pay $300 to customers who open their first American Express Rewards Checking account in their name by 1 February 2027 and receive at least $7,500 in qualifying direct deposits within the first 90 days, credited within 8 to 12 weeks of qualifying. The account has no monthly fee, no minimum balance, 1.00% APY, one Membership Rewards point per $2 of eligible debit card spending, fee-free withdrawals at Allpoint and MoneyPass ATMs, and support for Zelle and mobile cheque deposit. Eligibility is narrower than most bank bonuses: applications are open to US Basic Consumer Card members, additional card members on such accounts, and existing Amex High Yield Savings or CD customers, and Amex may ask for SSN or ITIN documents or notarisation. The account must be funded within 60 days to stay open.",
+    "conditions": "Must already be an Amex US consumer card customer (primary or additional card member) or hold an Amex High Yield Savings account or CD; must never have had a Rewards Checking account, and only one is allowed per customer; $7,500 or more in qualifying direct deposits within 90 days, counting only ACH payroll, pension, government benefits or tax refunds, while person-to-person payments, account transfers, internal Amex savings transfers, cheques and points redemptions do not count; the account must stay open until the bonus is paid and funded within 60 days of opening.",
+    "steps": [
+      "Confirm you hold an Amex US consumer card or Amex savings account or CD",
+      "Apply for Rewards Checking from the official American Express page",
+      "Fund the account within 60 days and route payroll direct deposits into it",
+      "Reach $7,500 within 90 days and check for the bonus within 8 to 12 weeks"
+    ],
+    "risk": "Open only to people who already have an Amex relationship, including a three-month card history, so many applicants are blocked; the $7,500 direct deposit bar is high; direct deposit rules are strict and P2P or transfers do not count; an unfunded account is closed after 60 days; the bonus is taxable interest.",
+    "source": "American Express official welcome bonus terms PDF ($300, open by 1 February 2027, $7,500 in 90 days, paid in 8 to 12 weeks, read 21 November 2026), the official product page eligibility note, Frequent Miler (3 September 2026) and Perkful (19 November 2026 recheck)",
+    "brand_en": "American Express"
+  },
+  "icbc-global-travel-plus-2pct": {
+    "title": "[China] ICBC Global Travel Plus credit cards: 2% back on overseas spending, ¥500 a month on platinum (to 31 December)",
+    "highlight": "ICBC Global Travel Plus cards on the Mastercard or Visa network earn 2% cashback on spending outside mainland China including Hong Kong, Macau and Taiwan, in stores or online, capped at ¥500 a month and ¥5,000 a year on platinum and ¥200 a month on gold",
+    "regions": "[China] ICBC Global Travel Plus credit cards issued in mainland China on the Mastercard or Visa network; spending abroad and in Hong Kong, Macau and Taiwan, including online merchants",
+    "value": "2% cashback, ¥500 a month and ¥5,000 a year on platinum (≈$70 a month)",
+    "content": "ICBC's official product page, read 21 November 2026, states 2% cashback on overseas spending from 1 January to 31 December 2026 for Global Travel Plus cards on the Mastercard or Visa network: purchases outside mainland China, including Hong Kong, Macau and Taiwan, in stores or online, may earn 2% back. Platinum cards are capped at the equivalent of ¥500 per customer per month and ¥5,000 a year, gold cards at ¥200 a month and ¥2,000 a year. Monthly pools of ¥209,000 for Visa and ¥349,000 for Mastercard apply on a first-come, first-served basis, and cashback is credited to the card in the transaction's billing currency the day after posting. Transactions routed through third-party payment providers do not qualify, nor do cash advances, transfers, repayments, refunds or reversals.",
+    "conditions": "Limited to the ICBC Global Travel Plus card on the Mastercard or Visa network, with different caps for platinum and gold; the transaction must run over the Mastercard or Visa network, and third-party payment routing is excluded; overseas cash advances, transfers, repayments, refunds, tax refunds, reversals and cancellations do not count; the monthly pool is first come first served; caps are combined per customer across primary and supplementary cards.",
+    "steps": [
+      "Confirm you hold an ICBC Global Travel Plus card and pay over the Mastercard or Visa network",
+      "Spend abroad or on cross-border shopping directly on the card network, not through Alipay or WeChat Pay",
+      "Check the cashback line the day after posting and watch whether the monthly pool has run out",
+      "Plan large purchases around the platinum or gold monthly cap"
+    ],
+    "risk": "Only the Global Travel Plus card qualifies, not other ICBC cards; the monthly pool is first come first served, so large purchases near month end can miss out; third-party payment routing never counts, so a habitual Alipay checkout earns nothing; overseas transactions still carry conversion costs that can exceed 2%.",
+    "source": "ICBC's official Global Travel Plus credit card product page and benefit terms (1 January to 31 December 2026, ¥500 a month on platinum, ¥200 on gold, Visa and Mastercard monthly pools, read 21 November 2026), with FLYERT's overseas cashback coverage as the lead",
+    "brand_en": "ICBC"
+  },
+  "boc-unionpay-overseas-3pct": {
+    "title": "[China] Bank of China UnionPay credit cards: 3% cashback on overseas offline spending, capped at ¥200 a month (to 31 December, enrolment required)",
+    "highlight": "Mainland-issued Bank of China UnionPay credit cards earn 3% cashback on offline purchases through the UnionPay network abroad including Hong Kong, Macau and Taiwan, capped at ¥200 per person per month, after enrolling in the campaign",
+    "regions": "[China] UnionPay credit cards issued by Bank of China in mainland China, including 62-prefix cards and 40/43-prefix Visa-UnionPay dual-brand cards; spending abroad and in Hong Kong, Macau and Taiwan",
+    "value": "3% cashback, up to ¥200 a month (≈$28)",
+    "content": "Bank of China's card centre campaign, read 21 November 2026, runs from 8 April to 31 December 2026: cardholders earn 3% cashback on offline purchases settled through the UnionPay network outside mainland China, including Hong Kong, Macau and Taiwan, capped at ¥200 per cardholder per calendar month on the UnionPay channel. The reward pool for the campaign is ¥3.186 million, with ¥334,000 for April, June, July, September and November and ¥379,000 for May, August, October and December, allocated in UnionPay transaction order until it runs out. Cashback posts within 25 working days of the transaction posting to the card that made the month's first qualifying purchase. Enrolment is mandatory and earlier transactions are not counted; Bank of China neither enrols cards on your behalf nor allows retroactive enrolment.",
+    "conditions": "Must be a UnionPay-badged credit card issued by Bank of China in mainland China (62-prefix single-brand or 40/43-prefix dual-brand), with supplementary cards enrolling separately; enrolment must be completed through the Bank of China credit card WeChat account or the Bank of China app with the cards ticked; only offline overseas transactions settled through UnionPay count, while Apple Pay in stores does, but cash advances, offline electronic cash, refunds, pre-authorisations and third-party payment routes such as Alipay and WeChat Pay do not; the monthly pool is first come first served; a replacement card must be enrolled again; refunded or reversed transactions earn nothing and paid cashback can be clawed back.",
+    "steps": [
+      "Follow the Bank of China credit card WeChat account and bind your card, or open the Bank of China app",
+      "Go to Campaigns, cross-border enrolment, UnionPay overseas spending enrolment, tick the cards and confirm",
+      "Spend offline abroad or in Hong Kong, Macau and Taiwan through the UnionPay network by card, tap, UnionPay QR or mobile tap",
+      "Check the statement line for the 3% cashback within 25 working days of the transaction posting"
+    ],
+    "risk": "Enrolment is mandatory and forgetting it means no cashback; the monthly pool runs out first come first served, so late-month large purchases may earn nothing; the terms say purchases may earn the reward rather than guaranteeing it; only UnionPay offline settlement counts, so online and third-party payment routes fail; overseas purchases carry currency conversion costs that eat into 3%; refunds claw back paid cashback.",
+    "source": "Bank of China credit card official WeChat terms (8 April to 31 December 2026, 3% cashback, ¥200 monthly cap, ¥3.186 million pool and enrolment path, read 21 November 2026) plus the FLYERT card news article (a-524651) on the same campaign",
+    "brand_en": "Bank of China"
+  },
+  "octopus-mobile-welcome-150": {
+    "title": "[Hong Kong] HK$150 mobile Octopus new-customer welcome: add the card, spend HK$100 in one go, register (to 3 January 2027)",
+    "highlight": "First-time mobile Octopus users who spend HK$100 or more in a single transaction and register on the promotion page get HK$150 of stored value, plus a free card face",
+    "regions": "[Hong Kong] Mobile Octopus on iPhone and Apple Watch, Android Octopus, Smart Octopus in Samsung Pay, Huawei Wallet and Citi Octopus on iPhone; Android cards must also be added to Google Wallet, and cards added through the Octopus App for Tourists do not count",
+    "value": "HK$150 (≈$19)",
+    "content": "Octopus runs a mobile Octopus new-customer welcome from 5 November 2026 to 3 January 2027: customers who add a mobile Octopus for the first time (or move a physical card onto the phone) on a qualifying device, register the card number at octopus.com.hk/mo and then complete one transaction of HK$100 or more with that card receive HK$150 of Octopus stored value. The quota is 13,210 participants, first come first served. Android customers must also install the latest Octopus App, sign in to an Octopus Wallet account and add the Android Octopus to Google Wallet. The reward can be collected from the seventh day after qualifying, within 30 days, in the Octopus App or at an Octopus service point, and a free card face can be claimed until 10 January 2027.",
+    "conditions": "The customer and device must never have had a mobile Octopus before the promotion period; cards added through the Octopus App for Tourists are excluded by clause 7. Top-ups, including card or wallet top-ups, are not spending, so a real merchant transaction of HK$100 or more is required. Registration must come before the qualifying spend, each participant gets one reward, and the card must still exist and not be refunded when the reward is claimed. Mobile Elder Octopus cards follow separate terms.",
+    "steps": [
+      "Add a new mobile Octopus in the Octopus App or Apple Wallet, or move a physical card onto the phone",
+      "Register the full card number (including the digits in brackets) at octopus.com.hk/mo",
+      "Spend HK$100 or more in a single transaction with that card (top-ups do not count)",
+      "Turn on Octopus App notifications and collect the HK$150 within 30 days from day seven"
+    ],
+    "risk": "Tourist-app cards are excluded and many online guides wrongly use that route; Android phones need Google services and Google Wallet, which mainland models often lack; only 13,210 rewards exist; registering in the wrong order or mistyping the card number forfeits the reward; the value cannot be cashed out and removing or refunding the card cancels it.",
+    "source": "Octopus official promotion page and terms PDF (5 November 2026 to 3 January 2027, 13,210 rewards, Android must use Google Wallet) plus an ecitizen.forum thread (20 November 2026) with a data point of no reward after spending on 15 November",
+    "brand_en": "Octopus"
+  },
+  "usims-free-esim-1gb": {
+    "title": "[Global] USIMS free 1GB eSIM: works in 120+ countries, plus an always-on low-speed free tier (non-+86 number needed)",
+    "highlight": "New accounts get a free first 1GB of global data in more than 120 countries; the homepage Activate Free Data tier adds an always-on 128kbps connection, and sign-up needs a real non-+86 number for the code",
+    "regions": "[Global] More than 120 countries and regions including the US, UK, France, Germany, Japan, Korea, Southeast Asia and the Middle East; sign-up requires a real non-+86 number to receive the verification code",
+    "value": "≈$5 (first 1GB; the US 10GB/10-day pack is priced at $15)",
+    "content": "USIMS states on its homepage that your first GB is on us: after downloading the app, registering and activating an eSIM, new users get 1GB of global data covering more than 120 countries. Reference prices are $15 for 10GB over 10 days in the US, $9 for ten days in France and the UK, and $10 for ten days in Germany and Spain. Beyond that 1GB, users report that Activate Free Data on the homepage issues an always-on low-speed profile of about 128kbps, enough for messaging, maps and WhatsApp, with traffic exiting through Orange in France; referrals pay both sides $3. The official page does not promise the low-speed tier will last, only the first-GB welcome gift.",
+    "conditions": "An eSIM-capable phone and a real non-+86 number for the SMS code are required (a +372 Estonian number worked in one report, most virtual numbers fail); the first GB is for new accounts only; the low-speed profile is a separate data pack rather than part of the 1GB; if the eSIM does not appear right after activation, wait a minute and reopen the app.",
+    "steps": [
+      "Download the USIMS app or sign up at usims.com",
+      "Verify with a real non-+86 phone number",
+      "Pick a destination, activate the eSIM and claim the free first GB",
+      "For the always-on low-speed tier, return to the homepage and tap Activate Free Data"
+    ],
+    "risk": "The low-speed tier runs at about 128kbps, so video and hotspot use are out; the official site does not commit to keeping that tier; +86 numbers cannot register and virtual numbers often fail; the first GB is a limited-time welcome gift and later data is paid; eSIM support and network locks still apply.",
+    "source": "USIMS official site (read 21 November 2026: the first-GB gift and country pricing) and an ecitizen.forum thread (20 September 2026) covering the 128kbps tier and a +372 number test",
+    "brand_en": "USIMS"
+  },
+  "google-ai-blackfriday-annual-50": {
+    "title": "[Multi-region] Google AI Plus / AI Pro annual Black Friday deal: up to 50% off, US Pro $99.99 for the first year (existing subscribers to Nov 26)",
+    "highlight": "Accounts already paying for Google AI or Google One storage can switch to an annual AI Plus or AI Pro plan at up to 50% off until November 26 US time; accounts without a subscription get a separate offer from Black Friday, November 27",
+    "regions": "[Multi-region] The discount depends on your account region and current plan (US Pro $99.99 a year, Taiwan NT$3,250); you must already pay for Google AI or Google One storage",
+    "value": "≈$100 (US Pro annual $199.99 → $99.99)",
+    "content": "Google opened its Black Friday early access on 20 November 2026: until 26 November (US time), accounts already paying for Google AI or Google One storage can switch to Google AI Plus or annual Google AI Pro at up to 50% off, with the exact discount set by the current plan and account. In the US, Google AI Pro (5 TB, Gemini 4 Neon, YouTube Premium Lite individual) drops from $199.99 to $99.99 for the first year and renews at $199.99 a year after twelve months; Taiwan's annual Pro falls from NT$6,500 to NT$3,250. Google AI Ultra (20 TB and 30 TB) and the 10 TB Pro tier are monthly only and excluded. Accounts without a subscription cannot see the offer yet; Google says a separate offer starts on Black Friday, 27 November.",
+    "conditions": "Must already be a paying Google AI or Google One storage subscriber; free accounts are excluded. The discount is a ceiling of 50% and varies by plan, so the checkout page is the final price. Only AI Plus and annual AI Pro qualify; Ultra and 10 TB Pro do not. It cannot be combined with other Google One offers, and a student plan is usually cheaper. The first year renews at full price automatically, so cancel before the anniversary if you do not want that, and a valid Google Payments method is required.",
+    "steps": [
+      "Open one.google.com/ai or the Google One all-plans page with the subscribed account",
+      "Check whether your account shows the annual discount (some see 50%, some only 25%, some nothing)",
+      "Pick annual Google AI Pro or AI Plus and confirm the first-year amount at checkout",
+      "Cancel before the year ends if you will not pay full price; the remaining period stays usable"
+    ],
+    "risk": "The discount varies by account and region, so the advertised 50% is not universal; the annual plan renews at full price and is easy to forget; student pricing or a family group may be cheaper; some regions or payment methods never see an annual option; changing region or payment method can cost you eligibility.",
+    "source": "Google Gemini subscription lead Vikas Kansal's 20 November 2026 announcement, the official Google One plan page (checked 21 November 2026: US Pro $99.99 first year, $199.99 after), and an ecitizen.forum thread (21 November 2026)",
+    "brand_en": "Google"
   }
 }
