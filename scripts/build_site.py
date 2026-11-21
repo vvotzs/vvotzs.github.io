@@ -84,6 +84,7 @@ from i18n import (  # noqa: E402
     upair,
 )
 from check_schema import check_jsonld, expected_howto  # noqa: E402
+from eligibility import eligibility_rows, geo_ld  # noqa: E402
 
 # 英文版页面：/en/index.html（纯英文 DOM），中文首页 /index.html（纯中文 DOM）。
 # 两页各自独立，语言切换直接跳转；老外链 /?lang=en 由 <head> 里的极短脚本转到 /en/。
@@ -1482,6 +1483,21 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         secs.append(block(ui("dp_content"), f'<p>{e(content)}</p>'))
     if conditions:
         secs.append(block(ui("f_conditions"), f'<p>{e(conditions)}</p>'))
+    # 参与资格：Bank / eSIM 的行内资格字段渲染成 <dl>，只出非默认值；
+    # 标签与取值都走 scripts/eligibility.py 的枚举表，英文页天然零 CJK。
+    elig_rows = eligibility_rows(deal, is_en)
+    if elig_rows:
+        elig_html = "".join(
+            f'<div class="dp-elig-row"><dt>{e(label)}</dt><dd>{e(value)}</dd></div>'
+            for label, value in elig_rows
+        )
+        secs.append(
+            block(
+                ui("dp_eligibility"),
+                f'<dl class="dp-elig">{elig_html}</dl>',
+                "is-elig",
+            )
+        )
     secs.append(block(ui("f_steps"), f'<ol class="dp-steps">{steps_html}</ol>'))
     if risk:
         secs.append(block(ui("dp_risk"), f'<p>{e(risk)}</p>', "is-risk"))
@@ -1610,6 +1626,11 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
             "seller": {"@type": "Organization", "name": brand_name(deal, en, is_en) or site_name},
         },
     ]
+    eligible_region, ineligible_region = geo_ld(deal)
+    if eligible_region:
+        ld[2]["eligibleRegion"] = eligible_region
+    if ineligible_region:
+        ld[2]["ineligibleRegion"] = ineligible_region
     if deal.get("end"):
         ld[2]["validThrough"] = str(deal["end"]) + "T23:59:59+08:00"
     # HowTo：只要这一条有参与步骤就额外输出一份（与 Offer 并列，不抢它的位置）。

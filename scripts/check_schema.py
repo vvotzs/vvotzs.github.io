@@ -54,11 +54,37 @@ def _types(node: object) -> set[str]:
     return found
 
 
+# eligibleRegion / ineligibleRegion 只允许 ISO 3166-1 alpha-2 与四个区域代号
+_ISO_ALPHA2 = re.compile(r"^[A-Z]{2}$")
+_REGION_TOKENS = {"EEA", "EU", "APAC", "ASIA", "SEA"}
+
+
+def _region_errors(node: dict) -> list[str]:
+    errs: list[str] = []
+    for key in ("eligibleRegion", "ineligibleRegion"):
+        if key not in node:
+            continue
+        value = node[key]
+        if not isinstance(value, list) or not value:
+            errs.append(f"Offer 的 {key} 必须是非空数组")
+            continue
+        for code in value:
+            if not isinstance(code, str) or not (
+                _ISO_ALPHA2.match(code) or code in _REGION_TOKENS
+            ):
+                errs.append(f"Offer 的 {key} 出现非法地区代号 {code!r}")
+    both = set(node.get("eligibleRegion") or []) & set(node.get("ineligibleRegion") or [])
+    if both:
+        errs.append(f"Offer 的 eligibleRegion 与 ineligibleRegion 重复：{sorted(both)}")
+    return errs
+
+
 def _offer_errors(node: dict) -> list[str]:
     errs: list[str] = []
     for key in ("name", "description", "url", "availability"):
         if not str(node.get(key) or "").strip():
             errs.append(f"Offer 缺字段 {key}")
+    errs += _region_errors(node)
     return errs
 
 

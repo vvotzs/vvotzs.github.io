@@ -214,6 +214,7 @@ U: dict[str, tuple[str, str]] = {
     "dp_highlight": ("亮点", "Highlight"),
     "dp_risk": ("风险提示", "Watch out"),
     "dp_content": ("优惠内容", "What you get"),
+    "dp_eligibility": ("参与资格", "Eligibility"),
     "dp_source_block": ("来源与核验", "Source & verification"),
     "dp_official": ("前往官方活动页", "Open the official offer"),
     "dp_source_post": ("来源原帖", "Source post"),

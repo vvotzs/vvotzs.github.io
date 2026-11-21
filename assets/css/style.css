@@ -2467,6 +2467,21 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
 .dp-sec.is-risk h2::before{ background: #F97316; }
 .dp-sec.is-risk p{ color: #9A3412; }
 
+/* 参与资格（Bank / eSIM）：<dl> 逐行「标签—取值」，只出非默认值的那几行。
+   标签压到 11.5px 弱色、取值用正文色加粗，手机端只收窄标签列，不换行不折行。 */
+.dp-elig{ margin: 1px 0 0; }
+.dp-elig-row{
+  display: grid; grid-template-columns: 86px minmax(0, 1fr); gap: 10px;
+  padding: 5px 0; border-top: 1px solid var(--line);
+  font-size: 12.8px; line-height: 1.5;
+}
+.dp-elig-row:first-child{ border-top: 0; padding-top: 0; }
+.dp-elig dt{
+  margin: 0; color: var(--ink-4);
+  font-size: 11.5px; font-weight: 600; letter-spacing: .01em;
+}
+.dp-elig dd{ margin: 0; color: var(--ink); font-weight: 550; overflow-wrap: anywhere; }
+
 .dp-meta{ display: flex; flex-wrap: wrap; gap: 5px 14px; font-size: 11.5px; line-height: 1.5; color: var(--ink-3); }
 .dp-meta span{ min-width: 0; overflow-wrap: anywhere; }
 .dp-meta i{
@@ -2534,6 +2549,8 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
   .dp-sec{ padding: 11px 13px 12px; border-radius: 14px; }
   .dp-sec p, .dp-steps{ font-size: 12.8px; }
   .dp-sec .dp-lead{ font-size: 13.2px; }
+  .dp-elig-row{ grid-template-columns: 76px minmax(0, 1fr); gap: 8px; padding: 4.5px 0; font-size: 12.4px; }
+  .dp-elig dt{ font-size: 11.2px; }
   .dp-btn{ height: 38px; padding: 0 14px; font-size: 12.5px; }
   .dp-more ul{ grid-template-columns: 1fr; }
 }
