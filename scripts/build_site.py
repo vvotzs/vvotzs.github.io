@@ -469,19 +469,18 @@ COST_CLASS = {
 
 
 ZH_DESC = (
-    "羊毛情报局：每日核验的全球优惠情报导航。AI 工具免费额度、Crypto 空投与交易奖励、"
-    "海外银行开户与跨境汇款邀请、VPS 云服务体验金、eSIM 免费流量、软件学生福利——"
-    "一屏看清价值、门槛与截止时间，点击直达官方活动页。"
+    "羊毛情报局：每日核验的全球优惠情报导航。AI 工具大全、Crypto 空投与积分、海外银行·U卡·跨境汇款、"
+    "全球 VPS 与云资源、全球 eSIM 指南、软件与数字服务——一屏看清价值、门槛与截止时间，点击直达官方活动页。"
 )
 EN_TITLE = "Deal Hunter · Verified global deals, free credits & sign-up bonuses"
 EN_DESC = (
-    "Deal Hunter: a directory of global offers, refreshed every 2 hours — free AI credits, crypto sign-up rewards, "
-    "overseas bank and remittance bonuses, VPS credits, free eSIM data and student software. "
-    "Value, requirements and deadline on one card, straight to the official page."
+    "Deal Hunter: a directory of global offers, refreshed every 2 hours — AI tools and credits, crypto airdrops "
+    "and points, overseas bank, card and remittance bonuses, VPS and cloud credits, free eSIM data and student "
+    "software. Value, requirements and deadline on one card, straight to the official page."
 )
 EN_OG_DESC = (
-    "Free AI credits, crypto rewards, bank and remittance bonuses, VPS credits, free eSIM data and "
-    "student software — value, requirements and deadline at a glance."
+    "AI tools and credits, crypto airdrops and points, bank and remittance bonuses, VPS and cloud credits, "
+    "free eSIM data and student software — value, requirements and deadline at a glance."
 )
 
 # 老外链兼容：页面上只有一种语言，语言由 URL 决定。之前发到 X / Dev.to / Hashnode / Medium
@@ -1334,7 +1333,7 @@ def module_html(
   <section class="module{(' hot-strip' if strip else '')}" id="{anchor}" data-mod="{anchor}" data-per="{per_page}" data-per-lg="{per_page_lg}"{' data-kind="jump"' if jump else ''}{' hidden' if hidden else ''}>
     <header class="module-head">
       <span class="module-badge" aria-hidden="true">{icon(icon_key)}</span>
-      <h2>{bi(*title)} <span class="count" data-count>{count}</span></h2>
+      <h2><span class="mh-t">{bi(*title)}</span> <span class="count" data-count>{count}</span></h2>
       {desc_html}
     </header>
     <div class="track" data-track>
@@ -3446,7 +3445,7 @@ def main() -> None:
         title = EN_TITLE if is_en else "羊毛情报局 · 全球优惠 / 免费额度 / 限时活动情报"
         desc = EN_DESC if is_en else ZH_DESC
         og_title = "Deal Hunter · Global deals & free credits" if is_en else "羊毛情报局 · 全球优惠与免费额度情报"
-        og_desc = EN_OG_DESC if is_en else "每日核验的全球优惠导航：AI、Crypto、海外银行与汇款、云服务、eSIM、软件学生福利。价值、门槛、截止时间一眼看清，直达官方链接。"
+        og_desc = EN_OG_DESC if is_en else "每日核验的全球优惠导航：AI 工具大全、Crypto 空投与积分、海外银行·U卡·跨境汇款、全球 VPS 与云资源、全球 eSIM 指南、软件与数字服务。价值、门槛、截止时间一眼看清，直达官方链接。"
         site_name = "Deal Hunter" if is_en else "羊毛情报局"
         home = "/en/" if is_en else "/"
         canonical = SITE_URL + ("en/" if is_en else "")

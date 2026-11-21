@@ -101,22 +101,22 @@ U: dict[str, tuple[str, str]] = {
     "mod_lottery": ("抽奖 / 高上限", "Lotteries & high caps"),
     "mod_lottery_desc": ("上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。",
                          "High headline caps where the payout is luck-based; ranked by cap — don't budget on it."),
-    "mod_ai": ("AI 工具免费与折扣", "AI tools: free tiers & discounts"),
+    "mod_ai": ("AI 工具大全", "AI Tools & Credits"),
     "mod_ai_desc": ("ChatGPT、Gemini、Claude、Copilot、Cursor 等免费额度与限时赠送，含学生专属。",
                     "Free tiers, credits and student plans for ChatGPT, Gemini, Claude, Copilot, Cursor and more."),
-    "mod_crypto": ("Crypto 空投与积分", "Crypto airdrops & points"),
+    "mod_crypto": ("Crypto 空投与积分", "Crypto Airdrops & Points"),
     "mod_crypto_desc": ("交易所新人奖励、任务空投与积分计划；奖励多为返佣券或代币，注意可提现条件。",
                         "Exchange sign-up rewards, quest airdrops and points programs; most pay in fee vouchers or tokens — check withdrawal terms."),
-    "mod_bank": ("海外银行 · U 卡 · 跨境汇款", "Banks, cards & remittance"),
+    "mod_bank": ("海外银行·U卡·跨境汇款", "Global Banks, Cards & Transfers"),
     "mod_bank_desc": ("开户奖励、虚拟卡返现、可双向叠加的邀请奖励（Wise / Sendwave / Taptap Send / Remitly 等）。",
                       "Account bonuses, virtual-card cashback and two-sided referral rewards (Wise / Sendwave / Taptap Send / Remitly)."),
-    "mod_cloud": ("VPS 及云服务", "VPS & cloud credits"),
+    "mod_cloud": ("全球 VPS 与云资源", "Global VPS & Cloud"),
     "mod_cloud_desc": ("永久免费实例、新人体验金与黑五主机折扣，部署前先看清到期与回收规则。",
                        "Always-free instances, trial credits and Black Friday hosting; check expiry and reclamation rules first."),
-    "mod_esim": ("eSIM 全球流量", "eSIM data worldwide"),
+    "mod_esim": ("全球 eSIM 指南", "Global eSIM Guide"),
     "mod_esim_desc": ("免费试用与首单折扣，每条都标出可用国家或地区与注册限制——先试网，再买大套餐。",
                       "Free trials and first-order discounts, each with its usable countries and sign-up limits — test the network before buying a big plan."),
-    "mod_software": ("软件与数字服务", "Software & digital services"),
+    "mod_software": ("软件与数字服务", "Software & Digital Services"),
     "mod_software_desc": ("学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠。",
                           "Student plans, developer packs, Black Friday subscription deals and other digital services."),
     "mod_archive": ("已结束活动档案", "Ended offers archive"),
@@ -179,7 +179,7 @@ U: dict[str, tuple[str, str]] = {
     "cat_bank": ("银行 / 卡 / 汇款", "Banks & cards"),
     "cat_cloud": ("VPS / 云", "VPS & cloud"),
     "cat_esim": ("eSIM", "eSIM"),
-    "cat_software": ("软件 / 其他", "Software & other"),
+    "cat_software": ("软件服务", "Software & services"),
     "f_cost": ("参与门槛", "Requirements"),
     "f_verify": ("核验状态", "Verification"),
     "match_before": ("匹配 ", ""),
@@ -278,12 +278,12 @@ COST_EN = {
 
 # 类别标签（详情面板徽标 / 搜索索引）
 CAT_EN = {
-    "ai": ("AI tools", "AI tools artificial intelligence"),
-    "crypto": ("Crypto", "Crypto cryptocurrency tokens"),
-    "bank": ("Banks & cards", "bank card remittance transfer"),
-    "cloud": ("VPS & cloud", "cloud VPS hosting server"),
-    "esim": ("eSIM", "eSIM data plan roaming"),
-    "software": ("Software", "software digital services"),
+    "ai": ("AI Tools & Credits", "AI tools credits artificial intelligence free tiers"),
+    "crypto": ("Crypto Airdrops & Points", "Crypto airdrops points tokens cryptocurrency"),
+    "bank": ("Global Banks, Cards & Transfers", "bank card remittance transfer overseas global"),
+    "cloud": ("Global VPS & Cloud", "cloud VPS hosting server credits"),
+    "esim": ("Global eSIM Guide", "eSIM data plan roaming guide"),
+    "software": ("Software & Digital Services", "software digital services student"),
 }
 
 # 分类目录页文案：每个分类一份独立标题 / 导语 / meta description（中英各一）。
@@ -291,49 +291,53 @@ CAT_EN = {
 # desc 就是那一页的 meta description：中文≥120 字、英文≥120 字符，各自独立不靠拼接。
 CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
     "ai": {
-        "h1": ("AI 工具：免费额度与折扣", "AI tools: free credits & discounts"),
-        "title": ("AI 工具免费额度与优惠合集 · 羊毛情报局",
-                  "AI tools with free credits & discounts · Deal Hunter"),
+        "h1": ("AI 工具大全", "AI Tools & Credits"),
+        "title": ("AI 工具大全：免费额度、学生优惠与 API Credits 合集 · 羊毛情报局",
+                  "AI tools & credits: free tiers, student plans and API credits · Deal Hunter"),
         "lead": (
-            "ChatGPT、Gemini、Claude、Cursor、Copilot 等 AI 工具与智能代理的免费额度、学生优惠和限时折扣，"
-            "逐条核验后收录，标清实际到手价值、可用地区与截止时间。",
-            "Free tiers, student plans and limited-time discounts for ChatGPT, Gemini, Claude, Cursor, "
-            "Copilot and other AI tools and agents — each one verified, with expected value, region and deadline.",
+            "AI 工具大全收录 ChatGPT、Gemini、Claude、Cursor、Copilot 等 AI 工具与智能代理的免费额度、学生优惠"
+            "和限时折扣，逐条核验后收录，标清实际到手价值、可用地区与截止时间。",
+            "AI Tools & Credits collects free tiers, student plans and limited-time discounts for ChatGPT, Gemini, "
+            "Claude, Cursor, Copilot and other AI tools and agents — each one verified, with expected value, "
+            "region and deadline.",
         ),
         "desc": (
-            "ChatGPT、Gemini、Claude、Cursor、Copilot 等 AI 工具与智能代理的免费额度、学生优惠和限时折扣，"
-            "逐条核验后收录，标清实际到手价值、可用地区与截止时间。列表按可预期到手价值排序，"
+            "AI 工具大全：ChatGPT、Gemini、Claude、Cursor、Copilot 等 AI 工具与智能代理的免费额度、学生优惠和"
+            "限时折扣，逐条核验后收录，标清实际到手价值、可用地区与截止时间。列表按可预期到手价值排序，"
             "涵盖 API 额度、订阅减免与新品首发活动。",
             "Free tiers, student plans and limited-time discounts for ChatGPT, Gemini, Claude, Cursor, Copilot and "
             "other AI tools, each verified with value and deadline.",
         ),
     },
     "bank": {
-        "h1": ("海外银行、U 卡与跨境汇款", "Banks, cards & cross-border remittance"),
-        "title": ("海外银行开户 / U 卡返现 / 跨境汇款优惠合集 · 羊毛情报局",
-                  "Bank bonuses, card cashback & remittance offers · Deal Hunter"),
+        "h1": ("海外银行·U卡·跨境汇款", "Global Banks, Cards & Transfers"),
+        "title": ("海外银行·U卡·跨境汇款：开户奖励 / 虚拟卡返现 / 汇款邀请合集 · 羊毛情报局",
+                  "Global banks, cards & transfers: account bonuses, card cashback and remittance · Deal Hunter"),
         "lead": (
-            "海外银行开户奖励、虚拟卡（U 卡）返现与跨境汇款邀请奖励，含 Wise、Remitly、Taptap Send、"
-            "Sendwave 等可双向叠加的通道，写清入金门槛、留存期与到账时间。",
-            "Account bonuses, virtual-card cashback and two-sided referral rewards from Wise, Remitly, "
-            "Taptap Send, Sendwave and more — with deposit thresholds, holding periods and payout timing.",
+            "海外银行·U卡·跨境汇款收录开户奖励、虚拟卡（U 卡）返现与跨境汇款邀请奖励，含 Wise、Remitly、"
+            "Taptap Send、Sendwave 等可双向叠加的通道，写清入金门槛、留存期与到账时间。",
+            "Global Banks, Cards & Transfers collects account bonuses, virtual-card cashback and two-sided "
+            "referral rewards from Wise, Remitly, Taptap Send, Sendwave and more — with deposit thresholds, "
+            "holding periods and payout timing.",
         ),
         "desc": (
-            "海外银行开户奖励、虚拟卡（U 卡）返现与跨境汇款邀请奖励，含 Wise、Remitly、Taptap Send、Sendwave "
+            "海外银行·U卡·跨境汇款：开户奖励、虚拟卡（U 卡）返现与跨境汇款邀请奖励，含 Wise、Remitly、"
+            "Taptap Send、Sendwave "
             "等可双向叠加的通道，写清入金门槛、留存期与到账时间。每条都注明是否需要美国 / 英国 / 德国等区服身份与税号。",
             "Account bonuses, virtual-card cashback and two-sided remittance referrals from Wise, Remitly and "
             "Sendwave, with deposit thresholds and holding periods.",
         ),
     },
     "crypto": {
-        "h1": ("Crypto 空投、积分与交易所奖励", "Crypto airdrops, points & exchange rewards"),
-        "title": ("Crypto 空投 / 积分任务 / 交易所新人奖励合集 · 羊毛情报局",
-                  "Crypto airdrops, points and exchange sign-up rewards · Deal Hunter"),
+        "h1": ("Crypto 空投与积分", "Crypto Airdrops & Points"),
+        "title": ("Crypto 空投与积分：空投任务 / 交易所新人奖励 / 积分计划合集 · 羊毛情报局",
+                  "Crypto airdrops & points: quests, exchange sign-up rewards and points · Deal Hunter"),
         "lead": (
-            "交易所新人奖励、任务空投与积分计划，含 KYC 门槛、交易量要求与代币解锁规则；"
+            "Crypto 空投与积分收录交易所新人奖励、任务空投与积分计划，含 KYC 门槛、交易量要求与代币解锁规则；"
             "奖励多为返佣券或代币，到手金额不等于现金。",
-            "Exchange sign-up rewards, quest airdrops and points programs, with KYC steps, volume requirements "
-            "and token unlock rules — most payouts arrive as fee vouchers or tokens, not cash.",
+            "Crypto Airdrops & Points collects exchange sign-up rewards, quest airdrops and points programs, "
+            "with KYC steps, volume requirements and token unlock rules — most payouts arrive as fee vouchers "
+            "or tokens, not cash.",
         ),
         "desc": (
             "交易所新人奖励、任务空投与积分计划，含 KYC 门槛、交易量要求与代币解锁规则；奖励多为返佣券或代币，"
@@ -344,14 +348,15 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
         ),
     },
     "cloud": {
-        "h1": ("VPS 与云服务额度", "VPS & cloud credits"),
-        "title": ("VPS 永久免费实例 / 云服务体验金 / 黑五主机折扣合集 · 羊毛情报局",
-                  "Free VPS instances, cloud credits and hosting deals · Deal Hunter"),
+        "h1": ("全球 VPS 与云资源", "Global VPS & Cloud"),
+        "title": ("全球 VPS 与云资源：永久免费实例 / 体验金 / 黑五主机折扣合集 · 羊毛情报局",
+                  "Global VPS & cloud: free instances, trial credits and hosting deals · Deal Hunter"),
         "lead": (
-            "永久免费实例、新人体验金与黑五主机折扣，覆盖 Oracle、AWS、GCP、Azure、Hetzner、Cloudflare "
-            "等主流云与主机商，写清配额、到期与回收规则。",
-            "Always-free instances, trial credits and Black Friday hosting deals from Oracle, AWS, GCP, Azure, "
-            "Hetzner, Cloudflare and more — with quotas, expiry and reclamation rules spelled out.",
+            "全球 VPS 与云资源收录永久免费实例、新人体验金与黑五主机折扣，覆盖 Oracle、AWS、GCP、Azure、"
+            "Hetzner、Cloudflare 等主流云与主机商，写清配额、到期与回收规则。",
+            "Global VPS & Cloud collects always-free instances, trial credits and Black Friday hosting deals from "
+            "Oracle, AWS, GCP, Azure, Hetzner, Cloudflare and more — with quotas, expiry and reclamation rules "
+            "spelled out.",
         ),
         "desc": (
             "永久免费实例、新人体验金与黑五主机折扣，覆盖 Oracle、AWS、GCP、Azure、Hetzner、Cloudflare 等主流云与"
@@ -362,14 +367,14 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
         ),
     },
     "esim": {
-        "h1": ("eSIM 免费流量与首单折扣", "eSIM free data & first-order discounts"),
-        "title": ("eSIM 免费流量 / 首单折扣与可用国家整理 · 羊毛情报局",
-                  "Free eSIM data, first-order discounts and coverage · Deal Hunter"),
+        "h1": ("全球 eSIM 指南", "Global eSIM Guide"),
+        "title": ("全球 eSIM 指南：免费流量 / 首单折扣与可用国家整理 · 羊毛情报局",
+                  "Global eSIM guide: free data, first-order discounts and coverage · Deal Hunter"),
         "lead": (
-            "全球 eSIM 的免费试用流量与首单折扣，覆盖 Airalo、Holafly、Nomad、Saily、Ubigi 等，"
+            "全球 eSIM 指南收录免费试用流量与首单折扣，覆盖 Airalo、Holafly、Nomad、Saily、Ubigi 等，"
             "逐条标出可用国家或地区、流量额度与注册限制。",
-            "Free trial data and first-order discounts for eSIMs from Airalo, Holafly, Nomad, Saily, Ubigi and "
-            "others, each labelled with usable countries, data allowance and sign-up limits.",
+            "Global eSIM Guide collects free trial data and first-order discounts from Airalo, Holafly, Nomad, "
+            "Saily, Ubigi and others, each labelled with usable countries, data allowance and sign-up limits.",
         ),
         "desc": (
             "全球 eSIM 的免费试用流量与首单折扣，覆盖 Airalo、Holafly、Nomad、Saily、Ubigi 等，逐条标出可用国家或"
@@ -379,14 +384,15 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
         ),
     },
     "software": {
-        "h1": ("软件与数字服务优惠", "Software & digital services"),
-        "title": ("学生免费计划 / 开发者礼包 / 订阅折扣合集 · 羊毛情报局",
-                  "Student plans, developer packs and subscription deals · Deal Hunter"),
+        "h1": ("软件与数字服务", "Software & Digital Services"),
+        "title": ("软件与数字服务：学生免费计划 / 开发者礼包 / 订阅折扣合集 · 羊毛情报局",
+                  "Software & digital services: student plans, developer packs and deals · Deal Hunter"),
         "lead": (
-            "学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠，覆盖 JetBrains、Notion、Figma、"
-            "GitHub 等常用工具，写清资格审核与续期方式。",
-            "Student plans, developer packs, Black Friday subscription deals and other digital services from "
-            "JetBrains, Notion, Figma, GitHub and more, with eligibility checks and renewal rules.",
+            "软件与数字服务收录学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠，覆盖 JetBrains、"
+            "Notion、Figma、GitHub 等常用工具，写清资格审核与续期方式。",
+            "Software & Digital Services collects student plans, developer packs, Black Friday subscription deals "
+            "and other digital services from JetBrains, Notion, Figma, GitHub and more, with eligibility checks "
+            "and renewal rules.",
         ),
         "desc": (
             "学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠，覆盖 JetBrains、Notion、Figma、GitHub 等"
@@ -410,16 +416,17 @@ LEGAL_PAGES: dict[str, dict[str, dict]] = {
         "zh": {
             "title": "关于羊毛情报局 · 人工核验的全球优惠情报",
             "desc": (
-                "羊毛情报局是一个人工核验的全球优惠情报站，覆盖 AI 免费额度、Crypto 奖励、海外银行与汇款、"
-                "VPS 云服务、eSIM 流量与软件学生福利，每条写明价值、门槛、地区与截止时间，主按钮直达官方活动页。"
+                "羊毛情报局是一个人工核验的全球优惠情报站，覆盖 AI 工具大全、Crypto 空投与积分、"
+                "海外银行·U卡·跨境汇款、全球 VPS 与云资源、全球 eSIM 指南、软件与数字服务六大分区，"
+                "每条写明价值、门槛、地区与截止时间，主按钮直达官方活动页。"
                 "过期活动会留在归档页，方便对照往年力度。"
             ),
             "h1": "关于羊毛情报局",
             "lead": "一个人工核验的全球优惠情报站：只收录能追到官方条款的活动。",
             "sections": [
                 ("这是什么", [
-                    "羊毛情报局是一个人工核验的全球优惠情报站，覆盖六类：AI 工具与智能代理的免费额度、"
-                    "Crypto 活动与空投、海外银行与跨境汇款、VPS 与云服务、eSIM 流量、软件与数字服务优惠。",
+                    "羊毛情报局是一个人工核验的全球优惠情报站，覆盖六大分区：AI 工具大全、Crypto 空投与积分、"
+                    "海外银行·U卡·跨境汇款、全球 VPS 与云资源、全球 eSIM 指南、软件与数字服务。",
                     "每条都写明可预期到手价值、参与门槛、可用地区与截止时间，主按钮直接指向官方活动页；"
                     "有社区原帖作为最早情报来源时，另给一个「原文链接」指过去。",
                 ]),
@@ -451,9 +458,9 @@ LEGAL_PAGES: dict[str, dict[str, dict]] = {
             "lead": "A hand-checked directory of global deals: only offers we can trace to official terms.",
             "sections": [
                 ("What this is", [
-                    "Deal Hunter is a hand-checked directory of global deals in six areas: free tiers for AI tools "
-                    "and agents, crypto campaigns and airdrops, overseas banks and cross-border remittance, "
-                    "VPS and cloud credits, eSIM data, and software or student discounts.",
+                    "Deal Hunter is a hand-checked directory of global deals in six sections: AI Tools & Credits, "
+                    "Crypto Airdrops & Points, Global Banks, Cards & Transfers, Global VPS & Cloud, Global eSIM "
+                    "Guide, and Software & Digital Services.",
                     "Every entry lists the expected value, the requirements, the regions it works in and the "
                     "deadline, and its main button goes to the official offer page. Where a community thread "
                     "broke the news first, a second link points to that original post.",

@@ -149,12 +149,12 @@ def write_sitemap(deals: list[dict], today: date | None = None) -> Path:
 # ---------------------------------------------------------------- 类别
 # label 用于详情面板展示；search 是搜索索引里额外补上的中文别名。
 CAT_META = {
-    "ai": {"label": "AI 工具", "search": "AI 工具 人工智能"},
-    "crypto": {"label": "Crypto", "search": "Crypto 加密货币"},
-    "bank": {"label": "海外银行 / U 卡 / 汇款", "search": "银行 银行卡 汇款 U卡"},
-    "cloud": {"label": "VPS 与云服务", "search": "云 VPS 云服务"},
-    "esim": {"label": "eSIM", "search": "eSIM 流量"},
-    "software": {"label": "软件与数字服务", "search": "软件 数字服务"},
+    "ai": {"label": "AI 工具大全", "search": "AI 工具 AI 工具大全 人工智能 免费额度 credits"},
+    "crypto": {"label": "Crypto 空投与积分", "search": "Crypto 空投 积分 加密货币 交易奖励"},
+    "bank": {"label": "海外银行·U卡·跨境汇款", "search": "银行 银行卡 汇款 U卡 海外银行 跨境汇款"},
+    "cloud": {"label": "全球 VPS 与云资源", "search": "云 VPS 云服务 云资源 免费实例"},
+    "esim": {"label": "全球 eSIM 指南", "search": "eSIM 流量 指南 漫游"},
+    "software": {"label": "软件与数字服务", "search": "软件 数字服务 学生优惠"},
 }
 
 

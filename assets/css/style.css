@@ -416,10 +416,19 @@ main{ padding-bottom: 0; }
   display: flex;
   align-items: center;
   gap: 8px;
-  flex: none;
+  /* 标题可让位、数量胶囊不让位：分类名换成更长的「海外银行·U卡·跨境汇款」后，
+     375px 英文页一度只剩十几像素余量，宁可标题省略号也不把数量挤出卡片。 */
+  flex: 0 1 auto;
+  min-width: 0;
   white-space: nowrap;
   color: var(--ink);
 }
+.module h2 .mh-t{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.module h2 .count{ flex: none; }
 .module h2 .count{
   font-family: var(--mono);
   font-size: 10.5px;
@@ -1628,6 +1637,9 @@ footer{
   .module-badge{ width: 22px; height: 22px; border-radius: 7px; }
   .module-badge svg{ width: 15px; height: 15px; }
   .module h2{ font-size: 16px; }
+  /* 英文分区名比中文长（Global Banks, Cards & Transfers 是 31 字符），375px 英文页
+     若沿用 16px，标题 + 数量胶囊只剩几像素余量；英文小一号换成 15px，仍比正文大。 */
+  html[data-lang="en"] .module h2{ font-size: 15px; }
   .module h2 .count{ font-size: 10px; padding: 1px 6px; }
   .module-desc{ display: none; }
 
