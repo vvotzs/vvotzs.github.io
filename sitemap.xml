@@ -6283,4 +6283,22 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://vvotzs.github.io/d/urnetwork-free-tier-30gib/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/urnetwork-free-tier-30gib/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/urnetwork-free-tier-30gib/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/urnetwork-free-tier-30gib/"/>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/en/d/urnetwork-free-tier-30gib/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/urnetwork-free-tier-30gib/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/urnetwork-free-tier-30gib/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/urnetwork-free-tier-30gib/"/>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
