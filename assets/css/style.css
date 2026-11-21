@@ -2572,6 +2572,16 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
   font-size: 11.5px; font-weight: 600; letter-spacing: .01em;
 }
 .dp-elig dd{ margin: 0; color: var(--ink); font-weight: 550; overflow-wrap: anywhere; }
+/* 可用平台（只 bank / esim）：iOS / Android / Web 三枚 14px 内联徽标 + 文案，
+   彼此 6px 挨着排、图标与字 3px，不撑行高（徽标整体 16px，仍矮于所在行的 line-height）。 */
+.dp-plats{ display: flex; flex-wrap: wrap; align-items: center; gap: 6px; row-gap: 4px; padding: 1px 0; }
+.dp-plat{
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 1px 6px 1px 5px; border-radius: 6px;
+  background: #F4F2EB;
+  line-height: 1.15;
+}
+.dp-plat-i{ width: 14px; height: 14px; flex: none; }
 
 .dp-meta{ display: flex; flex-wrap: wrap; gap: 5px 14px; font-size: 11.5px; line-height: 1.5; color: var(--ink-3); }
 .dp-meta span{ min-width: 0; overflow-wrap: anywhere; }

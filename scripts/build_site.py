@@ -85,7 +85,7 @@ from i18n import (  # noqa: E402
     upair,
 )
 from check_schema import check_jsonld, expected_howto  # noqa: E402
-from eligibility import eligibility_rows, geo_ld  # noqa: E402
+from eligibility import eligibility_entries, geo_ld  # noqa: E402
 
 # 英文版页面：/en/index.html（纯英文 DOM），中文首页 /index.html（纯中文 DOM）。
 # 两页各自独立，语言切换直接跳转；老外链 /?lang=en 由 <head> 里的极短脚本转到 /en/。
@@ -315,6 +315,23 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
                '<path d="M11.2 13.9l-2.1 4.6" stroke="#C2410C" stroke-opacity=".55"/>', 1.7),
 }
 
+# 详情页专用符号：只在某条详情页真的用到时才写进那份小 sprite，
+# 首页与分类页的全量 sprite 不带它们（首页 gzip 一字节不涨）。
+_DP_SYMBOLS: dict[str, tuple[int, str, float]] = {
+    # 可用平台：iOS 咬一口的苹果 / Android 小机器人 / Web 浏览器窗口（详情页资格行 14px 内联，
+    # 零额外请求；fills 直接写死品牌色，strokes 也写死，跟旁边小字一起读得清）
+    "plat-ios": (24, '<path d="M16.15 12.55c-.02-2.06 1.68-3.05 1.76-3.1-.96-1.4-2.45-1.6-2.98-1.62-1.27-.13-2.48.75-3.12.75-.64 0-1.64-.73-2.7-.71-1.39.02-2.67.81-3.38 2.05-1.44 2.5-.37 6.2 1.04 8.23.69.99 1.51 2.1 2.58 2.06 1.03-.04 1.42-.67 2.67-.67s1.6.67 2.7.65c1.11-.02 1.82-1.01 2.5-2 .79-1.14 1.11-2.24 1.13-2.3-.02-.01-2.17-.83-2.2-3.34Z" fill="#27272A" stroke="none"/>'
+                     '<path d="M14.15 6.1c.55-.68.93-1.62.83-2.56-.8.03-1.77.53-2.35 1.2-.51.59-.96 1.55-.84 2.46.9.07 1.81-.45 2.36-1.1Z" fill="#27272A" stroke="none"/>', 0),
+    "plat-android": (24, '<path d="M3 18.3a9 9 0 0 1 18 0Z" fill="#34A853" stroke="none"/>'
+                         '<path d="M7.2 12 4.8 8.3M16.8 12 19.2 8.3" stroke="#34A853" stroke-width="2.3"/>'
+                         '<circle cx="9.1" cy="14.6" r="1.35" fill="#FFFFFF" stroke="none"/>'
+                         '<circle cx="14.9" cy="14.6" r="1.35" fill="#FFFFFF" stroke="none"/>', 1.9),
+    "plat-web": (24, '<rect x="2.7" y="4.5" width="18.6" height="15" rx="3" stroke="#3B7DD8"/>'
+                     '<path d="M3 9.2h18" stroke="#3B7DD8"/>'
+                     '<circle cx="6" cy="6.85" r="1.3" fill="#3B7DD8" stroke="none"/>'
+                     '<circle cx="9.3" cy="6.85" r="1.3" fill="#3B7DD8" stroke="none"/>', 1.9),
+}
+
 # 投稿：纯原生 <dialog> 弹窗 → fetch 直接 POST 到 Google Apps Script Web App，
 # 由脚本用 MailApp 发信到 vvotzs@gmail.com（免费，不占第三方表单额度，也没有水印）。
 # 换接口只改这一处再重建；app.js 从弹窗的 data-endpoint 读地址。
@@ -352,7 +369,11 @@ def sprite_svg(keys: tuple[str, ...] | None = None) -> str:
     parts = [
         '<svg class="sprite" style="display:none" aria-hidden="true" focusable="false">',
     ]
-    items = _SYMBOLS.items() if keys is None else [(k, _SYMBOLS[k]) for k in dict.fromkeys(keys) if k in _SYMBOLS]
+    items = (
+        list(_SYMBOLS.items())
+        if keys is None
+        else [(k, _SYMBOLS.get(k) or _DP_SYMBOLS[k]) for k in dict.fromkeys(keys) if k in _SYMBOLS or k in _DP_SYMBOLS]
+    )
     for key, (size, inner, sw) in items:
         parts.append(
             f'<symbol id="i-{key}" viewBox="0 0 {size} {size}" fill="none" stroke="currentColor" '
@@ -373,6 +394,18 @@ def icon3d(key: str, cls: str = "") -> str:
     每处引用压到 80 字节上下（一张列表 200+ 处，省下来的都是 HTML 体积）。
     """
     return f'<svg class="ic3d{" " + cls if cls else ""}" aria-hidden="true"><use href="#i-{key}"/></svg>'
+
+
+def plat_badges(items: list[tuple[str, str]]) -> str:
+    """可用平台：图标 + 文字紧挨成一排的小徽标（只给 bank / esim 详情页的资格行）。
+
+    图标走同一份 sprite 的 #i-plat-*，14×14、currentColor 以外的颜色写在 symbol 里。
+    """
+    return "".join(
+        f'<span class="dp-plat"><svg class="dp-plat-i" aria-hidden="true">'
+        f'<use href="#i-plat-{key}"/></svg>{e(text)}</span>'
+        for key, text in items
+    )
 
 
 def vector_defs() -> str:
@@ -1526,12 +1559,18 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         secs.append(block(ui("f_conditions"), f'<p>{e(conditions)}</p>'))
     # 参与资格：Bank / eSIM 的行内资格字段渲染成 <dl>，只出非默认值；
     # 标签与取值都走 scripts/eligibility.py 的枚举表，英文页天然零 CJK。
-    elig_rows = eligibility_rows(deal, is_en)
-    if elig_rows:
-        elig_html = "".join(
-            f'<div class="dp-elig-row"><dt>{e(label)}</dt><dd>{e(value)}</dd></div>'
-            for label, value in elig_rows
-        )
+    elig_entries = eligibility_entries(deal, is_en)
+    # 平台徽标只在该页真的用到时才塞进 sprite，其余详情页一张不增
+    dp_icon_keys = ("external", "archive", "chevron", "verified-shield", "hourglass", cat_icon)
+    if any(badges for _, _, badges in elig_entries):
+        dp_icon_keys += ("plat-ios", "plat-android", "plat-web")
+    if elig_entries:
+        rows_html = []
+        for label, value, badges in elig_entries:
+            # 可用平台：有徽标就把「图标 + 文字」紧挨排成一行，其余行仍是纯文字
+            cell = f'<span class="dp-plats">{plat_badges(badges)}</span>' if badges else e(value)
+            rows_html.append(f'<div class="dp-elig-row"><dt>{e(label)}</dt><dd>{cell}</dd></div>')
+        elig_html = "".join(rows_html)
         secs.append(
             block(
                 ui("dp_eligibility"),
@@ -1774,7 +1813,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 </head>
 <body class="dp">
 
-{sprite_svg(("external", "archive", "chevron", "verified-shield", "hourglass", cat_icon))}
+{sprite_svg(dp_icon_keys)}
 {vector_defs()}
 
 <header class="topbar">

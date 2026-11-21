@@ -63,6 +63,8 @@ FIELDS = (
 
 PLATFORMS = ("ios", "android", "web")
 ALL_PLATFORMS = ["android", "ios", "web"]
+# 平台徽标只出现在「要开银行卡的 App」与 eSIM 这两类详情页（Jun 2026-11-21 的口径）
+PLATFORM_CATEGORIES = ("bank", "esim")
 
 DEFAULTS: dict[str, object] = {
     "identity_requirement": "email",
@@ -215,47 +217,65 @@ def geo_text(geo: list[str], is_en: bool) -> str:
     return text
 
 
+def platform_items(platforms: list[str], is_en: bool) -> list[tuple[str, str]]:
+    """按 ios / android / web 固定顺序给出 [(枚举值, 文案)]，供详情页渲染「图标 + 文字」小徽标。"""
+    return [(p, PLATFORM_LABELS[p][1 if is_en else 0]) for p in PLATFORMS if p in platforms]
+
+
 def platform_text(platforms: list[str], is_en: bool) -> str:
-    ordered = [p for p in PLATFORMS if p in platforms]
     seps = ", " if is_en else "、"
-    return seps.join(PLATFORM_LABELS[p][1 if is_en else 0] for p in ordered)
+    return seps.join(text for _, text in platform_items(platforms, is_en))
 
 
-def eligibility_rows(deal: dict, is_en: bool = False) -> list[tuple[str, str]]:
-    """详情页「参与资格」区块的 (标签, 值) 列表；只返回非默认值，默认值整行不出现。"""
-    rows: list[tuple[str, str]] = []
+def eligibility_entries(
+    deal: dict, is_en: bool = False
+) -> list[tuple[str, str, list[tuple[str, str]] | None]]:
+    """详情页「参与资格」区块的 (标签, 值文本, 平台徽标) 列表。
+
+    只返回非默认值，默认值整行不出现；平台那一行的第三项是 [(ios/android/web, 文案)]，
+    由渲染端换成图标小徽标，其余行为 None。
+    """
+    rows: list[tuple[str, str, list[tuple[str, str]] | None]] = []
 
     identity = deal.get("identity_requirement") or DEFAULTS["identity_requirement"]
     if identity != DEFAULTS["identity_requirement"]:
         zh, en = IDENTITY_LABELS.get(identity, (identity, identity))
-        rows.append(("身份验证" if not is_en else "Identity", en if is_en else zh))
+        rows.append(("身份验证" if not is_en else "Identity", en if is_en else zh, None))
 
     residency = deal.get("residency_requirement") or DEFAULTS["residency_requirement"]
     if residency != DEFAULTS["residency_requirement"]:
         zh, en = RESIDENCY_LABELS.get(residency, (residency, residency))
-        rows.append(("居住要求" if not is_en else "Residency", en if is_en else zh))
+        rows.append(("居住要求" if not is_en else "Residency", en if is_en else zh, None))
 
     platforms = deal.get("platform_requirement")
     if platforms and sorted(platforms) != sorted(ALL_PLATFORMS):
+        # 平台徽标只给「要开银行卡的 App」与 eSIM 这两类；其余分类即便数据里写了
+        # platform_requirement 也只出文字，不给装饰性图标。
+        icons = platform_items(platforms, is_en) if deal.get("category") in PLATFORM_CATEGORIES else None
         rows.append(
-            ("可用平台" if not is_en else "Platform", platform_text(platforms, is_en))
+            ("可用平台" if not is_en else "Platform", platform_text(platforms, is_en), icons)
         )
 
     phone = deal.get("phone_requirement") or DEFAULTS["phone_requirement"]
     if phone != DEFAULTS["phone_requirement"]:
         zh, en = PHONE_LABELS.get(phone, (phone, phone))
-        rows.append(("手机号" if not is_en else "Phone number", en if is_en else zh))
+        rows.append(("手机号" if not is_en else "Phone number", en if is_en else zh, None))
 
     funding = deal.get("funding_requirement") or DEFAULTS["funding_requirement"]
     if funding != DEFAULTS["funding_requirement"]:
         zh, en = FUNDING_LABELS.get(funding, (funding, funding))
-        rows.append(("入金/消费" if not is_en else "Funding", en if is_en else zh))
+        rows.append(("入金/消费" if not is_en else "Funding", en if is_en else zh, None))
 
     geo = deal.get("geo_restriction")
     if geo and [str(g) for g in geo] != DEFAULTS["geo_restriction"]:
-        rows.append(("可参与地区" if not is_en else "Availability", geo_text(geo, is_en)))
+        rows.append(("可参与地区" if not is_en else "Availability", geo_text(geo, is_en), None))
 
     return rows
+
+
+def eligibility_rows(deal: dict, is_en: bool = False) -> list[tuple[str, str]]:
+    """只要 (标签, 值文本) 的旧口径，保留给不需要图标的地方。"""
+    return [(label, text) for label, text, _ in eligibility_entries(deal, is_en)]
 
 
 def geo_ld(deal: dict) -> tuple[list[str], list[str]]:
