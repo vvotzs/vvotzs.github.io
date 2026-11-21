@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-11-21T15:17:01+08:00",
-  "last_updated_human": "2026-11-21 15:17",
+  "last_updated": "2026-11-21T15:22:06+08:00",
+  "last_updated_human": "2026-11-21 15:22",
   "timezone": "Asia/Shanghai",
   "counts": {
-    "total": 316,
-    "active": 312,
+    "total": 317,
+    "active": 313,
     "expiring_soon": 12,
     "closing_30d": 60,
     "expired": 4
@@ -13,7 +13,7 @@
     "ai": 77,
     "crypto": 8,
     "bank": 80,
-    "cloud": 49,
+    "cloud": 50,
     "esim": 73,
     "software": 25
   },
