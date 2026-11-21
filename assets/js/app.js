@@ -87,6 +87,15 @@
     };
   });
 
+  /* 板子 tab 上的条数、顶部「匹配 N 条」都是静态节点：初始化时查一次表，
+     以后 render 直接改文字，不要再对整个 1.9 MB 文档做 querySelectorAll。 */
+  var TABCOUNT = {};
+  $$("[data-tabcount]").forEach(function (el) {
+    var k = el.getAttribute("data-tabcount");
+    (TABCOUNT[k] = TABCOUNT[k] || []).push(el);
+  });
+  var RESULT_ELS = $$("[data-result]");
+
   /* --------------------------------------------------------------- state */
   var state = { q: "", time: "all", cat: "all", cost: "all", verify: "all", sort: "value" };
 
@@ -125,6 +134,7 @@
     /* 「近 24 / 48 小时 / 7 天」是滑动窗口，不是自然日：
        拿卡片上的 added_at 完整时间戳（带时区）和当前时刻比，
        不能拿「今天零点 − 收录日期」比——那样 24 小时会变成今天+昨天两天。 */
+    if (state.time === "all") return true;   /* 默认不筛时间：省掉每张卡的日期解析 */
     var addedMs = addedTime(card);
     var nowMs = Date.now();
 
@@ -183,7 +193,11 @@
   function buildTrack(m, visible, paged) {
     var track = m.track;
     if (!track) return;
+    /* 先把整条轨道一次性清空（卡片引用还在 m.items 里），再在离屏 fragment 里拼好新的
+       分页结构，最后一次性挂回去：DOM 只改一次，不再每 appendChild 一张卡就让浏览器
+       重排整条轨道。scrollLeft 归零交给 render 的读阶段统一做。 */
     track.textContent = "";
+    var frag = document.createDocumentFragment();
     if (paged) {
       var per = perOf(m);
       for (var i = 0; i < visible.length; i += per) {
@@ -193,35 +207,48 @@
           el.classList.remove("is-extra");
           page.appendChild(el);
         });
-        track.appendChild(page);
+        frag.appendChild(page);
       }
     } else {
       visible.forEach(function (el) {
         el.classList.remove("is-extra");
-        track.appendChild(el);
+        frag.appendChild(el);
       });
     }
-    track.scrollLeft = 0;
+    track.appendChild(frag);
   }
 
   function pageCount(m) {
     return Math.max(1, Math.ceil(m.total / perOf(m)));
   }
 
-  /* 页码 1 / N 与左右按钮的可用状态，跟着横滑位置走 */
-  function updateBar(m) {
-    if (!m.bar) return;
+  /* 页码 1 / N 与左右按钮的可用状态，跟着横滑位置走。
+     读（clientWidth / scrollLeft 会强制排版）和写分开：render 一次读完全部分区再写，
+     整个页面只排一次版；单个分区刷新时 updateBar 两步连着做也一样。 */
+  function barState(m) {
     var pages = pageCount(m);
     var show = !m.isJump && m.total > 0 && pages > 1;
-    m.bar.style.display = show ? "flex" : "none";
-    if (!show) return;
-    var w = m.track.clientWidth || 1;
-    var idx = Math.min(Math.max(Math.round(m.track.scrollLeft / w), 0), pages - 1);
-    if (m.label) m.label.textContent = (idx + 1) + " / " + pages;
+    var idx = 0;
+    if (show && m.track) {
+      var w = m.track.clientWidth || 1;
+      idx = Math.min(Math.max(Math.round(m.track.scrollLeft / w), 0), pages - 1);
+    }
+    return { pages: pages, show: show, idx: idx };
+  }
+
+  function applyBar(m, st) {
+    m.bar.style.display = st.show ? "flex" : "none";
+    if (!st.show) return;
+    if (m.label) m.label.textContent = (st.idx + 1) + " / " + st.pages;
     var prev = $("[data-prev]", m.bar);
     var next = $("[data-next]", m.bar);
-    if (prev) prev.disabled = idx <= 0;
-    if (next) next.disabled = idx >= pages - 1;
+    if (prev) prev.disabled = st.idx <= 0;
+    if (next) next.disabled = st.idx >= st.pages - 1;
+  }
+
+  function updateBar(m) {
+    if (!m.bar) return;
+    applyBar(m, barState(m));
   }
 
   function render() {
@@ -245,7 +272,7 @@
       }
 
       if (m.countEl) m.countEl.textContent = visible.length;
-      $$('[data-tabcount="' + m.anchor + '"]').forEach(function (el) {
+      (TABCOUNT[m.anchor] || []).forEach(function (el) {
         el.textContent = visible.length;
       });
       if (m.empty) m.empty.style.display = visible.length ? "none" : "block";
@@ -257,11 +284,21 @@
       // 桌面端也不再折叠：分类内一律翻页
       m.el.dataset.collapsed = "0";
       if (m.more) m.more.hidden = true;
-
-      updateBar(m);
     });
 
-    $$("[data-result]").forEach(function (el) { el.textContent = matchedTotal; });
+    RESULT_ELS.forEach(function (el) { el.textContent = matchedTotal; });
+
+    /* 上面全是写：条数、轨道、分页 DOM。翻页条要读 clientWidth / scrollLeft（会强制排版），
+       轨道回第 1 页的 scrollLeft 写入同样会逼一次排版——以前每个分区各逼一次，320 张卡的
+       整页就排了 11 遍。这里把读和 scrollLeft 都挪到所有分区搭好之后：整页只排一次版。 */
+    modules.forEach(function (m) {
+      if (m.track) m.track.scrollLeft = 0;
+    });
+    var barStates = modules.map(function (m) { return m.bar ? barState(m) : null; });
+    barStates.forEach(function (st, i) {
+      if (st) applyBar(modules[i], st);
+    });
+
     syncNav();
     syncURL();
   }
