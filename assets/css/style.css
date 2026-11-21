@@ -2794,3 +2794,48 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
   .consent-title{ font-size: 14px; }
   .consent-btn{ min-width: 0; font-size: 11.5px; padding: 0 10px; }
 }
+
+/* ------------------------------------------------ 赞 / 踩（卡片展开区 + 详情页） */
+/* 只放在普通卡片展开区底部与独立详情页；收起态卡片与顶部聚合分区不带按钮。
+   数字用 3ch 固定宽度 + tabular-nums，点按前后不抖动。 */
+.vote-row{ grid-column: 1 / -1; display: flex; align-items: center; margin-top: 3px; }
+.dp-vote{ display: flex; align-items: center; margin-top: 12px; }
+.vote-bar{ display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.vb{
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 26px; padding: 0 9px 0 8px; border-radius: 999px;
+  border: 1px solid var(--line-2); background: #FFFFFF;
+  font-family: var(--font); font-size: 12px; line-height: 1;
+  color: var(--ink-3); cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.vb > span[aria-hidden]{ font-size: 13px; line-height: 1; filter: grayscale(.25); }
+.vb .vb-n{
+  min-width: 3ch; text-align: center;
+  font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1;
+  font-size: 11px; font-weight: 650; color: var(--ink-4);
+}
+.vb:hover{ border-color: var(--mint-line); background: #FCFFFD; }
+.vb:focus-visible{ outline: 2px solid var(--mint-line); outline-offset: 1px; }
+.vb.up[aria-pressed="true"]{ background: var(--mint-soft); border-color: var(--mint-line); color: #047857; }
+.vb.up[aria-pressed="true"] .vb-n{ color: #047857; }
+.vb.down[aria-pressed="true"]{ background: #FFF1F2; border-color: #FECDD3; color: #BE123C; }
+.vb.down[aria-pressed="true"] .vb-n{ color: #BE123C; }
+.vote-why{ display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+.vote-why[hidden]{ display: none; }
+.vote-why .vw{
+  height: 24px; padding: 0 8px; border-radius: 999px;
+  border: 1px dashed var(--line-2); background: #FBFBF9;
+  font-family: var(--font); font-size: 11px; line-height: 1; color: var(--ink-3);
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.vote-why .vw:hover{ border-color: var(--mint-line); color: var(--ink-2); }
+.vote-why .vw.on{ border-style: solid; border-color: var(--mint-line); background: var(--mint-soft); color: #047857; font-weight: 650; }
+
+@media (max-width: 560px){
+  .vb{ height: 25px; padding: 0 8px 0 7px; font-size: 11.5px; }
+  .vb > span[aria-hidden]{ font-size: 12px; }
+  .vote-why .vw{ height: 23px; padding: 0 7px; font-size: 10.5px; }
+  .dp-vote{ margin-top: 10px; }
+}

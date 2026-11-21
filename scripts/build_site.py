@@ -21,12 +21,14 @@ import hashlib
 import html
 import io
 import json
+import math
 import re
 import shutil
 import sys
 import unicodedata
 import urllib.parse
 import urllib.request
+from collections import Counter
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -1259,6 +1261,7 @@ def card(deal: dict, en: dict, today) -> str:
         <span>{bi(e(f"{U['f_last_verified'][0]} · {deal['last_verified']}"), e(f"{U['f_last_verified'][1]} · {deal['last_verified']}"))}</span>
         <span>{bi(e(f"{U['f_added'][0]} · {added_day(deal, today)}"), e(f"{U['f_added'][1]} · {added_day(deal, today)}"))}</span>
       </div>
+      <div class="vote-row">{vote_bar(deal_id)}</div>
     </div></div></div>
   </article>"""
 
@@ -1499,11 +1502,16 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         f'<li><span>{ui("dp_facts_period")}</span><b>{dp_period(deal)}</b></li>',
         f'<li><span>{ui("f_regions")}</span><b>{e(regions)}</b></li>',
         f'<li><span>{ui("dp_facts_cost")}</span><b><span class="dtag {cost_cls}">{e(cost_label)}</span></b></li>',
+        f'<li><span>{"KYC 门槛" if not is_en else "KYC"}</span><b class="dp-kyc">{e(kyc_fact(deal, is_en))}</b></li>',
         # 详情页的「实际价值」跟卡片用同一套收窄，符号两侧的松散空格一致
         f'<li><span>{ui("dp_facts_value")}</span><b class="dp-val">{e(_tight_value(value_now, CUR_LANG))}</b></li>',
         f'<li><span>{ui("dp_facts_check")}</span><b class="{"dp-ok" if deal.get("verified") else "dp-wait"}">'
         f'{icon3d("verified-shield", "vs-i") + ui("verified") if deal.get("verified") else ui("unverified")}</b></li>',
     ]
+    if deal.get("category") == "esim" and vowifi_fact(deal, is_en):
+        facts.append(
+            f'<li><span>{"VoWiFi" if not is_en else "VoWiFi"}</span><b class="dp-kyc">{e(vowifi_fact(deal, is_en))}</b></li>'
+        )
 
     # 内链：给搜索引擎更多可爬路径，也给读者一个继续逛的入口
     rel_items = []
@@ -1696,6 +1704,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
+<meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">
 
 <script type="application/ld+json">
 {jsonld}
@@ -1757,6 +1766,8 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         {''.join(acts)}
         {aff_note_html}
       </div>
+
+      <div class="dp-vote">{vote_bar(deal_id)}</div>
     </article>
 
     {alt_html}
@@ -1794,6 +1805,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 
 {DP_FAV_JS}
 <script src="/assets/js/consent.js?v={asset_ver('assets/js/consent.js')}" defer></script>
+<script src="/assets/js/votes.js?v={asset_ver('assets/js/votes.js')}" defer></script>
 </body>
 </html>
 """
@@ -2412,20 +2424,237 @@ def is_backlogged_deal(deal: dict) -> bool:
     return any(key in text for key in keys)
 
 
-def order_category_deals(deals: list[dict], slug: str) -> list[dict]:
-    """分类列表排序：价值降序 + 新收录在前；AI 全球优先；银行按本地身份门槛分两段；低通过率沉底。"""
-    ordered = list(deals)
-    ordered.sort(key=lambda d: str(d.get("added_at") or d.get("added") or ""), reverse=True)
-    ordered.sort(key=value_expected, reverse=True)
-    if slug == "ai":
-        # 稳定排序：全球通用在前，地区分服在后，两部分内部次序不变
-        ordered.sort(key=lambda d: 0 if is_global_deal(d) else 1)
-    elif slug == "bank":
-        # 稳定排序：不需要 SSN / ITIN / 本地身份的通用优惠在前，需门槛的落在中后段
-        ordered.sort(key=lambda d: 1 if bank_needs_local_identity(d) else 0)
-    # 所有分类最后兜底：长期积压 / 极难通过的申请类项目沉到分类最后
-    ordered.sort(key=lambda d: 1 if is_backlogged_deal(d) else 0)
-    return ordered
+# ------------------------------------------------------------ 打分与赞踩
+# 一期静态分（Hark 五轮定稿 + 318 条实测）。分数只用于构建时排序，
+# 不在页面上显示；详情页只展示由 kyc_level / vowifi 生成的事实标签。
+VOTE_ITEMS: dict[str, list[int]] = {}
+VOTE_TOTAL = 0
+
+_COST_FACTOR = {
+    "真正免费": 1.00,
+    "免费试用": 0.85,
+    "需要充值": 0.85,
+    "需要邀请条件": 0.80,
+    "需要交易量": 0.75,
+}
+_KYC_FACTOR = {"none": 1.00, "cn_ok": 0.95, "cn_ok_extra": 0.80, "foreign_only": 0.50}
+
+
+def load_votes_snapshot() -> None:
+    """读取 data/votes_snapshot.json（GAS 导出后由定时任务更新）。
+
+    文件缺失或格式不对时按「全站 0 票」构建，构建永不因投票失败。
+    """
+    global VOTE_ITEMS, VOTE_TOTAL
+    path = ROOT / "data" / "votes_snapshot.json"
+    VOTE_ITEMS, VOTE_TOTAL = {}, 0
+    if not path.exists():
+        return
+    try:
+        snap = json.loads(path.read_text(encoding="utf-8"))
+        if int(snap.get("schema", 0)) != 1:
+            print(f"  ! votes_snapshot schema 不是 1，按 0 票构建", file=sys.stderr)
+            return
+        items = snap.get("items") or {}
+        for deal_id, pair in items.items():
+            if isinstance(pair, list) and len(pair) >= 2:
+                up, down = int(pair[0]), int(pair[1])
+                VOTE_ITEMS[str(deal_id)] = [max(0, up), max(0, down)]
+        VOTE_TOTAL = sum(u + d for u, d in VOTE_ITEMS.values())
+    except Exception as err:  # noqa: BLE001 - 快照坏了也照常建站
+        print(f"  ! votes_snapshot 读取失败（{err}），按 0 票构建", file=sys.stderr)
+        VOTE_ITEMS, VOTE_TOTAL = {}, 0
+
+
+def _value_points(v: float) -> float:
+    if not v or v <= 0:
+        return 0.0
+    return 40.0 * min(1.0, math.log1p(v) / math.log1p(501))
+
+
+def scope_factor(deal: dict) -> float:
+    """A：权益在哪里用。只对 eSIM / 本地消费类生效，其余分类一律 1.0。
+
+    全球 / 大陆漫游 / 中国大陆区 1.0；港台日韩新马 0.9；其他地区 0.8。
+    只认 regions 开头的方括号地区标签，避免正文里的「不支持中国大陆漫游」误判。
+    """
+    if deal.get("category") != "esim":
+        return 1.0
+    regions = str(deal.get("regions") or "")
+    tag = re.match(r"\[([^\]]+)\]", regions)
+    tag = tag.group(1) if tag else regions
+    if any(k in tag for k in ("全球", "多区", "中国")) or "大陆漫游" in regions:
+        return 1.0
+    if any(k in tag for k in ("香港", "澳门", "台湾", "台/", "日", "韩", "新加坡", "马来")):
+        return 0.9
+    return 0.8
+
+
+def _days_since(value: str | None, today) -> int | None:
+    d = parse_date(value)
+    return (today - d).days if d else None
+
+
+def score_deal(deal: dict, today) -> dict:
+    """计算一条优惠的静态分与各因子，返回 {S, ...} 供排序与 --explain 使用。"""
+    v = value_expected(deal)
+    base = 20.0 + _value_points(v) + (15.0 if deal.get("utility") else 0.0)
+    a = scope_factor(deal)
+    e = _COST_FACTOR.get(deal.get("cost"), 0.85)
+    kyc = deal.get("kyc_level")
+    g = _KYC_FACTOR.get(kyc, 0.90)
+    if kyc not in _KYC_FACTOR:
+        print(f"  ! {deal['id']} 未标 kyc_level，按 0.90 计", file=sys.stderr)
+    h = 0.40 if is_backlogged_deal(deal) else 1.0
+    t = 1.0 if deal.get("verified") is True else 0.85
+    age_verified = _days_since(deal.get("last_verified"), today)
+    if age_verified is None or age_verified <= 30:
+        l = 1.0
+    elif age_verified <= 60:
+        l = 0.90
+    else:
+        l = 0.75
+    r = 1.0
+    end_days = _days_since(deal.get("end"), today)
+    if (
+        end_days is not None
+        and -end_days >= 8
+        and -end_days <= 30
+        and e >= 0.85
+        and g == 1.0
+        and h == 1.0
+    ):
+        r = 1.10
+    mult = max(0.2, a * e * g * h * t * l)
+    vote = 0.0
+    up = down = 0
+    if VOTE_TOTAL >= 100:
+        up, down = VOTE_ITEMS.get(deal["id"], [0, 0])
+        n = up + down
+        if n:
+            vote = 40.0 * (up - 0.7 * n) / (n + 5)
+    fresh = 0.0
+    if deal.get("status") != "expired":
+        added_age = _days_since(deal.get("added_at") or deal.get("added"), today)
+        if added_age is not None and added_age < 60:
+            fresh = 10.0 * (2 ** (-added_age / 7))
+    return {
+        "S": base * mult * r + vote + fresh,
+        "base": base,
+        "V": _value_points(v),
+        "U": 15.0 if deal.get("utility") else 0.0,
+        "A": a,
+        "E": e,
+        "G": g,
+        "H": h,
+        "T": t,
+        "L": l,
+        "R": r,
+        "mult": mult,
+        "vote": vote,
+        "fresh": fresh,
+    }
+
+
+def provider_key(deal: dict) -> str:
+    """多样性护栏用的服务商键：手工 provider 优先，否则按域名归一化。"""
+    if deal.get("provider"):
+        return str(deal["provider"]).strip().lower()
+    domain = str(deal.get("domain") or "").strip().lower()
+    domain = domain.removeprefix("www.")
+    if domain:
+        parts = domain.split(".")
+        # co.uk / com.cn / com.au 这类二级公共后缀保留三段
+        if len(parts) >= 3 and parts[-2] in {"co", "com", "org", "net", "gov", "edu", "ac"}:
+            return ".".join(parts[-3:])
+        return ".".join(parts[-2:])
+    brand = re.sub(r"[^a-z0-9]+", "", str(deal.get("brand") or "").lower())
+    return brand or deal["id"]
+
+
+def diversity_guard(ordered: list[dict]) -> list[dict]:
+    """每个分类前 10 条同一服务商最多 2 条，超出的顺延到第 11 位起。"""
+    top: list[dict] = []
+    deferred: list[dict] = []
+    seen: Counter[str] = Counter()
+    idx = 0
+    while idx < len(ordered) and len(top) < 10:
+        deal = ordered[idx]
+        idx += 1
+        key = provider_key(deal)
+        if seen[key] >= 2:
+            deferred.append(deal)
+            continue
+        seen[key] += 1
+        top.append(deal)
+    return top + deferred + ordered[idx:]
+
+
+def vote_bar(deal_id: str) -> str:
+    """紧凑的赞/踩胶囊：只显示票数，不重排；原因选项由 votes.js 就地展开。"""
+    zh = CUR_LANG != "en"
+    up_aria = "这条优惠有用" if zh else "This deal is useful"
+    down_aria = "这条优惠没用" if zh else "This deal is not useful"
+    return (
+        f'<div class="vote-bar" data-vote="{e(deal_id)}">'
+        f'<button class="vb up" type="button" data-v="1" aria-pressed="false" aria-label="{up_aria}">'
+        '<span aria-hidden="true">👍</span><span class="vb-n" data-n="up">–</span></button>'
+        f'<button class="vb down" type="button" data-v="-1" aria-pressed="false" aria-label="{down_aria}">'
+        '<span aria-hidden="true">👎</span><span class="vb-n" data-n="down">–</span></button>'
+        '<span class="vote-why" hidden></span>'
+        "</div>"
+    )
+
+
+def kyc_fact(deal: dict, is_en: bool) -> str:
+    """详情页事实标签：由 kyc_level 生成，带一句具体卡点。"""
+    level = deal.get("kyc_level")
+    labels = {
+        "none": ("免 KYC", "No KYC"),
+        "cn_ok": ("大陆证件可 KYC", "Mainland ID accepted"),
+        "cn_ok_extra": ("大陆证件 + 海外条件", "Mainland ID + overseas requirement"),
+        "foreign_only": ("需当地身份/居留", "Local ID or residence required"),
+    }
+    zh, en = labels.get(level, ("未标定", "Not labelled"))
+    text = en if is_en else zh
+    note = deal.get("kyc_note")
+    if note and not is_en:
+        text += f"（{note}）"
+    return text
+
+
+def vowifi_fact(deal: dict, is_en: bool) -> str:
+    level = deal.get("vowifi")
+    labels = {
+        "true": ("运营商支持 VoWiFi", "Carrier VoWiFi supported"),
+        "false": ("不支持 VoWiFi", "No carrier VoWiFi"),
+        "unknown": ("VoWiFi 未确认", "VoWiFi unconfirmed"),
+    }
+    if level not in labels:
+        return ""
+    return labels[level][1 if is_en else 0]
+
+
+def order_category_deals(deals: list[dict], slug: str, today=None) -> list[dict]:
+    """分类列表排序：静态打分 S 降序（口径见 docs/scoring.md），再做服务商多样性护栏。
+
+    一期静态分（318 条实测标定）：
+      S = (20 + V + 15·U) × max(0.2, A × E × G × H × T × L) × R_t + Vote + Fresh
+    排序键 (-round(S,1), -value_expected, -added_at, id)；每个分类前 10 条同一
+    服务商最多 2 条，超出的顺延到第 11 位起。Vote 在本期由快照提供，全站满
+    100 票前恒为 0。
+    """
+    today = today or today_local()
+    scored = [(score_deal(d, today), d) for d in deals]
+    # 四段稳定排序，等价于元组键 (-S, -value_expected, -added_at, id)
+    scored.sort(key=lambda pair: pair[1]["id"])
+    scored.sort(
+        key=lambda pair: str(pair[1].get("added_at") or pair[1].get("added") or ""),
+        reverse=True,
+    )
+    scored.sort(key=lambda pair: value_expected(pair[1]), reverse=True)
+    scored.sort(key=lambda pair: round(pair[0]["S"], 1), reverse=True)
+    return diversity_guard([d for _, d in scored])
 
 
 def render_category_page(
@@ -2573,6 +2802,7 @@ def render_category_page(
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
+<meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">
 
 <script type="application/ld+json">
 {ld}
@@ -2645,6 +2875,7 @@ def render_category_page(
 
 {DP_FAV_JS}
 <script src="/assets/js/consent.js?v={asset_ver('assets/js/consent.js')}" defer></script>
+<script src="/assets/js/votes.js?v={asset_ver('assets/js/votes.js')}" defer></script>
 </body>
 </html>
 """
@@ -2661,7 +2892,7 @@ def write_category_pages(deals: list[dict], en_map: dict, today) -> int:
     for slug in CAT_META:
         cat_deals = [d for d in deals if d.get("category") == slug and d.get("status") != "expired"]
         # 高价值在前；同一价值档里新收录的在前；AI 分类再让全球通用排在地区分服之前
-        cat_deals = order_category_deals(cat_deals, slug)
+        cat_deals = order_category_deals(cat_deals, slug, today)
         expired_n = len([d for d in deals if d.get("category") == slug and d.get("status") == "expired"])
         for lang, base in (("zh", CATEGORY_DIR), ("en", CATEGORY_DIR_EN)):
             out = base / slug / "index.html"
@@ -2849,6 +3080,7 @@ def main() -> None:
         if not ensure_favicon(deal.get("domain", "")):
             missing.append(deal.get("domain", "?"))
 
+    load_votes_snapshot()
     active = [d for d in deals if d["status"] != "expired"]
     expired = [d for d in deals if d["status"] == "expired"]
     # 入库时在 deals.json 里的位置（仅用作同一时刻入库的条目之间的稳定次序）
@@ -3035,7 +3267,7 @@ def main() -> None:
     )[:8]
 
     by_cat = {
-        k: order_category_deals([d for d in active if d["category"] == k], k)
+        k: order_category_deals([d for d in active if d["category"] == k], k, today)
         for k in CAT_META
     }
 
@@ -3312,6 +3544,7 @@ def main() -> None:
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
+<meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">
 <noscript><style>.module:not(.hot-strip) .track > .card:nth-child(n + 6){{ display: block; }}
 html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></noscript>
 
@@ -3576,6 +3809,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
 <script id="search-index" type="application/json">{search_json}</script>
 <script src="/assets/js/app.js?v={asset_ver('assets/js/app.js')}" defer></script>
 <script src="/assets/js/consent.js?v={asset_ver('assets/js/consent.js')}" defer></script>
+<script src="/assets/js/votes.js?v={asset_ver('assets/js/votes.js')}" defer></script>
 </body>
 </html>
 """
@@ -3628,6 +3862,38 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
         print(f"  ! 图标下载失败 {len(missing)} 个（回退字母块）：{', '.join(missing)}")
     else:
         print(f"  图标：{len(deals)} 个域名全部就绪（assets/fav/）")
+    if "--explain" in sys.argv:
+        explain_scoring(deals, today)
+
+
+
+def explain_scoring(deals: list[dict], today) -> None:
+    """--explain：按分类打印前 12 名及全部因子，并写 build/score_debug.csv。"""
+    out_dir = ROOT / "build"
+    out_dir.mkdir(exist_ok=True)
+    cols = ["category", "rank", "id", "S", "base", "V", "U", "A", "E", "G", "H", "T", "L", "R", "mult", "vote", "fresh", "value_expected"]
+    rows = [",".join(cols)]
+    active = [d for d in deals if d.get("status") != "expired"]
+    print(f"\n== 打分解释（Vote 全站 {VOTE_TOTAL} 票，满 100 票才生效）==")
+    for slug in CAT_META:
+        ordered = order_category_deals([d for d in active if d.get("category") == slug], slug, today)
+        print(f"\n-- {slug}（{len(ordered)} 条）")
+        for i, deal in enumerate(ordered, 1):
+            sc = score_deal(deal, today)
+            rows.append(
+                ",".join(
+                    [slug, str(i), deal["id"]]
+                    + [f"{sc[k]:.3f}" for k in ("S", "base", "V", "U", "A", "E", "G", "H", "T", "L", "R", "mult", "vote", "fresh")]
+                    + [f"{value_expected(deal):g}"]
+                )
+            )
+            if i <= 12:
+                print(
+                    f"  {i:2d}. {sc['S']:5.1f} | base {sc['base']:5.1f} ×{sc['mult']:.3f} ×R{sc['R']:.2f}"
+                    f" +f{sc['fresh']:.1f} | G{sc['G']:.2f} E{sc['E']:.2f} A{sc['A']:.1f} | {deal['title'][:66]}"
+                )
+    (out_dir / "score_debug.csv").write_text("\n".join(rows) + "\n", encoding="utf-8")
+    print(f"\n  明细已写入 build/score_debug.csv（{len(rows) - 1} 行）")
 
 
 if __name__ == "__main__":

@@ -10,3 +10,7 @@ scripts/__pycache__/
 # 编辑器
 .vscode/
 .idea/
+
+# 构建产物 / 本地预览
+build/
+tmp/
