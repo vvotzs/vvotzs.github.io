@@ -61,6 +61,33 @@ Jun 补充的三条口径：
 App 内 VoIP（Saily 等）标 `false`，不给 U；社区说法只算 `unknown`。
 只在详情页显示事实标签，收起态卡片不显示。
 
+### eSIM 9 维通信参数（`deals.json` 字段）
+
+2026-11-21 起，含号 eSIM 在 `deals.json` 里逐条写齐 8 项，详情页事实区直接由字段渲染
+（`esim_comm_facts()`），不再只靠正文叙述：
+
+| 字段 | 取值 | 口径 |
+|---|---|---|
+| `has_number` / `phone_number` | bool / `"+852"` | 运营商原生号码（不是 App 内 VoIP 号）与号段国码 |
+| `cn_roaming` | true / false / `"unknown"` | 能否在中国大陆接入漫游网络（语音/短信） |
+| `free_sms_roam` | 同上 | 在大陆收短信是否免费（含 VoWiFi 通道） |
+| `vowifi` | `"true"` / `"false"` / `"unknown"` / `"n/a"` | 仅官网或实测明确时给 true/false |
+| `long_term_keep` | bool / `"unknown"` | 号码能否长期保留（试用号、游客卡为 false） |
+| `annual_keep_cost` / `_en` | 字符串 | 每年最低维护成本，带货币、周期与充值档位 |
+| `online_activation` | `cloud` / `partial` / `on_site` / `on_arrival` | 云开 / 部分线上 / 需到店 / 需落地 |
+| `local_kyc` | bool / `"unknown"` | 是否必须当地证件或实名 |
+| `euicc_compat` | `works` / `partial` / `blocked` / `whitelist` / `"unknown"` | 第三方实体 eUICC（eSTK / 9eSIM 等）能否写入：`whitelist` 是运营商走 EID 白名单，`blocked` 是明确屏蔽或写不进 |
+
+`comm_note` / `comm_note_en` 写明该条的关键限制（如「VoWiFi 只限本国」），`comm_source`
+留证据页面，`comm_verified` 是核对日期。没有官网依据的项一律 `unknown`，不靠推断。
+
+第 9 维（2026-11-21 应 Jun 要求补）专记第三方可插拔 eUICC：`euicc_compat` 取值同上，
+`euicc_note` / `euicc_note_en` 写清楚是哪类卡能写、哪类会被拒，`euicc_source` 留社区实测帖。
+EID 号段决定兼容性：eSTK 为 G+D（89049032），9eSIM V3 为 Kigen（89044045），
+9eSIM V0 / V0 Max / B1 与多数小白卡是东信和平 ECP（89086030），部分运营商专门拉黑国产号段；
+美系与日系运营商普遍做 EID 白名单，中国大陆运营商因 China CI 与机卡锁定也写不进。
+同一条只写「有实测」或「有明确限制」，没实测就 `unknown`。
+
 ### utility（U，+15）
 
 `U=1` 只给两类：

@@ -1511,6 +1511,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         facts.append(
             f'<li><span>{"VoWiFi" if not is_en else "VoWiFi"}</span><b class="dp-kyc">{e(vowifi_fact(deal, is_en))}</b></li>'
         )
+        facts.extend(esim_comm_facts(deal, is_en))
 
     # 内链：给搜索引擎更多可爬路径，也给读者一个继续逛的入口
     rel_items = []
@@ -2622,6 +2623,67 @@ def kyc_fact(deal: dict, is_en: bool) -> str:
     return text
 
 
+def _yn3(value: object, is_en: bool) -> str:
+    """三态：True / False / unknown（缺省也算 unknown）。"""
+    if value is True:
+        return "Yes" if is_en else "可"
+    if value is False:
+        return "No" if is_en else "不可"
+    return "Unconfirmed" if is_en else "未确认"
+
+
+def _kyc3(value: object, is_en: bool) -> str:
+    """当地实名三态：需要 / 不需要 / 未确认。"""
+    if value is True:
+        return "Required" if is_en else "需要"
+    if value is False:
+        return "Not required" if is_en else "不需要"
+    return "Unconfirmed" if is_en else "未确认"
+
+
+def esim_comm_facts(deal: dict, is_en: bool) -> list[str]:
+    """eSIM 详情页的 8 项通信参数（号码 / 大陆漫游 / 大陆收短信 / 保号 /
+    年成本 / 开通方式 / 当地实名，VoWiFi 另由 vowifi_fact 出）。
+
+    字段由 2026-11-21 的官网与实测核对写入 data/deals.json；缺字段的条目
+    直接不出行，不猜值。
+    """
+    if not deal.get("has_number"):
+        return []
+    rows: list[tuple[str, str]] = []
+    prefix = deal.get("phone_number") or ""
+    rows.append(("号码" if not is_en else "Number",
+                 (f"{prefix} 真号" if not is_en else f"Real {prefix} number") if prefix
+                 else ("有" if not is_en else "Yes")))
+    rows.append(("大陆漫游" if not is_en else "Roam in China", _yn3(deal.get("cn_roaming"), is_en)))
+    rows.append(("大陆收短信" if not is_en else "Free SMS in China", _yn3(deal.get("free_sms_roam"), is_en)))
+    rows.append(("长期保号" if not is_en else "Keep number", _yn3(deal.get("long_term_keep"), is_en)))
+    cost = deal.get("annual_keep_cost_en" if is_en else "annual_keep_cost")
+    if cost:
+        rows.append(("年保号成本" if not is_en else "Yearly cost", cost))
+    mode = deal.get("online_activation")
+    modes = {
+        "cloud": ("云开（线上）", "Online"),
+        "partial": ("部分线上", "Partly online"),
+        "on_site": ("需到店", "In store"),
+        "on_arrival": ("需落地", "On arrival"),
+    }
+    if mode in modes:
+        rows.append(("开通方式" if not is_en else "Activation", modes[mode][1 if is_en else 0]))
+    rows.append(("当地实名" if not is_en else "Local KYC", _kyc3(deal.get("local_kyc"), is_en)))
+    euicc = deal.get("euicc_compat")
+    euicc_labels = {
+        "works": ("可写入", "Works"),
+        "partial": ("写入不兼容", "Writes but fails"),
+        "blocked": ("会被拒", "Blocked"),
+        "whitelist": ("需 EID 白名单", "EID whitelist"),
+        "unknown": ("未确认", "Unconfirmed"),
+    }
+    if euicc in euicc_labels:
+        rows.append(("实体 eUICC" if not is_en else "3rd-party eUICC", euicc_labels[euicc][1 if is_en else 0]))
+    return [f'<li><span>{e(label)}</span><b class="dp-kyc">{e(value)}</b></li>' for label, value in rows]
+
+
 def vowifi_fact(deal: dict, is_en: bool) -> str:
     level = deal.get("vowifi")
     labels = {
@@ -2631,7 +2693,11 @@ def vowifi_fact(deal: dict, is_en: bool) -> str:
     }
     if level not in labels:
         return ""
-    return labels[level][1 if is_en else 0]
+    text = labels[level][1 if is_en else 0]
+    note = deal.get("vowifi_note_en" if is_en else "vowifi_note")
+    if note:
+        text += f" ({note})" if is_en else f"（{note}）"
+    return text
 
 
 def order_category_deals(deals: list[dict], slug: str, today=None) -> list[dict]:
