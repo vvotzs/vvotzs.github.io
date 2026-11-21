@@ -3,7 +3,7 @@
   "generated_at": "2026-11-21T10:45:00Z",
   "_meta": {
     "title": "羊毛情报局采集源表（P0/P1/P2 分层调度）",
-    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual",
+    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets",
     "cadence": {
       "rounds_per_day": 7,
       "round_times_local": [
@@ -1825,6 +1825,111 @@
         "www.u7buy.com"
       ],
       "manual_note": "游戏币/代充市场：卖家第三方，只人工核"
+    },
+    {
+      "id": "ota-airline-esim",
+      "name": "OTA / 航司联名免费 eSIM（Klook / Trip.com / Agoda / Omio）",
+      "url": "https://www.klook.com/rewards/",
+      "tier": "P1",
+      "entry_type": "search",
+      "cadence_h": 24,
+      "categories": [
+        "esim"
+      ],
+      "lang": "en",
+      "status": "active",
+      "added_at": "2026-11-21T12:30:00Z",
+      "last_crawled_at": null,
+      "last_hit_at": null,
+      "keyword_pool": "ota_airline",
+      "entries": [
+        {
+          "kind": "search_group",
+          "domains": [
+            "klook.com",
+            "trip.com",
+            "agoda.com",
+            "omio.com"
+          ],
+          "term_set": "ota_airline"
+        }
+      ],
+      "verify_urls": {
+        "klook.com": "https://www.klook.com/rewards/benefit/?benefit_key=esim",
+        "trip.com": "https://www.trip.com/customer/loyalty",
+        "agoda.com": "https://www.agoda.com/press/agoda-launches-free-global-esims-for-vip-diamond-members/"
+      },
+      "note": "2026-11-21 深挖新增：显式写了 free eSIM 的 OTA 会员 / 联名入口优先（Klook Rewards、Trip.com 白金+、Agoda VIP Diamond、Omio × Kolet）；纯满减码（Klook 99% off、$1 eSIM）不收录"
+    },
+    {
+      "id": "airline-esim-partners",
+      "name": "航司 × eSIM 联名（Kolet / SAS / Air India / Sun PhuQuoc）",
+      "url": "https://www.kolet.com/",
+      "tier": "P2",
+      "entry_type": "search",
+      "cadence_h": 168,
+      "categories": [
+        "esim"
+      ],
+      "lang": "en",
+      "status": "active",
+      "added_at": "2026-11-21T12:30:00Z",
+      "last_crawled_at": null,
+      "last_hit_at": null,
+      "keyword_pool": "airline_esim",
+      "entries": [
+        {
+          "kind": "search_group",
+          "domains": [
+            "kolet.com",
+            "flysas.com",
+            "airindia.com",
+            "sunphuquocairways.com"
+          ],
+          "term_set": "airline_esim"
+        }
+      ],
+      "verify_urls": {
+        "kolet.com": "https://help.kolet.com/en/articles/8656385-when-does-my-data-plan-start-and-what-is-the-validity",
+        "flysas.com": "https://www.flysas.com/en/travel-extras/travelesim",
+        "airindia.com": "https://www.airindia.com/in/en/maharaja-club/partner-offers/kolet.html",
+        "sunphuquocairways.com": "https://connect.sunphuquocairways.com/sg/en"
+      },
+      "note": "2026-11-21 深挖新增：Kolet 的 co-branded 子站（virginatlantic / vietnamairlines / corendon / airindia / klm 等 *.shop.kolet.com）都落在 kolet.com 下；TAROM × Ubigi 与 Virgin Atlantic、myPAL 已有独立条目，命中时先查 dedup"
+    },
+    {
+      "id": "media-event-esim",
+      "name": "科技媒体 / 音乐节 / 活动方 × eSIM 与运营商（VOXI / CNET / 媒体联名）",
+      "url": "https://www.voxi.co.uk/voxi-drop",
+      "tier": "P2",
+      "entry_type": "search",
+      "cadence_h": 168,
+      "categories": [
+        "esim"
+      ],
+      "lang": "en",
+      "status": "active",
+      "added_at": "2026-11-21T12:30:00Z",
+      "last_crawled_at": null,
+      "last_hit_at": null,
+      "keyword_pool": "media_event",
+      "entries": [
+        {
+          "kind": "search_group",
+          "domains": [
+            "voxi.co.uk",
+            "cnet.com",
+            "cnetfrance.fr",
+            "iphon.fr"
+          ],
+          "term_set": "media_event"
+        }
+      ],
+      "verify_urls": {
+        "voxi.co.uk": "https://www.voxi.co.uk/voxi-drop",
+        "cnet.com": "https://www.cnet.com/"
+      },
+      "note": "2026-11-21 深挖新增（Jun 补充线索）：音乐节 / 活动方 × 运营商免费流量与科技媒体 × eSIM 合作都必须回到官方页核实；只挂官方直链，媒体专属返利码（如 ESIMCOMPARE / CWJK257）不收录"
     }
   ],
   "paused_sources": [
@@ -2075,6 +2180,79 @@
         "promo",
         "promotion",
         "offer"
+      ]
+    },
+    "ota_airline": {
+      "label": "OTA / 航司联名 free eSIM 词集（search_group 专用）",
+      "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6；零结果后下次走 fallback",
+      "T0": [
+        "free eSIM",
+        "free data",
+        "member eSIM",
+        "loyalty eSIM",
+        "partner offer",
+        "eSIM perk"
+      ],
+      "T1": [
+        "free eSIM",
+        "complimentary eSIM",
+        "travel eSIM offer",
+        "perks",
+        "giveaway",
+        "1GB free"
+      ],
+      "fallback": [
+        "free eSIM",
+        "eSIM offer",
+        "free data"
+      ]
+    },
+    "airline_esim": {
+      "label": "航司 × eSIM 联名词集（search_group 专用）",
+      "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6；零结果后下次走 fallback",
+      "T0": [
+        "free eSIM",
+        "complimentary data",
+        "Kolet",
+        "1GB free",
+        "onboard data"
+      ],
+      "T1": [
+        "free data",
+        "eSIM partner",
+        "loyalty eSIM",
+        "complimentary eSIM",
+        "inflight data"
+      ],
+      "fallback": [
+        "free eSIM",
+        "free data",
+        "eSIM"
+      ]
+    },
+    "media_event": {
+      "label": "科技媒体 / 音乐节 / 活动方 × eSIM 与运营商词集（search_group 专用）",
+      "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6；零结果后下次走 fallback",
+      "T0": [
+        "VOXI festival",
+        "CNET Ubigi",
+        "media partner free eSIM",
+        "festival eSIM",
+        "free eSIM",
+        "reader offer"
+      ],
+      "T1": [
+        "VOXI Drop",
+        "festival data",
+        "media partner eSIM",
+        "tech media eSIM",
+        "free data pass",
+        "giveaway eSIM"
+      ],
+      "fallback": [
+        "VOXI festival",
+        "CNET Ubigi",
+        "media partner free eSIM"
       ]
     }
   }

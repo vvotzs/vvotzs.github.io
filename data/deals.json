@@ -8396,6 +8396,53 @@
   ]
  },
  {
+  "id": "jegotrip-cmlink-free-20gb-uk",
+  "dedup_key": "cmlink|esim|gb|jegotrip-cmlink-free-20gb-uk",
+  "title": "[英区] JegoTrip（CMLink 无忧行）免费领 20GB 英国 eSIM + 英国号码（限量补货）",
+  "brand": "CMLink",
+  "domain": "jegotrip.com",
+  "category": "esim",
+  "value": "20GB + 英国号码（约 £9 / $12）",
+  "value_num": 12,
+  "cost": "真正免费",
+  "highlight": "下载 JegoTrip-CMLink App 用英国号码登录，在「我的」页 0 元领英国 eSIM：20GB 本土高速流量 + 可长期免费收短信的 +44 号码，限量补货先到先得",
+  "regions": "[英区] 中国移动国际 CMLink 英国卡，流量限英国本土使用；App 需用英国、日本、泰国或新加坡手机号注册，只有英国号能领 20GB + 英国号码",
+  "start": "",
+  "end": "",
+  "content": "中国移动国际（CMI）的 JegoTrip-CMLink App 一直在做拉新：新用户用英国号码注册登录，即可在「我的」页 0 元领取一张 CMLink 英国 eSIM，含 1 个 +44 号码与 20GB 英国本土高速流量（原价 £9），2026-05、06、07 多次补货、每批约 1000 份，基本当天抢完；用日本 / 泰国 / 新加坡号码注册只能拿 1GB 中港旅游流量。号码终身零月租、可长期免费收短信，不支持语音通话；领取后 1 年内激活，激活后 20GB 有效 28 天。激活须在中国内地以外（英国 / 香港基站，或 Wi-Fi Calling 环境），社区反馈 Wi-Fi Calling 通道 2026 年下半年已收紧。",
+  "conditions": "必须用英国手机号注册登录（其它三国号码只有 1GB 中港包）；每设备 / 每账号限领 1 次；激活须在中国内地以外，或用能拉起 Wi-Fi Calling 的英国 / 香港网络；领取后 1 年内激活，激活后 20GB 有效 28 天；号码只能收短信、不能打电话；限量补货、先到先得。",
+  "steps": [
+   "在英区 App Store / Google Play 下载 JegoTrip-CMLink，用英国号码接收验证码注册",
+   "登录后在首页或「我的」页找到 20GB 英国流量横幅，0 元下单领取",
+   "把 eSIM 装到支持 eSIM 的解锁手机上",
+   "到英国 / 香港或能拉起 Wi-Fi Calling 的环境激活，20GB 从激活起 28 天有效"
+  ],
+  "url": "https://www.jegotrip.com/globalwebsite/mobile/downLoad/",
+  "source": "JegoTrip 官方下载与介绍页（2026-11 仍在推新用户首登礼）+ 奶昔论坛 thread-12499（2026-06-12）+ NodeSeek post-845619 / post-845273（2026-07-28）+ Huoke 实测（2026-05-13）+ 通信界 / 凤凰网（2026-06 / 2026-10：新老用户注册即领 20GB）",
+  "risk": "限量补货、抢完即止，去时可能已无库存；没有英国号就拿不到 20GB；大陆无法直接激活，Wi-Fi Calling 通道 2026 下半年多次被指失效；号码不能打电话，长期保号需保持余额或另买套餐；官网口径未明写活动截止日，以 App 横幅为准。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T20:29:00+08:00",
+  "status": "active",
+  "kyc_level": "cn_ok_extra",
+  "vowifi": "true",
+  "vowifi_note": "社区反馈靠 Wi-Fi Calling 可在境外激活，2026 下半年通道时好时坏",
+  "utility": 0,
+  "identity_requirement": "email",
+  "phone_requirement": "specific_country",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "geo_restriction": [
+   "GB"
+  ],
+  "has_number": true,
+  "free_sms_roam": true,
+  "long_term_keep": true
+ },
+ {
   "id": "1free-eu-host-vps",
   "dedup_key": "1free|cloud|global|host-vps",
   "title": "[全球] 1free.eu 永久免费虚拟主机 + VPS S 30 天免费（免信用卡）",
@@ -8583,7 +8630,7 @@
   "start": "2026-11-12",
   "end": "2026-12-31",
   "verified": true,
-  "last_verified": "2026-11-19",
+  "last_verified": "2026-11-21",
   "added": "2026-11-19",
   "content": "Pelago（新加坡航空旗下旅游平台）给 KrisFlyer 会员的免费 eSIM：把 2027-03-31 前出发的新航或酷航订单绑定到 KrisFlyer 账号，在 Pelago App 内选「KrisFlyer Exclusive: 2GB for 3 Days」全球漫游 eSIM（118 国），结账时输入 PELAGOESIM 即 0 元。每位会员最多 2 次；官方条款写明适用于 2026-11-12 至 12-31 期间预订的机票。",
   "conditions": "需为 KrisFlyer 会员；需有 2027-03-31（含）前出发的新航/酷航航班并绑定到 KrisFlyer；仅限 Pelago App 内下单；每人最多 2 次；其它常旅客计划（含星空联盟）订单不适用；eSIM 仅含数据。",
@@ -8658,7 +8705,7 @@
   "start": "2026-11-16",
   "end": "2026-12-31",
   "verified": true,
-  "last_verified": "2026-11-19",
+  "last_verified": "2026-11-21",
   "added": "2026-11-19",
   "content": "Klook 官方 Data Bank 活动（2026-11-16 至 2026-12-31，或数据礼盒领完即止）：符合市场的已登录 Klook 用户可领 1 个神秘数据礼盒，数量 0.5GB–50GB，数量大的概率更低；领到后存在 Data Bank（以「Gift from Klook」名义），180 天内有效、每次入账重置 180 天。领自己的礼盒会解锁 2–5 个转赠给朋友的礼盒（0.5/1/3GB 解锁 5 个同量、7GB 解锁 2×3.5GB、15GB 解锁 3×5GB、25GB 解锁 5×5GB、50GB 解锁 5×10GB）。",
   "conditions": "仅限台湾、泰国、马来西亚、越南居住的 Klook 账户；每账户只能领 1 次；Data Bank 数据必须叠加在购买的合格 eSIM 上使用，不能单独当免费 eSIM；不能与优惠码/优惠券同单叠加；本国/本市场 eSIM 不可用；阿根廷、文莱、中南美、哥伦比亚、关岛、肯尼亚、马尔代夫、蒙古、尼日利亚、巴拿马、格陵兰、非洲、印度洋等目的地不支持。",
@@ -9659,6 +9706,50 @@
   ]
  },
  {
+  "id": "sun-phuquoc-free-esim-5gb",
+  "dedup_key": "sun-phuquoc|esim|multi|free-esim-5gb",
+  "title": "[越南] 太阳富国航空：国际旅客免费 5GB eSIM（24 小时 / MobiFone 网）",
+  "brand": "Sun PhuQuoc Airways",
+  "domain": "sunphuquocairways.com",
+  "category": "esim",
+  "value": "5GB / 24 小时（约 $8）",
+  "value_num": 8,
+  "cost": "真正免费",
+  "highlight": "乘太阳富国航空入境越南的国际旅客，凭 PNR + 姓氏 + 邮箱在专属页面领 5GB / 24 小时免费 eSIM，落地拨 900 激活；活动到 2027-08-31",
+  "regions": "[越南] 仅限乘 Sun PhuQuoc Airways 国际航班入境越南的旅客（成人 ADT 与儿童 CHD）；5GB 在越南境内走 MobiFone 网络",
+  "start": "2026-09-01",
+  "end": "2027-08-31",
+  "content": "太阳富国航空（Sun PhuQuoc Airways）与 VTC、MobiFone 合作的 0 越南盾 eSIM：国际旅客在 connect.sunphuquocairways.com 输入 PNR 或票号、姓氏（大写、去声调）与邮箱，通过 eKYC 上传护照资料页与本人照片后，当场拿到二维码并邮件留档。5GB 高速流量从落地拨 900 激活时开始算 24 小时，提前安装不消耗时长；用完后可在同一页面加购，无需重新 eKYC。注册窗口为单程落地后 4 天内、往返则在返程起飞前。",
+  "conditions": "必须是乘该航司国际航班入境越南的旅客，退票 / 无效订座 / 作弊不适用；同一护照 30 天内只能领 1 张；需 eKYC 上传护照页与本人照片；设备须为解锁且支持 eSIM；24 小时或 5GB 先到先停；加购部分自费。",
+  "steps": [
+   "打开 connect.sunphuquocairways.com，输入 6 位 PNR / 票号、姓氏与邮箱",
+   "选择要领取的乘客，勾选条款，按提示进入 MobiFone 的 eKYC 上传护照页与本人照片",
+   "拿到二维码后当场安装（建议出发前在稳定 Wi-Fi 下完成）",
+   "落地越南后拨 900 免费激活，5GB / 24 小时开始计时"
+  ],
+  "url": "https://www.sunphuquocairways.com/gl/en/explore/offers/stay-connected-in-vietnam-a-free-esim-for-a-million-experiences",
+  "source": "太阳富国航空官方活动页（2026-09-01–2027-08-31）+ connect.sunphuquocairways.com 政策与指南页 + abay.vn 越语活动细则",
+  "risk": "只对真飞该航司的国际入境航班有效，代订 / 包机是否算未公开；5GB 只 24 小时，第二天就得加购；eKYC 要上传护照与自拍，介意隐私的慎用；过期未激活作废。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T20:25:00+08:00",
+  "status": "active",
+  "kyc_level": "foreign_only",
+  "vowifi": "n/a",
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios",
+   "web"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "teleagent-free-cloud-pc",
   "dedup_key": "teleagent|ai|cn|free-cloud-pc",
   "title": "[中国区] 中国电信 TeleAgent 星辰：免费版内置 Windows 云电脑",
@@ -9751,6 +9842,49 @@
   "funding_requirement": "min_deposit",
   "geo_restriction": [
    "HR"
+  ]
+ },
+ {
+  "id": "trip-com-member-free-esim",
+  "dedup_key": "trip-com|esim|global|member-free-esim",
+  "title": "[全球] Trip.com 白金及以上会员：免费全球 eSIM（1GB/3 天起，最高 8×3GB）",
+  "brand": "Trip.com",
+  "domain": "trip.com",
+  "category": "esim",
+  "value": "1GB–24GB 免费（按等级）",
+  "value_num": 8,
+  "cost": "真正免费",
+  "highlight": "会员权益页写明：白金会员免费领 1GB/3 天，钻石 3GB/5 天，钻石+ 两份、黑钻 8 份；在 App 里挑带会员标签的 eSIM 产品下单即 0 元",
+  "regions": "[全球] Trip.com 白金、钻石、钻石+、黑钻会员；免费数据包覆盖 70+ 个国家 / 地区，仅限 App 内使用",
+  "start": "",
+  "end": "",
+  "content": "Trip.com 会员权益（2026-11-21 实测官方会员页）：Platinum 1×1GB/3 天，Diamond 1×3GB/5 天，Diamond+ 2×3GB/5 天，Black Diamond 8×3GB/5 天。用法是在 Trip.com App 的会员权益里选带「Platinum Member / Diamond Member」等标签的 eSIM 产品，下单时套用权益即 0 元，付款后收到含二维码的激活邮件；只有在 App 内下单才支持，网站与手机网页不行。等级门槛：Platinum 需 8 笔合格订单且满 US$1,000，Diamond 累计 US$10,000，Diamond+ 邀请制，Black Diamond 见官方规则。",
+  "conditions": "需先达到对应会员等级（白金 8 笔 + US$1,000、钻石 US$10,000）；仅限 Trip.com App 内下单并套用权益；只对带会员标签的 eSIM 产品生效，额度与目的地以产品页为准；若订单可免费取消，取消后配额退回，不可取消则配额作废；数据卡无号码。",
+  "steps": [
+   "在 Trip.com App 登录，进入会员权益（Rewards）找到 Free Global eSIM Data Package",
+   "点 Use Now 打开带会员标签的 eSIM 产品，确认目的地与额度",
+   "下单时套用该权益，确认应付为 0 并支付",
+   "按邮件里的二维码安装 eSIM，抵达后启用数据漫游"
+  ],
+  "url": "https://www.trip.com/customer/loyalty",
+  "source": "Trip.com 官方会员权益页（2026-11-21 实测各档额度：Platinum 1×1GB/3 天、Diamond 1×3GB/5 天、Diamond+ 2 份、Black Diamond 8 份，及各自门槛）+ 官方 Free Global eSIM Data Package T&C",
+  "risk": "门槛偏高，本质是常旅客福利，为凑等级而多订不划算；只覆盖 70+ 国，冷门目的地可能没有；网站端领不到，必须用 App；取消订单可能吃掉配额。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T20:26:00+08:00",
+  "status": "active",
+  "kyc_level": "none",
+  "vowifi": "n/a",
+  "utility": 0,
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
   ]
  },
  {
@@ -9942,6 +10076,49 @@
   "status": "active",
   "kyc_level": "none",
   "utility": 0
+ },
+ {
+  "id": "sas-travel-esim-hubby",
+  "dedup_key": "sas|esim|multi|travel-esim-hubby",
+  "title": "[北欧] SAS 北欧航空 × Hubby：随票送 2 天免费 eSIM（190+ 国，EuroBonus）",
+  "brand": "SAS",
+  "domain": "flysas.com",
+  "category": "esim",
+  "value": "2 天流量（约 $5–10）",
+  "value_num": 6,
+  "cost": "真正免费",
+  "highlight": "符合条件的 SAS 机票在 App 的 My trip 里直接躺着一张免费 eSIM，落地就有 2 天流量、190+ 国可用，不用另买本地卡",
+  "regions": "[北欧] SAS 执飞的国际航班（首发重点为欧盟以外的机票），覆盖 190+ 个国家 / 目的地",
+  "start": "",
+  "end": "",
+  "content": "SAS 与荷兰白标 eSIM 商 Hubby 合作的「SAS Travel eSIM」（2026-06-16 上线）：符合条件的机票会在 SAS App 的 My trip 里附带一张免费 eSIM，含 2 天移动数据、覆盖 190+ 国，出发前在稳定 Wi-Fi 下安装、落地再激活即可；之后在 App 内加购，加购部分按 EuroBonus 攒分。SAS 官方页面只写「2 天」，未写流量；发布时的口径是 1GB，实际额度以 App 内该订单显示为准。",
+  "conditions": "需 EuroBonus 账户并在 SAS App 登录才能看到；只对「符合条件（eligible）」的 SAS 机票发放，官方未定义哪些订单算合格，首发以欧盟以外机票为主；免费部分只有 2 天，后续加购自费；纯数据卡，原号码保留；安装需 Wi-Fi。",
+  "steps": [
+   "下载 SAS App，用 EuroBonus 账号登录",
+   "打开 My trip 里对应的行程，找到随票附带的 eSIM",
+   "在稳定 Wi-Fi 下点 Get my eSIM 完成安装（此时不计时）",
+   "落地后按 App 指引激活，2 天流量开始计算；不够用再在 App 内加购"
+  ],
+  "url": "https://www.flysas.com/en/travel-extras/travelesim",
+  "source": "SAS 官方 Travel eSIM 页（2026-11-21 复核：2 days of free mobile data、190+ 国、EuroBonus 登录）+ Travolution（2026-06-16）+ OpenSim 复核（2026-08-13：官方未公布 1GB 与合格订单定义）",
+  "risk": "官方至今没写清 1GB 额度与「2 天」的起算方式（48 小时还是两个自然日），以 App 显示为准；不是每张票都有；代飞 / 里程票 / 团票是否适用未公开；后续加购按当地价，可能不如另买 eSIM。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T20:23:00+08:00",
+  "status": "active",
+  "kyc_level": "none",
+  "vowifi": "n/a",
+  "utility": 0,
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "workbuddy-hy4-flash-free-nov2026",
@@ -10150,7 +10327,7 @@
   "start": "",
   "end": "",
   "verified": true,
-  "last_verified": "2026-11-19",
+  "last_verified": "2026-11-21",
   "added": "2026-11-19",
   "content": "Kolet 与维珍航空的合作落地页（virginatlantic.shop.kolet.com）给 1GB 免费流量，官方说明约等于 2 天移动上网，不需要信用卡、无合约，覆盖 190 个目的地。装 Kolet App 后选目的地领取即可，用完后可在 App 内按当地价格续充，没用完的流量还能转成下次的额度。NodeSeek 2026-11-13、NodeLoc 与奶昔论坛同日跟帖实测大陆可用，1GB / 2 天口径一致。",
   "conditions": "需装 Kolet App、邮箱注册并通过手机号验证；eSIM 兼容且解锁的手机；同一 EID / 设备只能领一次（重复领第二张会没信号）；1GB 免费额度约 2 天有效；纯流量无号码。",
@@ -10161,7 +10338,7 @@
    "扫码安装 eSIM，开数据漫游；用完后可在 App 内续充"
   ],
   "url": "https://virginatlantic.shop.kolet.com/",
-  "source": "Kolet × Virgin Atlantic 官方合作页（2026-11 仍在展示 1GB 免费）；NodeSeek post-1051360（2026-11-13）、NodeLoc、奶昔论坛 thread-16469（2026-11-13）",
+  "source": "Kolet × Virgin Atlantic 官方合作页（2026-11 仍在展示 1GB 免费）+ 维珍航空官网 Kolet 页 virginatlantic.com/en-EU/experience/upgrades-and-extras/kolet（2026-11-21 复核：1GB、约 2 天、无需信用卡）+ NodeSeek post-1051360（2026-11-13）、NodeLoc、奶昔论坛 thread-16469（2026-11-13）",
   "risk": "只有约 2 天，用完即停；一台设备只能嫖一次，重装无效（社区称其「黑 EID」）；领取要过手机号验证，虚拟号可能被拦。",
   "status": "active",
   "added_at": "2026-11-19T02:49:59+08:00",
@@ -10852,6 +11029,308 @@
    "ios"
   ],
   "phone_requirement": "specific_country",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
+  "id": "urnetwork-free-tier-30gib",
+  "dedup_key": "urnetwork|software|global|free-tier-30gib",
+  "title": "[全球] URnetwork 免费住宅出口 30 GiB/天：免绑卡、2 台设备",
+  "highlight": "邮箱 / Google / Apple 注册就每天领 30 GiB（约 900 GiB/月）免费额度，免绑卡、不是试用，Android / iOS / Windows / macOS / Linux 全端可用，最多 2 台设备同时连，出口是 108 个国家和地区的成员住宅节点。",
+  "brand": "URnetwork（BringYour）",
+  "domain": "ur.io",
+  "category": "software",
+  "value": "≈ $5/月（对标 UR Pro）",
+  "value_num": 5,
+  "cost": "真正免费",
+  "regions": "[全球] 全平台通用，一个账号全端登录；出口为 108 个国家/地区的成员住宅节点，实际能选到哪个国家/城市取决于当时在线的 Provider",
+  "start": "",
+  "end": "",
+  "content": "URnetwork 是 BringYour, Inc.（美国特拉华州）的开源去中心化隐私网络，官网标注 106,524 个 Provider、覆盖 108 个国家/地区。免费档（Community）既不是试用也不用绑卡：每个账号每天 00:00 UTC（北京时间 08:00）自动发 30 GiB 数据，约合 900 GiB/月，当天没用完不结转，用完新连接直接停、等下次刷新，不降速。登录方式只要邮箱 / 手机号 + 密码、Google、Apple 或钱包，官方另有不填任何资料的 Instant Account（注册时给一次恢复短语）。免费档同时最多 2 台设备在线；Android / iOS / Windows / macOS / Linux 与 Chrome / Edge / Firefox 扩展共用同一账号，系统客户端走整机流量，扩展只代理浏览器。免费档另含 5 个 HTTPS 托管代理，SOCKS5 与 WireGuard 配置属 Pro（$5/月或 $40/年，含 10 TiB/月）。官方还公开 Operator API 与 urn_ 开头的 API Key，可用程序化方式取 JWT、筛出口。",
+  "conditions": "免费档无需绑卡、不是试用，注册即得；额度每天 00:00 UTC 刷新，当天用不完不结转到第二天；免费档最多 2 台设备同时在线；用别人的出口不要求自己也共享网络，Provide 默认 Never，装完可再核对一次；免费档只有 HTTPS 托管代理，SOCKS5 与 WireGuard 属 Pro；数据双向合计，同账号设备之间互连也算进额度。",
+  "steps": [
+   "打开 ur.io 注册：邮箱 / 手机号 + 密码、Google、Apple 或钱包登录都行，走 Instant Account 的记得保存恢复短语",
+   "在手机或电脑上装对应客户端（Android / iOS / Windows / macOS / Linux），用同一个账号登录",
+   "连接后保留 Best available 自动选出口，或在国家 / 城市列表里挑延迟低的节点",
+   "北京时间每天 08:00 额度自动回到 30 GiB；当天用完会停，等刷新或另买一次性流量包"
+  ],
+  "url": "https://ur.io",
+  "source": "URnetwork 官方套餐页与数据说明 ur.io/products、ur.io/docs/about-your-data（2026-11-21 复核）+ X 社区实测讨论（@taiyanghere 2026-11-21 等）",
+  "risk": "出口是社区成员的住宅宽带，可用性与延迟随 Provider 在线状态波动，免费档不保证固定节点或持续可用；住宅 IP 仍会被目标站风控、弹验证码；每天 30 GiB 双向合计，用完即停；免费档限 2 台设备，SOCKS5 / WireGuard 要 Pro；2026-07 之前 Android 端曾默认共享本机网络，新装默认 Never，用之前建议在 Account → Settings 确认 Provide 为 Never。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T18:33:05+08:00",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios",
+   "web"
+  ]
+ },
+ {
+  "id": "klook-rewards-free-esim",
+  "dedup_key": "klook|esim|global|rewards-free-esim",
+  "title": "[全球] Klook Rewards 免费 eSIM：注册即领 500MB，黄金 2×1GB、白金 2×3GB",
+  "brand": "Klook",
+  "domain": "klook.com",
+  "category": "esim",
+  "value": "500MB–6GB 免费 eSIM",
+  "value_num": 5,
+  "cost": "真正免费",
+  "highlight": "注册 Klook 就送 1 张 500MB / 1 天 eSIM 券，不用下单；年消费满 US$500 升黄金再送 2×1GB（7 天），白金 2×3GB，结账时全额抵扣",
+  "regions": "[全球] 覆盖 100+ 目的地；按 Klook Rewards 会员等级发放（Explorer 注册即得、Gold 年消费 US$500、Platinum US$1,500），只认账户所在市场可领的券面",
+  "start": "",
+  "end": "",
+  "content": "Klook Rewards 的会员 eSIM 权益（2026-11-21 实测官方权益页仍在架）：Explorer 等级注册即得 1×500MB（1 天）；Gold（12 个月内完成 US$500 订单）2×1GB（7 天）；Platinum（再满 US$1,500）2×3GB（7 天）。领取路径是 Rewards 页点 Claim 把券收进账户，再点 Use 浏览合格 eSIM 产品，结账时套用，券按面额抵扣（官方注明「最大抵扣有上限，详见优惠码说明」）。覆盖 100+ 个目的地，券随会员等级有效期发放，等级到期即失效、不结转下一期。",
+  "conditions": "需注册并登录 Klook 账户（免费）；券按当前等级发放，升级才有更高档；必须在 Klook 购买合格 eSIM 产品并于结账时套用，不能提现、转赠或单独当流量卡用；Gold / Platinum 的门槛按过去 12 个月已完成订单金额计算，取消单不计；券有使用期限，过期作废。",
+  "steps": [
+   "注册 / 登录 Klook 账户，进入 Rewards 页",
+   "在 eSIM 权益卡点 Claim，把 500MB 券收进账户",
+   "点 Use 进入合格 eSIM 产品页，选目的地与套餐",
+   "结账时套用该券，确认抵扣后下单，按邮件 / App 内的二维码安装"
+  ],
+  "url": "https://www.klook.com/rewards/benefit/?benefit_key=esim",
+  "source": "Klook Rewards 官方权益页（2026-11-21 浏览器实测：Explorer 1×500MB/1 天、Gold 2×1GB/7 天、Platinum 2×3GB/7 天）+ Klook 官方博客会员礼遇说明",
+  "risk": "500MB 只够落地打卡、查地图；券有抵扣上限，部分目的地或套餐可能不适用；Gold 要真实消费 US$500、Platinum 再 US$1,500，为凑单不划算；券到期即作废，不能留到下次。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T20:20:00+08:00",
+  "status": "active",
+  "kyc_level": "none",
+  "vowifi": "n/a",
+  "utility": 0,
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "android",
+   "ios",
+   "web"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
+  "id": "airfrance-klm-kolet-free-1gb",
+  "dedup_key": "kolet|esim|nl|airfrance-klm-kolet-free-1gb",
+  "title": "[法/荷区] 法航 · 荷航 × Kolet：Flying Blue 会员免费 1GB / 2 天（码 AFKLDATA / FBDEAL）",
+  "brand": "Kolet",
+  "domain": "kolet.com",
+  "category": "esim",
+  "value": "1GB / 2 天（约 $5）",
+  "value_num": 5,
+  "cost": "真正免费",
+  "highlight": "荷航官方合作页写明：首次用 Kolet 的旅客免费领 1GB、2 天可用，190+ 国；不买机票也能领，另送首单 9 折与每 €1 攒 10 Flying Blue 里程",
+  "regions": "[法/荷区] 法航、荷航与 Transavia France 的旅客及 Flying Blue 会员；eSIM 本身覆盖 190+ 个目的地，领取不要求有飞行订单",
+  "start": "",
+  "end": "",
+  "content": "法航、荷航与法国 eSIM 商 Kolet 的联名（2024-11-25 上线，2026 年仍在架）：在荷航 Flying Blue 的 Kolet 门户或 Kolet App 内输入 FBDEAL（法航官网同时给出 AFKLDATA），首次使用的旅客可领 1GB 免费流量、2 天有效，覆盖 190+ 国；所有数据套餐 9 折，每消费 €1 攒 10 Flying Blue 里程，邀请朋友首次买套餐双方各得 250 里程，法荷两地还能用 Flying Blue+ 以里程抵扣。同集团的 Transavia France 自 2026-05 起走同一套模板，乘客落地即得最多 1GB / 2 天。",
+  "conditions": "仅限从未用过 Kolet 的新用户；需安装 Kolet App 或走荷航 Flying Blue 专属门户，用邮箱注册；想攒里程要在付款前绑定 Flying Blue 会员号；1GB 免费额度 2 天；纯数据卡、无号码；9 折不含月付套餐，也不能与其它促销叠加。",
+  "steps": [
+   "打开荷航 Flying Blue 的 Kolet 合作页，点 Explore with Kolet 或在 Kolet App 内注册",
+   "输入 FBDEAL（法航用户可用 AFKLDATA），填邮箱领取 1GB 免费流量",
+   "选目的地与出发日期，安装 eSIM（出发前在稳定 Wi-Fi 下完成）",
+   "落地后启用数据；要攒里程就在 App 的 Profile 里补填 Flying Blue 会员号"
+  ],
+  "url": "https://www.klm.com/information/flying-blue/earn-miles/shopping-partners/kolet-e-sim",
+  "source": "荷航官方 Kolet 合作页（2026-11-21 复核，写明 1GB free for 2 days、first-time user only、FBDEAL）+ 法航企业新闻稿（2024-11-25，AFKLDATA）+ Travolution / Air Journal（2026-05-04，Transavia France 同款 1GB / 2 天）",
+  "risk": "1GB 免费只给首次使用 Kolet 的账号与设备，重装无效；2 天或 1GB 用完即停；大陆漫游能否拉起未在法荷官网承诺（维珍版社区实测可用，本版暂无实测）；9 折与里程优惠仅限付费套餐。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T20:21:00+08:00",
+  "status": "active",
+  "kyc_level": "none",
+  "vowifi": "n/a",
+  "utility": 0,
+  "identity_requirement": "email",
+  "phone_requirement": "any_number",
+  "platform_requirement": [
+   "android",
+   "ios",
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
+  "id": "air-india-kolet-free-1gb",
+  "dedup_key": "kolet|esim|in|air-india-kolet-free-1gb",
+  "title": "[印度区] 印度航空 Maharaja Club × Kolet：免费 1GB / 2 天，越南航空、Corendon 同款在架",
+  "brand": "Kolet",
+  "domain": "kolet.com",
+  "category": "esim",
+  "value": "1GB / 2 天（约 $5）",
+  "value_num": 5,
+  "cost": "真正免费",
+  "highlight": "Maharaja Club 会员在 airindia.shop.kolet.com 领 1GB、2 天免费流量，190 国可用；越南航空、Corendon 走同一模板，TAAG 2026-07 也已上线",
+  "regions": "[印度区为主] 印度航空 Maharaja Club 会员；越南航空 Lotusmiles、Corendon、TAAG 的联名落地页同样覆盖 190+ 目的地，均不要求先买机票",
+  "start": "",
+  "end": "",
+  "content": "Kolet 的航司联名模板：印度航空 Maharaja Club 的官方合作页写明会员可获「2 天、最多 1GB」的免费境外流量，入口是 Air India 专属的 Kolet 页面（airindia.shop.kolet.com），购买付费套餐还能按消费攒 Maharaja 积分（每 ₹100 得 6–10 分，页面两处口径不同，以下单页为准）。同一模板下：越南航空 Lotusmiles 会员在 vietnamairlines.shop.kolet.com 领 1GB / 2 天，每 US$1 攒 10 Lotusmiles；Corendon 走 corendon.shop.kolet.com；TAAG 安哥拉航空 2026-07-30 上线，目前以付费包与包裹邮件为主。",
+  "conditions": "需先免费注册对应航司的常旅客计划（Maharaja Club / Lotusmiles 等）；只能走各航司的 co-branded 链接或 Kolet App 内对应入口；限首次使用 Kolet 的新用户；免费额度约 1GB、2 天；纯数据卡、无号码；不能与其它折扣叠加。",
+  "steps": [
+   "免费注册 Maharaja Club（或越南航空 Lotusmiles），拿到会员号",
+   "从航司合作页进入 airindia.shop.kolet.com（越南航空为 vietnamairlines.shop.kolet.com）",
+   "选目的地与套餐，首次使用即显示 1GB 免费额度，确认应付为 0",
+   "安装 Kolet App 扫码装 eSIM，落地后启用数据；买付费套餐时填会员号攒里程"
+  ],
+  "url": "https://www.airindia.com/in/en/maharaja-club/partner-offers/kolet.html",
+  "source": "印度航空官方 Kolet 合作页（2026-11-21 复核，写明 2 days of free Internet access up to 1GB）+ Kolet 新闻稿（2025-08-04：Vietnam Airlines / Corendon / KrisFlyer）+ Kolet 帮助中心越南航空条目（2026-07 更新）+ alertify / 360 Angola（TAAG，2026-07-30）",
+  "risk": "必须先成为对应航司会员，入口按会员身份校验；1GB 只够 2 天轻度使用；印度航空页面两处积分口径（6 分 / 10 分每 ₹100）不一致，攒分为副、别为它凑单；大陆漫游可用性官方未承诺。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T20:22:00+08:00",
+  "status": "active",
+  "kyc_level": "none",
+  "vowifi": "n/a",
+  "utility": 0,
+  "identity_requirement": "email",
+  "phone_requirement": "any_number",
+  "platform_requirement": [
+   "android",
+   "ios",
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
+  "id": "tarom-ubigi-free-1gb",
+  "dedup_key": "ubigi|esim|multi|tarom-ubigi-free-1gb",
+  "title": "[罗区] 罗马尼亚航空 TAROM × Ubigi：每位旅客免费 1GB 全球 eSIM + 首单 7 折",
+  "brand": "Ubigi",
+  "domain": "tarom.ro",
+  "category": "esim",
+  "value": "1GB 免费（约 $5）+ 首单 30% off",
+  "value_num": 5,
+  "cost": "真正免费",
+  "highlight": "订完 TAROM 机票，在订单确认页、我的预订或在线值机的 eSIM 横幅里直接领 1GB 免费流量，200+ 目的地，一张 eSIM 以后还能接着用",
+  "regions": "[罗区] 持有 TAROM 机票订单的旅客；Ubigi 主打 200+ 个目的地，一张 profile 可在后续行程继续用",
+  "start": "",
+  "end": "",
+  "content": "TAROM（罗马尼亚航空，天合联盟成员）与 Transatel 旗下 Ubigi 的合作（2025-12 上线）：旅客完成订票后，会在订单确认页、My Booking 与在线值机页看到 eSIM 横幅，点进去即每位旅客 1GB 免费数据，外加首个付费数据套餐 30% 折扣。Ubigi 用单一 profile 覆盖 200+ 目的地，Smart Start 到达才激活，所有套餐支持热点共享，没 Wi-Fi 没余额也能直接加购，适合把这张 eSIM 留着后面继续用。",
+  "conditions": "需有 TAROM 的机票订单（入口只在订票完成页 / My Booking / 在线值机三处）；每位旅客 1GB，免费额度用完后自费加购；需要 eSIM 兼容且解锁的手机；Ubigi 为纯数据服务，没有本地号码。",
+  "steps": [
+   "在 tarom.ro 订票，完成后停留在订单确认页",
+   "点页面上的 eSIM 横幅，或在 My Booking / 在线值机页找到同一入口",
+   "按提示装 Ubigi App、领取 1GB 免费流量并安装 eSIM",
+   "落地后 Smart Start 自动激活；要更多流量就在 App 内用 7 折首单加购"
+  ],
+  "url": "https://www.tarom.ro/stiri/tarom-integreaza-esim-ul-in-oferta-sa-pentru-pasageri-cu-conectare-la-internet-inca-de-la-sosirea-in-destinatii-internationale/",
+  "source": "TAROM 官方新闻稿（2025-12-19）+ Transatel / Ubigi 官方新闻稿（2025-12-18）+ Passport News（2025-12-19）",
+  "risk": "没有 TAROM 机票就看不到入口；官方没写这 1GB 的有效期与覆盖国家清单，装好后先在 App 里核对；Ubigi 网站在土耳其境内被封锁，经土耳其转机要提前装好。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T20:24:00+08:00",
+  "status": "active",
+  "kyc_level": "none",
+  "vowifi": "n/a",
+  "utility": 0,
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "android",
+   "ios",
+   "web"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
+  "id": "agoda-vip-diamond-free-esim",
+  "dedup_key": "agoda|esim|global|vip-diamond-free-esim",
+  "title": "[全球] Agoda VIP Diamond 会员：免费 1GB / 7 天全球 eSIM",
+  "brand": "Agoda",
+  "domain": "agoda.com",
+  "category": "esim",
+  "value": "1GB / 7 天（约 $5）",
+  "value_num": 5,
+  "cost": "真正免费",
+  "highlight": "Agoda App 里 VIP Diamond 会员可直接激活 1GB / 7 天免费 eSIM，合格目的地都能用，出发前装好落地就有网",
+  "regions": "[全球] AgodaVIP Diamond 会员；eSIM 覆盖多个合格目的地，具体以 App 内可选项为准",
+  "start": "",
+  "end": "",
+  "content": "Agoda 2026-02-11 官方新闻稿：为 VIP Diamond 会员上线免费 eSIM，1GB 流量、7 天有效，可在出发前于 Agoda App（iOS / Android）内激活，适用于多个合格目的地，用来解决落地还没买本地卡那段空窗。Diamond 是 AgodaVIP 的最高档，第三方汇总的门槛为 24 个月内 15 笔预订并累计 US$1,500 消费（Agoda 未公开具体门槛），入住 / 机票 / 活动订单都计入等级进度。",
+  "conditions": "需为 AgodaVIP Diamond 会员（按 Agoda 的预订与消费累计，官方未公开门槛）；只能在 Agoda App 内领取激活；覆盖目的地有限，以下单页可选清单为准；1GB / 7 天用完后自费加购；纯数据卡、无号码。",
+  "steps": [
+   "在 Agoda App 登录并确认自己是 VIP Diamond",
+   "进入 VIP 权益页，找到免费 eSIM 入口",
+   "选目的地并激活，按提示安装 eSIM（建议出发前在 Wi-Fi 下完成）",
+   "落地后启用该 eSIM 的数据漫游，7 天内用完为止"
+  ],
+  "url": "https://www.agoda.com/press/agoda-launches-free-global-esims-for-vip-diamond-members/",
+  "source": "Agoda 官方新闻稿（2026-02-11，1GB / 7 天、App 内激活）+ Shareuhack AgodaVIP 汇总（Diamond 门槛 15 笔 + US$1,500，2026-10 更新）",
+  "risk": "门槛高，非 Diamond 看不到入口；官方没写可领次数与完整目的地清单，以 App 为准；1GB 只够一周轻量使用；App 端功能可能按市场分批开放。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T20:27:00+08:00",
+  "status": "active",
+  "kyc_level": "none",
+  "vowifi": "n/a",
+  "utility": 0,
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
+  "id": "omio-kolet-free-1gb",
+  "dedup_key": "kolet|esim|global|omio-kolet-free-1gb",
+  "title": "[全球] Omio × Kolet：每笔交通订单免费 1GB 全球 eSIM",
+  "brand": "Kolet",
+  "domain": "omio.com",
+  "category": "esim",
+  "value": "1GB（约 $5）",
+  "value_num": 5,
+  "cost": "真正免费",
+  "highlight": "在 Omio 订火车、大巴或机票，订单完成后自动触发 1GB 免费 Kolet 流量，邮件或「管理预订」里领取，多国行程一张 eSIM 通吃",
+  "regions": "[全球] Omio 覆盖的 46 个国家 / 地区；eSIM 本身覆盖 190+ 个目的地，一票一领",
+  "start": "",
+  "end": "",
+  "content": "Omio 与 Kolet 的合作（2025-10 正式铺开）：在 Omio 下单后会经由订单完成邮件或 App 的 Manage My Booking 横幅，把 1GB 免费 Kolet 流量发给旅客；装 Kolet App 激活后，eSIM 会在每个国家自动接上当地合作网络，多国联程不必逐国换卡。Omio 每天卖出 8 万+ 张覆盖 46 国的车票，最低几欧元的短途票也能触发这份免费流量。",
+  "conditions": "需有 Omio 账户与一笔已完成订单；免费额度只给首次使用 Kolet 的新用户；必须通过订单邮件或 Manage My Booking 的入口领取；1GB 有效期按 Kolet 免费试用口径（激活后约 2 天）；纯数据卡、无号码。",
+  "steps": [
+   "在 Omio 下单购买火车 / 大巴 / 机票并完成支付",
+   "在订单完成邮件或 App 的 Manage My Booking 里找到 Kolet 入口",
+   "装 Kolet App 注册，按链接领取 1GB 免费流量",
+   "出发前在 Wi-Fi 下安装 eSIM，落地激活使用"
+  ],
+  "url": "https://www.omio.com/corporate/newsroom/press-releases/omio-and-kolet-announce-strategic-partnership-to-keep-travellers-instantly-connected/",
+  "source": "Omio 官方新闻稿（2025-10-21，each booking triggers 1GB via Kolet）+ Kolet 新闻稿 + HotMinute（2026-05-23）与 eSIM Podium 复核（2026-10-21）",
+  "risk": "官方未写每人可领次数与是否限新客叠加，以邮件为准；1GB 只够落地半天到一天；订单取消后额度是否撤回没说明；要真在 Omio 下过单才拿得到。",
+  "verified": true,
+  "last_verified": "2026-11-21",
+  "added": "2026-11-21",
+  "added_at": "2026-11-21T20:28:00+08:00",
+  "status": "active",
+  "kyc_level": "none",
+  "vowifi": "n/a",
+  "utility": 0,
+  "identity_requirement": "email",
+  "phone_requirement": "any_number",
+  "platform_requirement": [
+   "android",
+   "ios",
+   "web"
+  ],
+  "funding_requirement": "purchase",
   "geo_restriction": [
    "GLOBAL"
   ]
@@ -13559,43 +14038,5 @@
   "status": "expired",
   "kyc_level": "none",
   "utility": 0
- },
- {
-  "id": "urnetwork-free-tier-30gib",
-  "dedup_key": "urnetwork|software|global|free-tier-30gib",
-  "title": "[全球] URnetwork 免费住宅出口 30 GiB/天：免绑卡、2 台设备",
-  "highlight": "邮箱 / Google / Apple 注册就每天领 30 GiB（约 900 GiB/月）免费额度，免绑卡、不是试用，Android / iOS / Windows / macOS / Linux 全端可用，最多 2 台设备同时连，出口是 108 个国家和地区的成员住宅节点。",
-  "brand": "URnetwork（BringYour）",
-  "domain": "ur.io",
-  "category": "software",
-  "value": "≈ $5/月（对标 UR Pro）",
-  "value_num": 5,
-  "cost": "真正免费",
-  "regions": "[全球] 全平台通用，一个账号全端登录；出口为 108 个国家/地区的成员住宅节点，实际能选到哪个国家/城市取决于当时在线的 Provider",
-  "start": "",
-  "end": "",
-  "content": "URnetwork 是 BringYour, Inc.（美国特拉华州）的开源去中心化隐私网络，官网标注 106,524 个 Provider、覆盖 108 个国家/地区。免费档（Community）既不是试用也不用绑卡：每个账号每天 00:00 UTC（北京时间 08:00）自动发 30 GiB 数据，约合 900 GiB/月，当天没用完不结转，用完新连接直接停、等下次刷新，不降速。登录方式只要邮箱 / 手机号 + 密码、Google、Apple 或钱包，官方另有不填任何资料的 Instant Account（注册时给一次恢复短语）。免费档同时最多 2 台设备在线；Android / iOS / Windows / macOS / Linux 与 Chrome / Edge / Firefox 扩展共用同一账号，系统客户端走整机流量，扩展只代理浏览器。免费档另含 5 个 HTTPS 托管代理，SOCKS5 与 WireGuard 配置属 Pro（$5/月或 $40/年，含 10 TiB/月）。官方还公开 Operator API 与 urn_ 开头的 API Key，可用程序化方式取 JWT、筛出口。",
-  "conditions": "免费档无需绑卡、不是试用，注册即得；额度每天 00:00 UTC 刷新，当天用不完不结转到第二天；免费档最多 2 台设备同时在线；用别人的出口不要求自己也共享网络，Provide 默认 Never，装完可再核对一次；免费档只有 HTTPS 托管代理，SOCKS5 与 WireGuard 属 Pro；数据双向合计，同账号设备之间互连也算进额度。",
-  "steps": [
-   "打开 ur.io 注册：邮箱 / 手机号 + 密码、Google、Apple 或钱包登录都行，走 Instant Account 的记得保存恢复短语",
-   "在手机或电脑上装对应客户端（Android / iOS / Windows / macOS / Linux），用同一个账号登录",
-   "连接后保留 Best available 自动选出口，或在国家 / 城市列表里挑延迟低的节点",
-   "北京时间每天 08:00 额度自动回到 30 GiB；当天用完会停，等刷新或另买一次性流量包"
-  ],
-  "url": "https://ur.io",
-  "source": "URnetwork 官方套餐页与数据说明 ur.io/products、ur.io/docs/about-your-data（2026-11-21 复核）+ X 社区实测讨论（@taiyanghere 2026-11-21 等）",
-  "risk": "出口是社区成员的住宅宽带，可用性与延迟随 Provider 在线状态波动，免费档不保证固定节点或持续可用；住宅 IP 仍会被目标站风控、弹验证码；每天 30 GiB 双向合计，用完即停；免费档限 2 台设备，SOCKS5 / WireGuard 要 Pro；2026-07 之前 Android 端曾默认共享本机网络，新装默认 Never，用之前建议在 Account → Settings 确认 Provide 为 Never。",
-  "verified": true,
-  "last_verified": "2026-11-21",
-  "added": "2026-11-21",
-  "added_at": "2026-11-21T18:33:05+08:00",
-  "status": "active",
-  "kyc_level": "none",
-  "utility": 0,
-  "platform_requirement": [
-   "android",
-   "ios",
-   "web"
-  ]
  }
 ]
