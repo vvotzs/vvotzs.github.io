@@ -51,11 +51,11 @@ reports/score_explain.csv # 构建时写的内部回测表（不进 sitemap、�
 左上 `←` 关闭、右上「TG 交流群 + 明黄圆发送徽标」、横线分行的名称 / 链接 / 地区 / 亮点说明），
 不加载任何第三方脚本，也没有 `Made with …` 水印。
 
-- 接口：Google Apps Script Web App（项目 `Deal Hunter Submit`，账号 `vvotzs@gmail.com`），
+- 接口：Google Apps Script Web App（项目 `Deal Hunter Submit`，账号为维护者接收邮箱），
   地址写在 `scripts/build_site.py` 的 `SUBMIT_ENDPOINT`，换接口只改这一处再重建；
   前端从弹窗的 `data-endpoint` 读取，用 `fetch(..., { method: "POST", mode: "no-cors" })`
   提交 `URLSearchParams`（name / url / region / notes / lang / hp_x7 / elapsed_ms）。
-- 邮件：脚本里 `MailApp.sendEmail("vvotzs@gmail.com", "[羊毛情报投稿] …", …)`，
+- 邮件：脚本里 `MailApp.sendEmail(接收邮箱, "[羊毛情报投稿] …", …)`（接收地址只在维护者本地 / GAS 项目属性里配置），
   免费额度每天 100 封（个人 Gmail），不占第三方表单名额。
 - 必填：名称、链接（链接只要求非空，`http(s)://` 前缀与域名格式都不校验）；地区与亮点选填。
 - 防刷：表单里有一个移出屏幕、不占布局、读屏与 Tab 都碰不到的蜜罐字段（`app.js` 读它的 `.value` 当作 `hp_x7`，
@@ -127,7 +127,7 @@ reports/score_explain.csv # 构建时写的内部回测表（不进 sitemap、�
 
 - `.hero` 行内（标语与更新时间之间的空档）加了一颗 Telegram 群徽标 `a.hero-tg`，指向与投稿弹窗同一个群
   `https://t.me/+aAqP0DbW_YMxMmNh`（`target="_blank" rel="noopener noreferrer"`）。
-  徽标是纯 SVG、没有可见文字（`hero_tg_badge()`）：Jun 发来的群聊图形原样复刻（`viewBox="0 0 12 12"`），
+  徽标是纯 SVG、没有可见文字（`hero_tg_badge()`）：按设计参考图原样复刻的群聊图形（`viewBox="0 0 12 12"`），
   两个 `#191919` 实心圆角气泡，右下那枚带一个小尾巴点出「群聊」，没有底色、没有刻度线；
   原文件的 `<clipPath id="clip0">` 改成页面里唯一的 `id="hero-tg-clip"`（clipPath 的 id 是全文档作用域，
   撞名会把其中一枚裁没）；语义走 `aria-label` + `title`
@@ -143,7 +143,7 @@ reports/score_explain.csv # 构建时写的内部回测表（不进 sitemap、�
 
 ## 手绘小徽标（3D 蓝盾 / 3D 沙漏 / AI 芯片 / 明黄发送）
 
-这四枚都是 Jun 给的参考图手绘 / 原样落地，全部是内联矢量，没多一个请求。
+这四枚都是按设计参考图手绘 / 原样落地的，全部是内联矢量，没多一个请求。
 
 - **3D 蓝盾白勾**（`<symbol id="i-verified-shield">`，24×24）：厚盾面 `vs-face` 渐变（`#8FBEFF` → `#6399FF` →`#4C7DF2`），
   右下方一块 `vs-side` 深蓝厚边（就是把盾面路径整条 `translate(1.35 .95)` 垫在后面），
