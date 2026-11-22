@@ -1799,6 +1799,7 @@ footer{
   .value{ font-size: 10px; padding: 0 4px; margin-top: 0; max-width: 46%; }
   .row2{ font-size: 11.5px; line-height: 1.4; margin-top: 2px; }
   .row2 .tag{ font-size: 9px; padding: 0 4px; margin-right: 4px; }
+  .row2 .caution-tag{ font-size: 9px; padding: 0 4px; margin-right: 4px; }
   .row3{
     font-size: 10.4px;
     gap: 4px;
@@ -3000,6 +3001,17 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
   white-space: nowrap; vertical-align: 1px;
 }
 .dp-badges .dtag.aff{ color: #B45309; background: #FFF7ED; border-color: #FED7AA; }
+/* 可选风控小徽标（第三方机器人等）：只在条目写了 caution_badge 时出现，
+   卡片第二行与详情页徽标行共用同一颗胶囊，不额外占行高。 */
+.caution-tag{
+  display: inline-block;
+  font-size: 9.4px; font-weight: 700; line-height: 1.5;
+  padding: 1px 6px; margin-right: 5px;
+  border-radius: 999px; border: 1px solid #FDBA74;
+  color: #B4470E; background: #FFF3E6;
+  white-space: nowrap; vertical-align: 1px;
+}
+.dp-badges .dtag.caution{ color: #B4470E; background: #FFF3E6; border-color: #FDBA74; }
 .dp-aff-note{
   flex: 1 1 100%;
   display: flex; align-items: center; gap: 5px;
