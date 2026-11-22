@@ -1,2275 +1,2292 @@
 {
-  "schema": 1,
-  "generated_at": "2026-11-21T10:45:00Z",
-  "_meta": {
-    "title": "羊毛情报局采集源表（P0/P1/P2 分层调度）",
-    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets",
-    "cadence": {
-      "rounds_per_day": 7,
-      "round_times_local": [
-        "07:30",
-        "10:00",
-        "12:30",
-        "15:00",
-        "17:30",
-        "20:00",
-        "22:30"
-      ],
-      "timezone": "Asia/Shanghai",
-      "sleep_window_local": "01:00–07:30",
-      "per_round_sources": 12,
-      "per_round_recheck": 4,
-      "p2_reserve_per_round": 1
-    },
-    "tier_policy": {
-      "P0": "每轮都跑（cadence 2h，priority 3，≤6 个）：投稿队列、X 检索、可直抓的 TG 优惠频道、HN/Show HN、GitHub Trending",
-      "P1": "每日轮换（cadence 24h，priority 2，≤35 个）：核心论坛、海外羊毛站、Reddit、AI 首发榜，以及 3 个 search_group 充值源 topup-telecom / topup-game / topup-giftcard",
-      "P2": "每周长尾（cadence 168h，priority 1）：其余外语社区、小众博客、长尾平台（含 topup-longtail 与 coinsbee-blog），总数 ≤49（= 每周 7 天 × 每天 7 个 P2 源位）",
-      "priority": "priority 由 tier 推导（P0=3 / P1=2 / P2=1），不单独存；本表不存主观可信度评语，也不存 data_quality",
-      "categories": "表示该源最强的情报主题，仅用于关键词组匹配；所有源仍按全品类原则抓取，不把站点窄化成单一分类",
-      "entry_type": "rss > md > list > search：有 feed 用 feed，Discourse 用 /latest.md，无入口才走站内关键词检索"
-    },
-    "selection": "先取全部到期 P0，再按逾期倍数取 P1，最后取 P2；P2 每轮保底 1 个，避免每周积压",
-    "keyword_rotation": {
-      "rule": "本轮组号 g = round_index % 6，6 组依次为 境外金融 → 数字居民 → 通信资源 → AI 与软件 → 云计算 → 返利羊毛；每个 search 源只用 1 组、最多 3 个词并用 OR 连接，源分类与当前组不匹配时顺延到下一个匹配的组",
-      "p0_exception": "P0 里的 X 公开检索仍需关键词（其余 P0 都是直抓入口，不用关键词）",
-      "append_en": "通信资源 / AI 与软件 / 返利羊毛 三组带英文切片 append_en（每切片 ≤3 词），只给 lang≠zh 的源用，切片序号 = (round_index div 6) mod 切片数，仍只发 1 条查询；境外金融 / 数字居民 / 云计算 不动",
-      "term_sets": "search_group 充值源不用 6 组轮转词，改读 term_sets.topup 的 T0/T1（按一年第几天 mod 2 轮换），零结果后下次走 fallback；原 commerce_keywords 12 词已并入 T0/T1 与上述英文切片（promo code / limited time offer 质量差未落位，按 Hark Q3 弃用）"
-    },
-    "capacity": {
-      "slots_per_day": 84,
-      "P0_slots_per_day": 42,
-      "P2_slots_per_day": 7,
-      "P1_slots_per_day": 35,
-      "note": "P1 34 个 ≤ 每日 P1 源位 35 个 → 严格 24h 轮完；P2 41 个 ≤ 49；每轮仍 12 个源，不需要第一周临时提到 13 个（那只在 P1 仍超 35 时才需要）"
-    },
-    "writeback": "plan_round.py --mark-done / --mark-hit / --mark-zero 回写 last_crawled_at、last_hit_at 与 zero_streak；P0 14 天无产出→P1、P1 30 天→P2、P2 90 天→paused（manual 源不参与；升级只能人工）",
-    "paused_policy": "paused_sources 不进调度、不占 P2 配额；恢复用 plan_round.py 的 --activate 或人工移回 sources",
-    "counts": {
-      "scheduled": 81,
-      "P0": 6,
-      "P1": 34,
-      "P2": 41,
-      "manual": 5,
-      "paused": 11
-    },
-    "search_group": "entries[].kind=search_group：domains 最多 4 个，整组每轮只发 1 条 `(site:a OR site:b …) (词集)` 查询；after_date = last_crawled_at − 1 天（首抓取今天 − 30 天）；blocked 域名只核验不抓取（优先合作方/发行方官方页，否则每天最多 1 次浏览器开 verify_urls）；「这组有产出」= 至少 1 条结果 URL 落在组内域名、其 url 与 dedup_key 都不在 deals/candidates，且按 Q4(e) 写成候选/条目，满足才 --mark-hit；discovered_from 写 `<组id>:<域名>`；零结果用 --mark-zero，下次自动改用 fallback 词集",
-    "manual_policy": "status=manual 的源留在表内注明手动，但不进调度、不占 P1/P2 源位、不参与降频，只在线索出现时人工核",
-    "updated_at": "2026-11-21T10:45:00Z"
+ "schema": 1,
+ "generated_at": "2026-11-21T10:45:00Z",
+ "_meta": {
+  "title": "羊毛情报局采集源表（P0/P1/P2 分层调度）",
+  "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets；第十轮（2026-11-22）：新增 banknav（P1，list，海外银行卡/eSIM/券商导航），1point3acres 因 403 拦截与零产出降为 P2",
+  "cadence": {
+   "rounds_per_day": 7,
+   "round_times_local": [
+    "07:30",
+    "10:00",
+    "12:30",
+    "15:00",
+    "17:30",
+    "20:00",
+    "22:30"
+   ],
+   "timezone": "Asia/Shanghai",
+   "sleep_window_local": "01:00–07:30",
+   "per_round_sources": 12,
+   "per_round_recheck": 4,
+   "p2_reserve_per_round": 1
   },
-  "keyword_groups": [
-    {
-      "key": "finance",
-      "name": "境外金融",
-      "categories": [
-        "bank"
-      ],
-      "terms": [
-        "开户奖励",
-        "开户 Bonus",
-        "Refer",
-        "Referral",
-        "Welcome Offer",
-        "Cashback",
-        "银行开户",
-        "汇款奖励",
-        "免手续费"
-      ],
-      "usage": "论坛/社区站内检索（site: + 3 词 OR）"
-    },
-    {
-      "key": "resident",
-      "name": "数字居民",
-      "categories": [
-        "bank"
-      ],
-      "terms": [
-        "云居民",
-        "数字身份",
-        "海外地址",
-        "美国地址",
-        "SSN",
-        "ITIN",
-        "护照开户",
-        "远程开户",
-        "非居民开户"
-      ],
-      "usage": "论坛/社区站内检索（site: + 3 词 OR）"
-    },
-    {
-      "key": "comm",
-      "name": "通信资源",
-      "categories": [
-        "esim"
-      ],
-      "terms": [
-        "eSIM",
-        "VoWiFi",
-        "保号卡",
-        "免费 SIM",
-        "免费流量",
-        "国际漫游",
-        "免费号码",
-        "运营商优惠"
-      ],
-      "usage": "论坛/社区/海外站站内检索（site: + 3 词 OR）；lang≠zh 的源改用 append_en 英文切片",
-      "append_en": [
-        [
-          "free eSIM",
-          "top up bonus"
-        ]
-      ]
-    },
-    {
-      "key": "ai_software",
-      "name": "AI 与软件",
-      "categories": [
-        "ai",
-        "software"
-      ],
-      "terms": [
-        "Free Credits",
-        "API Credits",
-        "免费额度",
-        "学生认证",
-        "免费会员",
-        "Lifetime Deal",
-        "Trial"
-      ],
-      "usage": "论坛/社区站内检索（site: + 3 词 OR）",
-      "append_en": [
-        [
-          "gift card bonus",
-          "free game credits",
-          "app exclusive offer"
-        ]
-      ]
-    },
-    {
-      "key": "cloud",
-      "name": "云计算",
-      "categories": [
-        "cloud"
-      ],
-      "terms": [
-        "Free VPS",
-        "Free Tier",
-        "Cloud Credits",
-        "免费服务器",
-        "域名优惠",
-        "Developer Pack",
-        "bitrefill",
-        "seagm",
-        "二手 VPS",
-        "低价 VPS",
-        "剩余价值",
-        "年付",
-        "黑五",
-        "dedirock"
-      ],
-      "usage": "论坛/社区站内检索（site: + 3 词 OR）"
-    },
-    {
-      "key": "rewards",
-      "name": "返利羊毛",
-      "categories": [
-        "*"
-      ],
-      "terms": [
-        "免费领取",
-        "新用户奖励",
-        "注册有礼",
-        "邀请奖励",
-        "倒赚",
-        "免绑卡",
-        "限时活动"
-      ],
-      "usage": "全品类兜底组：任何分类的源都可匹配",
-      "append_en": [
-        [
-          "referral program",
-          "loyalty rewards",
-          "cashback promotion"
-        ],
-        [
-          "welcome bonus",
-          "first order discount"
-        ]
-      ]
-    }
-  ],
-  "sources": [
-    {
-      "id": "gmail-submissions",
-      "name": "访客投稿与纠错队列（Gmail）",
-      "url": "https://mail.google.com/",
-      "tier": "P0",
-      "entry_type": "search",
-      "cadence_h": 2,
-      "categories": [
-        "ai",
-        "bank",
-        "cloud",
-        "crypto",
-        "esim",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:25Z",
-      "last_hit_at": "2026-11-22T02:08:25Z",
-      "tool": "gog-gmail",
-      "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
-      "zero_streak": 0
-    },
-    {
-      "id": "x-deals",
-      "name": "X 公开线索（@donniy520 等中英文博主 + 关键词）",
-      "url": "https://x.com/search",
-      "tier": "P0",
-      "entry_type": "search",
-      "cadence_h": 2,
-      "categories": [
-        "ai",
-        "bank",
-        "cloud",
-        "crypto",
-        "esim",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:25Z",
-      "last_hit_at": "2026-11-22T02:08:25Z",
-      "search_domains": [
-        "x.com"
-      ],
-      "tool": "x-search",
-      "zero_streak": 0
-    },
-    {
-      "id": "tg-docofcard",
-      "name": "DocOfCard 银行·卡粉优惠频道",
-      "url": "https://tg.docofcard.com/",
-      "tier": "P0",
-      "entry_type": "rss",
-      "cadence_h": 2,
-      "categories": [
-        "bank",
-        "esim"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:11Z",
-      "last_hit_at": "2026-11-22T02:08:11Z",
-      "entry_url": "https://tg.docofcard.com/rss.json",
-      "zero_streak": 0
-    },
-    {
-      "id": "mini-appdo",
-      "name": "Mini AppDo 数字生活·软件优惠频道",
-      "url": "https://mini.appdo.xyz/",
-      "tier": "P0",
-      "entry_type": "rss",
-      "cadence_h": 2,
-      "categories": [
-        "software",
-        "ai",
-        "esim"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:25Z",
-      "last_hit_at": "2026-11-22T02:08:25Z",
-      "entry_url": "https://mini.appdo.xyz/rss.json",
-      "zero_streak": 0
-    },
-    {
-      "id": "hn",
-      "name": "Hacker News 首页与 Show HN",
-      "url": "https://news.ycombinator.com/",
-      "tier": "P0",
-      "entry_type": "rss",
-      "cadence_h": 2,
-      "categories": [
-        "ai",
-        "software",
-        "cloud"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:11Z",
-      "last_hit_at": "2026-11-22T02:08:11Z",
-      "entry_url": "https://news.ycombinator.com/rss",
-      "zero_streak": 0
-    },
-    {
-      "id": "github-trending",
-      "name": "GitHub Trending",
-      "url": "https://github.com/trending",
-      "tier": "P0",
-      "entry_type": "list",
-      "cadence_h": 2,
-      "categories": [
-        "ai",
-        "software",
-        "cloud"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:11Z",
-      "last_hit_at": "2026-11-22T02:08:11Z",
-      "zero_streak": 0
-    },
-    {
-      "id": "uscardforum",
-      "name": "美卡论坛",
-      "url": "https://www.uscardforum.com/",
-      "tier": "P1",
-      "entry_type": "md",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "crypto"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-19T15:30:00Z",
-      "entry_url": "https://www.uscardforum.com/latest.md"
-    },
-    {
-      "id": "shuzijumin",
-      "name": "数字居民论坛",
-      "url": "https://shuzijumin.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "esim"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:11Z",
-      "last_hit_at": "2026-11-22T02:08:11Z",
-      "search_domains": [
-        "shuzijumin.com"
-      ],
-      "zero_streak": 0
-    },
-    {
-      "id": "nodeseek",
-      "name": "NodeSeek",
-      "url": "https://www.nodeseek.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "cloud",
-        "software",
-        "crypto"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:25Z",
-      "last_hit_at": "2026-11-22T02:08:25Z",
-      "search_domains": [
-        "www.nodeseek.com"
-      ],
-      "zero_streak": 0
-    },
-    {
-      "id": "nodeloc",
-      "name": "NodeLoc",
-      "url": "https://www.nodeloc.com/",
-      "tier": "P1",
-      "entry_type": "md",
-      "cadence_h": 24,
-      "categories": [
-        "cloud",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:25Z",
-      "last_hit_at": "2026-11-22T02:08:25Z",
-      "entry_url": "https://www.nodeloc.com/latest.md",
-      "zero_streak": 0
-    },
-    {
-      "id": "hostloc",
-      "name": "全球主机论坛 HostLoc",
-      "url": "https://www.hostloc.com/forum.php",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "cloud"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:11Z",
-      "last_hit_at": "2026-11-22T02:08:11Z",
-      "zero_streak": 0
-    },
-    {
-      "id": "linux-do",
-      "name": "Linux.do",
-      "url": "https://linux.do/c/welfare/36.json",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "ai",
-        "cloud",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:11Z",
-      "last_hit_at": "2026-11-22T02:08:11Z",
-      "zero_streak": 0
-    },
-    {
-      "id": "v2ex",
-      "name": "V2EX",
-      "url": "https://www.v2ex.com/",
-      "tier": "P1",
-      "entry_type": "rss",
-      "cadence_h": 24,
-      "categories": [
-        "ai",
-        "cloud",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T11:06:55Z",
-      "last_hit_at": "2026-11-18T09:30:00Z",
-      "entry_url": "https://www.v2ex.com/index.xml"
-    },
-    {
-      "id": "1point3acres",
-      "name": "一亩三分地",
-      "url": "https://www.1point3acres.com/bbs/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "ai"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T11:43:50Z",
-      "last_hit_at": "2026-11-18T04:30:00Z",
-      "search_domains": [
-        "www.1point3acres.com"
-      ]
-    },
-    {
-      "id": "ecitizen",
-      "name": "电子公民论坛",
-      "url": "https://ecitizen.forum/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "crypto"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T12:20:46Z",
-      "last_hit_at": "2026-11-17T23:30:00Z",
-      "search_domains": [
-        "ecitizen.forum"
-      ]
-    },
-    {
-      "id": "yunjumin",
-      "name": "云居民",
-      "url": "https://yunjumin.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "cloud"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T12:57:41Z",
-      "last_hit_at": "2026-11-17T18:30:00Z",
-      "search_domains": [
-        "yunjumin.com"
-      ]
-    },
-    {
-      "id": "flyert",
-      "name": "飞客茶馆",
-      "url": "https://www.flyert.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "esim"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T13:34:36Z",
-      "last_hit_at": "2026-11-17T13:30:00Z",
-      "search_domains": [
-        "www.flyert.com"
-      ]
-    },
-    {
-      "id": "naixi",
-      "name": "奶昔论坛",
-      "url": "https://www.naixi.net/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "cloud",
-        "ai"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T14:11:32Z",
-      "last_hit_at": "2026-11-17T08:30:00Z",
-      "search_domains": [
-        "www.naixi.net"
-      ]
-    },
-    {
-      "id": "2libra",
-      "name": "2Libra",
-      "url": "https://2libra.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "esim",
-        "ai"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T14:48:27Z",
-      "last_hit_at": "2026-11-17T03:30:00Z",
-      "search_domains": [
-        "2libra.com"
-      ]
-    },
-    {
-      "id": "free8",
-      "name": "免费吧",
-      "url": "https://www.free8.net/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "cloud",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T15:25:23Z",
-      "last_hit_at": "2026-11-16T22:30:00Z",
-      "search_domains": [
-        "www.free8.net"
-      ]
-    },
-    {
-      "id": "tg-okhk",
-      "name": "OKHK TG 频道博客",
-      "url": "https://tg.okhk.net/",
-      "tier": "P1",
-      "entry_type": "rss",
-      "cadence_h": 24,
-      "categories": [
-        "ai",
-        "cloud"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T16:02:18Z",
-      "last_hit_at": "2026-11-16T17:30:00Z",
-      "entry_url": "https://tg.okhk.net/rss.json"
-    },
-    {
-      "id": "ozbargain",
-      "name": "OzBargain（澳）",
-      "url": "https://www.ozbargain.com.au/",
-      "tier": "P1",
-      "entry_type": "rss",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "software",
-        "esim"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T16:39:13Z",
-      "last_hit_at": "2026-11-16T12:30:00Z",
-      "entry_url": "https://www.ozbargain.com.au/feed"
-    },
-    {
-      "id": "cheapies",
-      "name": "Cheapies NZ（新西兰）",
-      "url": "https://www.cheapies.nz/",
-      "tier": "P1",
-      "entry_type": "rss",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T17:16:09Z",
-      "last_hit_at": "2026-11-16T07:30:00Z",
-      "entry_url": "https://www.cheapies.nz/feed"
-    },
-    {
-      "id": "mysidegig",
-      "name": "MySideGig（英区免存优惠）",
-      "url": "https://www.mysidegig.co.uk/free-money?tag=No+Deposit",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T17:53:04Z",
-      "last_hit_at": "2026-11-16T02:30:00Z"
-    },
-    {
-      "id": "topreferrals",
-      "name": "TopReferrals（英区推荐）",
-      "url": "https://www.topreferrals.co.uk/referrals",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T18:30:00Z",
-      "last_hit_at": "2026-11-15T21:30:00Z"
-    },
-    {
-      "id": "withgoddess",
-      "name": "WithGoddess",
-      "url": "https://www.withgoddess.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "crypto"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T19:06:55Z",
-      "last_hit_at": "2026-11-15T16:30:00Z",
-      "search_domains": [
-        "www.withgoddess.com"
-      ]
-    },
-    {
-      "id": "usdailyrewards",
-      "name": "US Daily Rewards",
-      "url": "https://www.usdailyrewards.com/",
-      "tier": "P1",
-      "entry_type": "rss",
-      "cadence_h": 24,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T19:43:50Z",
-      "last_hit_at": "2026-11-15T11:30:00Z",
-      "entry_url": "https://www.usdailyrewards.com/feed"
-    },
-    {
-      "id": "budgetfitter",
-      "name": "BudgetFitter（英）",
-      "url": "https://budgetfitter.uk/",
-      "tier": "P1",
-      "entry_type": "rss",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T20:20:46Z",
-      "last_hit_at": "2026-11-15T06:30:00Z",
-      "entry_url": "https://budgetfitter.uk/feed"
-    },
-    {
-      "id": "bitrefill",
-      "name": "Bitrefill",
-      "url": "https://www.bitrefill.com/",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "crypto",
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T20:57:41Z",
-      "last_hit_at": "2026-11-15T01:30:00Z"
-    },
-    {
-      "id": "seagm",
-      "name": "SEAGM",
-      "url": "https://www.seagm.com/",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "software",
-        "crypto"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T21:34:36Z",
-      "last_hit_at": "2026-11-14T20:30:00Z"
-    },
-    {
-      "id": "reddit-beermoneyuk",
-      "name": "r/beermoneyuk",
-      "url": "https://www.reddit.com/r/beermoneyuk/new/",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T22:11:32Z",
-      "last_hit_at": "2026-11-14T15:30:00Z"
-    },
-    {
-      "id": "reddit-beermoney",
-      "name": "r/beermoney",
-      "url": "https://www.reddit.com/r/beermoney/new/",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "bank",
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T22:48:27Z",
-      "last_hit_at": "2026-11-14T10:30:00Z"
-    },
-    {
-      "id": "reddit-beermoneyglobal",
-      "name": "r/beermoneyglobal",
-      "url": "https://www.reddit.com/r/beermoneyglobal/new/",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T23:25:23Z",
-      "last_hit_at": "2026-11-14T05:30:00Z"
-    },
-    {
-      "id": "reddit-churning",
-      "name": "r/churning",
-      "url": "https://www.reddit.com/r/churning/new/",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T00:02:18Z",
-      "last_hit_at": "2026-11-14T00:30:00Z"
-    },
-    {
-      "id": "reddit-airdrops",
-      "name": "r/airdrops",
-      "url": "https://www.reddit.com/r/airdrops/new/",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "crypto"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T00:39:13Z",
-      "last_hit_at": "2026-11-13T19:30:00Z"
-    },
-    {
-      "id": "producthunt-ai",
-      "name": "Product Hunt · AI 主题",
-      "url": "https://www.producthunt.com/topics/artificial-intelligence",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "ai"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T01:16:09Z",
-      "last_hit_at": "2026-11-13T14:30:00Z"
-    },
-    {
-      "id": "taaft",
-      "name": "There's An AI For That",
-      "url": "https://theresanaiforthat.com/",
-      "tier": "P1",
-      "entry_type": "list",
-      "cadence_h": 24,
-      "categories": [
-        "ai"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T01:53:04Z",
-      "last_hit_at": "2026-11-13T09:30:00Z"
-    },
-    {
-      "id": "topup-telecom",
-      "name": "数字充值 · 通信（Ding / MobileTopUp）",
-      "url": "https://www.ding.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "esim"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-21T23:40:33Z",
-      "keyword_pool": "topup",
-      "entries": [
-        {
-          "kind": "search_group",
-          "domains": [
-            "ding.com",
-            "mobiletopup.com"
-          ],
-          "term_set": "topup"
-        }
-      ],
-      "blocked": [
-        "ding.com",
-        "mobiletopup.com"
-      ],
-      "verify_urls": {
-        "ding.com": "https://www.ding.com/promotions"
-      },
-      "note": "两域名直连 403/429（2026-11-21 实测），只做核验不抓取：优先运营商官方公告，否则每天最多 1 次浏览器开 verify_urls",
-      "zero_streak": 0
-    },
-    {
-      "id": "topup-game",
-      "name": "数字充值 · 游戏（Codashop / UniPin / Razer Gold / MooGold）",
-      "url": "https://www.codashop.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-21T23:40:33Z",
-      "keyword_pool": "topup",
-      "entries": [
-        {
-          "kind": "search_group",
-          "domains": [
-            "codashop.com",
-            "unipin.com",
-            "gold.razer.com",
-            "moogold.com"
-          ],
-          "term_set": "topup"
-        }
-      ],
-      "note": "Codashop 活动页路径未摸清（/en/promotions 404），暂不写 verify_urls；候选以游戏商/发行方官方公告为准",
-      "zero_streak": 0
-    },
-    {
-      "id": "topup-giftcard",
-      "name": "数字充值 · 礼品卡（CoinsBee / Cryptorefills / Recharge / OffGamers）",
-      "url": "https://www.coinsbee.com/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "software",
-        "crypto"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": null,
-      "keyword_pool": "topup",
-      "entries": [
-        {
-          "kind": "search_group",
-          "domains": [
-            "coinsbee.com",
-            "cryptorefills.com",
-            "recharge.com",
-            "offgamers.com"
-          ],
-          "term_set": "topup"
-        }
-      ],
-      "note": "四站均可直连，但按 search_group 统一走 1 条查询；CoinsBee 博客另由 coinsbee-blog 的 rss 覆盖",
-      "zero_streak": 1,
-      "last_zero_at": "2026-11-21T23:40:33Z"
-    },
-    {
-      "id": "topup-longtail",
-      "name": "数字充值 · 长尾（LootBar / BitTopup / Dundle）",
-      "url": "https://www.lootbar.gg/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "crypto"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": null,
-      "last_hit_at": null,
-      "keyword_pool": "topup",
-      "entries": [
-        {
-          "kind": "search_group",
-          "domains": [
-            "lootbar.gg",
-            "bittopup.com",
-            "dundle.com"
-          ],
-          "term_set": "topup"
-        }
-      ],
-      "blocked": [
-        "bittopup.com",
-        "dundle.com"
-      ],
-      "note": "bittopup 直连 403、dundle 429（2026-11-21 实测），只做核验不抓取"
-    },
-    {
-      "id": "coinsbee-blog",
-      "name": "CoinsBee 博客（18 站里唯一真 RSS）",
-      "url": "https://blog.coinsbee.com/feed",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "crypto",
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-22T02:08:11Z",
-      "last_hit_at": "2026-11-22T02:08:11Z",
-      "zero_streak": 0
-    },
-    {
-      "id": "mykeyvans",
-      "name": "MyKeyVans 频道",
-      "url": "https://channel.mykeyvans.com/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "ai",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-14T10:30:00Z",
-      "last_hit_at": "2026-10-22T16:30:00Z",
-      "entry_url": "https://channel.mykeyvans.com/rss.json"
-    },
-    {
-      "id": "talk-appinn",
-      "name": "小众软件 Talk",
-      "url": "https://talk.appinn.net/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-14T13:55:42Z",
-      "last_hit_at": "2026-10-22T01:30:00Z"
-    },
-    {
-      "id": "ygkkktg",
-      "name": "YGKKK TG 频道",
-      "url": "https://ygkkktg.pages.dev/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "ai",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-14T17:21:25Z",
-      "last_hit_at": "2026-10-21T10:30:00Z",
-      "entry_url": "https://ygkkktg.pages.dev/rss.xml"
-    },
-    {
-      "id": "bboy-tg",
-      "name": "BBoy TG 频道",
-      "url": "https://tg.bboy.app/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "ai"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-14T20:47:08Z",
-      "last_hit_at": "2026-10-20T19:30:00Z",
-      "entry_url": "https://tg.bboy.app/rss.json"
-    },
-    {
-      "id": "wanshiwu",
-      "name": "万事屋频道",
-      "url": "https://t.wanshiwu.fyi/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-15T00:12:51Z",
-      "last_hit_at": "2026-10-20T04:30:00Z",
-      "entry_url": "https://t.wanshiwu.fyi/rss.json"
-    },
-    {
-      "id": "zhetengsha",
-      "name": "折腾啥频道",
-      "url": "https://telegram.zhetengsha.eu.org/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "cloud"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-15T03:38:34Z",
-      "last_hit_at": "2026-10-19T13:30:00Z",
-      "entry_url": "https://telegram.zhetengsha.eu.org/rss.json"
-    },
-    {
-      "id": "miantiao",
-      "name": "面条备忘录",
-      "url": "https://memo.miantiao.me/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "ai"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-15T07:04:17Z",
-      "last_hit_at": "2026-10-18T22:30:00Z",
-      "entry_url": "https://memo.miantiao.me/rss.json"
-    },
-    {
-      "id": "broadcastchannel",
-      "name": "BroadcastChannel 总站",
-      "url": "https://broadcastchannel.pages.dev/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "ai",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-15T10:30:00Z",
-      "last_hit_at": "2026-10-18T07:30:00Z",
-      "entry_url": "https://broadcastchannel.pages.dev/rss.json"
-    },
-    {
-      "id": "makerhunter",
-      "name": "MakerHunter 分享",
-      "url": "https://share.makerhunter.com/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "ai",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-15T13:55:42Z",
-      "last_hit_at": "2026-10-17T16:30:00Z",
-      "entry_url": "https://share.makerhunter.com/rss.json"
-    },
-    {
-      "id": "dedirock",
-      "name": "DediRock（低价 VPS）",
-      "url": "https://dedirock.com/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "cloud"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-15T17:21:25Z",
-      "last_hit_at": "2026-10-17T01:30:00Z"
-    },
-    {
-      "id": "reddit-singaporefi",
-      "name": "r/singaporefi",
-      "url": "https://www.reddit.com/r/singaporefi/new/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-15T20:47:08Z",
-      "last_hit_at": "2026-10-16T10:30:00Z"
-    },
-    {
-      "id": "reddit-malaysianpf",
-      "name": "r/MalaysianPF",
-      "url": "https://www.reddit.com/r/MalaysianPF/new/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-16T00:12:51Z",
-      "last_hit_at": "2026-10-15T19:30:00Z"
-    },
-    {
-      "id": "reddit-phinvest",
-      "name": "r/phinvest",
-      "url": "https://www.reddit.com/r/phinvest/new/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "bank",
-        "crypto"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-16T03:38:34Z",
-      "last_hit_at": "2026-10-15T04:30:00Z"
-    },
-    {
-      "id": "reddit-digitalbanksph",
-      "name": "r/DigitalbanksPh",
-      "url": "https://www.reddit.com/r/DigitalbanksPh/new/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-16T07:04:17Z",
-      "last_hit_at": "2026-10-14T13:30:00Z"
-    },
-    {
-      "id": "reddit-dubai",
-      "name": "r/dubai",
-      "url": "https://www.reddit.com/r/dubai/new/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-16T10:30:00Z",
-      "last_hit_at": "2026-10-13T22:30:00Z"
-    },
-    {
-      "id": "naver",
-      "name": "Naver 博客 / 咖啡厅（韩）",
-      "url": "https://search.naver.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "bank",
-        "esim",
-        "ai"
-      ],
-      "lang": "ko",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-16T13:55:42Z",
-      "last_hit_at": "2026-10-13T07:30:00Z",
-      "search_domains": [
-        "blog.naver.com",
-        "cafe.naver.com"
-      ]
-    },
-    {
-      "id": "ppomppu",
-      "name": "PPomppu（韩）",
-      "url": "https://www.ppomppu.co.kr/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "bank",
-        "software"
-      ],
-      "lang": "ko",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-16T17:21:25Z",
-      "last_hit_at": "2026-10-12T16:30:00Z",
-      "search_domains": [
-        "www.ppomppu.co.kr"
-      ]
-    },
-    {
-      "id": "clien",
-      "name": "Clien（韩）",
-      "url": "https://www.clien.net/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "ai",
-        "bank"
-      ],
-      "lang": "ko",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-16T20:47:08Z",
-      "last_hit_at": "2026-10-12T01:30:00Z"
-    },
-    {
-      "id": "fmkorea",
-      "name": "FM Korea",
-      "url": "https://www.fmkorea.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "bank",
-        "crypto"
-      ],
-      "lang": "ko",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-17T00:12:51Z",
-      "last_hit_at": "2026-10-11T10:30:00Z",
-      "search_domains": [
-        "www.fmkorea.com"
-      ]
-    },
-    {
-      "id": "ruliweb",
-      "name": "Ruliweb（韩）",
-      "url": "https://bbs.ruliweb.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "ai"
-      ],
-      "lang": "ko",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-17T03:38:34Z",
-      "last_hit_at": "2026-10-10T19:30:00Z",
-      "search_domains": [
-        "bbs.ruliweb.com"
-      ]
-    },
-    {
-      "id": "yahoo",
-      "name": "Yahoo Japan / Yahoo US",
-      "url": "https://search.yahoo.co.jp/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "bank",
-        "esim",
-        "ai"
-      ],
-      "lang": "ja",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-17T07:04:17Z",
-      "last_hit_at": "2026-10-10T04:30:00Z",
-      "search_domains": [
-        "yahoo.co.jp",
-        "yahoo.com"
-      ]
-    },
-    {
-      "id": "note",
-      "name": "note.com（日）",
-      "url": "https://note.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "ai",
-        "software"
-      ],
-      "lang": "ja",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-17T10:30:00Z",
-      "last_hit_at": "2026-10-09T13:30:00Z",
-      "search_domains": [
-        "note.com"
-      ]
-    },
-    {
-      "id": "qiita",
-      "name": "Qiita（日）",
-      "url": "https://qiita.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "ai",
-        "software"
-      ],
-      "lang": "ja",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-17T13:55:42Z",
-      "last_hit_at": "2026-10-08T22:30:00Z",
-      "search_domains": [
-        "qiita.com"
-      ]
-    },
-    {
-      "id": "zenn",
-      "name": "Zenn（日）",
-      "url": "https://zenn.dev/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "ai",
-        "software"
-      ],
-      "lang": "ja",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-17T17:21:25Z",
-      "last_hit_at": "2026-10-08T07:30:00Z",
-      "entry_url": "https://zenn.dev/feed"
-    },
-    {
-      "id": "pantip",
-      "name": "Pantip（泰）",
-      "url": "https://pantip.com/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "bank",
-        "esim"
-      ],
-      "lang": "th",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-17T20:47:08Z",
-      "last_hit_at": "2026-10-07T16:30:00Z"
-    },
-    {
-      "id": "seedly",
-      "name": "Seedly（新）",
-      "url": "https://seedly.sg/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-18T00:12:51Z",
-      "last_hit_at": "2026-10-07T01:30:00Z",
-      "search_domains": [
-        "seedly.sg"
-      ]
-    },
-    {
-      "id": "singsaver",
-      "name": "SingSaver（新）",
-      "url": "https://www.singsaver.com.sg/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-18T03:38:34Z",
-      "last_hit_at": "2026-10-06T10:30:00Z",
-      "search_domains": [
-        "www.singsaver.com.sg"
-      ]
-    },
-    {
-      "id": "milelion",
-      "name": "MileLion（新）",
-      "url": "https://milelion.com/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "bank",
-        "esim"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-18T07:04:17Z",
-      "last_hit_at": "2026-10-05T19:30:00Z",
-      "entry_url": "https://milelion.com/feed"
-    },
-    {
-      "id": "ringgitplus",
-      "name": "RinggitPlus（马）",
-      "url": "https://ringgitplus.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-18T10:30:00Z",
-      "last_hit_at": "2026-10-05T04:30:00Z",
-      "search_domains": [
-        "ringgitplus.com"
-      ]
-    },
-    {
-      "id": "soyacincau",
-      "name": "SoyaCincau（马）",
-      "url": "https://soyacincau.com/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "esim"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-18T13:55:42Z",
-      "last_hit_at": "2026-10-04T13:30:00Z",
-      "entry_url": "https://soyacincau.com/feed"
-    },
-    {
-      "id": "lowyat",
-      "name": "Lowyat.NET（马）",
-      "url": "https://www.lowyat.net/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "bank",
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-18T17:21:25Z",
-      "last_hit_at": "2026-10-03T22:30:00Z",
-      "entry_url": "https://www.lowyat.net/feed"
-    },
-    {
-      "id": "hardwarezone",
-      "name": "HardwareZone（新）",
-      "url": "https://www.hardwarezone.com.sg/",
-      "tier": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "bank",
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-18T20:47:08Z",
-      "last_hit_at": "2026-10-03T07:30:00Z",
-      "entry_url": "https://www.hardwarezone.com.sg/feed"
-    },
-    {
-      "id": "toolify",
-      "name": "Toolify · New",
-      "url": "https://www.toolify.ai/new",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "ai"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-19T00:12:51Z",
-      "last_hit_at": "2026-10-02T16:30:00Z"
-    },
-    {
-      "id": "futurepedia",
-      "name": "Futurepedia",
-      "url": "https://www.futurepedia.io/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "ai"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-19T03:38:34Z",
-      "last_hit_at": "2026-10-02T01:30:00Z"
-    },
-    {
-      "id": "sourceforge-ai",
-      "name": "SourceForge AI",
-      "url": "https://sourceforge.net/software/ai/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "ai",
-        "software"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-19T07:04:17Z",
-      "last_hit_at": "2026-11-20T10:30:00Z"
-    },
-    {
-      "id": "huggingface-spaces",
-      "name": "Hugging Face Spaces Trending",
-      "url": "https://huggingface.co/spaces?sort=trending",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "ai"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-19T10:30:00Z",
-      "last_hit_at": "2026-11-19T19:30:00Z"
-    },
-    {
-      "id": "openrouter-rankings",
-      "name": "OpenRouter Rankings",
-      "url": "https://openrouter.ai/rankings",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "ai"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-19T13:55:42Z",
-      "last_hit_at": "2026-11-19T04:30:00Z"
-    },
-    {
-      "id": "aideal",
-      "name": "AIDeal（韩）",
-      "url": "https://aideal.kr/",
-      "tier": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "ai"
-      ],
-      "lang": "ko",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-19T17:21:25Z",
-      "last_hit_at": "2026-11-18T13:30:00Z"
-    },
-    {
-      "id": "aijp",
-      "name": "AI 精品导航（jizhiku）",
-      "url": "https://www.aijp.jizhiku.net/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "ai"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-19T20:47:08Z",
-      "last_hit_at": "2026-11-17T22:30:00Z",
-      "search_domains": [
-        "www.aijp.jizhiku.net"
-      ]
-    },
-    {
-      "id": "eneba",
-      "name": "Eneba",
-      "url": "https://www.eneba.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software"
-      ],
-      "lang": "en",
-      "status": "manual",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T17:21:25Z",
-      "last_hit_at": "2026-11-14T04:30:00Z",
-      "search_domains": [
-        "www.eneba.com"
-      ],
-      "manual_note": "二手游戏 key 站：卖家是第三方，活动真伪难判，只在线索出现时人工核（Hark Q4(d)）"
-    },
-    {
-      "id": "g2a",
-      "name": "G2A",
-      "url": "https://www.g2a.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software"
-      ],
-      "lang": "en",
-      "status": "manual",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T20:47:08Z",
-      "last_hit_at": "2026-11-13T13:30:00Z",
-      "search_domains": [
-        "www.g2a.com"
-      ],
-      "manual_note": "二手游戏 key 站（直连 403）：卖家第三方，只人工核"
-    },
-    {
-      "id": "kinguin",
-      "name": "Kinguin",
-      "url": "https://www.kinguin.net/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software"
-      ],
-      "lang": "en",
-      "status": "manual",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T00:12:51Z",
-      "last_hit_at": "2026-11-12T22:30:00Z",
-      "search_domains": [
-        "www.kinguin.net"
-      ],
-      "manual_note": "二手游戏 key 站（直连 403）：卖家第三方，只人工核"
-    },
-    {
-      "id": "g2g",
-      "name": "G2G",
-      "url": "https://www.g2g.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software"
-      ],
-      "lang": "en",
-      "status": "manual",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T03:38:34Z",
-      "last_hit_at": "2026-11-12T07:30:00Z",
-      "search_domains": [
-        "www.g2g.com"
-      ],
-      "manual_note": "游戏代练/账号与 key 市场：卖家第三方，只人工核"
-    },
-    {
-      "id": "u7buy",
-      "name": "U7BUY",
-      "url": "https://www.u7buy.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software"
-      ],
-      "lang": "en",
-      "status": "manual",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T07:04:17Z",
-      "last_hit_at": "2026-11-11T16:30:00Z",
-      "search_domains": [
-        "www.u7buy.com"
-      ],
-      "manual_note": "游戏币/代充市场：卖家第三方，只人工核"
-    },
-    {
-      "id": "ota-airline-esim",
-      "name": "OTA / 航司联名免费 eSIM（Klook / Trip.com / Agoda / Omio）",
-      "url": "https://www.klook.com/rewards/",
-      "tier": "P1",
-      "entry_type": "search",
-      "cadence_h": 24,
-      "categories": [
-        "esim"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": null,
-      "keyword_pool": "ota_airline",
-      "entries": [
-        {
-          "kind": "search_group",
-          "domains": [
-            "klook.com",
-            "trip.com",
-            "agoda.com",
-            "omio.com"
-          ],
-          "term_set": "ota_airline"
-        }
-      ],
-      "verify_urls": {
-        "klook.com": "https://www.klook.com/rewards/benefit/?benefit_key=esim",
-        "trip.com": "https://www.trip.com/customer/loyalty",
-        "agoda.com": "https://www.agoda.com/press/agoda-launches-free-global-esims-for-vip-diamond-members/"
-      },
-      "note": "2026-11-21 深挖新增：显式写了 free eSIM 的 OTA 会员 / 联名入口优先（Klook Rewards、Trip.com 白金+、Agoda VIP Diamond、Omio × Kolet）；纯满减码（Klook 99% off、$1 eSIM）不收录"
-    },
-    {
-      "id": "airline-esim-partners",
-      "name": "航司 × eSIM 联名（Kolet / SAS / Air India / Sun PhuQuoc）",
-      "url": "https://www.kolet.com/",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "esim"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": null,
-      "keyword_pool": "airline_esim",
-      "entries": [
-        {
-          "kind": "search_group",
-          "domains": [
-            "kolet.com",
-            "flysas.com",
-            "airindia.com",
-            "sunphuquocairways.com"
-          ],
-          "term_set": "airline_esim"
-        }
-      ],
-      "verify_urls": {
-        "kolet.com": "https://help.kolet.com/en/articles/8656385-when-does-my-data-plan-start-and-what-is-the-validity",
-        "flysas.com": "https://www.flysas.com/en/travel-extras/travelesim",
-        "airindia.com": "https://www.airindia.com/in/en/maharaja-club/partner-offers/kolet.html",
-        "sunphuquocairways.com": "https://connect.sunphuquocairways.com/sg/en"
-      },
-      "note": "2026-11-21 深挖新增：Kolet 的 co-branded 子站（virginatlantic / vietnamairlines / corendon / airindia / klm 等 *.shop.kolet.com）都落在 kolet.com 下；TAROM × Ubigi 与 Virgin Atlantic、myPAL 已有独立条目，命中时先查 dedup"
-    },
-    {
-      "id": "media-event-esim",
-      "name": "科技媒体 / 音乐节 / 活动方 × eSIM 与运营商（VOXI / CNET / 媒体联名）",
-      "url": "https://www.voxi.co.uk/voxi-drop",
-      "tier": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "esim"
-      ],
-      "lang": "en",
-      "status": "active",
-      "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": null,
-      "last_hit_at": null,
-      "keyword_pool": "media_event",
-      "entries": [
-        {
-          "kind": "search_group",
-          "domains": [
-            "voxi.co.uk",
-            "cnet.com",
-            "cnetfrance.fr",
-            "iphon.fr"
-          ],
-          "term_set": "media_event"
-        }
-      ],
-      "verify_urls": {
-        "voxi.co.uk": "https://www.voxi.co.uk/voxi-drop",
-        "cnet.com": "https://www.cnet.com/"
-      },
-      "note": "2026-11-21 深挖新增（Jun 补充线索）：音乐节 / 活动方 × 运营商免费流量与科技媒体 × eSIM 合作都必须回到官方页核实；只挂官方直链，媒体专属返利码（如 ESIMCOMPARE / CWJK257）不收录"
-    }
-  ],
-  "paused_sources": [
-    {
-      "id": "1024-day",
-      "name": "1024.day",
-      "url": "https://1024.day/",
-      "tier_before_pause": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "ai"
-      ],
-      "lang": "zh",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-16T10:30:00Z",
-      "last_hit_at": "2026-11-13T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；小众娱乐站，优惠产出低",
-      "search_domains": [
-        "1024.day"
-      ]
-    },
-    {
-      "id": "sb-sb",
-      "name": "SB.SB",
-      "url": "https://sb.sb/",
-      "tier_before_pause": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "cloud",
-        "ai"
-      ],
-      "lang": "zh",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-17T10:30:00Z",
-      "last_hit_at": "2026-11-14T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；小众社区，与 1a2x 内容高度重叠",
-      "search_domains": [
-        "sb.sb"
-      ]
-    },
-    {
-      "id": "mymuwu",
-      "name": "MyMuwu",
-      "url": "https://www.mymuwu.net/",
-      "tier_before_pause": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "ai",
-        "software"
-      ],
-      "lang": "zh",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-18T10:30:00Z",
-      "last_hit_at": "2026-11-15T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；站点长期连不通（curl 000）",
-      "search_domains": [
-        "www.mymuwu.net"
-      ]
-    },
-    {
-      "id": "1a2x",
-      "name": "1A2X",
-      "url": "https://1a2x.com/",
-      "tier_before_pause": "P2",
-      "entry_type": "search",
-      "cadence_h": 168,
-      "categories": [
-        "cloud",
-        "ai"
-      ],
-      "lang": "zh",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-19T10:30:00Z",
-      "last_hit_at": "2026-11-16T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；小社区，与 SB.SB 同类",
-      "search_domains": [
-        "1a2x.com"
-      ]
-    },
-    {
-      "id": "personalagentatlas",
-      "name": "Personal Agent Atlas",
-      "url": "https://personalagentatlas.com/",
-      "tier_before_pause": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "ai"
-      ],
-      "lang": "en",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-14T10:30:00Z",
-      "last_hit_at": "2026-11-11T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；AI 代理对比站，非优惠源"
-    },
-    {
-      "id": "agenttipsheet",
-      "name": "Agent Tip Sheet",
-      "url": "https://agenttipsheet.com/",
-      "tier_before_pause": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "ai"
-      ],
-      "lang": "en",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-13T10:30:00Z",
-      "last_hit_at": "2026-11-10T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；AI 代理资讯站，非优惠源"
-    },
-    {
-      "id": "gh-miyi23",
-      "name": "Geekhub 资源频道",
-      "url": "https://gh.miyi23.top/",
-      "tier_before_pause": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "cloud"
-      ],
-      "lang": "zh",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-15T10:30:00Z",
-      "last_hit_at": "2026-11-12T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；资源分享为主，优惠产出低",
-      "entry_url": "https://gh.miyi23.top/rss.json"
-    },
-    {
-      "id": "youhui-xiaobaoto",
-      "name": "小白兔优惠频道",
-      "url": "https://youhui.xiaobaoto.com/",
-      "tier_before_pause": "P2",
-      "entry_type": "rss",
-      "cadence_h": 168,
-      "categories": [
-        "software",
-        "bank"
-      ],
-      "lang": "zh",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-12T10:30:00Z",
-      "last_hit_at": "2026-11-09T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；RSS 长期停更，需搜索兜底",
-      "entry_url": "https://youhui.xiaobaoto.com/rss.json"
-    },
-    {
-      "id": "reddit-referralcodes",
-      "name": "r/referralcodes",
-      "url": "https://www.reddit.com/r/referralcodes/new/",
-      "tier_before_pause": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-11T10:30:00Z",
-      "last_hit_at": "2026-11-08T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；纯推荐码堆帖，个人码不可直接收录"
-    },
-    {
-      "id": "reddit-ukreferralcodes",
-      "name": "r/UK_Referral_Codes",
-      "url": "https://www.reddit.com/r/UK_Referral_Codes/new/",
-      "tier_before_pause": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-10T10:30:00Z",
-      "last_hit_at": "2026-11-07T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；纯推荐码堆帖，与上一条重复"
-    },
-    {
-      "id": "reddit-saudiarabia",
-      "name": "r/saudiarabia",
-      "url": "https://www.reddit.com/r/saudiarabia/new/",
-      "tier_before_pause": "P2",
-      "entry_type": "list",
-      "cadence_h": 168,
-      "categories": [
-        "bank"
-      ],
-      "lang": "en",
-      "status": "paused",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-09T10:30:00Z",
-      "last_hit_at": "2026-11-06T10:30:00Z",
-      "paused_at": "2026-11-21T04:30:00Z",
-      "paused_reason": "P2 配额已满；中东分区优惠密度低（r/dubai 已覆盖）"
-    }
-  ],
-  "term_sets": {
-    "topup": {
-      "label": "数字充值/礼品卡/游戏·通信合作活动词（search_group 专用）",
-      "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6，也不增加搜索次数；零结果后下次走 fallback",
-      "T0": [
-        "bonus",
-        "promo",
-        "promotion",
-        "top up bonus",
-        "bonus diamonds",
-        "free game credits",
-        "partnership"
-      ],
-      "T1": [
-        "bonus",
-        "promo",
-        "offer",
-        "welcome bonus",
-        "first order discount",
-        "gift card bonus",
-        "cashback",
-        "app exclusive"
-      ],
-      "fallback": [
-        "bonus",
-        "promo",
-        "promotion",
-        "offer"
-      ]
-    },
-    "ota_airline": {
-      "label": "OTA / 航司联名 free eSIM 词集（search_group 专用）",
-      "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6；零结果后下次走 fallback",
-      "T0": [
-        "free eSIM",
-        "free data",
-        "member eSIM",
-        "loyalty eSIM",
-        "partner offer",
-        "eSIM perk"
-      ],
-      "T1": [
-        "free eSIM",
-        "complimentary eSIM",
-        "travel eSIM offer",
-        "perks",
-        "giveaway",
-        "1GB free"
-      ],
-      "fallback": [
-        "free eSIM",
-        "eSIM offer",
-        "free data"
-      ]
-    },
-    "airline_esim": {
-      "label": "航司 × eSIM 联名词集（search_group 专用）",
-      "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6；零结果后下次走 fallback",
-      "T0": [
-        "free eSIM",
-        "complimentary data",
-        "Kolet",
-        "1GB free",
-        "onboard data"
-      ],
-      "T1": [
-        "free data",
-        "eSIM partner",
-        "loyalty eSIM",
-        "complimentary eSIM",
-        "inflight data"
-      ],
-      "fallback": [
-        "free eSIM",
-        "free data",
-        "eSIM"
-      ]
-    },
-    "media_event": {
-      "label": "科技媒体 / 音乐节 / 活动方 × eSIM 与运营商词集（search_group 专用）",
-      "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6；零结果后下次走 fallback",
-      "T0": [
-        "VOXI festival",
-        "CNET Ubigi",
-        "media partner free eSIM",
-        "festival eSIM",
-        "free eSIM",
-        "reader offer"
-      ],
-      "T1": [
-        "VOXI Drop",
-        "festival data",
-        "media partner eSIM",
-        "tech media eSIM",
-        "free data pass",
-        "giveaway eSIM"
-      ],
-      "fallback": [
-        "VOXI festival",
-        "CNET Ubigi",
-        "media partner free eSIM"
-      ]
-    }
+  "tier_policy": {
+   "P0": "每轮都跑（cadence 2h，priority 3，≤6 个）：投稿队列、X 检索、可直抓的 TG 优惠频道、HN/Show HN、GitHub Trending",
+   "P1": "每日轮换（cadence 24h，priority 2，≤35 个）：核心论坛、海外羊毛站、Reddit、AI 首发榜，以及 3 个 search_group 充值源 topup-telecom / topup-game / topup-giftcard",
+   "P2": "每周长尾（cadence 168h，priority 1）：其余外语社区、小众博客、长尾平台（含 topup-longtail 与 coinsbee-blog），总数 ≤49（= 每周 7 天 × 每天 7 个 P2 源位）",
+   "priority": "priority 由 tier 推导（P0=3 / P1=2 / P2=1），不单独存；本表不存主观可信度评语，也不存 data_quality",
+   "categories": "表示该源最强的情报主题，仅用于关键词组匹配；所有源仍按全品类原则抓取，不把站点窄化成单一分类",
+   "entry_type": "rss > md > list > search：有 feed 用 feed，Discourse 用 /latest.md，无入口才走站内关键词检索"
+  },
+  "selection": "先取全部到期 P0，再按逾期倍数取 P1，最后取 P2；P2 每轮保底 1 个，避免每周积压",
+  "keyword_rotation": {
+   "rule": "本轮组号 g = round_index % 6，6 组依次为 境外金融 → 数字居民 → 通信资源 → AI 与软件 → 云计算 → 返利羊毛；每个 search 源只用 1 组、最多 3 个词并用 OR 连接，源分类与当前组不匹配时顺延到下一个匹配的组",
+   "p0_exception": "P0 里的 X 公开检索仍需关键词（其余 P0 都是直抓入口，不用关键词）",
+   "append_en": "通信资源 / AI 与软件 / 返利羊毛 三组带英文切片 append_en（每切片 ≤3 词），只给 lang≠zh 的源用，切片序号 = (round_index div 6) mod 切片数，仍只发 1 条查询；境外金融 / 数字居民 / 云计算 不动",
+   "term_sets": "search_group 充值源不用 6 组轮转词，改读 term_sets.topup 的 T0/T1（按一年第几天 mod 2 轮换），零结果后下次走 fallback；原 commerce_keywords 12 词已并入 T0/T1 与上述英文切片（promo code / limited time offer 质量差未落位，按 Hark Q3 弃用）"
+  },
+  "capacity": {
+   "slots_per_day": 84,
+   "P0_slots_per_day": 42,
+   "P2_slots_per_day": 7,
+   "P1_slots_per_day": 35,
+   "note": "P1 35 个 ≤ 每日 P1 源位 35 个 → 严格 24h 轮完；P2 44 个 ≤ 49；每轮仍 12 个源"
+  },
+  "writeback": "plan_round.py --mark-done / --mark-hit / --mark-zero 回写 last_crawled_at、last_hit_at 与 zero_streak；P0 14 天无产出→P1、P1 30 天→P2、P2 90 天→paused（manual 源不参与；升级只能人工）",
+  "paused_policy": "paused_sources 不进调度、不占 P2 配额；恢复用 plan_round.py 的 --activate 或人工移回 sources",
+  "counts": {
+   "scheduled": 85,
+   "P0": 6,
+   "P1": 35,
+   "P2": 44,
+   "manual": 5,
+   "paused": 11
+  },
+  "search_group": "entries[].kind=search_group：domains 最多 4 个，整组每轮只发 1 条 `(site:a OR site:b …) (词集)` 查询；after_date = last_crawled_at − 1 天（首抓取今天 − 30 天）；blocked 域名只核验不抓取（优先合作方/发行方官方页，否则每天最多 1 次浏览器开 verify_urls）；「这组有产出」= 至少 1 条结果 URL 落在组内域名、其 url 与 dedup_key 都不在 deals/candidates，且按 Q4(e) 写成候选/条目，满足才 --mark-hit；discovered_from 写 `<组id>:<域名>`；零结果用 --mark-zero，下次自动改用 fallback 词集",
+  "manual_policy": "status=manual 的源留在表内注明手动，但不进调度、不占 P1/P2 源位、不参与降频，只在线索出现时人工核",
+  "updated_at": "2026-11-21T10:45:00Z"
+ },
+ "keyword_groups": [
+  {
+   "key": "finance",
+   "name": "境外金融",
+   "categories": [
+    "bank"
+   ],
+   "terms": [
+    "开户奖励",
+    "开户 Bonus",
+    "Refer",
+    "Referral",
+    "Welcome Offer",
+    "Cashback",
+    "银行开户",
+    "汇款奖励",
+    "免手续费"
+   ],
+   "usage": "论坛/社区站内检索（site: + 3 词 OR）"
+  },
+  {
+   "key": "resident",
+   "name": "数字居民",
+   "categories": [
+    "bank"
+   ],
+   "terms": [
+    "云居民",
+    "数字身份",
+    "海外地址",
+    "美国地址",
+    "SSN",
+    "ITIN",
+    "护照开户",
+    "远程开户",
+    "非居民开户"
+   ],
+   "usage": "论坛/社区站内检索（site: + 3 词 OR）"
+  },
+  {
+   "key": "comm",
+   "name": "通信资源",
+   "categories": [
+    "esim"
+   ],
+   "terms": [
+    "eSIM",
+    "VoWiFi",
+    "保号卡",
+    "免费 SIM",
+    "免费流量",
+    "国际漫游",
+    "免费号码",
+    "运营商优惠"
+   ],
+   "usage": "论坛/社区/海外站站内检索（site: + 3 词 OR）；lang≠zh 的源改用 append_en 英文切片",
+   "append_en": [
+    [
+     "free eSIM",
+     "top up bonus"
+    ]
+   ]
+  },
+  {
+   "key": "ai_software",
+   "name": "AI 与软件",
+   "categories": [
+    "ai",
+    "software"
+   ],
+   "terms": [
+    "Free Credits",
+    "API Credits",
+    "免费额度",
+    "学生认证",
+    "免费会员",
+    "Lifetime Deal",
+    "Trial"
+   ],
+   "usage": "论坛/社区站内检索（site: + 3 词 OR）",
+   "append_en": [
+    [
+     "gift card bonus",
+     "free game credits",
+     "app exclusive offer"
+    ]
+   ]
+  },
+  {
+   "key": "cloud",
+   "name": "云计算",
+   "categories": [
+    "cloud"
+   ],
+   "terms": [
+    "Free VPS",
+    "Free Tier",
+    "Cloud Credits",
+    "免费服务器",
+    "域名优惠",
+    "Developer Pack",
+    "bitrefill",
+    "seagm",
+    "二手 VPS",
+    "低价 VPS",
+    "剩余价值",
+    "年付",
+    "黑五",
+    "dedirock"
+   ],
+   "usage": "论坛/社区站内检索（site: + 3 词 OR）"
+  },
+  {
+   "key": "rewards",
+   "name": "返利羊毛",
+   "categories": [
+    "*"
+   ],
+   "terms": [
+    "免费领取",
+    "新用户奖励",
+    "注册有礼",
+    "邀请奖励",
+    "倒赚",
+    "免绑卡",
+    "限时活动"
+   ],
+   "usage": "全品类兜底组：任何分类的源都可匹配",
+   "append_en": [
+    [
+     "referral program",
+     "loyalty rewards",
+     "cashback promotion"
+    ],
+    [
+     "welcome bonus",
+     "first order discount"
+    ]
+   ]
   }
+ ],
+ "sources": [
+  {
+   "id": "gmail-submissions",
+   "name": "访客投稿与纠错队列（Gmail）",
+   "url": "https://mail.google.com/",
+   "tier": "P0",
+   "entry_type": "search",
+   "cadence_h": 2,
+   "categories": [
+    "ai",
+    "bank",
+    "cloud",
+    "crypto",
+    "esim",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:25Z",
+   "last_hit_at": "2026-11-22T02:08:25Z",
+   "tool": "gog-gmail",
+   "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
+   "zero_streak": 0
+  },
+  {
+   "id": "x-deals",
+   "name": "X 公开线索（@donniy520 等中英文博主 + 关键词）",
+   "url": "https://x.com/search",
+   "tier": "P0",
+   "entry_type": "search",
+   "cadence_h": 2,
+   "categories": [
+    "ai",
+    "bank",
+    "cloud",
+    "crypto",
+    "esim",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:25Z",
+   "last_hit_at": "2026-11-22T02:08:25Z",
+   "search_domains": [
+    "x.com"
+   ],
+   "tool": "x-search",
+   "zero_streak": 0
+  },
+  {
+   "id": "tg-docofcard",
+   "name": "DocOfCard 银行·卡粉优惠频道",
+   "url": "https://tg.docofcard.com/",
+   "tier": "P0",
+   "entry_type": "rss",
+   "cadence_h": 2,
+   "categories": [
+    "bank",
+    "esim"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:11Z",
+   "last_hit_at": "2026-11-22T02:08:11Z",
+   "entry_url": "https://tg.docofcard.com/rss.json",
+   "zero_streak": 0
+  },
+  {
+   "id": "mini-appdo",
+   "name": "Mini AppDo 数字生活·软件优惠频道",
+   "url": "https://mini.appdo.xyz/",
+   "tier": "P0",
+   "entry_type": "rss",
+   "cadence_h": 2,
+   "categories": [
+    "software",
+    "ai",
+    "esim"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:25Z",
+   "last_hit_at": "2026-11-22T02:08:25Z",
+   "entry_url": "https://mini.appdo.xyz/rss.json",
+   "zero_streak": 0
+  },
+  {
+   "id": "hn",
+   "name": "Hacker News 首页与 Show HN",
+   "url": "https://news.ycombinator.com/",
+   "tier": "P0",
+   "entry_type": "rss",
+   "cadence_h": 2,
+   "categories": [
+    "ai",
+    "software",
+    "cloud"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:11Z",
+   "last_hit_at": "2026-11-22T02:08:11Z",
+   "entry_url": "https://news.ycombinator.com/rss",
+   "zero_streak": 0
+  },
+  {
+   "id": "github-trending",
+   "name": "GitHub Trending",
+   "url": "https://github.com/trending",
+   "tier": "P0",
+   "entry_type": "list",
+   "cadence_h": 2,
+   "categories": [
+    "ai",
+    "software",
+    "cloud"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:11Z",
+   "last_hit_at": "2026-11-22T02:08:11Z",
+   "zero_streak": 0
+  },
+  {
+   "id": "uscardforum",
+   "name": "美卡论坛",
+   "url": "https://www.uscardforum.com/",
+   "tier": "P1",
+   "entry_type": "md",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "crypto"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-21T23:40:33Z",
+   "last_hit_at": "2026-11-19T15:30:00Z",
+   "entry_url": "https://www.uscardforum.com/latest.md"
+  },
+  {
+   "id": "banknav",
+   "name": "BankNav 海外银行卡 / eSIM / 港美股券商导航",
+   "url": "https://www.banknav.com/",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "esim"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-22T05:10:00Z",
+   "note": "首页约 203 个卡片、10 个分区（最新福利/跨境券商/香港数字银行/香港实体银行/澳门银行/虚拟银行卡/加密货币/行情工具/跨境工具），每张卡多半指向站内 /post/<id>/ 详情页。站内大量「邀请码：××」「?ref=」「?invite_code=」为站长个人返佣码，收录时必须回溯品牌官网，不得照搬。"
+  },
+  {
+   "id": "shuzijumin",
+   "name": "数字居民论坛",
+   "url": "https://shuzijumin.com/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "esim"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:11Z",
+   "last_hit_at": "2026-11-22T02:08:11Z",
+   "search_domains": [
+    "shuzijumin.com"
+   ],
+   "zero_streak": 0
+  },
+  {
+   "id": "nodeseek",
+   "name": "NodeSeek",
+   "url": "https://www.nodeseek.com/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "cloud",
+    "software",
+    "crypto"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:25Z",
+   "last_hit_at": "2026-11-22T02:08:25Z",
+   "search_domains": [
+    "www.nodeseek.com"
+   ],
+   "zero_streak": 0
+  },
+  {
+   "id": "nodeloc",
+   "name": "NodeLoc",
+   "url": "https://www.nodeloc.com/",
+   "tier": "P1",
+   "entry_type": "md",
+   "cadence_h": 24,
+   "categories": [
+    "cloud",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:25Z",
+   "last_hit_at": "2026-11-22T02:08:25Z",
+   "entry_url": "https://www.nodeloc.com/latest.md",
+   "zero_streak": 0
+  },
+  {
+   "id": "hostloc",
+   "name": "全球主机论坛 HostLoc",
+   "url": "https://www.hostloc.com/forum.php",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "cloud"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:11Z",
+   "last_hit_at": "2026-11-22T02:08:11Z",
+   "zero_streak": 0
+  },
+  {
+   "id": "linux-do",
+   "name": "Linux.do",
+   "url": "https://linux.do/c/welfare/36.json",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "ai",
+    "cloud",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-22T02:08:11Z",
+   "last_hit_at": "2026-11-22T02:08:11Z",
+   "zero_streak": 0
+  },
+  {
+   "id": "v2ex",
+   "name": "V2EX",
+   "url": "https://www.v2ex.com/",
+   "tier": "P1",
+   "entry_type": "rss",
+   "cadence_h": 24,
+   "categories": [
+    "ai",
+    "cloud",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T11:06:55Z",
+   "last_hit_at": "2026-11-18T09:30:00Z",
+   "entry_url": "https://www.v2ex.com/index.xml"
+  },
+  {
+   "id": "1point3acres",
+   "name": "一亩三分地",
+   "url": "https://www.1point3acres.com/bbs/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "bank",
+    "ai"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T11:43:50Z",
+   "last_hit_at": "2026-11-18T04:30:00Z",
+   "search_domains": [
+    "www.1point3acres.com"
+   ],
+   "note": "2026-11-22 由 P1 降为 P2：站点 403 拦截、连续零产出，让出 P1 每日源位给 banknav；升级只能人工。"
+  },
+  {
+   "id": "ecitizen",
+   "name": "电子公民论坛",
+   "url": "https://ecitizen.forum/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "crypto"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T12:20:46Z",
+   "last_hit_at": "2026-11-17T23:30:00Z",
+   "search_domains": [
+    "ecitizen.forum"
+   ]
+  },
+  {
+   "id": "yunjumin",
+   "name": "云居民",
+   "url": "https://yunjumin.com/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "cloud"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T12:57:41Z",
+   "last_hit_at": "2026-11-17T18:30:00Z",
+   "search_domains": [
+    "yunjumin.com"
+   ]
+  },
+  {
+   "id": "flyert",
+   "name": "飞客茶馆",
+   "url": "https://www.flyert.com/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "esim"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T13:34:36Z",
+   "last_hit_at": "2026-11-17T13:30:00Z",
+   "search_domains": [
+    "www.flyert.com"
+   ]
+  },
+  {
+   "id": "naixi",
+   "name": "奶昔论坛",
+   "url": "https://www.naixi.net/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "cloud",
+    "ai"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T14:11:32Z",
+   "last_hit_at": "2026-11-17T08:30:00Z",
+   "search_domains": [
+    "www.naixi.net"
+   ]
+  },
+  {
+   "id": "2libra",
+   "name": "2Libra",
+   "url": "https://2libra.com/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "esim",
+    "ai"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T14:48:27Z",
+   "last_hit_at": "2026-11-17T03:30:00Z",
+   "search_domains": [
+    "2libra.com"
+   ]
+  },
+  {
+   "id": "free8",
+   "name": "免费吧",
+   "url": "https://www.free8.net/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "cloud",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T15:25:23Z",
+   "last_hit_at": "2026-11-16T22:30:00Z",
+   "search_domains": [
+    "www.free8.net"
+   ]
+  },
+  {
+   "id": "tg-okhk",
+   "name": "OKHK TG 频道博客",
+   "url": "https://tg.okhk.net/",
+   "tier": "P1",
+   "entry_type": "rss",
+   "cadence_h": 24,
+   "categories": [
+    "ai",
+    "cloud"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T16:02:18Z",
+   "last_hit_at": "2026-11-16T17:30:00Z",
+   "entry_url": "https://tg.okhk.net/rss.json"
+  },
+  {
+   "id": "ozbargain",
+   "name": "OzBargain（澳）",
+   "url": "https://www.ozbargain.com.au/",
+   "tier": "P1",
+   "entry_type": "rss",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "software",
+    "esim"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T16:39:13Z",
+   "last_hit_at": "2026-11-16T12:30:00Z",
+   "entry_url": "https://www.ozbargain.com.au/feed"
+  },
+  {
+   "id": "cheapies",
+   "name": "Cheapies NZ（新西兰）",
+   "url": "https://www.cheapies.nz/",
+   "tier": "P1",
+   "entry_type": "rss",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "software"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T17:16:09Z",
+   "last_hit_at": "2026-11-16T07:30:00Z",
+   "entry_url": "https://www.cheapies.nz/feed"
+  },
+  {
+   "id": "mysidegig",
+   "name": "MySideGig（英区免存优惠）",
+   "url": "https://www.mysidegig.co.uk/free-money?tag=No+Deposit",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T17:53:04Z",
+   "last_hit_at": "2026-11-16T02:30:00Z"
+  },
+  {
+   "id": "topreferrals",
+   "name": "TopReferrals（英区推荐）",
+   "url": "https://www.topreferrals.co.uk/referrals",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T18:30:00Z",
+   "last_hit_at": "2026-11-15T21:30:00Z"
+  },
+  {
+   "id": "withgoddess",
+   "name": "WithGoddess",
+   "url": "https://www.withgoddess.com/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "crypto"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T19:06:55Z",
+   "last_hit_at": "2026-11-15T16:30:00Z",
+   "search_domains": [
+    "www.withgoddess.com"
+   ]
+  },
+  {
+   "id": "usdailyrewards",
+   "name": "US Daily Rewards",
+   "url": "https://www.usdailyrewards.com/",
+   "tier": "P1",
+   "entry_type": "rss",
+   "cadence_h": 24,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T19:43:50Z",
+   "last_hit_at": "2026-11-15T11:30:00Z",
+   "entry_url": "https://www.usdailyrewards.com/feed"
+  },
+  {
+   "id": "budgetfitter",
+   "name": "BudgetFitter（英）",
+   "url": "https://budgetfitter.uk/",
+   "tier": "P1",
+   "entry_type": "rss",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "software"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T20:20:46Z",
+   "last_hit_at": "2026-11-15T06:30:00Z",
+   "entry_url": "https://budgetfitter.uk/feed"
+  },
+  {
+   "id": "bitrefill",
+   "name": "Bitrefill",
+   "url": "https://www.bitrefill.com/",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "crypto",
+    "software"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T20:57:41Z",
+   "last_hit_at": "2026-11-15T01:30:00Z"
+  },
+  {
+   "id": "seagm",
+   "name": "SEAGM",
+   "url": "https://www.seagm.com/",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "software",
+    "crypto"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T21:34:36Z",
+   "last_hit_at": "2026-11-14T20:30:00Z"
+  },
+  {
+   "id": "reddit-beermoneyuk",
+   "name": "r/beermoneyuk",
+   "url": "https://www.reddit.com/r/beermoneyuk/new/",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "software"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T22:11:32Z",
+   "last_hit_at": "2026-11-14T15:30:00Z"
+  },
+  {
+   "id": "reddit-beermoney",
+   "name": "r/beermoney",
+   "url": "https://www.reddit.com/r/beermoney/new/",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "bank",
+    "software"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T22:48:27Z",
+   "last_hit_at": "2026-11-14T10:30:00Z"
+  },
+  {
+   "id": "reddit-beermoneyglobal",
+   "name": "r/beermoneyglobal",
+   "url": "https://www.reddit.com/r/beermoneyglobal/new/",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T23:25:23Z",
+   "last_hit_at": "2026-11-14T05:30:00Z"
+  },
+  {
+   "id": "reddit-churning",
+   "name": "r/churning",
+   "url": "https://www.reddit.com/r/churning/new/",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-21T00:02:18Z",
+   "last_hit_at": "2026-11-14T00:30:00Z"
+  },
+  {
+   "id": "reddit-airdrops",
+   "name": "r/airdrops",
+   "url": "https://www.reddit.com/r/airdrops/new/",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "crypto"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-21T00:39:13Z",
+   "last_hit_at": "2026-11-13T19:30:00Z"
+  },
+  {
+   "id": "producthunt-ai",
+   "name": "Product Hunt · AI 主题",
+   "url": "https://www.producthunt.com/topics/artificial-intelligence",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "ai"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-21T01:16:09Z",
+   "last_hit_at": "2026-11-13T14:30:00Z"
+  },
+  {
+   "id": "taaft",
+   "name": "There's An AI For That",
+   "url": "https://theresanaiforthat.com/",
+   "tier": "P1",
+   "entry_type": "list",
+   "cadence_h": 24,
+   "categories": [
+    "ai"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-21T01:53:04Z",
+   "last_hit_at": "2026-11-13T09:30:00Z"
+  },
+  {
+   "id": "topup-telecom",
+   "name": "数字充值 · 通信（Ding / MobileTopUp）",
+   "url": "https://www.ding.com/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "esim"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:45:00Z",
+   "last_crawled_at": "2026-11-21T23:40:33Z",
+   "last_hit_at": "2026-11-21T23:40:33Z",
+   "keyword_pool": "topup",
+   "entries": [
+    {
+     "kind": "search_group",
+     "domains": [
+      "ding.com",
+      "mobiletopup.com"
+     ],
+     "term_set": "topup"
+    }
+   ],
+   "blocked": [
+    "ding.com",
+    "mobiletopup.com"
+   ],
+   "verify_urls": {
+    "ding.com": "https://www.ding.com/promotions"
+   },
+   "note": "两域名直连 403/429（2026-11-21 实测），只做核验不抓取：优先运营商官方公告，否则每天最多 1 次浏览器开 verify_urls",
+   "zero_streak": 0
+  },
+  {
+   "id": "topup-game",
+   "name": "数字充值 · 游戏（Codashop / UniPin / Razer Gold / MooGold）",
+   "url": "https://www.codashop.com/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "software"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:45:00Z",
+   "last_crawled_at": "2026-11-21T23:40:33Z",
+   "last_hit_at": "2026-11-21T23:40:33Z",
+   "keyword_pool": "topup",
+   "entries": [
+    {
+     "kind": "search_group",
+     "domains": [
+      "codashop.com",
+      "unipin.com",
+      "gold.razer.com",
+      "moogold.com"
+     ],
+     "term_set": "topup"
+    }
+   ],
+   "note": "Codashop 活动页路径未摸清（/en/promotions 404），暂不写 verify_urls；候选以游戏商/发行方官方公告为准",
+   "zero_streak": 0
+  },
+  {
+   "id": "topup-giftcard",
+   "name": "数字充值 · 礼品卡（CoinsBee / Cryptorefills / Recharge / OffGamers）",
+   "url": "https://www.coinsbee.com/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "software",
+    "crypto"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:45:00Z",
+   "last_crawled_at": "2026-11-21T23:40:33Z",
+   "last_hit_at": null,
+   "keyword_pool": "topup",
+   "entries": [
+    {
+     "kind": "search_group",
+     "domains": [
+      "coinsbee.com",
+      "cryptorefills.com",
+      "recharge.com",
+      "offgamers.com"
+     ],
+     "term_set": "topup"
+    }
+   ],
+   "note": "四站均可直连，但按 search_group 统一走 1 条查询；CoinsBee 博客另由 coinsbee-blog 的 rss 覆盖",
+   "zero_streak": 1,
+   "last_zero_at": "2026-11-21T23:40:33Z"
+  },
+  {
+   "id": "topup-longtail",
+   "name": "数字充值 · 长尾（LootBar / BitTopup / Dundle）",
+   "url": "https://www.lootbar.gg/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "software",
+    "crypto"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:45:00Z",
+   "last_crawled_at": null,
+   "last_hit_at": null,
+   "keyword_pool": "topup",
+   "entries": [
+    {
+     "kind": "search_group",
+     "domains": [
+      "lootbar.gg",
+      "bittopup.com",
+      "dundle.com"
+     ],
+     "term_set": "topup"
+    }
+   ],
+   "blocked": [
+    "bittopup.com",
+    "dundle.com"
+   ],
+   "note": "bittopup 直连 403、dundle 429（2026-11-21 实测），只做核验不抓取"
+  },
+  {
+   "id": "coinsbee-blog",
+   "name": "CoinsBee 博客（18 站里唯一真 RSS）",
+   "url": "https://blog.coinsbee.com/feed",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "crypto",
+    "software"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:45:00Z",
+   "last_crawled_at": "2026-11-22T02:08:11Z",
+   "last_hit_at": "2026-11-22T02:08:11Z",
+   "zero_streak": 0
+  },
+  {
+   "id": "mykeyvans",
+   "name": "MyKeyVans 频道",
+   "url": "https://channel.mykeyvans.com/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "ai",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-14T10:30:00Z",
+   "last_hit_at": "2026-10-22T16:30:00Z",
+   "entry_url": "https://channel.mykeyvans.com/rss.json"
+  },
+  {
+   "id": "talk-appinn",
+   "name": "小众软件 Talk",
+   "url": "https://talk.appinn.net/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-14T13:55:42Z",
+   "last_hit_at": "2026-10-22T01:30:00Z"
+  },
+  {
+   "id": "ygkkktg",
+   "name": "YGKKK TG 频道",
+   "url": "https://ygkkktg.pages.dev/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "ai",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-14T17:21:25Z",
+   "last_hit_at": "2026-10-21T10:30:00Z",
+   "entry_url": "https://ygkkktg.pages.dev/rss.xml"
+  },
+  {
+   "id": "bboy-tg",
+   "name": "BBoy TG 频道",
+   "url": "https://tg.bboy.app/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "software",
+    "ai"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-14T20:47:08Z",
+   "last_hit_at": "2026-10-20T19:30:00Z",
+   "entry_url": "https://tg.bboy.app/rss.json"
+  },
+  {
+   "id": "wanshiwu",
+   "name": "万事屋频道",
+   "url": "https://t.wanshiwu.fyi/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-15T00:12:51Z",
+   "last_hit_at": "2026-10-20T04:30:00Z",
+   "entry_url": "https://t.wanshiwu.fyi/rss.json"
+  },
+  {
+   "id": "zhetengsha",
+   "name": "折腾啥频道",
+   "url": "https://telegram.zhetengsha.eu.org/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "software",
+    "cloud"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-15T03:38:34Z",
+   "last_hit_at": "2026-10-19T13:30:00Z",
+   "entry_url": "https://telegram.zhetengsha.eu.org/rss.json"
+  },
+  {
+   "id": "miantiao",
+   "name": "面条备忘录",
+   "url": "https://memo.miantiao.me/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "software",
+    "ai"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-15T07:04:17Z",
+   "last_hit_at": "2026-10-18T22:30:00Z",
+   "entry_url": "https://memo.miantiao.me/rss.json"
+  },
+  {
+   "id": "broadcastchannel",
+   "name": "BroadcastChannel 总站",
+   "url": "https://broadcastchannel.pages.dev/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "ai",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-15T10:30:00Z",
+   "last_hit_at": "2026-10-18T07:30:00Z",
+   "entry_url": "https://broadcastchannel.pages.dev/rss.json"
+  },
+  {
+   "id": "makerhunter",
+   "name": "MakerHunter 分享",
+   "url": "https://share.makerhunter.com/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "ai",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-15T13:55:42Z",
+   "last_hit_at": "2026-10-17T16:30:00Z",
+   "entry_url": "https://share.makerhunter.com/rss.json"
+  },
+  {
+   "id": "dedirock",
+   "name": "DediRock（低价 VPS）",
+   "url": "https://dedirock.com/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "cloud"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-15T17:21:25Z",
+   "last_hit_at": "2026-10-17T01:30:00Z"
+  },
+  {
+   "id": "reddit-singaporefi",
+   "name": "r/singaporefi",
+   "url": "https://www.reddit.com/r/singaporefi/new/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-15T20:47:08Z",
+   "last_hit_at": "2026-10-16T10:30:00Z"
+  },
+  {
+   "id": "reddit-malaysianpf",
+   "name": "r/MalaysianPF",
+   "url": "https://www.reddit.com/r/MalaysianPF/new/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-16T00:12:51Z",
+   "last_hit_at": "2026-10-15T19:30:00Z"
+  },
+  {
+   "id": "reddit-phinvest",
+   "name": "r/phinvest",
+   "url": "https://www.reddit.com/r/phinvest/new/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "bank",
+    "crypto"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-16T03:38:34Z",
+   "last_hit_at": "2026-10-15T04:30:00Z"
+  },
+  {
+   "id": "reddit-digitalbanksph",
+   "name": "r/DigitalbanksPh",
+   "url": "https://www.reddit.com/r/DigitalbanksPh/new/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-16T07:04:17Z",
+   "last_hit_at": "2026-10-14T13:30:00Z"
+  },
+  {
+   "id": "reddit-dubai",
+   "name": "r/dubai",
+   "url": "https://www.reddit.com/r/dubai/new/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-16T10:30:00Z",
+   "last_hit_at": "2026-10-13T22:30:00Z"
+  },
+  {
+   "id": "naver",
+   "name": "Naver 博客 / 咖啡厅（韩）",
+   "url": "https://search.naver.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "bank",
+    "esim",
+    "ai"
+   ],
+   "lang": "ko",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-16T13:55:42Z",
+   "last_hit_at": "2026-10-13T07:30:00Z",
+   "search_domains": [
+    "blog.naver.com",
+    "cafe.naver.com"
+   ]
+  },
+  {
+   "id": "ppomppu",
+   "name": "PPomppu（韩）",
+   "url": "https://www.ppomppu.co.kr/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "bank",
+    "software"
+   ],
+   "lang": "ko",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-16T17:21:25Z",
+   "last_hit_at": "2026-10-12T16:30:00Z",
+   "search_domains": [
+    "www.ppomppu.co.kr"
+   ]
+  },
+  {
+   "id": "clien",
+   "name": "Clien（韩）",
+   "url": "https://www.clien.net/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "ai",
+    "bank"
+   ],
+   "lang": "ko",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-16T20:47:08Z",
+   "last_hit_at": "2026-10-12T01:30:00Z"
+  },
+  {
+   "id": "fmkorea",
+   "name": "FM Korea",
+   "url": "https://www.fmkorea.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "bank",
+    "crypto"
+   ],
+   "lang": "ko",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-17T00:12:51Z",
+   "last_hit_at": "2026-10-11T10:30:00Z",
+   "search_domains": [
+    "www.fmkorea.com"
+   ]
+  },
+  {
+   "id": "ruliweb",
+   "name": "Ruliweb（韩）",
+   "url": "https://bbs.ruliweb.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "software",
+    "ai"
+   ],
+   "lang": "ko",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-17T03:38:34Z",
+   "last_hit_at": "2026-10-10T19:30:00Z",
+   "search_domains": [
+    "bbs.ruliweb.com"
+   ]
+  },
+  {
+   "id": "yahoo",
+   "name": "Yahoo Japan / Yahoo US",
+   "url": "https://search.yahoo.co.jp/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "bank",
+    "esim",
+    "ai"
+   ],
+   "lang": "ja",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-17T07:04:17Z",
+   "last_hit_at": "2026-10-10T04:30:00Z",
+   "search_domains": [
+    "yahoo.co.jp",
+    "yahoo.com"
+   ]
+  },
+  {
+   "id": "note",
+   "name": "note.com（日）",
+   "url": "https://note.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "ai",
+    "software"
+   ],
+   "lang": "ja",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-17T10:30:00Z",
+   "last_hit_at": "2026-10-09T13:30:00Z",
+   "search_domains": [
+    "note.com"
+   ]
+  },
+  {
+   "id": "qiita",
+   "name": "Qiita（日）",
+   "url": "https://qiita.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "ai",
+    "software"
+   ],
+   "lang": "ja",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-17T13:55:42Z",
+   "last_hit_at": "2026-10-08T22:30:00Z",
+   "search_domains": [
+    "qiita.com"
+   ]
+  },
+  {
+   "id": "zenn",
+   "name": "Zenn（日）",
+   "url": "https://zenn.dev/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "ai",
+    "software"
+   ],
+   "lang": "ja",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-17T17:21:25Z",
+   "last_hit_at": "2026-10-08T07:30:00Z",
+   "entry_url": "https://zenn.dev/feed"
+  },
+  {
+   "id": "pantip",
+   "name": "Pantip（泰）",
+   "url": "https://pantip.com/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "bank",
+    "esim"
+   ],
+   "lang": "th",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-17T20:47:08Z",
+   "last_hit_at": "2026-10-07T16:30:00Z"
+  },
+  {
+   "id": "seedly",
+   "name": "Seedly（新）",
+   "url": "https://seedly.sg/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-18T00:12:51Z",
+   "last_hit_at": "2026-10-07T01:30:00Z",
+   "search_domains": [
+    "seedly.sg"
+   ]
+  },
+  {
+   "id": "singsaver",
+   "name": "SingSaver（新）",
+   "url": "https://www.singsaver.com.sg/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-18T03:38:34Z",
+   "last_hit_at": "2026-10-06T10:30:00Z",
+   "search_domains": [
+    "www.singsaver.com.sg"
+   ]
+  },
+  {
+   "id": "milelion",
+   "name": "MileLion（新）",
+   "url": "https://milelion.com/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "bank",
+    "esim"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-18T07:04:17Z",
+   "last_hit_at": "2026-10-05T19:30:00Z",
+   "entry_url": "https://milelion.com/feed"
+  },
+  {
+   "id": "ringgitplus",
+   "name": "RinggitPlus（马）",
+   "url": "https://ringgitplus.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-18T10:30:00Z",
+   "last_hit_at": "2026-10-05T04:30:00Z",
+   "search_domains": [
+    "ringgitplus.com"
+   ]
+  },
+  {
+   "id": "soyacincau",
+   "name": "SoyaCincau（马）",
+   "url": "https://soyacincau.com/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "software",
+    "esim"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-18T13:55:42Z",
+   "last_hit_at": "2026-10-04T13:30:00Z",
+   "entry_url": "https://soyacincau.com/feed"
+  },
+  {
+   "id": "lowyat",
+   "name": "Lowyat.NET（马）",
+   "url": "https://www.lowyat.net/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "bank",
+    "software"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-18T17:21:25Z",
+   "last_hit_at": "2026-10-03T22:30:00Z",
+   "entry_url": "https://www.lowyat.net/feed"
+  },
+  {
+   "id": "hardwarezone",
+   "name": "HardwareZone（新）",
+   "url": "https://www.hardwarezone.com.sg/",
+   "tier": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "bank",
+    "software"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-18T20:47:08Z",
+   "last_hit_at": "2026-10-03T07:30:00Z",
+   "entry_url": "https://www.hardwarezone.com.sg/feed"
+  },
+  {
+   "id": "toolify",
+   "name": "Toolify · New",
+   "url": "https://www.toolify.ai/new",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "ai"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-19T00:12:51Z",
+   "last_hit_at": "2026-10-02T16:30:00Z"
+  },
+  {
+   "id": "futurepedia",
+   "name": "Futurepedia",
+   "url": "https://www.futurepedia.io/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "ai"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-19T03:38:34Z",
+   "last_hit_at": "2026-10-02T01:30:00Z"
+  },
+  {
+   "id": "sourceforge-ai",
+   "name": "SourceForge AI",
+   "url": "https://sourceforge.net/software/ai/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "ai",
+    "software"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-19T07:04:17Z",
+   "last_hit_at": "2026-11-20T10:30:00Z"
+  },
+  {
+   "id": "huggingface-spaces",
+   "name": "Hugging Face Spaces Trending",
+   "url": "https://huggingface.co/spaces?sort=trending",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "ai"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-19T10:30:00Z",
+   "last_hit_at": "2026-11-19T19:30:00Z"
+  },
+  {
+   "id": "openrouter-rankings",
+   "name": "OpenRouter Rankings",
+   "url": "https://openrouter.ai/rankings",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "ai"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-19T13:55:42Z",
+   "last_hit_at": "2026-11-19T04:30:00Z"
+  },
+  {
+   "id": "aideal",
+   "name": "AIDeal（韩）",
+   "url": "https://aideal.kr/",
+   "tier": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "ai"
+   ],
+   "lang": "ko",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-19T17:21:25Z",
+   "last_hit_at": "2026-11-18T13:30:00Z"
+  },
+  {
+   "id": "aijp",
+   "name": "AI 精品导航（jizhiku）",
+   "url": "https://www.aijp.jizhiku.net/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "ai"
+   ],
+   "lang": "zh",
+   "status": "active",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-19T20:47:08Z",
+   "last_hit_at": "2026-11-17T22:30:00Z",
+   "search_domains": [
+    "www.aijp.jizhiku.net"
+   ]
+  },
+  {
+   "id": "eneba",
+   "name": "Eneba",
+   "url": "https://www.eneba.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "software"
+   ],
+   "lang": "en",
+   "status": "manual",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T17:21:25Z",
+   "last_hit_at": "2026-11-14T04:30:00Z",
+   "search_domains": [
+    "www.eneba.com"
+   ],
+   "manual_note": "二手游戏 key 站：卖家是第三方，活动真伪难判，只在线索出现时人工核（Hark Q4(d)）"
+  },
+  {
+   "id": "g2a",
+   "name": "G2A",
+   "url": "https://www.g2a.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "software"
+   ],
+   "lang": "en",
+   "status": "manual",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-20T20:47:08Z",
+   "last_hit_at": "2026-11-13T13:30:00Z",
+   "search_domains": [
+    "www.g2a.com"
+   ],
+   "manual_note": "二手游戏 key 站（直连 403）：卖家第三方，只人工核"
+  },
+  {
+   "id": "kinguin",
+   "name": "Kinguin",
+   "url": "https://www.kinguin.net/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "software"
+   ],
+   "lang": "en",
+   "status": "manual",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-21T00:12:51Z",
+   "last_hit_at": "2026-11-12T22:30:00Z",
+   "search_domains": [
+    "www.kinguin.net"
+   ],
+   "manual_note": "二手游戏 key 站（直连 403）：卖家第三方，只人工核"
+  },
+  {
+   "id": "g2g",
+   "name": "G2G",
+   "url": "https://www.g2g.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "software"
+   ],
+   "lang": "en",
+   "status": "manual",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-21T03:38:34Z",
+   "last_hit_at": "2026-11-12T07:30:00Z",
+   "search_domains": [
+    "www.g2g.com"
+   ],
+   "manual_note": "游戏代练/账号与 key 市场：卖家第三方，只人工核"
+  },
+  {
+   "id": "u7buy",
+   "name": "U7BUY",
+   "url": "https://www.u7buy.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "software"
+   ],
+   "lang": "en",
+   "status": "manual",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-21T07:04:17Z",
+   "last_hit_at": "2026-11-11T16:30:00Z",
+   "search_domains": [
+    "www.u7buy.com"
+   ],
+   "manual_note": "游戏币/代充市场：卖家第三方，只人工核"
+  },
+  {
+   "id": "ota-airline-esim",
+   "name": "OTA / 航司联名免费 eSIM（Klook / Trip.com / Agoda / Omio）",
+   "url": "https://www.klook.com/rewards/",
+   "tier": "P1",
+   "entry_type": "search",
+   "cadence_h": 24,
+   "categories": [
+    "esim"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T12:30:00Z",
+   "last_crawled_at": "2026-11-21T23:40:33Z",
+   "last_hit_at": null,
+   "keyword_pool": "ota_airline",
+   "entries": [
+    {
+     "kind": "search_group",
+     "domains": [
+      "klook.com",
+      "trip.com",
+      "agoda.com",
+      "omio.com"
+     ],
+     "term_set": "ota_airline"
+    }
+   ],
+   "verify_urls": {
+    "klook.com": "https://www.klook.com/rewards/benefit/?benefit_key=esim",
+    "trip.com": "https://www.trip.com/customer/loyalty",
+    "agoda.com": "https://www.agoda.com/press/agoda-launches-free-global-esims-for-vip-diamond-members/"
+   },
+   "note": "2026-11-21 深挖新增：显式写了 free eSIM 的 OTA 会员 / 联名入口优先（Klook Rewards、Trip.com 白金+、Agoda VIP Diamond、Omio × Kolet）；纯满减码（Klook 99% off、$1 eSIM）不收录"
+  },
+  {
+   "id": "airline-esim-partners",
+   "name": "航司 × eSIM 联名（Kolet / SAS / Air India / Sun PhuQuoc）",
+   "url": "https://www.kolet.com/",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "esim"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T12:30:00Z",
+   "last_crawled_at": "2026-11-21T23:40:33Z",
+   "last_hit_at": null,
+   "keyword_pool": "airline_esim",
+   "entries": [
+    {
+     "kind": "search_group",
+     "domains": [
+      "kolet.com",
+      "flysas.com",
+      "airindia.com",
+      "sunphuquocairways.com"
+     ],
+     "term_set": "airline_esim"
+    }
+   ],
+   "verify_urls": {
+    "kolet.com": "https://help.kolet.com/en/articles/8656385-when-does-my-data-plan-start-and-what-is-the-validity",
+    "flysas.com": "https://www.flysas.com/en/travel-extras/travelesim",
+    "airindia.com": "https://www.airindia.com/in/en/maharaja-club/partner-offers/kolet.html",
+    "sunphuquocairways.com": "https://connect.sunphuquocairways.com/sg/en"
+   },
+   "note": "2026-11-21 深挖新增：Kolet 的 co-branded 子站（virginatlantic / vietnamairlines / corendon / airindia / klm 等 *.shop.kolet.com）都落在 kolet.com 下；TAROM × Ubigi 与 Virgin Atlantic、myPAL 已有独立条目，命中时先查 dedup"
+  },
+  {
+   "id": "media-event-esim",
+   "name": "科技媒体 / 音乐节 / 活动方 × eSIM 与运营商（VOXI / CNET / 媒体联名）",
+   "url": "https://www.voxi.co.uk/voxi-drop",
+   "tier": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "esim"
+   ],
+   "lang": "en",
+   "status": "active",
+   "added_at": "2026-11-21T12:30:00Z",
+   "last_crawled_at": null,
+   "last_hit_at": null,
+   "keyword_pool": "media_event",
+   "entries": [
+    {
+     "kind": "search_group",
+     "domains": [
+      "voxi.co.uk",
+      "cnet.com",
+      "cnetfrance.fr",
+      "iphon.fr"
+     ],
+     "term_set": "media_event"
+    }
+   ],
+   "verify_urls": {
+    "voxi.co.uk": "https://www.voxi.co.uk/voxi-drop",
+    "cnet.com": "https://www.cnet.com/"
+   },
+   "note": "2026-11-21 深挖新增（Jun 补充线索）：音乐节 / 活动方 × 运营商免费流量与科技媒体 × eSIM 合作都必须回到官方页核实；只挂官方直链，媒体专属返利码（如 ESIMCOMPARE / CWJK257）不收录"
+  }
+ ],
+ "paused_sources": [
+  {
+   "id": "1024-day",
+   "name": "1024.day",
+   "url": "https://1024.day/",
+   "tier_before_pause": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "software",
+    "ai"
+   ],
+   "lang": "zh",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-16T10:30:00Z",
+   "last_hit_at": "2026-11-13T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；小众娱乐站，优惠产出低",
+   "search_domains": [
+    "1024.day"
+   ]
+  },
+  {
+   "id": "sb-sb",
+   "name": "SB.SB",
+   "url": "https://sb.sb/",
+   "tier_before_pause": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "cloud",
+    "ai"
+   ],
+   "lang": "zh",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-17T10:30:00Z",
+   "last_hit_at": "2026-11-14T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；小众社区，与 1a2x 内容高度重叠",
+   "search_domains": [
+    "sb.sb"
+   ]
+  },
+  {
+   "id": "mymuwu",
+   "name": "MyMuwu",
+   "url": "https://www.mymuwu.net/",
+   "tier_before_pause": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "ai",
+    "software"
+   ],
+   "lang": "zh",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-18T10:30:00Z",
+   "last_hit_at": "2026-11-15T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；站点长期连不通（curl 000）",
+   "search_domains": [
+    "www.mymuwu.net"
+   ]
+  },
+  {
+   "id": "1a2x",
+   "name": "1A2X",
+   "url": "https://1a2x.com/",
+   "tier_before_pause": "P2",
+   "entry_type": "search",
+   "cadence_h": 168,
+   "categories": [
+    "cloud",
+    "ai"
+   ],
+   "lang": "zh",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-19T10:30:00Z",
+   "last_hit_at": "2026-11-16T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；小社区，与 SB.SB 同类",
+   "search_domains": [
+    "1a2x.com"
+   ]
+  },
+  {
+   "id": "personalagentatlas",
+   "name": "Personal Agent Atlas",
+   "url": "https://personalagentatlas.com/",
+   "tier_before_pause": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "ai"
+   ],
+   "lang": "en",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-14T10:30:00Z",
+   "last_hit_at": "2026-11-11T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；AI 代理对比站，非优惠源"
+  },
+  {
+   "id": "agenttipsheet",
+   "name": "Agent Tip Sheet",
+   "url": "https://agenttipsheet.com/",
+   "tier_before_pause": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "ai"
+   ],
+   "lang": "en",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-13T10:30:00Z",
+   "last_hit_at": "2026-11-10T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；AI 代理资讯站，非优惠源"
+  },
+  {
+   "id": "gh-miyi23",
+   "name": "Geekhub 资源频道",
+   "url": "https://gh.miyi23.top/",
+   "tier_before_pause": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "software",
+    "cloud"
+   ],
+   "lang": "zh",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-15T10:30:00Z",
+   "last_hit_at": "2026-11-12T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；资源分享为主，优惠产出低",
+   "entry_url": "https://gh.miyi23.top/rss.json"
+  },
+  {
+   "id": "youhui-xiaobaoto",
+   "name": "小白兔优惠频道",
+   "url": "https://youhui.xiaobaoto.com/",
+   "tier_before_pause": "P2",
+   "entry_type": "rss",
+   "cadence_h": 168,
+   "categories": [
+    "software",
+    "bank"
+   ],
+   "lang": "zh",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-12T10:30:00Z",
+   "last_hit_at": "2026-11-09T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；RSS 长期停更，需搜索兜底",
+   "entry_url": "https://youhui.xiaobaoto.com/rss.json"
+  },
+  {
+   "id": "reddit-referralcodes",
+   "name": "r/referralcodes",
+   "url": "https://www.reddit.com/r/referralcodes/new/",
+   "tier_before_pause": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-11T10:30:00Z",
+   "last_hit_at": "2026-11-08T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；纯推荐码堆帖，个人码不可直接收录"
+  },
+  {
+   "id": "reddit-ukreferralcodes",
+   "name": "r/UK_Referral_Codes",
+   "url": "https://www.reddit.com/r/UK_Referral_Codes/new/",
+   "tier_before_pause": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-10T10:30:00Z",
+   "last_hit_at": "2026-11-07T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；纯推荐码堆帖，与上一条重复"
+  },
+  {
+   "id": "reddit-saudiarabia",
+   "name": "r/saudiarabia",
+   "url": "https://www.reddit.com/r/saudiarabia/new/",
+   "tier_before_pause": "P2",
+   "entry_type": "list",
+   "cadence_h": 168,
+   "categories": [
+    "bank"
+   ],
+   "lang": "en",
+   "status": "paused",
+   "added_at": "2026-11-21T10:30:00Z",
+   "last_crawled_at": "2026-11-09T10:30:00Z",
+   "last_hit_at": "2026-11-06T10:30:00Z",
+   "paused_at": "2026-11-21T04:30:00Z",
+   "paused_reason": "P2 配额已满；中东分区优惠密度低（r/dubai 已覆盖）"
+  }
+ ],
+ "term_sets": {
+  "topup": {
+   "label": "数字充值/礼品卡/游戏·通信合作活动词（search_group 专用）",
+   "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6，也不增加搜索次数；零结果后下次走 fallback",
+   "T0": [
+    "bonus",
+    "promo",
+    "promotion",
+    "top up bonus",
+    "bonus diamonds",
+    "free game credits",
+    "partnership"
+   ],
+   "T1": [
+    "bonus",
+    "promo",
+    "offer",
+    "welcome bonus",
+    "first order discount",
+    "gift card bonus",
+    "cashback",
+    "app exclusive"
+   ],
+   "fallback": [
+    "bonus",
+    "promo",
+    "promotion",
+    "offer"
+   ]
+  },
+  "ota_airline": {
+   "label": "OTA / 航司联名 free eSIM 词集（search_group 专用）",
+   "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6；零结果后下次走 fallback",
+   "T0": [
+    "free eSIM",
+    "free data",
+    "member eSIM",
+    "loyalty eSIM",
+    "partner offer",
+    "eSIM perk"
+   ],
+   "T1": [
+    "free eSIM",
+    "complimentary eSIM",
+    "travel eSIM offer",
+    "perks",
+    "giveaway",
+    "1GB free"
+   ],
+   "fallback": [
+    "free eSIM",
+    "eSIM offer",
+    "free data"
+   ]
+  },
+  "airline_esim": {
+   "label": "航司 × eSIM 联名词集（search_group 专用）",
+   "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6；零结果后下次走 fallback",
+   "T0": [
+    "free eSIM",
+    "complimentary data",
+    "Kolet",
+    "1GB free",
+    "onboard data"
+   ],
+   "T1": [
+    "free data",
+    "eSIM partner",
+    "loyalty eSIM",
+    "complimentary eSIM",
+    "inflight data"
+   ],
+   "fallback": [
+    "free eSIM",
+    "free data",
+    "eSIM"
+   ]
+  },
+  "media_event": {
+   "label": "科技媒体 / 音乐节 / 活动方 × eSIM 与运营商词集（search_group 专用）",
+   "rotation": "按一年第几天 mod 2 选 T0 / T1，不参与 round_index % 6；零结果后下次走 fallback",
+   "T0": [
+    "VOXI festival",
+    "CNET Ubigi",
+    "media partner free eSIM",
+    "festival eSIM",
+    "free eSIM",
+    "reader offer"
+   ],
+   "T1": [
+    "VOXI Drop",
+    "festival data",
+    "media partner eSIM",
+    "tech media eSIM",
+    "free data pass",
+    "giveaway eSIM"
+   ],
+   "fallback": [
+    "VOXI festival",
+    "CNET Ubigi",
+    "media partner free eSIM"
+   ]
+  }
+ }
 }
