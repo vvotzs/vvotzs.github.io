@@ -6093,7 +6093,7 @@
   "url": "https://aws.amazon.com/quick/",
   "source": "AWS Quick 官网与定价页实抓（2026-11-22）+ Quick 官方 FAQ（免费版与试用的原始口径）+ AWS 文档《Signing up at aws.com/quick》《Plan and billing for AWS Quick Free/Plus/Max》+ AWS 2026-04-28 发布说明《Start using Amazon Quick for free in minutes with Free and Plus pricing plans》",
   "source_url": "https://aws.amazon.com/quick/",
-  "risk": "注册和试用都不绑卡，所以放着不管不会被扣钱；但为了继续用 Plus 去升级时要绑卡，按 $25/人/月自动续费（年付 $20 折算，年付中途不能退）。账单设置里可以开启「超额用量」，开了之后超出每月 agent hours、索引存储（$5/GB/月）就会实际计费，别开。官网有两处自相矛盾，实际以登录后 Manage plan 页面为准：定价页比对表把「从桌面应用使用 Quick」在 Free 一栏打了 ✓，FAQ 却写桌面应用只给 Plus / Professional / Enterprise（含 30 天试用）；浏览器与 Microsoft 365 扩展也是比对表 Free 为空、FAQ 说免费版含扩展。Free 与 Plus 每月 agent hours 额度官网没公布数字（只有企业版写了 1 / 8 / 18 小时），重度使用可能很快见顶，标「待核实」；试用每人只一次。",
+  "risk": "注册和试用都不绑卡，所以放着不管不会被扣钱；但为了继续用 Plus 去升级时要绑卡，按 $25/人/月自动续费（年付 $20 折算，年付中途不能退）。账单设置里可以开启「超额用量」，开了之后超出每月 agent hours、索引存储（$5/GB/月）就会实际计费，别开。官网有两处自相矛盾，实际以登录后 Manage plan 页面为准：定价页比对表把「从桌面应用使用 Quick」在 Free 一栏打了 ✓，FAQ 却写桌面应用只给 Plus / Professional / Enterprise（含 30 天试用）；浏览器与 Microsoft 365 扩展也是比对表 Free 为空、FAQ 说免费版含扩展。Free 与 Plus 每月 agent hours 额度官网没公布数字（只有企业版写了 1 / 8 / 18 小时），重度使用可能很快见顶，标「待核实」；官方没写同一个人重复注册还能不能再拿试用，按「新账号一次」理解（标待核实）。",
   "status": "active",
   "added_at": "2026-11-22T12:33:08+08:00",
   "kyc_level": "none",
