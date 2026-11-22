@@ -738,6 +738,11 @@ ELIG.update(
         "roam-esim-bot-drei-1gb": {
             "identity": "none", "platform": ["android", "ios"], "geo": ["GLOBAL"],
         },
+        # 2026-11-23：Wanderly 免费试用（App 内领取，可能要求一次性验卡）
+        "wanderly-free-esim-trial-500mb": {
+            "identity": "email", "platform": ["android", "ios"],
+            "funding": "existing_card", "geo": ["GLOBAL"],
+        },
     }
 )
 
