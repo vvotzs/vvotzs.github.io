@@ -2503,7 +2503,7 @@ def cat_row(deal: dict, en: dict, lang: str, today) -> str:
         f'<span class="cat-crow">{fav_html(deal, 26, en)}<span class="cat-cmain">'
         f'<span class="cat-ct">{tag}{e(title)}</span>'
         f'<span class="cat-csub"><b class="cat-cv" title="{e(value_now)}">{e(value_badge(value_now, lang))}</b>'
-        f'<span class="tag {cost_cls}">{e(cost_label)}</span>{aff_tag}'
+        f'<span class="tag {cost_cls}">{e(cost_label)}</span>{aff_tag}{caut_html(deal)}'
         f'<span class="cat-cdl{hot}">{e(dl)}</span></span></span></span>'
         f'<span class="cat-snip">{e(highlight)}</span>'
         f'<span class="cat-region">{e(regions)}</span>'
