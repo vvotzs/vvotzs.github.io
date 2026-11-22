@@ -1396,6 +1396,95 @@
   "utility": 0
  },
  {
+  "id": "google-antigravity-science-free",
+  "title": "[全球] Google Antigravity 科学计划：1 万名研究者免费用最高用量档 6 个月（含 Gemini 4 Argon）",
+  "brand": "Google Antigravity",
+  "domain": "antigravity.google",
+  "category": "ai",
+  "value": "6 个月 Antigravity 最高用量档 + Gemini 4 Argon（付费档约 $250/月）",
+  "value_num": 300,
+  "cost": "真正免费",
+  "highlight": "Google 在 Gemini 4 Argon 发布时宣布：给 1 万名科研人员 6 个月的 Antigravity 最高用量档和 Gemini 4 Argon，全部免费；提交兴趣表时用的那个 Google 账号会被升级，个人 Gmail 或学校 Workspace 账号都行，10 月 13 日起滚动审核",
+  "regions": "[全球] 面向高校、学位授予机构、非营利研究所与国家实验室的非商业科研人员；名额上限 1 万、滚动审核，不保证入选；升级只落在申请用的个人账号上，不覆盖机构 Gemini Enterprise",
+  "start": "2026-10-13",
+  "end": "",
+  "content": "Google Antigravity 是 Google 的 agent 优先开发环境（桌面端里跑多个并行 agent），2026-10-13 随 Gemini 4 Argon 发布时，Google 同时开了一个科研计划：给最多 1 万名科研人员 6 个月的 Antigravity 最高用量档，外加 Gemini 4 Argon，免费。正常个人用户想在 Antigravity 里用 Argon 需要订阅 Google AI Ultra（$249.99/月），所以这份名额的实际价值就是半年 Ultra 级别的 agent 用量。\n\n申请是填兴趣表（antigravity.google/use-cases/science 的 Apply for free access）：用要升级的 Google 账号登录，填所属机构、机构邮箱、公开的实验室或个人主页，以及 ORCID 或 Google Scholar 主页二者之一，再写一段 6–12 个月内的研究计划摘要。摘要会随申请被 Google 保存，官方要求内容非机密、非专有。\n\n审核按周滚动、按容量放人。2026-10-10 官方在表单顶部更新：自 10 月 13 日起已收到超过 2.7 万份申请，首批约 3,000 人拿到权限，官方请申请者耐心等待；未入选不会收到通知。入选后账号被升到最高用量档，可在应用内 Customizations 市场一键装 Science 插件，直接查 AlphaGenome、AlphaFold Database、UniProt、PubChem、ChEMBL 等 30 多个生命科学库。\n\n适用学科不限于生物：医学、化学与材料、物理与聚变、量子、气候、神经科学、数学、计算机、工程、社科、农业、经济都在表单选项里，前提是非商业研究。",
+  "conditions": "非商业科研用途；申请人须在高校、学位授予机构、非营利研究所或国家实验室有在职或在读身份（教职、博后、研究员、博士与硕士生等，本科生没有对应选项）；需要 ORCID 或 Google Scholar 主页至少一个；填机构、机构邮箱、公开主页与 6–12 个月研究摘要，内容不得含机密或未发表数据；名额上限 1 万，滚动审核、只联系入选者；升级只作用于填表用的那个 Google 账号。",
+  "steps": [
+   "用准备升级的 Google 账号（个人 Gmail 或学校 Workspace）登录 antigravity.google/use-cases/science",
+   "点 Apply for free access 打开兴趣表，填写机构、机构邮箱与公开主页",
+   "填 ORCID 或 Google Scholar 链接（至少一个）与 6–12 个月研究摘要",
+   "提交后等滚动审核；入选会收到 Google 通知，账号自动升到最高用量档",
+   "在 Antigravity 的 Customizations 市场一键安装 Science 插件开始用"
+  ],
+  "url": "https://antigravity.google/use-cases/science",
+  "source_url": "https://ai.google/gemini-for-science/",
+  "source": "Google 官方 Antigravity 科学用例页（2026-11-22 读取：给 1 万名科学家最高用量档与 Gemini 4 Argon，免费）+ Google「Gemini for Science」页（同口径）+ Google 2026-10-13 公告及多家复核报道（6 个月、10 月 13 日起申请、11-10 更新 2.7 万份申请/约 3,000 人入选）+ linux.do 社区转帖（2026-11-21）",
+  "risk": "1 万是上限不是承诺：官方 11 月 10 日口径是 2.7 万份申请只放了约 3,000 人，命中率不到九分之一；最高用量档没有公布具体额度，跑多 agent 的重任务可能仍不够；6 个月之后是续、是停还是转付费，官方没写，别把不能中断的项目压在上面；研究摘要会被保存，别写机密内容；名额绑定个人账号，离职或换号要重新申请。",
+  "added_at": "2026-11-22T12:38:00+08:00",
+  "added": "2026-11-22",
+  "verified": true,
+  "last_verified": "2026-11-22",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "dedup_key": "google|ai|global|antigravity-science-free"
+ },
+ {
+  "id": "lovable-linkedin-premium-year",
+  "title": "[美/英/加/澳区] Lovable × LinkedIn Premium：Pro Lite 免费用 1 年 + 一次性 300 credits",
+  "brand": "Lovable",
+  "domain": "lovable.dev",
+  "category": "ai",
+  "value": "1 年 Pro Lite + 300 credits（≈$300）",
+  "value_num": 300,
+  "cost": "需要充值",
+  "highlight": "LinkedIn 与 Lovable 的官方合作：只要是 LinkedIn Premium 付费会员、账号在美/英/加/澳，就能在 LinkedIn 的 Premium perks 页领 Lovable 一年 Pro Lite（全部 Pro 功能 + 每天 5 个 bonus credits）外加一次性 300 credits；Lovable 侧必须用新工作区或免费工作区",
+  "regions": "[美区/英区/加区/澳区] LinkedIn 账号所在地须为美国、英国、加拿大或澳大利亚，且为 LinkedIn Premium 付费订阅；Lovable 侧须是新工作区或免费工作区；其他地区官方称在陆续开放",
+  "start": "",
+  "end": "",
+  "content": "这是 LinkedIn 与 Lovable 的官方合作 perk，不是第三方发码：Lovable 官方活动页写明，LinkedIn Premium 会员可以拿 12 个月的 Lovable Pro Lite，外加激活时一次性到账的 300 credits。Pro Lite 包含标准 Pro 的全部功能，但积分结构不同——只有每天 5 个 bonus credits，没有标准 Pro 的每月额度，所以重活仍要自己买 credits。\n\n领取路径必须走 LinkedIn 官方：登录 LinkedIn → Premium perks 页面 → 找到 Lovable 卡片 → 跟着链接跳到 Lovable 激活。活动页强调兑换码一次性、不可转让；LinkedIn 帮助中心还补了几条：不能在 iOS 设备上兑换（要用桌面浏览器，跟在哪儿买的订阅无关）、只给主账号、Premium Company Page 订阅者不算、免费试用用户要先付一次款转正。\n\n合规门槛两处都要满足：LinkedIn Premium 是付费订阅且在美/英/加/澳；Lovable 这边必须是新工作区或免费工作区，已经有付费订阅的账号不适用。2026 年 6 月 Lovable 的增长负责人公开说 perk 已向全球 Premium 会员放开 300 credits，但官方活动页在 10 月复核时仍写首发四国、其余地区陆续开放，能不能领以你自己 perks 页里有没有那张卡片为准。",
+  "conditions": "需要 LinkedIn Premium 付费订阅（免费试用要先转正并完成首次付款），LinkedIn 账号所在国为美国、英国、加拿大或澳大利亚；必须从 LinkedIn 的 Premium perks 页面进入官方通道领取，不能在 iOS 设备上兑换（用桌面浏览器）；只限主账号，Premium Company Page 订阅者不参与；Lovable 侧必须是新工作区或免费工作区，已是付费订阅的账号不适用；兑换码一次性、不可转让；Pro Lite 只有每天 5 个 bonus credits，不含标准 Pro 的每月积分。",
+  "steps": [
+   "在桌面浏览器登录自己的 LinkedIn，确认 Premium 是付费订阅状态",
+   "打开 Premium perks 页面，找到 Lovable 卡片并点进去",
+   "按活动页提示跳转到 Lovable，登录或新建一个工作区（不能是已有付费工作区）",
+   "确认激活，300 credits 会一次性到账，同时在账户里核对 Pro Lite 到期日",
+   "把到期日记进日历，免得一年后自动回到 Free 档"
+  ],
+  "url": "https://lovable.dev/linkedin-premium-offer",
+  "source_url": "https://lovable.dev/linkedin-premium-offer",
+  "source": "Lovable 官方《LinkedIn Premium x Lovable》活动页（2026-11-22 读取：1 年 Pro Lite、300 credits、四国与工作区限制、兑换步骤）+ LinkedIn 帮助中心《Premium partner benefits FAQ》（Lovable 一行：1 年 + 300 一次性 credits，及 iOS 不能兑换等限制）+ vibecoding.app 条款复核（2026-10-29 读取活动页原文）",
+  "risk": "前提是先付 LinkedIn Premium，本身不是零成本白嫖；目前只认美/英/加/澳的 LinkedIn 账号，其他地区要看 perks 页有没有卡片；Lovable 侧只能用在新的或免费工作区，已有付费工作区领不了；Pro Lite 没有每月积分，只有每天 5 个 bonus，生成量很快见底；能否领取随活动调整，兑换前先确认 LinkedIn 里的卡片还在。",
+  "added_at": "2026-11-22T12:41:00+08:00",
+  "added": "2026-11-22",
+  "verified": true,
+  "last_verified": "2026-11-22",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "funding_requirement": "paid_plan",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "US",
+   "GB",
+   "CA",
+   "AU"
+  ],
+  "dedup_key": "lovable|ai|au|linkedin-premium-year"
+ },
+ {
   "id": "hsbc-uk-bank-account-switch-220",
   "dedup_key": "hsbc|bank|gb|account-switch-220",
   "title": "[英区] HSBC Bank Account 转户奖 £220：App 开户 + 2 个直扣 + 存 £2,000 + 刷卡 £500",
@@ -3297,6 +3386,49 @@
   "utility": 0
  },
  {
+  "id": "claude-max-monthly-api-credits",
+  "title": "[全球] Claude Max / Ultra 订阅每月送 API 额度：Max $100、Ultra $200，Team 每席 $20–$100（池上限 $500/月）",
+  "brand": "Anthropic Claude",
+  "domain": "claude.com",
+  "category": "ai",
+  "value": "$100–$200/月 API 额度（Team 池上限 $500/月）",
+  "value_num": 100,
+  "cost": "需要充值",
+  "highlight": "Anthropic 官方把 API 额度做进订阅里：Max（$100/月）每月送 $100、Ultra（$200/月）每月 $200，Team 按 Standard 席 $20、Premium 席 $100 合并成一个池、上限 $500/月；在 claude.ai 里把 Claude Console 组织关联过去就能拿去写应用，不用另外绑卡",
+  "regions": "[全球] 有 Max / Ultra / Team 有效订阅即可，额度每个计费周期自动刷新；免费版、Pro、Enterprise 不在范围内；额度只发给一个关联的 Claude Console 组织",
+  "start": "",
+  "end": "",
+  "content": "2026 年 10 月 7 日起，Anthropic 把「每月 API 额度」并入个人与企业订阅：订阅 Claude Max（$100/月）每月可以领 $100 的 Claude API 额度，Ultra（$200/月）每月 $200；Team 则按席位算，Standard 席 $20、Premium 席 $100，所有席位的额度合并成一个池，每个组织每月上限 $500（折扣价的非营利与科研 Team 同口径）。免费版、Pro、Enterprise 都不参与。\n\n用法是把订阅和一个 Claude Console 组织绑起来：在 claude.ai 的 Settings › Billing（Team 由 Primary Owner / Owner 在组织设置里）找到 API credits，点 Link organization，选一个已有组织或当场新建，确认后额度就进那个组织余额。一个订阅只能绑一个组织、一个组织也只能接一个订阅，绑错要联系客服改。\n\n额度覆盖 Claude API（Messages 与 Batches）、Console 里的 Playground、Claude Managed Agents 和 Agent SDK（含用该组织 API key 跑的 claude -p）；不覆盖交互式 Claude Code（终端、IDE、桌面、网页）、订阅的额外用量，也不覆盖 Bedrock / Vertex AI / Microsoft Foundry 上的 Claude。每周期刷新、不结转，用不完月底清零；对本组织所有 API key 共享，且先花这份赠送额度再花你买的额度。\n\n对已经在付 Max / Ultra 的人来说，这份额度等于把订阅费的一半（Max）或全部（Ultra）折成 API 现金流；社区实测（linux.do，2026-10-08）确认 Max 5x 领 $100、Max 20x 领 $200、Team 主号可领，Google Play / App Store 内购用户有反馈小卡片刷不出来。",
+  "conditions": "订阅须有效且在良好状态、且已在符合条件的档位满 7 天；要在 claude.ai 的 Settings › Billing（Team 为组织账单）把 Console 组织关联过来，领取者须是该组织的 Owner / Admin / Billing 角色；一个组织只能接一个订阅、一个订阅只能接一个组织，绑错需联系客服；额度每计费周期刷新、不结转；只覆盖 Claude API / Playground / Managed Agents / Agent SDK，不含交互式 Claude Code 与订阅额外用量；领取与使用都不需要再往 Claude Platform 绑卡。",
+  "steps": [
+   "确认自己订阅的是 Max / Ultra（或 Team 的 Owner），且已满 7 天",
+   "在 platform.claude.com 建一个 Claude Console 组织（已有就用现成的），确保登录邮箱与 claude.ai 一致",
+   "回 claude.ai → Settings › Billing → API credits → Link organization，选中该组织并确认",
+   "到 Console 的 Billing 页核对额度金额与到期日",
+   "用该组织的 API key 调用 Claude API；额度用完后按自有余额或 auto-reload 继续"
+  ],
+  "url": "https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans",
+  "source_url": "https://claude.com/pricing",
+  "source": "Anthropic 官方帮助中心《Monthly API credits for Max, Ultra, and Team plans》（2026-11-22 读取：档位金额、7 天门槛、关联流程、覆盖范围）+ claude.com/pricing（Max $100 / Ultra $200、注明每月附赠 API 额度）+ linux.do 社区实测帖（2026-10-08 领取与到账反馈）",
+  "risk": "本质是订阅附赠，先要付出 $100/月起的订阅费，不是白拿；额度不是现金、不能提现、过周期清零；不覆盖 Claude Code 终端/IDE 用量，想拿它顶 Claude Code 会落空；只能绑一个 Console 组织，选错要联系客服改；Google Play / App Store 内购账号有刷不出领取卡片的反馈；官方仍在分批推送，刚满 7 天可能还看不到入口。",
+  "added_at": "2026-11-22T12:36:00+08:00",
+  "added": "2026-11-22",
+  "verified": true,
+  "last_verified": "2026-11-22",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "funding_requirement": "paid_plan",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "dedup_key": "anthropic|ai|global|claude-max-monthly-api-credits"
+ },
+ {
   "id": "shopify-uk-1-pound-3-months",
   "dedup_key": "shopify|software|gb|1-pound-3-months",
   "title": "[英区] Shopify 建站：3 天免费后 £1/月连用 3 个月（原价 £25/月）",
@@ -4763,6 +4895,48 @@
   ]
  },
  {
+  "id": "articul8-bivia-1b-tokens",
+  "title": "[全球] Articul8 Bivia 决策模型：前 1 万名注册送最高 10 亿 tokens（≈$42，免订阅）",
+  "brand": "Articul8",
+  "domain": "articul8.ai",
+  "category": "ai",
+  "value": "最高 10 亿 tokens（按 $0.042/百万输入 ≈ $42）",
+  "value_num": 42,
+  "cost": "真正免费",
+  "highlight": "Intel 投资的 Articul8 上线决策模型 Bivia：不做文本生成，只输出带置信度的结构化判断（选择、布尔、打分、抽取等 9 种），输出 token 计费为 0、输入 $0.042/百万；官方首发活动前 1 万名早鸟送最高 10 亿 tokens，无需订阅",
+  "regions": "[全球] 官方开放注册，限前 1 万名早期用户、先到先得；额度只用于 Bivia / Articul8 平台推理",
+  "start": "2026-10-28",
+  "end": "",
+  "content": "Articul8 由 Intel 投资，Bivia 是它 2026-10-28 上线的紧凑多模态决策模型：读文本、图片、文档、代码、信号、音视频，直接给出一个结构化判断——9 种决策类型（Choice / Boolean / Score / Set / Span / Ground / Extract / Data science 等），并附带真实置信度，还支持 allow_abstain 让它在证据不足时返回「弃权」而不是瞎猜。官方定价是输出 token 0 计费、输入 $0.042/百万 token，所以它最适合给 agent 做路由、分类、yes/no 这类海量小判断，把大模型省下来写代码和长文。\n\n接入方式很多：HTTP POST 一次就返回同样的 JSON；有 Python / Node / Go / Rust SDK；可以当 MCP server 塞进 Claude Code、Codex、Cursor、VS Code；还有 macOS / Windows 悬浮窗、Chrome / Edge 扩展和 Google Sheets 的 =BIVIA.DECIDE 公式。\n\n首发活动是「前 1 万名早鸟送最高 10 亿 tokens、无需订阅」，从 articul8.ai/bivia 点 Claim yours 或用带 bivia 邀请参数的注册链接进去，注册后在平台建 API key 即可。按官方 $0.042/百万输入折算，10 亿 tokens 约值 $42；实际到账是多少、额度多久过期，官方页面没有写，社区反馈约 90 天有效，以账户页显示为准。\n\n注意它不是聊天模型：让它写文案、做长文总结会失败，它只回答固定形状的判断。",
+  "conditions": "注册即领，官方写明无需订阅；名额限前 1 万名，先到先得、余量未公布；官方写的是「最高 up to 10 亿 tokens」，个人实际到账以账户显示为准；额度有效期与活动截止日官方未公布（社区反馈约 90 天）；只用于 Articul8 / Bivia 推理，超出后按 $0.042/百万输入 token、0 输出计费；Bivia 只输出结构化决策，不做文本生成。",
+  "steps": [
+   "打开 articul8.ai/bivia，点 Claim yours 进入注册",
+   "完成 Articul8 平台注册，在控制台建一个 API key，核对早鸟 token 余额",
+   "按需接入：pip install bivia、npm 包，或把 MCP server 加进 Claude Code / Cursor",
+   "先用小任务验证决策质量与延迟，再接到生产流水线"
+  ],
+  "url": "https://articul8.ai/bivia/",
+  "source_url": "https://articul8.ai/bivia/",
+  "source": "Articul8 官方 Bivia 产品页（2026-11-22 读取：$0.042/百万输入、输出 0 计费、9 类决策、MCP/CLI/SDK/浏览器扩展接入，首页横幅「A billion tokens free for early adopters」）+ Articul8 官方 X 公告（2026-10-28：前 1 万名最高 10 亿 tokens、无需订阅）+ 第三方核验站 perq.sh 与 that.promo（2026-11-21 复核官方页返回 200）+ 中文实测文 5py.top（2026-11-07）",
+  "risk": "官方写的是「最高」10 亿，个人到账未必满额；Bivia 不生成文本，只给结构化判断，拿它当聊天模型会失望；名额余量、额度有效期、截止日官方都没公布，可能随时发完；免 KYC、免绑卡只是原帖说法，注册页实际要求以页面为准；超出额度后按输入 token 计费，接生产前先设预算。",
+  "added_at": "2026-11-22T12:44:00+08:00",
+  "added": "2026-11-22",
+  "verified": true,
+  "last_verified": "2026-11-22",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "dedup_key": "articul8|ai|global|bivia-1b-tokens"
+ },
+ {
   "id": "ashampoo-photo-optimizer-11-free",
   "dedup_key": "ashampoo|software|global|photo-optimizer-11-free",
   "title": "[全球] Ashampoo Photo Optimizer 11：免费终身授权（原价 $40，11/30 前兑换）",
@@ -5426,6 +5600,49 @@
   "status": "active",
   "kyc_level": "none",
   "utility": 0
+ },
+ {
+  "id": "ultrapic-pro-plus-5000-credits",
+  "title": "[全球] UltraPic Pro+ 免费领 5000 credits（≈$29.99，激活码兑换，至 12/31）",
+  "brand": "UltraPic (AOMEI)",
+  "domain": "ultrapic.com",
+  "category": "software",
+  "value": "5000 credits（≈ 一个月 Pro+，$29.99）",
+  "value_num": 30,
+  "cost": "真正免费",
+  "highlight": "AOMEI 的网页版 AI 修图工具 UltraPic 又放了一轮赠品：在官方 App 里输入激活码 9E17-BB65-F4B6-F363，就能拿到 5000 credits 并解锁 Pro+ 全部功能（抠图、AI 换背景、批量处理、2–8 倍放大、魔法橡皮、水印移除），码标称用到 2026-12-31",
+  "regions": "[全球] 纯网页工具，注册 UltraPic 账号（Google / Apple / 邮箱均可）后在个人中心输入激活码即可；官方按个人非商用授权",
+  "start": "",
+  "end": "2026-12-31",
+  "content": "UltraPic 是 AOMEI 出的网页版 AI 图片工具，主打电商产品图：一键抠图换背景、AI 生成场景背景、批量处理（一次 50 张）、生成式填充、魔法橡皮、去水印和最高 8 倍放大。付费档 Pro 是 $9.99/月给 500 credits，Pro+ 是 $29.99/月给 5000 credits。\n\n这一轮赠品给的是 Pro+ 级别的 5000 credits：注册账号后点右上角头像 → Enter Activation Code，粘贴 9E17-BB65-F4B6-F363 并确认两次即可。5000 credits 的用法是：HD 原图下载 1 credit/张、批量去背景 1 credit/张、AI 生成背景 5 credits/2 张、2 倍放大 5 credits/张——也就是最多 5000 张抠图，或 1000 次放大。\n\n赠送码是 AOMEI 与多家赠品站（techno360、ShopDD、Mooseek、OneHack 等）联合放出的同一枚码，官方活动页在当前网络下打不开，条款只能间接核对；激活后 credit 余额与到期日在 Account Settings › Credit Details 里，赠品 credit 的独立有效期以那里为准，和个人账号的订阅页不是一回事。\n\n按官方条款，赠品是按个人非商用授权；上传的图片会被视为非机密，别传客户素材或涉密图纸。",
+  "conditions": "需要一个 UltraPic 账号（Google / Apple / 邮箱注册都行），在头像菜单里的 Enter Activation Code 输入 9E17-BB65-F4B6-F363 并确认；激活码官方标注用到 2026-12-31（未标时区），赠品 credit 另有独立有效期，以 Account Settings › Credit Details 为准；按个人非商用授权，商用请另买；上传内容视为非机密、非专有。",
+  "steps": [
+   "打开 ultrapic.com/app 用 Google、Apple 或邮箱注册并登录",
+   "点右上角头像 → Account Setting → Enter Activation Code",
+   "粘贴 9E17-BB65-F4B6-F363，确认后再次点 Activate",
+   "到 Account Settings › Credit Details 核对 5000 credits 与到期日",
+   "先在免费样图上试一轮，确认导出分辨率与授权符合你的用途"
+  ],
+  "url": "https://www.ultrapic.com/app/",
+  "source_url": "https://techno360.in/ultrapic-pro-for-free-ai-photo-editor-giveaway/",
+  "source": "UltraPic 官方 App（2026-11-22 打开 ultrapic.com 确认站点与产品线，赠品在 App 内兑换）+ 赠品页 techno360（2026-11-17：激活码、5000 credits、$29.99 等价、逐项 credit 消耗、12-31 截止）+ ShopDD 日文页（2026-11-18）与 Mooseek 意大利文页（2026-11-18）交叉核对同一枚码 + OneHack（2026-11-19 实测截图）",
+  "risk": "官方活动页在当前网络下返回 403，条款只能靠赠品站与 App 内提示间接核对；赠品码可能限个人、限次数，过期或名额用完后直接失效；credits 有独立有效期，激活后要自己去 Account Settings 看；上传图片按条款视为非机密，别传客户素材；赠品是个人非商用授权，商用需另买；页面功能与价格可能随时调整。",
+  "added_at": "2026-11-22T12:47:00+08:00",
+  "added": "2026-11-22",
+  "verified": false,
+  "last_verified": "2026-11-22",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "dedup_key": "ultrapic|software|global|pro-plus-5000-credits"
  },
  {
   "id": "alrajhi-gigsky-free-unlimited-esim",
@@ -12504,6 +12721,49 @@
   "euicc_note_en": "The nbvil blog installed it on an eSTKme Plus+ card in October 2026; the vendor requires deleting the profile from native eSIM settings because deleting via STK can lock it and force a paid QR replacement."
  },
  {
+  "id": "dahl-inference-100m-tokens",
+  "title": "[全球] Dahl Inference：新注册送 1 亿 tokens，充值半价 $0.01/百万（至 11/30 21:00 UTC）",
+  "brand": "Dahl Inference",
+  "domain": "inference.dahl.global",
+  "category": "ai",
+  "value": "1 亿 tokens（≈$2）+ 充值 5 折",
+  "value_num": 2,
+  "cost": "真正免费",
+  "highlight": "OpenAI 兼容的开源模型推理网关（GLM-5.3-Flash、DeepSeek V4 Flash、MiniMax M2.7）：注册就把 1 亿 tokens 放进账户池，不用邮箱、不用绑卡；11/6–11/30 21:00 UTC 期间充值半价 $0.01/百万 tokens，等于套餐里面的 token 翻倍",
+  "regions": "[全球] 网页注册即可，接口 OpenAI 兼容；额度只用于 Dahl 自家推理服务，卡或加密货币预付，没有订阅",
+  "start": "",
+  "end": "2026-11-30",
+  "content": "Dahl Inference 是一个 OpenAI 兼容的推理网关，后端跑在 Gonka 去中心化 GPU 网络上的独立运营节点上，模型目录里有 GLM-5.3-Flash、DeepSeek V4 Flash、MiniMax M2.7 这类开源权重模型。注册只要用户名，系统给一个一次性的 32 位指纹当密码，然后把 1 亿 tokens 放进账户池——注意新 key 默认是 0 tokens，要先去 /account 把池里的额度分配到 key 上，否则调用直接 402。\n\n计费是按量预付：常规 $0.02/百万 tokens，2026-11-06 到 11-30 21:00 UTC 促销价 $0.01/百万，所以套餐页面上的 token 数量在促销期内翻倍（$5 → 2.5 亿、$10 → 5 亿、$25 → 12.5 亿）；促销期内发起的充值即使付款晚到也按促销价结算，之后回到 $0.02。充值只支持卡（$5–$50）与加密货币（$10–$100），没有订阅、不会自动续费。\n\n免费额度有两个坑：一是连续 7 天不发任何请求就会被烧掉（有充值记录的账号不受影响）；二是注册指纹丢了没有邮箱找回，只能重建账号。按官方价折算，1 亿 tokens 约值 $2，属于小额尝鲜额度。",
+  "conditions": "注册后在 /account 把池里的 tokens 分配到 API key 才能调用，新 key 初始为 0；免费 tokens 连续 7 天没有请求即失效，有充值记录的账号保留；注册指纹即密码，不可找回；充值只走卡或加密货币预付，无订阅、无自动续费；半价充值截至 2026-11-30 21:00 UTC，促销期内发起的充值按促销价结算；额度仅用于 Dahl 推理服务。",
+  "steps": [
+   "打开 inference.dahl.global 点 Create account，用户名注册并把指纹抄下来存好",
+   "进 /account › API keys，把池里的 tokens 分配到 key 上",
+   "设 DAHL_API_KEY 环境变量，用 OpenAI 兼容端点发一次请求验证连通",
+   "想充值就在 11/30 21:00 UTC 前充，能拿半价；用卡或加密货币均可",
+   "至少每 7 天发一次请求，别让免费额度被烧掉"
+  ],
+  "url": "https://inference.dahl.global/",
+  "source_url": "https://inference.dahl.global/pricing/",
+  "source": "Dahl 官方定价页（2026-11-22 读取：$0.02/百万、11/6–11/30 21:00 UTC 半价、卡与加密货币套餐）+ 官方文档 Tokens & keys 与 Quickstart（注册送 1 亿 tokens、7 天无请求即失效、新 key 需手动分配）+ linux.do 原帖（2026-11-19）+ AIdeal 核验（2026-11-21 对照官方页）+ awesome-free-ai-coding 探针（2026-11-19 HTTP 200）",
+  "risk": "1 亿 tokens 按官方价只值约 $2，是小额尝鲜，不是大额福利；免费额度 7 天不发请求就清零，长期不用等于白注册；账号没有邮箱找回，指纹丢了就失号；后端是去中心化 GPU 网络上的独立运营节点，稳定性、延迟与数据处理路径和一线厂商不同；充值只收卡与加密货币，注意合规与汇率；促销价随时可能调整。",
+  "added_at": "2026-11-22T12:50:00+08:00",
+  "added": "2026-11-22",
+  "verified": true,
+  "last_verified": "2026-11-22",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "none",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "dedup_key": "dahl|ai|global|inference-100m-tokens"
+ },
+ {
   "id": "true-tat-asean-tourist-sim-8gb",
   "dedup_key": "true|esim|th|tat-asean-tourist-sim-8gb",
   "title": "[泰区] True × 泰国旅游局：东盟 / 印度旅客免费 True 5G 游客 SIM，8GB / 1 天 + ฿10,000 优惠券",
@@ -13985,8 +14245,8 @@
   "start": "2026-11-17",
   "end": "2026-11-22",
   "verified": true,
-  "last_verified": "2026-11-20",
-  "content": "OpenCode 在 11 月 17 日宣布 Operation GLM 第一阶段（Go 订阅者 $10 换 $100 GLM-5.3 用量），约 11 小时后进入第二阶段：同样 $10 可覆盖 $500 的 GLM-5.3 月用量，Go Plus（$40/月）覆盖 $1,000。官方 Go 文档（2026-11-20 核对）在模型说明里明确「GLM-5.3: Higher usage limits apply through November 22, 2026」。$500 是「整月只用 GLM-5.3 时套餐能覆盖的用量上限」而非账户余额；Go 里所有付费模型共用这一份额度，5 小时窗口最多用掉月额度 20%，每周最多 50%（周一 00:00 UTC 重置）。用法：订阅 Go 后在 OpenCode 里 /connect 选 OpenCode Go 粘贴 API Key，/models 选 GLM-5.3，或直接调 https://opencode.ai/inference/go。",
+  "last_verified": "2026-11-22",
+  "content": "OpenCode 在 11 月 17 日宣布 Operation GLM 第一阶段（Go 订阅者 $10 换 $100 GLM-5.3 用量），约 11 小时后进入第二阶段：同样 $10 可覆盖 $500 的 GLM-5.3 月用量，Go Plus（$40/月）覆盖 $1,000。官方 Go 文档（2026-11-20 核对）在模型说明里明确「GLM-5.3: Higher usage limits apply through November 22, 2026」。$500 是「整月只用 GLM-5.3 时套餐能覆盖的用量上限」而非账户余额；Go 里所有付费模型共用这一份额度，5 小时窗口最多用掉月额度 20%，每周最多 50%（周一 00:00 UTC 重置）。用法：订阅 Go 后在 OpenCode 里 /connect 选 OpenCode Go 粘贴 API Key，/models 选 GLM-5.3，或直接调 https://opencode.ai/inference/go。。2026-11-22 复核：官方 Go 文档仍写「GLM-5.3: Higher usage limits apply through November 22, 2026」，提额今天仍有效，明天起回落到常规额度。",
   "conditions": "需要订阅 OpenCode Go（$10/月）或 Go Plus（$40/月），要绑支付方式；提额只到 2026-11-22，之后回落到常规额度；$500 是月度用量上限而不是可提现余额；5 小时最多 20%、每周最多 50%；与其他付费模型共享同一份额度；中国区用户需在 Settings › Privacy 把 Regions 设为 Global 才能用 GLM-5.3。",
   "steps": [
    "登录 opencode.ai/console 订阅 Go，添加支付方式并复制 API Key",
@@ -14020,8 +14280,8 @@
   "start": "2026-11-19",
   "end": "2026-11-24",
   "verified": true,
-  "last_verified": "2026-11-21",
-  "content": "上一轮留档的「Kite × Bitrefill 能否核到官方条款」本轮核到：Kite 官方 11-19 20:55 UTC 宣布联合活动上线——到 11-24，用 Kite Agent Passport 让代理在 Bitrefill 购物，从 Kite 出资的 $1,000 奖池里拿回 $KITE：① 合格订单返 3%，每人上限 $5；② 抽最多 5 人，把中奖订单的全额退成 $KITE，每人上限 $100；订单统计窗口 11-19 20:00 UTC 至 11-24 08:00 UTC，11-28 前公布中奖并发放全部奖励。\n\n规则细节在 Bitrefill 服务条款里也有落点：条款第 29 节把「代理（Agent）代客户下的单」视为客户本人的购买，产品不得转售——所以代理买礼品卡这条是合规路径，且奖励只按订单金额算，不看订单数量。德语媒体 CryptoDACademy 同步报道时点出重点：$1,000 奖池很小，这不是大额发币，是一次「AI 代理能不能真买东西」的实战测试。",
+  "last_verified": "2026-11-22",
+  "content": "上一轮留档的「Kite × Bitrefill 能否核到官方条款」本轮核到：Kite 官方 11-19 20:55 UTC 宣布联合活动上线——到 11-24，用 Kite Agent Passport 让代理在 Bitrefill 购物，从 Kite 出资的 $1,000 奖池里拿回 $KITE：① 合格订单返 3%，每人上限 $5；② 抽最多 5 人，把中奖订单的全额退成 $KITE，每人上限 $100；订单统计窗口 11-19 20:00 UTC 至 11-24 08:00 UTC，11-28 前公布中奖并发放全部奖励。\n\n规则细节在 Bitrefill 服务条款里也有落点：条款第 29 节把「代理（Agent）代客户下的单」视为客户本人的购买，产品不得转售——所以代理买礼品卡这条是合规路径，且奖励只按订单金额算，不看订单数量。德语媒体 CryptoDACademy 同步报道时点出重点：$1,000 奖池很小，这不是大额发币，是一次「AI 代理能不能真买东西」的实战测试。。2026-11-22 复核：Kite 官方公告仍写明活动到 11-24、订单统计窗口 11-19 20:00 UTC 至 11-24 08:00 UTC、奖励 11-28 前发放；Bitrefill 侧已把 Kite Agent Passport 内置，订单按用户本人购买对待。",
   "conditions": "必须通过 Kite Agent Passport 下单才算；3% 返现每人上限 $5，抽奖每人最多 $100；只统计 11-19 20:00 UTC 至 11-24 08:00 UTC 之间付款的订单；奖励以 $KITE 代币发放、11-28 前到账，市值随币价波动；需先注册 Kite 账号并在 Passport 里设置消费额度，也要有 Bitrefill 账号。",
   "steps": [
    "注册 Kite 账号，开通 Agent Passport 并设定消费额度",
@@ -14259,9 +14519,9 @@
   "start": "2026-11-19",
   "end": "2026-11-26",
   "verified": true,
-  "last_verified": "2026-11-20",
+  "last_verified": "2026-11-22",
   "added": "2026-11-20",
-  "content": "Gate 官方公告（2026-11-19 09:00 UTC）：闪兑新客活动到 2026-11-26 09:00 UTC。活动一「New User Convert Gift」：报名并完成身份认证后，从没在 Gate 做过闪兑（Convert）的用户完成第一笔 ≥1 USDT 的闪兑，即可拿 20 USDT，限前 500 名，先到先得，自动发放，形式是双币投资体验金。\n\n活动二「Daily Convert Check-In」：新用户在任一自然日（UTC 00:00–23:59）累计闪兑 ≥20 USDT 即算当天签到，得 10 WLFI，奖池共 80,000 WLFI，发完即止；最高可领 7 天共 70 WLFI，以 WLFI 现货发放。两个活动可同时参加，前提都是先在活动页点「Join Now」报名并完成 KYC。",
+  "content": "Gate 官方公告（2026-11-19 09:00 UTC）：闪兑新客活动到 2026-11-26 09:00 UTC。活动一「New User Convert Gift」：报名并完成身份认证后，从没在 Gate 做过闪兑（Convert）的用户完成第一笔 ≥1 USDT 的闪兑，即可拿 20 USDT，限前 500 名，先到先得，自动发放，形式是双币投资体验金。\n\n活动二「Daily Convert Check-In」：新用户在任一自然日（UTC 00:00–23:59）累计闪兑 ≥20 USDT 即算当天签到，得 10 WLFI，奖池共 80,000 WLFI，发完即止；最高可领 7 天共 70 WLFI，以 WLFI 现货发放。两个活动可同时参加，前提都是先在活动页点「Join Now」报名并完成 KYC。。2026-11-22 复核：Gate 公告页（article/102869）活动期写明 2026-11-19 09:00 – 2026-11-26 09:00 UTC，活动一前 500 名发双币体验金、活动二每日闪兑 ≥20 USDT 签到领 10 WLFI、池子 8 万 WLFI，限制地区仍以用户协议为准。",
   "conditions": "必须先点活动页 Join Now 并完成 KYC；「闪兑新用户」指报名时从未在 Gate 完成过 Convert 交易；活动一限前 500 名完成者；活动二每日按 UTC 自然日计，日闪兑量 ≥20 USDT，签到不补；奖励以双币投资体验金（活动一）与 WLFI 现货（活动二）发放，不能直接提现成 USDT。",
   "steps": [
    "登录 Gate，进入活动页点 Join Now 并完成 KYC",
@@ -14407,8 +14667,8 @@
   "start": "2026-11-20",
   "end": "2026-11-26",
   "verified": true,
-  "last_verified": "2026-11-20",
-  "content": "AhaNow 是一个 AI 解说视频工作台（app.ahanow.ai，2026-11-20 23:03 实读）：左侧「動画」工作区支持 Director 模式与 Quick create，输入主题／脚本／链接或上传文档、幻灯片、图片、字幕、音视频（单次最多 12 个文件），底层视频模型可选 MiniMax H3 Max Turbo 768p，输出无脸解说、白板、Vox 风、插画故事、产品宣传等风格。站内公告条明确写「新規登録で100,000クレジットを獲得」，点「クレジットを受け取る」即可领。\n\n同一时间页面还挂着「Upgrade with 50% off，6 小时内结束」的付费升级横幅（与赠送额度是两件事，不买也能领）。推广推文（@imFarhanAi，2026-11-20 15:00 UTC）写的是「11 月 26 日美东中午前注册领 100K Credits」。站内模板库已有 453 个风格模板，含 Manus 2.0 发布片、白板解说、像素 RPG 等。",
+  "last_verified": "2026-11-22",
+  "content": "AhaNow 是一个 AI 解说视频工作台（app.ahanow.ai，2026-11-20 23:03 实读）：左侧「動画」工作区支持 Director 模式与 Quick create，输入主题／脚本／链接或上传文档、幻灯片、图片、字幕、音视频（单次最多 12 个文件），底层视频模型可选 MiniMax H3 Max Turbo 768p，输出无脸解说、白板、Vox 风、插画故事、产品宣传等风格。站内公告条明确写「新規登録で100,000クレジットを獲得」，点「クレジットを受け取る」即可领。\n\n同一时间页面还挂着「Upgrade with 50% off，6 小时内结束」的付费升级横幅（与赠送额度是两件事，不买也能领）。推广推文（@imFarhanAi，2026-11-20 15:00 UTC）写的是「11 月 26 日美东中午前注册领 100K Credits」。站内模板库已有 453 个风格模板，含 Manus 2.0 发布片、白板解说、像素 RPG 等。。2026-11-22 复核：app.ahanow.ai 注册页仍挂「Sign up and get 100,000 free credits」并显示限时倒计时，赠额口径未变；页面自身仍未写 11/26 截止，截止日只有官方推文口径。",
   "conditions": "需新注册账号（邮箱或 Google 登录）；100,000 Credits 为注册赠送，有效期与每次生成的消耗率站内未明写，以账户页为准；11/26 12:00 ET 截止来自官方推广推文，页面本身只写「新注册赠送」；免费额度用完后按付费套餐计费，别顺手开自动续费；商用授权按官方条款。",
   "steps": [
    "打开 app.ahanow.ai，用邮箱或 Google 注册",
