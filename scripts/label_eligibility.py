@@ -667,8 +667,14 @@ ELIG.update(
         },
         "usims-free-esim-1gb": {
             "identity": "phone", "platform": ["android", "ios"],
-            "phone": "specific_country", "geo": ["GLOBAL"],
+            "phone": "specific_country", "funding": "purchase", "geo": ["GLOBAL"],
         },
+        # 2026-11-22 归档补录（历史活动，资格按当时条款填写）
+        "vodafone-london-network-trial-esim": {
+            "residency": "local_address", "platform": ["web"],
+            "phone": "specific_country", "geo": ["GB"],
+        },
+        "ubigi-cnet-free-500mb": {"geo": ["GLOBAL"]},
         "jetpac-eterna-free-esim": {
             "identity": "phone", "platform": ["android", "ios"],
             "phone": "specific_country",
