@@ -57,7 +57,7 @@
   }
 
   /* ------------------------------------------------------- 搜索索引（JSON） */
-  /* 首页只内联每类前 24 条（Hark 第七轮定稿的瘦身口径），索引因此只带四部分：
+  /* 首页只内联每类前 25 条（Hark 第七轮定稿的瘦身口径），索引因此只带四部分：
        h 检索词 · c 分类词表（按分类只存一次）· t 标题（只给未内联的在效条目）·
        p 未内联条目：搜到时补一行轻量卡，点进它的 /d/<id>/ 独立页。
      内联卡片的标题直接从 DOM 的 h3 上取，不在索引里再存一份。
@@ -189,7 +189,7 @@
   }
 
   /* 有没有在搜索 / 筛：只有这种时候才把未内联的条目补成结果行，
-     平时首页就是每类那 24 条，不为全库铺 DOM。 */
+     平时首页就是每类那 25 条，不为全库铺 DOM。 */
   function isFiltering() {
     return !!(state.q || state.time !== "all" || state.cat !== "all"
               || state.cost !== "all" || state.verify !== "all");
@@ -385,7 +385,7 @@
     var seen = {};
     var matchedTotal = 0;
     /* 搜索 / 筛选时把「首页没内联的在效条目」补进来：一行轻量卡，点进独立页。
-       平时（默认状态）不补，首页只画每类前 24 条。 */
+       平时（默认状态）不补，首页只画每类前 25 条。 */
     var deep = isFiltering();
 
     modules.forEach(function (m) {
@@ -949,7 +949,7 @@
     try { key = decodeURIComponent(key); } catch (err) { /* 不是编码过的就算了 */ }
     var target = document.getElementById("deal-" + key);
     if (!target) {
-      /* 首页只内联每类前 24 条：老链接 /#deal-<id> 指向没内联的条目时，
+      /* 首页只内联每类前 25 条：老链接 /#deal-<id> 指向没内联的条目时，
          直接落到它的独立详情页，不会变成一次「点了没反应」。 */
       location.replace(DETAIL_BASE + encodeURIComponent(key) + "/");
       return true;

@@ -123,7 +123,7 @@ U: dict[str, tuple[str, str]] = {
     "mod_archive_desc": ("已过期活动全部保留供查档，可按截止时间翻看历史优惠。",
                          "Every expired offer is kept for reference, latest end date first."),
     "mod_empty": ("该分类暂无符合条件的优惠", "No offers match here yet"),
-    # 首页每个分类只内联前 24 条，其余走分类目录页；锚文本里带分类名（头部关键词），
+    # 首页每个分类只内联前 25 条，其余走分类目录页；锚文本里带分类名（头部关键词），
     # 既是给读者的去路，也是给分类页的一条站内锚文本。英文页不得出现中文。
     "see_all": ("查看全部 {n} 条 · {name} →", "View all {n} · {name} →"),
     "see_all_aria": ("打开分类页：{name}", "Open the {name} category page"),
