@@ -2260,7 +2260,8 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
 }
 .sd-opt.on{ color: var(--ink); }
 .sd-opt:hover{ color: var(--ink-2); }
-.sd-opt:focus-within .sd-opt-r{ outline: 2px solid rgba(5,150,105,.45); outline-offset: 1px; border-radius: 50%; }
+/* 键盘 Tab 过来才画焦点圈；鼠标点选不加圈，免得选中态看起来套了两层环 */
+.sd-opt-r:focus-visible{ outline: 2px solid rgba(5,150,105,.45); outline-offset: 1px; border-radius: 50%; }
 /* 蜜罐：只给机器人看的字段。不用 display:none / visibility:hidden（部分脚本会跳过），
    而是移出屏幕且不占布局、读屏隐藏、Tab 也进不来；有值就说明是自动填充的机器人。 */
 .sd-hp{
