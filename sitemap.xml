@@ -5024,24 +5024,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vvotzs.github.io/d/easysim-free-1gb-esim/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/easysim-free-1gb-esim/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/easysim-free-1gb-esim/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/easysim-free-1gb-esim/"/>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vvotzs.github.io/en/d/easysim-free-1gb-esim/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/easysim-free-1gb-esim/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/easysim-free-1gb-esim/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/easysim-free-1gb-esim/"/>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://vvotzs.github.io/d/yepapi-5-free-credit/</loc>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/yepapi-5-free-credit/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/yepapi-5-free-credit/"/>
@@ -6676,6 +6658,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/envato-minimax-h3-unlimited-24h/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/envato-minimax-h3-unlimited-24h/"/>
     <lastmod>2026-11-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/d/easysim-free-1gb-esim/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/easysim-free-1gb-esim/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/easysim-free-1gb-esim/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/easysim-free-1gb-esim/"/>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/en/d/easysim-free-1gb-esim/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/easysim-free-1gb-esim/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/easysim-free-1gb-esim/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/easysim-free-1gb-esim/"/>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
