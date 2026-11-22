@@ -3333,11 +3333,11 @@
  },
  "easysim-free-1gb-esim": {
   "title": "[Global] EasySIM: free 1GB eSIM for 190+ countries (one per phone number, while stocks last)",
-  "highlight": "Install the EasySIM app and open love.easysim.ai/claim to claim 1GB of global eSIM data covering 190+ countries; the page states one claim per phone number and that the offer lasts while supplies do",
+  "highlight": "Archived: as of 2026-11-22 the claim page at love.easysim.ai/claim still advertises the free 1GB eSIM, but pressing Claim posts to /claim/process-welcome and returns 405 Method Not Allowed, so the page only shows a generic \"Network error\" and the flow cannot complete; the detail page stays for reference with alternatives listed on top",
   "regions": "[Global] 190+ countries; one claim per phone number",
   "value": "1GB of global data (≈$5)",
-  "content": "EasySIM's official claim page (love.easysim.ai/claim, read 20 Nov 2026) shows \"Free 1GB eSIM / Travel data for 190+ countries / One claim per phone number. Offer valid while supplies last.\" Arabic-language coverage (khabr.news, 17 and 19 Nov 2026) describes the same path: download the app from easysim.ai and activate the free data through love.easysim.ai/claim. The validity period and the exact country list are not on the claim page and appear only inside the app.",
-  "conditions": "Install the EasySIM app and register with a phone number; one claim per phone number; limited quantity, ends when supplies do; the eligible countries and validity days are shown only on the in-app activation page.",
+  "content": "EasySIM's official claim page (love.easysim.ai/claim, read 20 Nov 2026) shows \"Free 1GB eSIM / Travel data for 190+ countries / One claim per phone number. Offer valid while supplies last.\" Arabic-language coverage (khabr.news, 17 and 19 Nov 2026) describes the same path: download the app from easysim.ai and activate the free data through love.easysim.ai/claim. The validity period and the exact country list are not on the claim page and appear only inside the app.\n\nArchive note (2026-11-22): rechecked after a visitor reported it dead, and the claim endpoint no longer works. https://love.easysim.ai/claim itself still returns 200 and still shows \"Free 1GB eSIM / Travel data for 190+ countries\" with the claim form, but pressing Claim sends a JSON POST to /claim/process-welcome (with the page CSRF token and Referer) and the server answers 405 Method Not Allowed (response header allow: GET, HEAD) with an HTML error page. The page script then fails to parse JSON and only shows the generic \"Network error. Please try again.\", so visitors never see the real cause and cannot finish the claim. Requesting the same path with GET falls back to the claim page, so the route now takes GET/HEAD only. The offer is therefore treated as dead and moved to the archive pending an official fix; neither easysim.ai nor the love.easysim.ai home page lists another claim entry point.",
+  "conditions": "[Since 2026-11-22 the claim endpoint returns 405 and the claim cannot be completed; archived] Install the EasySIM app and register with a phone number; one claim per phone number; limited quantity, ends when supplies do; the eligible countries and validity days are shown only on the in-app activation page.",
   "steps": [
    "Download the EasySIM app from easysim.ai",
    "Register and activate with your phone number",
@@ -3345,8 +3345,8 @@
    "Confirm destination and validity in the app, then install the eSIM"
   ],
   "url": "https://love.easysim.ai/claim/",
-  "risk": "The claim page does not state validity or covered countries, so treat it as a spare rather than a main data line; \"while supplies last\" means it can stop at any time; a new brand with little track record, so share minimal personal data.",
-  "source": "EasySIM official claim page (read 20 Nov 2026) + khabr.news coverage (17 and 19 Nov 2026)"
+  "risk": "Archived as expired: on 2026-11-22 the claim endpoint at love.easysim.ai/claim returned 405 Method Not Allowed, so submitting always ends in \"Network error\" and the offer is dead for now - do not bother trying. Historic risks remain: the claim page never stated validity or covered countries, \"while supplies last\" means it can stop at any time, and a new brand with little track record deserves minimal personal data.",
+  "source": "EasySIM official claim page (read 20 Nov 2026) + khabr.news coverage (17 and 19 Nov 2026) + our own endpoint test on 22 Nov 2026 (405 Method Not Allowed)"
  },
  "airtel-jio-bogo-recharge": {
   "title": "[India] Airtel and Jio buy-one-get-one recharge: ₹349 and ₹399 plans doubled to 56 days",

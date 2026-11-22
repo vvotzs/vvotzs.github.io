@@ -11041,49 +11041,6 @@
   "utility": 0
  },
  {
-  "id": "easysim-free-1gb-esim",
-  "dedup_key": "easysim|esim|global|free-1gb-esim",
-  "title": "[全球] EasySIM 免费领 1GB eSIM：190+ 国家可用（每手机号一次，先到先得）",
-  "brand": "EasySIM",
-  "domain": "easysim.ai",
-  "category": "esim",
-  "value": "1GB 全球流量（≈$5）",
-  "value_num": 5,
-  "cost": "真正免费",
-  "highlight": "下载 EasySIM App 后打开 love.easysim.ai/claim 领取页，免费拿 1GB 全球 eSIM 流量，覆盖 190+ 国家；官方页面写明「每个手机号限领一次、数量有限送完为止」",
-  "regions": "[全球] 190+ 国家可用；按手机号限制领取次数",
-  "end": "",
-  "verified": true,
-  "last_verified": "2026-11-20",
-  "content": "EasySIM 官方领取页（love.easysim.ai/claim，2026-11-20 实抓）显示「Free 1GB eSIM / Travel data for 190+ countries / One claim per phone number. Offer valid while supplies last.」阿拉伯语媒体报道（khabr.news 2026-11-17、2026-11-19）给出的路径一致：从 easysim.ai 下载 App，再打开 love.easysim.ai/claim 激活免费流量。有效期与可漫游国家清单未在领取页写明，跳转 App 后才会显示。",
-  "conditions": "需安装 EasySIM App 并用手机号注册；每个手机号限领一次；数量有限、送完即止；具体可用国家、流量有效天数以 App 内激活页为准（领取页未标注）。",
-  "steps": [
-   "从 easysim.ai 下载 EasySIM App",
-   "用手机号注册并完成激活",
-   "打开 love.easysim.ai/claim 进入领取页",
-   "在 App 内确认目的地与有效期后安装 eSIM"
-  ],
-  "url": "https://love.easysim.ai/claim/",
-  "source_url": "https://love.easysim.ai/claim/",
-  "source": "EasySIM 官方领取页实抓（2026-11-20）+ khabr.news 报道（2026-11-17 / 11-19）",
-  "risk": "领取页未写有效期与可用国家，实际以 App 内为准，别当主力流量；「数量有限」意味着随时可能停发；新项目口碑资料少，慎给过多个人信息。",
-  "added_at": "2026-11-20T07:25:18+08:00",
-  "added": "2026-11-20",
-  "status": "active",
-  "kyc_level": "none",
-  "vowifi": "n/a",
-  "utility": 0,
-  "identity_requirement": "phone",
-  "platform_requirement": [
-   "android",
-   "ios"
-  ],
-  "phone_requirement": "any_number",
-  "geo_restriction": [
-   "GLOBAL"
-  ]
- },
- {
   "id": "yepapi-5-free-credit",
   "dedup_key": "yepapi|ai|global|5-free-credit",
   "title": "[全球] YepAPI：注册送 $5 额度、免绑卡，190 个数据接口 + 139 个 LLM 一把钥匙",
@@ -14632,5 +14589,48 @@
   "status": "expired",
   "kyc_level": "none",
   "utility": 0
+ },
+ {
+  "id": "easysim-free-1gb-esim",
+  "dedup_key": "easysim|esim|global|free-1gb-esim",
+  "title": "[全球] EasySIM 免费领 1GB eSIM：190+ 国家可用（每手机号一次，先到先得）",
+  "brand": "EasySIM",
+  "domain": "easysim.ai",
+  "category": "esim",
+  "value": "1GB 全球流量（≈$5）",
+  "value_num": 0,
+  "cost": "真正免费",
+  "highlight": "活动已失效并转入归档：2026-11-22 实测打开 love.easysim.ai/claim 仍显示「免费领 1GB eSIM」，但点击 Claim 提交到 /claim/process-welcome 返回 405 Method Not Allowed，前端只弹一句「Network error」，领取流程走不通；详情页保留备查，替代方案见页面顶部的同分类推荐",
+  "regions": "[全球] 190+ 国家可用；按手机号限制领取次数",
+  "end": "2026-11-21",
+  "verified": false,
+  "last_verified": "2026-11-22",
+  "content": "EasySIM 官方领取页（love.easysim.ai/claim，2026-11-20 实抓）显示「Free 1GB eSIM / Travel data for 190+ countries / One claim per phone number. Offer valid while supplies last.」阿拉伯语媒体报道（khabr.news 2026-11-17、2026-11-19）给出的路径一致：从 easysim.ai 下载 App，再打开 love.easysim.ai/claim 激活免费流量。有效期与可漫游国家清单未在领取页写明，跳转 App 后才会显示。\n\n归档说明（2026-11-22）：按访客失效反馈实地复核，领取接口已不可用。https://love.easysim.ai/claim 本身仍返回 200、页面照旧显示「Free 1GB eSIM / Travel data for 190+ countries」与领取表单，但点击 Claim 时前端以 JSON POST 提交到 /claim/process-welcome（带页面 CSRF token 与 Referer），服务端返回 405 Method Not Allowed（响应头 allow: GET, HEAD），响应体是 HTML 错误页；页面脚本按 JSON 解析失败后只显示通用提示「Network error. Please try again.」，访客看不到真实原因，也无法完成领取。以 GET 请求该路径会被回落成领取页，说明这条接口现在只收 GET/HEAD。因此活动已失效并转入归档，待官方恢复该接口后再复核；官网 easysim.ai 与 love.easysim.ai 首页未见其他领取入口。",
+  "conditions": "【2026-11-22 起领取接口 405，已无法完成领取，本条转入归档】需安装 EasySIM App 并用手机号注册；每个手机号限领一次；数量有限、送完即止；具体可用国家、流量有效天数以 App 内激活页为准（领取页未标注）。",
+  "steps": [
+   "从 easysim.ai 下载 EasySIM App",
+   "用手机号注册并完成激活",
+   "打开 love.easysim.ai/claim 进入领取页",
+   "在 App 内确认目的地与有效期后安装 eSIM"
+  ],
+  "url": "https://love.easysim.ai/claim/",
+  "source_url": "https://love.easysim.ai/claim/",
+  "source": "EasySIM 官方领取页实抓（2026-11-20）+ khabr.news 报道（2026-11-17 / 11-19） + 本站 2026-11-22 接口实测（405 Method Not Allowed）",
+  "risk": "【已过期归档】2026-11-22 实测 love.easysim.ai/claim 领取接口返回 405 Method Not Allowed，提交后会一直卡在「Network error」，活动已失效并转入归档，现在别去试。历史风险仍在：领取页未写有效期与可用国家，实际以 App 内为准；「数量有限」意味着随时可能停发；新项目口碑资料少，慎给过多个人信息。",
+  "added_at": "2026-11-20T07:25:18+08:00",
+  "added": "2026-11-20",
+  "status": "expired",
+  "kyc_level": "none",
+  "vowifi": "n/a",
+  "utility": 0,
+  "identity_requirement": "phone",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "any_number",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  }
 ]
