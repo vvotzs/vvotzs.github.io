@@ -76,7 +76,8 @@ reports/score_explain.csv # 构建时写的内部回测表（不进 sitemap、�
   `beforeinput` 兜底拦 `insertLineBreak` / `insertParagraph`（Gboard 常常只给 `beforeinput`），输入法组字中与
   `compositionend` 后 200ms 内不发送（拼音选词的回车只算上屏），`input` 事件把粘贴进来的换行折成空格并复位光标。
   多行说明框（`sd-f4`）不受影响，仍是正常换行。
-- 蜜罐 `#sd-hp` 同样是 `<textarea rows="1">`，所以 `<dialog id="submit-dialog">` 里**没有任何 `<input>`**：
+- 蜜罐 `#sd-hp` 同样是 `<textarea rows="1">`，所以 `<dialog id="submit-dialog">` 里的**文本控件全是 `<textarea>`**
+  （唯一的 `<input>` 是顶栏两枚 `type="radio"` 的模式开关，radio 不属于 Chrome 的自动填充候选，不会触发下面那条辅助栏）：
   `<dialog>.showModal()` 打开时 Chrome 会扫到弹窗内的文本 `<input>` 并聚焦它，那一瞬间就会闪出键盘上方的
   🔑💳📍 辅助栏（点进任一字段、焦点转走后它又消失）。另给 `<dialog>` 加 `tabindex="-1"`（CSS `.submit-dialog:focus{outline:none}`），
   并在 `app.js` 的 `openDialog()` 里手机端（`max-width:680px`）`showModal()` 后显式
@@ -85,7 +86,17 @@ reports/score_explain.csv # 构建时写的内部回测表（不进 sitemap、�
 - 兜底：禁用 JS / 不支持 `showModal()` 时，按钮本身就是 TG 群链接
   （<https://t.me/+aAqP0DbW_YMxMmNh>），不会走进死路。
 - 关闭：左上 `←`、ESC、点遮罩都可以；提交成功后同一张卡片就地换成紧凑回执
-  （薄荷绿对勾 + 「已收到！核验后会尽快收录 ✨」+ 关闭 / 再投一条），此时表单与右上角发送按钮隐藏。
+  （薄荷绿对勾 + 「已收到！核验后会尽快收录 ✨」或反馈模式的「已收到反馈，我们会尽快核实 ✨」+ 关闭 / 再投一条），
+  此时表单与右上角发送按钮隐藏。
+- 顶栏一行排完（375px 也不折行）：`←` / Pickle 头像 / 标题「投稿/反馈」（EN `Submit/Report`，手机上头像让位）/
+  两枚圆点单选「◉ 投稿　○ 反馈」（EN `◉ Submit　○ Report`，原生 `<input type="radio" name="sd-mode">` + `accent-color`，
+  点圆点或点文字都能切）/「✈️交流群」（EN `✈️Group`，图标与文字之间不留 gap）/ 黄色发送徽标。
+  开关靠 `.sd-seg` 的 `margin-left:auto` 贴到右侧；字号与间距按 375px 实测调过（手机 `12px` 标题、`10.2px` 选项）。
+- **投稿 / 反馈两个模式**：默认「投稿」。切到「反馈」时只换占位文案（名称→「失效的活动名称」、链接→「活动页或站内链接」、
+  说明→「失效情况：页面 404 / 活动已结束 / 接口报错…」）、说明框 `aria-label` 与名称字数上限（80→74，给前缀留位置），
+  已填内容不动；提交时在 `name` 前自动加 `【失效反馈】`，于是 GAS 现有主题变成
+  `[投稿] 【失效反馈】活动名 · 地区`——`gog gmail search '【失效反馈】'` 直接可查，**GAS 一行不用改、不用重新部署**。
+  回执按模式区分；每次打开弹窗、提交成功后的「再投一条」、以及关闭弹窗都会回到默认「投稿」。
 - 手机端位置自适应：平时垂直居中；输入法弹起时加 `.kb-open` 贴到可视区域顶部，
   位置与最大高度由 `visualViewport.offsetTop` / `.height` 写成的 CSS 变量 `--vv-top` / `--vv-max-h` 决定
   （iOS 布局视口不缩、可视区域会平移，只按布局视口定位会被顶出屏幕；Android Chrome 两个高度一起缩，

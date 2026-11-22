@@ -2119,18 +2119,20 @@ footer{
 .submit-dialog:focus{ outline: none; }
 html.dialog-open{ overflow: hidden; }
 
-/* 顶栏：← / 头像 / 标题 ………… TG 徽标 / 纸飞机 */
+/* 顶栏：← / Pickle 头像 / 标题 ………… [投稿|反馈] 开关 / TG 胶囊 / 纸飞机，全部一行。
+   375px 下这一排要整整齐齐：间距收到 4px，开关与 TG 胶囊同高 26px，
+   靠 .sd-seg 的 margin-left:auto 把右侧三件贴到右边，标题留在左边。 */
 .sd-top{
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 10px 8px 6px;
+  gap: 4px;
+  padding: 7px 10px 7px 6px;
   border-bottom: 1px solid #EFECE4;
 }
 .sd-back{
   flex: none;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border: 0;
   border-radius: 50%;
   background: transparent;
@@ -2148,32 +2150,38 @@ html.dialog-open{ overflow: hidden; }
 .sd-back:hover{ background: #F1EEE6; color: var(--ink); }
 .sd-back:focus-visible{ outline: 2px solid rgba(22,163,74,.5); outline-offset: 1px; }
 
-.sd-avatar{ flex: none; width: 22px; height: 22px; margin-left: 1px; }
-.sd-avatar svg{ width: 22px; height: 22px; display: block; }
+.sd-avatar{ flex: none; width: 20px; height: 20px; margin-left: 0; }
+.sd-avatar svg{ width: 20px; height: 20px; display: block; }
 
 .sd-top h2{
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: .01em;
   line-height: 1.2;
   color: var(--ink);
   white-space: nowrap;
+  /* 英文「Submit / Report」比中文长：空间不够时只让标题收窄省略，绝不挤压右边三件 */
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* TG 交流群：紧凑蓝色胶囊，紧挨右上角，不占高度、不折行 */
+/* TG 交流群：紧凑蓝色胶囊，紧挨开关右侧，不占额外高度、不折行。
+   图标与文字之间不留 gap：纸飞机直接贴住「交流群」/「TG Group」（只给 1px 光学缝隙）。 */
 .sd-tg{
-  margin-left: auto;
+  flex: none;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 0;
   height: 26px;
-  padding: 0 9px 0 6px;
+  padding: 0 8px 0 6px;
   border: 1px solid rgba(42,171,238,.26);
   border-radius: 999px;
   background: #EFF9FF;
   color: #0B79A8;
-  font-size: 11px;
+  font-size: 10.8px;
   font-weight: 600;
   line-height: 1;
   letter-spacing: .01em;
@@ -2182,15 +2190,15 @@ html.dialog-open{ overflow: hidden; }
   transition: background .15s ease, border-color .15s ease;
 }
 .sd-tg:hover{ background: #E1F4FF; border-color: rgba(42,171,238,.42); }
-.sd-tg-i{ width: 14px; height: 14px; flex: none; color: #2AABEE; }
+.sd-tg-i{ width: 13px; height: 13px; flex: none; margin-right: 1px; color: #2AABEE; }
 .sd-tg span{ display: block; }
 
-/* 明黄圆发送徽标（Jun 的原始 SVG）：它就是按钮的脸，34px 点击热区不变 */
+/* 明黄圆发送徽标（Jun 的原始 SVG）：它就是按钮的脸，32px 点击热区不变 */
 .sd-send{
   flex: none;
-  width: 34px;
-  height: 34px;
-  margin-left: 20px;      /* 与「交流群」胶囊拉开距离，避免误触 */
+  width: 32px;
+  height: 32px;
+  margin-left: 6px;       /* 与「交流群」胶囊只隔一点点，375px 一排才放得下 */
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -2217,6 +2225,41 @@ html.dialog-open{ overflow: hidden; }
 display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着。 */
 .sd-form{ display: block; }
 .sd-form[hidden]{ display: none; }   /* 成功态整块换掉表单，而不是在下面追加 */
+
+/* 投稿 / 反馈 二选一开关（圆点单选，Jun 的参考图）：◉ 投稿　○ 反馈。
+   就在「交流群」胶囊左边、同一行，右侧三件靠 margin-left:auto 贴右；
+   原生 radio 用 accent-color 上薄荷绿，圆点 13px、文字 11px，整项是一个 label（点哪都切）。 */
+.sd-seg{
+  flex: none;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.sd-opt{
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--ink-3);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color .16s ease;
+}
+.sd-opt-r{
+  flex: none;
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  accent-color: var(--mint);
+  cursor: pointer;
+}
+.sd-opt.on{ color: var(--ink); }
+.sd-opt:hover{ color: var(--ink-2); }
+.sd-opt:focus-within .sd-opt-r{ outline: 2px solid rgba(5,150,105,.45); outline-offset: 1px; border-radius: 50%; }
 /* 蜜罐：只给机器人看的字段。不用 display:none / visibility:hidden（部分脚本会跳过），
    而是移出屏幕且不占布局、读屏隐藏、Tab 也进不来；有值就说明是自动填充的机器人。 */
 .sd-hp{
@@ -2410,7 +2453,17 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
   .sd-row{ height: 46px; }
   .sd-textarea{ min-height: 68px; }
   .sd-notes{ padding: 10px 14px 6px; }
-  .sd-top h2{ font-size: 13.5px; }
+  /* 顶栏在 375px 上要一行放开「← 投稿/反馈　◉投稿 ○反馈　✈️交流群　➤」：
+     小精灵头像在这一行里让位（省 23px），标题与开关各收半号字，英文 Submit/Report
+     也进得去；数字按实测调过，两语言都留出余量。 */
+  .sd-top{ gap: 3px; padding: 7px 6px 7px 5px; }
+  .sd-avatar{ display: none; }
+  .sd-top h2{ font-size: 12px; }
+  .sd-seg{ gap: 5px; }
+  .sd-opt{ gap: 2px; font-size: 10.2px; }
+  .sd-opt-r{ width: 12px; height: 12px; }
+  .sd-tg{ font-size: 10.2px; padding: 0 5px 0 5px; }
+  .sd-send{ margin-left: 3px; }
   .sd-done{ min-height: 268px; padding: 22px 18px 20px; }
 }
 

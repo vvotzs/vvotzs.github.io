@@ -1006,6 +1006,15 @@
     var regionEl = $("#sd-f3", submitDialog);
     var notesEl = $("#sd-f4", submitDialog);
     var hpEl = $("#sd-hp", submitDialog);   /* 蜜罐：真人看不到也碰不到（不设 name，不用 website 免得密码管理器自动填） */
+    var segEl = $("#sd-seg", submitDialog);
+    var modeInputs = segEl ? $$("input[name='sd-mode']", segEl) : [];
+    var modeOpts = segEl ? $$(".sd-opt", segEl) : [];
+    var doneTitle = $("#sd-done-t", submitDialog);
+    /* 顶部开关：「投稿」（默认）/「失效反馈」。反馈模式下名称前带【失效反馈】：
+       GAS 现有主题是「[投稿] 名称 · 地区」，前缀进了名称就进了主题，gmail 搜「【失效反馈】」直接命中；
+       GAS 一行不改、不重新部署。GAS 把 name 截到 80 字，所以反馈模式下名称限 74 字，给前缀留 6 个。 */
+    var MODE_PREFIX = "【失效反馈】";
+    var mode = "submit";
     var sending = false;
     /* 5 秒防重复冷却的起点存在 sessionStorage 里：点「再投一条」或刷新页面都还在，
        只有请求失败才清零（允许立即重试）。新开标签页 = 新会话，冷却从头算。 */
@@ -1112,6 +1121,40 @@
       errEl.textContent = "";
       errEl.hidden = true;
     };
+
+    /* 顶部开关的实际切换：原生 radio 的选中态由 checked 决定，配一份 .on 给文字上色；
+       占位文案、说明框 aria-label 与名称字数上限跟着模式走，已经填的内容一律不动。 */
+    var applyPlaceholders = function (m) {
+      [nameEl, urlEl, notesEl].forEach(function (el) {
+        var ph = el && el.getAttribute("data-ph-" + m);
+        if (ph != null) el.placeholder = ph;
+      });
+      if (notesEl) {
+        var label = notesEl.getAttribute("data-al-" + m);
+        if (label) notesEl.setAttribute("aria-label", label);
+      }
+      if (nameEl) nameEl.setAttribute("maxlength", m === "report" ? "74" : "80");
+    };
+    var setMode = function (m) {
+      mode = m === "report" ? "report" : "submit";
+      if (segEl) segEl.setAttribute("data-mode", mode);
+      modeInputs.forEach(function (input) {
+        input.checked = input.value === mode;
+      });
+      modeOpts.forEach(function (opt) {
+        var input = $("input", opt);
+        opt.classList.toggle("on", !!input && input.value === mode);
+      });
+      applyPlaceholders(mode);
+    };
+    modeInputs.forEach(function (input) {
+      input.addEventListener("change", function () {
+        if (!input.checked) return;
+        setMode(input.value);
+        clearBad();              /* 上一个模式的红字别留到新模式里 */
+      });
+    });
+    setMode("submit");           /* 初始就是「投稿」；打开时 resetForm 还会再回一次默认 */
     var showErr = function (row, text) {
       clearBad();
       if (row) row.classList.add("bad");
@@ -1127,6 +1170,7 @@
     };
     var resetForm = function () {
       clearFields();
+      setMode("submit");        /* 每次打开 / 「再投一条」都回到默认「投稿」 */
       /* 故意不清 lastSentAt：刷新 / 「再投一条」后 5 秒冷却继续生效，只有请求失败才清零 */
       clearBad();
       donePanel.hidden = true;
@@ -1134,7 +1178,12 @@
       if (sendBtn) sendBtn.hidden = false;   /* 回到填写界面：发送按钮恢复 */
       kbOpen(false);                         /* 回到填写页 / 重新打开：回正居中 */
     };
-    var showDone = function () {
+    var showDone = function (sentMode) {
+      /* 回执区分投稿与反馈：文案构建时已按页面语言写在 data-done-* 上 */
+      if (doneTitle) {
+        var t = submitDialog.getAttribute("data-done-" + (sentMode === "report" ? "report" : "submit"));
+        if (t) doneTitle.textContent = t;
+      }
       submitForm.hidden = true;     /* 同一张卡片就地换成回执，不改弹窗高度 */
       donePanel.hidden = false;
       if (sendBtn) sendBtn.hidden = true;
@@ -1183,6 +1232,7 @@
     submitDialog.addEventListener("close", function () {
       document.documentElement.classList.remove("dialog-open");
       kbOpen(false);
+      setMode("submit");       /* 关掉后回到默认「投稿」，下次打开不会带着上次的选择 */
       rootStyle.removeProperty("--vv-top");
       rootStyle.removeProperty("--vv-max-h");
     });
@@ -1197,7 +1247,7 @@
     var doSubmit = function () {
       if (sending) return;
       /* 蜜罐字段被填 = 机器人。静默走成功回执但不发请求，让它以为提交成功。 */
-      if (hpEl && hpEl.value) { showDone(); return; }
+      if (hpEl && hpEl.value) { showDone(mode); return; }
       /* 5 秒防重复冷却：连点 / 脚本在同一份表单里反复 POST 只会有第一次真正发出去。
          起点存在 sessionStorage，刷新或「再投一条」之后照样生效。 */
       if (Date.now() - lastSentAt < COOLDOWN_MS) {
@@ -1206,9 +1256,11 @@
       }
       var name = (nameEl.value || "").trim();
       var url = (urlEl.value || "").trim();
-      if (!name) { showErr(nameEl.parentNode, msg("name")); nameEl.focus(); return; }
+      if (!name) { showErr(nameEl.parentNode, msg(mode === "report" ? "name-report" : "name")); nameEl.focus(); return; }
       /* 链接只要求非空：用户写 testdomain.com 或一段文字说明也照收，不做前缀校验 */
-      if (!url) { showErr(urlEl.parentNode, msg("link")); urlEl.focus(); return; }
+      if (!url) { showErr(urlEl.parentNode, msg(mode === "report" ? "link-report" : "link")); urlEl.focus(); return; }
+      /* 失效反馈：名称前带【失效反馈】，GAS 发信主题就是「[投稿] 【失效反馈】活动名 · 地区」 */
+      if (mode === "report") name = MODE_PREFIX + name;
 
       var body = new URLSearchParams();
       body.set("name", name);
@@ -1228,7 +1280,7 @@
         sending = false;
         sendBtn.disabled = false;
         if (!ok) { writeSentAt(0); showErr(null, msg("failed")); return; }   /* 失败允许立即重试 */
-        showDone();
+        showDone(mode);
       };
       if (!GAS_URL) { finish(false); return; }
       fetch(GAS_URL, { method: "POST", mode: "no-cors", body: body })

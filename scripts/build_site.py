@@ -3968,6 +3968,10 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
         aria-labelledby="submit-title"
         data-msg-name="{e(U['submit_need_name'][1] if is_en else U['submit_need_name'][0])}"
         data-msg-link="{e(U['submit_need_link'][1] if is_en else U['submit_need_link'][0])}"
+        data-msg-name-report="{e(U['submit_need_name_report'][1] if is_en else U['submit_need_name_report'][0])}"
+        data-msg-link-report="{e(U['submit_need_link_report'][1] if is_en else U['submit_need_link_report'][0])}"
+        data-done-submit="{e(U['submit_success'][1] if is_en else U['submit_success'][0])}"
+        data-done-report="{e(U['submit_success_report'][1] if is_en else U['submit_success_report'][0])}"
         data-msg-failed="{e(U['submit_failed'][1] if is_en else U['submit_failed'][0])}"
         data-msg-wait="{e(U['submit_wait'][1] if is_en else U['submit_wait'][0])}">
   <!-- 故意不用 <form>：安卓 Chrome 的 Autofill 启发式会忽略 autocomplete="off"，只要看到 <form>
@@ -3994,10 +3998,16 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
       </button>
       <span class="sd-avatar" aria-hidden="true">{mascot_svg(gid='mintBodySubmit')}</span>
       <h2 id="submit-title">{ui('submit_title')}</h2>
+      <!-- 二选一开关（圆点单选）：◉ 投稿 / ○ 反馈。与「交流群」胶囊排在同一行右侧，不另占一行高度；
+           弄成原生 <input type="radio"> + <label>，点圆点或点文字都能切；
+           每次打开弹窗 / 提交成功 / 「再投一条」都回到默认「投稿」。 -->
+      <div class="sd-seg" id="sd-seg" role="radiogroup" {al(*U['submit_mode_aria'])}>
+        <label class="sd-opt on"><input class="sd-opt-r" type="radio" name="sd-mode" value="submit" checked><span>{ui('submit_mode_submit')}</span></label>
+        <label class="sd-opt"><input class="sd-opt-r" type="radio" name="sd-mode" value="report"><span>{ui('submit_mode_report')}</span></label>
+      </div>
       <a class="sd-tg" href="{TG_GROUP_URL}" target="_blank" rel="noopener"
          {al(*U['submit_tg_aria'])}>
-        {telegram_svg('sd-tg-i')}
-        <span>{ui('submit_tg')}</span>
+        {telegram_svg('sd-tg-i')}<span>{ui('submit_tg')}</span>
       </a>
       <button class="sd-send" type="button"
               {al(*U['submit_send'])}>
@@ -4012,11 +4022,13 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
     <label class="sd-row">
       <span class="sd-label">{ui('submit_name')}<i class="req" aria-hidden="true">*</i></span>
       <textarea class="sd-input sd-field-single" id="sd-f1" rows="1" wrap="off" maxlength="80" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send" aria-required="true"
+                data-ph-submit="{pht('submit_ph_name')}" data-ph-report="{pht('submit_ph_name_report')}"
                 placeholder="{pht('submit_ph_name')}"></textarea>
     </label>
     <label class="sd-row">
       <span class="sd-label">{ui('submit_link')}<i class="req" aria-hidden="true">*</i></span>
       <textarea class="sd-input sd-field-single" id="sd-f2" rows="1" wrap="off" maxlength="500" autocomplete="nope" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" enterkeyhint="send" aria-required="true"
+                data-ph-submit="{pht('submit_ph_link')}" data-ph-report="{pht('submit_ph_link_report')}"
                 placeholder="{pht('submit_ph_link')}"></textarea>
     </label>
     <label class="sd-row">
@@ -4026,7 +4038,10 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
     </label>
     <label class="sd-notes">
       <textarea class="sd-textarea" id="sd-f4" rows="3" maxlength="800" autocomplete="nope" autocorrect="off" autocapitalize="off" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other"
-                {al('亮点与门槛说明', 'Highlights and requirements')}
+                data-al-submit="{e(U['submit_notes_aria'][1] if is_en else U['submit_notes_aria'][0])}"
+                data-al-report="{e(U['submit_notes_aria_report'][1] if is_en else U['submit_notes_aria_report'][0])}"
+                {al(*U['submit_notes_aria'])}
+                data-ph-submit="{pht('submit_ph_notes')}" data-ph-report="{pht('submit_ph_notes_report')}"
                 placeholder="{pht('submit_ph_notes')}"></textarea>
     </label>
     <p class="sd-err" id="sd-err" role="alert" hidden></p>
@@ -4044,7 +4059,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
         <path d="m14.4 24.6 6.6 6.6 12.6-13.2" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </span>
-    <p class="sd-done-t">{ui('submit_success')}</p>
+    <p class="sd-done-t" id="sd-done-t">{ui('submit_success')}</p>
     <div class="sd-actions">
       <button class="sd-btn sd-btn-ghost" type="button" data-submit-close>{ui('close')}</button>
       <button class="sd-btn sd-btn-mint" type="button" data-submit-again>{ui('submit_again')}</button>
