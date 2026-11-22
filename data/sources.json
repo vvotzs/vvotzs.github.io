@@ -217,8 +217,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-21T23:40:33Z",
+      "last_crawled_at": "2026-11-22T02:08:25Z",
+      "last_hit_at": "2026-11-22T02:08:25Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
       "zero_streak": 0
@@ -241,12 +241,13 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-21T03:30:00Z",
+      "last_crawled_at": "2026-11-22T02:08:25Z",
+      "last_hit_at": "2026-11-22T02:08:25Z",
       "search_domains": [
         "x.com"
       ],
-      "tool": "x-search"
+      "tool": "x-search",
+      "zero_streak": 0
     },
     {
       "id": "tg-docofcard",
@@ -262,9 +263,10 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-20T22:30:00Z",
-      "entry_url": "https://tg.docofcard.com/rss.json"
+      "last_crawled_at": "2026-11-22T02:08:11Z",
+      "last_hit_at": "2026-11-22T02:08:11Z",
+      "entry_url": "https://tg.docofcard.com/rss.json",
+      "zero_streak": 0
     },
     {
       "id": "mini-appdo",
@@ -281,9 +283,10 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-20T17:30:00Z",
-      "entry_url": "https://mini.appdo.xyz/rss.json"
+      "last_crawled_at": "2026-11-22T02:08:25Z",
+      "last_hit_at": "2026-11-22T02:08:25Z",
+      "entry_url": "https://mini.appdo.xyz/rss.json",
+      "zero_streak": 0
     },
     {
       "id": "hn",
@@ -300,9 +303,10 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-20T12:30:00Z",
-      "entry_url": "https://news.ycombinator.com/rss"
+      "last_crawled_at": "2026-11-22T02:08:11Z",
+      "last_hit_at": "2026-11-22T02:08:11Z",
+      "entry_url": "https://news.ycombinator.com/rss",
+      "zero_streak": 0
     },
     {
       "id": "github-trending",
@@ -319,8 +323,9 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-20T07:30:00Z"
+      "last_crawled_at": "2026-11-22T02:08:11Z",
+      "last_hit_at": "2026-11-22T02:08:11Z",
+      "zero_streak": 0
     },
     {
       "id": "uscardforum",
@@ -354,11 +359,12 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T08:02:18Z",
-      "last_hit_at": "2026-11-19T10:30:00Z",
+      "last_crawled_at": "2026-11-22T02:08:11Z",
+      "last_hit_at": "2026-11-22T02:08:11Z",
       "search_domains": [
         "shuzijumin.com"
-      ]
+      ],
+      "zero_streak": 0
     },
     {
       "id": "nodeseek",
@@ -375,11 +381,12 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T08:39:13Z",
-      "last_hit_at": "2026-11-19T05:30:00Z",
+      "last_crawled_at": "2026-11-22T02:08:25Z",
+      "last_hit_at": "2026-11-22T02:08:25Z",
       "search_domains": [
         "www.nodeseek.com"
-      ]
+      ],
+      "zero_streak": 0
     },
     {
       "id": "nodeloc",
@@ -395,9 +402,10 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T09:16:09Z",
-      "last_hit_at": "2026-11-19T00:30:00Z",
-      "entry_url": "https://www.nodeloc.com/latest.md"
+      "last_crawled_at": "2026-11-22T02:08:25Z",
+      "last_hit_at": "2026-11-22T02:08:25Z",
+      "entry_url": "https://www.nodeloc.com/latest.md",
+      "zero_streak": 0
     },
     {
       "id": "hostloc",
@@ -412,8 +420,9 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T09:53:04Z",
-      "last_hit_at": "2026-11-18T19:30:00Z"
+      "last_crawled_at": "2026-11-22T02:08:11Z",
+      "last_hit_at": "2026-11-22T02:08:11Z",
+      "zero_streak": 0
     },
     {
       "id": "linux-do",
@@ -430,8 +439,9 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T10:30:00Z",
-      "last_hit_at": "2026-11-18T14:30:00Z"
+      "last_crawled_at": "2026-11-22T02:08:11Z",
+      "last_hit_at": "2026-11-22T02:08:11Z",
+      "zero_streak": 0
     },
     {
       "id": "v2ex",
@@ -1031,8 +1041,9 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": null,
-      "last_hit_at": null
+      "last_crawled_at": "2026-11-22T02:08:11Z",
+      "last_hit_at": "2026-11-22T02:08:11Z",
+      "zero_streak": 0
     },
     {
       "id": "mykeyvans",
