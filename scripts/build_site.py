@@ -1056,6 +1056,21 @@ def value_tokens(text: str, lang: str = "zh") -> str:
     return "".join(out)
 
 
+def caut_html(deal: dict, cls: str = "caution-tag") -> str:
+    """可选的风控小徽标：条目带 caution_badge 时在卡片 / 详情页顶部渲染一枚紧凑胶囊。
+
+    主要给第三方机器人、非官方渠道这类需要先提醒一句的条目用：
+      "caution_badge": "⚠️谨慎使用第三方机器人"
+      "caution_badge_en": "⚠️Caution: Third-party bot"
+    没写这两个字段的条目完全不出任何元素，布局与以前一模一样。
+    """
+    zh = (deal.get("caution_badge") or "").strip()
+    if not zh:
+        return ""
+    en = (deal.get("caution_badge_en") or "").strip() or zh
+    return f'<span class="{cls}">{bi(e(zh), e(en))}</span>'
+
+
 def detail_tags(deal: dict, en: dict) -> str:
     cat = deal.get("category", "")
     cat_zh = CAT_META.get(cat, {"label": cat})["label"]
@@ -1278,7 +1293,7 @@ def card(deal: dict, en: dict, today) -> str:
           <h3>{title_html}</h3>
           {badge_html}
         </div>
-        <p class="row2"><span class="tag {cost_cls}">{bi(e(cost), e(COST_EN.get(cost, cost)))}</span>{aff_html}{bi(hl_zh, hl_en)}</p>
+        <p class="row2"><span class="tag {cost_cls}">{bi(e(cost), e(COST_EN.get(cost, cost)))}</span>{aff_html}{caut_html(deal)}{bi(hl_zh, hl_en)}</p>
         <div class="row3">
           {deadline_html(deal, today)}
           {region_html}
@@ -1868,6 +1883,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
             <span class="dtag cat">{icon(cat_icon, 'dp-cat-i')}{cat_label}</span>
             <span class="dp-st {st_cls}">{st_label}</span>
             {aff_badge_html}
+            {caut_html(deal, "dtag caution")}
           </div>
         </div>
       </div>

@@ -197,6 +197,17 @@ reports/score_explain.csv # 构建时写的内部回测表（不进 sitemap、�
 - `aff_url` 同样过 http(s) 白名单，`javascript:` 这类值会让构建直接失败；
 - 对读者的口径同步写在 `/disclosure/` 与 `/en/disclosure/`。
 
+## 第三方 / 风控小徽标（caution）
+
+默认不显示，只有条目自己写了才出：
+
+- `data/deals.json` 里加 `"caution_badge": "⚠️谨慎使用第三方机器人"`，英文版另给
+  `"caution_badge_en": "⚠️Caution: Third-party bot"`（不给英文时退回中文，英文页的 CJK 扫描会拦住）；
+- 卡片第二行（门槛标签后面）与详情页标题下的徽标行各显示一颗暖橙小胶囊，不占额外行高，
+  没写这两个字段的条目渲染与以前完全一样；
+- 适合第三方 Telegram 机器人、非官方渠道这类「先提醒一句再用」的条目；
+- ⚠️ 后面不留空格，保持「⚠️谨慎使用第三方机器人」的紧凑写法。
+
 ## Cookie 同意与合规页
 
 - 页脚「Cookie 设置 / Cookie Settings」打开全站共用的 `assets/js/consent.js` 抽屉（`position: fixed`，零 CLS）；
