@@ -21,26 +21,40 @@ about|privacy|disclosure/index.html     # 合规页（中英各一份，页脚�
 en/about|privacy|disclosure/index.html  # 同上，纯英文；给 AdSense 审核与投稿说明用
 assets/css/style.css    # 视觉与交互样式
 assets/js/app.js        # 手风琴 / 搜索筛选 / 移动端分页 / 滑轨高亮 / URL 状态同步 / 语言跳转
+assets/js/votes.js      # 赞 / 踩：只拉一次票数填充显示、只乐观更新本卡数字、永不重排（契约见 docs/votes-api.md）
 assets/fav/<domain>.webp # 构建时缓存到本地的站点图标（48×48 WebP，境内直连即可显示，不依赖 google.com）
 assets/og-cover.png     # 1200×630 中文社交分享封面（scripts/make_og_cover.py 生成）
 assets/og-cover-en.png  # 1200×630 英文社交分享封面（/en/ 的 og:image，同一脚本 `en` 参数生成）
 data/deals.json         # 优惠条目（中文 12 项标准字段；抽奖 / 阶梯类另有 value_expected）
 data/deals_en.json      # 全部条目的英文翻译，按 id 对应 deals.json（title / highlight / regions / value / content / conditions / steps / risk / source）
 data/meta.json          # 统计与最后更新时间
+data/sources.json       # 信源分层调度表（P0/P1/P2 + 暂停源 + 关键词组），plan_round.py 读它、回写各源的抓取时间
+data/votes_snapshot.json # 赞 / 踩票数快照（GAS 定时导出；build_site.py 只读一次填进卡片，缺文件按 0 票构建）
 scripts/common.py          # 共用常量与函数（北京时间、类别、状态、value_expected）
 scripts/i18n.py            # 界面文案的中英对照表、类别 / 门槛英文标签、英文日期格式
 scripts/maintain_deals.py  # 去重、状态标记、归档、meta 与 sitemap（含 /en/ 与 hreflang）
 scripts/build_site.py      # 由 deals.json + deals_en.json 生成中英两个 index.html、全部 /d/<id>/ 与 /en/d/<id>/ 详情页、12 个分类目录页，并重建 sitemap.xml
 scripts/check_schema.py    # 结构化数据体检：每段 ld+json 必须合法 JSON，Offer / HowTo 字段齐全（构建时自动跑，也可单独跑）
 scripts/make_og_cover.py   # 生成中英两张分享封面（`python3 scripts/make_og_cover.py` 全出，加 `en` 只出英文）
+scripts/plan_round.py      # 采集调度器：按轮次挑到期源、轮转关键词、排重核队列、回写抓取时间（--dry-run / --json / --status / --validate）
+scripts/eligibility.py     # 参与资格 6 个字段的枚举、默认值、双语标签与 JSON-LD（eligibleRegion / ineligibleRegion）取数
+scripts/label_eligibility.py # Bank / eSIM 的 6 个资格字段逐条标定（幂等，漏标直接报错）
+scripts/label_deals.py     # kyc_level / vowifi / utility（U）逐条标定（幂等，漏标直接报错）
+scripts/dedup_audit.py     # dedup_key 巡检：缺失 / 格式错 / 撞键 + 疑似重复清单（--write 顺带写 docs/dedup-audit.md）
+docs/scoring.md             # 分类排序的打分规则（只在构建时算分，前端永不重排）
+docs/dedup-key.md           # 去重键 dedup_key 的四段格式与生成规则
+docs/eligibility-fields.md  # 参与资格 6 个字段的口径、页面渲染与 kyc_level 的对应关系
+docs/votes-api.md           # 赞 / 踩接口契约（schema 1，GAS Web App）
 docs/workflows-reference/daily-rebuild.yml  # 每日重建工作流模板（不放进 .github/workflows）
 ads.txt                        # AdSense 发布商授权文件（当前只有注释，拿到 pub-… 后取消注释填 ID）
 robots.txt / sitemap.xml
 reports/score_explain.csv # 构建时写的内部回测表（不进 sitemap、不被页面链接、.gitignore 忽略，线上不存在）
 ```
 
+规则文档都在 `docs/`，改口径前先读它们：[分类排序打分](docs/scoring.md) · [去重键 dedup_key](docs/dedup-key.md) · [参与资格字段](docs/eligibility-fields.md) · [赞 / 踩接口](docs/votes-api.md)。
+
 **首页瘦身（2026-11-21）**：首页的分类 module 只内联「四个聚合分区用到的卡 + 每类按 S 前
-24 条」（`HOME_CAT_CARDS`，合计约 144 张），其余全部由 `/category/<slug>/` 承接；每个
+25 条」（`HOME_CAT_CARDS`，合计 155 张卡、155 个「详情页 ↗」），其余全部由 `/category/<slug>/` 承接；每个
 模块底部有一颗「查看全部 N 条 · 分类名 →」。搜索仍覆盖全库：索引拆成 `t/h/k/c/p`
 五张表，搜索或筛时把首页没内联的在效条目补成一行轻量结果行（点进 `/d/<id>/`），
 平时不为全库铺 DOM。验收口径：gzip ≤ 250KB、DOM ≤ 1.3 万、CLS = 0。
@@ -213,7 +227,7 @@ python3 scripts/build_site.py       # 再生成中英两个页面（会顺便把
   英文页不允许中日文残留：构建结束会扫一遍 `/en/` 与 `/en/d/**`（去掉注释 / script / svg / `data-*` 后的可见文字），
   命中就让构建失败；语言切换徽标「中文」是唯一白名单（`check_en_pages()`）。品牌中文名仍留在 JSON-LD 的 `seller.name` 与搜索索引里，那是数据不是漏翻。
 - 详情页底部内链固定「同类相邻 4 条 + 同地区 2 条」，按条目 id 轮转（`related_deals()`），让每个页面都有入链；
-  首页 220+ 个「详情页 ↗」的可见文字保持一致，`aria-label` 带条目标题，读屏与搜索能分清指向哪一条。
+  首页 155 个「详情页 ↗」的可见文字保持一致，`aria-label` 带条目标题，读屏与搜索能分清指向哪一条。
 
 ## 分类目录页 / 替代优惠 / HowTo 结构化数据
 
