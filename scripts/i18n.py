@@ -127,6 +127,10 @@ U: dict[str, tuple[str, str]] = {
     # 既是给读者的去路，也是给分类页的一条站内锚文本。英文页不得出现中文。
     "see_all": ("查看全部 {n} 条 · {name} →", "View all {n} · {name} →"),
     "see_all_aria": ("打开分类页：{name}", "Open the {name} category page"),
+    # 板块全库条数超过首页内联上限时，把「没展开的条数」直接写进同一颗胶囊：
+    # 「还有 56 条没展开 · 查看全部 80 条 →」。窄屏要单行，所以这句不带分类名（分类名留在 aria 里）。
+    "see_more": ("还有 {m} 条没展开", "{m} more not shown"),
+    "see_all_n": ("查看全部 {n} 条 →", "View all {n} →"),
     # 归档区超过内联上限时的一句说明（当前只有 4 条过期活动，平时不出现）
     "archive_capped": ("已归档 {n} 条 · 仅列最近 {m} 条", "{n} archived · showing the latest {m}"),
     "pager_prev": ("上一页", "Previous page"),

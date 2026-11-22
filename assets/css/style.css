@@ -534,6 +534,13 @@ main{ padding-bottom: 0; }
 }
 .see-all:hover{ background: var(--mint-soft); border-color: #6EE7B7; color: #047857; }
 .see-all:active{ background: #DCFCE7; }
+/* 板块全库条数超过首页内联上限时，还是这一颗胶囊，只是里面先说「还有 N 条没展开」
+   再给「查看全部 N 条 →」。两句实测窄屏合起来约 200px，所以直接 nowrap 保单行；
+   条数是那句要读者看见的重点，单独给暖橙，不新开按钮也不新占一行。 */
+.see-all.has-more{ white-space: nowrap; }
+.see-all.has-more .sa-more{ font-weight: 700; color: #B45309; }
+.see-all.has-more .sa-sep{ color: var(--ink-4); }
+.see-all.has-more .sa-go{ color: inherit; }
 /* 归档区没有独立页面：超过内联上限时只放这一句，不造假链接 */
 .all-note{ margin: 8px 0 2px; text-align: center; color: var(--ink-3); font-size: 11.5px; }
 

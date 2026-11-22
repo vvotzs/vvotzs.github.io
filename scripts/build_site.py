@@ -1395,11 +1395,23 @@ def module_html(
         cat_name = (CAT_EN.get(cat_slug, (CAT_META[cat_slug]["label"], ""))[0]
                     if CUR_LANG == "en" else CAT_META[cat_slug]["label"])
         n = len(deals) if total is None else total
-        tail = (
-            f'<a class="see-all" href="/{e(cat_path(cat_slug, CUR_LANG))}" '
-            f'{al(*upair("see_all_aria", name=cat_name))}>'
-            f'{ui("see_all", n=n, name=e(cat_name))}</a>'
-        )
+        more = max(0, n - len(deals))
+        if more:
+            # 板块全库条数超过首页内联上限（HOME_CAT_CARDS）：胶囊里先说还没展开多少条，
+            # 再给去分类页的「查看全部 N 条 →」。仍是同一颗胶囊，不另加按钮、不占新行。
+            tail = (
+                f'<a class="see-all has-more" href="/{e(cat_path(cat_slug, CUR_LANG))}" '
+                f'{al(*upair("see_all_aria", name=cat_name))}>'
+                f'<b class="sa-more">{ui("see_more", m=more)}</b>'
+                f'<span class="sa-sep" aria-hidden="true"> · </span>'
+                f'<span class="sa-go">{ui("see_all_n", n=n)}</span></a>'
+            )
+        else:
+            tail = (
+                f'<a class="see-all" href="/{e(cat_path(cat_slug, CUR_LANG))}" '
+                f'{al(*upair("see_all_aria", name=cat_name))}>'
+                f'{ui("see_all", n=n, name=e(cat_name))}</a>'
+            )
     elif total is not None and total > len(deals):
         # 归档区没有独立页面：超上限时只给一句说明，不造假链接
         tail = f'<p class="all-note">{ui("archive_capped", n=total, m=len(deals))}</p>'
