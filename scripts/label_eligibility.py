@@ -422,6 +422,10 @@ ELIG.update(
             "identity": "local_id", "residency": "local_resident",
             "funding": "min_deposit", "geo": ["AU"],
         },
+        "qantas-amex-ultimate-75k": {
+            "identity": "local_id", "residency": "local_resident",
+            "funding": "purchase", "geo": ["AU"],
+        },
     }
 )
 
