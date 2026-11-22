@@ -2232,6 +2232,7 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
 .sd-seg{
   flex: none;
   margin-left: auto;
+  margin-right: 2px;   /* 与右边「交流群」胶囊之间留一口气 */
   display: flex;
   align-items: center;
   gap: 9px;
@@ -2459,11 +2460,13 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
   .sd-top{ gap: 3px; padding: 7px 6px 7px 5px; }
   .sd-avatar{ display: none; }
   .sd-top h2{ font-size: 12px; }
-  .sd-seg{ gap: 5px; }
+  .sd-seg{ gap: 4px; margin-right: 4px; }
   .sd-opt{ gap: 2px; font-size: 10.2px; }
   .sd-opt-r{ width: 12px; height: 12px; }
   .sd-tg{ font-size: 10.2px; padding: 0 5px 0 5px; }
-  .sd-send{ margin-left: 3px; }
+  .sd-send{ margin-left: 2px; }
+  /* 英文「Submit/Report」比中文长：手机再收半号，给「○Report」和「✈️Group」之间留出缝 */
+  html[data-lang="en"] .sd-top h2{ font-size: 11.5px; }
   .sd-done{ min-height: 268px; padding: 22px 18px 20px; }
 }
 
