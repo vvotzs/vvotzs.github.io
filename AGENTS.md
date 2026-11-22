@@ -36,6 +36,7 @@ python3 scripts/build_site.py       # 生成全部页面；任一校验不过就
 
 - 收录口径、字段、门槛分类、区服区分、eSIM 9 维、SEO 与校验口径**只在 `README.md` 与 `docs/` 维护**；本文件不复写，冲突时以它们为准。
 - 改数据后必须重跑构建；英文缺字段会回退中文，构建会打印「缺少英文翻译」清单，请补齐 `data/deals_en.json`。
+- **中文 `title` 禁止在中英文 / 数字 / 单位 / 标点之间加空格**（如 `[美区]Clear Street券商3%现金配比：最高$10,000`），只保留纯英文单词之间的单个空格（`Google Cloud`、`U.S. Bank`、`Drei eSIM`、`Bill Pay`）；英文站 `data/deals_en.json` 的 `title` 照常使用英文空格。
 - 归档条目永久保留，不清理；归档页的替代推荐与 JSON-LD 由构建自动生成。
 
 ## 真实性 6 条
