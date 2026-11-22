@@ -377,6 +377,11 @@ ELIG.update(
         "uupay-new-user-1usdt-card": {
             "identity": "photo_id", "funding": "min_deposit", "geo": ["GLOBAL"],
         },
+        # Quppy：App 内 KYC，居住地/国籍填英国则全部服务不可用（官方可用性目录 2026-08-11），故排除 GB
+        "quppy-gb-iban-usdt-2026": {
+            "identity": "photo_id", "platform": ["android", "ios"],
+            "phone": "any_number", "geo": ["GLOBAL", "-GB"],
+        },
         # ---------------------------------------------------------- 阿联酋 / 香港 / 澳门 / 中国
         "adcb-emirati-youth-ai-cashback": {
             "identity": "local_id", "residency": "citizen_only",

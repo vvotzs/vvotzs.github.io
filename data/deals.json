@@ -14263,6 +14263,52 @@
   "utility": 1
  },
  {
+  "id": "quppy-gb-iban-usdt-2026",
+  "dedup_key": "quppy|bank|global|iban-usdt-2026",
+  "title": "[全球] Quppy：中国身份证可开的 GB 英国 IBAN，SEPA/英镑收付 + USDT 出入金（卡未上线，需排队）",
+  "highlight": "用中国身份证或护照就能线上开一个 GB 开头的英国个人 IBAN，欧元走 SEPA、英镑走 Faster Payments，转账 0 手续费，另带可收发 USDT 的托管钱包；Quppy 卡还没上线，只能先排队",
+  "brand": "Quppy",
+  "domain": "quppy.com",
+  "category": "bank",
+  "value": "免费开 GB 英国个人 IBAN（SEPA / Faster Payments 转账 €0/£0）+ USDT 出入金；卡未上线",
+  "value_num": 0,
+  "cost": "真正免费",
+  "regions": "[全球] 官方称面向全球符合条件的用户开放（受制裁或受限地区除外），实际按居住地逐项判定：中国（个人）显示 IBAN、加密钱包、本地支付方式可用；英国显示全部不可用；香港、菲律宾社区实测可用。IBAN 为 GB 开头的英国 IBAN，但服务方不是银行",
+  "start": "",
+  "end": "",
+  "verified": true,
+  "last_verified": "2026-11-22",
+  "content": "Quppy 官网核查（Personal 页 2026-08-10、帮助中心 2026-08-21、费率页 2026-08-26 复核）：\n\n· 主体：QUPPY EUROPE OÜ（爱沙尼亚注册号 14418677）只做技术与 App，官方明说不是银行；法币账户由支付服务商提供，现行条款指名 2PAYAPP LIMITED 处理欧元 SEPA；EEA 内的加密托管与兑换由马耳他 MiCA 持牌 CASP「Payhound Limited」提供，中国等非 EEA 市场由当地适用的持牌方提供（官网未指名具体公司）。\n· IBAN：个人多币种 IBAN 同一套账户收付 EUR 与 GBP；Quppy 客服文档给出的标准示例是 GB12CLJU98523412345678（GB + BIC CLJU + 6 位 sort code 985234 + 8 位账号 12345678），就是社区说的「GB 开头英国 IBAN」。欧元走 SEPA Standard / SEPA Instant，英镑走 Faster Payments / CHAPS。\n· 当前限制：GBP 入账不可用；银行卡充值、提现到银行卡都不可用；USD、本地欧洲 IBAN、Solana 全部标「即将推出」；Quppy 卡标 Coming soon。\n· 费用：官方费率页写明受支持的 EUR/GBP 法币转账 Quppy 转账费 €0/£0，开 IBAN 免费；兑换、链上网络费与第三方费用另计，官方不公布统一兑换费率，以 App 内报价为准。客服旧版费率页另列 1.12% 高风险交易费、EUR↔GBP 2.1%、未按时补 KYC 材料的 50 EUR/GBP 合规费，以及 183 天无交易后按自然月收 5 EUR/GBP 闲置费。\n· 加密：托管钱包，支持 BTC、ETH、TRON（TRX）、USDC、USDT；USDT（ERC-20 / TRC-20）明确不对 EEA 用户开放，中国等非 EEA 市场可用；SOL 与 Solana 版 USDC/USDT 即将推出。\n\n官网可用性目录实查（按居住地逐项判定，Last reviewed 2026-08-11）：选中国（个人）显示「多币种 IBAN 可用、加密钱包与兑换可用（不在 MiCA 范围）、本地支付方式可用、本地欧洲 IBAN 不可用、Quppy 卡即将推出」；选英国则五项全部显示不可用，网上多位实测者也在提醒「居住地、国籍别填英国」。\n\n卡的情况：官网把 Quppy 卡（虚拟卡与实体卡）列为 Coming soon，发卡行、卡种、费用与上线国家都说上线前公布，现在只开放邮箱等候名单，并明确写「加入等候名单不是申请」。\n\n社区实测（2026-11-22 集中出现）：中国身份证或护照都能过 KYC（由 Sumsub 采集证件与人脸），地址自己填、不要求海外地址证明，大陆手机号可用；国区与美区 App Store 搜不到这款 App，需外区 Apple ID 或从官网下安卓 APK；有人用它给 Wise 入金 20 英镑试激活，但 Wise 侧能否通过官方从未承诺。",
+  "conditions": "年满 18 岁，用 App 完成 KYC：护照或身份证（证件姓名需为拉丁字母）正反面 + 手持证件自拍，社区实测中国身份证与大陆手机号均可、地址自填且无需海外地址证明；居住地与国籍不要填英国——官方可用性目录对英国显示全部服务不可用；App 只在部分区 App Store 上架（国区、美区搜不到），安卓可用官网 APK，网页版尚未开放；GBP 入账、银行卡充值、提现到银行卡均不可用，入金只能走银行转账（EUR/GBP）或加密资产；Quppy 卡未上线，只能加等候名单；服务与限额逐国不同，以开户后 App 内配置为准，KYC 通过也不等于一定批户。",
+  "steps": [
+   "从 quppy.com 下载 App（iOS 需外区 Apple ID，Android 可下官网 APK），用邮箱注册并设置 4 位 PIN",
+   "进「验证」填姓名、性别、手机号，选证件（身份证或护照），拍证件正反面并做手持自拍，地址填自己的真实地址",
+   "审核通过后在 IBAN 账户点「接收」，拿到 GB 开头的个人 IBAN 与 6 位 sort code、8 位账号",
+   "入金：同名银行账户转 EUR/GBP，或建 USDT（TRC-20 / ERC-20）钱包从交易所提币，再在 App 内兑换成 EUR/GBP",
+   "想用卡就在 quppy.com/en/personal/card 留邮箱进等候名单，等官方按市场开放"
+  ],
+  "url": "https://quppy.com/en/personal",
+  "source_url": "https://x.com/donniy520/status/2124341021651718156",
+  "source": "Quppy 官网（Personal 页 2026-08-10、帮助中心 2026-08-21、费率页 2026-08-26 复核）+ 官网可用性目录实查（中国=IBAN/钱包/本地支付可用，英国=全部不可用，Last reviewed 2026-08-11）+ Trust Center（QUPPY EUROPE OÜ、2PAYAPP LIMITED、Payhound Limited）+ Quppy 客服文档（标准 IBAN 示例 GB12CLJU…、KYC 证件要求、旧版费率）+ X 线索贴 @donniy520（2026-11-22）与同日 @zynqorw、@koobai 实测帖 + 冒险岛 2025-08-30 中国资料 KYC 教程",
+  "risk": "Quppy 不是银行，IBAN 由支付合作方提供，不受存款保险保护；主体在爱沙尼亚、EEA 加密业务由 Payhound 承接、非 EEA 由未指名的当地持牌方承接，出事时追责路径长。费率口径不一致（官方不公布兑换费率、客服旧文 2.1%、社区转述 1.5%；闲置费 5 与 100 EUR/GBP 两种说法都流传），一律以 App 内报价与条款为准；183 天无交易起按自然月扣闲置费，长期空置会持续扣钱。加密出入金有链上风险与合规抽查，大额可能被要求说明资金来源，别把它当长期存钱的地方。「GB 开头 IBAN 可激活 Wise」只是社区说法，Wise 侧风控可能拒收。卡产品尚未上线，任何「现在就能办 Quppy 卡」的说法都不可信。国区 App Store 无法下载，切区账号本身有风险；用身份证认证时姓名多音字会按证件拼音出 IBAN，与预期不符可改用护照。",
+  "status": "active",
+  "kyc_level": "cn_ok",
+  "utility": 0,
+  "kyc_note": "中国身份证/护照可过，无需海外地址证明（社区实测）；iOS 需外区 App Store",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "any_number",
+  "geo_restriction": [
+   "GLOBAL",
+   "-GB"
+  ],
+  "added_at": "2026-11-22T15:12:03+08:00",
+  "added": "2026-11-22"
+ },
+ {
   "id": "poke-devin-bots-free-credits",
   "dedup_key": "cognition|ai|global|poke-devin-bots-free-credits",
   "title": "[全球] Poke × Devin Bots：跟 Poke 讲想法，免费拿 Devin Bot + 1 个月 Max（$200）+ 最高 $10,000 额度",
