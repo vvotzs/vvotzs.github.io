@@ -714,8 +714,45 @@ ELIG.update(
             "residency": "local_resident", "platform": ["android", "ios"],
             "funding": "existing_card", "geo": ["SG"],
         },
+        # 2026-11-22 巡检新增的 eSIM（当时只写进 deals.json，这里补回标定表，值与线上一致）
+        "dtcpay-esim-5gb-6m": { "identity": "photo_id", "residency": "local_address", "platform": ["android", "ios"], "phone": "specific_country", "geo": ["GLOBAL"] },
+        "sun-phuquoc-free-esim-5gb": { "identity": "photo_id", "platform": ["android", "ios", "web"], "funding": "purchase", "geo": ["GLOBAL"] },
+        "trip-com-member-free-esim": { "identity": "email", "platform": ["android", "ios"], "funding": "purchase", "geo": ["GLOBAL"] },
+        "norma-connect-start-esim": { "identity": "photo_id", "platform": ["web"], "funding": "purchase", "geo": ["DE"] },
+        "vodafone-samoa-ding-tuesday-data": { "identity": "none", "platform": ["web", "android", "ios"], "funding": "purchase", "geo": ["WS"] },
+        "sas-travel-esim-hubby": { "identity": "email", "platform": ["android", "ios"], "funding": "purchase", "geo": ["GLOBAL"] },
+        "hahasim-hk-prepaid-number": { "identity": "none", "platform": ["web", "android", "ios"], "funding": "min_deposit", "geo": ["HK"] },
+        "klook-rewards-free-esim": { "identity": "email", "platform": ["android", "ios", "web"], "funding": "purchase", "geo": ["GLOBAL"] },
+        "airfrance-klm-kolet-free-1gb": { "identity": "email", "platform": ["android", "ios", "web"], "phone": "any_number", "geo": ["GLOBAL"] },
+        "air-india-kolet-free-1gb": { "identity": "email", "platform": ["android", "ios", "web"], "phone": "any_number", "geo": ["GLOBAL"] },
+        "tarom-ubigi-free-1gb": { "identity": "email", "platform": ["android", "ios", "web"], "funding": "purchase", "geo": ["GLOBAL"] },
+        "agoda-vip-diamond-free-esim": { "identity": "email", "platform": ["android", "ios"], "funding": "purchase", "geo": ["GLOBAL"] },
+        "omio-kolet-free-1gb": { "identity": "email", "platform": ["android", "ios", "web"], "phone": "any_number", "funding": "purchase", "geo": ["GLOBAL"] },
+        "esimgg-estonia-372-number": { "identity": "none", "platform": ["web", "android", "ios"], "funding": "min_deposit", "geo": ["GLOBAL"] },
+        "clubsim-hk-prepaid-number": { "identity": "photo_id", "platform": ["web", "android", "ios"], "funding": "min_deposit", "geo": ["HK"] },
+        "jegotrip-cmlink-free-20gb-uk": { "identity": "email", "platform": ["android", "ios"], "phone": "specific_country", "geo": ["GB"] },
+        # 2026-11-23：Roam 官方 App 与第三方 TG 机器人（两条 eSIM）
+        "roam-app-quest-free-esim": {
+            "identity": "none", "platform": ["android", "ios"], "geo": ["GLOBAL"],
+        },
+        "roam-esim-bot-drei-1gb": {
+            "identity": "none", "platform": ["android", "ios"], "geo": ["GLOBAL"],
+        },
     }
 )
+
+# 非 Bank / eSIM 分类里也手工挂了这组字段的条目（AI / 云 / 软件共 13 条）。
+# main() 对这两类以外的条目一律清空字段以回到默认值，跑一次就会把它们删掉，
+# 所以这里显式保留：只有明确列出的 id 才能留在非 Bank / eSIM 分类里。
+KEEP_EXTRA = {
+    "google-antigravity-science-free", "lovable-linkedin-premium-year",
+    "claude-max-monthly-api-credits", "articul8-bivia-1b-tokens",
+    "ultrapic-pro-plus-5000-credits", "genixnode-kvm-nvme-14-loc",
+    "aws-quick-free-plus-trial", "razer-gold-8th-anniversary-bonus",
+    "zcode-new-user-5day-8m", "tencent-lightvela-free-month",
+    "urnetwork-free-tier-30gib", "databricks-free-edition",
+    "dahl-inference-100m-tokens",
+}
 
 
 FIELD_NAMES = {
@@ -744,6 +781,8 @@ def main() -> None:
     for deal in deals:
         entry = ELIG.get(deal["id"])
         if deal.get("category") not in ("bank", "esim"):
+            if deal["id"] in KEEP_EXTRA:
+                continue  # 手工标过的 AI / 云 / 软件条目原样保留
             for name in FIELDS:
                 deal.pop(name, None)
             continue

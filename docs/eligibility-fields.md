@@ -1,6 +1,6 @@
 # 参与资格字段（Eligibility）：口径与渲染
 
-Bank（94 条）与 eSIM（98 条）全量在 `data/deals.json` 上各带 6 个资格字段，用来回答
+Bank（94 条）与 eSIM（100 条）全量在 `data/deals.json` 上各带 6 个资格字段，用来回答
 详情页最常被追问的那句「我到底够不够格」。字段值一律是英文 code（枚举），
 页面文案由 `scripts/eligibility.py` 的标签表按语言取，所以英文页天然零 CJK。
 
@@ -37,8 +37,8 @@ Bank（94 条）与 eSIM（98 条）全量在 `data/deals.json` 上各带 6 个�
 
 只显示非默认值：默认值（邮箱注册 / 无居住要求 / 三端都能用 / 无需手机号 /
 无需入金 / 全球）对应的那一行不出现，所以一屏最多 6 行，常见 3–5 行。
-192 条 Bank + eSIM（Bank 94 + eSIM 98）里有 191 条渲染 1–6 行：4 行最多（73 条），其次
-5 行（43）、1 行（23）、3 行（21）、2 行（16）、6 行（15）。
+194 条 Bank + eSIM（Bank 94 + eSIM 100）里有 193 条渲染 1–6 行：4 行最多（76 条），其次
+5 行（43）、1 行（23）、3 行（19）、2 行（17）、6 行（15）。
 
 唯一的 0 行例外是已归档的 `ubigi-cnet-free-500mb`：它只写了默认值（`email` + `GLOBAL`），
 所以不渲染这一块——不是「空区块」，而是「没有区块」（构建只在有非默认行时才插 `<dl>`）。
@@ -46,7 +46,7 @@ Bank（94 条）与 eSIM（98 条）全量在 `data/deals.json` 上各带 6 个�
 除了 Bank / eSIM，另有 13 条 AI / 云 / 软件条目也带了这组字段（如
 `google-antigravity-science-free`、`claude-max-monthly-api-credits`、`aws-quick-free-plus-trial`、
 `tencent-lightvela-free-month`）；其中 12 条会显示，`urnetwork-free-tier-30gib` 只写了默认的
-三端平台，同样不出区块。合计全站 203 个中文详情页、203 个英文详情页渲染
+三端平台，同样不出区块。合计全站 205 个中文详情页、205 个英文详情页渲染
 「参与资格 / Eligibility」。
 
 ```
@@ -81,6 +81,11 @@ Funding / Availability`，取值也是英文（`Local ID or tax number` 等）�
 1. 在 `scripts/label_eligibility.py` 的 `ELIG` 里补一条（只写非默认值）；
 2. `python3 scripts/label_eligibility.py`；
 3. `python3 scripts/build_site.py && python3 scripts/check_schema.py`。
+
+非 Bank / eSIM 分类的条目如果也手工挂了这组字段（见上文的 13 条），要把它加进
+`scripts/label_eligibility.py` 的 `KEEP_EXTRA`，否则跑一次标定脚本就会被清回默认值。
+人工核过、但资格字段反推会拉错档的 `kyc_level`（如 dtcpay、sun-phuquoc、norma connect）
+放进 `scripts/eligibility.py` 的 `KYC_KEEP`。
 
 Bank / eSIM 新条目漏标会直接报错（`Bank / eSIM 漏标：…`），不会静默生成空区块；
 其他分类是可选填，写了就渲染。

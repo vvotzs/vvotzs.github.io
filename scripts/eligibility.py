@@ -332,7 +332,16 @@ def implied_kyc(deal: dict) -> str | None:
 
 
 # 资格字段推不出“只收某几国护照”这类限制的条目，kyc_level 以人工标定为准
-KYC_KEEP = {"true-tat-asean-tourist-sim-8gb"}
+KYC_KEEP = {
+    "true-tat-asean-tourist-sim-8gb",
+    # 下面三条的 kyc_level 是人工核过材料门槛的结论，由资格字段反推会把它拉错档：
+    # dtcpay 要海外地址证明 + 非 +86 号码（cn_ok_extra，反推会变 cn_ok）；
+    # sun-phuquoc 需入境越南到店（foreign_only，反推会变 cn_ok）；
+    # norma connect 要德国收货地址（cn_ok_extra，反推会变 cn_ok）。
+    "dtcpay-esim-5gb-6m",
+    "sun-phuquoc-free-esim-5gb",
+    "norma-connect-start-esim",
+}
 
 
 def check_kyc(deal: dict) -> str | None:
