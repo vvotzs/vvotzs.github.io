@@ -234,8 +234,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
-      "last_hit_at": "2026-11-22T02:08:25Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
+      "last_hit_at": "2026-11-23T20:52:44Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
       "zero_streak": 0
@@ -340,7 +340,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-22T02:08:11Z",
       "zero_streak": 0
     },
@@ -377,7 +377,7 @@
       "status": "active",
       "added_at": "2026-11-22T05:10:00Z",
       "note": "首页约 203 个卡片、10 个分区（最新福利/跨境券商/香港数字银行/香港实体银行/澳门银行/虚拟银行卡/加密货币/行情工具/跨境工具），每张卡多半指向站内 /post/<id>/ 详情页。站内大量「邀请码：××」「?ref=」「?invite_code=」为站长个人返佣码，收录时必须回溯品牌官网，不得照搬。",
-      "last_crawled_at": "2026-11-23T12:16:06Z"
+      "last_crawled_at": "2026-11-23T20:52:44Z"
     },
     {
       "id": "shuzijumin",
@@ -436,8 +436,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
-      "last_hit_at": "2026-11-22T02:08:25Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
+      "last_hit_at": "2026-11-23T20:52:44Z",
       "entry_url": "https://www.nodeloc.com/latest.md",
       "zero_streak": 0
     },
@@ -454,7 +454,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T02:08:11Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-22T02:08:11Z",
       "zero_streak": 0
     },
@@ -492,7 +492,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-18T09:30:00Z",
       "entry_url": "https://www.v2ex.com/index.xml"
     },
@@ -656,7 +656,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-16T17:30:00Z",
       "entry_url": "https://tg.okhk.net/rss.json"
     },
@@ -675,7 +675,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-22T06:16:21Z",
       "entry_url": "https://www.ozbargain.com.au/feed",
       "zero_streak": 0
@@ -694,7 +694,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-16T07:30:00Z",
       "entry_url": "https://www.cheapies.nz/feed"
     },
@@ -727,7 +727,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-15T21:30:00Z"
     },
     {
@@ -763,7 +763,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-22T06:16:21Z",
       "entry_url": "https://www.usdailyrewards.com/feed",
       "zero_streak": 0
@@ -782,7 +782,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-15T06:30:00Z",
       "entry_url": "https://budgetfitter.uk/feed"
     },
@@ -800,7 +800,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-15T01:30:00Z"
     },
     {
@@ -817,7 +817,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-23T20:52:44Z",
       "last_hit_at": "2026-11-14T20:30:00Z"
     },
     {

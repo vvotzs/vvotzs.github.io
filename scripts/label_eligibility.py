@@ -630,6 +630,8 @@ ELIG.update(
             "platform": ["web"], "geo": ["JP"],
         },
         # ---------------------------------------------------------- 全球 App 类免费/折扣
+        # 2026-11-24 巡检新增（新加坡本地纯流量不过期套餐）
+        "bnesim-sg-50gb-noexpiry-bf": {"identity": "none", "funding": "purchase", "geo": ["SG"]},
         "airalo-black25-unlimited": {"funding": "purchase", "geo": ["GLOBAL"]},
         "airalo-first-order": {"funding": "purchase", "geo": ["GLOBAL"]},
         "roamless-blackfriday50-5off": {
