@@ -536,6 +536,11 @@ ELIG.update(
             "identity": "local_id", "residency": "local_resident",
             "platform": ["android", "ios"], "phone": "local_number", "geo": ["QA"],
         },
+        # 2026-11-24 巡检新增
+        "qatar-visit-saudi-holiday-free-esim": {
+            "identity": "email", "residency": "none",
+            "platform": ["android", "ios"], "geo": ["QA"],
+        },
         "alrajhi-gigsky-free-unlimited-esim": {
             "identity": "local_id", "residency": "local_resident",
             "platform": ["android", "ios"], "funding": "existing_card", "geo": ["SA"],
