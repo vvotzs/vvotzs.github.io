@@ -1006,6 +1006,191 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{
   color: var(--ink-3);
   white-space: nowrap;
 }
+
+/* 展开卡里的「优惠内容」不再平铺大段正文：露前 50 字（英文约 120 字符）+ ...，
+   整块可点，点开在浮层里看全文。完整正文仍写在 .cf-body 里（display:none），
+   搜索引擎照样抓得到，独立详情页也照旧整段展示。 */
+.cf-field{ align-content: start; }
+.cf-btn{
+  display: block;
+  width: 100%;
+  padding: 7px 9px 8px;
+  border: 1px dashed rgba(28,25,23,.16);
+  border-radius: 10px;
+  background: #FFFDF9;
+  color: var(--ink-2);
+  font-family: var(--font);
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .15s ease, border-color .15s ease;
+}
+.cf-btn:hover{ background: var(--mint-soft); border-color: var(--mint-line); }
+.cf-btn:focus-visible{ outline: 2px solid var(--mint-line); outline-offset: 1px; }
+.cf-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+.cf-kind{
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--ink-4);
+}
+.cf-more{
+  flex: none;
+  font-size: 10px;
+  font-weight: 600;
+  color: #047857;
+}
+.cf-ex{
+  display: block;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+.cf-body{ display: none; }
+
+/* 优惠内容浮层：暖米白卡纸感的一张「精华卡」，桌面居中、手机近全宽。
+   顶部条目标题 + 价值徽标，中间正文自滚动，底部一行极克制落款；
+   长文不截断、不溢出屏幕，关闭键始终在最上面。 */
+.cf-sheet{
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(28,25,23,.34);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.cf-sheet[hidden]{ display: none; }
+.cf-card{
+  width: min(520px, 100%);
+  max-height: min(70vh, 540px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  border: 1px solid rgba(5,150,105,.22);
+  background: linear-gradient(180deg, #FFFEFB 0%, #FBF8F1 100%);
+  box-shadow: 0 34px 76px -34px rgba(40,25,10,.55), 0 3px 10px rgba(28,25,23,.07),
+              inset 0 1px 0 rgba(255,255,255,.9);
+  animation: cfIn .18s ease-out;
+  overflow: hidden;
+}
+@keyframes cfIn{ from{ opacity: 0; transform: translateY(8px) scale(.985); } to{ opacity: 1; transform: none; } }
+.cf-head{
+  flex: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 12px 11px 16px;
+  border-bottom: 1px solid rgba(28,25,23,.06);
+}
+.cf-hmain{
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px 8px;
+}
+.cf-eyebrow{
+  order: 0;
+  flex: 1 1 100%;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--mint-deep, #047857);
+  opacity: .85;
+}
+.cf-title{
+  order: 1;
+  margin: 0;
+  flex: 0 1 auto;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+.cf-badge{
+  order: 2;
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--amber-line, #F5D9A8);
+  background: var(--amber-soft, #FFF6E5);
+  color: #92400E;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+.cf-badge[hidden]{ display: none; }
+.cf-close{
+  flex: none;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(28,25,23,.1);
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: var(--ink-3);
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.cf-close:hover{ background: #F6F3EC; color: var(--ink); }
+.cf-close:focus-visible{ outline: 2px solid var(--mint-line); outline-offset: 1px; }
+.cf-text{
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 13px 16px 14px;
+  font-size: 13.2px;
+  line-height: 1.68;
+  color: var(--ink-2);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  -webkit-overflow-scrolling: touch;
+}
+.cf-text::-webkit-scrollbar{ width: 6px; }
+.cf-text::-webkit-scrollbar-thumb{ background: rgba(28,25,23,.16); border-radius: 3px; }
+/* 落款：一行克制的域名，给转发的截图留个来源 */
+.cf-foot{
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px 12px;
+  border-top: 1px solid rgba(28,25,23,.055);
+  background: rgba(255,255,255,.5);
+  color: var(--ink-4);
+  font-size: 10px;
+  letter-spacing: .01em;
+}
+.cf-foot-dot{
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #10B981;
+  opacity: .55;
+}
+html.cf-open, html.cf-open body{ overflow: hidden; }
 .field ol{
   margin: 0;
   padding-left: 15px;
@@ -1778,15 +1963,18 @@ footer{
     padding: 0;
     flex-wrap: nowrap;
   }
+  /* 首页导语换成完整一句后，手机端放宽到两行（超出仍省略），不再只显示半句 */
   .hero-tag{
     margin: 0;
     font-size: 11.8px;
     line-height: 1.35;
-    flex: 1 1 auto;
+    flex: 1 1 100%;
     min-width: 0;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    white-space: normal;
     overflow: hidden;
-    text-overflow: ellipsis;
     color: var(--ink-2);
   }
   .hero-meta{ margin: 0; flex: 0 0 auto; font-size: 10px; gap: 4px; }
@@ -1949,6 +2137,14 @@ footer{
   /* 手机端底部第一行与桌面同一套：「详情页 ↗」在左、👍 / 👎 靠右；
      赞踩仍挂在原来的 [data-vote] 上，点击与数字回填不受影响。 */
   .df-top{ gap: 4px 8px; }
+  .cf-btn{ padding: 6px 9px 7px; }
+  .cf-ex{ font-size: 11.6px; line-height: 1.45; }
+  .cf-sheet{ padding: 12px; }
+  .cf-card{ max-height: min(72vh, 100%); border-radius: 18px; }
+  .cf-head{ padding: 12px 10px 9px 14px; }
+  .cf-title{ font-size: 13.5px; }
+  .cf-text{ padding: 11px 14px 13px; font-size: 12.8px; line-height: 1.66; }
+  .cf-foot{ padding: 8px 14px 11px; }
   .card.open{ grid-column: auto; }
 
   /* ---- 热榜：单板 4 tab，板内不再固定高度 ---- */

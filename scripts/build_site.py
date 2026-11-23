@@ -505,12 +505,28 @@ def mascot_svg(cls: str = "", gid: str = "mintBody") -> str:
 
 
 # 中文页面的关键词（英文页不放 keywords：那边受众按 offer / freebies 这类词搜，
-# 中文词组只对中文搜索结果有意义）。「福利羊毛」是这次新增的核心词。
-ZH_KEYWORDS = (
-    "福利羊毛, 羊毛, 羊毛情报局, 全球优惠, 免费额度, 免费试用, 返现, 虚拟卡, "
-    "海外银行开户, eSIM 免费流量, AI 免费额度, Crypto 空投"
+# 中文词组只对中文搜索结果有意义）。按页面类型分层：首页核心词、6 个分类页各自的类目词、
+# 详情页跟随所属分类；一律英文逗号分隔、逗号后不留空格。「福利羊毛」每页都带。
+KW_HOME = (
+    "免费资源,全球优惠,免费福利,福利羊毛,AI额度,免费VPS,免费eSIM,海外银行开户奖励"
 )
-KW_META_ZH = f'<meta name="keywords" content="{ZH_KEYWORDS}">'
+KW_BY_CAT = {
+    "ai": "免费AI Token,免费AI额度,免费AI工具,学生免费AI,AI Credits,福利羊毛",
+    "crypto": "Crypto空投,加密交易所福利,空投任务,交易返佣,积分计划,福利羊毛",
+    "bank": "海外银行开户奖励,跨境汇款优惠,虚拟卡返现,U卡返现,邀请奖励,福利羊毛",
+    "cloud": "免费VPS,免费云服务器,永久免费主机,云服务器体验金,黑五主机折扣,福利羊毛",
+    "esim": "免费eSIM,免费境外流量,eSIM试用,旅行上网卡,eSIM首单优惠,福利羊毛",
+    "software": "免费软件,免费域名,学生免费计划,开发者礼包,订阅折扣,福利羊毛",
+}
+KW_LEGAL = "福利羊毛,全球优惠,免费资源,羊毛情报局"
+
+
+def kw_meta(kind: str, is_en: bool) -> str:
+    """按页面类型给中文页写 <meta name="keywords">；英文页一律不写。"""
+    if is_en:
+        return ""
+    words = KW_HOME if kind == "home" else KW_BY_CAT.get(kind, KW_LEGAL)
+    return f'<meta name="keywords" content="{words}">'
 
 # 右侧滑轨：新收录 / 高价值榜 / 即将截止 三块板同在页面顶部的一个聚合看板里，
 # 合成一个「发现」锚点指向 .hot-board 顶部（#hot），放在原来「新收录」的位置。
@@ -535,8 +551,8 @@ COST_CLASS = {
 
 
 ZH_DESC = (
-    "羊毛情报局：每日核验的全球优惠情报导航。AI 工具大全、Crypto 空投与积分、海外银行·U卡·跨境汇款、"
-    "全球 VPS 与云资源、全球 eSIM 指南、软件与数字服务——一屏看清价值、门槛与截止时间，点击直达官方活动页。"
+    "全球优惠与免费资源情报平台，持续收录并人工核验免费 AI Token、Crypto 空投、海外银行开户奖励、"
+    "跨境汇款优惠、免费 VPS 和 eSIM 流量。提供参与条件、适用地区、领取步骤、官方来源与截止时间。"
 )
 EN_TITLE = "Deal Hunter · Verified global deals, free credits & sign-up bonuses"
 EN_DESC = (
@@ -1232,6 +1248,22 @@ def official_link(deal: dict) -> str:
     return safe_url(deal.get("url"))
 
 
+def cf_excerpt(text: str, is_en: bool) -> str:
+    """展开卡里的「优惠内容」只露开头：中文前 50 字、英文前约 120 字符（尽量落在词边界），
+    超出补 ...；完整正文另存在 .cf-body 里，点一下弹浮层看全文。"""
+    t = (text or "").strip()
+    limit = 120 if is_en else 50
+    if len(t) <= limit:
+        return t
+    cut = t[:limit]
+    if is_en:
+        sp = cut.rfind(" ")
+        if sp >= int(limit * 0.6):
+            cut = cut[:sp]
+        cut = cut.rstrip(" ,.;:—-")
+    return cut + "..."
+
+
 def card(deal: dict, en: dict, today) -> str:
     cost = deal.get("cost", "")
     cost_cls = COST_CLASS.get(cost, "cost-invite")
@@ -1303,7 +1335,11 @@ def card(deal: dict, en: dict, today) -> str:
 
     period = period_block(deal)
 
+    _cf_text = (en.get("content") or deal["content"]) if CUR_LANG == "en" else deal["content"]
+    cf_ex = cf_excerpt(_cf_text, CUR_LANG == "en")
+
     badge_zh, badge_en = value_badge(v_zh), value_badge(v_en, "en")
+    cf_badge = badge_en if CUR_LANG == "en" else badge_zh
     badge_html = (
         f'<span class="{value_cls}">{bi(e(badge_zh), e(badge_en))}</span>'
         if (badge_zh or badge_en) else ""
@@ -1340,7 +1376,15 @@ def card(deal: dict, en: dict, today) -> str:
     <div class="detail" id="detail-{deal_id}"><div class="detail-in"><div class="detail-body">
       {detail_tags(deal, en)}
       <dl class="detail-fields">
-      <div class="field wide"><dt>{ui("f_what")}</dt><dd>{bi(e(deal['content']), e(en.get('content') or deal['content']))}</dd></div>
+      <div class="field wide cf-field" data-cf-title="{e(title_text)}"
+           data-cf-value="{e(cf_badge)}" data-cf-foot="{ui('cf_foot')}">
+        <button class="cf-btn" type="button" aria-expanded="false"
+                {al('查看完整优惠内容', 'View full description')}>
+          <span class="cf-row"><span class="cf-kind">{ui("f_what")}</span><span class="cf-more">{ui("cf_full")} ›</span></span>
+          <span class="cf-ex">{e(cf_ex)}</span>
+        </button>
+        <div class="cf-body" hidden>{bi(e(deal['content']), e(en.get('content') or deal['content']))}</div>
+      </div>
       <div class="field wide"><dt>{ui("f_conditions")}</dt><dd>{bi(e(deal['conditions']), e(en.get('conditions') or deal['conditions']))}</dd></div>
       <div class="field wide"><dt>{ui("f_regions")}</dt><dd>{bi(e(deal['regions']), e(en.get('regions') or deal['regions']))}</dd></div>
       <div class="field"><dt>{ui("f_period")}</dt><dd>{period}</dd></div>
@@ -1873,7 +1917,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>{e(seo_title)}</title>
 <meta name="description" content="{e(desc)}">
-{'' if is_en else KW_META_ZH}
+{kw_meta(deal.get('category') or '', is_en)}
 <meta name="author" content="{site_name}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2">
@@ -2329,7 +2373,7 @@ def render_legal_page(kind: str, lang: str, today) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>{e(page["title"])}</title>
 <meta name="description" content="{e(page["desc"])}">
-{'' if is_en else KW_META_ZH}
+{kw_meta('legal', is_en)}
 <meta name="author" content="{site_name}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF9F5">
@@ -3049,7 +3093,7 @@ def render_category_page(
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>{e(seo_title)}</title>
 <meta name="description" content="{e(desc)}">
-{'' if is_en else KW_META_ZH}
+{kw_meta(slug, is_en)}
 <meta name="author" content="{site_name}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2">
@@ -3790,7 +3834,7 @@ def main() -> None:
         ).replace("</", "<\\/")
 
 
-        title = EN_TITLE if is_en else "羊毛情报局 · 全球优惠 / 免费额度 / 限时活动情报"
+        title = EN_TITLE if is_en else "羊毛情报局 - 全球免费资源、AI额度、VPS与开户奖励"
         desc = EN_DESC if is_en else ZH_DESC
         og_title = "Deal Hunter · Global deals & free credits" if is_en else "羊毛情报局 · 全球优惠与免费额度情报"
         og_desc = EN_OG_DESC if is_en else "每日核验的全球优惠导航：AI 工具大全、Crypto 空投与积分、海外银行·U卡·跨境汇款、全球 VPS 与云资源、全球 eSIM 指南、软件与数字服务。价值、门槛、截止时间一眼看清，直达官方链接。"
@@ -3861,7 +3905,7 @@ def main() -> None:
 {LANG_BOOT}
 <title>{title}</title>
 <meta name="description" content="{desc}">
-{'' if is_en else KW_META_ZH}
+{kw_meta('home', is_en)}
 <meta name="author" content="{site_name}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2">

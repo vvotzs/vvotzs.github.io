@@ -1339,6 +1339,95 @@
     });
   }
 
+  /* -------------------------------------------------- 优惠内容浮层（卡片展开区） */
+  /* 卡片里只留一颗胶囊，正文存在 .cf-body（display:none，SEO 照样能读到）；
+     点开在浮层里显示全文：正文区自己滚动，点遮罩 / 关闭键 / Esc 收起。 */
+  var cfSheet = null;
+  var cfLastBtn = null;
+  var cfTimer = null;
+  /* 优惠内容浮层停留 15 秒（普通小吐司是 2.5–3 秒）：长文有足够时间读；
+     点遮罩、点浮层本身、Esc 或关闭键都能提前收起，收起时清掉定时器。 */
+  var CF_MS = 15000;
+
+  function cfClose() {
+    clearTimeout(cfTimer);
+    cfTimer = null;
+    if (!cfSheet || cfSheet.hidden) return;
+    cfSheet.hidden = true;
+    document.documentElement.classList.remove("cf-open");
+    if (cfLastBtn) {
+      cfLastBtn.setAttribute("aria-expanded", "false");
+      try { cfLastBtn.focus({ preventScroll: true }); } catch (err) { cfLastBtn.focus(); }
+    }
+    cfLastBtn = null;
+  }
+
+  function cfEnsure() {
+    if (cfSheet) return cfSheet;
+    var wrap = document.createElement("div");
+    wrap.className = "cf-sheet";
+    wrap.hidden = true;
+    wrap.innerHTML =
+      '<div class="cf-card" role="dialog" aria-modal="true" aria-labelledby="cf-title">' +
+        '<div class="cf-head">' +
+          '<div class="cf-hmain"><span class="cf-eyebrow"></span>' +
+            '<h2 class="cf-title" id="cf-title"></h2><span class="cf-badge" hidden></span></div>' +
+          '<button class="cf-close" type="button" aria-label="' + '关闭' + '">\u00d7</button>' +
+        '</div>' +
+        '<div class="cf-text"></div>' +
+        '<div class="cf-foot"><span class="cf-foot-dot" aria-hidden="true"></span><span class="cf-foot-t"></span></div>' +
+      '</div>';
+    document.body.appendChild(wrap);
+    wrap.addEventListener("click", function (ev) {
+      var text = ev.target.closest ? ev.target.closest(".cf-text") : null;
+      /* 正文还能滚（长文）时点正文不算关闭，免得起手就收起；短到不用滚就随手关掉 */
+      if (text && text.scrollHeight > text.clientHeight + 2) return;
+      cfClose();
+    });
+    wrap.querySelector(".cf-close").addEventListener("click", cfClose);
+    cfSheet = wrap;
+    return wrap;
+  }
+
+  function cfOpen(btn) {
+    var field = btn.closest(".cf-field");
+    var body = field && field.querySelector(".cf-body");
+    if (!body) return;
+    var sheet = cfEnsure();
+    var field2 = btn.closest(".cf-field") || field;
+    var kind = btn.querySelector(".cf-kind");
+    sheet.querySelector(".cf-eyebrow").textContent = kind ? kind.textContent : "";
+    sheet.querySelector(".cf-title").textContent = field2.getAttribute("data-cf-title") || "";
+    var badge = sheet.querySelector(".cf-badge");
+    var bv = field2.getAttribute("data-cf-value") || "";
+    badge.textContent = bv;
+    badge.hidden = !bv;
+    sheet.querySelector(".cf-foot-t").textContent = field2.getAttribute("data-cf-foot") || "";
+    var text = sheet.querySelector(".cf-text");
+    text.textContent = (body.textContent || "").trim();
+    text.scrollTop = 0;
+    sheet.hidden = false;
+    document.documentElement.classList.add("cf-open");
+    btn.setAttribute("aria-expanded", "true");
+    cfLastBtn = btn;
+    clearTimeout(cfTimer);
+    cfTimer = setTimeout(cfClose, CF_MS);
+    try { sheet.querySelector(".cf-close").focus({ preventScroll: true }); } catch (err) { /* 老浏览器 */ }
+  }
+
+  /* 捕获阶段先拦下：既不触发展开卡折叠，也不让点击冒到卡片头部 */
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest ? ev.target.closest(".cf-btn") : null;
+    if (!btn) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    cfOpen(btn);
+  }, true);
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape") cfClose();
+  });
+
   restoreFromURL();
   if (langBtn) langBtn.setAttribute("href", otherLangHref());
   render();   /* 首次渲染：分页、计数、语言徽标链接（页面已是单语，无需再切文案） */

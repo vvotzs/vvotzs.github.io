@@ -33,8 +33,8 @@ U: dict[str, tuple[str, str]] = {
     "lang_switch": ("EN", "中文"),
     "lang_switch_aria": ("切换为英文版", "Switch to Chinese"),
     # 首屏
-    "hero_h1": ("羊毛情报局", "Deal Hunter"),
-    "hero_tag": ("全球高值羊毛 • 先看重点",
+    "hero_h1": ("全球免费资源与优惠情报", "Deal Hunter"),
+    "hero_tag": ("发现值得领取的全球优惠、免费额度和限时活动。每条情报人工核验，清楚标注参与门槛、适用地区、实际价值与截止时间。",
                  "Verified freebies & rewards"),
     # 首屏行内的 Telegram 群徽标是纯 SVG 图形（无可见文字），文案只用在 aria-label / title 上
     # （复用下面的 submit_tg_aria），不再需要长短两种可见写法。
@@ -66,12 +66,12 @@ U: dict[str, tuple[str, str]] = {
     "submit_link": ("链接", "Link"),
     "submit_ph_link": ("https:// 活动或来源链接", "https:// offer or source link"),
     "submit_region": ("地区", "Region"),
-    "submit_ph_region": ("全球 / 美区 / 英区 / 日区 / 韩区", "Global / US / UK / JP / KR"),
+    "submit_ph_region": ("全球/美区/英区/日区/韩区", "Global / US / UK / JP / KR"),
     "submit_ph_notes": ("亮点与门槛说明（选填）…", "Highlights & requirements (optional)…"),
     # 失效反馈模式：占位与错误提示改成「哪条失效了、为什么」，说明框问失效现象。
     "submit_ph_name_report": ("失效的活动名称", "Deal that stopped working"),
     "submit_ph_link_report": ("活动页或站内链接", "Offer page or site link"),
-    "submit_ph_notes_report": ("失效情况：页面 404 / 活动已结束 / 接口报错…",
+    "submit_ph_notes_report": ("失效情况：页面 404/活动已结束/接口报错…",
                                "What went wrong: 404, campaign ended, API error…"),
     "submit_need_name_report": ("请填写失效的活动名称", "Please name the deal that stopped working"),
     "submit_need_link_report": ("请填写活动页或站内链接", "Please add the offer or site link"),
@@ -95,7 +95,7 @@ U: dict[str, tuple[str, str]] = {
     "tab_fresh_long": ("最新收录", "New"),
     "tab_rank_long": ("高价值榜", "Top value"),
     "tab_closing_long": ("即将截止", "Closing soon"),
-    "tab_lottery_long": ("抽奖 / 高上限", "Lotteries"),
+    "tab_lottery_long": ("抽奖/高上限", "Lotteries"),
     "hot_aria": ("热榜", "Leaderboards"),
     "mod_fresh": ("最新收录", "Just added"),
     "mod_fresh_desc": ("最近 {h} 小时最新收录、且仍在进行的优惠，按收录时间倒序。点一条即可跳到分类里的完整详情。",
@@ -112,7 +112,7 @@ U: dict[str, tuple[str, str]] = {
     "closing_badge_w": ("{w}", "{w}"),
     "closing_info_aria": ("即将截止的排序与计数口径（这批用到 {n} 天窗口）",
                           "How closing-soon deals are ranked (this batch uses the {n}-day window)"),
-    "mod_lottery": ("抽奖 / 高上限", "Lotteries & high caps"),
+    "mod_lottery": ("抽奖/高上限", "Lotteries & high caps"),
     "mod_lottery_desc": ("上限很高、到手看运气的抽奖与阶梯任务，按上限金额排序，别按上限做预算。",
                          "High headline caps where the payout is luck-based; ranked by cap — don't budget on it."),
     "mod_ai": ("AI 工具大全", "AI Tools & Credits"),
@@ -122,7 +122,7 @@ U: dict[str, tuple[str, str]] = {
     "mod_crypto_desc": ("交易所新人奖励、任务空投与积分计划；奖励多为返佣券或代币，注意可提现条件。",
                         "Exchange sign-up rewards, quest airdrops and points programs; most pay in fee vouchers or tokens — check withdrawal terms."),
     "mod_bank": ("海外银行·U卡·跨境汇款", "Global Banks, Cards & Transfers"),
-    "mod_bank_desc": ("开户奖励、虚拟卡返现、可双向叠加的邀请奖励（Wise / Sendwave / Taptap Send / Remitly 等）。",
+    "mod_bank_desc": ("开户奖励、虚拟卡返现、可双向叠加的邀请奖励（Wise/Sendwave/Taptap Send/Remitly 等）。",
                       "Account bonuses, virtual-card cashback and two-sided referral rewards (Wise / Sendwave / Taptap Send / Remitly)."),
     "mod_cloud": ("全球 VPS 与云资源", "Global VPS & Cloud"),
     "mod_cloud_desc": ("永久免费实例、新人体验金与黑五主机折扣，部署前先看清到期与回收规则。",
@@ -165,6 +165,8 @@ U: dict[str, tuple[str, str]] = {
     "verified": ("已核验", "Verified"),
     "unverified": ("待核实", "Unverified"),
     "f_what": ("优惠内容", "What you get"),
+    "cf_full": ("全文", "Full"),
+    "cf_foot": ("羊毛情报局", "Deal Hunter"),
     "f_conditions": ("参与条件", "Conditions"),
     "f_regions": ("适用地区", "Regions"),
     "f_period": ("开始及截止时间", "Starts & ends"),
@@ -174,7 +176,7 @@ U: dict[str, tuple[str, str]] = {
     "f_last_verified": ("最后验证", "Last verified"),
     "f_added": ("收录", "Added"),
     "not_announced": ("官方未公布", "Not announced"),
-    "ongoing_not_announced": ("长期 / 官方未公布", "Ongoing / not announced"),
+    "ongoing_not_announced": ("长期/官方未公布", "Ongoing / not announced"),
     "ongoing": ("长期有效", "Ongoing"),
     # 展开卡 / 详情页的「开始至截止」三列块：中列连词、右列无截止日期时的两种说明
     "pd_to": ("至", "to"),
@@ -188,7 +190,7 @@ U: dict[str, tuple[str, str]] = {
     "modal_aria": ("搜索与筛选", "Search and filter"),
     "close": ("关闭", "Close"),
     "search_field_aria": ("搜索优惠", "Search deals"),
-    "search_ph": ("搜活动、品牌、国家或门槛，例如 eSIM 日本 / 学生 / 免手续费",
+    "search_ph": ("搜活动、品牌、国家或门槛，例如 eSIM 日本/学生/免手续费",
                   "Search offers, brands, countries or requirements — e.g. eSIM Japan / student / no fees"),
     "f_time": ("时间范围", "Time"),
     "time_all": ("全部时间", "Any time"),
@@ -204,8 +206,8 @@ U: dict[str, tuple[str, str]] = {
     "all": ("全部", "All"),
     "cat_ai": ("AI 工具", "AI tools"),
     "cat_crypto": ("Crypto", "Crypto"),
-    "cat_bank": ("银行 / 卡 / 汇款", "Banks & cards"),
-    "cat_cloud": ("VPS / 云", "VPS & cloud"),
+    "cat_bank": ("银行/卡/汇款", "Banks & cards"),
+    "cat_cloud": ("VPS/云", "VPS & cloud"),
     "cat_esim": ("eSIM", "eSIM"),
     "cat_software": ("软件服务", "Software & services"),
     "f_cost": ("参与门槛", "Requirements"),
@@ -332,7 +334,7 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
         ),
         "desc": (
             "AI 工具大全：ChatGPT、Gemini、Claude、Cursor、Copilot 等 AI 工具与智能代理的免费额度、学生优惠和"
-            "限时折扣，逐条核验后收录，标清实际到手价值、可用地区与截止时间。列表按可预期到手价值排序，"
+            "限时折扣，逐条核验后收录，标清实际到手价值、可用地区与截止时间。列表按 AI 综合打分排序，"
             "涵盖 API 额度、订阅减免与新品首发活动。",
             "AI Tools & Credits: free tiers, student plans and discounts for ChatGPT, Gemini, Claude, Cursor and "
             "Copilot, each verified with value and deadline.",
@@ -340,7 +342,7 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
     },
     "bank": {
         "h1": ("海外银行·U卡·跨境汇款", "Global Banks, Cards & Transfers"),
-        "title": ("海外银行·U卡·跨境汇款：开户奖励 / 虚拟卡返现 / 汇款邀请合集 · 羊毛情报局",
+        "title": ("海外银行·U卡·跨境汇款：开户奖励/虚拟卡返现/汇款邀请合集 · 羊毛情报局",
                   "Global banks, cards & transfers: account bonuses, card cashback and remittance · Deal Hunter"),
         "lead": (
             "海外银行·U卡·跨境汇款收录开户奖励、虚拟卡（U 卡）返现与跨境汇款邀请奖励，含 Wise、Remitly、"
@@ -352,14 +354,14 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
         "desc": (
             "海外银行·U卡·跨境汇款：开户奖励、虚拟卡（U 卡）返现与跨境汇款邀请奖励，含 Wise、Remitly、"
             "Taptap Send、Sendwave "
-            "等可双向叠加的通道，写清入金门槛、留存期与到账时间。每条都注明是否需要美国 / 英国 / 德国等区服身份与税号。",
+            "等可双向叠加的通道，写清入金门槛、留存期与到账时间。每条都注明是否需要美国/英国/德国等区服身份与税号。",
             "Global Banks, Cards & Transfers: account bonuses, virtual-card cashback and two-sided remittance "
             "referrals, with deposit thresholds and holding periods.",
         ),
     },
     "crypto": {
         "h1": ("Crypto 空投与积分", "Crypto Airdrops & Points"),
-        "title": ("Crypto 空投与积分：空投任务 / 交易所新人奖励 / 积分计划合集 · 羊毛情报局",
+        "title": ("Crypto 空投与积分：空投任务/交易所新人奖励/积分计划合集 · 羊毛情报局",
                   "Crypto airdrops & points: quests, exchange sign-up rewards and points · Deal Hunter"),
         "lead": (
             "Crypto 空投与积分收录交易所新人奖励、任务空投与积分计划，含 KYC 门槛、交易量要求与代币解锁规则；"
@@ -378,7 +380,7 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
     },
     "cloud": {
         "h1": ("全球 VPS 与云资源", "Global VPS & Cloud"),
-        "title": ("全球 VPS 与云资源：永久免费实例 / 体验金 / 黑五主机折扣合集 · 羊毛情报局",
+        "title": ("全球 VPS 与云资源：永久免费实例/体验金/黑五主机折扣合集 · 羊毛情报局",
                   "Global VPS & cloud: free instances, trial credits and hosting deals · Deal Hunter"),
         "lead": (
             "全球 VPS 与云资源收录永久免费实例、新人体验金与黑五主机折扣，覆盖 Oracle、AWS、GCP、Azure、"
@@ -397,7 +399,7 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
     },
     "esim": {
         "h1": ("全球 eSIM 指南", "Global eSIM Guide"),
-        "title": ("全球 eSIM 指南：免费流量 / 首单折扣与可用国家整理 · 羊毛情报局",
+        "title": ("全球 eSIM 指南：免费流量/首单折扣与可用国家整理 · 羊毛情报局",
                   "Global eSIM guide: free data, first-order discounts and coverage · Deal Hunter"),
         "lead": (
             "全球 eSIM 指南收录免费试用流量与首单折扣，覆盖 Airalo、Holafly、Nomad、Saily、Ubigi 等，"
@@ -415,7 +417,7 @@ CATEGORY_PAGE: dict[str, dict[str, tuple[str, str]]] = {
     },
     "software": {
         "h1": ("软件与数字服务", "Software & Digital Services"),
-        "title": ("软件与数字服务：学生免费计划 / 开发者礼包 / 订阅折扣合集 · 羊毛情报局",
+        "title": ("软件与数字服务：学生免费计划/开发者礼包/订阅折扣合集 · 羊毛情报局",
                   "Software & digital services: student plans, developer packs and deals · Deal Hunter"),
         "lead": (
             "软件与数字服务收录学生免费计划、开发者礼包、黑五订阅折扣与其他数字服务优惠，覆盖 JetBrains、"
