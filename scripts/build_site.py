@@ -504,6 +504,14 @@ def mascot_svg(cls: str = "", gid: str = "mintBody") -> str:
     )
 
 
+# 中文页面的关键词（英文页不放 keywords：那边受众按 offer / freebies 这类词搜，
+# 中文词组只对中文搜索结果有意义）。「福利羊毛」是这次新增的核心词。
+ZH_KEYWORDS = (
+    "福利羊毛, 羊毛, 羊毛情报局, 全球优惠, 免费额度, 免费试用, 返现, 虚拟卡, "
+    "海外银行开户, eSIM 免费流量, AI 免费额度, Crypto 空投"
+)
+KW_META_ZH = f'<meta name="keywords" content="{ZH_KEYWORDS}">'
+
 # 右侧滑轨：新收录 / 高价值榜 / 即将截止 三块板同在页面顶部的一个聚合看板里，
 # 合成一个「发现」锚点指向 .hot-board 顶部（#hot），放在原来「新收录」的位置。
 NAV = [
@@ -1865,6 +1873,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>{e(seo_title)}</title>
 <meta name="description" content="{e(desc)}">
+{'' if is_en else KW_META_ZH}
 <meta name="author" content="{site_name}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2">
@@ -2320,6 +2329,7 @@ def render_legal_page(kind: str, lang: str, today) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>{e(page["title"])}</title>
 <meta name="description" content="{e(page["desc"])}">
+{'' if is_en else KW_META_ZH}
 <meta name="author" content="{site_name}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF9F5">
@@ -3039,6 +3049,7 @@ def render_category_page(
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>{e(seo_title)}</title>
 <meta name="description" content="{e(desc)}">
+{'' if is_en else KW_META_ZH}
 <meta name="author" content="{site_name}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2">
@@ -3850,6 +3861,7 @@ def main() -> None:
 {LANG_BOOT}
 <title>{title}</title>
 <meta name="description" content="{desc}">
+{'' if is_en else KW_META_ZH}
 <meta name="author" content="{site_name}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2">
