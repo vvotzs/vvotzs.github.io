@@ -258,8 +258,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:03Z",
-      "last_hit_at": "2026-11-23T12:16:03Z",
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "search_domains": [
         "x.com"
       ],
@@ -280,8 +280,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
-      "last_hit_at": "2026-11-22T02:08:11Z",
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "entry_url": "https://tg.docofcard.com/rss.json",
       "zero_streak": 0
     },
@@ -300,8 +300,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
-      "last_hit_at": "2026-11-22T02:08:25Z",
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
     },
@@ -320,8 +320,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
-      "last_hit_at": "2026-11-22T02:08:11Z",
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
     },
@@ -531,11 +531,12 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T04:41:21Z",
-      "last_hit_at": "2026-11-17T23:30:00Z",
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "search_domains": [
         "ecitizen.forum"
-      ]
+      ],
+      "zero_streak": 0
     },
     {
       "id": "yunjumin",
@@ -591,11 +592,12 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T06:16:21Z",
-      "last_hit_at": "2026-11-17T08:30:00Z",
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "search_domains": [
         "www.naixi.net"
-      ]
+      ],
+      "zero_streak": 0
     },
     {
       "id": "2libra",
@@ -612,11 +614,12 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T06:16:21Z",
-      "last_hit_at": "2026-11-17T03:30:00Z",
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "search_domains": [
         "2libra.com"
-      ]
+      ],
+      "zero_streak": 0
     },
     {
       "id": "free8",
@@ -632,11 +635,12 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T06:16:21Z",
-      "last_hit_at": "2026-11-16T22:30:00Z",
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "search_domains": [
         "www.free8.net"
-      ]
+      ],
+      "zero_streak": 0
     },
     {
       "id": "tg-okhk",
@@ -830,8 +834,9 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T22:11:32Z",
-      "last_hit_at": "2026-11-14T15:30:00Z"
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
+      "zero_streak": 0
     },
     {
       "id": "reddit-beermoney",
@@ -847,8 +852,9 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T22:48:27Z",
-      "last_hit_at": "2026-11-14T10:30:00Z"
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
+      "zero_streak": 0
     },
     {
       "id": "reddit-beermoneyglobal",
@@ -863,8 +869,9 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T23:25:23Z",
-      "last_hit_at": "2026-11-14T05:30:00Z"
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
+      "zero_streak": 0
     },
     {
       "id": "reddit-churning",
@@ -911,8 +918,9 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-21T01:16:09Z",
-      "last_hit_at": "2026-11-13T14:30:00Z"
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
+      "zero_streak": 0
     },
     {
       "id": "taaft",
@@ -943,8 +951,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-21T23:40:33Z",
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
         {
@@ -979,8 +987,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": "2026-11-21T23:40:33Z",
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
         {
@@ -1011,8 +1019,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": null,
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
         {
@@ -1027,7 +1035,7 @@
         }
       ],
       "note": "四站均可直连，但按 search_group 统一走 1 条查询；CoinsBee 博客另由 coinsbee-blog 的 rss 覆盖",
-      "zero_streak": 1,
+      "zero_streak": 0,
       "last_zero_at": "2026-11-21T23:40:33Z"
     },
     {
@@ -1892,8 +1900,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": "2026-11-21T23:40:33Z",
-      "last_hit_at": null,
+      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "ota_airline",
       "entries": [
         {
@@ -1912,7 +1920,8 @@
         "trip.com": "https://www.trip.com/customer/loyalty",
         "agoda.com": "https://www.agoda.com/press/agoda-launches-free-global-esims-for-vip-diamond-members/"
       },
-      "note": "2026-11-21 深挖新增：显式写了 free eSIM 的 OTA 会员 / 联名入口优先（Klook Rewards、Trip.com 白金+、Agoda VIP Diamond、Omio × Kolet）；纯满减码（Klook 99% off、$1 eSIM）不收录"
+      "note": "2026-11-21 深挖新增：显式写了 free eSIM 的 OTA 会员 / 联名入口优先（Klook Rewards、Trip.com 白金+、Agoda VIP Diamond、Omio × Kolet）；纯满减码（Klook 99% off、$1 eSIM）不收录",
+      "zero_streak": 0
     },
     {
       "id": "airline-esim-partners",
