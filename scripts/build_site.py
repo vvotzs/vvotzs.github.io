@@ -1410,6 +1410,17 @@ def card(deal: dict, en: dict, today) -> str:
   </article>"""
 
 
+# 跳转卡（最新收录 / 高价值榜 / 即将截止 / 抽奖）金额后面那枚极淡的分类徽标
+CAT_TAG = {
+    "ai": ("AI", "AI"),
+    "crypto": ("币", "Crypto"),
+    "bank": ("卡", "Cards"),
+    "cloud": ("VPS", "VPS"),
+    "esim": ("eSIM", "eSIM"),
+    "software": ("软件", "Apps"),
+}
+
+
 def jump_card(deal: dict, en: dict, today, rank: int | None = None) -> str:
     """精简跳转卡：点一下滚到 #deal-<id> 并展开，详情只存一份。
 
@@ -1430,6 +1441,8 @@ def jump_card(deal: dict, en: dict, today, rank: int | None = None) -> str:
     meta_en = sd_en + (f" · {rtag_en}" if rtag_en else "")
     value_cls = "value gold" if (deal.get("value_num") or 0) >= 100 else "value"
     v_zh, v_en = value_pair(deal, en)
+    tag_zh, tag_en = CAT_TAG.get(deal.get("category") or "", ("", ""))
+    cat_tag_html = f'<span class="jump-cat">{bi(e(tag_zh), e(tag_en))}</span>' if tag_zh else ""
 
     return f"""<a class="jump" href="#deal-{deal_id}" data-jump="deal-{deal_id}"
     data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
@@ -1440,7 +1453,7 @@ def jump_card(deal: dict, en: dict, today, rank: int | None = None) -> str:
       {fav_html(deal, 22, en)}
       <span class="jump-main">
         <span class="jump-title">{bi(e(title_zh), e(title_en))}</span>
-        <span class="jump-sub"><span class="{value_cls}">{bi(e(value_badge(v_zh)), e(value_badge(v_en, 'en')))}</span><span class="jump-meta">{bi(e(meta_zh), e(meta_en))}</span></span>
+        <span class="jump-sub"><span class="{value_cls}">{bi(e(value_badge(v_zh)), e(value_badge(v_en, 'en')))}</span>{cat_tag_html}<span class="jump-meta">{bi(e(meta_zh), e(meta_en))}</span></span>
       </span>
       {icon('external', 'jump-arrow')}
     </a>"""

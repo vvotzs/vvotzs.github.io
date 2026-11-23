@@ -511,33 +511,34 @@ main{ padding-bottom: 0; }
 /* ------------------------------------------- 首页瘦身：查看全部 / 搜索结果行 */
 /* 首页每个分类只内联按 S 分前 25 条，其余全部在分类目录页；底部这颗胶囊是那批条目的去路。
    锚文本带分类名（头部关键词），给分类页一条站内锚文本；窄屏折两行也不挤破卡片。 */
+/* 「还有 N 条没展开 · 查看全部 M 条 →」：纯文字链接 + 下划线，不再套胶囊外框，
+   宽度只贴文字本身（热区跟着变小），居中且上下留白很紧。 */
 .see-all{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: fit-content;
   max-width: 100%;
-  min-height: 26px;
-  margin: 5px auto 0;
-  padding: 4px 12px;
-  border-radius: 999px;
-  border: 1px solid #BBF7D0;
-  background: #F0FDF7;
+  margin: 4px auto 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
   color: #065F46;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
   text-align: center;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(6,120,87,.35);
   overflow-wrap: anywhere;
-  box-shadow: 0 1px 2px rgba(28,25,23,.03);
-  transition: background .16s ease, border-color .16s ease, color .16s ease;
+  transition: color .15s ease, text-decoration-color .15s ease;
 }
-.see-all:hover{ background: var(--mint-soft); border-color: #6EE7B7; color: #047857; }
-.see-all:active{ background: #DCFCE7; }
-/* 板块全库条数超过首页内联上限时，还是这一颗胶囊，只是里面先说「还有 N 条没展开」
-   再给「查看全部 N 条 →」。两句实测窄屏合起来约 200px，所以直接 nowrap 保单行；
-   条数是那句要读者看见的重点，单独给暖橙，不新开按钮也不新占一行。 */
+.see-all:hover{ color: #047857; text-decoration-color: currentColor; }
+.see-all:active{ color: #065F46; }
+/* 板块全库条数超过首页内联上限时，还是这一行文字，只是里面先说「还有 N 条没展开」
+   再给「查看全部 N 条 →」；条数是那句要读者看见的重点，单独给暖橙。 */
 .see-all.has-more{ white-space: nowrap; }
 .see-all.has-more .sa-more{ font-weight: 700; color: #B45309; }
 .see-all.has-more .sa-sep{ color: var(--ink-4); }
@@ -1275,6 +1276,22 @@ html.cf-open, html.cf-open body{ overflow: hidden; }
   background: var(--card);
   box-shadow: var(--shadow-1);
   transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+/* 金额后面那枚分类小标：极淡的暖灰胶囊，只做归类，不跟金额抢注意力 */
+.jump-sub{ display: flex; align-items: center; gap: 4px; min-width: 0; overflow: hidden; }
+.jump-cat{
+  flex: none;
+  padding: 0 5px;
+  border-radius: 999px;
+  border: 1px solid rgba(28,25,23,.1);
+  background: #F7F4EE;
+  color: var(--ink-4);
+  font-family: var(--font);
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .01em;
+  white-space: nowrap;
 }
 .jump:hover{
   border-color: rgba(245,158,11,.45);
@@ -2039,7 +2056,7 @@ footer{
   /* 翻页条离上面卡片 4px；到下一个分区标题 7px（下一区自己的 6px padding + 分区分隔线） */
   .pager-bar{ margin-top: 2px; }
   /* 「查看全部 N 条」胶囊：手机上字号与内边距各收一档，长英文分类名折两行也不挤破卡片 */
-  .see-all{ margin-top: 3px; min-height: 22px; padding: 4px 11px; font-size: 11.5px; line-height: 1.2; }
+  .see-all{ margin-top: 3px; font-size: 11px; line-height: 1.25; }
   .hit{ padding: 7px 9px; }
   .hit-t{ font-size: 12px; }
   .more{ display: none !important; }
