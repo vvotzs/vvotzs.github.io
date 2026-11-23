@@ -596,7 +596,7 @@
  {
   "id": "adcb-emirati-youth-ai-cashback",
   "dedup_key": "adcb|bank|ae|emirati-youth-ai-cashback",
-  "title": "[阿联酋]ADCB Emirati Youth：AI订阅返现最高AED400+迎新AED300–700",
+  "title": "[阿联酋]ADCB Emirati Youth：AI订阅返现最高AED 400+迎新AED 300–700",
   "brand": "ADCB",
   "domain": "adcb.com",
   "category": "bank",
@@ -640,7 +640,7 @@
  {
   "id": "capital-one-360-checking-400",
   "dedup_key": "capital-one|bank|us|360-checking-400",
-  "title": "[美区]Capital One360Checking开户$400：75天内两笔$500直存（码MAKE400，12/9截止）",
+  "title": "[美区]Capital One 360 Checking开户$400：75天内两笔$500直存（码MAKE400，12/9截止）",
   "brand": "Capital One",
   "domain": "capitalone.com",
   "category": "bank",
@@ -1271,7 +1271,7 @@
  },
  {
   "id": "google-antigravity-science-free",
-  "title": "[全球]Google Antigravity科学计划：1万名研究者免费用最高用量档6个月（含Gemini4Argon）",
+  "title": "[全球]Google Antigravity科学计划：1万名研究者免费用最高用量档6个月（含Gemini 4 Argon）",
   "brand": "Google Antigravity",
   "domain": "antigravity.google",
   "category": "ai",
@@ -1405,7 +1405,7 @@
  {
   "id": "first-direct-1st-account-switch-210",
   "dedup_key": "firstdirect|bank|gb|1st-account-switch-210",
-  "title": "[英区]first direct1st Account转户奖£210（£175+£35加码，12/2前开户）",
+  "title": "[英区]first direct 1st Account转户奖£210（£175+£35加码，12/2前开户）",
   "brand": "first direct",
   "domain": "firstdirect.com",
   "category": "bank",
@@ -1612,7 +1612,7 @@
  {
   "id": "za-bank-mgm-welcome-2000",
   "dedup_key": "za-bank|bank|hk|mgm-welcome-2000",
-  "title": "[香港]ZA Bank众安银行新客迎新：HK$2,000券包+20%定存加息+USD30美股券（11/19起）",
+  "title": "[香港]ZA Bank众安银行新客迎新：HK$2,000券包+20%定存加息+USD 30美股券（11/19起）",
   "brand": "ZA Bank",
   "domain": "za.group",
   "category": "bank",
@@ -1914,7 +1914,7 @@
  {
   "id": "trading212-au-bonus-shares",
   "dedup_key": "trading-212|bank|au|bonus-shares",
-  "title": "[澳区]Trading212邀请开户：投A$100双方各得A$20–A$200免费碎股（12/8截止）",
+  "title": "[澳区]Trading 212邀请开户：投A$100双方各得A$20–A$200免费碎股（12/8截止）",
   "brand": "Trading 212",
   "domain": "trading212.com",
   "category": "bank",
@@ -3489,7 +3489,7 @@
  {
   "id": "att-us-free-trial-30d",
   "dedup_key": "t|esim|us|att-us-free-trial-30d",
-  "title": "[美区]AT&T30天免费试用：100GB+25GB热点（eSIM，无需信用卡）",
+  "title": "[美区]AT&T 30天免费试用：100GB+25GB热点（eSIM，无需信用卡）",
   "brand": "AT&T",
   "domain": "att.com",
   "category": "esim",
@@ -4574,7 +4574,7 @@
  {
   "id": "verizon-free-trial-30d",
   "dedup_key": "verizon|esim|us|free-trial-30d",
-  "title": "[美区]Verizon30天免费试用：最高100GB5G流量（eSIM，免信用卡）",
+  "title": "[美区]Verizon 30天免费试用：最高100GB 5G流量（eSIM，免信用卡）",
   "brand": "Verizon",
   "domain": "verizon.com",
   "category": "esim",
@@ -5019,7 +5019,7 @@
  {
   "id": "inception-mercury-100m-free-tokens",
   "dedup_key": "inception|ai|global|mercury-100m-free-tokens",
-  "title": "[全球]Inception Mercury3：新账号送1亿免费tokens（免绑卡，OpenAI兼容）",
+  "title": "[全球]Inception Mercury 3：新账号送1亿免费tokens（免绑卡，OpenAI兼容）",
   "brand": "Inception Labs",
   "domain": "inceptionlabs.ai",
   "category": "ai",
@@ -5095,7 +5095,7 @@
  {
   "id": "alrajhi-gigsky-free-unlimited-esim",
   "dedup_key": "alrajhi|esim|sa|gigsky-free-unlimited-esim",
-  "title": "[沙特]Al Rajhi银行卡×GigSky：免费无限流量eSIM3–7天（有效至2027-04-13）",
+  "title": "[沙特]Al Rajhi银行卡×GigSky：免费无限流量eSIM 3–7天（有效至2027-04-13）",
   "brand": "Al Rajhi Bank",
   "domain": "alrajhibank.com.sa",
   "category": "esim",
@@ -5181,7 +5181,7 @@
  {
   "id": "nodeseek-matrixidc-4837-1c2g-secondhand",
   "dedup_key": "matrixidc|cloud|cn|1c2g-secondhand",
-  "title": "[中国区]NodeSeek二手：MatrixIDC4837轻量1C2G／1.5T，剩余价值¥186.57减10出（¥176.57）",
+  "title": "[中国区]NodeSeek二手：MatrixIDC 4837轻量1C2G／1.5T，剩余价值¥186.57减10出（¥176.57）",
   "brand": "MatrixIDC",
   "domain": "nodeseek.com",
   "category": "cloud",
@@ -5801,7 +5801,7 @@
  {
   "id": "talkmobile-150gb-half-price-3m",
   "dedup_key": "talkmobile|esim|gb|150gb-half-price-3m",
-  "title": "[英区]Talkmobile150GB首3个月£5.97/月：12个月合约，之后£11.95",
+  "title": "[英区]Talkmobile 150GB首3个月£5.97/月：12个月合约，之后£11.95",
   "brand": "Talkmobile",
   "domain": "talkmobile.co.uk",
   "category": "esim",
@@ -5843,7 +5843,7 @@
  },
  {
   "id": "razer-gold-8th-anniversary-bonus",
-  "title": "[多区]Razer Gold8周年：钱包支付按档返Bonus Gold，最高¥3,412/$21（11/16–12/20）",
+  "title": "[多区]Razer Gold 8周年：钱包支付按档返Bonus Gold，最高¥3,412/$21（11/16–12/20）",
   "brand": "Razer Gold",
   "domain": "gold.razer.com",
   "category": "software",
@@ -6348,7 +6348,7 @@
  {
   "id": "lg-exaone-25-free-api",
   "dedup_key": "lgai|ai|global|exaone-25-free-api",
-  "title": "[全球]LG K-EXAONE2.5API免费开放：750B参数/512K上下文/OpenAI兼容",
+  "title": "[全球]LG K-EXAONE 2.5 API免费开放：750B参数/512K上下文/OpenAI兼容",
   "brand": "LG AI Research",
   "domain": "exaone.ai",
   "category": "ai",
@@ -6765,7 +6765,7 @@
  {
   "id": "bytevirt-tokyo-512m-premium",
   "dedup_key": "bytevirt|cloud|jp|tokyo-512m-premium",
-  "title": "[日本区]ByteVirt东京Premium512M补货：$16.88/半年（≈$2.81/月，中国优化线路）",
+  "title": "[日本区]ByteVirt东京Premium 512M补货：$16.88/半年（≈$2.81/月，中国优化线路）",
   "brand": "ByteVirt",
   "domain": "bytevirt.com",
   "category": "cloud",
@@ -6799,7 +6799,7 @@
  {
   "id": "nodeseek-bandwagon-20g-cn2gia-secondhand",
   "dedup_key": "bandwagonhost|cloud|us|20g-cn2gia-secondhand",
-  "title": "[美区]NodeSeek二手：搬瓦工SPECIAL20G CN2GIA ECOMMERCE季付$50，¥120出（只能改邮）",
+  "title": "[美区]NodeSeek二手：搬瓦工SPECIAL 20G CN2GIA ECOMMERCE季付$50，¥120出（只能改邮）",
   "brand": "BandwagonHost",
   "domain": "bandwagonhost.com",
   "category": "cloud",
@@ -6833,7 +6833,7 @@
  {
   "id": "nodeseek-recloud-de-9929-2c2g-secondhand",
   "dedup_key": "recloud|cloud|de|9929-2c2g-secondhand",
-  "title": "[德区]NodeSeek二手：ReCloud德国99292C2G／4TB，¥120原邮（续费¥30/月，到期12-25）",
+  "title": "[德区]NodeSeek二手：ReCloud德国9929 2C2G／4TB，¥120原邮（续费¥30/月，到期12-25）",
   "brand": "ReCloud",
   "domain": "nodeseek.com",
   "category": "cloud",
@@ -7039,7 +7039,7 @@
  {
   "id": "openrouter-qwen4-max-free",
   "dedup_key": "openrouter|ai|global|qwen4-max-free",
-  "title": "[全球]OpenRouter免费旗舰模型：Qwen4-Max/Hy4Flash（100万上下文，$0API）",
+  "title": "[全球]OpenRouter免费旗舰模型：Qwen4-Max/Hy4 Flash（100万上下文，$0API）",
   "brand": "OpenRouter",
   "domain": "openrouter.ai",
   "category": "ai",
@@ -7072,7 +7072,7 @@
  {
   "id": "cricket-free-trial-14d",
   "dedup_key": "cricket|esim|us|free-trial-14d",
-  "title": "[美区]Cricket14天免费试用：3GB+无限通话短信（eSIM，免信用卡）",
+  "title": "[美区]Cricket 14天免费试用：3GB+无限通话短信（eSIM，免信用卡）",
   "brand": "Cricket Wireless",
   "domain": "cricketwireless.com",
   "category": "esim",
@@ -7200,7 +7200,7 @@
  {
   "id": "openrouter-ling32-ernie55-free",
   "dedup_key": "openrouter|ai|global|ling32-ernie55-free",
-  "title": "[全球]OpenRouter新增两款100万上下文免费模型：Ling3.2Flash与ERNIE-5.5Flash Preview",
+  "title": "[全球]OpenRouter新增两款100万上下文免费模型：Ling 3.2 Flash与ERNIE-5.5 Flash Preview",
   "brand": "OpenRouter",
   "domain": "openrouter.ai",
   "category": "ai",
@@ -7233,7 +7233,7 @@
  {
   "id": "smarthost-las-vegas-x3700",
   "dedup_key": "smarthost|cloud|us|vegas-x3700",
-  "title": "[美区]SmartHost拉斯维加斯X3700Ryzen：1C1G／20G NVMe／2T流量年付$13.95",
+  "title": "[美区]SmartHost拉斯维加斯X3700 Ryzen：1C1G／20G NVMe／2T流量年付$13.95",
   "brand": "SmartHost",
   "domain": "smarthost.net",
   "category": "cloud",
@@ -7796,7 +7796,7 @@
  {
   "id": "eand-uae-free-visitor-line-esim",
   "dedup_key": "eand|esim|ae|uae-free-visitor-line-esim",
-  "title": "[阿联酋]e&（etisalat）Free Visitor Line eSIM：10GB/24小时，AED0",
+  "title": "[阿联酋]e&（etisalat）Free Visitor Line eSIM：10GB/24小时，AED 0",
   "brand": "e& UAE",
   "domain": "eand.ae",
   "category": "esim",
@@ -8477,7 +8477,7 @@
  {
   "id": "payangel-referral-10",
   "dedup_key": "payangel|bank|au-ca-gb-us|referral-10",
-  "title": "[英/美/加/澳]PayAngel推荐好友：每人£10/$10/CAD10/AUD10，不封顶",
+  "title": "[英/美/加/澳]PayAngel推荐好友：每人£10/$10/CAD 10/AUD 10，不封顶",
   "brand": "PayAngel",
   "domain": "payangel.com",
   "category": "bank",
@@ -8658,7 +8658,7 @@
  {
   "id": "google-flow-daily-50-credits",
   "dedup_key": "google|ai|global|flow-daily-50-credits",
-  "title": "[全球]Google Flow每日送50credits：不订阅也能生成8秒Veo3.1Lite视频5条",
+  "title": "[全球]Google Flow每日送50credits：不订阅也能生成8秒Veo 3.1 Lite视频5条",
   "brand": "Google Flow",
   "domain": "labs.google",
   "category": "ai",
@@ -9495,7 +9495,7 @@
  {
   "id": "smarterasp-60-day-free-windows",
   "dedup_key": "smarterasp|cloud|global|60-day-free-windows",
-  "title": "[全球]SmarterASP.NET60天免费Windows主机：ASP.NET/.NET到Node，免绑卡",
+  "title": "[全球]SmarterASP.NET 60天免费Windows主机：ASP.NET/.NET到Node，免绑卡",
   "brand": "SmarterASP.NET",
   "domain": "smarterasp.net",
   "category": "cloud",
@@ -9882,7 +9882,7 @@
  {
   "id": "xl-indonesia-free-esim-5gb",
   "dedup_key": "xl-axiata|esim|id|indonesia-free-esim-5gb",
-  "title": "[印尼]XL免费eSIM：5GB/7天+Gemini3.1Pro与400GB云盘",
+  "title": "[印尼]XL免费eSIM：5GB/7天+Gemini 3.1 Pro与400GB云盘",
   "brand": "XL Axiata",
   "domain": "xl.co.id",
   "category": "esim",
@@ -10324,7 +10324,7 @@
  {
   "id": "nodeseek-dedirock-1c2g-2t-secondhand",
   "dedup_key": "dedirock|cloud|us|1c2g-2t-secondhand",
-  "title": "[美区]NodeSeek二手：DediRock1C2G／2TB洛杉矶年付$6.5机，明盘¥20（push费$5自理）",
+  "title": "[美区]NodeSeek二手：DediRock 1C2G／2TB洛杉矶年付$6.5机，明盘¥20（push费$5自理）",
   "brand": "DediRock",
   "domain": "dedirock.com",
   "category": "cloud",
@@ -11249,7 +11249,7 @@
  {
   "id": "esim-san-japan-free-1gb",
   "dedup_key": "esim-san|esim|jp|japan-free-1gb",
-  "title": "[日区]eSIM-san免费试用：日本eSIM1GB/1天0日元（LINE取码，每人一次）",
+  "title": "[日区]eSIM-san免费试用：日本eSIM 1GB/1天0日元（LINE取码，每人一次）",
   "brand": "eSIM-san",
   "domain": "esim-san.jp",
   "category": "esim",
@@ -11676,7 +11676,7 @@
  {
   "id": "true-tat-asean-tourist-sim-8gb",
   "dedup_key": "true|esim|th|tat-asean-tourist-sim-8gb",
-  "title": "[泰区]True×泰国旅游局：东盟/印度旅客免费True5G游客SIM，8GB/1天+฿10,000优惠券",
+  "title": "[泰区]True×泰国旅游局：东盟/印度旅客免费True 5G游客SIM，8GB/1天+฿10,000优惠券",
   "brand": "True Corporation",
   "domain": "true.th",
   "category": "esim",
@@ -12398,7 +12398,7 @@
  {
   "id": "bamboosim-bfcm-45off",
   "dedup_key": "bamboosim|esim|global|bfcm-45off",
-  "title": "[全球]BambooSIM黑五：旅行eSIM45%off（两张50%off）+老客100张免费过境eSIM",
+  "title": "[全球]BambooSIM黑五：旅行eSIM 45%off（两张50%off）+老客100张免费过境eSIM",
   "highlight": "码 BFCMO50：旅行 eSIM 单张 45% off、两张 50% off；过去一年买过的老客可领 100 张免费过境 eSIM 之一",
   "brand": "BambooSIM",
   "domain": "bamboosim.com",
@@ -12436,7 +12436,7 @@
  {
   "id": "travelgoogoo-visa-free-esim-apac",
   "dedup_key": "travelgoogoo|esim|apac|visa-free-esim-apac",
-  "title": "[亚太发卡]Travelgoogoo×Visa免费eSIM：Infinite4GB全球+4GB亚太+全年无限消息",
+  "title": "[亚太发卡]Travelgoogoo×Visa免费eSIM：Infinite 4GB全球+4GB亚太+全年无限消息",
   "highlight": "亚太发行的 Visa 卡输入 16 位卡号即领 365 天 eSIM：Infinite 4GB 全球 + 4GB 亚太 + 全年无限消息，仅 $1 验卡预授权",
   "brand": "Travelgoogoo",
   "domain": "travelgoogoo.com",
@@ -12802,7 +12802,7 @@
  {
   "id": "xiaomi-mimo-tts-free-api",
   "dedup_key": "xiaomi-mimo|ai|global|tts-free-api",
-  "title": "[全球/中国区]小米MiMo-V2.5-TTS语音合成API限时免费：3个模型、RPM100、不耗套餐额度",
+  "title": "[全球/中国区]小米MiMo-V2.5-TTS语音合成API限时免费：3个模型、RPM 100、不耗套餐额度",
   "brand": "Xiaomi MiMo",
   "domain": "mimo.mi.com",
   "category": "ai",
@@ -13900,7 +13900,7 @@
  {
   "id": "stepfun-stepaudio3-free-preview",
   "dedup_key": "stepfun|ai|global|stepaudio3-free-preview",
-  "title": "[中国区/全球]阶跃星辰StepAudio3语音全系限免（延至11月23日11:59，免绑卡）",
+  "title": "[中国区/全球]阶跃星辰StepAudio 3语音全系限免（延至11月23日11:59，免绑卡）",
   "brand": "阶跃星辰 StepFun",
   "domain": "platform.stepfun.com",
   "category": "ai",
@@ -13933,7 +13933,7 @@
  {
   "id": "ashampoo-photo-optimizer-11-free",
   "dedup_key": "ashampoo|software|global|photo-optimizer-11-free",
-  "title": "[全球]Ashampoo Photo Optimizer11：免费终身授权（原价$40，11/30前兑换）",
+  "title": "[全球]Ashampoo Photo Optimizer 11：免费终身授权（原价$40，11/30前兑换）",
   "brand": "Ashampoo",
   "domain": "ashampoo.com",
   "category": "software",
@@ -14339,7 +14339,7 @@
  {
   "id": "fireworks-glimmer-free-training",
   "dedup_key": "fireworks-ai|ai|global|glimmer-free-training",
-  "title": "[全球]Fireworks Free Weights Club：Muse Glimmer30B训练全免（SFT/DPO/RL，至11/30）",
+  "title": "[全球]Fireworks Free Weights Club：Muse Glimmer 30B训练全免（SFT/DPO/RL，至11/30）",
   "brand": "Fireworks AI",
   "domain": "fireworks.ai",
   "category": "ai",
@@ -14488,7 +14488,7 @@
  {
   "id": "ktm-mobi-japan-esim-1plus1-zero",
   "dedup_key": "kt|esim|kr|ktm-mobi-japan-esim-1plus1-zero",
-  "title": "[韩区]kt M모바일mobi：日本eSIM3天「1+1」0韩元（直营店首购专享）",
+  "title": "[韩区]kt M모바일 mobi：日本eSIM 3天「1+1」0韩元（直营店首购专享）",
   "brand": "kt M mobile",
   "domain": "ktmmobile.com",
   "category": "esim",
@@ -14604,7 +14604,7 @@
  {
   "id": "1free-eu-host-vps",
   "dedup_key": "1free|cloud|global|host-vps",
-  "title": "[全球]1free.eu永久免费虚拟主机+VPS S30天免费（免信用卡）",
+  "title": "[全球]1free.eu永久免费虚拟主机+VPS S 30天免费（免信用卡）",
   "brand": "1Free.eu",
   "domain": "1free.eu",
   "category": "cloud",
@@ -14839,7 +14839,7 @@
  {
   "id": "workbuddy-hy4-flash-free-nov2026",
   "dedup_key": "tencentcloud|ai|global|workbuddy-hy4-flash-free-nov2026",
-  "title": "[中国区/国际版]腾讯WorkBuddy：混元Hy4flash限时免费（11/16–11/30，额度每日发放）",
+  "title": "[中国区/国际版]腾讯WorkBuddy：混元Hy4 Flash限时免费（11/16–11/30，额度每日发放）",
   "brand": "腾讯云 WorkBuddy",
   "domain": "workbuddy.cn",
   "category": "ai",
