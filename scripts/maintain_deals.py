@@ -19,7 +19,9 @@ import argparse
 import json
 import re
 import sys
+import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -126,32 +128,37 @@ def dedupe(deals: list[dict]) -> tuple[list[dict], list[str]]:
 
 # ---------------------------------------------------------- 官网活动页状态码排查
 URL_CHECK_UA = "Mozilla/5.0 (compatible; YangMaoBot/1.0; +https://vvotzs.github.io/)"
-# 这些状态码不说明页面没了（HEAD 不被允许 / 需要登录 / 限流），先换 GET 再试
-URL_CHECK_RETRY_CODES = {403, 405, 429, 501}
-# 还是这些状态码就单独归类为「需要登录 / 被拦」，不当成下架
+# 这些状态码就单独归类为「需要登录 / 被拦」，不当成下架
 URL_CHECK_SOFT_CODES = {401, 403, 405, 429, 501}
 
 
 def probe_url(url: str, timeout: float = 6.0) -> tuple[int | None, str]:
     """探一个地址的 HTTP 状态：返回 (状态码, 错误类型)；连不上时状态码为 None。
 
-    先发 HEAD（快、不少流量）；站点不允许 HEAD / 限流（403 / 405 / 429 / 501）时换 GET 再试一次，
-    免得把「不给 HEAD」错当「页面没了」。
+    先发 HEAD（快、不少流量），但 HEAD 的结果不能单独当结论：不少站点对 HEAD 直接回
+    404 / 405 / 403（Bank of America 的 promotions 页就是 GET 200、HEAD 404），
+    所以只要 HEAD 不是 2xx/3xx（或者连 HEAD 都发不出去），一律用 GET 复核一次，
+    以 GET 的状态码为准；两个请求都连不上才算「连不上」。
     """
     headers = {"User-Agent": URL_CHECK_UA, "Accept": "text/html,*/*;q=0.8"}
+    # 数据里存的是中文原址（工行那类），URL 里的汉字必须先百分号编码；
+    # 不编码时 urllib 直接抛 UnicodeEncodeError，会被误记成「连不上」。
+    target = urllib.parse.quote(url, safe=":/?#[]@!$&'()*+,;=%")
 
     def status(method: str) -> int:
-        req = urllib.request.Request(url, method=method, headers=headers)
+        req = urllib.request.Request(target, method=method, headers=headers)
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return int(getattr(resp, "status", 0) or 0)
 
     try:
-        return status("HEAD"), ""
-    except urllib.error.HTTPError as err:
-        if err.code not in URL_CHECK_RETRY_CODES:
-            return int(err.code), ""
-    except Exception as err:  # noqa: BLE001 - 超时 / DNS / TLS 都当「连不上」
-        return None, type(err).__name__
+        head = status("HEAD")
+        if 200 <= head < 400:
+            return head, ""
+    except urllib.error.HTTPError:
+        pass  # 4xx / 5xx：下面用 GET 复核
+    except Exception:  # noqa: BLE001 - 超时 / DNS / TLS：也再试一次 GET
+        pass
+
     try:
         return status("GET"), ""
     except urllib.error.HTTPError as err:
@@ -160,7 +167,7 @@ def probe_url(url: str, timeout: float = 6.0) -> tuple[int | None, str]:
         return None, type(err).__name__
 
 
-def verify_urls(deals: list[dict], limit: int = 0, timeout: float = 6.0, workers: int = 8) -> dict:
+def verify_urls(deals: list[dict], limit: int = 0, timeout: float = 6.0, workers: int = 3) -> dict:
     """官方活动页状态码排查（只出报告）。
 
     定时巡检每轮跑一次（action 里的 `maintain_deals.py --verify-urls`）：发现 404 / 410
@@ -181,13 +188,24 @@ def verify_urls(deals: list[dict], limit: int = 0, timeout: float = 6.0, workers
         return {"checked": 0}
 
     print(f"官网活动页体检：检查 {len(targets)} 条（超时 {timeout:g}s，{workers} 并发）…")
+
+    def check(item: tuple[str, str]) -> tuple[str, str, int | None, str]:
+        deal_id, url = item
+        code, err = probe_url(url, timeout)
+        # 并发下偶尔会撞上出口限流（URLError）：连不上就多试两次再说，
+        # 否则一轮报告里会挂出一大串假「连不上」。
+        for backoff in (0.6, 1.4):
+            if code is not None:
+                break
+            time.sleep(backoff)
+            code, err = probe_url(url, timeout)
+        return deal_id, url, code, err
+
     results = []
     with ThreadPoolExecutor(max_workers=max(1, min(workers, len(targets)))) as pool:
-        futures = {pool.submit(probe_url, url, timeout): (deal_id, url) for deal_id, url in targets}
+        futures = {pool.submit(check, item): item for item in targets}
         for fut in futures:
-            deal_id, url = futures[fut]
-            code, err = fut.result()
-            results.append((deal_id, url, code, err))
+            results.append(fut.result())
 
     dead = [(i, u, c) for i, u, c, _ in results if c in (404, 410)]
     broken = [(i, u, c) for i, u, c, _ in results if c and c >= 500]
@@ -210,6 +228,8 @@ def verify_urls(deals: list[dict], limit: int = 0, timeout: float = 6.0, workers
         print("  401/403/405/429（需要登录或限流，不算下架）：")
         for deal_id, url, code in blocked[:10]:
             print(f"    - {deal_id} [{code}] {url}")
+        if len(blocked) > 10:
+            print(f"    …另有 {len(blocked) - 10} 条")
     if unreachable:
         print("  连不上 / 超时（网络问题，不算下架）：")
         for deal_id, url, err in unreachable[:10]:
