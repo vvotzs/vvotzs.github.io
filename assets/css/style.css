@@ -3074,6 +3074,8 @@ display:block 会盖掉 hidden 属性，所以下面这条 [hidden] 必须留着
   line-height: 1.15;
 }
 .dp-plat-i{ width: 14px; height: 14px; flex: none; }
+/* iOS / Android 只出图标：左右留白收紧成 24×16 的小方块，与网页端那枚等高齐平。 */
+.dp-plat.is-icon{ padding: 1px 5px; cursor: default; }
 
 .dp-meta{ display: flex; flex-wrap: wrap; gap: 5px 14px; font-size: 11.5px; line-height: 1.5; color: var(--ink-3); }
 .dp-meta span{ min-width: 0; overflow-wrap: anywhere; }

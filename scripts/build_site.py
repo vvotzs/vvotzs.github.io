@@ -406,16 +406,33 @@ def icon3d(key: str, cls: str = "") -> str:
     return f'<svg class="ic3d{" " + cls if cls else ""}" aria-hidden="true"><use href="#i-{key}"/></svg>'
 
 
+# iOS 苹果 / Android 小机器人的图形本身够认，徽标只留图标：可见文字去掉，
+# 悬停靠 <title> 出「iOS」「Android」小提示，读屏靠 role="img" + aria-label。
+# 网页端（浏览器窗口图标）仍配「网页端 / Web」文字，图标不如前两个有共识。
+_PLAT_ICON_ONLY = {"ios": "iOS", "android": "Android"}
+
+
 def plat_badges(items: list[tuple[str, str]]) -> str:
-    """可用平台：图标 + 文字紧挨成一排的小徽标（只给 bank / esim 详情页的资格行）。
+    """可用平台：紧挨成一排的小徽标（只给 bank / esim 详情页的资格行）。
 
     图标走同一份 sprite 的 #i-plat-*，14×14、currentColor 以外的颜色写在 symbol 里。
+    iOS / Android 只出图标（title 提示 + aria-label），网页端仍出图标 + 文字。
     """
-    return "".join(
-        f'<span class="dp-plat"><svg class="dp-plat-i" aria-hidden="true">'
-        f'<use href="#i-plat-{key}"/></svg>{e(text)}</span>'
-        for key, text in items
-    )
+    parts = []
+    for key, text in items:
+        if key in _PLAT_ICON_ONLY:
+            label = _PLAT_ICON_ONLY[key]
+            parts.append(
+                f'<span class="dp-plat is-icon" title="{label}">'
+                f'<svg class="dp-plat-i" role="img" aria-label="{label}">'
+                f'<use href="#i-plat-{key}"/></svg></span>'
+            )
+        else:
+            parts.append(
+                f'<span class="dp-plat"><svg class="dp-plat-i" aria-hidden="true">'
+                f'<use href="#i-plat-{key}"/></svg>{e(text)}</span>'
+            )
+    return "".join(parts)
 
 
 def vector_defs() -> str:
