@@ -2098,9 +2098,10 @@ footer{
     will-change: transform;
   }
   .hero-tag .ht-track.is-long .ht-copy{ display: inline; margin-left: 2.6em; }
-  /* 悬停 / 按住暂停：想看清某一段就按住它 */
+  /* 悬停 / 按住 / 点一下（app.js 加 .is-paused，5 秒后自复位）暂停 */
   .hero-tag:hover .ht-track,
-  .hero-tag:active .ht-track{ animation-play-state: paused; }
+  .hero-tag:active .ht-track,
+  .hero-tag.is-paused .ht-track{ animation-play-state: paused; }
   /* 动效减弱偏好：退成一行静态省略号，不滚动 */
   @media (prefers-reduced-motion: reduce){
     .hero-tag .ht-track{ display: block; overflow: hidden; text-overflow: ellipsis; }

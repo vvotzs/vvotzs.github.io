@@ -92,6 +92,18 @@
     }
   }
 
+  /* 首屏导语走马灯：点一下暂停 5 秒（iOS Safari 对 <p> 的 :active 不可靠，光靠 CSS 停不住） */
+  var heroTag = $(".hero-tag");
+  if (heroTag) {
+    heroTag.addEventListener("click", function () {
+      var track = $(".ht-track", heroTag);
+      if (!track || !track.classList.contains("is-long")) return;
+      heroTag.classList.add("is-paused");
+      clearTimeout(heroTag._pauseT);
+      heroTag._pauseT = setTimeout(function () { heroTag.classList.remove("is-paused"); }, 5000);
+    });
+  }
+
   /* 拼检索串：标题（未内联的来自索引，内联的取自卡片 h3）+ 其余检索词 + 分类词表。
      在 modules 建好后跑一次（内联卡片的 h3 那时已经在 DOM 里）。 */
   function buildSearch() {
