@@ -613,6 +613,10 @@ ELIG.update(
             "identity": "none", "platform": ["web"],
             "funding": "min_deposit", "geo": ["GB"],
         },
+        "visible-us-free-trial-15d": {
+            "identity": "none", "residency": "local_address",
+            "platform": ["android", "ios"], "geo": ["US"],
+        },
         "horizon-free-europe-esim": {
             "identity": "email", "platform": ["android", "ios"],
             "phone": "any_number", "geo": ["CH", "EEA", "GB"],

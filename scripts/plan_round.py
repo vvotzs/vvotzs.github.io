@@ -47,20 +47,20 @@ DEALS_PATH = ROOT / "data" / "deals.json"
 TZ = ZoneInfo("Asia/Shanghai")
 UTC = timezone.utc
 
-# 每轮固定时刻（北京时间），与 scheduled action 的 7 轮一致
-ROUND_TIMES = [(7, 30), (10, 0), (12, 30), (15, 0), (17, 30), (20, 0), (22, 30)]
+# 每轮固定时刻（北京时间）：2026-11-23 起 24 小时整点每小时一轮，不再设夜间休眠
+ROUND_TIMES = [(h, 0) for h in range(24)]
 ROUNDS_PER_DAY = len(ROUND_TIMES)
-PER_ROUND_SOURCES = 12
+PER_ROUND_SOURCES = 30            # 每小时最多 30 个到期源（P0 1h / P1 3h / P2 24h 的到期量约 20，留余量）
 PER_ROUND_RECHECK = 4
-P2_RESERVE_PER_ROUND = 1          # P2 每轮保底 1 个 → 每周 49 个 P2 源位
-P2_ACTIVE_CAP = 49                # 全库调度中的 P2 上限（避免每周积压）
-P1_ACTIVE_CAP = 35                # P1 上限：每轮 12 个源时每日 P1 源位 35 个，正好 24h 轮完
+P2_RESERVE_PER_ROUND = 2          # P2 每轮保底 2 个 → 每日 48 个 P2 源位
+P2_ACTIVE_CAP = 49                # 全库调度中的 P2 上限（避免积压）
+P1_ACTIVE_CAP = 120               # P1 上限：每小时 30 源位 × 24 轮，足够 3h 周期轮完全部 P1
 FIRST_LOOKBACK_DAYS = 30          # search_group 首抓回看 30 天
 GROUP_TERMS_MAX = 3               # 轮转组每次查询最多 3 个词
 
 TIER_ORDER = ("P0", "P1", "P2")
 TIER_PRIORITY = {"P0": 3, "P1": 2, "P2": 1}
-TIER_CADENCE = {"P0": 2, "P1": 24, "P2": 168}
+TIER_CADENCE = {"P0": 1, "P1": 3, "P2": 24}
 
 ENTRY_TYPES = ("rss", "md", "list", "search")
 STATUSES = ("active", "paused", "manual")   # manual：留在表里但完全不进调度（二手 key 五家）
@@ -361,7 +361,7 @@ def slot_for(now: datetime) -> dict:
         # 跨天时跳过 01:00–07:30 休眠：下一轮就是次日 07:30
     nh, nm = ROUND_TIMES[nxt_idx]
     next_slot = datetime(nxt_day.year, nxt_day.month, nxt_day.day, nh, nm, tzinfo=TZ)
-    in_sleep = local.hour < 7 or (local.hour == 7 and local.minute < 30)
+    in_sleep = False  # 2026-11-23 起 24 小时每小时一轮，取消 01:00–07:30 休眠
     return {
         "round_index": r,
         "slot_at": slot_dt,
