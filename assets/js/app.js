@@ -678,6 +678,7 @@
     var card = ev.target.closest(".card");
     if (!card) return;
     if (ev.target.closest(".go") || ev.target.closest(".url-link") || ev.target.closest(".dlink")) return; // 直达链接 / 详情页链接不触发折叠
+    if (ev.target.closest(".cf-btn") || ev.target.closest(".cf-sheet") || cfLocked()) return; // 优惠内容按钮 / 吐司不触发折叠
     var head = ev.target.closest(".card-head");
     var toggle = ev.target.closest(".toggle");
     if (!head && !toggle) {
@@ -725,6 +726,8 @@
     if (ev.target.closest && ev.target.closest(".card.open")) return;
     if (ev.target.closest && ev.target.closest("[data-jump]")) return;
     if (ev.target.closest && ev.target.closest(".modal.on")) return;
+    if (ev.target.closest && ev.target.closest(".cf-sheet")) return; // 点吐司（含遮罩）只收吐司，不折叠卡片
+    if (cfLocked()) return;  // 吐司刚收起的那一次点击不再连锁收起卡片
     closeAll(null);
   });
 
@@ -1345,6 +1348,11 @@
   var cfSheet = null;
   var cfLastBtn = null;
   var cfTimer = null;
+  /* 吐司开合后的 350ms 内，卡片折叠 / 空白收起一律不响应：
+     同一次点击冒泡到 document 上的其它监听时，不会连锁把卡片折起来。 */
+  var cfLockUntil = 0;
+  function cfLocked() { return Date.now() < cfLockUntil; }
+  function cfLock() { cfLockUntil = Date.now() + 350; }
   /* 优惠内容浮层停留 15 秒（普通小吐司是 2.5–3 秒）：长文有足够时间读；
      点遮罩、点浮层本身、Esc 或关闭键都能提前收起，收起时清掉定时器。 */
   var CF_MS = 15000;
@@ -1352,6 +1360,7 @@
   function cfClose() {
     clearTimeout(cfTimer);
     cfTimer = null;
+    cfLock();
     if (!cfSheet || cfSheet.hidden) return;
     cfSheet.hidden = true;
     document.documentElement.classList.remove("cf-open");
@@ -1411,6 +1420,7 @@
     btn.setAttribute("aria-expanded", "true");
     cfLastBtn = btn;
     clearTimeout(cfTimer);
+    cfLock();
     cfTimer = setTimeout(cfClose, CF_MS);
     try { sheet.querySelector(".cf-close").focus({ preventScroll: true }); } catch (err) { /* 老浏览器 */ }
   }
@@ -1420,7 +1430,9 @@
     var btn = ev.target.closest ? ev.target.closest(".cf-btn") : null;
     if (!btn) return;
     ev.preventDefault();
-    ev.stopPropagation();
+    /* 同一个节点（document）上还挂着卡片折叠的监听：必须 stopImmediatePropagation，
+       只 stopPropagation 拦不住同节点的其它监听，展开卡会在点开吐司的瞬间被折起来。 */
+    ev.stopImmediatePropagation();
     cfOpen(btn);
   }, true);
 
