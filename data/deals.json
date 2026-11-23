@@ -15407,7 +15407,7 @@
   "url": "https://free.nodaroo.com/",
   "source_url": "https://www.nodeloc.com/t/topic/118974",
   "source": "我们 2026-11-23 实测：free.nodaroo.com 登录页与 /invite 落地页 HTTP 200、只提供 Discord 登录（OAuth scope identify / email / guilds.join），panel.nodaroo.com 为 Pterodactyl 面板「Nodaroo Game Panel」，主站 nodaroo.com 列出德国法兰克福与印度孟买机房；NodeLoc 帖 t/topic/118974（2026-11-22 22:58 UTC 发布，含「开中国区报错」，11-23 03:44 UTC 回复「not working now」）+ NodeLoc t/topic/118992（2026-11-23 03:42 UTC，回复称「this deployment is a game panel」「手动选区域要花积分」）+ 社区转载的免费档配置",
-  "risk": "【已过期归档】2026-11-23 用户实测面板返回「Something went wrong. Please retry or contact Nodaroo support」，NodeLoc 同时间也有「not working now」与「开中国区报错」的反馈，现在不要把它当成能用的免费机。历史风险仍在：11 月才上线的极新小厂，免费资源随时可能被回收或清退，重要数据必须勤备份、别放唯一生产环境；容器跑不了 Docker、没有 root 与 SSH、没有独立公网 IPv4、端口受限；200% CPU 是共享额度，满跑会被限流；拉人换高配属限时活动，别为了它去拉人，本站也不收任何邀请链接。",
+  "risk": "【已过期归档】2026-11-23 用户实测面板返回「Something went wrong. Please retry or contact Nodaroo support」，NodeLoc 同时间也有「not working now」与「开中国区报错」的反馈，现在不要把它当成能用的免费机。历史风险仍在：11 月才上线的极新小厂，免费资源随时可能被回收或清退，重要数据必须勤备份、别放唯一生产环境；容器跑不了 Docker、没有 root 与 SSH、没有独立公网 IPv4、端口受限；200% CPU 是共享额度，满跑会被限流；拉人换高配属限时活动，别为了它去拉人，本站也不收任何邀请链接。另有一条模板痕迹：官网首页声明的 favicon 指向与 Nodaroo 无关的 horizon.embernix.org（页面标题同为「Premium Web Hosting Solutions」的另一家主机商），说明站点是套模板搭的，背景与售后更说不准。",
   "status": "expired",
   "kyc_level": "none",
   "utility": 0,

@@ -102,6 +102,11 @@ FAV_SIZE = 48
 FAV_QUALITY = 82
 FAV_METHOD = 6
 
+# 不用站点图标的域名：它自己的 favicon 不是自己的 Logo。nodaroo.com 首页把
+# <link rel="icon"> 指向 horizon.embernix.org（另一家主机商 Horizon Hosting），
+# 各大 favicon 服务也镜像了这张图，装上就是把别人的牌子挂到我们卡片上。
+FAV_SKIP = {"nodaroo.com"}
+
 # Cookie 同意开关：目前全站零追踪 / 零广告脚本，首访不主动弹面板（只写进 <html
 # data-consent-required="0">，用户点页脚「Cookie 设置」时才打开）。以后接入
 # GA4 / AdSense 时把这里改成 "1"，consent.js 就会给未做过选择的欧洲首访者弹出面板，
@@ -949,6 +954,22 @@ def _save_icon(raw: bytes, dest: Path) -> bool:
     return True
 
 
+def _same_site(host: str, domain: str) -> bool:
+    """图标地址是否还属于这个域名（含子域、www、同一注册域）。
+
+    有站点把首页的 <link rel="icon"> 指向别家域名（Nodaroo 的 favicon 就指向
+    horizon.embernix.org，那是另一家主机商的 Logo），照搬会把别人的牌子挂到我们
+    卡片上，所以跨站图标一律不用，退回字母块。
+    """
+    host = (host or "").lower().split(":")[0]
+    domain = (domain or "").lower().split(":")[0]
+    if not host or not domain:
+        return False
+    if host == domain or host.endswith("." + domain) or domain.endswith("." + host):
+        return True
+    return host.split(".")[-2:] == domain.split(".")[-2:]
+
+
 def _icon_from_homepage(domain: str) -> bytes | None:
     """兜底：读首页 <link rel="...icon..."> 指到的图标（有些站点不在 /favicon.ico）。"""
     for base in (f"https://{domain}/", f"https://www.{domain}/"):
@@ -963,6 +984,8 @@ def _icon_from_homepage(domain: str) -> bytes | None:
             if not href:
                 continue
             url = urllib.parse.urljoin(base, href.group(1))
+            if not _same_site(urllib.parse.urlsplit(url).netloc, domain):
+                continue
             raw = _download(url)
             if raw:
                 return raw
@@ -972,6 +995,9 @@ def _icon_from_homepage(domain: str) -> bytes | None:
 def ensure_favicon(domain: str) -> bool:
     """把域名图标缓存成 assets/fav/<domain>.webp；有缓存就直接复用。"""
     if not domain:
+        return False
+    if domain in FAV_SKIP:
+        # 站点自己的 favicon 指向别家的 Logo（见 FAV_SKIP），宁可回退字母块
         return False
     FAV_DIR.mkdir(parents=True, exist_ok=True)
     dest = FAV_DIR / f"{fav_name(domain)}.webp"
