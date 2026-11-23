@@ -6622,5 +6622,21 @@
   ],
   "risk": "You must complete 10 resolved markets before the deadline, which a late start may make impossible; positions still open at the end do not count; prizes need identity and location verification and may be restricted in some jurisdictions.",
   "source": "Futuur official Midterms Trading Competition rules page (read 23 November 2026: free Ooms, 550 USDC split across the top five, 10 resolved markets minimum, 30 November 23:59 UTC close, USDC/USDT within 7 days)"
+ },
+ "rikkahub-android-llm-client": {
+  "title": "[Global] RikkaHub: a free, open-source Android LLM client with switchable providers (AGPL-3.0)",
+  "highlight": "A native Android chat client: plug in your own models, Material 3 throughout, plus a root-free Linux workspace and phone control. 9,130 stars, no ads, no in-app purchases, AGPL-3.0 source.",
+  "regions": "[Global] Works on any Android 8.0+ phone; the release APK is arm64-v8a only; no regional restriction",
+  "value": "Completely free (open source under AGPL-3.0, no ads, no in-app purchases)",
+  "content": "A native Android LLM client written in Kotlin and Jetpack Compose (AGPL-3.0, 9,130 stars on 2026-11-23). v3.3.1 shipped on 2026-11-21: the site and GitHub Releases serve a 15.69 MB arm64-v8a APK, and Google Play lists the same app with 10,000+ downloads and 4.6 stars. Connect OpenAI, Google, Anthropic or any compatible base URL, and move provider setups between phones by QR code; it also ships a root-free proot Linux workspace, Phone Use that taps your phone through the accessibility service, MCP and Skills, web search, and SillyTavern character card import. No in-app purchases and no ads; funded by donations.",
+  "conditions": "Android 8.0+ (minSdk 26); the official APK is arm64-v8a only, and the Play build cannot self-update; no bundled model quota, so bring your own API key or relay, and the built-in free fallback is strictly rate-limited; AGPL-3.0 obliges anyone redistributing a modified build to publish its source.",
+  "steps": [
+   "Install only from rikka-ai.com/download, GitHub Releases or Google Play (the README warns that outside forks may ask for excessive permissions)",
+   "Open Settings, then Providers, add OpenAI, Google, Anthropic or a custom base URL with your key; a QR code can import a provider setup",
+   "Start a chat and pick a model (providers are switchable and thinking depth adjustable); for web search, add an Exa or Tavily key in the search settings",
+   "Turn on the workspace (root-free proot Linux with a terminal) or Phone Use (accessibility access) when you want it to act, starting with low-risk tasks"
+  ],
+  "risk": "The README warns that many forks of RikkaHub exist and that fork problems are unrelated to the project, and a fork may leak data or request extra permissions, so install only from the official site, GitHub Releases or Play. Model and search usage is on your own bill, and the built-in free fallback is heavily rate-limited, so do not plan on it long term. Phone Use needs the accessibility service, which effectively hands the phone to the AI, so keep payment apps out of it at first. The project accepts no pull requests and had 310 open issues when checked, and 3.3.1 still fixed regressions (DeepSeek import crashing on Android 9 and 10, update downloads failing with a VPN on). AGPL-3.0 obliges anyone distributing a modified build to publish its source.",
+  "source": "GitHub rikkahub/rikkahub (read 2026-11-23: 9,130 stars, 933 forks, AGPL-3.0, last push 2026-11-21) + official site rikka-ai.com/download (v3.3.1, 2026-11-21, 15.69 MB APK) + Google Play me.rerere.rikkahub (10,000+ downloads, 4.6 stars, updated 2026-11-21) + repository strings.xml and app/build.gradle.kts (minSdk 26, no Play Billing dependency, built-in free fallback provider)"
  }
 }

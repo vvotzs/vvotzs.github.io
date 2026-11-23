@@ -14008,6 +14008,50 @@
   "dedup_key": "opencode|ai|global|zen-free-models"
  },
  {
+  "id": "rikkahub-android-llm-client",
+  "title": "[全球]RikkaHub：免费开源的Android LLM客户端，供应商随意切换（AGPL-3.0）",
+  "brand": "RikkaHub",
+  "domain": "rikka-ai.com",
+  "category": "ai",
+  "value": "完全免费（无广告无内购，AGPL-3.0开源）",
+  "value_num": 0,
+  "cost": "真正免费",
+  "highlight": "原生Android聊天客户端：模型自己接、界面走Material 3，还带免root的Linux工作区与「AI操控手机」；9,130 Stars、无内购无广告，代码AGPL-3.0全开。",
+  "regions": "[全球] Android 8.0+即可用，官方APK限arm64-v8a；无地区限制",
+  "start": "",
+  "end": "",
+  "verified": true,
+  "last_verified": "2026-11-23",
+  "added": "2026-11-23",
+  "added_at": "2026-11-23T21:55:00+08:00",
+  "content": "原生Android LLM客户端（Kotlin+Compose，AGPL-3.0，2026-11-23时9,130 Stars）；v3.3.1（2026-11-21）在官网与GitHub Releases直装arm64-v8a APK（15.69MB），Google Play另发、1万+下载4.6分。接OpenAI／Google／Anthropic及任意兼容base URL，供应商配置可二维码导入导出；另带免root的proot Linux工作区、Phone Use代点手机、MCP与Skills、联网搜索、SillyTavern角色卡导入。无内购无广告，靠Ko-fi／爱发电捐赠。",
+  "conditions": "Android 8.0+（minSdk 26）；官方APK仅arm64-v8a，Play版不能应用内自更新；不自带模型额度，须自备API Key或中转，内置官方免费兜底严格限流；AGPL-3.0二次分发须开源。",
+  "steps": [
+   "只从 rikka-ai.com/download、GitHub Releases 或 Google Play 安装（官方警告站外 fork 可能过度索权）",
+   "设置 → 供应商 → 添加 OpenAI／Google／Anthropic 或「自定义」填 base URL 与 Key，也可扫二维码导入",
+   "新建对话选模型（可切换供应商、调思考深度），要联网搜索就在搜索设置里填 Exa／Tavily 等 Key",
+   "想让它干活再开工作区（proot Linux，免 root 带终端）或 Phone Use（授权无障碍），先用低风险任务试"
+  ],
+  "url": "https://rikka-ai.com/",
+  "source_url": "https://github.com/rikkahub/rikkahub",
+  "source": "GitHub rikkahub/rikkahub（2026-11-23 实读：9,130 Stars／933 forks／AGPL-3.0，master 最后推送 2026-11-21）+ 官网 rikka-ai.com/download（v3.3.1，2026-11-21，APK 15.69MB）+ Google Play me.rerere.rikkahub（1万+下载、4.6分、更新日期 2026-11-21）+ 仓库 strings.xml 与 app/build.gradle.kts（minSdk 26、无 Play Billing 依赖、内置官方免费兜底说明）",
+  "risk": "官方README明确警告站外有大量fork、fork的问题与项目无关，可能泄露隐私或索要多余权限，只从官网／GitHub Releases／Play装；模型与搜索额度全自付，内置免费兜底限流严格，别指望长期靠它；Phone Use要开无障碍权限，等于把手机交给AI点按，支付类App先别授权；项目不接受PR、310个open issues，3.3.1才修了Android 9/10导入DeepSeek崩溃与开VPN时更新失败；AGPL-3.0对分发修改版有开源义务。",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "none",
+  "residency_requirement": "none",
+  "platform_requirement": [
+   "android"
+  ],
+  "phone_requirement": "none",
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "dedup_key": "rikkahub|ai|global|android-llm-client"
+ },
+ {
   "id": "poke-devin-bots-free-credits",
   "dedup_key": "cognition|ai|global|poke-devin-bots-free-credits",
   "title": "[全球]Poke×Devin Bots：跟Poke讲想法，免费拿Devin Bot+1个月Max（$200）+最高$10,000额度",

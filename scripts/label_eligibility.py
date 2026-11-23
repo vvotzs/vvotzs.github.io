@@ -765,6 +765,10 @@ ELIG.update(
         "merkium-free-llm-api": {
             "identity": "email", "platform": ["web"], "geo": ["GLOBAL"],
         },
+        # 2026-11-23：RikkaHub 开源 Android 客户端（只发 Android 端，本体与内购全免）
+        "rikkahub-android-llm-client": {
+            "identity": "none", "platform": ["android"], "geo": ["GLOBAL"],
+        },
         # 2026-11-23 crypto 比赛 7 条：领奖要护照/证件核验，全部网页端提交
         "tradingview-cme-the-leap-nov2026": {
             "identity": "photo_id", "platform": ["web"],
@@ -804,6 +808,7 @@ KEEP_EXTRA = {
     "urnetwork-free-tier-30gib", "databricks-free-edition",
     "dahl-inference-100m-tokens", "nodaroo-free-container-host",
     "plugsky-free-llm-api", "merkium-free-llm-api",
+    "rikkahub-android-llm-client",
     # 2026-11-23 crypto 比赛 7 条
     "tradingview-cme-the-leap-nov2026", "gnoland-gnome-tavern-hackathon",
     "gensyn-agent-arena-evidence-mining", "immunefi-base-everest-audit-comp",
