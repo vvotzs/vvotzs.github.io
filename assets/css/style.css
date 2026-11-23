@@ -322,6 +322,16 @@ a.stats-pill:active{ transform: translateY(0); }
   line-height: 1.4;
   color: var(--ink-2);
 }
+/* 首屏导语在桌面端是原来的静止排版：走马灯用的副本（第二份文本）全局藏起来，
+   只有手机端长文案的轨道（.is-long）才把它显示出来当循环接缝。 */
+.hero-tag .ht-copy{ display: none; }
+/* 首屏导语走马灯（只在手机端启用）：轨道 = 主文本 + 2.6em 缝 + 副本 + 2.6em 尾垫，
+   总宽正好 2×(文本宽 + 缝)，所以 -50% 结束时副本恰好落在主文本原位，循环无缝。
+   18s 一个来回：中文 60 来字约 38px/s，慢到能读，又不至于让人等。 */
+@keyframes heroTagScroll{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
 .hero-meta{
   margin: 0 0 0 auto;
   display: inline-flex;
@@ -1213,6 +1223,68 @@ html.cf-open, html.cf-open body{ overflow: hidden; }
   color: var(--terra);
 }
 .url-link:hover{ opacity: 1; text-decoration: underline; text-underline-offset: 2px; }
+/* 同一个 .url-link，但现在是「点按复制」的按钮（2026-11-23）：长得仍像原来的网址，
+   只多一条虚线底边 + 小复制图标，说明点它不会跳走。跳转交给官网 ↗ / 原文 ↗。 */
+.url-link.url-copy{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: copy;
+  -webkit-tap-highlight-color: transparent;
+}
+.url-copy .uc-i{
+  display: inline-block;   /* 基础 .i 是 display:block，放进行内文字里会另起一行 */
+  width: 9px;
+  height: 9px;
+  margin-left: 4px;
+  vertical-align: -1px;
+  opacity: .6;
+}
+/* 图标就贴在网址末尾（长网址换行时落在最后一行行尾），不会被挤到下一行 */
+.field .url-copy{ position: relative; }
+/* 虚线只划在网址文字上（放在块级按钮上会横贯整行） */
+.url-copy .uc-text{
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: rgba(176, 87, 47, .45);
+  text-underline-offset: 2px;
+}
+.url-copy:hover .uc-text{ text-decoration-style: solid; }
+.url-copy:active{ opacity: .55; }
+
+/* 详情页靠上那一行：标签 + 可复制的官方网址（一行标题、最多两行地址） */
+.dp-urlcopy{
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin: 8px 2px 0;
+}
+.dp-urlcopy-k{
+  flex: 0 0 auto;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--ink-3);
+}
+.dp-urlcopy .url-link{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-width: 0;
+}
+/* 这一行已经有「官方活动链接」标签 + 虚线底边，再加小图标会顶进行尾把省略号挤歪 */
+.dp-urlcopy .uc-i{ display: none; }
 
 .risk{
   grid-column: 1 / -1;
@@ -1498,6 +1570,26 @@ html.cf-open, html.cf-open body{ overflow: hidden; }
   animation: toastIn .16s ease-out;
 }
 .closing-toast[hidden]{ display: none; }
+/* 「已复制链接 / Link copied」吐司：深色小胶囊，贴在按下的网址下方，1.8s 自己走。
+   位置由 copy.js 算（左右夹进视口），文案走构建时写进页面的 <meta name="dh-copy">。 */
+.copy-toast{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  width: max-content;
+  max-width: min(300px, calc(100vw - 16px));
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #1C1917;
+  color: #FFFDF7;
+  font-size: 11.5px;
+  line-height: 1.4;
+  box-shadow: 0 14px 30px -18px rgba(28, 25, 23, .6);
+  animation: toastIn .14s ease-out;
+  pointer-events: none;
+}
+.copy-toast[hidden]{ display: none; }
 @keyframes toastIn{
   from{ opacity: 0; transform: translateY(-4px); }
   to{ opacity: 1; transform: none; }
@@ -1980,19 +2072,40 @@ footer{
     padding: 0;
     flex-wrap: nowrap;
   }
-  /* 首页导语换成完整一句后，手机端放宽到两行（超出仍省略），不再只显示半句 */
+  /* 首屏导语：2026-11-23 起手机端收成单行走马灯，只占一行（原来两行，省 15px 首屏高度）。
+     导语本身仍是完整文本；轨道里第二份是 aria-hidden 副本，靠它把滚动接成无缝循环。
+     左右各有一段极轻的渐隐，字从边上淡出而不是硬切。 */
   .hero-tag{
     margin: 0;
     font-size: 11.5px;
     line-height: 1.33;
     flex: 1 1 100%;
     min-width: 0;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    white-space: normal;
+    white-space: nowrap;
     overflow: hidden;
     color: var(--ink-2);
+    /* 左边干净截断（字从边上滑出来，不遮首字），右边 18px 渐隐 */
+    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 18px), transparent 100%);
+    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 18px), transparent 100%);
+  }
+  .hero-tag .ht-track{ display: inline-flex; align-items: baseline; white-space: nowrap; }
+  /* 窄屏：副本默认不显示；只有文案长到一行放不下（构建时加 .is-long）才转起来 */
+  .hero-tag .ht-copy{ display: none; }
+  .hero-tag .ht-track.is-long{
+    padding-right: 2.6em;
+    /* 先停 1.6s 让人看清开头，再匀速转；之后不再停 */
+    animation: heroTagScroll 18s linear 1.6s infinite;
+    will-change: transform;
+  }
+  .hero-tag .ht-track.is-long .ht-copy{ display: inline; margin-left: 2.6em; }
+  /* 悬停 / 按住暂停：想看清某一段就按住它 */
+  .hero-tag:hover .ht-track,
+  .hero-tag:active .ht-track{ animation-play-state: paused; }
+  /* 动效减弱偏好：退成一行静态省略号，不滚动 */
+  @media (prefers-reduced-motion: reduce){
+    .hero-tag .ht-track{ display: block; overflow: hidden; text-overflow: ellipsis; }
+    .hero-tag .ht-track.is-long{ padding-right: 0; animation: none; }
+    .hero-tag .ht-copy{ display: none !important; }
   }
   .hero-meta{ margin: 0; flex: 0 0 auto; font-size: 10px; gap: 4px; }
   .hero-meta .dot{ width: 5px; height: 5px; }
@@ -2151,6 +2264,12 @@ footer{
   /* 官方活动链接这列：与左边「开始及截止时间」三列块同一号小字（10px / 1.25），
      长网址贴紧不松、窄列里也不再抢正文的重心 */
   .url-link{ font-size: 10px; line-height: 1.25; letter-spacing: -.005em; }
+  /* 手机上半栏只有 150 来 px，网址正好占满一行，小图标会被挤到下一行变成孤立小方块：
+     手机上干脆不画图标，靠虚线底边 + 点按后的「已复制链接」吐司就够了 */
+  .url-copy .uc-i{ display: none; }
+  .dp-urlcopy{ margin: 7px 0 0; gap: 6px; }
+  .dp-urlcopy-k{ font-size: 10px; }
+  .dp-urlcopy .url-link{ font-size: 10px; line-height: 1.3; }
   .risk{ font-size: 12.5px; line-height: 1.38; padding: 7px 9px; }
   .detail-foot{ font-size: 11px; line-height: 1.38; gap: 3px 9px; }
   /* 手机端底部第一行与桌面同一套：「详情页 ↗」在左、👍 / 👎 靠右；

@@ -303,6 +303,9 @@ _SYMBOLS: dict[str, tuple[int, str, float]] = {
                    '<path d="M12 20.9c-.9 0-1.6-.9-1.6-2.1h3.2c0 1.2-.7 2.1-1.6 2.1Z" fill="#FDE68A"/>', 1.9),
     # 外链箭头
     "external": (12, '<path d="M3 9 9 3M4.5 3H9v4.5"/>', 1.6),
+    # 复制网址：两页叠放的小纸片（「官方活动链接」那一行的点按复制提示）
+    "copy": (12, '<rect x="2.4" y="2.4" width="5.4" height="5.4" rx="1.1"/>'
+                 '<path d="M4.4 9.6h3.8c.8 0 1.4-.6 1.4-1.4V4.4"/>', 1.5),
     # 口径说明（ⓘ）：细圈 + 小写 i
     "info": (16, '<circle cx="8" cy="8" r="6.3"/><path d="M8 7.3v4.1"/><path d="M8 4.8v.1"/>', 1.35),
     # 展开箭头
@@ -603,6 +606,34 @@ def safe_url(value: object) -> str:
     if low.startswith("https://") or low.startswith("http://"):
         return s
     return ""
+
+
+def display_url(value: object) -> str:
+    """页面「给人看」的网址：把 %E7%89%A1... 这类百分号编码还原成中文原字。
+
+    工行那类中文路径存下来就是 388 个字符的编码串，直接印在页面上没法看、也没法
+    抄给别人。展示文本一律过这里；href / JSON-LD / 剪贴板仍用原始地址（见 copy_url）。
+    """
+    s = ("" if value is None else str(value)).strip()
+    if not s:
+        return ""
+    try:
+        return urllib.parse.unquote(s)
+    except Exception:
+        return s
+
+
+def copy_url(value: object) -> str:
+    """写进剪贴板的地址：只把非 ASCII 字符按 UTF-8 百分号编码。
+
+    中文原网址直接复制出去，粘到微信 / Telegram / 邮件里常常不会被识别成链接；
+    统一成纯 ASCII 的编码形式，href 与粘贴两处都能直接用。safe 里留着 % 是为了
+    不把数据里本来就编码好的地址二次编码。
+    """
+    s = ("" if value is None else str(value)).strip()
+    if not s:
+        return ""
+    return urllib.parse.quote(s, safe=":/?#[]@!$&'()*+,;=%")
 
 
 # 当前正在渲染的页面语言。main() 里每个页面渲染前设置一次，`bi()` / `ui()` 据此只取一侧文案，
@@ -1248,6 +1279,26 @@ def official_link(deal: dict) -> str:
     return safe_url(deal.get("url"))
 
 
+def url_copy_button(url: object, cls: str = "") -> str:
+    """「官方活动链接」那一行的网址：点按复制，不再跳转。
+
+    2026-11-23 Jun 要求：卡片上的网址只用来抄走，不再当作另一个跳转入口（要跳转用右上 /
+    底部的官网 ↗、原文 ↗ 按钮）。所以这里是个 <button>：data-copy 里放纯 ASCII 的地址，
+    可见文字是人能读的原始网址（中文路径已由 display_url 还原）。
+    """
+    shown = display_url(url)
+    if not shown:
+        return ""
+    payload = copy_url(url)
+    classes = "url-link url-copy" + ((" " + cls) if cls else "")
+    aria = al(*U["url_copy_aria"])
+    return (
+        f'<button class="{classes}" type="button" data-copy="{e(payload)}" {aria} '
+        f'{tt(*U["url_copy_aria"])}><span class="uc-text">{e(shown)}{icon("copy", "uc-i")}</span>'
+        f'</button>'
+    )
+
+
 def cf_excerpt(text: str, is_en: bool) -> str:
     """展开卡里的「优惠内容」只露开头：中文前 50 字、英文前约 120 字符（尽量落在词边界），
     超出补 ...；完整正文另存在 .cf-body 里，点一下弹浮层看全文。"""
@@ -1317,7 +1368,7 @@ def card(deal: dict, en: dict, today) -> str:
         go_aria = al(*U["go_aria"])
     if link:
         go_html = (
-            f'<a class="go" href="{e(link)}" target="_blank" rel="{link_rel(aff)}"\n'
+            f'<a class="go" href="{e(copy_url(link))}" target="_blank" rel="{link_rel(aff)}"\n'
             f'             {go_aria}><span class="go-full">{go_full}</span>'
             f'<span class="go-short">{go_short}</span>{icon("external")}</a>'
         )
@@ -1326,12 +1377,9 @@ def card(deal: dict, en: dict, today) -> str:
 
     official = safe_url(deal.get("url"))
     if official:
-        url_dd = (
-            f'<a class="url-link" href="{e(official)}" target="_blank" rel="noopener nofollow">'
-            f"{e(official)}</a>"
-        )
+        url_dd = url_copy_button(official)
     else:
-        url_dd = e(deal.get("url", ""))
+        url_dd = e(display_url(deal.get("url", "")))
 
     period = period_block(deal)
 
@@ -1686,16 +1734,24 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     acts = []
     if main_href:
         acts.append(
-            f'<a class="dp-btn mint" href="{e(main_href)}" target="_blank" rel="{link_rel(aff)}">'
+            f'<a class="dp-btn mint" href="{e(copy_url(main_href))}" target="_blank" rel="{link_rel(aff)}">'
             f'{ui("dp_official")}{icon("external", "dp-ico")}</a>'
         )
     if src:
         acts.append(
-            f'<a class="dp-btn ghost" href="{e(src)}" target="_blank" rel="noopener noreferrer">'
+            f'<a class="dp-btn ghost" href="{e(copy_url(src))}" target="_blank" rel="noopener noreferrer">'
             f'{ui("dp_source_post")}{icon("external", "dp-ico")}</a>'
         )
     if not acts:
         acts.append(f'<span class="dp-btn ghost">{ui("see_official")}</span>')
+
+    # 官方活动链接：只做「点按复制」的一行小字（跳转交给上面的绿色按钮）
+    url_copy_html = ""
+    if official:
+        url_copy_html = (
+            f'<div class="dp-urlcopy"><span class="dp-urlcopy-k">{ui("f_link")}</span>'
+            f'{url_copy_button(official)}</div>'
+        )
 
     def block(title: str, body: str, cls: str = "") -> str:
         return (
@@ -1716,7 +1772,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     # 标签与取值都走 scripts/eligibility.py 的枚举表，英文页天然零 CJK。
     elig_entries = eligibility_entries(deal, is_en)
     # 平台徽标只在该页真的用到时才塞进 sprite，其余详情页一张不增
-    dp_icon_keys = ("external", "archive", "chevron", "verified-shield", "hourglass", cat_icon)
+    dp_icon_keys = ("external", "archive", "chevron", "verified-shield", "hourglass", "copy", cat_icon)
     if any(badges for _, _, badges in elig_entries):
         dp_icon_keys += ("plat-ios", "plat-android", "plat-web")
     if elig_entries:
@@ -1854,7 +1910,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
             "@id": canon + "#offer",
             "name": title_text,
             "description": highlight or content or title_text,
-            "url": official or canon,
+            "url": copy_url(official) or canon,
             "category": cat_plain,
             "availability": "https://schema.org/Discontinued" if expired else "https://schema.org/InStock",
             "areaServed": strip_region_bracket(regions) or regions,
@@ -1962,6 +2018,8 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 <meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">
+<meta name="dh-copy" content="{e(ui('copy_done'))}|{e(ui('copy_manual'))}">
+<script src="/assets/js/copy.js?v={asset_ver('assets/js/copy.js')}" defer></script>
 
 <script type="application/ld+json">
 {jsonld}
@@ -2024,6 +2082,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
         {''.join(acts)}
         {aff_note_html}
       </div>
+      {url_copy_html}
 
       <div class="dp-vote">{vote_bar(deal_id)}</div>
     </article>
@@ -3290,6 +3349,10 @@ def check_en_pages(paths: list[Path]) -> None:
         body = re.sub(r"<script\b.*?</script>|<svg\b.*?</svg>", " ", body, flags=re.S)
         body = re.sub(r"\sdata-[a-zA-Z0-9-]+=\"[^\"]*\"", " ", body)
         body = body.replace("中文", "")
+        # 「官方活动链接」按钮里的网址不是待翻译文案：工行那类中文页面地址，按 Jun 的要求
+        # 解码后显示成原字（不再是 %E7%89%A1… 乱码），网址里带汉字是链接本身的事实。
+        # 只摘掉这一个按钮的文本，其余可见正文仍是零容忍。
+        body = re.sub(r'<button class="[^"]*url-copy[^"]*"[^>]*>.*?</button>', " ", body, flags=re.S)
         for needle, kind in ((_EN_CJK_RE, "中文 / 日文"), (_EN_FW_RE, "全角标点")):
             for m in needle.finditer(body):
                 snippet = re.sub(r"\s+", " ", body[max(0, m.start() - 30): m.start() + 30]).strip()
@@ -3910,6 +3973,18 @@ def main() -> None:
         switch_href = "/" if is_en else "/en/"
         switch_hreflang = "zh-CN" if is_en else "en"
 
+        # 首屏导语：手机端收成「单行走马灯」省一行高度（2026-11-23）。
+        # 完整文案仍是真实文本节点（SEO 照抓）；轨道里再放一份 aria-hidden 的副本，
+        # 靠它把 translateX(-50%) 接成无缝循环。副本只在手机端显示，桌面端 display:none，
+        # 桌面排版与改动前完全一样。文案短（英文页 25 字符）时不加 is-long，不做动画。
+        hero_tag_text = ui("hero_tag")
+        hero_tag_cls = "ht-track is-long" if len(hero_tag_text) > 34 else "ht-track"
+        hero_tag_html = (
+            f'<p class="hero-tag"><span class="{hero_tag_cls}">'
+            f'<span class="ht-main">{e(hero_tag_text)}</span>'
+            f'<span class="ht-copy" aria-hidden="true">{e(hero_tag_text)}</span></span></p>'
+        )
+
         head = f"""<!DOCTYPE html>
 <html lang="{'en' if is_en else 'zh-CN'}" data-lang="{'en' if is_en else 'zh'}" data-today="{today.isoformat()}" data-consent-required="{CONSENT_REQUIRED}">
 <head>
@@ -3950,6 +4025,8 @@ def main() -> None:
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 <meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">
+<meta name="dh-copy" content="{e(ui('copy_done'))}|{e(ui('copy_manual'))}">
+<script src="/assets/js/copy.js?v={asset_ver('assets/js/copy.js')}" defer></script>
 <noscript><style>.module:not(.hot-strip) .track > .card:nth-child(n + 6){{ display: block; }}
 html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></noscript>
 
@@ -4000,7 +4077,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
   <div class="shell">
     <section class="hero">
       <h1>{ui('hero_h1')}</h1>
-      <p class="hero-tag">{ui('hero_tag')}</p>
+      {hero_tag_html}
       <a class="hero-tg" href="{TG_GROUP_URL}" target="_blank" rel="noopener noreferrer"
          {al(*U['submit_tg_aria'])} {tt(*U['submit_tg_aria'])}>{hero_tg_badge()}</a>
       <p class="hero-meta"><span class="dot" aria-hidden="true"></span><span class="hm-long">{ui('updated', t=e(beijing_time))}</span><span class="hm-short">{ui('updated_short', t=e(beijing_short))}</span></p>

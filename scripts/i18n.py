@@ -172,6 +172,10 @@ U: dict[str, tuple[str, str]] = {
     "f_period": ("开始及截止时间", "Starts & ends"),
     "f_steps": ("参与步骤", "Steps"),
     "f_link": ("官方活动链接", "Official link"),
+    # 「官方活动链接」那一行：网址本身改成点按复制（2026-11-23），这三个是它的无障碍名与吐司文案
+    "url_copy_aria": ("点按复制官方活动链接", "Tap to copy the official link"),
+    "copy_done": ("已复制链接", "Link copied"),
+    "copy_manual": ("请长按网址复制", "Press and hold the link to copy"),
     "f_source": ("来源", "Source"),
     "f_last_verified": ("最后验证", "Last verified"),
     "f_added": ("收录", "Added"),
