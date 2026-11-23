@@ -6222,7 +6222,7 @@
   "title": "[US] Nuyek Black Friday VPS: 1 vCPU/2GB/25GB NVMe/8TB for $11 a year",
   "highlight": "1 vCPU, 2GB DDR4, 25GB NVMe, 100Mbps port, 8TB a month, one dedicated IPv4 and a /56 IPv6 subnet in Highland, Illinois, for $11 a year",
   "regions": "[US] Highland, Illinois (standard international routing, not optimised for China)",
-  "value": "$11 a year (about $0.92 a month)",
+  "value": "$11 a year",
   "content": "Nuyek's 2026 Black Friday VPS: 1 vCPU, 2GB DDR4, 25GB NVMe, 100Mbps port, 8TB monthly traffic, one dedicated IPv4 plus a /56 IPv6 subnet, hosted in Highland, Illinois, for $11 a year. The shop says 15 units at launch, then one unit a day until 1 January 2027. The same page lists an i5-10500 / 16GB / 2x256GB NVMe / 100Mbps / 33TB dedicated server at $15 a month (20 units, monthly only, code BF2016-i510500-AKJQ).",
   "conditions": "Very limited stock: 15 at launch then one a day until 1 January 2027. The site does not state the virtualisation type, port policy or renewal price, so ask support or check the checkout page. 8TB a month is a hard cap, not unlimited. Standard international routing, so speed from China depends on the carrier.",
   "steps": [
@@ -6288,7 +6288,7 @@
   "title": "[Global] Cognition Devin: SWE-2 free through 30 November, SWE-2 Flash through 4 December (Medium on the free plan)",
   "highlight": "In Devin Desktop and Devin CLI, SWE-2 is free through 30 November and SWE-2 Flash through 4 December 18:00 UTC; the free plan can select Flash Medium; Devin cloud sessions are excluded",
   "regions": "[Global] Devin Desktop (macOS) and Devin CLI, subject to your plan and region",
-  "value": "SWE-2 normally $3/$15 per million tokens and Flash $0.10/$0.50; free during the promotion",
+  "value": "Free through 4 December",
   "content": "Cognition's model docs (read 2026-11-23) say SWE-2 is free for self-serve plans in Devin Desktop and Devin CLI through 30 November 2026, then $3.00 per million input, $15.00 output and $0.30 cache reads. SWE-2 Flash is free until 4 December 2026 at 18:00 UTC, then $0.10 input, $0.50 output with $0.01 cache reads and $0.125 cache writes across all three variants. SWE-2 Flash Medium is available on the Free plan; High and Max need a paid plan. SWE-2 Flash launched on 4 November and Cognition says it runs about 3x faster than SWE-2 at about a fifth of the price. Both models are only in Desktop and CLI, not in Devin cloud sessions.",
   "conditions": "Desktop and CLI only; Devin cloud sessions are excluded. Flash High and Max require a paid plan. Voice mode uses a separate agent model that does not get the free rate. Normal list pricing resumes automatically after the end dates.",
   "steps": [
@@ -6324,7 +6324,7 @@
   "title": "[Global] Azure free account: $200 for 30 days + 12 months of free VMs + 65 always-free services (card verified, not charged)",
   "highlight": "$200 of credit for any service for 30 days; for 12 months, 750 hours a month each of B1s, B2pts v2 and B2ats v2 burstable Linux or Windows VMs, plus 20+ popular services free and 65+ always free",
   "regions": "[Global] Billing country must be supported; signing up directly to pay-as-you-go in China or India does not get the 12-month free services",
-  "value": "$200 plus 750 free VM hours a month for 12 months",
+  "value": "$200 credit + 12 months of free VMs",
   "content": "Azure's free account (official terms as of November 2026) gives new customers $200 of credit for 30 days on any service except third-party Marketplace purchases; unused credit is lost. For 12 months you get 750 hours a month each of B1s, B2pts v2 (Arm) and B2ats v2 (AMD) burstable VMs, Linux or Windows, spread across as many instances as you like; plus monthly free amounts on 20+ popular services and 65+ always-free services for any account. VMs can run in any supported region. Sign-up needs a phone number, a non-prepaid credit or debit card and a Microsoft or GitHub account; a $1 authorisation may be held and reversed, and nothing is charged. Within 30 days or when the credit runs out you must move to pay-as-you-go to keep the 12-month free services, otherwise the account and services are disabled.",
   "conditions": "New customers who have not had the 12-month free services before. Phone number, non-prepaid card (credit card only in Hong Kong and Brazil), Microsoft or GitHub account, and a billing country on the supported list. $1 hold released after verification. The $200 lasts 30 days and does not roll over; you must upgrade to pay-as-you-go within 30 days to keep the 12-month allowances; monthly free amounts reset and do not accumulate; public IP addresses and outbound data are billed separately and draw on the $200. Build a VM with an SSH key or password, and open whatever ports you need in the network security group (port 22 only by default).",
   "steps": [
