@@ -767,6 +767,13 @@ ELIG.update(
         "merkium-free-llm-api": {
             "identity": "email", "platform": ["web"], "geo": ["GLOBAL"],
         },
+        # 2026-11-24：Show HN 两款 AI 新品（官网注册即用、免绑卡、无地区限制）
+        "sie-serverless-free-credits": {
+            "identity": "email", "platform": ["web"], "geo": ["GLOBAL"],
+        },
+        "klistra-free-350-credits": {
+            "identity": "email", "platform": ["web"], "geo": ["GLOBAL"],
+        },
         # 2026-11-23：RikkaHub 开源 Android 客户端（只发 Android 端，本体与内购全免）
         "rikkahub-android-llm-client": {
             "identity": "none", "platform": ["android"], "geo": ["GLOBAL"],
@@ -815,6 +822,7 @@ KEEP_EXTRA = {
     "urnetwork-free-tier-30gib", "databricks-free-edition",
     "dahl-inference-100m-tokens", "nodaroo-free-container-host",
     "plugsky-free-llm-api", "merkium-free-llm-api",
+    "sie-serverless-free-credits", "klistra-free-350-credits",
     "rikkahub-android-llm-client",
     "simhub-esim-reader-vowifi",
     # 2026-11-23 crypto 比赛 7 条

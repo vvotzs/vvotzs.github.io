@@ -6737,5 +6737,39 @@
   ],
   "risk": "A free SaaS from a mainland Chinese vendor whose free-tier limits and long-term policy are unpublished; Fleet's automatic sudo review is explicitly billed by model API usage, so do not enable it by default; monitoring data sits with the vendor; a machine must stay online to run the agent.",
   "source": "Leaflow official monitoring product page (read 2026-11-24: free cloud monitoring, with host monitoring, URL checks, alerts, SLO and status pages at no charge) + the vendor's launch post on NodeLoc (2026-11-22, saying Fleet, monitoring, status pages and DNS are all free and need no card)"
+ },
+ "sie-serverless-free-credits": {
+  "title": "[Global] Superlinked SIE Serverless: $20 in credits for a new account with no card, and teams can apply for $500 more",
+  "brand_en": "Superlinked",
+  "highlight": "Managed inference for small task-specific models: a new account gets $20 with no card, about 530 million embedding tokens or 10 million generated tokens, and teams can apply for $500 in launch credits; the same calls can move to a self-hosted cluster",
+  "regions": "[Global] Sign in to the console with OAuth; the site lists no country restriction",
+  "value": "$20 signup credits (no card) plus $500 launch credits by application",
+  "content": "SIE Serverless hosts more than 20 small task-specific models, covering OCR, document-to-Markdown, reranking, sparse and multi-vector embeddings, classification, field extraction, speech to text and PII redaction, behind one API. The official launch post says a new account gets $20 with no card, worth about 530 million embedding tokens, 50,000 pages of document parsing or 10 million generated tokens, and teams can apply for $500 more in launch credits from the console. SDKs exist for Python and TypeScript along with an OpenAI-compatible endpoint and integrations for LangChain, LlamaIndex and CrewAI, and the same calls move unchanged to a self-hosted SIE Cluster; the engine is open source under Apache-2.0 and self-hosting carries no licence fee.",
+  "conditions": "Sign in to the console with OAuth to get the $20 with no card; the $500 launch credits need an application in the console and the vendor publishes no review criteria; credits are one-off and usage is billed once they run out.",
+  "steps": [
+   "Open console.superlinked.com and sign in with OAuth, which registers the account with $20 and needs no card",
+   "Copy an API key, install sie-sdk and send one encode request",
+   "Apply for the $500 launch credits in the console and describe what you are building",
+   "Switch models per task (OCR, embeddings, reranking) and note that usage is billed only after the credits run out"
+  ],
+  "risk": "The vendor publishes neither the expiry nor the eligible countries for the $20 and $500 credits; the $500 needs manual review with unpublished criteria and volume; usage is billed after the credits, so set a budget before batch jobs; the published benchmarks are the vendor's own, and small models trail large ones on complex reasoning; direct access from mainland China is untested.",
+  "source": "Superlinked official launch post (16 October 2026: $20 for a new account with no card, teams can apply for $500 launch credits in the console) + the official About page and quickstart (read 2026-11-24: OAuth signup credits the account, $20 covers 530 million embedding tokens, 50,000 pages of parsing or 10 million generated tokens, engine open source under Apache-2.0)"
+ },
+ "klistra-free-350-credits": {
+  "title": "[Global] Klistra: 350 free credits for the first 200 signups, no card, for AI motion videos",
+  "brand_en": "Klistra",
+  "highlight": "Spec-driven video: describe the scenes in a written specification and a builder agent renders it, so a change touches only what changed and the same spec re-lays out for every size; the free 350 credits cover a 15-20 second video, with no card and only the first 200 accounts",
+  "regions": "[Global] Sign up on the site; no card is needed and no country restriction is listed",
+  "value": "350 credits (about $12-17, enough for one 15-20 second video)",
+  "content": "Klistra is a one-developer AI motion design and video studio: you write a scene-by-scene specification, then a builder agent renders it, and an edit changes only the part of the spec that moved. Everything is billed in credits, with a first version costing about 50-150, a round of changes 20-150, rendering 15 seconds in three sizes 2-5, a generated clip 15-60, and a picture, voiceover or music track 1-5. The free plan gives 350 credits, enough for one 15-20 second video and requires no card; Pro is $25 a month ($20 billed yearly) with 600 credits a month that roll over once, and the Claude Code integration is paid-plan only.",
+  "conditions": "The free plan covers only the first 200 signups and the 350 credits must be used within 60 days; no card is needed; once credits run out you buy packs from $12; the Claude Code integration is paid-plan only.",
+  "steps": [
+   "Sign up at klistra.ai without a card and confirm the 350 credits land in the account",
+   "Create a project and write the scene specification (visuals, timing, assets, captions)",
+   "Render a first version, then edit only the part of the spec you want changed and render again",
+   "Export the sizes you need and use the credits within 60 days; buy a pack after that"
+  ],
+  "risk": "Only 200 free seats exist and they opened on 18 November, so they may already be gone; it is a one-person project with no SLA and the output quality is not independently verified; generated clips are expensive at 15-60 credits, so heavy use means buying packs; credits cannot be withdrawn; Chinese interface and Chinese copy support are unverified.",
+  "source": "Klistra official pricing page (read 2026-11-24: the Free plan gives 350 credits to use within 60 days for the first 200 accounts with no card; Pro is $25 a month or $20 billed yearly with 600 credits) + the Show HN launch posts (18 and 21 November 2026, where the author describes credit pricing and video costs)"
  }
 }

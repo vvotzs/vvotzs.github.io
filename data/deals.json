@@ -7089,6 +7089,50 @@
   "dedup_key": "dtcpay|esim|sg|esim-5gb-6m"
  },
  {
+  "id": "sie-serverless-free-credits",
+  "dedup_key": "superlinked|ai|global|sie-serverless-free-credits",
+  "title": "[全球]Superlinked SIE Serverless：新账号送$20额度免绑卡，团队可再申请$500",
+  "brand": "Superlinked",
+  "domain": "superlinked.com",
+  "category": "ai",
+  "value": "$20注册额度（免绑卡）+可申请$500启动额度",
+  "value_num": 20,
+  "cost": "真正免费",
+  "highlight": "任务专用小模型托管推理：新账号$20额度免绑卡，约合5.3亿embedding Token或1,000万生成Token；团队另可申请$500启动额度，同一套调用可直接迁到自建集群",
+  "regions": "[全球] 控制台OAuth登录即可；官网未列地区限制",
+  "start": "",
+  "end": "",
+  "verified": true,
+  "last_verified": "2026-11-24",
+  "added": "2026-11-24",
+  "content": "SIE Serverless把20多种小而专的模型（OCR、文档转Markdown、重排、稀疏与多向量嵌入、分类、抽取、语音转写、PII脱敏等）做成托管API。官方博客写明新账号送$20、免绑卡，约等于5.3亿embedding Token、5万页文档解析或1,000万生成Token；团队还可在控制台申请拿$500启动额度。SDK有Python与TypeScript，另有OpenAI兼容端点及LangChain/LlamaIndex/CrewAI等集成，同一套调用可原样迁到自建SIE Cluster；开源引擎Apache-2.0，自托管免许可费。",
+  "conditions": "控制台OAuth登录即得$20，免绑卡；$500启动额度需在控制台提申请、官方未公布审核标准；额度一次性，用完后按用量续费。",
+  "steps": [
+   "打开console.superlinked.com，用OAuth登录（账号注册即到账$20，无需卡）",
+   "在控制台复制API Key，用pip装sie-sdk后发一次encode请求",
+   "要额度就在控制台提交$500启动额度的申请并写明用途",
+   "按任务换模型（OCR/嵌入/重排等），超额度后才开始按量计费"
+  ],
+  "url": "https://superlinked.com/serverless",
+  "source_url": "https://superlinked.com/blog/launch",
+  "source": "Superlinked官方发布博客（2026-10-16：新账号$20免绑卡、团队可在控制台申请$500启动额度）+ 官方About页与quickstart（2026-11-24实读：OAuth注册即到账、$20覆盖5.3亿embedding Token / 5万页文档解析 / 1,000万生成Token、开源引擎Apache-2.0）",
+  "risk": "官方未公布$20与$500额度的有效期和适用地区；$500需人工审核，标准与名额未公开；超额按用量计费，跑批量任务前先设预算；官方基准是自家跑分，小模型在复杂推理上不如大模型；中国大陆直连未实测。",
+  "status": "active",
+  "added_at": "2026-11-24T05:52:00+08:00",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "residency_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "phone_requirement": "none",
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "octopus-mobile-welcome-150",
   "dedup_key": "octopus|bank|hk|mobile-welcome-150",
   "title": "[香港]手机八达通新客迎新HK$150增值额：加卡+单笔HK$100消费+登记（至2027-01-03）",
@@ -7730,6 +7774,50 @@
   "funding_requirement": "min_deposit",
   "geo_restriction": [
    "NL"
+  ]
+ },
+ {
+  "id": "klistra-free-350-credits",
+  "dedup_key": "klistra|ai|global|free-350-credits",
+  "title": "[全球]Klistra：前200名注册送350credits，免绑卡做AI动效视频",
+  "brand": "Klistra",
+  "domain": "klistra.ai",
+  "category": "ai",
+  "value": "350credits（约合$12–17，够一条15–20秒成片）",
+  "value_num": 14,
+  "cost": "真正免费",
+  "highlight": "规格驱动出片：先写清分镜规格，再由builder agent渲染，改一处只改一处、同一份规格可按尺寸重排；免费350credits够一条15–20秒成片，免绑卡，限前200个账号",
+  "regions": "[全球] 官网注册即用，免绑卡；官网未列地区限制",
+  "start": "",
+  "end": "",
+  "verified": true,
+  "last_verified": "2026-11-24",
+  "added": "2026-11-24",
+  "content": "Klistra是单人开发的AI动效/视频工作室：先写分镜规格（场景、时间、素材、字幕），再让builder agent出片，改稿只改规格里变动的那处。计费统一走credits——首次成片约50–150，一轮改稿20–150，渲染15秒三尺寸2–5，生成片段15–60，图片/配音/配乐各1–5。免费档给350credits，够一条15–20秒成片、无需绑卡；Pro $25/月（年付$20）含600credits/月，未用完可结转一次，Claude Code集成只在付费档。",
+  "conditions": "免费档只给前200个注册账号，350credits须60天内用完；免绑卡；credits用尽后要买$12起的包；Claude Code集成仅付费档可用。",
+  "steps": [
+   "打开klistra.ai注册账号（不用绑卡），确认账户里到账350credits",
+   "新建项目，按场景写清分镜规格（画面、时长、素材、字幕）",
+   "先出一版成片预览，改稿时只改规格里要变的那处再重新渲染",
+   "导出需要的尺寸，60天内用完额度；用尽后按包购买"
+  ],
+  "url": "https://klistra.ai/pricing",
+  "source_url": "https://news.ycombinator.com/item?id=50548740",
+  "source": "Klistra官方定价页（2026-11-24实读：Free档350credits、60天内用完、限前200个账号、免绑卡；Pro $25/月年付$20含600credits）+ Show HN发布帖（2026-11-18与11-21，作者自述credits计价与成片成本）",
+  "risk": "免费席位只有200个且11-18已上线，可能早已领完；单人项目、无SLA，成片质量未独立验证；生成片段单价高（15–60credits），重度使用要买包；credits不可提现；中文界面与中文文案支持未核实。",
+  "status": "active",
+  "added_at": "2026-11-24T05:53:00+08:00",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "residency_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "phone_requirement": "none",
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
   ]
  },
  {
@@ -14008,7 +14096,7 @@
   "kyc_level": "cn_ok",
   "utility": 0,
   "verified": true,
-  "last_verified": "2026-11-23",
+  "last_verified": "2026-11-24",
   "added": "2026-11-23",
   "status": "expiring_soon",
   "added_at": "2026-11-23T20:56:40+08:00",
@@ -14092,7 +14180,7 @@
   "risk": "资金要锁 90 天，中途取出会掉档；奖励按最低余额算，不是按最高；合作银行利率与产品会变；奖励属应税利息，美国报税要申报；$10,000 档只拿 $40，性价比很低，主要适合本来就要搬钱进高息账户的人。",
   "added_at": "2026-11-19T19:12:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-23",
+  "last_verified": "2026-11-24",
   "added": "2026-11-19",
   "status": "expiring_soon",
   "kyc_level": "foreign_only",
@@ -15498,7 +15586,7 @@
   "start": "2026-11-16",
   "end": "2026-11-29",
   "verified": false,
-  "last_verified": "2026-11-22",
+  "last_verified": "2026-11-24",
   "added": "2026-11-19",
   "content": "TopCashback英国站的推荐奖励：在2026-11-16 10:00至11-29 10:00（GMT）之间通过邀请链接注册并验证账号，再在180天内在合格商家累计£10「已确认（approved）」返现，即可拿到£10新会员奖励，以银行转账发放；推荐人同期得£20–£25。金额与门槛每次活动都会调整（11月初为£15），注册页显示的数字才是你这一单的额度。",
   "conditions": "仅限英国站新用户、18岁以上；须走邀请链接注册并完成账号验证；£10必须是合格商家的已确认返现，品牌、补偿性返现和其它新人奖励不计入；每人一次。",
@@ -15508,7 +15596,7 @@
    "180 天内累计 £10 已确认返现",
    "奖励随返现一起以银行转账提现"
   ],
-  "url": "https://www.topcashback.co.uk/refer-a-friend/",
+  "url": "https://www.topcashback.co.uk/referrals/terms",
   "source": "TopCashback 英国站 Refer & Earn 条款（第三方站点 2026-11-16 复核；官网对非英国 IP 返回 403）",
   "risk": "待核实：本轮 refer-a-friend 页返回 404、官网对非英区 IP 也有限制；GetQuids / Scrimpr / HonestCodes 三家在 2026-11-16–11-21 复核时都仍写「新会员 £10」，但口径是「180 天内累计 £10 已确认返现才解锁」的常设新人奖励，并非原本记录的 11/16–11/29 限时窗口；Plus 档每年从返现里扣 £5，需在账户里改回免费的 Classic；奖励要等商家确认返现后才发，通常 30–90 天。",
   "status": "expiring_soon",
@@ -15709,7 +15797,7 @@
   "start": "2026-11-01",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-23",
+  "last_verified": "2026-11-24",
   "content": "豆包工作（豆包旗下AI Agent办公产品）2026-11-12更新，新增Kimi K3.1 Pro、GLM 5.3、DeepSeek V4.1 Flash等第三方模型，并在模型选择页标注额度倍率；豆包2.1 Lite与DeepSeek V4.1 Flash限时降到0.01倍率。两项福利：首次登录豆包电脑版或豆包工作电脑版的新用户可直接领30天免费体验套餐（除生视频与Pro模型外全部可用）；所有用户的每日签到——每天200额度、周一翻倍（400），累计到500/2,000/5,000额度时再额外送200/500/1,300，连签30天合计8,800额度。赠送额度有效期30天、优先消耗，未订阅用户不能用在Pro模型与生视频上。",
   "conditions": "30天订阅只给首次登录电脑版的新用户，手机端没有入口；签到在电脑版左下角弹窗或头像→「免费用豆包」，每天一次、周一翻倍，漏签不补；赠送额度30天过期；未付费账号不能用赠送额度跑Pro模型与生视频；0.01倍率为限时、官方未公布结束时间。",
   "steps": [
