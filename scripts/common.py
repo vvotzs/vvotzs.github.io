@@ -109,8 +109,7 @@ def write_sitemap(deals: list[dict], today: date | None = None) -> Path:
     # 分类目录页：每个分类中英各一份，lastmod 取该分类里最新一次核验 / 收录的日期
     for slug in CAT_META:
         cat_last = max(
-            (str(d.get("last_verified") or added_date(d) or today_iso)[:10]
-             for d in deals if d.get("category") == slug),
+            (lastmod_of(d, today_iso) for d in deals if d.get("category") == slug),
             default=today_iso,
         )
         zh = cat_url(slug, "zh")
@@ -136,7 +135,7 @@ def write_sitemap(deals: list[dict], today: date | None = None) -> Path:
         en = deal_url(deal_id, "en")
         alts = [("zh-CN", zh), ("en", en), ("x-default", zh)]
         # 条目内容最后一次被核验 / 收录的日期；两者都缺就用今天
-        lastmod = str(deal.get("last_verified") or added_date(deal) or today_iso)[:10]
+        lastmod = lastmod_of(deal, today_iso)
         expired = deal.get("status") == "expired"
         freq, prio = ("yearly", "0.3") if expired else ("weekly", "0.6")
         add(zh, alts, lastmod, freq, prio)
@@ -199,6 +198,20 @@ def added_date(deal: dict) -> str:
     added_at 是带时分的入库时间，added 是展示用的日期；两者必须落在同一天。
     """
     return str(deal.get("added_at") or deal.get("added") or "")[:10]
+
+
+def lastmod_of(deal: dict, fallback: str = "") -> str:
+    """条目 / 分类页的 lastmod：只返回能解析的 YYYY-MM-DD。
+
+    last_verified 可能是「待核实」这类占位文案（maintain_deals.py 给新条目的默认值），
+    直接塞进 <lastmod> / JSON-LD 的 dateModified 会写出非日期，搜索引擎会把整条记录判为无效。
+    先试 last_verified，再退回入库日期，都不行才用 fallback（没给就用今天，北京时间）。
+    """
+    for raw in (deal.get("last_verified"), added_date(deal)):
+        text = str(raw or "").strip()[:10]
+        if text and parse_date(text):
+            return text
+    return fallback or today_local().isoformat()
 
 
 def ensure_added_at(deals: list[dict], when: datetime | None = None) -> bool:

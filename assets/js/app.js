@@ -899,13 +899,14 @@
   function setChips(key, value) {
     var group = $('.chips[data-group="' + key + '"]');
     if (!group) return false;
-    var hit = false;
-    $$(".chip", group).forEach(function (c) {
-      var on = c.dataset.value === value;
-      c.classList.toggle("on", on);
-      if (on) hit = true;
+    /* 先看这个值有没有对应的 chip：URL 里带了不认识的 ?cat=zzz 时不能把整组高亮全抹掉，
+       否则筛选面板会显示成「一条都没选」而实际还在默认状态。 */
+    var chips = $$(".chip", group);
+    if (!chips.some(function (c) { return c.dataset.value === value; })) return false;
+    chips.forEach(function (c) {
+      c.classList.toggle("on", c.dataset.value === value);
     });
-    return hit;
+    return true;
   }
 
   var resetBtn = $("[data-reset]");

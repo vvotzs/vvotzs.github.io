@@ -84,7 +84,11 @@ def main() -> int:
                 same_url = bool(a.get("url")) and str(a.get("url")).rstrip("/").lower() == str(
                     b.get("url")
                 ).rstrip("/").lower()
-                same_value = str(a.get("value_num")) == str(b.get("value_num"))
+                same_value = (
+                    a.get("value_num") is not None
+                    and b.get("value_num") is not None
+                    and str(a.get("value_num")) == str(b.get("value_num"))
+                )
                 if ratio >= 0.72 or (same_url and ratio >= 0.4) or (same_url and same_value):
                     reported.add(pair)
                     suspects.append(

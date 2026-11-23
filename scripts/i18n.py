@@ -843,7 +843,13 @@ def load_en() -> dict:
     """读 data/deals_en.json：{id: {title, brand_en, highlight, regions, value, content, ...}}"""
     if not EN_DATA.exists():
         return {}
-    data = json.loads(EN_DATA.read_text(encoding="utf-8"))
+    try:
+        data = json.loads(EN_DATA.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        # 文件坏了就停在构建前说清楚，不要让 traceback 混在一堆页面输出里
+        raise SystemExit(f"data/deals_en.json 不是合法 JSON（{exc}）：修好后再构建") from exc
+    if not isinstance(data, dict):
+        raise SystemExit("data/deals_en.json 顶层必须是 {id: {...}} 对象")
     return {key: _ascii_punct(item) for key, item in data.items()}
 
 

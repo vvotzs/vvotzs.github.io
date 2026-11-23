@@ -65,6 +65,7 @@ from common import (  # noqa: E402
     deal_path,
     deal_url,
     ensure_added_at,
+    lastmod_of,
     now_local,
     parse_date,
     short_date,
@@ -1881,7 +1882,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
             "breadcrumb": {"@id": canon + "#breadcrumb"},
             "mainEntity": {"@id": canon + "#offer"},
             "datePublished": added_day(deal, today),
-            "dateModified": str(deal.get("last_verified") or added_day(deal, today)),
+            "dateModified": lastmod_of(deal, added_day(deal, today)),
             "primaryImageOfPage": {"@type": "ImageObject", "url": og_image},
         },
         {
@@ -2813,7 +2814,19 @@ def scope_factor(deal: dict) -> float:
 
 
 def _days_since(value: str | None, today) -> int | None:
+    """距今几天：date（YYYY-MM-DD）与带时分的 ISO 时间戳都认。
+
+    added_at 存的是 "2026-11-21T09:12:00+08:00" 这种完整时间戳，parse_date() 只吃日期，
+    以前直接拿它算 Fresh，解析失败 → 恒为 None → Fresh 永远是 0（公式里的新鲜度加成从没生效）。
+    """
     d = parse_date(value)
+    if d is None:
+        text = str(value or "").strip()
+        if len(text) > 10:
+            try:
+                d = datetime.fromisoformat(text).date()
+            except ValueError:
+                d = None
     return (today - d).days if d else None
 
 
@@ -3076,7 +3089,7 @@ def render_category_page(
     og_locale_alt = "zh_CN" if is_en else "en_US"
 
     lastmod = max(
-        (str(d.get("last_verified") or added_day(d, today))[:10] for d in cat_deals),
+        (lastmod_of(d, today.isoformat()) for d in cat_deals),
         default=today.isoformat(),
     )
 
@@ -3499,7 +3512,9 @@ def main() -> None:
 
     # 手动追加条目、只跑 build_site 的路径也要有入库时间：缺的补上并回写数据文件
     if ensure_added_at(deals):
-        DATA.write_text(json.dumps(deals, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        # 与 maintain_deals.py / label_*.py 保持一致用 indent=1：否则一旦补写 added_at，
+        # 整个数据文件会从头格式化一遍，diff 里全是无关的空格改动。
+        DATA.write_text(json.dumps(deals, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
         print(f"已为缺入库时间的条目补写 added_at 并回写 {DATA.name}")
 
     # 新收录：最近 48 小时按「入库先后」倒序。

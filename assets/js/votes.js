@@ -77,6 +77,18 @@
     });
   }
 
+  /* 还不知道票数（首屏拉取失败 / 还没回来）时回滚用：把数字放回「–」，
+     不要留着一个自己刚点上、服务器没认的 +1。 */
+  function clearCount(id) {
+    delete counts[id];
+    box(id).forEach(function (b) {
+      var u = b.querySelector('[data-n="up"]');
+      var d = b.querySelector('[data-n="down"]');
+      if (u) u.textContent = "–";
+      if (d) d.textContent = "–";
+    });
+  }
+
   /* 理由气泡的容器不再写进 HTML（首页 144 张卡就是 144 个空节点，DOM 数直接顶到 1.3 万
      上限），等真要显示理由时才建：只在 showWhy() 里调。 */
   function whyOf(bar) {
@@ -181,6 +193,7 @@
         writeJson(LS_VOTES, myVotes);
         paintPressed(id);
         if (beforeCounts) setCount(id, beforeCounts.up, beforeCounts.down);
+        else clearCount(id);
         return;
       }
       if (typeof data.up === "number" && typeof data.down === "number") {
