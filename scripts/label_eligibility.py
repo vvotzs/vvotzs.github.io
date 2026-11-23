@@ -76,6 +76,11 @@ ELIG.update(
             "identity": "local_id", "residency": "local_resident",
             "funding": "direct_deposit", "geo": ["US"],
         },
+        # 2026-11-23 巡检新增，当时只写进 deals.json（字段值与线上一致，这里补回标定表）
+        "netspend-200-dd-400": {
+            "identity": "local_id", "residency": "local_resident",
+            "funding": "direct_deposit", "geo": ["US"],
+        },
         "capital-one-360-checking-400": {
             "identity": "local_id", "residency": "local_resident",
             "phone": "local_number", "funding": "direct_deposit", "geo": ["US"],
@@ -746,7 +751,20 @@ ELIG.update(
     }
 )
 
-# 非 Bank / eSIM 分类里也手工挂了这组字段的条目（AI / 云 / 软件共 13 条）。
+# =====================================================================
+# AI 免费 LLM API（2026-11-23 新增两条：官网注册建 Key、免绑卡、无地区限制）# =====================================================================
+ELIG.update(
+    {
+        "plugsky-free-llm-api": {
+            "identity": "email", "platform": ["web"], "geo": ["GLOBAL"],
+        },
+        "merkium-free-llm-api": {
+            "identity": "email", "platform": ["web"], "geo": ["GLOBAL"],
+        },
+    }
+)
+
+# 非 Bank / eSIM 分类里也手工挂了这组字段的条目（AI / 云 / 软件共 15 条）。
 # main() 对这两类以外的条目一律清空字段以回到默认值，跑一次就会把它们删掉，
 # 所以这里显式保留：只有明确列出的 id 才能留在非 Bank / eSIM 分类里。
 KEEP_EXTRA = {
@@ -757,6 +775,7 @@ KEEP_EXTRA = {
     "zcode-new-user-5day-8m", "tencent-lightvela-free-month",
     "urnetwork-free-tier-30gib", "databricks-free-edition",
     "dahl-inference-100m-tokens", "nodaroo-free-container-host",
+    "plugsky-free-llm-api", "merkium-free-llm-api",
 }
 
 
