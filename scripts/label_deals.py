@@ -358,6 +358,29 @@ KYC.update({
     "starryblu-60sgd-signup": "cn_ok",
 })
 
+# 2026-11-23 crypto 比赛 7 条：领奖核验用护照 / 证件 + 地址证明，大陆可过
+KYC.update(
+    {
+        "tradingview-cme-the-leap-nov2026": "cn_ok",
+        "gnoland-gnome-tavern-hackathon": "cn_ok",
+        "gensyn-agent-arena-evidence-mining": "cn_ok",
+        "immunefi-base-everest-audit-comp": "cn_ok",
+        "reactive-omni-buildathon": "none",
+        "quote-trade-alphaleague-paper": "cn_ok",
+        "futuur-midterms-2026": "cn_ok",
+    }
+)
+KYC_NOTES.update(
+    {
+        "tradingview-cme-the-leap-nov2026": "免费 Basic 账号可参赛，领奖时可能核验年龄/身份/居住地",
+        "gnoland-gnome-tavern-hackathon": "先报名参赛，获奖者才需 KYC（护照可过）",
+        "gensyn-agent-arena-evidence-mining": "领奖需 KYC 与制裁筛查，护照可过",
+        "immunefi-base-everest-audit-comp": "KYC 需护照或政府证件 + 地址证明",
+        "quote-trade-alphaleague-paper": "领奖前核验身份与所在地，美国用户仅限 Paper",
+        "futuur-midterms-2026": "领奖可能核验身份、年龄与所在地",
+    }
+)
+
 # ------------------------------------------------------------------ vowifi
 VOWIFI: dict[str, str] = {}
 

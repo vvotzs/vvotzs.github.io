@@ -179,6 +179,13 @@ REGION_NAMES = {
     "MT": ("马耳他", "Malta"),
     "TR": ("土耳其", "Türkiye"),
     "EG": ("埃及", "Egypt"),
+    "BY": ("白俄罗斯", "Belarus"),
+    "CU": ("古巴", "Cuba"),
+    "IR": ("伊朗", "Iran"),
+    "KP": ("朝鲜", "North Korea"),
+    "RU": ("俄罗斯", "Russia"),
+    "SD": ("苏丹", "Sudan"),
+    "SY": ("叙利亚", "Syria"),
 }
 
 

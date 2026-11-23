@@ -6503,5 +6503,124 @@
   ],
   "risk": "Free quotas are rate-limited by day with no published numbers, and users often report the limit firing without much use; there is no end date, so models can be withdrawn or become paid; Beam Free is unavailable in some countries.",
   "source": "OpenCode official Console Models documentation (read 2026-11-23: free-tier chat models require OpenCode) + that.promo free-model list (re-checked 2026-11-23: 11 models, 2 removed) + GitHub issue #59387 user reports on quota messages"
+ },
+ "tradingview-cme-the-leap-nov2026": {
+  "title": "[Global] TradingView × CME Group The Leap paper trading contest: $50,000 prize pool",
+  "brand_en": "TradingView",
+  "highlight": "Trade CME futures and single-stock futures with $25,000 in virtual money, ranked by return over maximum drawdown, with the top 250 splitting $50,000 in cash",
+  "regions": "[Global] Online paper trading, 18+; Iran, North Korea, Russia, Belarus, Cuba and the occupied regions of Ukraine are excluded",
+  "value": "$50,000 (first prize $10,000)",
+  "content": "Every entrant gets a separate The Leap paper account with a preset $25,000 virtual balance, 10:1 futures leverage and a $0.25 commission per contract, and no real money is traded at any point. About 105 CME futures and single-stock futures symbols are available, each with an open-position cap. The score is profit percentage divided by maximum drawdown with a 1% floor, and you must have opened or closed positions on at least 5 trading days to rank. The top 250 are paid: 1st to 3rd $10,000/$7,000/$6,000, 4th and 5th $3,500/$2,500, 6th to 25th $550, 26th to 50th $400, 51st to 250th a one-month Essential plan. Registration closes 11 December 08:00 UTC and trading runs to 18 December 12:00 UTC, when all positions are closed.",
+  "conditions": "A TradingView account is enough, including the free Basic plan; 18 or older, one account per person; residents of Iran, North Korea, Russia, Belarus, Cuba and the occupied regions of Ukraine cannot enter; at least 5 trading days with activity.",
+  "steps": [
+   "Sign in to TradingView and press Join The Leap on the contest page",
+   "The platform creates a paper contest account marked CME with $25,000 virtual funds and live data",
+   "Trade the eligible futures and single-stock futures on at least 5 separate days",
+   "Wait for the official leaderboard, then follow the prize email to verify identity and claim"
+  ],
+  "risk": "23,404 people had already registered and only the top 250 are paid, with 51st to 250th receiving just a one-month subscription; prizes of $600 or more are paid by wire and smaller ones through PayPal, and must be claimed within 14 days of the close or they are forfeited; the organiser may request age, identity and residency evidence and taxes are the winner's own; contest accounts are deleted 14 days after the event and their data is lost.",
+  "source": "TradingView official The Leap contest page and Official Competition Rules (read 23 November 2026: $50,000 cash pool, top 250 paid in tiers, free Basic plan eligible, 5-trading-day minimum, registration to 11 December 08:00 UTC, trading to 18 December 12:00 UTC)"
+ },
+ "gnoland-gnome-tavern-hackathon": {
+  "title": "[Global] Gno.land Gnome Tavern hackathon: $20,000 in GNOT for shipping on testnet",
+  "brand_en": "Gno.land",
+  "highlight": "Deploy anything that runs on the Gno.land testnet, 16 projects share $20,000 paid in GNOT, and winners can match their prize by keeping the project alive",
+  "regions": "[Global] Online submission, 18+; sanctioned regions excluded",
+  "value": "$20,000 in GNOT",
+  "content": "There is no required theme: a realm, dApp, developer tool or small demo that is deployed and working on the Gno.land testnet counts, submitted with a public repository, README, demo video and deployment link. The $20,000 pool is paid in GNOT: $2,000 for first, $1,000 for second and fourteen $500 Builder Awards. Winners who keep building can earn up to the same amount again from a $10,000 retention pool, paid half at three months and half at six, provided the project is live on mainnet, ships at least one release a month, reaches 50 unique addresses by month three and 100 by month six, and is imported or used by another project. Submissions close 18 December 01:00 UTC, winners are announced 21 December, KYC is due 22 December and payment follows on 23 to 24 December.",
+  "conditions": "18 or older, solo or team; a real testnet deployment, a public repository and a demo video are required; project names cannot use the Gno prefix; sanctioned regions are excluded; each project can win only one upfront prize.",
+  "steps": [
+   "Register on the DoraHacks page and join the gnome-tavern-hackathon channel on the Gno.land Discord",
+   "Write a realm, dApp or tool in Gno and deploy it to the testnet using free faucet funds",
+   "Prepare the public repository, README and a demo video under three minutes, then submit the deployment link",
+   "After winners are announced on 21 December, complete KYC to receive the GNOT payout"
+  ],
+  "risk": "Prizes are paid in GNOT at market price, so the dollar value moves with the token; the retention prize is not guaranteed and needs continued development, usage and adoption; a winner who misses the 22 December KYC deadline delays payment; the organiser may adjust dates and award counts.",
+  "source": "DoraHacks official Gnome Tavern Hackathon page and organiser GnoLand (BVI) Limited terms (read 23 November 2026: 20,000 GNOT, 16 projects, retention pool, 18 December 01:00 UTC deadline, winner KYC)"
+ },
+ "gensyn-agent-arena-evidence-mining": {
+  "title": "[Global] Gensyn Agent Arena evidence mining: $7,250 for agents that find sourced facts",
+  "brand_en": "Gensyn",
+  "highlight": "Point an AI agent at Delphi prediction markets, earn USDC.e when its evidence moves the forecaster, and rank for a share of $7,250",
+  "regions": "[Global] Online; a Delphi account and wallet are needed; sanctioned regions excluded",
+  "value": "$7,250",
+  "content": "Entrants connect an AI agent to Delphi's Yes/No prediction markets and submit dated facts with links and sources; a judge returns a verdict and a USDC.e judgment reward within minutes, and a settlement reward can follow once the market resolves. The leaderboard ranks by total rewards on competition markets, and at least 10 judged submissions across 3 or more markets are required to qualify for prizes. The pool is $7,250: $3,000, $2,000 and $1,000 for the top three, plus five $250 feedback bounties. Registration opened 13 November, API keys and the first markets open 25 November 17:00 UTC, mining runs to 11 December 17:00 UTC, and winners are announced and paid on 16 December.",
+  "conditions": "A Delphi account and wallet, registered on DoraHacks with the same wallet; 18 or older; public information only, no multiple wallets, duplicate submissions or collusion; prizes pass an integrity review, sanctions screening and KYC.",
+  "steps": [
+   "Sign up on Delphi, note the account's main wallet and register on DoraHacks with the same wallet and an agent name",
+   "From 25 November, get the API key on Delphi and paste the official one-line prompt into your agent",
+   "Have the agent read the competition market list and submit evidence with links and sources, up to 3 per market",
+   "Check each verdict and receipt; judgment rewards arrive in USDC.e within 24 hours, and the window closes 11 December 17:00 UTC"
+  ],
+  "risk": "Standings stay provisional until the markets settle, so a place can slip; rewards arrive as USDC.e after the integrity review and KYC; repeated evidence and spam score nothing, and multiple wallets lead to disqualification.",
+  "source": "DoraHacks official Agent Arena Competition: Evidence Mining page (read 23 November 2026: $7,250 pool, 10 submissions across 3 markets minimum, opens 25 November 17:00 UTC, closes 11 December 17:00 UTC, paid 16 December)"
+ },
+ "immunefi-base-everest-audit-comp": {
+  "title": "[Global] Immunefi Base Everest audit contest: up to $250,000 for valid bugs",
+  "brand_en": "Immunefi",
+  "highlight": "Audit Base's Everest upgrade, a Critical finding unlocks the $250,000 pool, and a runnable PoC plus KYC are required",
+  "regions": "[Global] Online audit, KYC required; sanctioned regions excluded",
+  "value": "Up to $250,000",
+  "content": "About 135,275 lines of code are in scope, covering EIP-8430 Base transactions, gas-limit billing, Base-native contracts and deployed OP-derived contracts. The pool is set by the highest-severity valid finding: $250,000 for a Critical, $125,000 for a High, $70,000 for a Medium, $30,000 for a Low and $20,000 if none of those apply, paid in USDC on Base. Every report needs a runnable proof of concept and insight-only reports are rejected; testing on mainnet or public testnets is prohibited, so work on a local fork or the official devnet. The contest closes 1 December 12:00 UTC, results are published 24 December and payment completes 25 December.",
+  "conditions": "An Immunefi account with KYC (passport or government ID plus proof of address); 18 or older and not in a restricted territory; local forks or the official devnet only; a runnable PoC with each report; auditors who worked on the code need the project's permission.",
+  "steps": [
+   "Create an Immunefi account and read the Base Everest scope and prohibited activities",
+   "Build the pinned local Everest devnet or a mainnet fork and start reviewing the in-scope code",
+   "Write a runnable PoC for any valid bug and submit the report on the platform",
+   "Follow triage and fixes, then complete KYC within 7 days of being asked to receive USDC"
+  ],
+  "risk": "$250,000 is the ceiling when a Critical is found, and only valid, reproducible bugs pay; reports and results are published and scope follows the pinned commit; KYC not submitted within 7 days can forfeit the reward.",
+  "source": "Immunefi official Audit Comp | Base Everest page (read 23 November 2026: $250,000 ceiling, pool set by highest severity, 135,275 nSLOC, 1 December 12:00 UTC close, PoC and KYC required, USDC on Base)"
+ },
+ "reactive-omni-buildathon": {
+  "title": "[Global] Reactive Omni Buildathon: $5,500 across three tracks",
+  "brand_en": "Reactive Network",
+  "highlight": "Build event-driven contracts on Reactive Omni, pick one of three tracks, and the top prize in each is $2,000",
+  "regions": "[Global] Online submission; a public repository and demo video are needed",
+  "value": "$5,500",
+  "content": "Reactive Omni produces roughly one-second blocks, and this buildathon is about what that speed makes possible. Three tracks: Every Second Counts for arbitrage, stop-loss and take-profit work on Unichain or Base Sepolia ($2,000 first, $250 runner-up), Set It and Forget It for personal automations ($2,000/$250), and Reactive Meets AI, where the model must sit in the running loop rather than only helping write code ($1,000). Entries need a public repository, deployed contract addresses, transaction hashes covering the full event-to-callback loop and a demo video under three minutes; the work must be built during the event, and testnet REACT comes free from the official faucet.",
+  "conditions": "Solo or team, no contract experience needed; repositories must be public and open source at submission; work must be built between 5 November and 5 December; use timestamps rather than block counts on Base Sepolia.",
+  "steps": [
+   "Register on the DoraHacks page, pick a track and read its network and submission rules",
+   "Get testnet REACT from the Lasna faucet and deploy a reactive contract following the docs",
+   "Run the full origin-event to callback loop and record the transaction hashes",
+   "Submit the public repository, deployed addresses and a demo video under three minutes before 5 December 20:00 UTC"
+  ],
+  "risk": "Prizes are paid in REACT at market price; only five prizes exist and the Reactive team judges subjectively; entries without a deployment or real callback transactions are not scored.",
+  "source": "DoraHacks official Reactive Omni Buildathon page and Reactive Network's official blog (read 23 November 2026: $5,500 across three tracks, 5 December 20:00 UTC deadline, scored on execution, integration, usefulness and craft, paid in REACT)"
+ },
+ "quote-trade-alphaleague-paper": {
+  "title": "[Global] Quote.Trade AlphaLeague paper division: 1,000 USDC with a free simulated account",
+  "brand_en": "Quote.Trade",
+  "highlight": "A free paper account with $1,000 simulated capital, ranked on net return, with 500 USDC for first place and no deposit ever needed",
+  "regions": "[Global] Online paper trading; US participants are limited to paper; sanctioned regions excluded",
+  "value": "1,000 USDC",
+  "content": "The Paper division costs nothing: a fixed $1,000 simulated balance, ranked on net percentage return, traded by hand, through the API, a bot or an AI agent, and only on markets the organiser designates for the competition. The pool is 1,000 USDC: 500 for first, 300 for second and 200 for third. Registration stays open until 31 December 23:59:59 UTC and a late start gets no time adjustment, though everyone is ranked on the same percentage basis. Only a wallet that has never deposited to Quote.Trade, even if the funds were later withdrawn, can activate paper trading, and that setting is permanent for the wallet and cannot be switched to live; strong results can also earn a discretionary company-capital review of up to $25,000, which is separate from the prizes.",
+  "conditions": "18 or older, one wallet per person; the wallet must have no Quote.Trade deposit history; identity, age, residency and sanctions checks before a prize; US participants may enter the paper division only.",
+  "steps": [
+   "Connect a wallet that has never deposited on Quote.Trade and enable paper trading from the AlphaLeague page",
+   "Confirm the $1,000 simulated balance and the locked starting baseline",
+   "Trade the approved competition markets by hand or through the API, a bot or an AI agent",
+   "After 31 December, wait for performance verification and complete the prize claim checks"
+  ],
+  "risk": "Simulated returns say nothing about live skill, and paper trading is irreversible once enabled; prizes need identity and sanctions verification, and the platform terms exclude Quebec plus Cuba, Iran, North Korea, Syria and Sudan; joining late leaves less time to build a return.",
+  "source": "Quote.Trade official AlphaLeague page and 2026 competition rules (read 23 November 2026: 1,000 USDC paper pool, 500/300/200, $1,000 simulated capital, free entry, no-deposit wallet rule, registration until 31 December)"
+ },
+ "futuur-midterms-2026": {
+  "title": "[Global] Futuur midterms prediction contest: 550 USDC with free play money",
+  "brand_en": "Futuur",
+  "highlight": "Predict the US midterms with free Ooms play money, rank on profit across at least 10 markets, and the top five split 550 USDC",
+  "regions": "[Global] Ooms play markets are open worldwide; identity checks apply to prizes",
+  "value": "550 USDC",
+  "content": "Only Ooms play-money trades count, no deposit is needed, and AI agents and API trading are welcome. Trading at least 10 distinct Midterms markets that resolve inside the period qualifies you for the ranking, which uses absolute net profit in Ooms, broken by ROI, while positions still open at the end and voided markets count for neither profit nor the 10-market minimum. The pool is 550 USDC: $200, $125, $100, $75 and $50 for the top five. Winners are announced within three business days of the close and paid in USDC or USDT within seven days, after identity, age and location checks.",
+  "conditions": "18 or older, one account per person; at least 10 Midterms markets that resolve before 30 November; a VPN used to hide your location means disqualification; winners may have to provide identity and tax information.",
+  "steps": [
+   "Create a Futuur account and collect the free Ooms play money",
+   "Pick Midterms markets that resolve before 30 November and place Ooms trades",
+   "Trade at least 10 different markets and maximise net Ooms profit",
+   "Check the leaderboard within three business days of the close and complete verification for the USDC or USDT payout"
+  ],
+  "risk": "You must complete 10 resolved markets before the deadline, which a late start may make impossible; positions still open at the end do not count; prizes need identity and location verification and may be restricted in some jurisdictions.",
+  "source": "Futuur official Midterms Trading Competition rules page (read 23 November 2026: free Ooms, 550 USDC split across the top five, 10 resolved markets minimum, 30 November 23:59 UTC close, USDC/USDT within 7 days)"
  }
 }

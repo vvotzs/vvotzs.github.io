@@ -765,6 +765,30 @@ ELIG.update(
         "merkium-free-llm-api": {
             "identity": "email", "platform": ["web"], "geo": ["GLOBAL"],
         },
+        # 2026-11-23 crypto 比赛 7 条：领奖要护照/证件核验，全部网页端提交
+        "tradingview-cme-the-leap-nov2026": {
+            "identity": "photo_id", "platform": ["web"],
+            "geo": ["GLOBAL", "-BY", "-CU", "-IR", "-KP", "-RU"],
+        },
+        "gnoland-gnome-tavern-hackathon": {
+            "identity": "photo_id", "platform": ["web"], "geo": ["GLOBAL"],
+        },
+        "gensyn-agent-arena-evidence-mining": {
+            "identity": "photo_id", "platform": ["web"], "geo": ["GLOBAL"],
+        },
+        "immunefi-base-everest-audit-comp": {
+            "identity": "photo_id", "platform": ["web"], "geo": ["GLOBAL"],
+        },
+        "reactive-omni-buildathon": {
+            "identity": "email", "platform": ["web"], "geo": ["GLOBAL"],
+        },
+        "quote-trade-alphaleague-paper": {
+            "identity": "photo_id", "platform": ["web"],
+            "geo": ["GLOBAL", "-CU", "-IR", "-KP", "-SD", "-SY"],
+        },
+        "futuur-midterms-2026": {
+            "identity": "photo_id", "platform": ["web"], "geo": ["GLOBAL"],
+        },
     }
 )
 
@@ -780,6 +804,11 @@ KEEP_EXTRA = {
     "urnetwork-free-tier-30gib", "databricks-free-edition",
     "dahl-inference-100m-tokens", "nodaroo-free-container-host",
     "plugsky-free-llm-api", "merkium-free-llm-api",
+    # 2026-11-23 crypto 比赛 7 条
+    "tradingview-cme-the-leap-nov2026", "gnoland-gnome-tavern-hackathon",
+    "gensyn-agent-arena-evidence-mining", "immunefi-base-everest-audit-comp",
+    "reactive-omni-buildathon", "quote-trade-alphaleague-paper",
+    "futuur-midterms-2026",
 }
 
 

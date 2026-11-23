@@ -1,5 +1,133 @@
 [
  {
+  "id": "immunefi-base-everest-audit-comp",
+  "dedup_key": "immunefi|crypto|global|base-everest-audit-comp",
+  "title": "[全球]Immunefi Base Everest审计赛：最高$250,000",
+  "brand": "Immunefi",
+  "domain": "immunefi.com",
+  "category": "crypto",
+  "value": "最高 $250,000",
+  "value_num": 250000,
+  "value_expected": 8,
+  "cost": "真正免费",
+  "highlight": "审计 Base 的 Everest 升级代码，找到 Critical 可解锁 $250,000 奖池，需可运行 PoC 与 KYC",
+  "regions": "[全球] 线上审计，需 KYC；受制裁地区除外",
+  "start": "2026-11-19",
+  "end": "2026-12-01",
+  "content": "覆盖约 135,275 行代码，含 EIP-8430 Base 交易、gas 限额计费、Base 原生合约与已部署的 OP 派生合约。奖池按最高有效漏洞定档：Critical $250,000、High $125,000、Medium $70,000、Low $30,000，无有效漏洞则 $20,000，以 Base 上的 USDC 发放。必须提交可运行的 PoC，Insight 类报告不收；禁止对主网或公共测试网测试，只能用本地 fork 或官方 devnet。12/1 12:00 UTC 截止，12/24 公布结果，12/25 打款。",
+  "conditions": "需 Immunefi 账号并完成 KYC（护照或政府证件 + 地址证明）；18 岁以上、非受限地区；只用本地 fork/devnet，提交可运行 PoC；参赛前参与过该代码审计者需项目方许可。",
+  "steps": [
+   "注册 Immunefi 账号，在 Base Everest 审计赛页面读资产范围与禁止事项",
+   "按官方 pin 的提交搭本地 Everest devnet 或 mainnet fork，开始审计",
+   "发现漏洞后写可运行 PoC 并在平台提交报告",
+   "等待 Immunefi 分级与项目方修复，按通知在 7 天内完成 KYC 领 USDC"
+  ],
+  "url": "https://immunefi.com/audit-competition/audit-comp-base-everest/information/",
+  "source": "Immunefi 官方 Audit Comp | Base Everest 页面（2026-11-23 实读：$250,000 上限、按最高严重度定奖池、135,275 nSLOC、12/1 12:00 UTC 截止、需 PoC 与 KYC、USDC on Base）",
+  "risk": "$250,000 是发现 Critical 时的上限，只有有效且可复现的漏洞才有奖励；报告与结果会公开，代码范围以官方 pin 为准；KYC 未在 7 天内提交可能被没收奖励。",
+  "kyc_level": "cn_ok",
+  "utility": 0,
+  "verified": true,
+  "last_verified": "2026-11-23",
+  "added": "2026-11-23",
+  "status": "active",
+  "added_at": "2026-11-23T20:56:40+08:00",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
+  "id": "tradingview-cme-the-leap-nov2026",
+  "dedup_key": "tradingview|crypto|global|cme-the-leap-nov2026",
+  "title": "[全球]TradingView×CME「The Leap」模拟盘赛：$50,000现金奖池",
+  "brand": "TradingView",
+  "domain": "tradingview.com",
+  "category": "crypto",
+  "value": "$50,000（冠军 $10,000）",
+  "value_num": 50000,
+  "value_expected": 15,
+  "cost": "真正免费",
+  "highlight": "用 $25,000 虚拟资金交易 CME 期货与个股期货，按收益率除以最大回撤排名，前 250 名分 $50,000 现金",
+  "regions": "[全球] 线上模拟盘，18+；排除伊朗、朝鲜、俄罗斯、白俄罗斯、古巴与乌东占领区",
+  "start": "2026-11-23",
+  "end": "2026-12-11",
+  "content": "大赛给每人一个独立的「The Leap」模拟账户，预设 $25,000 虚拟美元，期货杠杆 10:1、每张合约佣金 $0.25，全程不碰真钱。可交易约 105 个 CME 期货与个股期货合约，并有持仓上限。成绩按「收益率 ÷ 最大回撤（下限 1%）」计算，需至少 5 个交易日有开平仓才进榜。前 250 名有奖：冠亚季 $10,000/$7,000/$6,000，4–5 名 $3,500/$2,500，6–25 名 $550，26–50 名 $400，51–250 名 1 个月 Essential 订阅。报名截至 12/11 08:00 UTC，交易至 12/18 12:00 UTC 收市强平。",
+  "conditions": "需 TradingView 账号，免费 Basic 套餐即可；18 岁以上，一人一号；伊朗、朝鲜、俄罗斯、白俄罗斯、古巴与乌东占领区不可参加；须有 5 个以上交易日开平仓。",
+  "steps": [
+   "注册或登录 TradingView，在 The Leap 活动页点 Join The Leap 报名",
+   "系统自动生成带 CME 标记的模拟竞赛账户，$25,000 虚拟资金与实时行情就绪",
+   "在允许列表内交易期货或个股期货，至少 5 个交易日有开平仓",
+   "比赛结束后等官方公布榜单，入选后按邮件指引完成验证并领奖"
+  ],
+  "url": "https://www.tradingview.com/the-leap/cme-group-november-2026/",
+  "source": "TradingView 官方 The Leap 活动页与官方竞赛规则（2026-11-23 实读：$50,000 现金奖池、前 250 名分档、免费 Basic 可参加、5 个交易日门槛、报名至 12/11 08:00 UTC、交易至 12/18 12:00 UTC）",
+  "risk": "已有 23,404 人报名，只有前 250 名有奖，51–250 名仅是 1 个月订阅；$600 及以上走电汇、低于 $600 走 PayPal，须在赛后 14 天内领取，逾期作废；主办方可要求年龄、身份与居住证明，税费自负；竞赛账户在赛后 14 天删除，数据不保留。",
+  "kyc_level": "cn_ok",
+  "utility": 0,
+  "verified": true,
+  "last_verified": "2026-11-23",
+  "added": "2026-11-23",
+  "status": "active",
+  "added_at": "2026-11-23T20:56:40+08:00",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL",
+   "-BY",
+   "-CU",
+   "-IR",
+   "-KP",
+   "-RU"
+  ]
+ },
+ {
+  "id": "gnoland-gnome-tavern-hackathon",
+  "dedup_key": "gno-land|crypto|global|gnome-tavern-hackathon",
+  "title": "[全球]Gno.land「Gnome Tavern」黑客松：$20,000奖池（GNOT发放）",
+  "brand": "Gno.land",
+  "domain": "dorahacks.io",
+  "category": "crypto",
+  "value": "$20,000（GNOT发放）",
+  "value_num": 20000,
+  "value_expected": 10,
+  "cost": "真正免费",
+  "highlight": "在 Gno.land 测试网部署可运行的 realm、dApp 或工具即可参赛，16 个项目分 $20,000（GNOT 发放），持续开发还能拿等额留存奖",
+  "regions": "[全球] 线上提交，18+；受制裁地区除外",
+  "start": "2026-11-23",
+  "end": "2026-12-18",
+  "content": "不设主题，在 Gno.land 测试网部署能跑起来的 realm、dApp、开发工具或小 demo 都算，交公开仓库、README、演示视频与部署链接即可。奖金 $20,000 以 GNOT 发放：冠军 $2,000、亚军 $1,000、14 个 Builder 奖各 $500；获奖后继续开发还能拿最高等额的留存奖，3 个月与 6 个月各付一半，要求主网在线、每月至少一次发布、3 个月 50 个独立地址、6 个月 100 个，并有外部项目引用。12/18 01:00 UTC 截止，12/21 公布，获奖者 12/22 前完成 KYC，12/23–24 打款。",
+  "conditions": "18 岁以上，个人或团队均可；需测试网真实部署 + 公开代码仓库 + 演示视频；项目名不得带 Gno 前缀；受制裁地区不可参加；每个项目只能拿一个首轮奖。",
+  "steps": [
+   "打开 DoraHacks 活动页报名，加入 Gno.land Discord 的 gnome-tavern-hackathon 频道",
+   "用 Gno 写 realm、dApp 或工具，部署到测试网（faucet 免费领测试币）",
+   "整理公开仓库、README 与 3 分钟内演示视频，在活动页提交部署链接",
+   "12/21 公布结果后按邮件完成 KYC，等待 GNOT 打款"
+  ],
+  "url": "https://dorahacks.io/hackathon/gnome-tavern/detail",
+  "source": "DoraHacks 官方 Gnome Tavern Hackathon 页面与主办方 GnoLand (BVI) Limited 条款（2026-11-23 实读：20,000GNOT、16 个项目、留存奖、12/18 01:00 UTC 截止、获奖者 KYC）",
+  "risk": "奖金按 GNOT 市价发放，币价波动自负；留存奖非保证，须持续开发并达到地址数与采用门槛；获奖者 12/22 前未完成 KYC 会延迟付款；主办方可调整日期与奖项数量。",
+  "kyc_level": "cn_ok",
+  "utility": 0,
+  "verified": true,
+  "last_verified": "2026-11-23",
+  "added": "2026-11-23",
+  "status": "active",
+  "added_at": "2026-11-23T20:56:40+08:00",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "clearstreet-3pct-cash-match",
   "dedup_key": "clear-street|bank|us|3pct-cash-match",
   "title": "[美区]Clear Street券商3%现金配比：最高$10,000（净入金$5,000起，须留存5年）",
@@ -39,6 +167,88 @@
   "funding_requirement": "min_deposit",
   "geo_restriction": [
    "US"
+  ]
+ },
+ {
+  "id": "gensyn-agent-arena-evidence-mining",
+  "dedup_key": "gensyn|crypto|global|agent-arena-evidence-mining",
+  "title": "[全球]Gensyn Agent Arena证据挖掘赛：$7,250奖池",
+  "brand": "Gensyn",
+  "domain": "dorahacks.io",
+  "category": "crypto",
+  "value": "$7,250",
+  "value_num": 7250,
+  "value_expected": 6,
+  "cost": "真正免费",
+  "highlight": "让 AI 代理为 Delphi 预测市场挖证据，按赚到的 USDC 奖励排名，前三名加 5 份反馈赏金共 $7,250",
+  "regions": "[全球] 线上，需 Delphi 账户与钱包；受制裁地区除外",
+  "start": "2026-11-25",
+  "end": "2026-12-11",
+  "content": "参赛者把 AI 代理接进 Delphi 的 Yes/No 预测市场，提交带日期、链接与来源的事实，评判在几分钟内给出裁决与 USDC.e 奖励，市场结算后再发结算奖；排行榜按竞赛市场累计奖励排名，需至少 10 次被判提交、覆盖 3 个以上市场才有评奖资格。奖池 $7,250：1–3 名 $3,000/$2,000/$1,000，另有 5 份 $250 反馈赏金。报名自 11/13 开放，API Key 与首批市场自 11/25 17:00 UTC 开放，挖矿窗口至 12/11 17:00 UTC，12/16 公布并发放。",
+  "conditions": "需 Delphi 账户与钱包，并用同一钱包在 DoraHacks 报名；18 岁以上；只用公开信息，禁多钱包、重复提交与串通；获奖需过完整性审查、制裁筛查与 KYC。",
+  "steps": [
+   "在 Delphi 注册并记下账户主钱包地址，用同一钱包在 DoraHacks 报名并填代理名称",
+   "11/25 起在 Delphi 的 API Key 页领取密钥，按官方一行提示配置代理",
+   "让代理读取竞赛市场列表，提交带链接与来源的证据（每个市场最多 3 份）",
+   "查看裁决与奖励回执，奖励 24 小时内以 USDC.e 到账；冲榜至 12/11 17:00 UTC"
+  ],
+  "url": "https://dorahacks.io/hackathon/delphi-agent-competition2/detail",
+  "source": "DoraHacks 官方 Agent Arena Competition: Evidence Mining 页面（2026-11-23 实读：$7,250 奖池、10 次提交/3 个市场门槛、11/25 17:00 UTC 开放、12/11 17:00 UTC 截止、12/16 发放）",
+  "risk": "排名在相关市场结算前都是暂定值，可能被反超；奖励按 USDC.e 发到钱包，到账前需过完整性审查与 KYC；重复证据与刷量不计分，多钱包会被取消资格。",
+  "kyc_level": "cn_ok",
+  "utility": 0,
+  "verified": true,
+  "last_verified": "2026-11-23",
+  "added": "2026-11-23",
+  "status": "active",
+  "added_at": "2026-11-23T20:56:40+08:00",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
+  "id": "reactive-omni-buildathon",
+  "dedup_key": "reactive|crypto|global|omni-buildathon",
+  "title": "[全球]Reactive Omni Buildathon：$5,500三赛道",
+  "brand": "Reactive Network",
+  "domain": "dorahacks.io",
+  "category": "crypto",
+  "value": "$5,500",
+  "value_num": 5500,
+  "value_expected": 5,
+  "cost": "真正免费",
+  "highlight": "用 Reactive Omni 写事件驱动合约，三个赛道任选，冠军最高 $2,000，没有合约经验也能参加",
+  "regions": "[全球] 线上提交，需公开仓库与演示视频",
+  "start": "2026-11-05",
+  "end": "2026-12-05",
+  "content": "Reactive Omni 主网约 1 秒出块，本赛比谁能用它做出真正的事件驱动应用。三个赛道：Every Second Counts 做 Unichain/Base Sepolia 上的套利、止盈止损等（冠军 $2,000、亚军 $250）；Set It and Forget It 做个人自动化（$2,000/$250）；Reactive Meets AI 要求模型在运行链路里而非只用来写代码（$1,000）。提交公开仓库、已部署合约地址、完整链上交易哈希与 3 分钟内演示视频；作品须在活动期内完成，测试网 REACT 由官方水龙头免费领。",
+  "conditions": "个人或团队均可，无需合约经验；仓库在提交时公开开源；作品须在 11/5–12/5 期间完成，旧项目只能作依赖；Base Sepolia 上计时用时间戳而非区块数。",
+  "steps": [
+   "在 DoraHacks 活动页报名并选定赛道，读该赛道的网络与提交要求",
+   "从 Reactive Lasna 水龙头领测试币，按文档写 reactive 合约并部署",
+   "跑通「源链事件 → Reactive → 回调」全链路，记录交易哈希",
+   "整理公开仓库、部署地址与 3 分钟内演示视频，在 12/5 20:00 UTC 前提交"
+  ],
+  "url": "https://dorahacks.io/hackathon/reactive-omni-buildathon/detail",
+  "source": "DoraHacks 官方 Reactive Omni Buildathon 页面与 Reactive Network 官方博客（2026-11-23 实读：$5,500 三赛道、12/5 20:00 UTC 截止、按执行/整合/实用/工艺四项打分、奖金以 REACT 发放）",
+  "risk": "奖金以 REACT 发放，币价波动自负；全场只有 5 个获奖席位，由 Reactive 团队主观打分；未部署或没有真实回调交易的作品不计分。",
+  "kyc_level": "none",
+  "utility": 0,
+  "verified": true,
+  "last_verified": "2026-11-23",
+  "added": "2026-11-23",
+  "status": "active",
+  "added_at": "2026-11-23T20:56:40+08:00",
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
   ]
  },
  {
@@ -264,6 +474,52 @@
   "identity_requirement": "local_id",
   "geo_restriction": [
    "US"
+  ]
+ },
+ {
+  "id": "quote-trade-alphaleague-paper",
+  "dedup_key": "quote-trade|crypto|global|alphaleague-paper",
+  "title": "[全球]Quote.Trade AlphaLeague模拟盘：1,000USDC奖池",
+  "brand": "Quote.Trade",
+  "domain": "quote.trade",
+  "category": "crypto",
+  "value": "1,000 USDC",
+  "value_num": 1000,
+  "value_expected": 4,
+  "cost": "真正免费",
+  "highlight": "免费模拟盘，$1,000 虚拟本金按净收益率排名，冠军 500USDC，钱包从未入金即可参加",
+  "regions": "[全球] 线上模拟盘，美国用户仅限 Paper；受制裁地区除外",
+  "start": "2026-09-28",
+  "end": "2026-12-31",
+  "content": "Paper 组不用一分钱：固定 $1,000 模拟本金，按净收益率排名，可手动、API、机器人或 AI 代理交易，仅限官方指定的竞赛市场。奖池 1,000 USDC：冠军 500、亚军 300、季军 200。报名开放至 12/31 23:59:59 UTC，中途加入不补时间，但按同一百分比口径排名。只接受从未在 Quote.Trade 入过金（含已提走）的钱包，一旦开启 Paper 即永久锁定为模拟盘、不能转实盘；成绩突出者另有最高 $25,000 的公司资金实盘评估，与奖金分开。",
+  "conditions": "18 岁以上，每人仅一个钱包；钱包不得有过 Quote.Trade 入金记录；领奖前需通过身份、年龄、居住地与制裁核验；美国用户只能参加 Paper 组。",
+  "steps": [
+   "在 Quote.Trade 连接一个从未入过金的钱包，在 AlphaLeague 页面开启 Paper Trading",
+   "确认 $1,000 模拟本金已锁定并记录开赛基线",
+   "在指定竞赛市场交易，可接 API、机器人或 AI 代理",
+   "等 12/31 结束后平台核验收益，按邮件完成领奖验证"
+  ],
+  "url": "https://quote.trade/alphaleague/",
+  "source": "Quote.Trade 官方 AlphaLeague 页面与 2026 竞赛规则（2026-11-23 实读：Paper 组 1,000USDC、500/300/200、$1,000 模拟本金、零入金、无入金记录钱包限定、报名至 12/31）",
+  "risk": "模拟收益不代表实盘能力，Paper 设置一经开启不可逆；奖金需通过身份与制裁核验，加拿大魁北克及古巴、伊朗、朝鲜、叙利亚、苏丹等地被平台条款排除；报名越晚，积累收益的时间越短。",
+  "kyc_level": "cn_ok",
+  "utility": 0,
+  "verified": true,
+  "last_verified": "2026-11-23",
+  "added": "2026-11-23",
+  "status": "active",
+  "added_at": "2026-11-23T20:56:40+08:00",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL",
+   "-CU",
+   "-IR",
+   "-KP",
+   "-SD",
+   "-SY"
   ]
  },
  {
@@ -13869,6 +14125,47 @@
   "funding_requirement": "min_deposit",
   "geo_restriction": [
    "US"
+  ]
+ },
+ {
+  "id": "futuur-midterms-2026",
+  "dedup_key": "futuur|crypto|global|midterms-2026",
+  "title": "[全球]Futuur中期选举预测赛：550USDC免费Ooms盘",
+  "brand": "Futuur",
+  "domain": "futuur.com",
+  "category": "crypto",
+  "value": "550 USDC",
+  "value_num": 550,
+  "value_expected": 3,
+  "cost": "真正免费",
+  "highlight": "只用免费 Ooms 玩钱预测美国中期选举，至少 10 个市场起排名，前五名分 550USDC",
+  "regions": "[全球] Ooms 模拟盘全球可玩，领奖需核验身份",
+  "start": "2026-10-14",
+  "end": "2026-11-30",
+  "content": "赛内只统计 Ooms 玩钱交易，不用入金，AI 代理与 API 也欢迎。至少交易 10 个在赛期内结算的 Midterms 市场才有排名资格，按 Ooms 净利润绝对值排名（平手比 ROI），期末未平仓位不算，作废市场既不计利润也不计入 10 个市场。奖池 550 USDC：1–5 名 $200/$125/$100/$75/$50，结束后 3 个工作日内公布，7 天内以 USDC 或 USDT 发放，领奖可能核验身份、年龄与所在地。",
+  "conditions": "18 岁以上、一人一号；需交易 10 个以上在赛期内结算的 Midterms 市场；用 VPN 隐藏所在地会被取消资格；领奖可能要求身份与税务信息。",
+  "steps": [
+   "注册 Futuur 账户，领取免费 Ooms 玩钱",
+   "在 Midterms 标签页挑选会在 11/30 前结算的市场下单",
+   "累计交易满 10 个不同市场，尽量提高 Ooms 净利润",
+   "赛后 3 个工作日内查看榜单，按通知完成核验领取 USDC/USDT"
+  ],
+  "url": "https://help.futuur.com/Midterms-Trading-Competition-3f188d28324b80c5ad87d9a950c4c8c5",
+  "source": "Futuur 官方 Midterms Trading Competition 规则页（2026-11-23 实读：免费 Ooms、550USDC 前五分档、10 个赛期内结算市场门槛、11/30 23:59 UTC 截止、USDC/USDT 7 天内发放）",
+  "risk": "必须在截止前凑满 10 个已结算市场，晚加入可能凑不齐；期末未平仓位不计；领奖需身份与所在地核验，部分司法辖区可能被限制。",
+  "kyc_level": "cn_ok",
+  "utility": 0,
+  "verified": true,
+  "last_verified": "2026-11-23",
+  "added": "2026-11-23",
+  "status": "expiring_soon",
+  "added_at": "2026-11-23T20:56:40+08:00",
+  "identity_requirement": "photo_id",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
   ]
  },
  {
