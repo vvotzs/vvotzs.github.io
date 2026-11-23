@@ -756,7 +756,7 @@ KEEP_EXTRA = {
     "aws-quick-free-plus-trial", "razer-gold-8th-anniversary-bonus",
     "zcode-new-user-5day-8m", "tencent-lightvela-free-month",
     "urnetwork-free-tier-30gib", "databricks-free-edition",
-    "dahl-inference-100m-tokens",
+    "dahl-inference-100m-tokens", "nodaroo-free-container-host",
 }
 
 

@@ -1,13 +1,13 @@
 {
-  "last_updated": "2026-11-23T01:41:53+08:00",
-  "last_updated_human": "2026-11-23 01:41",
+  "last_updated": "2026-11-23T12:04:29+08:00",
+  "last_updated_human": "2026-11-23 12:04",
   "timezone": "Asia/Shanghai",
   "counts": {
-    "total": 377,
+    "total": 378,
     "active": 366,
     "expiring_soon": 44,
     "closing_30d": 63,
-    "expired": 11
+    "expired": 12
   },
   "categories": {
     "ai": 84,
