@@ -769,6 +769,11 @@ ELIG.update(
         "rikkahub-android-llm-client": {
             "identity": "none", "platform": ["android"], "geo": ["GLOBAL"],
         },
+        # 2026-11-23：SIMHub 读卡器 eSIM / VoWiFi 工具（无账号、免身份，三端自签安装；
+        # macOS 不在 ios/android/web 枚举里，平台写进 conditions）
+        "simhub-esim-reader-vowifi": {
+            "identity": "none", "geo": ["GLOBAL"],
+        },
         # 2026-11-23 crypto 比赛 7 条：领奖要护照/证件核验，全部网页端提交
         "tradingview-cme-the-leap-nov2026": {
             "identity": "photo_id", "platform": ["web"],
@@ -809,6 +814,7 @@ KEEP_EXTRA = {
     "dahl-inference-100m-tokens", "nodaroo-free-container-host",
     "plugsky-free-llm-api", "merkium-free-llm-api",
     "rikkahub-android-llm-client",
+    "simhub-esim-reader-vowifi",
     # 2026-11-23 crypto 比赛 7 条
     "tradingview-cme-the-leap-nov2026", "gnoland-gnome-tavern-hackathon",
     "gensyn-agent-arena-evidence-mining", "immunefi-base-everest-audit-comp",

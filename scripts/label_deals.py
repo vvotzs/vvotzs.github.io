@@ -358,6 +358,18 @@ KYC.update({
     "starryblu-60sgd-signup": "cn_ok",
 })
 
+KYC.update(
+    {
+        # 2026-11-23：SIMHub 读卡器 eSIM 工具，无账号、免实名
+        "simhub-esim-reader-vowifi": "none",
+    }
+)
+KYC_NOTES.update(
+    {
+        "simhub-esim-reader-vowifi": "无账号无实名，卡资料只存本机；走 GitHub 自签安装",
+    }
+)
+
 # 2026-11-23 crypto 比赛 7 条：领奖核验用护照 / 证件 + 地址证明，大陆可过
 KYC.update(
     {
