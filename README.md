@@ -177,11 +177,26 @@ reports/score_explain.csv # 构建时写的内部回测表（不进 sitemap、�
 `<use>` 的 `url(#id)` 会失效（跟页头精灵那张白脸同源）。所以渐变单独放一个 `position:absolute;width:0;height:0`
 的可见 `<svg class="vdefs">`（`vector_defs()`，每页一次），既不复重复也不占位、不影响 CLS。
 
+## 首屏导语在手机端的单行走马灯（2026-11-23）
+
+- HTML 里导语仍是完整一句真文本（`span.ht-main`，SEO 照抓）；轨道 `span.ht-track` 里再放一份 `aria-hidden="true"`
+  的副本 `.ht-copy`，两份等宽 + 两个 `2.6em` 的缝，所以 `translateX(-50%)` 结束时副本正好落在原文案原位，循环无缝。
+- 副本全局 `display:none`，只有 `@media (max-width:768px)` 且轨道带 `.is-long`（构建时按文案长度 >34 字判定，
+  中文页是、英文页的 25 字符不是）才显示并转动：`18s linear`（约 38px/s）、左边缘干净截断 + 右边缘 18px 渐隐、
+  开头先停 1.6s 再起步；`:hover` / `:active` 暂停，`prefers-reduced-motion: reduce` 退成一行静态省略号。
+- 手机端导语因此只占 1 行（15.3px，原两行 30.6px），桌面端排版与改动前完全一样。
+
 ## 「直达」按钮指向哪
 
 主按钮默认指向条目自己的 `url`（官方活动页）。
 如果条目是从社区原帖抓的（NodeSeek、NodeLoc、linux.do、Reddit、美卡论坛、Doctor of Credit、官方博客公告等），在 `data/deals.json` 里给它加 `source_url`，按钮就改指原帖；也可以在 `source` 字段里直接写原帖链接，构建时会自动识别。
-官方活动链接始终保留在展开详情里，不会丢。
+官方活动链接始终保留在展开详情里，不会丢（2026-11-23 起它是一个「点按复制」的按钮，不再跳转：
+`button.url-copy` + `data-copy`，跳转仍由上面那颗主按钮负责；详情页顶部按钮下方也加了同样的一行）。
+
+**网址怎么显示**：展示文字一律过 `display_url()`（`urllib.parse.unquote`）还原成中文原字。
+像工银环球旅行 Plus 这种中文页面地址，数据里存的就是中文原网址，页面上不会再出现 `%E7%89%A1…` 这种编码长串；
+`href`、JSON-LD 与剪贴板写进去的都是 `copy_url()` 出的纯 ASCII 编码形式，粘贴到任何地方都是干净链接。
+（英文页的中文 CJK 体检对 `.url-copy` 里的网址文本放行：网址不是待翻译的文案。）
 
 按钮文案跟着去向变：`source_url` 与 `url` 不同时写「原文 ↗ / Source ↗」；确实只有官方活动页可点（包括 `url` 本身就是第三方报道或论坛帖的情形）时写「官网 ↗ / Official ↗」，不再让官方页冒充原帖。构建结束会打印「原文 / 官网」各多少条。
 
