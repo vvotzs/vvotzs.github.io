@@ -117,7 +117,7 @@ button{ font-family: inherit; }
    所以这里不再需要 .t-zh / .t-en 的显示开关；语言由 URL 决定，切换是整页跳转。 */
 
 /* 右下角语言徽标：躲在右侧竖版滑轨下方、正文右侧留白里，
-   双端都不压卡片、不挡滑轨（手机上滑轨宽 44px、正文右留白 50px）。 */
+   双端都不压卡片、不挡滑轨（手机上滑轨宽 38px、正文右留白 44px）。 */
 .lang-switch{
   position: fixed;
   right: 14px;
@@ -472,18 +472,19 @@ main{ padding-bottom: 0; }
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 6px;
+  gap: 6px;
+  margin-top: 3px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .02em;
   color: var(--ink-3);
 }
-.pager-label{ min-width: 46px; text-align: center; font-feature-settings: "tnum"; }
-/* 左右翻页键：正圆胶囊 —— 暖白底 + 薄荷细边 + 深薄荷箭头，禁用态退成柔和浅灰 */
+.pager-label{ min-width: 36px; text-align: center; font-feature-settings: "tnum"; }
+/* 左右翻页键：小号扁圆胶囊（34×23）—— 暖白底 + 薄荷细边 + 深薄荷箭头，
+   禁用态退成柔和浅灰；高度压低后翻页区不再占一大块留白 */
 .pager-bar .pg{
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 23px;
   display: grid;
   place-items: center;
   padding: 0;
@@ -492,7 +493,7 @@ main{ padding-bottom: 0; }
   background: #FFFDF9;
   color: #047857;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 1;
   box-shadow: 0 1px 2px rgba(28,25,23,.03);
   transition: background .18s ease, border-color .18s ease, color .18s ease;
@@ -516,16 +517,16 @@ main{ padding-bottom: 0; }
   justify-content: center;
   width: fit-content;
   max-width: 100%;
-  min-height: 30px;
-  margin: 8px auto 2px;
-  padding: 6px 14px;
+  min-height: 26px;
+  margin: 5px auto 0;
+  padding: 4px 12px;
   border-radius: 999px;
   border: 1px solid #BBF7D0;
   background: #F0FDF7;
   color: #065F46;
   font-size: 12px;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.2;
   text-align: center;
   text-decoration: none;
   overflow-wrap: anywhere;
@@ -959,6 +960,52 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{
   overflow-wrap: anywhere;
 }
 .field dd strong{ color: var(--ink); font-weight: 650; }
+
+/* 「开始及截止时间」三列对称块（展开卡 + 详情页共用）：左「开始」| 中「至」| 右「截止」。
+   三行分别是年份（小号浅灰）/ MM-DD（主字号）/ 时间（该侧有时分才显示）。 */
+.pd{
+  display: inline-grid;
+  grid-template-columns: minmax(46px, auto) auto minmax(46px, auto);
+  align-items: center;
+  column-gap: 7px;
+  vertical-align: middle;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+.pd-l{ grid-column: 1; text-align: center; }
+.pd-r{ grid-column: 3; text-align: center; }
+.pd-y{
+  grid-row: 1;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: .01em;
+  color: var(--ink-4);
+}
+.pd-md{
+  grid-row: 2;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+}
+.pd-t{
+  grid-row: 3;
+  font-size: 10.5px;
+  line-height: 1.1;
+  color: var(--ink-3);
+}
+.pd-to{
+  grid-row: 2;
+  grid-column: 2;
+  padding: 0 1px 2px;
+  border-bottom: 1px solid rgba(28,25,23,.3);
+  font-size: 10.5px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
 .field ol{
   margin: 0;
   padding-left: 15px;
@@ -1009,6 +1056,17 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{
   color: var(--ink-4);
 }
 .detail-foot .verified{ color: var(--mint); font-weight: 600; }
+/* 「详情页 ↗」+ 👍 / 👎 同一行（双端统一）：详情页在左、赞踩靠右，
+   来源 / 最后验证 / 收录落到下一行。它是 .detail-foot 里独占一行的第一行。 */
+.df-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  width: 100%;
+}
+.df-top .vote-row{ margin-top: 0; }
 
 /* expired cards muted */
 .card.is-expired{ opacity: .72; background: #FDFBF7; }
@@ -1276,7 +1334,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{
 /* ---------------------------------------------------------- rail (desktop + mobile) */
 
 /* 滑轨 + 正上方的投稿按钮：整组一起固定居中。
-   两者同宽（align-items: stretch，取滑轨的宽度），按钮不会把 44px 的手机滑轨撑宽。 */
+   两者同宽（align-items: stretch，取滑轨的宽度），按钮不会把 38px 的手机滑轨撑宽。 */
 .rail-dock{
   position: fixed;
   right: 16px;
@@ -1395,6 +1453,23 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{
 .rail a.rail-top{ color: var(--ink-3); }
 .rail a.rail-top svg{ width: 17px; height: 17px; }
 .rail a.rail-top:hover{ color: var(--terra); background: rgba(234,88,12,.08); }
+
+/* 桌面端滑轨放大一档（仅 >768px，手机仍是 38px 窄条）：
+   整条 60 → 68px，单格 48×46 → 56×52，图标同步 +2px；
+   锚点文字 11 → 12.5px 加粗到 600，文字在格内的视觉占比明显更重。
+   英文最长标签「eSIM」12.5px 下约 29px、「Trend」约 32px，都在 56px 格内单行。 */
+@media (min-width: 769px){
+  .rail a{ width: 56px; height: 52px; gap: 4px; }
+  .rail a svg{ width: 17px; height: 17px; }
+  .rail a[data-target="hot"] svg{ width: 19px; height: 19px; }
+  .rail a[data-target="crypto"] svg{ width: 18px; height: 18px; }
+  .rail a span{ font-size: 12.5px; font-weight: 600; letter-spacing: 0; }
+  .rail a.active span{ font-weight: 700; }
+  .rail a.rail-top svg{ width: 19px; height: 19px; }
+  .rail-submit{ font-size: 10.5px; gap: 4px; padding: 7px 0 6px; }
+  .rail-submit svg{ width: 19px; height: 19px; }
+  .rail-sep{ margin: 6px 7px 5px; }
+}
 
 /* ------------------------------------------------------------------ modal */
 
@@ -1631,10 +1706,10 @@ footer{
 
 /* content must not slide under the rail */
 @media (min-width: 1081px){
-  .shell{ padding-right: 84px; }
+  .shell{ padding-right: 92px; }
 }
 @media (max-width: 1080px) and (min-width: 769px){
-  .shell{ padding-right: 76px; }
+  .shell{ padding-right: 84px; }
 }
 
 @media (max-width: 768px){
@@ -1647,10 +1722,8 @@ footer{
   html:not(.board-ready) #closing{ display: none; }
 
   html{ scroll-padding-top: 66px; }
-  /* 右侧竖版滑轨占 38px（英文站 44px）：正文右留白同步收紧，卡片不钻到导轨下面 */
-  .shell{ padding: 0 44px 4px 14px; }
-  /* 英文站滑轨仍是 44px 宽，正文右侧回到 50px，卡片不会钻到导轨下面 */
-  html[lang="en"] .shell{ padding-right: 50px; }
+  /* 右侧竖版滑轨占 38px：正文右留白同步收紧，卡片不钻到导轨下面（中英同一套） */
+  .shell{ padding: 0 40px 4px 14px; }
 
   /* ---- 顶栏：🥒 羊毛情报局 + 搜索图标 + 三枚统计胶囊，一行放下 ---- */
   .topbar-in{ height: var(--topbar); gap: 6px; }
@@ -1729,7 +1802,7 @@ footer{
   .hm-short{ display: inline; }
 
   /* ---- 分区 ---- */
-  .module{ padding: 6px 0 0; }
+  .module{ padding: 4px 0 0; }
   .module-head{ margin-bottom: 4px; gap: 8px; }
   .module-badge{ width: 22px; height: 22px; border-radius: 7px; }
   .module-badge svg{ width: 15px; height: 15px; }
@@ -1769,16 +1842,16 @@ footer{
   }
   html.js .pager-bar{ display: flex; }
   /* 翻页条（页码 + 左右键）在 app.js 接管前是不显示的，分页完成后才出现，
-     占 30px 高 + 4px 上级间距；不先占位的话，首屏每过一个分区就被推下 34px。
+     占 23px 高 + 3px 上级间距；不先占位的话，首屏每过一个分区就被推下 26px。
      这里只隐藏内容、保留位置，JS 接管时同高度换成可见，这段位移就归零。 */
   html:not(.js) .module:not(.hot-strip) .pager-bar{
     display: flex;
     visibility: hidden;
   }
   /* 翻页条离上面卡片 4px；到下一个分区标题 7px（下一区自己的 6px padding + 分区分隔线） */
-  .pager-bar{ margin-top: 4px; }
+  .pager-bar{ margin-top: 2px; }
   /* 「查看全部 N 条」胶囊：手机上字号与内边距各收一档，长英文分类名折两行也不挤破卡片 */
-  .see-all{ margin-top: 6px; min-height: 28px; padding: 5px 12px; font-size: 11.5px; }
+  .see-all{ margin-top: 3px; min-height: 22px; padding: 4px 11px; font-size: 11.5px; line-height: 1.2; }
   .hit{ padding: 7px 9px; }
   .hit-t{ font-size: 12px; }
   .more{ display: none !important; }
@@ -1851,7 +1924,7 @@ footer{
     gap: 9px 10px;
     padding: 10px 11px 11px;
     font-size: 13px;
-    line-height: 1.55;
+    line-height: 1.4;
   }
   /* 手机端徽标条更紧凑：类别 / 实际价值 / 门槛 挤得进一行多一点，
      多币种价值在气泡内部换行，不越过卡片右边界 */
@@ -1863,11 +1936,19 @@ footer{
   .detail-tags .dcheck{ font-size: 11px; }
   .detail-tags .dcheck .ic3d{ width: 12.5px; height: 12.5px; vertical-align: -3px; margin-right: 2px; }
   .field dt{ font-size: 10.5px; margin-bottom: 2px; }
-  .field dd, .field ol{ font-size: 13px; line-height: 1.55; }
+  .field dd, .field ol{ font-size: 13px; line-height: 1.4; }
+  /* 三列时间块在手机半栏里再收一号：09/21 与 至 与 10/28 单行不挤 */
+  .pd{ grid-template-columns: minmax(40px, auto) auto minmax(40px, auto); column-gap: 5px; }
+  .pd-md{ font-size: 12px; }
+  .pd-y, .pd-to{ font-size: 10px; }
+  .pd-t{ font-size: 10px; }
   .field ol{ padding-left: 16px; }
   .url-link{ font-size: 11.5px; line-height: 1.45; }
-  .risk{ font-size: 12.5px; line-height: 1.5; padding: 7px 9px; }
-  .detail-foot{ font-size: 11px; line-height: 1.45; gap: 3px 9px; }
+  .risk{ font-size: 12.5px; line-height: 1.38; padding: 7px 9px; }
+  .detail-foot{ font-size: 11px; line-height: 1.38; gap: 3px 9px; }
+  /* 手机端底部第一行与桌面同一套：「详情页 ↗」在左、👍 / 👎 靠右；
+     赞踩仍挂在原来的 [data-vote] 上，点击与数字回填不受影响。 */
+  .df-top{ gap: 4px 8px; }
   .card.open{ grid-column: auto; }
 
   /* ---- 热榜：单板 4 tab，板内不再固定高度 ---- */
@@ -2018,7 +2099,7 @@ footer{
   .module.hot-strip .jump .jump-meta,
   .module.hot-strip .jump .jump-arrow{ display: none; }
 
-  /* ---- 右侧竖版滑轨：图标 + 小标签 + 底部小火箭回顶，总宽 38px（英文站 44px）；
+  /* ---- 右侧竖版滑轨：图标 + 小标签 + 底部小火箭回顶，中英同为总宽 38px；
      投稿按钮跟着滑轨同宽，落在滑轨正上方 ---- */
   .rail-dock{
     right: 2px;
@@ -2040,17 +2121,17 @@ footer{
     background: rgba(252,250,246,.92);
     box-shadow: 0 14px 30px -22px rgba(60,40,10,.5), 0 1px 2px rgba(28,25,23,.05);
   }
-  /* 手机滑轨收窄：每格 34px、左右只留 1px，整条 44 → 38px；
-     格子高度仍是 32px，垂直间距 / 条高不变。 */
+  /* 手机滑轨再收窄：每格 30px、左右只留 1px，整条 38 → 34px；
+     格子高度仍是 32px、垂直间距不变，所以条高锁在 309px。 */
   .rail a{
-    width: 34px;
+    width: 30px;
     height: 32px;
     gap: 1px;
     border-radius: 9px;
   }
   .rail a svg{ width: 14px; height: 14px; }
   .rail a[data-target="hot"] svg{ width: 16px; height: 16px; }
-  /* 8px 在手机上太糊：标签放到 10px（图标不变），最长的「eSIM」约 23px，仍在 34px 格子里单行 */
+  /* 8px 在手机上太糊：标签放到 10px（图标不变），最长的「eSIM」21.8px，仍在 30px 格子里单行 */
   .rail a span{
     display: block;
     font-size: 10px;
@@ -2058,12 +2139,10 @@ footer{
     letter-spacing: 0;
   }
   .rail a.active span{ font-weight: 600; }
-  /* 英文站滑轨保持原来的 38px 格 / 44px 宽、8px 标签：最长的「Discover」
-     在 10px 下要 42px 才单行，收窄后的格子放不下（会顶出滑轨边框）。
-     中文标签最长「eSIM」只有 21.8px，所以只有中文站能既收窄又放大。 */
-  html[lang="en"] .rail{ padding: 5px 2px; }
-  html[lang="en"] .rail a{ width: 38px; }
-  html[lang="en"] .rail a span{ font-size: 8px; }
+  /* 英文站标签在 30px 窄格里稍收半号（Trend 10px 要 27.6px，只剩 2.4px 余量），
+     9.5px 下仍有 ~26px、单行不溢出；中文标签最长「eSIM」21.8px 保持 10px。 */
+  html[lang="en"] .rail a span{ font-size: 9.5px; }
+  html[lang="en"] .rail-submit{ font-size: 8.5px; }
   .rail a.rail-top{ height: 34px; }
   .rail a.rail-top svg{ width: 15px; height: 15px; }
   .rail-sep{ margin: 3px 5px; }
@@ -2079,7 +2158,7 @@ footer{
   /* 手机端两个 .shell 各带 4px 底边距（共 8px），页脚再让 4px，档案区到页脚收到 ~12px */
   footer{ margin-top: 4px; }
 
-  /* 右下角语言徽标：再收小一圈，正好落在右侧 44px 滑轨与正文之间 */
+  /* 右下角语言徽标：再收小一圈，正好落在右侧 38px 滑轨与正文之间 */
   .lang-switch{
     right: 7px;
     bottom: 12px;

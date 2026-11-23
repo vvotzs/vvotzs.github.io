@@ -214,6 +214,12 @@
     };
   });
 
+  /* 记下每张卡在 build_site.py 里的顺序 = score_deal 的顺序（AI 综合打分 + KYC 沉底 +
+     多样性护栏）。切回「综合推荐」时按这个索引还原，绝不拿 valExp 重排。 */
+  modules.forEach(function (m) {
+    m.items.forEach(function (el, idx) { el.dataset.buildIdx = String(idx); });
+  });
+
   /* 检索串要等 modules 建好再拼：内联卡片的标题从卡上的 h3 取，不占索引体积 */
   buildSearch();
 
@@ -309,7 +315,12 @@
         var eb = b.dataset.end || "9999-12-31";
         return ea.localeCompare(eb);
       }
-      return (+b.dataset.valExp || 0) - (+a.dataset.valExp || 0);
+      /* 默认「综合推荐」：构建顺序就是 score_deal 的结论（已含 AI 打分、
+         门槛/低通过率沉底、同源分散），这里只按构建索引还原，不再按金额覆盖；
+         搜索补进来的 .hit 行（没有 buildIdx）排在后面。 */
+      var ia = a.dataset.buildIdx === undefined ? 1e9 : +a.dataset.buildIdx;
+      var ib = b.dataset.buildIdx === undefined ? 1e9 : +b.dataset.buildIdx;
+      return ia - ib;
     });
   }
 

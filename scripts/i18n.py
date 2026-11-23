@@ -40,8 +40,8 @@ U: dict[str, tuple[str, str]] = {
     # （复用下面的 submit_tg_aria），不再需要长短两种可见写法。
     "updated": ("北京时间 {t} 更新", "Updated {t} (UTC+8)"),
     "updated_short": ("{t} 更新", "Updated {t}"),
-    # 右侧滑轨（英文用 2–4 字母，避免撑宽 44px 的滑轨）
-    "nav_hot": ("发现", "Discover"),
+    # 右侧滑轨（英文控制在 2–5 字母，避免撑宽 38px 的手机滑轨）
+    "nav_hot": ("发现", "Trend"),
     "nav_ai": ("AI", "AI"),
     "nav_crypto": ("币", "Coin"),
     "nav_bank": ("卡", "Card"),
@@ -176,6 +176,10 @@ U: dict[str, tuple[str, str]] = {
     "not_announced": ("官方未公布", "Not announced"),
     "ongoing_not_announced": ("长期 / 官方未公布", "Ongoing / not announced"),
     "ongoing": ("长期有效", "Ongoing"),
+    # 展开卡 / 详情页的「开始至截止」三列块：中列连词、右列无截止日期时的两种说明
+    "pd_to": ("至", "to"),
+    "pd_ongoing": ("长期", "Ongoing"),
+    "pd_tbd": ("未公布", "TBD"),
     "ended_word": ("已结束", "Ended"),
     "ends_today": ("今天截止", "Ends today"),
     "ends_tomorrow": ("明天截止", "Ends tomorrow"),
@@ -252,7 +256,7 @@ U: dict[str, tuple[str, str]] = {
     "dp_related_aria": ("相关推荐", "Related deals"),
     # 分类目录页（/category/<slug>/ 与 /en/category/<slug>/）
     "cat_count": ("{n} 条进行中的优惠", "{n} live offers"),
-    "cat_sort_note": ("按可预期到手价值排序", "Sorted by expected value"),
+    "cat_sort_note": ("按 AI 综合打分排序", "Ranked by AI scoring"),
     "cat_other": ("浏览其他分类", "Browse other categories"),
     "cat_aria": ("分类目录", "Category contents"),
     "cat_all_home": ("首页看全部优惠", "All deals on the home page"),

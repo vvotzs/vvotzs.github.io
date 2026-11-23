@@ -1293,10 +1293,7 @@ def card(deal: dict, en: dict, today) -> str:
     else:
         url_dd = e(deal.get("url", ""))
 
-    period = bi(
-        f"{e(deal.get('start') or U['not_announced'][0])} → {e(deal.get('end') or U['ongoing_not_announced'][0])}",
-        f"{e(deal.get('start') or U['not_announced'][1])} → {e(deal.get('end') or U['ongoing_not_announced'][1])}",
-    )
+    period = period_block(deal)
 
     badge_zh, badge_en = value_badge(v_zh), value_badge(v_en, "en")
     badge_html = (
@@ -1348,13 +1345,15 @@ def card(deal: dict, en: dict, today) -> str:
         <span>{bi(e(deal['risk']), e(en.get('risk') or deal['risk']))}</span>
       </div>
       <div class="detail-foot">
-        <a class="dlink" href="/{deal_path(deal_id, CUR_LANG)}"
-           {al(*upair('dp_permalink_aria', t=title_text))}>{ui("dp_permalink")} \u2197</a>
+        <div class="df-top">
+          <a class="dlink" href="/{deal_path(deal_id, CUR_LANG)}"
+             {al(*upair('dp_permalink_aria', t=title_text))}>{ui("dp_permalink")} \u2197</a>
+          <div class="vote-row">{vote_bar(deal_id)}</div>
+        </div>
         <span>{bi(e(f"{U['f_source'][0]} · {deal['source']}"), e(f"{U['f_source'][1]} · {en.get('source') or deal['source']}"))}</span>
         <span>{bi(e(f"{U['f_last_verified'][0]} · {deal['last_verified']}"), e(f"{U['f_last_verified'][1]} · {deal['last_verified']}"))}</span>
         <span>{bi(e(f"{U['f_added'][0]} · {added_day(deal, today)}"), e(f"{U['f_added'][1]} · {added_day(deal, today)}"))}</span>
       </div>
-      <div class="vote-row">{vote_bar(deal_id)}</div>
     </div></div></div>
   </article>"""
 
@@ -1500,6 +1499,45 @@ DP_ICONS = (
 )
 
 
+_PD_RE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2}))?$")
+
+
+def _pd_parts(value: str) -> dict | None:
+    """把 '2026-09-21' / '2026-09-21 14:00' 拆成 年 / MM/DD / 时间；解析不了返回 None。"""
+    m = _PD_RE.match((value or "").strip())
+    if not m:
+        return None
+    y, mo, d, hh, mm = m.groups()
+    return {"y": y, "md": f"{mo}/{d}", "t": f"{hh}:{mm}" if hh else ""}
+
+
+def period_block(deal: dict) -> str:
+    """开始 → 截止的三列对称块（展开卡与详情页共用）。
+
+    左列开始、中列「至 / to」（带细下划线）、右列截止：
+      第一行年份（小号浅灰），第二行 MM/DD（主字号），
+      第三行只有该侧带具体 HH:MM 时才渲染。右列没有截止日期时写「长期 / 未公布」。
+    """
+    zh = CUR_LANG != "en"
+    tbd = "未公布" if zh else "TBD"
+    ongoing = "长期" if zh else "Ongoing"
+    to_txt = "至" if zh else "to"
+    s, t = _pd_parts(deal.get("start") or ""), _pd_parts(deal.get("end") or "")
+    ly, lm, lt = (s["y"], s["md"], s["t"]) if s else ("", tbd, "")
+    ry, rm, rt = (t["y"], t["md"], t["t"]) if t else (ongoing, tbd, "")
+    cells = [
+        f'<span class="pd-y pd-l">{e(ly)}</span>',
+        f'<span class="pd-y pd-r">{e(ry)}</span>',
+        f'<span class="pd-md pd-l">{e(lm)}</span>',
+        f'<span class="pd-to">{e(to_txt)}</span>',
+        f'<span class="pd-md pd-r">{e(rm)}</span>',
+    ]
+    if lt or rt:
+        cells.append(f'<span class="pd-t pd-l">{e(lt)}</span>')
+        cells.append(f'<span class="pd-t pd-r">{e(rt)}</span>')
+    return '<span class="pd">' + "".join(cells) + "</span>"
+
+
 def dp_deadline(deal: dict, today) -> str:
     """详情页顶部的截止说明：「12月31日 截止 · 剩 41 天」这种一句话。"""
     end = parse_date(deal.get("end", ""))
@@ -1519,10 +1557,8 @@ def dp_deadline(deal: dict, today) -> str:
 
 
 def dp_period(deal: dict) -> str:
-    """开始 → 截止的原始日期区间（未公布时写说明文字）。"""
-    start = e(deal.get("start") or ui("not_announced"))
-    end = e(deal.get("end") or ui("ongoing_not_announced"))
-    return f"{start} \u2192 {end}"
+    """开始 → 截止：与展开卡同一套三列对称块。"""
+    return period_block(deal)
 
 
 def dp_status(deal: dict) -> tuple[str, str]:
