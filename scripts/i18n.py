@@ -166,7 +166,7 @@ U: dict[str, tuple[str, str]] = {
     "unverified": ("待核实", "Unverified"),
     "f_what": ("优惠内容", "What you get"),
     "f_conditions": ("参与条件", "Conditions"),
-    "f_regions": ("适用国家或地区", "Countries & regions"),
+    "f_regions": ("适用地区", "Regions"),
     "f_period": ("开始及截止时间", "Starts & ends"),
     "f_steps": ("参与步骤", "Steps"),
     "f_link": ("官方活动链接", "Official link"),
