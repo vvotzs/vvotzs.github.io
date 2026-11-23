@@ -1309,20 +1309,20 @@
   "source": "e& UAE official Visitor Line page (checked 2026-11-19: Free Visitor Line AED 0 / 10GB / 24 hours / includes a new SIM); e& press releases of 2024-09-16 and 2025-11-20 (Abu Dhabi airport partnership); Telecompaper 2025-10 (Sharjah airport)"
  },
  "1free-eu-host-vps": {
-  "title": "[Global] 1free.eu free shared hosting + VPS S free for 30 days (no credit card)",
-  "highlight": "1GB of ad-free free hosting that lasts; VPS S (1 vCPU / 1GB / 20GB SSD) free for 30 days with no card, marked as running to 11/30",
-  "regions": "[Global] Register online with a Polish provider; one free 1GB hosting account and one trial VPS",
-  "value": "30-day VPS + permanent free hosting (about $10)",
-  "content": "1free.eu offers free web space with 1GB of disk, unlimited traffic, five MySQL databases, ten mailboxes, two domains and PHP 5.6 to 8.4, without ads and with free SSL. A VPS trial gives VPS S (1 vCPU, 1GB, 20GB SSD, five open ports, one backup, IPv4) free for 30 days without a card or Stripe, afterwards continuing at 5 zloty a month or 60 a year; the page dates the trial to 30 November 2026.",
-  "conditions": "Register an account; free hosting is permanent but small at 1GB and two domains; the VPS trial lasts 30 days and is reclaimed without payment; you manage the Linux yourself.",
+  "title": "[Global] 1free.eu free shared hosting: 1GB, no ads, free SSL (VPS is now paid)",
+  "highlight": "The home page still promises free ad-free hosting forever: 1GB of space, unlimited traffic, five MySQL databases, ten mailboxes, two domains, PHP 5.6 to 8.4 and free SSL; the former 30-day free VPS S trial is gone and VPS is now paid from 2.50 zloty a month.",
+  "regions": "[Global] Register a free account online with this Polish provider; one free 1GB hosting account with two domains",
+  "value": "$0 permanent free hosting (1GB plus unlimited traffic)",
+  "content": "1free.eu offers permanent free web space with 1GB of disk, unlimited traffic, five MySQL databases, ten mailboxes, two domains and PHP 5.6 to 8.4, without ads and with free SSL, and signup needs no card. The 30-day free VPS S trial (1 vCPU, 1GB, 20GB SSD) was no longer on the VPS page when checked on 2026-11-24: VPS is now paid, with VPS S from 20 zloty a year and VPS M at 8.50 zloty a month, and the cheapest plan at 2.50 zloty a month.",
+  "conditions": "Register an account; free hosting is permanent but small (1GB, two domains, PHP-oriented) and cannot run long-lived custom programs or anything needing root, which takes a paid VPS.",
   "steps": [
-   "Register a free account at 1free.eu",
-   "Take the Free hosting plan for a site, or start a VPS S trial from the VPS page",
-   "Complete activation from the email and set up DNS",
-   "Decide within 30 days whether to continue at 5 zloty a month"
+   "Register a free account at 1free.eu without a card",
+   "Take the Free hosting plan and attach your own or the provided subdomain",
+   "Upload the site or install a supported PHP app and enable free SSL",
+   "Order a paid VPS plan when you need root"
   ],
-  "risk": "A small provider with less stability and support than the big names; free hosting is too small for custom apps; an unpaid trial gets reclaimed, so back up any data.",
-  "source": "1free.eu official VPS and hosting pages (the campaign is marked to 2026-11-30)"
+  "risk": "A small Polish provider with less stability and support than the big names; free hosting is small and PHP-oriented; the free policy can tighten, so keep your own backups.",
+  "source": "1free.eu official home page (read 2026-11-24: free ad-free hosting forever) + official VPS page (read 2026-11-24: VPS is now paid, VPS S 20 zloty a year, VPS M 8.50 zloty a month, cheapest 2.50 zloty a month; no 30-day free trial found)"
  },
  "ace-money-transfer-uk-india-10": {
   "title": "[UK] ACE Money Transfer: £10 off a first transfer to India (£100 minimum)",
@@ -6805,5 +6805,39 @@
   ],
   "risk": "It only works for overland arrivals, so fly-in visitors and residents cannot use it; the official FAQ says complimentary SIM card while outlets report an eSIM, so the actual format depends on the confirmation email; stocks are limited; travellers from outside the GCC still need a Hayya visa and vehicle insurance.",
   "source": "Visit Qatar official Saudi Holiday Escape page (read 2026-11-24: 20–27 Nov, non-Qatari plates get WOQOD vouchers and a free SIM/eSIM) + The Peninsula Qatar and News of Bahrain (22–23 Nov 2026 reports of QR150 fuel vouchers and a Vodafone eSIM)"
+ },
+ "together-ternary-bonsai-27b-free": {
+  "title": "[Global] Together AI: Ternary Bonsai 27B free for input and output, 262K context with vision",
+  "brand_en": "Together AI",
+  "highlight": "The model page and the pricing table both list input, cached input and output at $0: PrismML squeezed Qwen3.6 27B into ternary weights (1.71 bits per weight, about 9.4x smaller than FP16) while keeping 95% of quality, a 262K context, image input and JSON mode.",
+  "regions": "[Global] A Together AI account and API key are enough to call the serverless endpoint; the vendor publishes no rate limit, free quota or regional restriction",
+  "value": "$0 (free input and output for a 27B-class reasoning model)",
+  "content": "Together AI serves PrismML's Ternary Bonsai 27B on serverless inference with input, cached input and output all priced Free under the model ID Prism-ML/Ternary-Bonsai-27B. It is a ternary low-bit build of Qwen3.6 27B: every language weight takes one of three values with an FP16 scale per group of 128, measuring 1.71 bits per weight and roughly 9.4x smaller than FP16, and it claims 95% of the original quality (80.49 average over 15 thinking-mode benchmarks, with MATH-500 99.20, AIME 2025 90.84 and HumanEval+ 93.90). It carries a 262K context, a 4-bit vision tower for images and documents, JSON mode and tool calling, with recommended temperature 0.7, top_p 0.95 and top_k 20. Other models on the same platform are billed by usage (GLM-5.3 at $1.40 per million input tokens).",
+  "conditions": "Create a Together AI account and API key (endpoint Prism-ML/Ternary-Bonsai-27B) and call it through the OpenAI-compatible /v1/chat/completions route; the vendor publishes no free quota, rate limit or end date, so terms can change.",
+  "steps": [
+   "Sign up at together.ai and create an API key",
+   "Send requests to https://api.together.ai/v1/chat/completions with model Prism-ML/Ternary-Bonsai-27B",
+   "Load long documents or repositories straight into the 262K context and turn on JSON mode for structured output",
+   "Test the free tier's rate limit before relying on it and keep a paid model as a fallback"
+  ],
+  "risk": "The free price comes with no end date, quota or rate limit published, so the platform can change or withdraw it; ternary quantisation still loses about 5% quality, so verify complex maths and long chains yourself; free serverless capacity is shared and queues at peak; do not put the free tier on a critical production path.",
+  "source": "Together AI official model page (read 2026-11-24: Free input and output per 1M tokens, 262K context, vision and JSON, endpoint Prism-ML/Ternary-Bonsai-27B, released 2026-07-14, 99.9% SLA serverless) + the serverless table on the official pricing page (Ternary Bonsai 27B input Free, output Free, cached Free)"
+ },
+ "nebius-builder-program-credits": {
+  "title": "[Global] Nebius Builder Program is free to join: $25 AI Cloud + $25 Token Factory + $25 Tavily + $50 Toloka credit",
+  "brand_en": "Nebius",
+  "highlight": "The official page says joining is free and credits arrive after email verification: $25 of AI Cloud covers an H100 for up to a day at Spot prices, alongside Token Factory inference, Tavily search and Toloka evaluation credit, plus a $1 NVIDIA x Nebius certification and free courses.",
+  "regions": "[Global] Fill in the registration form and verify the email by double opt-in; disposable domains are refused and personal addresses may be reviewed; signups are screened against sanctions lists",
+  "value": "$125 of credit ($25 AI Cloud + $25 Token Factory + $25 Tavily + $50 Toloka)",
+  "content": "The Nebius AI Builder Program is free to join. Its page lists $25 of AI Cloud credit (enough for an H100 for up to a day or a B300 for an afternoon at Spot prices), $25 of Token Factory credit, $25 of Tavily real-time search credit and $50 of Toloka evaluation credit, plus a $1 NVIDIA x Nebius certification, a free Agentic AI course, office hours and a Discord community. Section C.1 of the service terms says verification issues credit codes for $25 Token Factory and $25 Tavily, and C.2 makes all promotional credits non-transferable and valid for 90 days from issuance; AI Cloud and Toloka credit follow their own terms and eligibility. Registration with disposable email domains is blocked, signups are limited to one per IP per 24 hours, and credits may only be used for prototyping, experimentation and learning rather than production or revenue work; an account using more than 30% above its allocation may be auto-paused.",
+  "conditions": "Register with name, email, company or university, role, country and a description of what you are building, then complete double opt-in verification; one account per verified email and one signup per IP per 24 hours; credits expire after 90 days and are limited to prototyping and experimentation; personal emails may go to manual review.",
+  "steps": [
+   "Fill in the form at dev.nebius.com/builders with your name, email, company or university, role, country and project",
+   "Click the verification email so membership becomes active",
+   "Claim the Token Factory, Tavily and other credit codes and redeem them on each platform, taking AI Cloud credit when you need GPUs",
+   "Spend them within 90 days, then move to pay-as-you-go if you want to continue"
+  ],
+  "risk": "The terms only promise Token Factory and Tavily credit at registration, while AI Cloud and Toloka are subject to separate eligibility; personal email addresses may be reviewed and disposable ones are refused; credit expires in 90 days and is limited to prototyping, so production or revenue use breaks the terms; spending more than 30% above the allocation can trigger an automatic pause, so set limits before calling the APIs.",
+  "source": "Nebius official Builder Program page (read 2026-11-24: free to join, $25 AI Cloud, $25 Token Factory, $25 Tavily, $50 Toloka, $1 certification, free course and office hours) + the official service-specific terms (C.1 issues $25 Token Factory and $25 Tavily codes after verification; C.2 90-day expiry and no transfer; H.2 bans duplicate accounts and production use)"
  }
 }

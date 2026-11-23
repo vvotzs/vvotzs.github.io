@@ -234,7 +234,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T21:48:45Z",
+      "last_crawled_at": "2026-11-23T23:50:44Z",
       "last_hit_at": "2026-11-23T20:52:44Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -300,7 +300,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T21:48:45Z",
+      "last_crawled_at": "2026-11-23T23:50:44Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -320,7 +320,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T21:48:45Z",
+      "last_crawled_at": "2026-11-23T23:50:44Z",
       "last_hit_at": "2026-11-23T21:48:45Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -614,7 +614,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_crawled_at": "2026-11-23T23:50:44Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "search_domains": [
         "2libra.com"
@@ -951,7 +951,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_crawled_at": "2026-11-23T23:50:44Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
@@ -987,7 +987,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_crawled_at": "2026-11-23T23:50:44Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
@@ -1900,7 +1900,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": "2026-11-23T19:57:07Z",
+      "last_crawled_at": "2026-11-23T23:50:44Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "ota_airline",
       "entries": [
