@@ -217,7 +217,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T04:41:21Z",
+      "last_crawled_at": "2026-11-23T05:29:02Z",
       "last_hit_at": "2026-11-22T02:08:25Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -241,8 +241,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T04:41:21Z",
-      "last_hit_at": "2026-11-22T02:08:25Z",
+      "last_crawled_at": "2026-11-23T05:29:02Z",
+      "last_hit_at": "2026-11-23T05:29:02Z",
       "search_domains": [
         "x.com"
       ],
@@ -263,7 +263,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T04:41:21Z",
+      "last_crawled_at": "2026-11-23T05:29:02Z",
       "last_hit_at": "2026-11-22T02:08:11Z",
       "entry_url": "https://tg.docofcard.com/rss.json",
       "zero_streak": 0
@@ -283,7 +283,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T04:41:21Z",
+      "last_crawled_at": "2026-11-23T05:29:02Z",
       "last_hit_at": "2026-11-22T02:08:25Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -303,7 +303,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T04:41:21Z",
+      "last_crawled_at": "2026-11-23T05:29:02Z",
       "last_hit_at": "2026-11-22T02:08:11Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -323,7 +323,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-22T04:41:21Z",
+      "last_crawled_at": "2026-11-23T05:29:02Z",
       "last_hit_at": "2026-11-22T02:08:11Z",
       "zero_streak": 0
     },
@@ -779,7 +779,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-20T20:57:41Z",
+      "last_crawled_at": "2026-11-23T05:29:02Z",
       "last_hit_at": "2026-11-15T01:30:00Z"
     },
     {
@@ -1079,7 +1079,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-14T10:30:00Z",
+      "last_crawled_at": "2026-11-23T05:29:02Z",
       "last_hit_at": "2026-10-22T16:30:00Z",
       "entry_url": "https://channel.mykeyvans.com/rss.json"
     },

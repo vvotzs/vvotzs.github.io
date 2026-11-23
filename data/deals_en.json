@@ -6200,5 +6200,143 @@
   "risk": "Archived as expired: on 23 November 2026 the user's own test got \"Something went wrong. Please retry or contact Nodaroo support\" from the panel, and NodeLoc replies at the same time said \"not working now\" and reported the China region failing, so do not treat it as a usable free machine. Historic risks remain: a very new host from November 2026 whose free resources can be reclaimed or shut down at any moment, so back up important data and never make it the only production environment; a container cannot run Docker, has no root or SSH, no dedicated public IPv4 and only panel-assigned ports; the 200% CPU is a shared allowance throttled under fair use; the referral upgrade tiers were a limited-time campaign, so do not recruit people for them, and this site never carries invite links. One more template trace: the homepage declares its favicon on horizon.embernix.org, an unrelated host whose pages are also titled \"Premium Web Hosting Solutions\", so the site was clearly built from someone else's template, which makes the operator's background and support even harder to judge.",
   "source": "Our check on 23 November 2026: free.nodaroo.com sign-in page and /invite landing page returned HTTP 200 with Discord-only login (OAuth scopes identify / email / guilds.join), panel.nodaroo.com is a Pterodactyl panel titled \"Nodaroo Game Panel\", and nodaroo.com lists Frankfurt and Mumbai locations; NodeLoc thread t/topic/118974 (posted 2026-11-22 22:58 UTC, including the China-region error, with a 2026-11-23 03:44 UTC reply \"not working now\") + NodeLoc t/topic/118992 (2026-11-23 03:42 UTC, replies noting \"this deployment is a game panel\" and that choosing a region manually costs points) + the free-plan figures as reposted by the community",
   "brand_en": "Nodaroo"
+ },
+ "aws-free-tier-200-credits": {
+  "title": "[Global] AWS Free Tier: up to $200 in credits for new customers, Google/GitHub sign-in, no card for most (6 months)",
+  "highlight": "The new sign-up takes Google, GitHub, Apple or Amazon logins and most new customers need no card: $100 at once, up to $100 more for trying EC2, RDS, Lambda, Bedrock and Budgets, for 6 months or until the credits run out",
+  "regions": "[Global] AWS Sign up for AWS (new); new customers only, no previous AWS account",
+  "value": "Up to $200 ($100 at sign-up + $100 for tasks)",
+  "content": "AWS's 2026 Free Tier has a Free plan and a Paid plan. New customers start on Free with $100 in credits and can earn up to $100 more by working through the console's tasks (the five activities in the earlier version were launching EC2, the Bedrock playground, a cost budget, a Lambda web app and an RDS database). That is up to $200 for 6 months or until the credits are spent. The Free plan opens a subset of 90+ services (EC2, S3, RDS, Aurora, DynamoDB, Bedrock and more); 30+ Always Free services stay free within monthly limits on both plans. The Free plan cannot open every service and is not eligible for other promotional credits such as Activate. At 6 months or when credits run out the account closes (the FAQ calls it a suspension), data is kept 90 days, upgrading to Paid within that window restores it, after which it is deleted. The console also gives an MCP prompt for Kiro, Claude Code or Cursor.\n\nTwo charges people miss: public IPv4 addresses on EC2 and Lightsail cost $0.005 an hour (about $3.65 a month each, attached or idle) since 1 February 2024 and are deducted from the credits on the Free plan; and Lightsail's old three-month free trial is gone, with the official FAQ saying short-term trials were replaced by Free Tier credits, so no £0 bundle appears at checkout.",
+  "conditions": "New customers only; anyone with an AWS account in their history goes to the Paid plan and must add a card. Most sign-ups need no card, but AWS may ask for one to verify ($1 hold for 3-5 days, not charged). The new flow is still rolling out. The second $100 needs the tasks on the console's Free Tier page. The Free plan reaches only part of the catalog, credits last 6 months and cannot be extended, and the account is deleted 90 days after expiry unless upgraded. IPv4 and overage draw down the credits. EC2 is reached over SSH with a key pair and security groups (port 22 by default); Lightsail gives a one-click SSH terminal and an included public IPv4, with an unattached static IP billed $0.005 an hour after one hour.",
+  "steps": [
+   "Open aws.amazon.com/start-here, choose Create account and sign in with Google, GitHub, Apple or Amazon",
+   "Enter your details and verify the email; most people are not asked for a card",
+   "Work through the Free Tier task page for the second $100",
+   "Launch an EC2 instance with a key pair, or a Lightsail instance, and open the ports you need in the security group or Lightsail firewall",
+   "Release unused public IPv4 addresses and delete resources before the 6 months end"
+  ],
+  "risk": "The no-card flow is not universal; a $1 hold appears if a card is requested; only part of AWS is reachable on the Free plan; the account closes at 6 months and data is lost after 90 days; public IPv4 costs accrue even when idle; Lightsail no longer has a standalone free trial.",
+  "source": "AWS Free Tier page and Free Tier FAQs (read 2026-11-23) + AWS News Blog (2026-09-16) + AWS docs Sign up for AWS (new) + Lightsail billing FAQ (2026-11-23) + The Proof Desk review (2026-10-09)"
+ },
+ "nuyek-black-friday-11-vps": {
+  "title": "[US] Nuyek Black Friday VPS: 1 vCPU/2GB/25GB NVMe/8TB for $11 a year",
+  "highlight": "1 vCPU, 2GB DDR4, 25GB NVMe, 100Mbps port, 8TB a month, one dedicated IPv4 and a /56 IPv6 subnet in Highland, Illinois, for $11 a year",
+  "regions": "[US] Highland, Illinois (standard international routing, not optimised for China)",
+  "value": "$11 a year (about $0.92 a month)",
+  "content": "Nuyek's 2026 Black Friday VPS: 1 vCPU, 2GB DDR4, 25GB NVMe, 100Mbps port, 8TB monthly traffic, one dedicated IPv4 plus a /56 IPv6 subnet, hosted in Highland, Illinois, for $11 a year. The shop says 15 units at launch, then one unit a day until 1 January 2027. The same page lists an i5-10500 / 16GB / 2x256GB NVMe / 100Mbps / 33TB dedicated server at $15 a month (20 units, monthly only, code BF2016-i510500-AKJQ).",
+  "conditions": "Very limited stock: 15 at launch then one a day until 1 January 2027. The site does not state the virtualisation type, port policy or renewal price, so ask support or check the checkout page. 8TB a month is a hard cap, not unlimited. Standard international routing, so speed from China depends on the carrier.",
+  "steps": [
+   "Open nuyek.com/shop and find the $11/year Black Friday VPS while it is in stock",
+   "Check the configuration, location and renewal price on the checkout page, then pay",
+   "Grab the IP and root password from the panel and test SSH and your ports",
+   "If it sells out, check back at the same time the next day"
+  ],
+  "risk": "A new seller with no long-term reliability record; stock is one unit a day so missing it is normal; renewal price and port policy are unpublished; cheap nodes are oversold and can stutter at peak, so keep nothing important on it.",
+  "source": "Nuyek shop page (read 2026-11-23) + NodeSeek post and comments (2026-11-14) + VPSRankings Black Friday feed"
+ },
+ "ava-hosting-nano-11-eur": {
+  "title": "[Global] Ava.hosting Black Week: Nano 1 vCPU/512MB/20GB NVMe for EUR 11 a year (code BFAVA, 20% off first payment sitewide)",
+  "highlight": "1 vCPU, 512MB, 20GB NVMe, one dedicated IPv4, 1Gbps port, unmetered traffic in Chisinau, Moldova for EUR 11 a year; code BFAVA takes 20% off the first payment on other shared, VPS and dedicated plans",
+  "regions": "[Global] Chisinau, Moldova (good for Europe, no China-optimised routing)",
+  "value": "EUR 11 a year (about $12.8)",
+  "content": "AvaHost, hosting from Chisinau since 2002, has a Black Week Nano plan: 1 vCPU, 512MB, 20GB NVMe, one dedicated IPv4, 1Gbps port, unmetered traffic, EUR 11 a year; the site showed 803 of 1024 units left and the offer runs to 2 December 2026. Other shared, VPS and dedicated plans take code BFAVA for 20% off the first payment until the same date. Regular VPS One (1 vCPU/2GB/25GB) is EUR 5 a month and dedicated servers start at EUR 85. All KVM with full root, DDoS filtering, card, crypto and bank transfer accepted.",
+  "conditions": "The Nano special and BFAVA do not stack in practice: a NodeSeek user got the EUR 11 plan down to EUR 8.8, after which the code stopped working on it. Unmetered traffic is subject to fair use. Port 25 is blocked by default according to community reports; open a ticket if you need it. Chisinau is far from China, so latency is high. 512MB only suits light workloads.",
+  "steps": [
+   "Open ava.hosting and pick the Nano special with a 1-year term",
+   "Try code BFAVA at checkout (it works on the Nano on and off) and only pay once the price drops",
+   "Get the IP and root password from the client area and check SSH and your ports",
+   "Open a ticket to unblock port 25 if you need to send mail"
+  ],
+  "risk": "512MB is very small; the BFAVA overlap is inconsistent between users; unmetered traffic has a fair-use clause; latency from China is high; the company is long-established but small.",
+  "source": "AvaHost homepage (read 2026-11-23) + NodeSeek Black Friday post and comments (2026-11-19)"
+ },
+ "avoro-black-week-vps": {
+  "title": "[DE] AVORO Black Week VPS: Frankfurt Nano 1 vCPU/1GB from EUR 2.24 a month quarterly",
+  "highlight": "Frankfurt Nano: 1 vCPU, 1GB, 15GB NVMe, 1TB traffic, 500Mbit for EUR 2.24 a month paid quarterly; Allrounder 4 vCPU/16GB/60GB EUR 10.92 a month, Storage 4 vCPU/16GB/500GB EUR 19.75, all before VAT, until 30 November",
+  "regions": "[DE] Frankfurt, Germany; prices exclude VAT",
+  "value": "EUR 2.24 a month (quarterly, about EUR 6.72 a quarter, before VAT)",
+  "content": "AVORO's Black Week runs to 30 November 2026, 23:59 Berlin time. Nano: 1 vCPU, 1GB, 15GB NVMe, 1TB monthly traffic, 500Mbit, EUR 2.24 a month on a quarterly term. Allrounder: 4 vCPU, 16GB, 60GB NVMe, 5TB, 1Gbps, EUR 10.92 a month. Storage: 4 vCPU, 16GB, 500GB NVMe, 10TB, EUR 19.75 a month. There is also an RTX PRO 6000 96GB GPU VPS. No minimum contract, prepaid, online within a minute of payment; sold-out specials are not restocked. Regular VPS start at EUR 4.07 a month.",
+  "conditions": "All prices exclude VAT, so a German address adds 19% and the checkout total is what you pay. EUR 2.24 only applies to quarterly billing. Sold-out specials do not return. GPU pricing is quoted on request. The site does not document port or SSH policy, so verify after provisioning.",
+  "steps": [
+   "Open avoro.eu/en/black-friday, pick Nano or Allrounder, choose quarterly billing",
+   "Check the VAT-inclusive total at checkout",
+   "Provisioning finishes within a minute of payment; log in with the details emailed to you",
+   "Confirm SSH, ports and traffic accounting yourself"
+  ],
+  "url": "https://avoro.eu/en/black-friday",
+  "source_url": "https://x.com/Leo_zhang2018/status/2124690894725247296",
+  "risk": "Listed prices exclude VAT, so German buyers pay about 19% more; the special ends 30 November and regular pricing (from EUR 4.07) applies after; sold-out sizes do not return; a small provider without large-scale reliability data.",
+  "source": "AVORO official Black Week page (read 2026-11-23) + X Black Friday roundup (2026-11-23)"
+ },
+ "netspend-200-dd-400": {
+  "title": "[US] NetSpend: $200 for $400 of direct deposit within 60 days (SSN required, keep it to day 90)",
+  "highlight": "Open a NetSpend Debit Account (Pathward, FDIC) and receive $400 in direct deposits within 60 days, kept active to day 90, for a $200 credit; no credit check, no minimum balance",
+  "regions": "[US] All states except Vermont; SSN and ID verification required",
+  "value": "$200",
+  "content": "NetSpend's official offer page (read 2026-11-23) says a new Netspend Prepaid Card or Debit Account opened between 1 May 2026 and 31 December 2027, activated and identity-verified, that receives $400 or more in Direct Deposits within 60 days and keeps the direct deposit active through day 90 earns a $200 credit within 5-7 business days. Limit one per SSN. ACH transfers, P2P and tax refunds do not count. The optional savings account pays 6.00% APY up to a $2,000 average daily balance and 0.50% above it. Accounts are held by Pathward, N.A., member FDIC.",
+  "conditions": "US new customers who pass identity verification (SSN or tax ID plus government ID). Only true Direct Deposits count. The direct deposit must continue to day 90. Community reports mention a $5 monthly fee and withdrawal fees not listed on the offer page. The bonus is taxable income.",
+  "steps": [
+   "Apply for the Debit Account at netspend.com/signup/debitaccount/offer-200 and verify your identity",
+   "Move your payroll or government benefit direct deposit to the new account",
+   "Reach $400 within 60 days and keep the deposit running to day 90",
+   "Check for the $202 credit 5-7 business days after day 90, then decide whether to keep the account"
+  ],
+  "risk": "Forum users report the $5 monthly fee is hard to waive and withdrawals cost $2, cutting $15-20 off the payout; some say the bank has withheld bonuses until a CFPB complaint; an SSN is required; a second applicant at the same address gets blocked. Do the fee and withdrawal arithmetic first.",
+  "source": "NetSpend official offer terms (read 2026-11-23) + UScardforum thread and replies (2026-11-23) + NodeSeek post + Doctor of Credit (updated 2026-11-23)"
+ },
+ "devin-swe2-free-nov2026": {
+  "title": "[Global] Cognition Devin: SWE-2 free through 30 November, SWE-2 Flash through 4 December (Medium on the free plan)",
+  "highlight": "In Devin Desktop and Devin CLI, SWE-2 is free through 30 November and SWE-2 Flash through 4 December 18:00 UTC; the free plan can select Flash Medium; Devin cloud sessions are excluded",
+  "regions": "[Global] Devin Desktop (macOS) and Devin CLI, subject to your plan and region",
+  "value": "SWE-2 normally $3/$15 per million tokens and Flash $0.10/$0.50; free during the promotion",
+  "content": "Cognition's model docs (read 2026-11-23) say SWE-2 is free for self-serve plans in Devin Desktop and Devin CLI through 30 November 2026, then $3.00 per million input, $15.00 output and $0.30 cache reads. SWE-2 Flash is free until 4 December 2026 at 18:00 UTC, then $0.10 input, $0.50 output with $0.01 cache reads and $0.125 cache writes across all three variants. SWE-2 Flash Medium is available on the Free plan; High and Max need a paid plan. SWE-2 Flash launched on 4 November and Cognition says it runs about 3x faster than SWE-2 at about a fifth of the price. Both models are only in Desktop and CLI, not in Devin cloud sessions.",
+  "conditions": "Desktop and CLI only; Devin cloud sessions are excluded. Flash High and Max require a paid plan. Voice mode uses a separate agent model that does not get the free rate. Normal list pricing resumes automatically after the end dates.",
+  "steps": [
+   "Install Devin Desktop or Devin CLI and sign in (the Free plan can use Flash Medium)",
+   "Pick SWE-2 or SWE-2 Flash in the model selector",
+   "Finish work before 30 November and 4 December, after which list pricing applies",
+   "Use SWE-2 for larger changes and Flash for everyday edits"
+  ],
+  "url": "https://docs.devin.ai/desktop/models",
+  "source_url": "https://cognition.com/blog/swe-2-flash",
+  "risk": "Billing reverts to list price the moment the promotion ends; the models are desktop/CLI only; a very new model without much public track record, so review its code.",
+  "source": "Cognition's official model docs (read 2026-11-23) + launch post (2026-11-04) + company LinkedIn announcement"
+ },
+ "gate-us-35-usdt-new-user": {
+  "title": "[US] Gate US new users: KYC + $50 deposit + $50 spot trade for up to 35 USDT in vouchers (to 14 December)",
+  "highlight": "New users get 5 USDT for KYC, 15 USDT for a first net deposit of $50 and 15 USDT for a first $50 spot trade; all users can also earn up to 40 USDT of BTC from daily spot trading",
+  "regions": "[US] Supported states only (New York excluded); KYC required",
+  "value": "35 USDT in vouchers plus up to 40 USDT in daily BTC rewards",
+  "content": "Gate US's Fall Into Rewards runs from 16 November 2026, 09:00 ET to 14 December 2026, 09:00 ET. New users get a 5 USDT token voucher for completing KYC, 15 USDT for a first net deposit of at least $50 during the event, and 15 USDT for a first filled spot order of at least $50, up to 35 USDT in total; each task is limited to the first 400 users. Reward 2 is open to new and existing users: daily spot trading shares 40 USDT worth of BTC while supplies last. Rewards are issued as token vouchers.",
+  "conditions": "Register for the campaign, be 18+, pass Gate US KYC and live in a supported state (New York is excluded). \"New user\" means no deposit or spot trade before the campaign, regardless of registration date. Net deposit is total deposits minus withdrawals during the event. Each task caps at 400 users. Vouchers are not withdrawable cash.",
+  "steps": [
+   "Register for Gate US from the campaign page and complete KYC (5 USDT)",
+   "Deposit at least $50 equivalent net during the event (15 USDT)",
+   "Make one spot trade of at least $50 (15 USDT); it also counts for that day's trading reward",
+   "Keep trading spot daily for the BTC rewards before 14 December 09:00 ET"
+  ],
+  "url": "https://www.gate.com/en-us/announcements/article/45572",
+  "source_url": "https://www.gate.com/en-us/announcements/article/45572",
+  "risk": "Rewards are vouchers with conditions, not cash; each task is first come, first served for 400 spots; you must deposit and trade real money, with price risk and fees; several US states cannot take part.",
+  "source": "Gate US official campaign announcement (published 2026-11-16, read 2026-11-23)"
+ },
+ "azure-free-account-200": {
+  "title": "[Global] Azure free account: $200 for 30 days + 12 months of free VMs + 65 always-free services (card verified, not charged)",
+  "highlight": "$200 of credit for any service for 30 days; for 12 months, 750 hours a month each of B1s, B2pts v2 and B2ats v2 burstable Linux or Windows VMs, plus 20+ popular services free and 65+ always free",
+  "regions": "[Global] Billing country must be supported; signing up directly to pay-as-you-go in China or India does not get the 12-month free services",
+  "value": "$200 plus 750 free VM hours a month for 12 months",
+  "content": "Azure's free account (official terms as of November 2026) gives new customers $200 of credit for 30 days on any service except third-party Marketplace purchases; unused credit is lost. For 12 months you get 750 hours a month each of B1s, B2pts v2 (Arm) and B2ats v2 (AMD) burstable VMs, Linux or Windows, spread across as many instances as you like; plus monthly free amounts on 20+ popular services and 65+ always-free services for any account. VMs can run in any supported region. Sign-up needs a phone number, a non-prepaid credit or debit card and a Microsoft or GitHub account; a $1 authorisation may be held and reversed, and nothing is charged. Within 30 days or when the credit runs out you must move to pay-as-you-go to keep the 12-month free services, otherwise the account and services are disabled.",
+  "conditions": "New customers who have not had the 12-month free services before. Phone number, non-prepaid card (credit card only in Hong Kong and Brazil), Microsoft or GitHub account, and a billing country on the supported list. $1 hold released after verification. The $200 lasts 30 days and does not roll over; you must upgrade to pay-as-you-go within 30 days to keep the 12-month allowances; monthly free amounts reset and do not accumulate; public IP addresses and outbound data are billed separately and draw on the $200. Build a VM with an SSH key or password, and open whatever ports you need in the network security group (port 22 only by default).",
+  "steps": [
+   "Open azure.microsoft.com/en-us/pricing/purchase-options/azure-account and choose Try Azure for free",
+   "Sign in with a Microsoft or GitHub account and verify with a phone number and non-prepaid card ($1 hold is reversed)",
+   "Create a B1s or B2ats v2 VM with Linux and an SSH key",
+   "Allow the ports you need in the NSG inbound rules (22, 80, 443 and so on)",
+   "Decide on pay-as-you-go within 30 days; if not, delete the VM and disks so they stop using credit"
+  ],
+  "url": "https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account",
+  "source_url": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/create-free-services",
+  "risk": "Forgotten VMs and disks keep drawing on the credit until the services are disabled; not upgrading within 30 days stops the account; public IPs, egress and premium disks are not free; the free VMs are burstable B-series that slow down when CPU credits run out; each person gets the 12-month offer once.",
+  "source": "Microsoft Learn Create free services with an Azure free account (read 2026-11-23) + Azure free account purchase page and FAQ + Azure free services list + Costbrake review (2026-11-10)"
  }
 }
