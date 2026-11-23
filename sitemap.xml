@@ -5330,24 +5330,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vvotzs.github.io/d/roam-esim-bot-drei-1gb/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/roam-esim-bot-drei-1gb/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/roam-esim-bot-drei-1gb/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/roam-esim-bot-drei-1gb/"/>
-    <lastmod>2026-11-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vvotzs.github.io/en/d/roam-esim-bot-drei-1gb/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/roam-esim-bot-drei-1gb/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/roam-esim-bot-drei-1gb/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/roam-esim-bot-drei-1gb/"/>
-    <lastmod>2026-11-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://vvotzs.github.io/d/scnet-maas-new-user-tokens/</loc>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/scnet-maas-new-user-tokens/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/scnet-maas-new-user-tokens/"/>
@@ -7252,6 +7234,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/easysim-free-1gb-esim/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/easysim-free-1gb-esim/"/>
     <lastmod>2026-11-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/d/roam-esim-bot-drei-1gb/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/roam-esim-bot-drei-1gb/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/roam-esim-bot-drei-1gb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/roam-esim-bot-drei-1gb/"/>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/en/d/roam-esim-bot-drei-1gb/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/roam-esim-bot-drei-1gb/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/roam-esim-bot-drei-1gb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/roam-esim-bot-drei-1gb/"/>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
