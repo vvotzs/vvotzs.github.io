@@ -1647,7 +1647,7 @@ footer{
   html:not(.board-ready) #closing{ display: none; }
 
   html{ scroll-padding-top: 66px; }
-  /* 右侧竖版滑轨占 44px：正文右留白同步收紧，卡片不钻到导轨下面 */
+  /* 右侧竖版滑轨占 38px（英文站 44px）：正文右留白同步收紧，卡片不钻到导轨下面 */
   .shell{ padding: 0 44px 4px 14px; }
   /* 英文站滑轨仍是 44px 宽，正文右侧回到 50px，卡片不会钻到导轨下面 */
   html[lang="en"] .shell{ padding-right: 50px; }
@@ -2018,8 +2018,8 @@ footer{
   .module.hot-strip .jump .jump-meta,
   .module.hot-strip .jump .jump-arrow{ display: none; }
 
-  /* ---- 右侧竖版滑轨：图标 + 小标签 + 底部小火箭回顶，总宽 44px；
-     投稿按钮同样贴 44px 宽，落在滑轨正上方 ---- */
+  /* ---- 右侧竖版滑轨：图标 + 小标签 + 底部小火箭回顶，总宽 38px（英文站 44px）；
+     投稿按钮跟着滑轨同宽，落在滑轨正上方 ---- */
   .rail-dock{
     right: 2px;
     gap: 6px;
