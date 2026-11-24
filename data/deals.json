@@ -1678,10 +1678,10 @@
   "source_url": "https://www.oracle.com/cloud/free/",
   "source": "Oracle Cloud Free Tier 官方页与FAQ（2026-11-24实读：US$300/30天、Always Free并存、卡种限制、一人一号、闲置30天规则）",
   "risk": "热门区域ARM（Ampere A1）常因容量限制开不出实例，社区长期有此反馈；$300只在部分国家；不升级PAYG则30天后试用资源被收回；多开账号会被停用；绑虚拟卡/预付卡会直接被拒。",
-  "added_at": "2026-11-24T23:44:00+08:00",
+  "added_at": "2026-11-18T12:00:00+08:00",
   "verified": true,
   "last_verified": "2026-11-24",
-  "added": "2026-11-24",
+  "added": "2026-11-18",
   "status": "active",
   "kyc_level": "none",
   "utility": 0
