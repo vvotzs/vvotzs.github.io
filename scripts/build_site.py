@@ -1688,19 +1688,25 @@ def period_block(deal: dict) -> str:
     s, t = _pd_parts(deal.get("start") or ""), _pd_parts(deal.get("end") or "")
     ly, lm, lt = (s["y"], s["md"], s["t"]) if s else ("", tbd, "")
     ry, rm, rt = (t["y"], t["md"], t["t"]) if t else (ongoing, tbd, "")
+    def cell(cls: str, value: str) -> str:
+        """一个格子；空值直接不渲染（否则纯文本里会多出空格）。"""
+        return f'<span class="{cls}">{e(value)}</span>' if value else ""
+
+    # DOM 顺序按自然语序排：左年 → 左日 → 左时间 → 至 → 右年 → 右日 → 右时间，
+    # 纯文本抓包 / 搜索引擎 / 读屏器读到的是「2026 11/04 10:00 至 2026 12/04 18:00」。
+    # 视觉位置与 DOM 顺序无关：每个格子的 grid-row / grid-column 都在 style.css 里显式定位。
     cells = [
-        f'<span class="pd-y pd-l">{e(ly)}</span>',
-        f'<span class="pd-y pd-r">{e(ry)}</span>',
-        f'<span class="pd-md pd-l">{e(lm)}</span>',
+        cell("pd-y pd-l", ly),
+        cell("pd-md pd-l", lm),
+        cell("pd-t pd-l", lt),
         f'<span class="pd-to">{e(to_txt)}</span>',
-        f'<span class="pd-md pd-r">{e(rm)}</span>',
+        cell("pd-y pd-r", ry),
+        cell("pd-md pd-r", rm),
+        cell("pd-t pd-r", rt),
     ]
-    if lt or rt:
-        cells.append(f'<span class="pd-t pd-l">{e(lt)}</span>')
-        cells.append(f'<span class="pd-t pd-r">{e(rt)}</span>')
-    # 列之间留一个空格文本节点：Grid 容器里纯空白文本不会被渲染成 grid item，视觉零变化，
-    # 但纯文本抓包 / 搜索引擎读到的是「2026 2026 11/04 至 12/31」而不是粘连的「2026202611/04」。
-    return '<span class="pd">' + " ".join(cells) + "</span>"
+    # 格子之间留一个空格文本节点：Grid 容器里纯空白文本不会被渲染成 grid item，视觉零变化，
+    # 但纯文本抓包读到的是「2026 11/04 至 2026 12/04」而不是粘连的「202611/04至202612/04」。
+    return '<span class="pd">' + " ".join(c for c in cells if c) + "</span>"
 
 
 def dp_deadline(deal: dict, today) -> str:
