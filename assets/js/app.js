@@ -1,5 +1,5 @@
 /* 羊毛情报局 — interaction layer
-   1. 单开手风琴（手机端整卡可点）              2. 搜索 / 筛选 / 排序（读 JSON 索引）
+   1. 单开手风琴（手机端整卡可点）              2. 搜索 / 筛选 / 排序（索引按需 fetch，不占首屏）
    3. 分类内左右横滑翻页（手机 5 张/页 · 桌面 8 张/页） 4. 热榜板 tab（桌面双板 / 手机单板）
    5. 右侧竖版滑轨高亮（桌面 + 手机）            6. 图标兜底
    7. 跳转卡落到分类详情（自动翻到所在页）       8. 筛选状态同步到 URL
@@ -56,40 +56,101 @@
     return (IS_EN_PAGE ? "/" : "/en/") + (qs ? "?" + qs : "") + (location.hash || "");
   }
 
-  /* ------------------------------------------------------- 搜索索引（JSON） */
-  /* 首页只内联每类前 25 条（Hark 第七轮定稿的瘦身口径），索引因此只带四部分：
-       h 检索词 · c 分类词表（按分类只存一次）· t 标题（只给未内联的在效条目）·
-       p 未内联条目：搜到时补一行轻量卡，点进它的 /d/<id>/ 独立页。
+  /* ------------------------------------------------------- 搜索索引（按需加载）*/
+  /* 首页只内联每类前 25 条（Hark 第七轮定稿的瘦身口径），所以搜索要能搜全库。
+     索引不再塞进 HTML：构建期写成 /data/search-index.<lang>.json，地址（带内容哈希）挂在
+     #search-modal 的 data-search-index 上。首屏一个字节都不请求，点开搜索弹窗（或按
+     Ctrl/⌘+K、/）才 fetch 一次，之后常驻内存；并发也只发一个请求。
+     索引内容四部分：h 检索词 · c 分类词表（按分类只存一次）· t 标题（只给未内联的在效条目）·
+     p 未内联条目：搜到时补一行轻量卡，点进它的 /d/<id>/ 独立页。
      内联卡片的标题直接从 DOM 的 h3 上取，不在索引里再存一份。
-     旧格式（{id: 文本} 或 {zh:…, en:…}）也还能读。 */
+     索引结构：{t,h,c,p}；旧格式（{id: 文本} 或 {zh:…, en:…}）也还能读。 */
   var SEARCH = {};
   var TITLES = {};
   var POOL = {};
   var CATQ = {};
   var RAW_HAY = {};
   var OLD_FLAT = null;
-  var indexEl = $("#search-index");
-  if (indexEl) {
-    var rawIndex = null;
-    try { rawIndex = JSON.parse(indexEl.textContent) || {}; } catch (err) { rawIndex = null; }
-    if (rawIndex) {
-      var legacy = rawIndex.zh || rawIndex.en ? (rawIndex[LANG] || rawIndex.zh || {}) : null;
-      if (rawIndex.h) {
-        CATQ = rawIndex.c || {};
-        RAW_HAY = rawIndex.h;
-        TITLES = rawIndex.t || {};
-        POOL = rawIndex.p || {};
-        // 旧版带 k（条目分类）的索引：这里只记下来，下面拼检索串时补进去
-        var kMap = rawIndex.k || {};
-        Object.keys(kMap).forEach(function (id) {
-          if (RAW_HAY[id] !== undefined) RAW_HAY[id] += " " + (CATQ[kMap[id]] || "");
-        });
-      } else if (legacy) {
-        OLD_FLAT = legacy;
-      } else {
-        OLD_FLAT = rawIndex;
-      }
+  var INDEX_READY = false;    /* 索引已到手，SEARCH 已拼好 */
+  var INDEX_PROMISE = null;   /* 加载中的那次请求（并发去重） */
+  var INDEX_FAILED = false;   /* 拿不到就不再试，改用卡片现成文字顶上 */
+
+  function indexUrl() {
+    var host = $("#search-modal") || document.body;
+    return (host && host.getAttribute("data-search-index")) || "";
+  }
+
+  /* 把索引 JSON 摊到各张表里，再拼检索串、按分类分好未内联条目 */
+  function applyIndex(rawIndex) {
+    if (!rawIndex) return;
+    var legacy = rawIndex.zh || rawIndex.en ? (rawIndex[LANG] || rawIndex.zh || {}) : null;
+    if (rawIndex.h) {
+      CATQ = rawIndex.c || {};
+      RAW_HAY = rawIndex.h;
+      TITLES = rawIndex.t || {};
+      POOL = rawIndex.p || {};
+      // 旧版带 k（条目分类）的索引：这里只记下来，下面拼检索串时补进去
+      var kMap = rawIndex.k || {};
+      Object.keys(kMap).forEach(function (id) {
+        if (RAW_HAY[id] !== undefined) RAW_HAY[id] += " " + (CATQ[kMap[id]] || "");
+      });
+    } else if (legacy) {
+      OLD_FLAT = legacy;
+    } else {
+      OLD_FLAT = rawIndex;
     }
+    indexPoolByCat();
+    buildSearch();
+  }
+
+  /* 索引加载失败（断网 / 404）时的兜底：拿卡片 DOM 里现成的文字当检索串，
+     至少内联的条目还能搜，不会一点就「0 条」。 */
+  function fallbackSearchFromDOM() {
+    SEARCH = {};
+    modules.forEach(function (m) {
+      m.items.forEach(function (card) {
+        var key = card.dataset.key;
+        if (!key) return;
+        SEARCH[key] = (card.textContent || "").replace(/\s+/g, " ").trim().toLowerCase();
+      });
+    });
+  }
+
+  function loadIndex() {
+    if (INDEX_READY || INDEX_FAILED || INDEX_PROMISE) return INDEX_PROMISE;
+    var url = indexUrl();
+    if (!url || !window.fetch) {
+      INDEX_FAILED = true;
+      fallbackSearchFromDOM();
+      if (isFiltering()) render();
+      return null;
+    }
+    INDEX_PROMISE = fetch(url, { credentials: "same-origin" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        applyIndex(data);
+        INDEX_READY = true;
+        INDEX_PROMISE = null;
+        /* 用户已经等在那里打关键词 / 点筛选了：数据一到就把搜索 + 筛选一起画出来 */
+        if (isFiltering()) render();
+      })
+      .catch(function () {
+        INDEX_FAILED = true;
+        INDEX_PROMISE = null;
+        fallbackSearchFromDOM();
+        if (isFiltering()) render();
+      });
+    return INDEX_PROMISE;
+  }
+
+  /* 索引还在路上、而这次筛选非它不可（关键词要检索串，分类 / 门槛 / 时间要靠 p 里未内联的条目补行）：
+     先别按空索引筛，否则整页会闪一下「一条都没有」。等索引到手 loadIndex 会自己 re-render 一次。
+     排序只用卡片自带的 data-*，不等索引。 */
+  function indexPending() {
+    return isFiltering() && !INDEX_READY && !INDEX_FAILED;
   }
 
   /* 首屏导语走马灯：点一下暂停 5 秒（iOS Safari 对 <p> 的 :active 不可靠，光靠 CSS 停不住） */
@@ -127,6 +188,7 @@
   /* 拼检索串：标题（未内联的来自索引，内联的取自卡片 h3）+ 其余检索词 + 分类词表。
      在 modules 建好后跑一次（内联卡片的 h3 那时已经在 DOM 里）。 */
   function buildSearch() {
+    SEARCH = {};
     if (OLD_FLAT) {
       Object.keys(OLD_FLAT).forEach(function (id) { SEARCH[id] = String(OLD_FLAT[id]).toLowerCase(); });
       return;
@@ -148,12 +210,16 @@
     });
   }
 
-  /* 未内联条目按分类分好：搜索 / 筛选时直接往对应分区的轨道里补结果行 */
+  /* 未内联条目按分类分好：搜索 / 筛选时直接往对应分区的轨道里补结果行
+     （索引到手后才调用，所以这段从 applyIndex 里走） */
   var POOL_BY_CAT = {};
-  Object.keys(POOL).forEach(function (id) {
-    var cat = POOL[id][0];
-    (POOL_BY_CAT[cat] = POOL_BY_CAT[cat] || []).push(id);
-  });
+  function indexPoolByCat() {
+    POOL_BY_CAT = {};
+    Object.keys(POOL).forEach(function (id) {
+      var cat = POOL[id][0];
+      (POOL_BY_CAT[cat] = POOL_BY_CAT[cat] || []).push(id);
+    });
+  }
   var DETAIL_BASE = /^\/en(\/|$)/.test(location.pathname) ? "/en/d/" : "/d/";
   var HITS = {};
 
@@ -252,8 +318,8 @@
     m.items.forEach(function (el, idx) { el.dataset.buildIdx = String(idx); });
   });
 
-  /* 检索串要等 modules 建好再拼：内联卡片的标题从卡上的 h3 取，不占索引体积 */
-  buildSearch();
+  /* 检索串不在这里拼了：索引是按需加载的，到手时 applyIndex 会自己调 buildSearch
+     （内联卡片的标题那时从卡上的 h3 取，不占索引体积）。 */
 
   /* 板子 tab 上的条数、顶部「匹配 N 条」都是静态节点：初始化时查一次表，
      以后 render 直接改文字，不要再对整个 1.9 MB 文档做 querySelectorAll。 */
@@ -436,6 +502,14 @@
   function render() {
     var seen = {};
     var matchedTotal = 0;
+    /* 关键词检索要靠索引：索引还在路上就先不重画（保持现有列表），
+       弹窗里的「匹配 N 条」显示为「…」，数据一到 loadIndex 会自己再 render 一次。 */
+    if (indexPending()) {
+      loadIndex();
+      RESULT_ELS.forEach(function (el) { el.textContent = "…"; });
+      syncURL();
+      return;
+    }
     /* 搜索 / 筛选时把「首页没内联的在效条目」补进来：一行轻量卡，点进独立页。
        平时（默认状态）不补，首页只画每类前 25 条。 */
     var deep = isFiltering();
@@ -847,6 +921,7 @@
   var lastFocus = null;
 
   function openModal() {
+    loadIndex();   /* 点开搜索才开始拉索引：首屏不为它花一个请求、也不背 70 KB */
     lastFocus = document.activeElement;
     modal.classList.add("on");
     modal.setAttribute("aria-hidden", "false");

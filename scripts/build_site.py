@@ -11,7 +11,8 @@
   · 顶部热榜板（新收录 / 高价值榜 | 即将截止 / 抽奖）与各分区用精简跳转卡，
     点一下滚到分类区那张卡片并展开，这样 index.html 不重复三遍详情；
   · 所有图标抽成一份 <svg> sprite，卡片里只剩 <use href="#i-xxx">；
-  · 搜索文本放进 <script id="search-index"> JSON，不再挂在每张 DOM 上；
+  · 搜索文本单独写成 /data/search-index.<lang>.json，首页只挂一个带内容哈希的地址，
+    打开搜索弹窗时 app.js 才按需 fetch（首屏不再背这 70 KB）；
   · 单语渲染：`/` 只输出中文、`/en/` 只输出英文，不再内联 <span class="t-zh">/…t-en> 双份文案；
     文案仍以 (中文, English) 成对维护在 scripts/i18n.py，构建时按页面语言取一侧；
   · 图标在构建时下载成 assets/fav/<domain>.webp（48×48，透明通道），境内直连 GitHub Pages 即可显示。
@@ -3794,8 +3795,9 @@ def main() -> None:
     # 内部回测表：每次构建都落一份，给「改了公式前后前 20 名怎么变」留底
     score_rows = write_score_explain(deals, en_map, today)
 
-    def render_page(lang: str) -> str:
-        """整页渲染：先定语言，rail / 热榜 / 分区 / 搜索索引 / head 全部只出这一页的语言。"""
+    def render_page(lang: str) -> tuple[str, str, bytes]:
+        """整页渲染：先定语言，rail / 热榜 / 分区 / 搜索索引 / head 全部只出这一页的语言。
+        返回（页面 HTML, 搜索索引文件名, 索引内容）：索引不再内嵌，由调用方写进 data/。"""
         set_lang(lang)
         is_en = lang == "en"
 
@@ -3980,7 +3982,12 @@ def main() -> None:
         search_json = json.dumps(
             {"t": search_t, "h": search_h, "c": search_c, "p": search_p},
             ensure_ascii=False, separators=(",", ":"),
-        ).replace("</", "<\\/")
+        )
+        # 索引不内嵌进首页了：单独写一份静态 JSON（中英各一份），首页只用 data-search-index
+        # 挂上它的地址 + 内容哈希。索引一变哈希就变，浏览器缓存立刻失效；没变就一直命中缓存。
+        index_name = "search-index.en.json" if is_en else "search-index.zh.json"
+        index_bytes = search_json.encode("utf-8")
+        index_url = f"/data/{index_name}?v={hashlib.sha1(index_bytes).hexdigest()[:8]}"
 
 
         title = EN_TITLE if is_en else "羊毛情报局 - 全球免费资源、AI额度、VPS与开户奖励"
@@ -4187,6 +4194,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
 <div class="closing-toast" id="closing-toast" role="status" aria-live="polite" hidden>{ui('closing_info', d=EXPIRING_DAYS, n=CLOSING_SLOTS, w=CLOSING_WINDOW_DAYS)}</div>
 
 <div class="modal" id="search-modal" role="dialog" aria-modal="true" aria-hidden="true"
+     data-search-index="{index_url}"
      {al(*U['modal_aria'])}>
   <div class="modal-bg" data-close></div>
   <div class="sheet">
@@ -4382,18 +4390,21 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
   </div>
 </footer>
 
-<script id="search-index" type="application/json">{search_json}</script>
 <script src="/assets/js/app.js?v={asset_ver('assets/js/app.js')}" defer></script>
 <script src="/assets/js/consent.js?v={asset_ver('assets/js/consent.js')}" defer></script>
 <script src="/assets/js/votes.js?v={asset_ver('assets/js/votes.js')}" defer></script>
 </body>
 </html>
 """
-        return compact_html(head)
+        return compact_html(head), index_name, index_bytes
 
-    OUT.write_text(render_page("zh"), encoding="utf-8")
-    EN_OUT.parent.mkdir(parents=True, exist_ok=True)
-    EN_OUT.write_text(render_page("en"), encoding="utf-8")
+    for lang in ("zh", "en"):
+        page_html, index_name, index_bytes = render_page(lang)
+        target = OUT if lang == "zh" else EN_OUT
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(page_html, encoding="utf-8")
+        # 搜索索引：首页只留地址，真正的数据落在这里（要提交，GitHub Pages 才发得出去）
+        (ROOT / "data" / index_name).write_bytes(index_bytes)
 
     # 单条独立页：每条一份中文 /d/<id>/、一份英文 /en/d/<id>/（含已归档条目）
     set_lang("zh")
