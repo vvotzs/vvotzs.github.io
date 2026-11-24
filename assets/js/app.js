@@ -844,7 +844,7 @@
     document.body.style.overflow = "hidden";
     capSheet();
     initChipRows();
-    window.requestAnimationFrame(centerChips);
+    window.requestAnimationFrame(syncChips);
     // 故意不聚焦输入框：避免手机键盘弹出遮住筛选面板
     var closeBtn = $(".sheet-close", modal);
     if (closeBtn && !mqMobile.matches) closeBtn.focus({ preventScroll: true });
@@ -924,33 +924,19 @@
     });
   }
 
-  function centerChips() {
+  /* 只同步刻度尺的宽度 / 位置，绝不替用户改 scrollLeft：
+     每组从最左边自然排起（默认项就是第一个），要滑由用户自己滑。 */
+  function syncChips() {
     chipRows.forEach(function (chips) {
-      if (!chips._sync) return;
-      var on = $(".chip.on", chips);
-      var movable = chips.scrollWidth - chips.clientWidth;
-      if (on && movable > 1) {
-        var cr = chips.getBoundingClientRect();
-        var br = on.getBoundingClientRect();
-        var delta = (br.left - cr.left) - (chips.clientWidth - br.width) / 2;
-        chips.scrollLeft = Math.max(0, Math.min(movable, chips.scrollLeft + delta));
-      }
-      chips._sync();
+      if (chips._sync) chips._sync();
     });
   }
-
-  /* 复位 / 换选中项之后（默认项回到「全部」一类）重新居中一次 */
-  modal.addEventListener("click", function (ev) {
-    if (ev.target.closest && ev.target.closest("[data-reset]")) {
-      setTimeout(centerChips, 0);
-    }
-  });
 
   var chipResizeT;
   window.addEventListener("resize", function () {
     if (!modal.classList.contains("on")) return;
     clearTimeout(chipResizeT);
-    chipResizeT = setTimeout(centerChips, 140);
+    chipResizeT = setTimeout(syncChips, 140);
   });
 
   var opener = $("#open-search");
@@ -1062,19 +1048,24 @@
     if (langBtn) langBtn.setAttribute("href", otherLangHref());
   }
 
-  function restoreFromURL() {
+  /* 刷新页面一律回到默认（2026-11-25 Jun 要求）：不恢复 URL 里的搜索与筛选，
+     并顺手把这些参数从地址栏抹掉 —— 页面上的点击仍会写 URL，方便当次复制分享，
+     但重新载入后就是「全部 / 价值」+ 空搜索框。 */
+  function resetFiltersOnLoad() {
     try {
       var params = new URLSearchParams(location.search);
-      var q = params.get("q");
-      if (q) {
-        state.q = q;
-        if (input) input.value = q;
-      }
+      var dirty = params.has("q");
+      if (dirty) params.delete("q");
       URL_KEYS.forEach(function (k) {
-        var v = params.get(k);
-        if (v && v !== DEFAULTS[k] && setChips(k, v)) state[k] = v;
+        if (params.has(k)) {
+          params.delete(k);
+          dirty = true;
+        }
       });
-    } catch (err) { /* 老浏览器不支持 URLSearchParams 时忽略 */ }
+      if (!dirty) return;
+      var qs = params.toString();
+      history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash);
+    } catch (err) { /* 老浏览器忽略 */ }
   }
 
   /* ---------------------------------------------------------- responsive */
@@ -1572,7 +1563,7 @@
     if (ev.key === "Escape") cfClose();
   });
 
-  restoreFromURL();
+  resetFiltersOnLoad();
   if (langBtn) langBtn.setAttribute("href", otherLangHref());
   render();   /* 首次渲染：分页、计数、语言徽标链接（页面已是单语，无需再切文案） */
   var hash = (location.hash || "").slice(1);

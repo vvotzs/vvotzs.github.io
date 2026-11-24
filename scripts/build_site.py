@@ -4186,9 +4186,9 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
     <div class="filter-row">
       <div class="filter-label">{ui('f_time')}</div>
       <div class="chips" data-group="time">
+        <button class="chip on" type="button" data-value="all">{ui('time_all')}</button>
         <button class="chip" type="button" data-value="24h">{ui('time_24h')}</button>
         <button class="chip" type="button" data-value="48h">{ui('time_48h')}</button>
-        <button class="chip on" type="button" data-value="all">{ui('time_all')}</button>
         <button class="chip" type="button" data-value="7d">{ui('time_7d')}</button>
         <button class="chip" type="button" data-value="past">{ui('time_past')}</button>
       </div>
@@ -4197,8 +4197,8 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
     <div class="filter-row">
       <div class="filter-label">{ui('f_sort')}</div>
       <div class="chips" data-group="sort">
-        <button class="chip" type="button" data-value="new">{ui('sort_new')}</button>
         <button class="chip on" type="button" data-value="value">{ui('sort_value')}</button>
+        <button class="chip" type="button" data-value="new">{ui('sort_new')}</button>
         <button class="chip" type="button" data-value="end">{icon3d('hourglass', 'hg-i')}{ui('sort_end')}</button>
       </div>
     </div>
@@ -4206,10 +4206,10 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
     <div class="filter-row">
       <div class="filter-label">{ui('f_cat')}</div>
       <div class="chips" data-group="cat">
+        <button class="chip on" type="button" data-value="all">{ui('all')}</button>
         <button class="chip" type="button" data-value="ai">{ui('cat_ai')}</button>
         <button class="chip" type="button" data-value="crypto">{ui('cat_crypto')}</button>
         <button class="chip" type="button" data-value="bank">{ui('cat_bank')}</button>
-        <button class="chip on" type="button" data-value="all">{ui('all')}</button>
         <button class="chip" type="button" data-value="cloud">{ui('cat_cloud')}</button>
         <button class="chip" type="button" data-value="esim">{ui('cat_esim')}</button>
         <button class="chip" type="button" data-value="software">{ui('cat_software')}</button>
@@ -4219,10 +4219,10 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
     <div class="filter-row">
       <div class="filter-label">{ui('f_cost')}</div>
       <div class="chips" data-group="cost">
+        <button class="chip on" type="button" data-value="all">{ui('all')}</button>
         <button class="chip" type="button" data-value="真正免费">{bi('免费', 'Free')}</button>
         <button class="chip" type="button" data-value="免费试用">{bi('试用', 'Trial')}</button>
         <button class="chip" type="button" data-value="需要充值">{bi('充值', 'Deposit')}</button>
-        <button class="chip on" type="button" data-value="all">{ui('all')}</button>
         <button class="chip" type="button" data-value="需要交易量">{bi('交易量', 'Volume')}</button>
         <button class="chip" type="button" data-value="需要邀请条件">{bi('邀请', 'Invite')}</button>
       </div>
@@ -4231,8 +4231,8 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
     <div class="filter-row">
       <div class="filter-label">{ui('f_verify')}</div>
       <div class="chips" data-group="verify">
-        <button class="chip" type="button" data-value="1">{icon3d('verified-shield', 'vs-i')}{bi('已核验', 'Verified')}</button>
         <button class="chip on" type="button" data-value="all">{ui('all')}</button>
+        <button class="chip" type="button" data-value="1">{icon3d('verified-shield', 'vs-i')}{bi('已核验', 'Verified')}</button>
         <button class="chip" type="button" data-value="0">{bi('待核实', 'Unverified')}</button>
       </div>
     </div>
