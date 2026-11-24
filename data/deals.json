@@ -14741,6 +14741,48 @@
   "utility": 0
  },
  {
+  "id": "usmart-singsaver-s150",
+  "dedup_key": "usmart|bank|sg|singsaver-s150",
+  "title": "[新加坡]uSMART×SingSaver：开户存S$1,000留30天，选S$150现金或9,000 Max Miles（11/23–11/29）",
+  "brand": "uSMART SG",
+  "domain": "singsaver.com.sg",
+  "category": "bank",
+  "value": "S$150 现金（约 $115）／9,000 Max Miles／AirPods 5（S$199）三选一",
+  "value_num": 115,
+  "cost": "需要充值",
+  "highlight": "11/23–11/29 经 SingSaver 新开 uSMART SG 账户，单笔存入 S$1,000 并留存 30 天，可选 S$150 PayNow 现金、9,000 Max Miles 或 AirPods 5（每天仅 5 台），不用交易",
+  "regions": "[新加坡] 仅限新加坡公民/PR/EP、S Pass、工作准证持有者",
+  "start": "2026-11-23",
+  "end": "2026-11-29",
+  "verified": true,
+  "last_verified": "2026-11-24",
+  "added": "2026-11-24",
+  "content": "本期奖励从月初的 S$100 现金+S$30 Grab 券上调：11/23–11/29 通过 SingSaver 链接新开 uSMART SG 账户，单笔存入 S$1,000 并留存 30 天即可三选一——S$150 现金（PayNow）、9,000 Max Miles（约 1.7 美分/里，永不过期）、或 AirPods 5（价值 S$199，每天限量 5 台）。全程不用下任何交易单，钱放现金即可；S$1,000 换 S$150 相当于一个月 15%。SingSaver 活动页（11-22 更新）标注门槛 S$1,000、5 选 1 奖励、总价值 S$170、剩 6 天。",
+  "conditions": "须为 uSMART SG 全新客户；须是新加坡公民/PR/EP/S Pass/工作准证持有者；必须走 SingSaver 渠道开户；单笔存入 S$1,000 且留存 30 天；开户 14 天内提交 SingSaver 邮件里的兑换表。",
+  "steps": [
+   "从 SingSaver 的 uSMART SG 页面进入开户（其他渠道不算）",
+   "用 Singpass/MyInfo 完成 KYC，等账户审批通过",
+   "11 月 29 日前单笔存入至少 S$1,000（拆多笔不算）",
+   "30 天内不取出这笔现金",
+   "14 天内填好 SingSaver 寄来的奖励兑换表（要填 uSMART 账号）",
+   "确认奖励选项：PayNow 现金 / 9,000 Max Miles / AirPods 5"
+  ],
+  "url": "https://www.singsaver.com.sg/investment/products/usmart-sg",
+  "source_url": "https://theshutterwhale.com/blog/2026/11/23/get-s150-cash-or-9000-max-miles-with-usmart-via-singsaver-deposit-s1000-by-29-november-2026",
+  "source": "SingSaver uSMART SG 活动页（2026-11-22 更新：S$1,000 门槛、5 选 1、总价值 S$170、倒计时 6 天）+ The Shutterwhale（2026-11-23）逐项记录奖励与兑换条件",
+  "risk": "AirPods 每天只放 5 台，抢不到就只剩现金/里数；奖励由 SingSaver 发放，逾期不填兑换表作废；券商账户里有投资风险，不想投资就让钱留在现金；新加坡以外的地址与准证不能参加；奖励档位与名额随时可能调整，入场前先看 SingSaver 页面当前条款。",
+  "added_at": "2026-11-24T09:10:00+08:00",
+  "status": "expiring_soon",
+  "kyc_level": "foreign_only",
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "SG"
+  ]
+ },
+ {
   "id": "kite-bitrefill-3pct-kite",
   "dedup_key": "kite|crypto|global|bitrefill-3pct-kite",
   "title": "[全球]Kite×Bitrefill：AI代理买礼品卡返3%$KITE（上限$5）+抽5人全额返还（上限$100）",

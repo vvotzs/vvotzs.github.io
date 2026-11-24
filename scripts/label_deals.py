@@ -107,6 +107,7 @@ KYC.update(
         "adcb-emirati-youth-ai-cashback": "foreign_only",
         "wio-creators-12-months-free": "foreign_only",
         "trading212-au-bonus-shares": "foreign_only",
+        "usmart-singsaver-s150": "foreign_only",
         # 大陆证件 / 港澳门槛内
         "citic-visa-30pct-overseas-2026h2": "cn_ok",
         "za-bank-mgm-welcome-2000": "cn_ok",

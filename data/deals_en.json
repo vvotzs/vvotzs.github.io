@@ -6856,5 +6856,24 @@
   "url": "https://autoclaw.z.ai/cn/blog/news/M11W4/",
   "risk": "The weekly amount and window change with each announcement, so do not treat it as a standing benefit; the credit dies at 23:59 on 29 November, so claiming late wastes it; GLM-5.4 is currently subscription-only, so free credit may not reach it; credit cannot be used as an API; some rounds required real-name verification, which the client shows at claim time.",
   "source": "AutoClaw official blog post on the weekly 100M-token perk (published 20 November 2026, campaign 23-29 November)"
+ },
+ "usmart-singsaver-s150": {
+  "title": "[Singapore] uSMART x SingSaver: deposit S$1,000 for 30 days, take S$150 cash or 9,000 Max Miles (Nov 23-29)",
+  "highlight": "Open a new uSMART SG account through SingSaver between 23 and 29 November, deposit S$1,000 in one go and keep it for 30 days to choose S$150 in PayNow cash, 9,000 Max Miles or AirPods 5 (only five a day) - no trades needed",
+  "regions": "[Singapore] Singapore citizens, PRs, and EP, S Pass or work permit holders only",
+  "value": "S$150 cash (about $115), 9,000 Max Miles or AirPods 5 (S$199)",
+  "content": "The reward is upsized from the earlier S$100 cash plus a S$30 Grab voucher: between 23 and 29 November, open a new uSMART SG account through the SingSaver link, deposit S$1,000 in a single transfer and hold it for 30 days to pick one of three rewards - S$150 cash via PayNow, 9,000 Max Miles (about 1.7 cents each, never expiring) or AirPods 5 (worth S$199, five units a day). No trade is required and the money can sit in cash, so S$1,000 for S$150 works out to 15% for a month. SingSaver's page (updated 22 November) lists the S$1,000 threshold, five selectable rewards, S$170 total value and six days left.",
+  "conditions": "Brand-new uSMART SG customers only; Singapore citizen, PR, EP, S Pass or work permit holder; must apply through the SingSaver link; one single deposit of S$1,000 held for 30 days; submit the SingSaver redemption form within 14 days of applying.",
+  "steps": [
+   "Apply through the uSMART SG page on SingSaver (other links do not count)",
+   "Complete KYC with Singpass/MyInfo and wait for approval",
+   "Deposit at least S$1,000 in one transfer before 29 November (split deposits do not count)",
+   "Leave the cash in the account for 30 days",
+   "Fill in the SingSaver rewards redemption form within 14 days, giving your uSMART account number",
+   "Pick the reward: PayNow cash, 9,000 Max Miles or AirPods 5"
+  ],
+  "url": "https://www.singsaver.com.sg/investment/products/usmart-sg",
+  "risk": "Only five AirPods go out each day, so cash or miles is the realistic pick; SingSaver pays the reward and a late redemption form voids it; a brokerage account carries investment risk, so leave the money in cash if you do not want to invest; addresses and passes outside Singapore are not eligible; tiers and quotas can change, so check the SingSaver page before applying.",
+  "source": "SingSaver uSMART SG offer page (updated 22 November 2026: S$1,000 threshold, five rewards, S$170 value, six days left) plus The Shutterwhale (23 November 2026) for the reward breakdown and redemption steps"
  }
 }

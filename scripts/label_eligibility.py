@@ -436,6 +436,10 @@ ELIG.update(
             "identity": "local_id", "residency": "local_resident",
             "funding": "purchase", "geo": ["AU"],
         },
+        "usmart-singsaver-s150": {
+            "identity": "local_id", "residency": "local_resident",
+            "funding": "min_deposit", "geo": ["SG"],
+        },
     }
 )
 
