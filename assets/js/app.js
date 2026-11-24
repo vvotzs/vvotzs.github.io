@@ -843,8 +843,6 @@
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     capSheet();
-    initChipRows();
-    window.requestAnimationFrame(syncChips);
     // 故意不聚焦输入框：避免手机键盘弹出遮住筛选面板
     var closeBtn = $(".sheet-close", modal);
     if (closeBtn && !mqMobile.matches) closeBtn.focus({ preventScroll: true });
@@ -889,55 +887,6 @@
     window.visualViewport.addEventListener("resize", capSheet);
     window.visualViewport.addEventListener("scroll", capSheet);
   }
-
-  /* 搜索弹窗的筛选行：胶囊包进 .chips-wrap，下面补一条暖色刻度尺。
-     滑一下 scrollLeft，橙色滑块就跟着走到对应刻度；打开弹窗时把每组的默认项滚到正中，
-     于是左右两侧都能露出一截胶囊 —— 一眼看出这条能左右滑。 */
-  var chipRows = [];
-
-  function initChipRows() {
-    $$(".chips", modal).forEach(function (chips) {
-      if (chips._wrap) return;
-      var wrap = document.createElement("div");
-      wrap.className = "chips-wrap";
-      chips.parentNode.insertBefore(wrap, chips);
-      wrap.appendChild(chips);
-      var rail = document.createElement("span");
-      rail.className = "chips-rail";
-      rail.setAttribute("aria-hidden", "true");
-      var thumb = document.createElement("i");
-      rail.appendChild(thumb);
-      wrap.appendChild(rail);
-      chips._wrap = wrap;
-      chips._sync = function () {
-        var view = chips.clientWidth;
-        var total = chips.scrollWidth;
-        var movable = Math.max(0, total - view);
-        var w = Math.min(view, Math.max(16, Math.round((view * view) / Math.max(total, 1))));
-        var left = movable > 1 ? Math.round((chips.scrollLeft / movable) * (view - w)) : 0;
-        thumb.style.width = w + "px";
-        thumb.style.left = left + "px";
-        wrap.classList.toggle("is-fit", movable <= 1);
-      };
-      chips.addEventListener("scroll", function () { chips._sync(); }, { passive: true });
-      chipRows.push(chips);
-    });
-  }
-
-  /* 只同步刻度尺的宽度 / 位置，绝不替用户改 scrollLeft：
-     每组从最左边自然排起（默认项就是第一个），要滑由用户自己滑。 */
-  function syncChips() {
-    chipRows.forEach(function (chips) {
-      if (chips._sync) chips._sync();
-    });
-  }
-
-  var chipResizeT;
-  window.addEventListener("resize", function () {
-    if (!modal.classList.contains("on")) return;
-    clearTimeout(chipResizeT);
-    chipResizeT = setTimeout(syncChips, 140);
-  });
 
   var opener = $("#open-search");
   if (opener) opener.addEventListener("click", openModal);
