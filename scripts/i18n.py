@@ -20,6 +20,8 @@ U: dict[str, tuple[str, str]] = {
     "brand": ("羊毛情报局", "Deal Hunter"),
     "brand_sub": ("全球优惠 · 每日核验", "Global deals · verified daily"),
     "brand_aria": ("羊毛情报局 首页", "Deal Hunter home"),
+    # 顶栏右上角那枚 Blogger 徽标（纯图标，没有可见文字，语义全靠 aria-label 与 title）
+    "blog_aria": ("打开 Blogger 博客", "Open the Blogger blog"),
     "search_open": ("搜索优惠、可用地区、类别…", "Search deals, regions, categories…"),
     "search_open_aria": ("搜索优惠、可用地区、类别", "Search deals, regions and categories"),
     "stat_active": ("进行中", "Live"),

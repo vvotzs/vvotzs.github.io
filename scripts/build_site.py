@@ -350,6 +350,8 @@ SUBMIT_ENDPOINT = (
     "AKfycbytBigdTS4LTwtRh6K_jiTPXHOf-6MvljhVuYFDZ9VLfUuTmzgNqNATK_oX2UELJzCJTg/exec"
 )
 TG_GROUP_URL = "https://t.me/+aAqP0DbW_YMxMmNh"
+# Jun 自己的 Blogger 博客：只在首页与分类页的顶栏右上角挂一枚徽标（2026-11-25 要求）。
+BLOGGER_URL = "https://6yfz.blogspot.com"
 
 # 薄荷绿 Pickle 小精灵（页头 / 页脚直接内联，不走 sprite）。
 # 渐变必须写在可见的 <svg> 自己的 <defs> 里：放进 display:none 的 sprite 后，
@@ -492,6 +494,27 @@ def hero_tg_badge() -> str:
         'C4.957 9.434 5.798 9.14 6.444 8.657C6.542 8.584 6.636 8.507 6.724 8.425'
         'C7.343 7.856 7.724 7.091 7.724 6.249C7.724 4.49 6.072 3.063 4.035 3.063Z"/>'
         '</g></svg>'
+    )
+
+
+# 右上角的 Blogger 徽标（Jun 2026-11-25 要求）：亮橙圆角方块 + 白色 B，只在首页（/、/en/）
+# 与分类页的统一顶栏出现，详情页与合规页一律不放。图形取自官方 Simple Icons 的 Blogger
+# 路径，但拆成两笔：底块用「亮橙 Skinny 橙」#FF5722 的圆角方，B 单独填白（原路径是
+# 一整块「方块挖空 B」，直接填色只能得到一枚与页面同色的 B，白字出不来）。
+# 桌面 36px / 手机 26px，比首屏那枚 12×12 的小图形大一档；闪光是 CSS 伪元素在
+# overflow:hidden 的底块里扫过，不占布局、不影响行高、也不会撑出横向滚动条。
+def blogger_badge() -> str:
+    return (
+        f'<a class="top-blog" href="{BLOGGER_URL}" target="_blank" rel="noopener noreferrer" '
+        f'{al(*U["blog_aria"])} {tt(*U["blog_aria"])}>'
+        '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+        '<rect x="0" y="0" width="24" height="24" rx="5.6" fill="#FF5722"/>'
+        '<path fill="#FFFFFF" fill-rule="evenodd" d="M12 3.975H9c-2.775 0-5.025 2.25-5.025 5.025v6c0 2.774 2.25 5.024 '
+        '5.025 5.024h6c2.774 0 5.024-2.25 5.024-5.024v-3.975c0-.6-.45-1.05-1.05-1.05H18c-.524 0-.976-.45-.976-.976 '
+        '0-2.776-2.25-5.026-5.024-5.026zm3.074 12H9c-.525 0-.975-.45-.975-.975s.45-.976.975-.976h6.074c.526 0 '
+        '.977.45.977.976s-.45.976-.975.976zm-2.55-7.95c.527 0 .976.45.976.975s-.45.975-.975.975h-3.6c-.525 '
+        '0-.976-.45-.976-.975s.45-.975.975-.975h3.6z"/>'
+        '</svg></a>'
     )
 
 
@@ -3250,6 +3273,7 @@ def render_category_page(
     <div class="dp-top">
       <a class="dp-back" href="{home}">{icon('chevron', 'dp-back-i')}<span>{ui('dp_back')}</span></a>
       <a class="dp-switch" href="{switch_href}" hreflang="{switch_lang}" {al(switch_aria, switch_aria)}><span lang="{switch_lang}">{ui('dp_switch')}</span></a>
+      {blogger_badge()}
     </div>
   </div>
 </header>
@@ -4094,6 +4118,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
       </span>
       <kbd>⌘K</kbd>
     </button>
+    <div class="topbar-right">
     <div class="topbar-stats">
       <div class="topbar-pills">
         <a class="stats-pill mint" href="#fresh" {tt(*upair('stat_active_hint', d=EXPIRING_DAYS, n=counts['expiring']))}>{ui('stat_active')} <b>{counts['active']}</b></a>
@@ -4101,6 +4126,8 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
         <a class="stats-pill stone" href="#archive">{ui('stat_archived')} <b>{counts['expired']}</b></a>
       </div>
       <span class="topbar-rank-note">{ui('stat_rank_note')}</span>
+    </div>
+    {blogger_badge()}
     </div>
   </div>
 </header>
