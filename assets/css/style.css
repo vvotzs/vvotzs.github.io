@@ -2573,20 +2573,22 @@ footer{
   .sheet{
     top: 8px;
     width: calc(100vw - 16px);
-    max-height: 46vh;      /* 老浏览器兜底 */
-    max-height: 46dvh;
-    padding: 10px 12px 0;
+    /* 别用 dvh：Android 键盘弹出时 dvh 会跟着缩，50dvh 直接把弹窗砍成一小截。
+       这里用 svh 兜底（不跟键盘变），键盘弹出时由 app.js 用 visualViewport 给像素值。 */
+    max-height: 50vh;
+    max-height: 50svh;
+    padding: 8px 12px 0;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
-  .sheet-top{ margin-bottom: 6px; flex: 0 0 auto; }
+  .sheet-top{ margin-bottom: 4px; flex: 0 0 auto; }
   .sheet-top h2{ font-size: 12.5px; }
   .sheet-close{ width: 26px; height: 26px; font-size: 14px; border-radius: 7px; }
   .input-wrap{ flex: 0 0 auto; }
   .input-wrap svg{ left: 10px; width: 13px; height: 13px; }
-  #q{ height: 36px; font-size: 13px; padding: 0 10px 0 29px; border-radius: 10px; }
+  #q{ height: 34px; font-size: 13px; padding: 0 10px 0 29px; border-radius: 10px; }
   /* 只让筛选区滚：标题栏 / 输入框 / 底部操作栏都不参与滚动 */
   .sheet-filters{
     flex: 1 1 auto;
@@ -2597,17 +2599,17 @@ footer{
     padding: 0 2px 2px 0;
   }
   /* 手机上再收紧一档：5 组各占 1 行（标签 + 一排胶囊 + 刻度尺） */
-  .filter-row{ gap: 7px; margin-top: 5px; }
-  .filter-row:first-child{ margin-top: 3px; }
+  .filter-row{ gap: 7px; margin-top: 4px; }
+  .filter-row:first-child{ margin-top: 2px; }
   .filter-label{ font-size: 9px; letter-spacing: .1em; }
   .chips{ gap: 4px; }
-  .chip{ flex: 0 0 auto; font-size: 11px; padding: 3px 8px; }
+  .chip{ flex: 0 0 auto; font-size: 11px; padding: 2px 8px; }
   .chip .ic3d{ width: 11px; height: 11px; vertical-align: -2px; margin-right: 3px; }
-  .chips-rail{ height: 6px; margin-top: 4px; }
+  .chips-rail{ height: 6px; margin-top: 3px; }
   .sheet-foot{
     flex: 0 0 auto;
     margin-top: 0;
-    padding: 7px 0 9px;
+    padding: 6px 0 8px;
     gap: 8px;
     background: var(--paper);
     box-shadow: 0 -6px 12px -8px rgba(60,40,10,.16);

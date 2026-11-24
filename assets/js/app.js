@@ -862,6 +862,13 @@
      「可视高 - 16px」，保证底部「匹配 / 重置 / 完成」永远在键盘上方。
      Android Chrome 带 interactive-widget=resizes-content 时 dvh 自己会缩，这里是给
      iOS / 旧 WebView 的兜底。 */
+  /* 基准高度：打开页面时（还没键盘）的窗口高；Android 键盘一弹 innerHeight 也会缩，
+     所以绝不能用「当前 innerHeight × 0.5」当上限，否则键盘一出来弹窗又被砍半。 */
+  var baseHeight = Math.max(
+    window.innerHeight,
+    window.visualViewport ? window.visualViewport.height : 0
+  );
+
   function capSheet() {
     var sheet = $(".sheet", modal);
     if (!sheet) return;
@@ -870,9 +877,12 @@
       return;
     }
     var vv = window.visualViewport;
-    var room = (vv ? vv.height : window.innerHeight) - 16;
-    var half = Math.round(window.innerHeight * 0.46);
-    sheet.style.maxHeight = Math.max(200, Math.round(Math.min(room, half))) + "px";
+    var h = vv ? vv.height : window.innerHeight;
+    if (h > baseHeight) baseHeight = h;               /* 转屏 / 地址栏收起后抬高基准 */
+    var typing = h < baseHeight - 80 || window.innerHeight < baseHeight - 80;
+    /* 没键盘：半屏；键盘弹出：铺满键盘上方的全部可视高度（-16 留给圆角和阴影） */
+    var cap = typing ? Math.floor(h) - 16 : Math.round(baseHeight * 0.5);
+    sheet.style.maxHeight = Math.max(220, cap) + "px";
   }
 
   if (window.visualViewport) {
