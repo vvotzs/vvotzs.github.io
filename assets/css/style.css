@@ -2515,6 +2515,85 @@ footer{
   .module.hot-strip .jump .jump-meta,
   .module.hot-strip .jump .jump-arrow{ display: none; }
 
+  /* ---- 搜索弹窗（手机）：贴顶、半屏以内、内部紧凑、筛选区自己滚 ----
+     键盘弹出时会由 app.js 用 visualViewport 把 max-height 再压到「可视高 - 16px」，
+     底部「匹配 / 重置 / 完成」始终露在键盘上方。 */
+  .sheet{
+    top: 8px;
+    width: calc(100vw - 16px);
+    max-height: 46vh;      /* 老浏览器兜底 */
+    max-height: 46dvh;
+    padding: 10px 12px 0;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .sheet-top{ margin-bottom: 6px; flex: 0 0 auto; }
+  .sheet-top h2{ font-size: 12.5px; }
+  .sheet-close{ width: 26px; height: 26px; font-size: 14px; border-radius: 7px; }
+  .input-wrap{ flex: 0 0 auto; }
+  .input-wrap svg{ left: 10px; width: 13px; height: 13px; }
+  #q{ height: 36px; font-size: 13px; padding: 0 10px 0 29px; border-radius: 10px; }
+  /* 只让筛选区滚：标题栏 / 输入框 / 底部操作栏都不参与滚动 */
+  .sheet-filters{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 0 2px 2px 0;
+  }
+  /* 每组 = 左侧小标题 + 右侧一排胶囊：放不下就在组内横向滑，5 组各占 1 行 */
+  .filter-row{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 5px;
+  }
+  .filter-row:first-child{ margin-top: 3px; }
+  .filter-label{
+    flex: 0 0 auto;
+    margin: 0;
+    font-size: 9px;
+    letter-spacing: .1em;
+  }
+  .chips{
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 1px 0 2px;
+    /* 右边缘 10px 渐隐：溢出的那半截胶囊淡出去，一眼看出右边还有；
+       滑到底时它只盖住下面的尾部留白，不会吃掉最后一项 */
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 10px), transparent 100%);
+    mask-image: linear-gradient(90deg, #000 calc(100% - 10px), transparent 100%);
+  }
+  /* 尾部留白：最后一项滑到底时离右边缘还有 10px，不会被截断 */
+  .chips::after{
+    content: "";
+    flex: 0 0 10px;
+  }
+  .chips::-webkit-scrollbar{ display: none; }
+  .chip{ flex: 0 0 auto; font-size: 11px; padding: 3px 8px; }
+  .chip .ic3d{ width: 11px; height: 11px; vertical-align: -2px; margin-right: 3px; }
+  .sheet-foot{
+    flex: 0 0 auto;
+    margin-top: 0;
+    padding: 7px 0 9px;
+    gap: 8px;
+    background: var(--paper);
+    box-shadow: 0 -6px 12px -8px rgba(60,40,10,.16);
+  }
+  .result-count{ font-size: 11px; }
+  .link-btn{ font-size: 11.5px; }
+  .solid-btn{ height: 30px; padding: 0 14px; font-size: 12px; }
+
   /* ---- 右侧竖版滑轨：图标 + 小标签 + 底部小火箭回顶，中英同为总宽 38px；
      投稿按钮跟着滑轨同宽，落在滑轨正上方 ---- */
   .rail-dock{

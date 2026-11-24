@@ -4182,6 +4182,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
       <input id="q" type="search" {al(*U['search_field_aria'])} placeholder="{pht('search_ph')}" autocomplete="off" spellcheck="false">
     </div>
 
+    <div class="sheet-filters">
     <div class="filter-row">
       <div class="filter-label">{ui('f_time')}</div>
       <div class="chips" data-group="time">
@@ -4219,11 +4220,11 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
       <div class="filter-label">{ui('f_cost')}</div>
       <div class="chips" data-group="cost">
         <button class="chip on" type="button" data-value="all">{ui('all')}</button>
-        <button class="chip" type="button" data-value="真正免费">{bi('真正免费', 'Free')}</button>
-        <button class="chip" type="button" data-value="免费试用">{bi('免费试用', 'Free trial')}</button>
-        <button class="chip" type="button" data-value="需要充值">{bi('需要充值', 'Deposit')}</button>
-        <button class="chip" type="button" data-value="需要交易量">{bi('需要交易量', 'Volume')}</button>
-        <button class="chip" type="button" data-value="需要邀请条件">{bi('需要邀请条件', 'Referral')}</button>
+        <button class="chip" type="button" data-value="真正免费">{bi('免费', 'Free')}</button>
+        <button class="chip" type="button" data-value="免费试用">{bi('试用', 'Trial')}</button>
+        <button class="chip" type="button" data-value="需要充值">{bi('充值', 'Deposit')}</button>
+        <button class="chip" type="button" data-value="需要交易量">{bi('交易量', 'Volume')}</button>
+        <button class="chip" type="button" data-value="需要邀请条件">{bi('邀请', 'Invite')}</button>
       </div>
     </div>
 
@@ -4234,6 +4235,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
         <button class="chip" type="button" data-value="1">{icon3d('verified-shield', 'vs-i')}{bi('已核验', 'Verified')}</button>
         <button class="chip" type="button" data-value="0">{bi('待核实', 'Unverified')}</button>
       </div>
+    </div>
     </div>
 
     <div class="sheet-foot">

@@ -842,6 +842,7 @@
     modal.classList.add("on");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    capSheet();
     // 故意不聚焦输入框：避免手机键盘弹出遮住筛选面板
     var closeBtn = $(".sheet-close", modal);
     if (closeBtn && !mqMobile.matches) closeBtn.focus({ preventScroll: true });
@@ -851,7 +852,30 @@
     modal.classList.remove("on");
     modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    capSheet();
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+
+  /* 手机搜索弹窗：贴顶、最多半屏，键盘弹出时用 visualViewport 把高度上限压到
+     「可视高 - 16px」，保证底部「匹配 / 重置 / 完成」永远在键盘上方。
+     Android Chrome 带 interactive-widget=resizes-content 时 dvh 自己会缩，这里是给
+     iOS / 旧 WebView 的兜底。 */
+  function capSheet() {
+    var sheet = $(".sheet", modal);
+    if (!sheet) return;
+    if (!modal.classList.contains("on") || !mqMobile.matches) {
+      sheet.style.maxHeight = "";
+      return;
+    }
+    var vv = window.visualViewport;
+    var room = (vv ? vv.height : window.innerHeight) - 16;
+    var half = Math.round(window.innerHeight * 0.46);
+    sheet.style.maxHeight = Math.max(200, Math.round(Math.min(room, half))) + "px";
+  }
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", capSheet);
+    window.visualViewport.addEventListener("scroll", capSheet);
   }
 
   var opener = $("#open-search");
