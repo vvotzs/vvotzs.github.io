@@ -632,6 +632,10 @@ ELIG.update(
             "identity": "none", "platform": ["web"],
             "funding": "min_deposit", "geo": ["GB"],
         },
+        "chattr-freedom-one-black-friday-80": {
+            "identity": "email", "platform": ["web"],
+            "funding": "paid_plan", "geo": ["GB"],
+        },
         "visible-us-free-trial-15d": {
             "identity": "none", "residency": "local_address",
             "platform": ["android", "ios"], "geo": ["US"],

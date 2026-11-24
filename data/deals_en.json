@@ -7087,5 +7087,22 @@
   ],
   "risk": "The subdomains stay the property of IPv64.net, so free limits, suffixes and terms can change at any time; three domains are enough for a home network, NAS or self-hosted service entry point but not for a real site; it cannot act as a registrar or transfer domains out; it is a small German company with no SLA, so a shutdown means moving your DNS yourself.",
   "source": "IPv64.net's official DynDNS page (read 24 November 2026: 3 DynDNS domains on the free tier, 19 suffixes, DynDNS2, A/AAAA, ACME support, run by Prox IT UG in Germany) + a 2Libra post (23 November 2026) noting the 3-domain limit"
+ },
+ "chattr-freedom-one-black-friday-80": {
+  "title": "[UK] Chattr Freedom One: code BLACKCHATTR80 makes month one £3, then £15 a month, unlimited 5G with no contract",
+  "brand_en": "Chattr",
+  "highlight": "Black Friday code BLACKCHATTR80: an unlimited 5G plan on O2 for £3 in month one, then £15 a month, £14 from the sixth renewal and £13 from the twelfth, monthly rolling with no contract and no credit check",
+  "regions": "[UK] UK use on the O2 network; roaming in Europe Zone 1/2 only",
+  "value": "Save £12 (≈$15)",
+  "content": "A UK MVNO run by Kashcow Ltd with a single plan, Freedom One: unlimited UK data (4G/5G) plus unlimited UK calls and texts, rolling month to month with no contract and no credit check, delivered as an eSIM by default with a QR code emailed within an hour of ordering. Month one costs £15, the sixth renewal drops it to £14 and the twelfth to £13; Black Friday code BLACKCHATTR80 takes 80% off the first month, so you pay £3 and save £12, running 20 to 30 November. It runs on the O2 network, and Chattr's own blog says customers keep O2 Priority. Roaming covers Europe Zone 1/2 only (including Switzerland and the Channel Islands) with a 25GB fair-use cap, and China is not on the list. Accounts carry a £5 bill limit by default, and hotspot use is allowed but not as a home broadband replacement.",
+  "conditions": "Aged 18 or over; open the account online and pay by card, with the first month charged at order and the next payment one month and three days later; BLACKCHATTR80 is first month only, one code per order and must be used by 30 November; the £14/£13 loyalty price needs auto-renewal left on and no missed payments; no roaming in mainland China; the eSIM needs a compatible phone and a QR-code install.",
+  "steps": [
+   "Open chattr.co.uk/plans, choose Freedom One and press Get Your SIM",
+   "Enter name, email, phone number and a password, then apply BLACKCHATTR80 at checkout",
+   "Install the eSIM from the QR code in the email that arrives within an hour (the email link installs it directly on the phone)",
+   "Leave auto-renewal on and the bill drops to £14 from the sixth renewal and £13 from the twelfth"
+  ],
+  "risk": "A small operator (Kashcow Ltd, registered 2014) with only a dozen or so Trustpilot reviews and its Ofcom dispute-resolution membership previously still pending, and support by email and form only with no phone line; checkout asks for an address and a card, and the site does not say whether a non-UK address or card is accepted (unconfirmed); turning off auto-renewal loses the loyalty price; paid services above the £5 bill limit are blocked; there is no China roaming, so it cannot be used to receive codes from the mainland.",
+  "source": "Chattr official Freedom One price FAQ and terms (checked 24 November 2026: £15, £14 on the sixth renewal, £13 on the twelfth, monthly rolling, no credit check, eSIM QR by email, roaming in Europe Zone 1/2 only) + the site's own discount-code endpoint returning 80% off the first month for BLACKCHATTR80 + the Awin offer listing for 20 to 30 November (via SwitchSquid and voucher sites) + visitor submission (24 November 2026, 11:57)"
  }
 }

@@ -257,6 +257,7 @@ KYC_NOTES: dict[str, str] = {
     "vodafone-nl-prepaid-esim": "无需证件，线上付款即开",
     "asda-mobile-payg-esim": "不看证件，但充值仅接受英国地址登记的卡",
     "lebara-uk-payg-esim": "不看证件，但非英国卡/地址常被反欺诈拦下",
+    "chattr-freedom-one-black-friday-80": "不查证件与信用，只要姓名、邮箱和付款卡，18 岁以上",
     "play-pl-prepaid-esim-rwk": "护照 + 人脸拍照验证，需 PESEL 或证件号",
     "ctexcel-hk-gba-prepaid": "eSIM 须到香港湾仔服务点线下办理，实名可用旅行证件",
     "starryblu-60sgd-signup": "大陆护照 + 身份证地址证明",
@@ -356,6 +357,7 @@ KYC.update({
     "vodafone-nl-prepaid-esim": "none",
     "asda-mobile-payg-esim": "none",
     "lebara-uk-payg-esim": "none",
+    "chattr-freedom-one-black-friday-80": "none",
     "play-pl-prepaid-esim-rwk": "cn_ok",
     "ctexcel-hk-gba-prepaid": "foreign_only",
     "starryblu-60sgd-signup": "cn_ok",
@@ -436,6 +438,8 @@ VOWIFI["asda-mobile-payg-esim"] = "true"  # 官方 Wi-Fi 通话对所有客户�
 VOWIFI.update({i: "unknown" for i in ("a1-croatia-prepaid-esim","vodafone-nl-prepaid-esim","lebara-uk-payg-esim","play-pl-prepaid-esim-rwk","ctexcel-hk-gba-prepaid")})
 # 2026-11-24：Lucky SIM 只写支持 VoLTE，未提 VoWiFi
 VOWIFI["luckysim-hk-3y-138"] = "unknown"
+# 2026-11-24：Chattr 官网与帮助中心都未提 Wi-Fi 通话
+VOWIFI["chattr-freedom-one-black-friday-80"] = "unknown"
 
 # ---------------------------------------------------------------- utility
 UTILITY = {
