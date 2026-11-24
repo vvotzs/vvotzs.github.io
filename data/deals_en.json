@@ -7153,5 +7153,67 @@
   ],
   "risk": "Only the apps are discounted, not the Things Cloud sync account; buying across devices means paying per platform; iOS and Mac prices follow the App Store storefront and exchange rate; prices return to normal after 11/30; the iPad version is also 30% off in the same window, with the exact price set by the App Store.",
   "source": "Cultured Code homepage banner, read 2026-11-24 (Black Friday Week Sale, 30% off from November 23 to 30, price in the App Store already includes the discount) + live US App Store prices (iPhone $6.99 from $9.99, Mac $34.99 from $49.99) + V2EX thread 1259469, 2026-11-24"
+ },
+ "wpos-black-friday-15000-credits": {
+  "title": "[Global] WPOS Black Friday: 15,000 credits for a new account (about 27 full page builds, no card)",
+  "highlight": "An AI agent that works inside WordPress: during the sale a new account starts with 15,000 credits instead of 5,000, no card needed, and code FRIDAY50 takes 50% off an upgrade",
+  "regions": "[Global] Any new account; you need your own WordPress site on any host, with Gutenberg, Elementor or Divi",
+  "value": "15,000 credits (normally 5,000, about 27 full page builds)",
+  "content": "WPOS is an AI agent that builds and edits WordPress sites from inside WordPress. Its official Black Friday page says accounts created between 11 and 30 November start with 15,000 credits instead of the usual 5,000, with no card required. By WPOS's own count across 573 real tasks, 15,000 credits buy roughly 27 full page builds, 83 new sections or pages, 214 single edits, or 500 audits and answers. Upgrading in the sale takes code FRIDAY50: 50% off site licences for the first two months for new paying customers, then $25 a site a month ($22 from 10 sites, $20 from 50, $19.50 from 100), and any credit pack adds 25%. The stated deadline is 30 November at 23:59 Pacific time, which is 15:59 on 1 December in Beijing.",
+  "conditions": "Create a new WPOS account between 11 and 30 November; existing accounts do not get the extra credits. Bring your own WordPress site on any host and page builder. The free credits need no card; only an upgrade costs money.",
+  "steps": [
+   "Open wpos.ai/black-friday/, sign up with an email and create a new account",
+   "Connect your WordPress site and install the WPOS plugin",
+   "Build or redesign pages from inside the site and watch the credit balance in your account; at checkout for an upgrade enter FRIDAY50"
+  ],
+  "risk": "The countdown at the top of the page does not load fully and shows the static text \"The sale has ended\", so trust the dates in the body (11 to 30 November); if your dashboard shows only 5,000 credits the offer has closed. Credits are WPOS's own task units, not dollars. FRIDAY50 is for new paying customers, once per customer, and licences renew at $25 a site a month after two months.",
+  "source": "WPOS official Black Friday page (read 24 November 2026: 11 to 30 November, 15,000 credits for a new account, no card, FRIDAY50, 23:59 PT deadline) plus the aifree.dev free-deals list, which checked it on 20 November"
+ },
+ "vpsfree-io-free-nat-vps": {
+  "title": "[Global] VPSFree.io free NAT VPS: 192MB, 3GB NVMe, 20 ports, renews every 10 days",
+  "highlight": "A Dutch LXC box you sign up for with an email and no card or KYC: root SSH, but only 20 NAT ports, and a short sponsor step every 10 days keeps it free",
+  "regions": "[Global] Sign-up with any email; servers only in Amsterdam and Frankfurt",
+  "value": "10 days of free server, renewals free ($0.29 per 30 days to skip the sponsor step)",
+  "content": "The free tier at VPSFree.io is a small LXC server in Amsterdam: 1 vCPU at 30% (EPYC 7402P), 192MB of RAM plus 64MB swap, 3GB of NVMe, a 30Mbit port and 100GB of monthly traffic, with L3/L4 DDoS protection. You get root over SSH (port 20000 in the example), Ubuntu 24.04 or Debian 12, Docker and Nginx, and a `vpsfree` menu once logged in. Networking is a shared IPv4 NAT with only 20 ports, and the free plan has no IPv6; the site showed 38 free slots when checked. Sign-up is email only, with no card and no KYC. A short sponsor step every 10 days renews it for free, or $0.29 per 30 days skips the ads. No support and no SLA on the free plan.",
+  "conditions": "Register and confirm an email address; no card and no KYC. Complete the sponsor step every 10 days to renew, or the server expires. Port scanning, attacks, mining and other abuse get the account closed.",
+  "steps": [
+   "Register at vpsfree.io with an email and confirm the message",
+   "In the console pick the free 192MB NAT VPS and start it in Amsterdam or Frankfurt",
+   "Log in with root over SSH on the IP and one of the 20 NAT ports (password or your own ED25519 key)",
+   "Return to the panel before expiry to renew through the sponsor step, or pay $0.29 to skip it"
+  ],
+  "risk": "Shared NAT IPv4 with only 20 ports and no IPv6, so anything needing full fixed ports will not work. A new platform with no SLA and no support, so keep nothing important on it. The renewal step sends you through an ad page. Only two European locations.",
+  "source": "VPSFree.io site (read 24 November 2026: 192MB NAT plan spec, 20 shared IPv4 ports, no IPv6, 38 free slots, 10-day renewal and sponsor step) plus its own blog post of 19 November on why there is no card, how renewal works and how abuse is monitored"
+ },
+ "oracle-cloud-300-trial-30d": {
+  "title": "[Global] Oracle Cloud trial: $300 for 30 days on top of Always Free, physical card needed",
+  "highlight": "A new account gets $300 to spend across OCI including generative AI within 30 days, while Always Free services stay, and the card is only used to verify identity",
+  "regions": "[Global] Countries with commercial OCI regions ($300 only in select countries); one free account per person",
+  "value": "$300 of credit (30 days, until used up or expired)",
+  "content": "Oracle Cloud Free Tier gives a new account US$300 of credit to spend on all eligible OCI services, generative AI included, for 30 days, alongside the Always Free services that never expire; the trial ends when the credit is used up or the 30 days pass, whichever comes first. After 30 days, an account that does not move to Pay As You Go keeps its Always Free resources but loses the trial ones. Sign-up needs a physical credit card, or a debit card that works like a credit card: prepaid cards, virtual cards and PIN debit cards are explicitly not accepted. The card is used for identity verification and may carry a temporary authorisation hold for a few days, with no actual charge. The FAQ allows one free or trial account per person, prohibits multiple accounts, and warns that accounts idle for 30 days or more may be treated as abandoned.",
+  "conditions": "A physical credit card or a debit card that works like one (no prepaid or virtual cards); accurate contact and billing details; one free account per person; the $300 credit is issued in select countries only.",
+  "steps": [
+   "Open oracle.com/cloud/free and start the free trial in a region available for your country",
+   "Verify your email and phone number and add a physical card for identity checks",
+   "In the OCI console confirm the US$300 balance and its expiry date",
+   "Use what you want to test within 30 days; stay on Free Tier rather than upgrading if you do not want to pay, so Always Free remains"
+  ],
+  "risk": "Arm Ampere A1 instances in popular regions are often out of capacity, a long-standing community complaint; the $300 credit is limited to select countries; trial resources are reclaimed after 30 days without an upgrade; multiple accounts get suspended; virtual or prepaid cards are rejected.",
+  "source": "Oracle Cloud Free Tier official page and FAQ (read 24 November 2026: US$300 for 30 days, Always Free alongside it, card rules, one account per person, 30-day idle rule)"
+ },
+ "aicomics-300-signup-credits": {
+  "title": "[Global] AIComics gives new accounts 300 credits (AI comic maker, on sign-up)",
+  "highlight": "The official forum says sign-up credit dropped from 500 to 300 credits on 19 November, and the invite reward became a 250-credit top-up coupon",
+  "regions": "[Global] Any new account; runs in the browser",
+  "value": "300 credits on sign-up (was 500)",
+  "content": "In an official forum post on 19 November 2026, AIComics said new accounts now receive 300 free credits at sign-up, down from 500, usable straight away to create and edit comics. The same post changed the invite reward from 250 credits to a 250-credit top-up coupon: you redeem a friend's code once when buying any credit pack, and the extra 250 credits land after payment, which ties the free part to a purchase. The post gives no expiry for the credits, no cost per comic and no end date for the offer; existing accounts keep the credits they already had.",
+  "conditions": "Register a new AIComics account, with no card needed. The invite reward now only pays out when you buy a credit pack.",
+  "steps": [
+   "Register at aicomics.art with an email",
+   "Check the balance shows 300 credits",
+   "Start a short comic project to see how fast credits go before buying a pack"
+  ],
+  "risk": "No published expiry or per-generation cost, so how many comics 300 credits covers is unknown; the allowance has already been cut once and may shrink again; the invite reward now needs a purchase; whether failed generations refund credits is unstated.",
+  "source": "AIComics official forum post of 19 November 2026 (sign-up credit 500 to 300, invite reward becomes a 250-credit top-up coupon) and the sign-up page checked on 24 November 2026"
  }
 }
