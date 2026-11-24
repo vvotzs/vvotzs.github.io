@@ -214,6 +214,7 @@ KYC.update(
         "unicom-esim-xianxian-2026": "cn_ok",
         "saily-us-number-annual": "cn_ok",
         "sosim-hk-esim-33-number": "cn_ok",
+        "luckysim-hk-3y-138": "cn_ok",
         "dito-esim-cloud-number-63": "cn_ok",
         "sosim-hk-33-100gb-esim": "cn_ok",
         # 纯流量 / 全球数据卡：无身份要求
@@ -299,6 +300,7 @@ KYC_NOTES: dict[str, str] = {
     "pickle-ai-free-agent-jpkr": "仅日/韩账号",
     "saily-us-number-annual": "护照 + 人脸 KYC",
     "sosim-hk-esim-33-number": "护照可实名",
+    "luckysim-hk-3y-138": "护照可实名，须线上登记并由官方核实（最多 2 个工作日）",
     "dito-esim-cloud-number-63": "护照登记，可全程云开",
     "sosim-hk-33-100gb-esim": "香港使用须实名（护照可），纯外游可不登记",
     "umobile-ultra5g-tourist-esim-my": "须本人到马来西亚机场扫码",
@@ -432,6 +434,8 @@ VOWIFI.update({i: "unknown" for i in _NUMBERED})
 VOWIFI["saily-us-number-annual"] = "false"  # App 内 VoIP，不是运营商 VoWiFi
 VOWIFI["asda-mobile-payg-esim"] = "true"  # 官方 Wi-Fi 通话对所有客户免费
 VOWIFI.update({i: "unknown" for i in ("a1-croatia-prepaid-esim","vodafone-nl-prepaid-esim","lebara-uk-payg-esim","play-pl-prepaid-esim-rwk","ctexcel-hk-gba-prepaid")})
+# 2026-11-24：Lucky SIM 只写支持 VoLTE，未提 VoWiFi
+VOWIFI["luckysim-hk-3y-138"] = "unknown"
 
 # ---------------------------------------------------------------- utility
 UTILITY = {

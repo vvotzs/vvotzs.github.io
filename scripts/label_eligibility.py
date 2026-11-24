@@ -610,6 +610,11 @@ ELIG.update(
             "identity": "photo_id", "platform": ["web"],
             "funding": "min_deposit", "geo": ["HK"],
         },
+        # 2026-11-24：Lucky SIM 3 年预付卡（官方商城购买、线上实名、护照可办）
+        "luckysim-hk-3y-138": {
+            "identity": "photo_id", "platform": ["web"],
+            "funding": "purchase", "geo": ["HK"],
+        },
         "a1-croatia-prepaid-esim": {
             "identity": "none", "platform": ["web"],
             "funding": "min_deposit", "geo": ["HR"],
