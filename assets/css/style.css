@@ -1508,17 +1508,33 @@ html.cf-open, html.cf-open body{ overflow: hidden; }
 }
 .df-top .vote-row{ margin-top: 0; }
 
-/* expired cards muted：归档卡片用暖灰虚线边框，与进行中活动的实线卡片一眼区分。
-   只改 border-style 与边框颜色，宽度仍是 1px——卡片外高与 contain-intrinsic-size
-   占位高度（含手机端 76px）完全不变；展开态保留琥珀色边框，只是同样成虚线。 */
+/* expired cards muted：归档卡片用中暖灰「长虚线」框，与进行中活动的实线卡片一眼区分。
+   原生 border-style: dashed 的段长与间隔由浏览器固定、又密又碎，远看不像虚线；
+   所以边框只留 1px 透明占位（外高与 contain-intrinsic-size 76px 不变），
+   虚线由卡片里的内联 SVG 描边（.card-dash）画：stroke-dasharray 8 5，段 8px、空 5px，
+   半径 17 跟着 18px 圆角走，拐角处也均匀疏朗。卡片 opacity .72 会把描边一起淡到 ≈#9E9992。 */
 .card.is-expired{
   opacity: .72;
   background: #FDFBF7;
-  border-style: dashed;
-  border-color: rgba(28,25,23,.24);
+  border-color: transparent;
 }
-.card.is-expired:hover{ opacity: .95; border-color: rgba(28,25,23,.32); }
-.card.is-expired.open{ border-color: rgba(245,158,11,.5); }
+.card.is-expired:hover{ opacity: .95; }
+.card.is-expired .card-dash{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.card.is-expired .card-dash rect{
+  fill: none;
+  stroke: #7A746B;
+  stroke-width: 2;
+  stroke-dasharray: 8 5;
+}
+.card.is-expired:hover .card-dash rect{ stroke: #5E5952; }
+.card.is-expired.open .card-dash rect{ stroke: #F59E0B; }
 .card.is-expired .row1 h3{ color: var(--ink-2); }
 .card.is-expired .value{ color: var(--ink-3); background: #F5F1E9; border-color: rgba(28,25,23,.08); }
 

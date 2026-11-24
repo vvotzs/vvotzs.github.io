@@ -1437,11 +1437,20 @@ def card(deal: dict, en: dict, today) -> str:
         f'<span class="aff-tag" {tt(*U["aff_badge_full"])}>{ui("aff_badge")}</span>'
         if aff else ""
     )
+    # 归档卡的长虚线框：原生 border: dashed 的段长/间隔浏览器固定、又密又碎，
+    # 这里用内联 SVG 描边，stroke-dasharray 8 5 由 CSS 给，圆角处也均匀。
+    # pointer-events: none（CSS）保证不挡点击；aria-hidden 不让读屏器多读一层。
+    dash_html = (
+        '<svg class="card-dash" aria-hidden="true" focusable="false">'
+        '<rect x="0" y="0" width="100%" height="100%" rx="17" ry="17"/></svg>'
+        if expired else ""
+    )
 
     return f"""<article class="{classes}" id="deal-{deal_id}" data-cat="{e(deal.get('category'))}" data-cost="{e(cost)}"
     data-verified="{1 if deal.get('verified') else 0}" data-end="{e(deal.get('end', ''))}"
     data-added="{e(added_day(deal, today))}" data-added-at="{e(deal.get('added_at') or added_day(deal, today))}"
     data-val-exp="{value_expected(deal):g}" data-key="{deal_id}">
+    {dash_html}
     <div class="card-head">
       {fav_html(deal, 24, en)}
       <div class="card-body">
