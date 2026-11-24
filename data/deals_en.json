@@ -7121,5 +7121,37 @@
   ],
   "risk": "The credit is gone after 30 days, so it is not a long-term free server; trial quotas are only 2 vCPU and 4 GB with 60 GB per storage type; resources are deleted if you do not top up and upgrade by the end; a rejected card blocks the trial; no end date is published, so the offer can close at any time; the trial firewall is locked and port 25 is blocked, so some services will not work.",
   "source": "UpCloud's official Black Friday page (read 24 November 2026: Get $500 in trial credits for 30 days, Black Friday 2026 offer) + UpCloud pricing FAQ (free credit for new sign-ups, amount varies) + haowego campaign page ($0/$1 pre-authorisation, 2 vCPU/4 GB and 60 GB quotas, 10-unit top-up keeps resources) + TaskPanel comparison (5 November 2026: 30-day window, EUR 500 on the European site)"
+ },
+ "x-money-card-black-friday-5pct": {
+  "title": "[US] X Money Black Friday: 5% back on the first $1,000 spent with the X Card (up to $50, 11/23–11/30)",
+  "highlight": "Between 11/23 and 11/30, pay with the X Card, physical or virtual, at merchants in the listed MCCs to earn 5% back on the first $1,000, capped at $50; no direct deposit required",
+  "regions": "[US] US residents only; eligible MCCs cover general merchandise, electronics, clothing, home, sporting goods, toys and gifts, beauty and pets",
+  "value": "Up to $50 cashback",
+  "content": "X Payments' official terms: from 00:00 PT on 23 November to 23:59 PT on 30 November 2026, purchases with the physical or virtual X Card at eligible merchant category codes earn 5% back on the first $1,000, capped at $50, and no direct deposit is required. The 5% replaces rather than adds to the usual 1-3% rate, and spending above $1,000 returns to the standard rate. Eligible MCCs cover marketplaces and general merchandise, electronics, clothing and shoes, home, sporting goods, toys and gifts, and beauty and pets; tax payments, rent, tuition and utilities do not count. Purchases must be authorised by 11/30 and settle before 00:00 PT on 15 December, and cashback is credited to the X Money account on the weekly cycle.",
+  "conditions": "Open X Money as a US resident with SSN and ID verification and hold a virtual or physical X Card; spend at merchants in the listed MCCs, authorised by 11/30 and settled by 12/15; gift cards, transfers and refunded or reversed purchases do not count; cashback stays inside the X Money account and cannot be withdrawn as cash.",
+  "steps": [
+   "Open X Money at x.com/i/money and complete US identity verification",
+   "Get the virtual X Card, or order the physical card, and top up the stored-value balance",
+   "Spend at merchants in the eligible categories such as electronics, clothing or general merchandise, keeping the total at $1,000 or less",
+   "Check the cashback line in the app weekly; purchases must settle before 12/15 to count"
+  ],
+  "risk": "US residents only with SSN and ID checks, so a remote or foreign account does not work; only the listed MCCs qualify, while groceries, dining, fuel and subscriptions mostly fall outside; the 5% does not stack on the usual rate; cashback is not cash and has to be spent from the X Money balance; settlement is weekly and can arrive after the promotion ends; the stored-value account is run by X Payments LLC and is not a bank deposit.",
+  "source": "X Money official Promotional Cashback Rewards Terms, read 2026-11-24 (5% on the first $1,000, up to $50, 11/23-11/30, no direct deposit, MCC list, settle before 12/15) + @XMoney post of 2026-11-21 + uscardforum thread 548402 for the usual 1-3% rate"
+ },
+ "things3-black-friday-30": {
+  "title": "[Global] Things 3 Black Friday week: 30% off every app, iPhone $6.99 / Mac $34.99 (11/23–11/30)",
+  "highlight": "Cultured Code's Black Friday week runs 11/23 to 11/30 with 30% off every Things 3 app; the App Store price already includes the discount, for example iPhone $6.99 (from $9.99) and Mac $34.99 (from $49.99), with no code needed",
+  "regions": "[Global] Each App Store storefront discounts its local price",
+  "value": "Save $3 on iOS, $15 on Mac",
+  "content": "Cultured Code's site states a Black Friday Week Sale: from 23 to 30 November 2026 every Things 3 app is 30% off, the App Store price already carries the discount and no code is needed. US App Store prices during the sale are $6.99 for the iPhone and iPad app, down from $9.99, and $34.99 for the Mac app, down from $49.99. Things 3 is a one-time purchase on each platform: iPhone, iPad and Mac are bought separately, the Watch and Vision apps come with the iPhone or iPad purchase, and updates within the same major version are free. It suits people who want a local, subscription-free GTD app on iPhone and Mac.",
+  "conditions": "Buy from the App Store between 11/23 and 11/30; iPhone, iPad and Mac are three separate purchases that each carry the discount; an Apple ID with a payment method for the matching storefront is required; there is no trial and App Store purchases are not refundable under its usual rules.",
+  "steps": [
+   "Search Things 3 in the iPhone or iPad App Store and confirm it shows $6.99, down from $9.99",
+   "On a Mac, open the Mac App Store and confirm Things 3 shows $34.99, down from $49.99",
+   "Sync across devices with the same free Things Cloud account",
+   "The sale ends 11/30, so buy the platforms you need before then"
+  ],
+  "risk": "Only the apps are discounted, not the Things Cloud sync account; buying across devices means paying per platform; iOS and Mac prices follow the App Store storefront and exchange rate; prices return to normal after 11/30; the iPad version is also 30% off in the same window, with the exact price set by the App Store.",
+  "source": "Cultured Code homepage banner, read 2026-11-24 (Black Friday Week Sale, 30% off from November 23 to 30, price in the App Store already includes the discount) + live US App Store prices (iPhone $6.99 from $9.99, Mac $34.99 from $49.99) + V2EX thread 1259469, 2026-11-24"
  }
 }

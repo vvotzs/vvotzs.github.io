@@ -445,6 +445,11 @@ ELIG.update(
             "identity": "local_id", "residency": "local_resident",
             "funding": "min_deposit", "geo": ["SG"],
         },
+        # 2026-11-24：X Money 黑五 5% 返现（仅美国居民，需 SSN 与身份验证）
+        "x-money-card-black-friday-5pct": {
+            "identity": "local_id", "residency": "local_resident",
+            "phone": "local_number", "funding": "purchase", "geo": ["US"],
+        },
     }
 )
 
