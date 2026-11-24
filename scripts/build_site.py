@@ -1621,9 +1621,9 @@ def module_html(
       {''.join(cards)}
     </div>
     <div class="pager-bar" data-bar>
-      <button class="pg" type="button" data-prev {al('上一页', 'Previous page')}>‹</button>
-      <span class="pager-label" data-label>1 / {pages}</span>
-      <button class="pg" type="button" data-next {al('下一页', 'Next page')}>›</button>
+      <button class="pg" type="button" data-prev {al('上一页', 'Previous page')}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 4.5 7.5 12 15 19.5"/></svg></button>
+      <span class="pager-label" data-label><b class="pager-cur" data-cur>1</b><span class="pager-total" data-tot> / {pages}</span></span>
+      <button class="pg" type="button" data-next {al('下一页', 'Next page')}><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 4.5 16.5 12 9 19.5"/></svg></button>
     </div>
     <p class="module-empty" style="display:none">{ui("mod_empty")}</p>
     <button class="more" type="button" data-more hidden></button>

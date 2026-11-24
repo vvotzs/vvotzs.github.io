@@ -646,9 +646,20 @@ main{ padding-bottom: 0; }
   min-width: 36px;
   text-align: center;
   font-feature-settings: "tnum";
-  font-weight: 700;
-  color: var(--ink);
+  font-weight: 500;
+  color: #6B7280;
 }
+/* 当前页数字：更大、更粗、斜体、带下划线；「/ 总数」保持细灰，层次一眼分明 */
+.pager-label .pager-cur{
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.15em;
+  color: #191919;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+.pager-label .pager-total{ font-weight: 500; color: #6B7280; }
 /* 左右翻页键：小号扁圆胶囊（34×23）—— 薄荷浅底 + 加厚描边 + 深薄荷粗箭头，
    体积不变、对比度提上来；禁用态退成中性浅灰但轮廓仍在，看得出「这里能点」 */
 .pager-bar .pg{
@@ -662,11 +673,22 @@ main{ padding-bottom: 0; }
   background: #F0FDF9;
   color: #065F46;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
   line-height: 1;
   box-shadow: 0 1px 2px rgba(5,150,105,.12);
   transition: background .18s ease, border-color .18s ease, color .18s ease;
+}
+/* 箭头是内联 SVG 粗折线（‹ › 字符太细、等宽字体也没有粗体）：11px、stroke 2.6 */
+.pager-bar .pg svg{
+  width: 11px;
+  height: 11px;
+  display: block;
+}
+.pager-bar .pg svg path{
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .pager-bar .pg:hover:not(:disabled){ background: #DCFCE7; border-color: #34D399; color: #064E3B; }
 .pager-bar .pg:disabled{

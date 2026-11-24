@@ -409,10 +409,19 @@
     return { pages: pages, show: show, idx: idx };
   }
 
+  /* 页码拆两段：当前页（粗 / 大 / 斜 / 下划线）+「/ 总数」（细、灰） */
+  function setPagerLabel(m, idx, pages) {
+    if (!m.bar) return;
+    var cur = $("[data-cur]", m.bar);
+    var tot = $("[data-tot]", m.bar);
+    if (cur) cur.textContent = String(idx + 1);
+    if (tot) tot.textContent = " / " + pages;
+  }
+
   function applyBar(m, st) {
     m.bar.style.display = st.show ? "flex" : "none";
     if (!st.show) return;
-    if (m.label) m.label.textContent = (st.idx + 1) + " / " + st.pages;
+    setPagerLabel(m, st.idx, st.pages);
     var prev = $("[data-prev]", m.bar);
     var next = $("[data-next]", m.bar);
     if (prev) prev.disabled = st.idx <= 0;
@@ -497,7 +506,7 @@
     // 平滑滚动期间先按目标页刷新页码，手指直接滑动时再由 scroll 事件接管
     var pages = pageCount(m);
     var idx = Math.min(Math.max(Math.round(m.track.scrollLeft / (m.track.clientWidth || 1)) + dir, 0), pages - 1);
-    if (m.label) m.label.textContent = (idx + 1) + " / " + pages;
+    setPagerLabel(m, idx, pages);
     clearTimeout(m._tick);
     m._tick = setTimeout(function () { updateBar(m); }, 380);
   });
