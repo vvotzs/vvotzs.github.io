@@ -1147,20 +1147,20 @@
   "source": "Sendwave official campaign terms (promotion period specified)"
  },
  "databasemart-black-friday-vps": {
-  "title": "[Global] Database Mart Black Friday VPS: from $1.25/mo (up to 75% off, to 11/28)",
-  "highlight": "Black Friday from 11/15 to 11/28 Central Time: Linux VPS from $1.25/mo, 3-year terms 60–75% off, some plans lock a lifetime price, plus a 24-hour free trial",
-  "regions": "[Global] Database Mart's site with US datacentres, taking Visa, Mastercard, Amex and PayPal",
-  "value": "$1.25/mo and up",
-  "content": "Database Mart's Black Friday 2026 runs from 15 to 28 November Central Time: VPS from $1.25 a month (Linux VPS Lite at 1 core, 1GB, 30GB and 50Mbps), Basic Linux VPS (4 cores, 8GB, 140GB) at $5.20 a month on a three-year term, GPU VPS from $11.60 and dedicated servers from $48.95, up to 75% off. Some plans lock a lifetime price with renewals at the same rate, and limited flash sales appear. Eligible VPS orders can request a 24-hour free trial in the order notes, with three machines a customer by default.",
-  "conditions": "Discounts follow the billing term: 30% off monthly, 35% quarterly, 40% yearly, 55% for two years and 60% for three (per plan), cheaper over longer terms paid up front; new orders only, without paid add-ons; stock-limited; three per customer; the cheapest tier is small at 1 core and 1GB.",
+  "title": "[Global] Database Mart Black Friday VPS: from $0.99/mo (up to 80% off, ends Nov 28)",
+  "highlight": "Black Friday from November 15 to 28 (US Central): Linux VPS from $0.99/mo (the Lite plan with 1 core, 1GB RAM and 30GB disk at -80% on a 3-year term), Basic Linux VPS (4 cores, 8GB) at $4.55/mo on 3 years, GPU VPS from $11.60/mo and dedicated servers from $29.40/mo, with some plans locking in a lifetime price and a 24-hour free trial on request",
+  "regions": "[Global] Database Mart's own site with US data centres, accepting Visa, Mastercard, Amex and PayPal",
+  "value": "From $0.99/mo",
+  "content": "Database Mart's 2026 Black Friday sale runs November 15 to 28 (Central Time): VPS from $0.99/mo (the Linux VPS Lite with 1 core, 1GB RAM, 30GB disk and 50Mbps at -80% on a 3-year term), the Basic Linux VPS (4 cores, 8GB RAM, 140GB disk) at $4.55/mo on three years, the Professional Linux VPS (8 cores, 18GB, 240GB) at $9.12/mo, GPU VPS from $11.60/mo with 2GB of GPU memory and dedicated servers from $29.40/mo, up to 80% off across the page. Some plans lock in a lifetime renewal price. Eligible VPS orders can ask for a 24-hour free trial in the order notes, and customers normally cap at three servers.",
+  "conditions": "Discounts depend on the billing term (monthly -30% to -55%, quarterly -35% to -58%, annual -40% to -63%, two years -55% to -68%, three years -60% to -80%), so the longer term means paying it all up front; new orders only, paid add-ons excluded; limited stock; three servers per customer; the cheapest tier is a small 1-core 1GB box.",
   "steps": [
-   "Open the Database Mart Black Friday page and choose a Linux or Windows VPS",
-   "Choose the billing term at checkout and confirm the discounted monthly price and the total",
-   "For a trial, request the 24-hour one in the order notes",
-   "The machine is provisioned within 1–10 minutes of payment"
+   "Open the Database Mart Black Friday page and pick a Linux or Windows VPS plan",
+   "Choose the billing term at checkout and confirm the discounted monthly and total price",
+   "Ask for the 24-hour trial in the order notes if you want to test first",
+   "The server comes online within 1 to 10 minutes after payment"
   ],
-  "risk": "$1.25/mo is the smallest plan spread over a long prepayment, so you pay for years at once; the small specs won't run a modern panel or database; check whether the plan is a \"lifetime price\" one, because otherwise year two reverts to list price.",
-  "source": "Database Mart official 2026 Black Friday page (sale runs Nov 15–28 CST, VPS from $1.25/mo)"
+  "risk": "The $0.99/mo figure is the smallest box stretched across a three-year prepayment, so you pay years up front; a 1-core 1GB box will not run a modern panel or database; renewal pricing depends on whether the plan is one of the lifetime-price ones, otherwise the second year reverts to list price; the countdown widget on the page read zero at check time, so the Nov 15-28 window in the page copy is the reference.",
+  "source": "Database Mart's official 2026 Black Friday page (read 24 November 2026: sale Nov 15-28 CST, VPS from $0.99/mo, up to 80% off, GPU from $11.60/mo, dedicated from $29.40/mo)"
  },
  "airalo-first-order": {
   "title": "[Global] Airalo 15% off your first order (November code)",
@@ -1338,7 +1338,7 @@
    "To earn the referral reward, have a friend use your invite code for £10 of wallet points each"
   ],
   "risk": "India corridor only; the page header says 12/31 while the terms say 11/30, so it may end early; the promo code must come from the campaign page — the codes circulating in communities are personal invites and aren't interchangeable; wallet points only offset fees, not cash.",
-  "source": "ACE Money Transfer official campaign page and £10 First Transfer terms (captured 2026-11) + ACE's official Invite a Friend note (UK £100 / £10 each)"
+  "source": "ACE Money Transfer official campaign page and £10 First Transfer terms (captured 2026-11) + ACE's official Invite a Friend note (UK £100 / £10 each) (re-read 24 November 2026, campaign still live)"
  },
  "pelago-krisflyer-esim": {
   "title": "[Global] Pelago × KrisFlyer: free 2GB global eSIM (118 countries / 3 days)",
@@ -4611,7 +4611,7 @@
    "Call DeepSeek-V4.1 or GLM-5.3 and spend the voucher within its one-month validity"
   ],
   "risk": "Existing Qianfan accounts get nothing; real-name data must be handed over; the voucher expires in a month, so claiming and not using it is worth zero; 20 yuan only covers testing at official prices; the promotion terms can shift as the 30 November deadline approaches",
-  "source": "Baidu Cloud 11.11 promotion page (20 October to 30 November 2026), third-party checks dated 12, 17 and 21 November 2026, plus a visitor submission received 21 November 2026 at 09:03",
+  "source": "Baidu Cloud 11.11 promotion page (20 October to 30 November 2026), third-party checks dated 12, 17 and 21 November 2026, plus a visitor submission received 21 November 2026 at 09:03 (re-read 24 November 2026 on the campaign page mirror)",
   "brand_en": "Baidu Qianfan"
  },
  "sakura-ai-engine-glm-deepseek-free": {
@@ -6025,7 +6025,7 @@
   ],
   "url": "https://inference.dahl.global/",
   "source_url": "https://inference.dahl.global/pricing/",
-  "source": "Dahl official pricing page (read 22 November 2026: $0.02 per million, half price 6-30 November 21:00 UTC, card and crypto packages) + official Tokens & keys and Quickstart docs (100 million signup grant, seven-day idle burn, manual allocation to keys) + linux.do thread (19 November 2026) + AIdeal check against the official page (21 November 2026) + awesome-free-ai-coding probe (19 November 2026, HTTP 200)",
+  "source": "Dahl official pricing page (read 22 November 2026: $0.02 per million, half price 6-30 November 21:00 UTC, card and crypto packages) + official Tokens & keys and Quickstart docs (100 million signup grant, seven-day idle burn, manual allocation to keys) + linux.do thread (19 November 2026) + AIdeal check against the official page (21 November 2026) + awesome-free-ai-coding probe (19 November 2026, HTTP 200) (re-read 24 November 2026: Terms v2.1 and the Tokens & keys docs still list the 100M signup grant)",
   "risk": "At list price the 100 million tokens are worth about $2, so this is a small trial rather than a real windfall; the grant zeroes out after seven idle days, making an unused signup pointless; there is no email recovery, so a lost fingerprint means losing the account; inference runs on independent operators in a decentralised GPU network, so stability, latency and data handling differ from a large vendor; top-ups take cards or crypto only, so mind compliance and exchange rates; promotional pricing can change at any time."
  },
  "vodafone-london-network-trial-esim": {
@@ -7022,5 +7022,70 @@
   ],
   "risk": "It is a third-party hosting and relay platform, so keep sensitive material out and do not sign in with an important identity provider; Starter data feeds training by default; there is no public API and no way into Cursor or Cline; testers report the web client cannot pick models and that busy periods queue, so heavy use means Pro or another service; allowances and models can change at any time.",
   "source": "Perch AI official pricing page (read 24 November 2026: Starter $0 with $20 a month, Pro $10 Early Access, Ultra $30, supported models and data programme) + AIJP and NodeSeek posts (11 November 2026, with field reports that the web client cannot choose models and the desktop app is needed)"
+ },
+ "kiroween-2026-4000-credits": {
+  "title": "[Global] Kiroween 2026 hackathon: entrants can request 4,000 Kiro credits (about $80, ask by Dec 1)",
+  "highlight": "AWS's Kiroween 2026 hackathon: registered entrants can request a one-time 4,000 Kiro credits, worth about $80 at the Pro rate of $20 per 1,000 credits; request by Dec 1, 12:00 PM PT, redeem by Dec 4, spend them by Dec 31, with a Devpost signup and a Didit ID check",
+  "regions": "[Global] Devpost registration plus a Kiro account; residents of Quebec, Argentina, Brazil, Italy, the Philippines, Russia, the UAE and similar regions cannot enter",
+  "value": "4,000 Kiro credits (about $80)",
+  "content": "Kiro is AWS's agentic IDE, billed in credits and able to run Claude Opus, Sonnet and Haiku, GPT-5.6 and open-weight models (Pro is $20 per 1,000 credits). Kiroween 2026 opened registration on October 13 with submissions from October 30 to December 4, 2:00 PM PT. Entrants can request 4,000 credits from the Resources page: one grant per person with no top-ups, a code within 48 business hours, requests close December 1 at 12:00 PM PT, codes must be redeemed by December 4 and redeemed credits expire December 31 at 11:59 PM PT. Requests need a Didit check (selfie and government ID) and the Devpost profile name must match the ID; credits are only for building the submission and have no cash value.",
+  "conditions": "Register on kiroween.devpost.com and hold a Kiro account (or an AWS account ID); be of legal age where you live; Quebec, Argentina, Brazil, Italy, the Philippines, Russia, the UAE and sanctioned regions cannot enter; a failed ID check means no code; the grant is one-time and not topped up.",
+  "steps": [
+   "Create a Kiro account at kiro.dev and note your Kiro user ID (an AWS account ID if you sign in that way)",
+   "Register at kiroween.devpost.com and pick one category: Resurrection, Frankenstein, Skeleton Crew or Costume Contest",
+   "Open the credit request form on the Resources page, fill in your name, Devpost email and profile, and complete the Didit ID check",
+   "Submit before December 1, 12:00 PM PT; when the code arrives, open the redemption link while signed in to Kiro before December 4",
+   "Confirm the kiroween-prefixed balance on app.kiro.dev and spend it before December 31"
+  ],
+  "risk": "Credits are reviewed and handed out first come, first served, so approval is not guaranteed; you hand a selfie and government ID to Didit; you must actually register and build in one category, so a bare credit request can be declined; expired codes are not replaced; only projects started after October 30 count; Kiro's models and features vary by region.",
+  "source": "Official Kiroween 2026 Resources page and Official Rules (read 24 November 2026: 4,000 credits, requests by December 1, 12:00 PM PT, redeem by December 4, expiry December 31, Didit ID check, excluded regions) + Kiro pricing (Pro at $20 per 1,000 credits, used for the about $80 estimate)"
+ },
+ "queryra-black-friday-club": {
+  "title": "[Global] Queryra Black Friday Club: 1,000 extra AI searches a month free for 6 months (join Nov 23-30)",
+  "highlight": "An AI semantic search plugin for WordPress and WooCommerce: join the Black Friday Club from your dashboard between November 23 and 30 and get 1,000 extra AI searches every month for six months on top of your plan, the same as the $9.99 Essential plan, with no card and no code",
+  "regions": "[Global] A free Queryra account for your own WordPress or WooCommerce store; works on every plan including the free one, no card needed",
+  "value": "About $60 (six months of the $9.99 Essential plan)",
+  "content": "Queryra is an AI semantic search plugin for WordPress and WooCommerce that indexes up to 10,000 products: the free Community plan gives 100 AI searches a month and Essential at $9.99 gives 1,000. Join the Black Friday Club from the Club page in your dashboard between November 23 and 30, with no code and no card, and for the next six months you get 1,000 extra AI searches a month on top of whatever plan you are on, the same as Essential for free. If your store had already burned this month's searches, AI search switches back on within six hours. After six months the account returns to its normal plan with nothing deleted, charged or to cancel.",
+  "conditions": "Register a Queryra account or log in to an existing one; join from the Club page in the dashboard only between November 23 and 30; each store joins with its own account; extra searches are monthly and do not roll over; the account returns to its normal plan after six months.",
+  "steps": [
+   "Sign up for a free Queryra account (or log in) and install the plugin",
+   "Between November 23 and 30 open Club in the dashboard and join the Black Friday Club",
+   "Check the usage page to confirm the extra 1,000 AI searches for this month",
+   "Use it for six months, then decide whether to stay on Essential or above"
+  ],
+  "risk": "Only useful if you run a WordPress or WooCommerce store, so there is nothing to gain for personal browsing; searches reset monthly and do not roll over; after six months the account drops back to the free plan and anything over 100 searches costs money; the plugin is meant for catalogs under 10,000 products, so very large or multilingual catalogs need another look.",
+  "source": "Queryra's official announcement Black Friday: 6 Months Free (November 3, 2026: join November 23-30, 1,000 extra searches a month for six months, no card or code) + the official pricing page (Community $0 with 100 searches a month, Essential $9.99 with 1,000, read 24 November 2026)"
+ },
+ "maya-mobile-black-friday-bogo-esim": {
+  "title": "[Global] Maya Mobile Black Friday eSIM: buy a 14 or 30-day plan, get the same plan free for your next trip (Nov 23-Dec 2)",
+  "highlight": "Buy a 14-day ($27.99) or 30-day ($49.99) plan on the site or in the app between November 23 and December 2, and once the first plan is activated you get a code for the same plan free, to redeem within three months for your next trip; 3 and 7-day plans, resellers and other codes are excluded",
+  "regions": "[Global] Bought directly on the Maya website or app for many destinations; only the 14-day and 30-day plans qualify",
+  "value": "$27.99 to $49.99 (a free plan of the same length)",
+  "content": "Maya Mobile's Black Friday offer runs from November 23, 0:00 EST to December 2, 0:00 EST: buy a 14-day ($27.99) or 30-day ($49.99) plan on the website or in the app and, once you land and activate the first plan, Maya emails a code for the same plan free. The free plan is for your next trip, must be redeemed within three months and works only on the same Maya account, never on the order that earned it. The 3-day and 7-day plans, purchases through resellers or marketplaces, and other promo codes do not qualify.",
+  "conditions": "Buy the 14-day or 30-day plan directly on the site or app; the free code is only issued after the purchased plan is activated; redeem within three months and only on a later order; one per account; 3 and 7-day plans, resellers and other promo codes are excluded.",
+  "steps": [
+   "Pick the 14-day ($27.99) or 30-day ($49.99) plan on maya.net or in the Maya app",
+   "Activate and use that plan when you land",
+   "Watch for the free plan code in your email or the app after activation is confirmed",
+   "Redeem it within three months on your next trip, without stacking other codes"
+  ],
+  "risk": "You have to pay for a plan first and the free one only works on a later trip, so it does not cut this trip's cost; 3 and 7-day plans and resellers are out; the code cannot be used on the order that earned it or transferred; destination coverage and plan prices are whatever checkout shows; it is a data-only eSIM with no phone number.",
+  "source": "Maya Mobile's official Black Friday page (updated November 23, 2026: 14-day $27.99 and 30-day $49.99 buy-one-get-one, November 23 0:00 EST to December 2 0:00 EST, code issued after activation, three months to redeem, exclusions)"
+ },
+ "ipv64-free-dyndns": {
+  "title": "[DE] IPv64.net free DynDNS: 3 domains per account across 19 suffixes (Cloudflare-compatible)",
+  "highlight": "A free DynDNS run by Germany's Prox IT UG: registration and use cost nothing, each account gets 3 DynDNS domains under 19 suffixes including ipv64.net, ipv64.de, home64.de, nas64.de and vpn64.de, with DynDNS2, separate A/AAAA updates and IPv6 prefixes, plus Let's Encrypt through acme.sh or Certbot DNS challenges",
+  "regions": "[DE] Operated by Prox IT UG in Mülheim an der Ruhr, Germany; registration open worldwide, with 3 DynDNS domains per account on the free tier",
+  "value": "3 free domains, long term",
+  "content": "IPv64.net is a free DynDNS service from Germany's Prox IT UG. Registration and use cost nothing, and the free tier allows 3 DynDNS domains per account under 19 suffixes such as ipv64.net, ipv64.de, home64.de, nas64.de and vpn64.de. It speaks DynDNS2, updates A and AAAA records together or separately, supports IPv6 prefixes and ignores the shared IPv4 behind DS-Lite or CGNAT. Ready-made update URLs exist for FRITZ!Box, Speedport, UniFi, MikroTik, OPNsense, Synology and a Linux cron job. You can issue Let's Encrypt certificates through the DNS challenge with acme.sh or Certbot, and the DNS servers sit behind load balancers with DDoS protection and failover. You can also point your own domain's nameservers here to manage records, though IPv64 is not a registrar.",
+  "conditions": "Free registration is enough; the free tier caps you at 3 DynDNS domains per account; it is DNS only, with no web hosting or mailboxes; the subdomains belong to IPv64.net and cannot be transferred out; your own domain needs to stay registered elsewhere with nameservers pointed here.",
+  "steps": [
+   "Open ipv64.net/dyndns and click Register now (free, no card)",
+   "Pick a suffix and prefix in your account and register up to 3 DynDNS domains",
+   "Copy the device-specific update URL into your router or client (FRITZ!Box, Synology, cron and others)",
+   "For HTTPS, issue a Let's Encrypt certificate via the DNS challenge with acme.sh or Certbot on a machine you control"
+  ],
+  "risk": "The subdomains stay the property of IPv64.net, so free limits, suffixes and terms can change at any time; three domains are enough for a home network, NAS or self-hosted service entry point but not for a real site; it cannot act as a registrar or transfer domains out; it is a small German company with no SLA, so a shutdown means moving your DNS yourself.",
+  "source": "IPv64.net's official DynDNS page (read 24 November 2026: 3 DynDNS domains on the free tier, 19 suffixes, DynDNS2, A/AAAA, ACME support, run by Prox IT UG in Germany) + a 2Libra post (23 November 2026) noting the 3-domain limit"
  }
 }
