@@ -1949,16 +1949,62 @@ html.cf-open, html.cf-open body{ overflow: hidden; }
 #q:focus{ border-color: rgba(245,158,11,.65); box-shadow: 0 0 0 3px rgba(245,158,11,.14); }
 #q::placeholder{ color: var(--ink-4); }
 
-.filter-row{ margin-top: 12px; }
+/* 筛选行（双端一致）：左侧小标题 + 右侧一条横向胶囊轨道。
+   胶囊永不换行，放不下就在组内横滑；尾部留白 + 右缘渐隐，滑到底最后一项也完整。 */
+.filter-row{
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 10px;
+}
 .filter-label{
+  flex: 0 0 auto;
   font-family: var(--mono);
   font-size: 9.6px;
-  letter-spacing: .16em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink-4);
-  margin-bottom: 6px;
 }
-.chips{ display: flex; flex-wrap: wrap; gap: 6px; }
+.chips-wrap{ flex: 1 1 auto; min-width: 0; }
+.chips{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 1px 0 2px;
+  /* 右缘 12px 渐隐：溢出那半截胶囊淡出去，一眼看出右边还有（滑到底只盖住尾部留白） */
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 12px), transparent 100%);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 12px), transparent 100%);
+}
+.chips::-webkit-scrollbar{ display: none; }
+/* 尾部留白：最后一项滑到底时离右缘还有 12px，不会被截断 */
+.chips::after{ content: ""; flex: 0 0 12px; }
+/* 刻度尺：暖色细轨 + 刻度线 + 随 scrollLeft 走的橙色滑块（app.js 生成并同步） */
+.chips-rail{
+  position: relative;
+  height: 7px;
+  margin-top: 5px;
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(90deg, rgba(146,64,14,.30) 0 1px, rgba(146,64,14,0) 1px 7px),
+    linear-gradient(180deg, #FBF2E2, #F4E5CD);
+  box-shadow: inset 0 0 0 1px rgba(180,120,40,.16);
+}
+.chips-rail i{
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: 0;
+  width: 34%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #FBBF24, #F59E0B);
+  box-shadow: 0 1px 2px rgba(180,83,9,.28);
+  transition: left .08s linear, width .08s linear;
+}
 .chip{
   display: inline-flex;
   align-items: center;
@@ -2544,44 +2590,14 @@ footer{
     overscroll-behavior: contain;
     padding: 0 2px 2px 0;
   }
-  /* 每组 = 左侧小标题 + 右侧一排胶囊：放不下就在组内横向滑，5 组各占 1 行 */
-  .filter-row{
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 5px;
-  }
+  /* 手机上再收紧一档：5 组各占 1 行（标签 + 一排胶囊 + 刻度尺） */
+  .filter-row{ gap: 7px; margin-top: 5px; }
   .filter-row:first-child{ margin-top: 3px; }
-  .filter-label{
-    flex: 0 0 auto;
-    margin: 0;
-    font-size: 9px;
-    letter-spacing: .1em;
-  }
-  .chips{
-    flex: 1 1 auto;
-    min-width: 0;
-    gap: 4px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch;
-    padding: 1px 0 2px;
-    /* 右边缘 10px 渐隐：溢出的那半截胶囊淡出去，一眼看出右边还有；
-       滑到底时它只盖住下面的尾部留白，不会吃掉最后一项 */
-    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 10px), transparent 100%);
-    mask-image: linear-gradient(90deg, #000 calc(100% - 10px), transparent 100%);
-  }
-  /* 尾部留白：最后一项滑到底时离右边缘还有 10px，不会被截断 */
-  .chips::after{
-    content: "";
-    flex: 0 0 10px;
-  }
-  .chips::-webkit-scrollbar{ display: none; }
+  .filter-label{ font-size: 9px; letter-spacing: .1em; }
+  .chips{ gap: 4px; }
   .chip{ flex: 0 0 auto; font-size: 11px; padding: 3px 8px; }
   .chip .ic3d{ width: 11px; height: 11px; vertical-align: -2px; margin-right: 3px; }
+  .chips-rail{ height: 6px; margin-top: 4px; }
   .sheet-foot{
     flex: 0 0 auto;
     margin-top: 0;
