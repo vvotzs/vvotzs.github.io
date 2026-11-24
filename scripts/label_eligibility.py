@@ -348,6 +348,11 @@ ELIG.update(
             "identity": "photo_id", "residency": "local_resident",
             "platform": ["android", "ios"], "funding": "purchase", "geo": ["EEA", "GB"],
         },
+        # 2026-11-25 巡检新增
+        "zopa-biscuit-20-referral": {
+            "identity": "photo_id", "residency": "local_resident",
+            "platform": ["android", "ios"], "funding": "purchase", "geo": ["GB"],
+        },
         "remitly-first-transfer": {
             "identity": "photo_id", "residency": "local_resident",
             "platform": ["android", "ios"], "funding": "min_deposit",
@@ -847,6 +852,8 @@ ELIG.update(
 # main() 对这两类以外的条目一律清空字段以回到默认值，跑一次就会把它们删掉，
 # 所以这里显式保留：只有明确列出的 id 才能留在非 Bank / eSIM 分类里。
 KEEP_EXTRA = {
+    "thai-aipass-gemini-enterprise-free",
+    "grubhub-plus-free-year-2026",
     "google-antigravity-science-free", "lovable-linkedin-premium-year",
     "claude-max-monthly-api-credits", "articul8-bivia-1b-tokens",
     "ultrapic-pro-plus-5000-credits", "genixnode-kvm-nvme-14-loc",
