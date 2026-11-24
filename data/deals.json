@@ -852,6 +852,41 @@
   "utility": 0
  },
  {
+  "id": "upcloud-blackfriday-500-trial",
+  "dedup_key": "upcloud|cloud|global|blackfriday-500-trial",
+  "title": "[全球]UpCloud黑五：新用户$500试用额度30天（需卡验证、不扣费）",
+  "brand": "UpCloud",
+  "domain": "upcloud.com",
+  "category": "cloud",
+  "value": "$500云额度（30天）",
+  "value_num": 500,
+  "value_expected": 500,
+  "cost": "免费试用",
+  "highlight": "2026黑五新账号注册即给$500试用额度、首30天有效，可开Cloud Server、托管Kubernetes、块存储、对象存储与托管数据库；卡只做$0/$1预授权，试用前中后都不扣费",
+  "regions": "[全球] 美元站$500、欧区站€500；机房以账号可用区为准，试用不含Windows与按需GPU",
+  "start": "",
+  "end": "",
+  "content": "UpCloud 2026黑五页：新注册账号可领$500试用额度，首30天有效，可部署Cloud Server、托管Kubernetes、块存储与对象存储、托管数据库。官方写明试用前、试用中、试用后都不会因试用扣费，卡只做$0或$1临时预授权。试用配额为合计2核CPU/4GB内存、每种存储最高60GB、2个IPv4与2个IPv6，防火墙锁定并封25端口；Windows、按需GPU与Private Cloud不在试用范围。到期前一次性充值至少10个账户币种单位可保留已部署资源，否则试用资源被删除、账号保留。欧区站同档为€500，官方未公布活动截止日。",
+  "conditions": "仅限新账号，注册后365天内激活试用；需信用卡与匹配的账单地址通过$0/$1预授权；额度30天到期作废不结转；想保留服务器要在试用结束前一次性充值不少于10美元（或等值）。",
+  "steps": [
+   "打开 upcloud.com/global/black-friday/ 点 Claim offer，用邮箱注册新账号并验证",
+   "登录控制台，在 Billing 填账单地址与信用卡，完成 Verify & Start Trial",
+   "确认面板显示 $500 / 30 天试用后，在 2核4GB 配额内开 Cloud Server 或 Kubernetes",
+   "试用结束前把要留的数据备份下来；要保留机器就至少充 10 美元升级"
+  ],
+  "url": "https://upcloud.com/global/black-friday/",
+  "source_url": "https://upcloud.com/global/black-friday/",
+  "source": "UpCloud官方黑五页（2026-11-24实读：Get $500 in trial credits for 30 days，Black Friday 2026 offer）+ UpCloud定价页FAQ（新注册有免费额度、金额随活动变）+ haowego活动页（$0/$1预授权、2核4G/60GB配额、充值≥10单位保留资源）+ TaskPanel比价（2026-11-05，30天期限、欧区€500）",
+  "risk": "额度30天用完即止，不能当长期免费机；试用配额只有2核4G、每种存储60GB；不充值升级会在试用结束时删掉已部署资源；卡验证被拒就开不了；官方没写截止日，活动随时可能结束；试用防火墙锁定、25端口封禁，部分服务不可用。",
+  "added_at": "2026-11-24T15:42:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-24",
+  "added": "2026-11-24",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0
+ },
+ {
   "id": "okx-new-user-bonus",
   "dedup_key": "okx|crypto|multi|new-user-bonus",
   "title": "[EEA欧区]OKX新用户礼包（分档任务制）",
@@ -5718,17 +5753,16 @@
   "kyc_level": "none",
   "has_number": false,
   "vowifi": "n/a",
-  "identity_requirement": "none",
+  "funding_requirement": "purchase",
+  "utility": 1,
   "platform_requirement": [
    "android",
    "ios",
    "web"
   ],
-  "funding_requirement": "purchase",
   "geo_restriction": [
    "GLOBAL"
-  ],
-  "utility": 1
+  ]
  },
  {
   "id": "boc-unionpay-overseas-3pct",
@@ -11974,6 +12008,7 @@
   "added": "2026-11-24",
   "added_at": "2026-11-24T11:54:00+08:00",
   "kyc_level": "none",
+  "utility": 1,
   "identity_requirement": "email",
   "platform_requirement": [
    "web"
@@ -11981,8 +12016,7 @@
   "funding_requirement": "none",
   "geo_restriction": [
    "GLOBAL"
-  ],
-  "utility": 1
+  ]
  },
  {
   "id": "yahoo-japan-agent-i-stamp-rally",
@@ -14946,7 +14980,7 @@
   "source": "OVHcloud US黑五页与Public Cloud条款（2026-11-23实读：$200+$100、≥$0.99、90天、仅美国机房）+ OVHcloud文档（$0.99为反欺诈预授权）+ 全球站黑五页（FREETRIAL，11/17–12/1，额度1个月）",
   "risk": "额度最长30天才到账，期间用量先自付；VPS/独服不参与；美国站与全球站额度有效期不同；超额立即按标准价计费。",
   "verified": true,
-  "last_verified": "2026-11-23",
+  "last_verified": "2026-11-24",
   "added": "2026-11-23",
   "added_at": "2026-11-23T20:43:00+08:00",
   "status": "expiring_soon",
@@ -15260,7 +15294,7 @@
   "start": "2026-11-20",
   "end": "2026-11-26",
   "verified": true,
-  "last_verified": "2026-11-23",
+  "last_verified": "2026-11-24",
   "added": "2026-11-21",
   "content": "Google黑五抢先场：2026-11-20起至11-26（美东），已在付费订阅Google AI或Google One存储空间的账号，可把Google AI Plus或年付Google AI Pro切成年付折扣价，最高5折，实际折扣按现有套餐与账号给价。美区Google AI Pro（5TB、Gemini 4 Neon、YouTube Premium Lite个人版）年付原价$199.99，折后首年$99.99，满12个月后按$199.99/年自动续费；台湾Pro年付NT$6,500→NT$3,250；AI Plus（400GB、Gemini 4 Hydrogen）同样在折扣范围。Ultra（20TB/30TB）与Pro 10TB档只有月付、不参与。未订阅账号这轮看不到入口，官方说11/27黑五当天另有优惠、内容待公布。社区实测（非官方）：Plus 2TB与本来就是年付的账号常看不到折扣；月付Pro若看不到，先切月付再切回年付，$99.99才会出现（美区多人成功）。澳新：Plus 400GB年付A$44.99、Plus 2TB年付A$74.99、Pro 5TB年付A$184.99。",
   "conditions": "必须已是付费的Google AI或Google One存储订阅用户，免费账号不参与；折扣上限5折、按套餐浮动，结账页才是最终价；只限AI Plus与年付AI Pro，Ultra与Pro 10TB不参加；不能与其他Google One优惠叠加；首年优惠到期按原价自动续费；需有效的Google Payments付款方式。",
@@ -15348,6 +15382,7 @@
   "added": "2026-11-24",
   "added_at": "2026-11-24T11:48:00+08:00",
   "kyc_level": "foreign_only",
+  "utility": 1,
   "identity_requirement": "photo_id",
   "residency_requirement": "none",
   "platform_requirement": [
@@ -15362,8 +15397,7 @@
    "-PH",
    "-RU",
    "-AE"
-  ],
-  "utility": 1
+  ]
  },
  {
   "id": "dxo-black-friday-2026",
@@ -15732,7 +15766,7 @@
   "start": "2026-11-01",
   "end": "2026-11-30",
   "verified": false,
-  "last_verified": "2026-11-23",
+  "last_verified": "2026-11-24",
   "added": "2026-11-19",
   "content": "澳门蚂蚁银行2026年11月新客活动（11/1–11/30）：开通财富账户得USD 10抵扣卡；向财富账户净存入3,000港币等值得2股阿里巴巴（09988.HK）兑换卡（约HKD 230），并享2026-12-15至2027-03-14三个周期、每期最高HKD 200的佣金抵扣；资产达标保留30天再得2股小米（01810.HK，约HKD 50）；入金达标15天内买入1/5/10笔可累计最高HKD 150抵扣卡。净存入100万港币、留存90天并完成300笔或100笔交易，可在iPhone DUO 256G与iPhone 18 Pro 256G中二选一。",
   "conditions": "需本人到澳门开户（App检测定位），持内地身份证+港澳通行证/护照与7天内过关小票；须在入金前绑定邀请人；资金要进入「财富账户」而非只放在银行账户；奖励发的是股票兑换卡，需在证券账户内兑换；新客资格以App活动页判定。",
@@ -15770,15 +15804,15 @@
   "value": "5GB",
   "value_num": 30,
   "cost": "需要邀请条件",
-  "highlight": "Altitude Connect 持卡人 11/30 前领 5GB/15 天、活动期内可多次领取；12/1 起同权益缩为 1GB/15 天",
+  "highlight": "Altitude Connect 持卡人 11/30 前领 5GB/15 天、活动期内可多次领取；领取后 365 天内激活即可；12/1 起同权益缩为 1GB/15 天",
   "regions": "[美区] 175+个国家/地区（以GigSky App内可用列表为准）",
   "start": "2025-01-01",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-23",
+  "last_verified": "2026-11-24",
   "added": "2026-11-18",
-  "content": "持有U.S. Bank Altitude Connect信用卡的用户，可在GigSky App内免费领取5GB/15天的国际eSIM，活动期内可重复领取（多数Visa卡权益只限一次）。11/30之后该权益取消，暂无续约消息。",
-  "conditions": "需持本人名下的Altitude Connect卡且状态正常，并把该卡设为GigSky App默认支付方式；领取截止2026-11-30，激活后15天内用完5GB。",
+  "content": "持有U.S. Bank Altitude Connect信用卡的用户，可在GigSky App内免费领取5GB/15天的国际eSIM，活动期内可重复领取（多数Visa卡权益只限一次）；11/30之后该权益缩为一次性1GB/15天（与普通Visa Signature一致）。2026-11-22报道补充：现在领到的5GB可以存着，365天内激活即可，不必马上出行。",
+  "conditions": "需持本人名下的Altitude Connect卡且状态正常，并把该卡设为GigSky App默认支付方式；领取截止2026-11-30；领取后365天内激活，激活后15天内用完5GB。",
   "steps": [
    "下载 GigSky App，注册并添加 Altitude Connect 为默认支付方式",
    "在可用套餐里确认出现 5GB U.S. Bank 权益",
@@ -15786,7 +15820,7 @@
    "到目的地激活，15 天内用完"
   ],
   "url": "https://www.gigsky.com/free-offering",
-  "source": "GigSky 官方 U.S. Bank 条款（redeem through 2026-11-30）+ CardTuned（2026-11-17）+ Mingooland / 播客更新（2026-11-21 确认 11/30 后降为 1GB/15 天）",
+  "source": "GigSky 官方 U.S. Bank 条款（redeem through 2026-11-30）+ CardTuned（2026-11-17）+ Mingooland（2026-11-21 确认 11/30 后降为 1GB/15 天）+ FrequentMiler / TheTravelSignal（2026-11-22：5GB 领取后 365 天内激活）",
   "risk": "11/30 是最后领取日，12/1 起 Altitude Connect 的 GigSky 权益缩成 1GB / 15 天（与普通 Visa Signature 一致，2026-11-21 已确认）；换卡或卡状态异常会失去资格；不建议只为这个权益去申请一张信用卡。",
   "status": "expiring_soon",
   "added_at": "2026-11-18T00:00:00+08:00",
@@ -16211,19 +16245,19 @@
  {
   "id": "ktm-mobi-japan-esim-1plus1-zero",
   "dedup_key": "kt|esim|kr|ktm-mobi-japan-esim-1plus1-zero",
-  "title": "[韩区]kt M모바일 mobi：日本eSIM 3天「1+1」0韩元（直营店首购专享）",
+  "title": "[韩区]kt M모바일 mobi：日本eSIM首购0韩元（不限量3天 或 1GB/日3天×2 二选一）",
   "brand": "kt M mobile",
   "domain": "ktmmobile.com",
   "category": "esim",
-  "value": "日本 3 天 1GB/日 eSIM ×2 张（约 $15）",
+  "value": "日本3天不限量 或 1GB/日3天×2张（约$15）",
   "value_num": 15,
   "cost": "免费试用",
-  "highlight": "韩国三大运营商系 MVNO「kt M모바일」的 eSIM 漫游 mobi：直营店首次购买日本 1GB/日 3 天套餐买一送一、总价 0 韩元，每天 1GB 高速后降速不限量，可送人；仅日本境内使用，不支持中国大陆漫游",
+  "highlight": "韩国KT旗下MVNO「kt M모바일」的mobi漫游eSIM：直营店首购0韩元，日本「不限量3天」1张或「1GB/日·3天」2张任选其一，不用绑卡、可送人；仅日本境内数据，不支持中国大陆漫游",
   "regions": "[韩国] 面向mobi首购用户（需韩国手机号+邮箱验证）；eSIM只在日本境内上网",
-  "start": "2026-11-01",
+  "start": "2026-11-24",
   "end": "2026-11-30",
-  "content": "kt M모바일是KT旗下MVNO，其eSIM漫游品牌mobi本月在直营店放了一个首购0元专享：日本「1GB/日·3天」套餐买一送一，两张合计0韩元。套餐：每天1GB高速、用完降速到384Kbps继续不限量，单张总计3GB；两张可自己用两次行程或送同行的人。另有中国、台湾、香港澳门、越南、泰国等目的地的直营店折扣价（如泰国不限量3天10,800韩元、中国不限量3天6,910韩元），这些是打折不是0元。拿到方法：直营店下单→收KakaoTalk通知下载mobi App→韩国手机号+邮箱验证→在App登记eSIM。购买后180天内要发行、发行后90天内有效；出发前可在韩国境内做「开通检查」，不扣流量与天数。",
-  "conditions": "仅mobi首次购买用户、一人一次；需在直营店下单、韩国手机号+邮箱在App验证；0元仅限日本1GB/日·3天（1+1）；180天内发行、发行后90天内使用；仅日本境内数据，不支持中国大陆漫游；库存售完提前结束。",
+  "content": "kt M모바일是KT旗下MVNO，其eSIM漫游品牌mobi在2026-11-24至11-30的直营店活动里给首购用户0元二选一：日本「不限量3天」1张（原9,625韩元，每天高速1GB后降到384Kbps继续不限量），或「每日高速1GB后降速·3天」2张（原5,400韩元，合计6天、6GB高速）。同一人只能买其中一款、限1次；其他目的地仍是折扣价，例如泰国不限量3天10,800韩元。下单后收KakaoTalk通知下载mobi App，用韩国手机号+邮箱验证后登记eSIM；购买后180天内要发行、发行后90天内有效；出发前可在韩国做「开通检查」，不扣流量与天数。",
+  "conditions": "仅mobi首次购买用户、一人一次，两款只能选一款；需在直营店下单并用韩国手机号+邮箱在App验证；仅日本境内数据、不支持中国大陆漫游；180天内发行、发行后90天内使用；库存售完提前结束。",
   "steps": [
    "进入 kt M모바일 直营店 11 月活动页，点 mobi 进入日本 0 元（1+1）商品",
    "付款下单（0 韩元），收到 KakaoTalk 下载 mobi App 的通知",
@@ -16231,11 +16265,11 @@
    "出发前在韩国做开通检查，落地日本把数据线路切到这张 eSIM"
   ],
   "url": "https://ktmmobile.com/event/eventDetail.do?ntcartSeq=1772",
-  "source": "kt M모바일 官方直营店活动页「eSIM 로밍 mobi, 가을 맞이 단독 0원 혜택」（2026-11-21 核验，活动期 2026-11-01 至 11-30）",
-  "risk": "需韩国手机号与 App 验证，中国大陆用户实际很难参加；0 元只限日本 3 天套餐两张，别的国家只是折扣；库存售完即止且不预告；每日 1GB 用完后是 384Kbps 慢速；仅日本境内，回国或去中国大陆都不能漫游。",
+  "source": "kt M모바일官方直营店活动页「eSIM 로밍 mobi, 가을 맞이 단독 0원 혜택」（2026-11-24复核：活动期2026-11-24至11-30，日本不限量3天9,625→0韩元 与 1GB/日3天×2 5,400→0韩元，两款二选一）+ 알뜰에코说明（2026-11-19，1GB/日3天=每天1GB后384Kbps、两张为3天券×2）",
+  "risk": "需韩国手机号与App验证，中国大陆用户实际很难参加；0元只限日本两款之一，别的国家只是折扣；库存售完即止且不预告；不限量档每天高速1GB后降到384Kbps；仅日本境内，回国或去中国大陆都不能漫游。",
   "added_at": "2026-11-21T15:27:40+08:00",
   "verified": true,
-  "last_verified": "2026-11-23",
+  "last_verified": "2026-11-24",
   "added": "2026-11-21",
   "status": "expiring_soon",
   "kyc_level": "cn_ok_extra",
@@ -16587,7 +16621,7 @@
   "risk": "不是免费，HK$33 是实付；香港本地流量必须实名；120 日后要续购组合；漫游通话与短信单价很贵（接听 HK$8/分钟、发短信 HK$3.5/条）；外游数据要在 48 小时内转换。",
   "added_at": "2026-11-20T01:12:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-23",
+  "last_verified": "2026-11-24",
   "added": "2026-11-20",
   "status": "expiring_soon",
   "kyc_level": "cn_ok",

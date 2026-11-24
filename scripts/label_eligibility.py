@@ -806,6 +806,11 @@ ELIG.update(
         "simhub-esim-reader-vowifi": {
             "identity": "none", "geo": ["GLOBAL"],
         },
+        # 2026-11-24：Maya Mobile 黑五买一送一（纯数据 eSIM，官网/App 直购，无身份与地区门槛）
+        "maya-mobile-black-friday-bogo-esim": {
+            "platform": ["android", "ios", "web"], "funding": "purchase",
+            "geo": ["GLOBAL"],
+        },
         # 2026-11-23 crypto 比赛 7 条：领奖要护照/证件核验，全部网页端提交
         "tradingview-cme-the-leap-nov2026": {
             "identity": "photo_id", "platform": ["web"],
@@ -848,6 +853,7 @@ KEEP_EXTRA = {
     "sie-serverless-free-credits", "klistra-free-350-credits",
     "rikkahub-android-llm-client",
     "simhub-esim-reader-vowifi",
+    "ipv64-free-dyndns", "kiroween-2026-4000-credits",
     # 2026-11-23 crypto 比赛 7 条
     "tradingview-cme-the-leap-nov2026", "gnoland-gnome-tavern-hackathon",
     "gensyn-agent-arena-evidence-mining", "immunefi-base-everest-audit-comp",
