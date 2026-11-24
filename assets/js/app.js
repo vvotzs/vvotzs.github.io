@@ -907,6 +907,7 @@
         var left = movable > 1 ? Math.round((chips.scrollLeft / movable) * (view - w)) : 0;
         thumb.style.width = w + "px";
         thumb.style.left = left + "px";
+        wrap.classList.toggle("is-fit", movable <= 1);
       };
       chips.addEventListener("scroll", function () { chips._sync(); }, { passive: true });
       chipRows.push(chips);

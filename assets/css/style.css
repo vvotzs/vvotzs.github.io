@@ -1985,6 +1985,7 @@ html.cf-open, html.cf-open body{ overflow: hidden; }
 .chips::after{ content: ""; flex: 0 0 12px; }
 /* 刻度尺：暖色细轨 + 刻度线 + 随 scrollLeft 走的橙色滑块（app.js 生成并同步） */
 .chips-rail{
+  display: block;
   position: relative;
   height: 7px;
   margin-top: 5px;
@@ -2004,6 +2005,11 @@ html.cf-open, html.cf-open body{ overflow: hidden; }
   background: linear-gradient(180deg, #FBBF24, #F59E0B);
   box-shadow: 0 1px 2px rgba(180,83,9,.28);
   transition: left .08s linear, width .08s linear;
+}
+/* 整行都放得下时滑块就是整条淡橙（说明「已看全」），用不着这么跳 */
+.chips-wrap.is-fit .chips-rail i{
+  background: linear-gradient(180deg, #FCE3B6, #F7D9A6);
+  box-shadow: none;
 }
 .chip{
   display: inline-flex;
