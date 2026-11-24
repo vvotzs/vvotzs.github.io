@@ -220,26 +220,23 @@ button{ font-family: inherit; }
   pointer-events: none;
 }
 
-/* 顶栏右上角：三枚统计胶囊 + Blogger 徽标。包一层只为让徽标挨着胶囊、
-   又不改变 .topbar-in 原来「品牌 / 搜索 / 右侧统计」三段 space-between 的分配。 */
-.topbar-right{
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 0 0 auto;
-}
-
 /* Blogger 徽标（Jun 2026-11-25）：亮橙（Skinny 运营商那种 #FF5722）圆角方块 + 白色 B，
-   只在首页与分类页的顶栏出现，详情页与合规页不放。
-   体量对齐右侧导航条锚点：桌面 46px（锚点 48×46、圆角 14），手机 30px（锚点 30×32、
-   圆角 9），不抢顶栏、也不撑破行高。圆弧由 SVG 自画（rx 5.6/24），这里 23.3% 的
-   overflow 裁切刚好与它重合，扫光不会溢到方块外。 */
+   只在首页与分类页出现，详情页与合规页不放。
+   尺寸对齐右侧导航条锚点（桌面 56×52、手机 30×32）：徽标取 52×52 / 30×30，
+   圆心与锚点格同高，看上去就是导航条里的另一格。
+   位置：绝对定位在顶栏右上角，水平中线对齐右侧悬浮导航条（.rail-dock）的中线：
+   桌面 rail 靠右 16px、宽 67.3 → 中线 49.35 → 52px 徽标 right: 23px；
+   平板（≤1080）rail 靠右 8px → 中线 41.65 → right: 16px；
+   手机（≤768）rail 靠右 2px、宽 33.3 → 中线 18.35 → 30px 徽标 right: 3px。
+   圆弧由 SVG 自画（rx 5.6/24），这里 23.3% 的 overflow 裁切刚好与它重合，扫光不会溢到方块外。 */
 .top-blog{
-  position: relative;
+  position: absolute;
+  top: 50%;
+  right: 23px;
+  transform: translateY(-50%);
   display: block;
-  flex: none;
-  width: 46px;
-  height: 46px;
+  width: 52px;
+  height: 52px;
   border-radius: 23.3%;
   overflow: hidden;
   text-decoration: none;
@@ -268,6 +265,10 @@ button{ font-family: inherit; }
 }
 .top-blog:hover{ filter: saturate(1.06) brightness(1.02); box-shadow: 0 6px 16px -7px rgba(242,101,34,.75); }
 .top-blog:focus-visible{ outline: 2px solid rgba(255,87,34,.55); outline-offset: 3px; }
+/* 平板（≤1080）：导航条靠右 8px，中线 41.65，52px 徽标 right: 16px */
+@media (max-width: 1080px){
+  .top-blog{ right: 16px; }
+}
 /* 动效减弱偏好：不扫光，只留静态的橙色方块 */
 @media (prefers-reduced-motion: reduce){
   .top-blog::after{ animation: none; opacity: 0; }
@@ -347,14 +348,15 @@ a.stats-pill:active{ transform: translateY(0); }
 .catbar{ display: none; }
 
 /* ------------------------------------------------------------------- hero */
-/* 紧凑首屏：视觉上只留「标语 + 北京时间更新」。
-   站名已在顶栏，h1 只保留语义（sr-only），供屏幕阅读器与搜索引擎识别，不占视觉空间。 */
+/* 紧凑首屏：视觉上只留「导语 + TG 徽标 + 北京时间更新」一行。
+   站名已在顶栏，h1 只保留语义（sr-only），供屏幕阅读器与搜索引擎识别，不占视觉空间。
+   2026-11-25：桌面端也不再折行（以前平板宽度会把更新时间挤到第二行，左边留一大片空白）。 */
 .hero{
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 14px;
-  flex-wrap: wrap;
-  padding: 10px 0 2px;
+  flex-wrap: nowrap;
+  padding: 8px 0 0;
   min-height: 0;
 }
 .hero h1{
@@ -374,19 +376,67 @@ a.stats-pill:active{ transform: translateY(0); }
   font-size: 13px;
   line-height: 1.4;
   color: var(--ink-2);
+  /* 导语一栏吃掉剩余横向空间（不再 margin-left:auto 把徽标推到远处），
+     于是「导语 + TG + 更新时间」三件东西紧凑地落在同一行。 */
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  /* 右端 18px 渐隐：走马灯的文字从边上淡出，而不是被硬切一刀 */
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 18px), transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 18px), transparent 100%);
 }
-/* 首屏导语在桌面端是原来的静止排版：走马灯用的副本（第二份文本）全局藏起来，
-   只有手机端长文案的轨道（.is-long）才把它显示出来当循环接缝。 */
-.hero-tag .ht-copy{ display: none; }
-/* 首屏导语走马灯（只在手机端启用）：轨道 = 主文本 + 2.6em 缝 + 副本 + 2.6em 尾垫，
-   总宽正好 2×(文本宽 + 缝)，所以 -50% 结束时副本恰好落在主文本原位，循环无缝。
-   18s 一个来回：中文 60 来字约 38px/s，慢到能读，又不至于让人等。 */
+/* 导语走马灯（手机 / 平板 / 桌面同一套）：
+   轨道只占「主文本」的宽，副本 absolute 接在后面（2.6em 缝），不参与宽度计算；
+   动画把轨道向左推「一整个文本宽 + 2.6em」，副本恰好落到主文本原位，循环无缝。
+   这样宽屏放得下时轨道宽度就等于文本宽度，不会被副本撑宽。 */
+.hero-tag .ht-track{
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+.hero-tag .ht-copy{
+  position: absolute;
+  left: 100%;
+  top: 0;
+  margin-left: 2.6em;
+  display: none;
+}
 @keyframes heroTagScroll{
   from{ transform: translateX(0); }
-  to{ transform: translateX(-50%); }
+  to{ transform: translateX(calc(-100% - 2.6em)); }
+}
+/* 手机：构建期就知道放不下（.is-long），首帧直接转，不等 JS。
+   18s 走完一屏：中文 60 来字约 35px/s，慢到能读。 */
+@media (max-width: 768px){
+  .hero-tag .ht-track.is-long{
+    animation: heroTagScroll 18s linear 1.6s infinite;
+    will-change: transform;
+  }
+  .hero-tag .ht-track.is-long .ht-copy{ display: inline; }
+}
+/* 平板 / 桌面：由 app.js 量过「真的放不下」才加 .is-scroll，
+   避免宽屏上文字明明放得下还白转一圈。22s 一屏，比手机略慢。 */
+.hero-tag .ht-track.is-scroll{
+  animation: heroTagScroll 22s linear 1.6s infinite;
+  will-change: transform;
+}
+.hero-tag .ht-track.is-scroll .ht-copy{ display: inline; }
+/* 悬停 / 按住 / 点一下（app.js 加 .is-paused，5 秒后自复位）暂停 */
+.hero-tag:hover .ht-track,
+.hero-tag:active .ht-track,
+.hero-tag.is-paused .ht-track{ animation-play-state: paused; }
+/* 动效减弱偏好：退成一行静态省略号，不滚动 */
+@media (prefers-reduced-motion: reduce){
+  .hero-tag .ht-track{ display: block; overflow: hidden; text-overflow: ellipsis; }
+  .hero-tag .ht-track.is-long,
+  .hero-tag .ht-track.is-scroll{ animation: none; }
+  .hero-tag .ht-copy{ display: none !important; }
 }
 .hero-meta{
-  margin: 0 0 0 auto;
+  /* 不再往右推：导语吃掉剩余宽度，TG 徽标 + 更新时间紧跟在它右端，三件东西排成紧凑一行 */
+  margin: 0;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -413,7 +463,6 @@ a.stats-pill:active{ transform: translateY(0); }
   flex: none;
   width: 20px;
   height: 18.2px;
-  margin-left: auto;
   padding: 0;
   border: 0;
   background: none;
@@ -2097,10 +2146,8 @@ footer{
   .search-btn .sb-text{ display: none; }
   .search-btn .sb-q{ gap: 0; }
   .topbar-stats{ display: flex; align-items: center; flex: 0 0 auto; }
-  /* 右上角徽标：手机跟着导航条锚点收到 30px（锚点 30×32、圆角 9），
-     与胶囊之间只留 4px，375px 一行放得下（品牌 102 + 搜索 30 + 胶囊 135 + 徽标 30）。 */
-  .topbar-right{ gap: 4px; }
-  .top-blog{ width: 30px; height: 30px; }
+  /* 右上角徽标：手机跟着导航条锚点收到 30px，水平中线对齐滑轨（靠右 2px、宽 33.3 → right: 3px） */
+  .top-blog{ right: 3px; width: 30px; height: 30px; }
   .topbar-stats .topbar-pills{ display: inline-flex; align-items: center; gap: 3px; }
   /* 胶囊下方那行 AI 打分小字：10px，第 1 行胶囊底 36.25 + 2 → 48.25，仍在 54px 顶栏内 */
   .topbar-stats .topbar-rank-note{
@@ -2129,41 +2176,13 @@ footer{
     padding: 0;
     flex-wrap: nowrap;
   }
-  /* 首屏导语：2026-11-23 起手机端收成单行走马灯，只占一行（原来两行，省 15px 首屏高度）。
-     导语本身仍是完整文本；轨道里第二份是 aria-hidden 副本，靠它把滚动接成无缝循环。
-     左右各有一段极轻的渐隐，字从边上淡出而不是硬切。 */
+  /* 首屏导语：手机端单行走马灯，只占一行（基础样式里已经是同一套，这里只改字号与配色）。
+     导语本身仍是完整文本；副本（aria-hidden）在 .is-long 时接着后面循环。 */
   .hero-tag{
-    margin: 0;
     font-size: 11.5px;
     line-height: 1.33;
-    flex: 1 1 100%;
-    min-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
+    flex: 1 1 auto;
     color: var(--ink-2);
-    /* 左边干净截断（字从边上滑出来，不遮首字），右边 18px 渐隐 */
-    -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 18px), transparent 100%);
-    mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 18px), transparent 100%);
-  }
-  .hero-tag .ht-track{ display: inline-flex; align-items: baseline; white-space: nowrap; }
-  /* 窄屏：副本默认不显示；只有文案长到一行放不下（构建时加 .is-long）才转起来 */
-  .hero-tag .ht-copy{ display: none; }
-  .hero-tag .ht-track.is-long{
-    padding-right: 2.6em;
-    /* 先停 1.6s 让人看清开头，再匀速转；之后不再停 */
-    animation: heroTagScroll 18s linear 1.6s infinite;
-    will-change: transform;
-  }
-  .hero-tag .ht-track.is-long .ht-copy{ display: inline; margin-left: 2.6em; }
-  /* 悬停 / 按住 / 点一下（app.js 加 .is-paused，5 秒后自复位）暂停 */
-  .hero-tag:hover .ht-track,
-  .hero-tag:active .ht-track,
-  .hero-tag.is-paused .ht-track{ animation-play-state: paused; }
-  /* 动效减弱偏好：退成一行静态省略号，不滚动 */
-  @media (prefers-reduced-motion: reduce){
-    .hero-tag .ht-track{ display: block; overflow: hidden; text-overflow: ellipsis; }
-    .hero-tag .ht-track.is-long{ padding-right: 0; animation: none; }
-    .hero-tag .ht-copy{ display: none !important; }
   }
   .hero-meta{ margin: 0; flex: 0 0 auto; font-size: 10px; gap: 4px; }
   .hero-meta .dot{ width: 5px; height: 5px; }

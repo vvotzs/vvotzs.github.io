@@ -97,11 +97,31 @@
   if (heroTag) {
     heroTag.addEventListener("click", function () {
       var track = $(".ht-track", heroTag);
-      if (!track || !track.classList.contains("is-long")) return;
+      if (!track) return;
+      if (!track.classList.contains("is-long") && !track.classList.contains("is-scroll")) return;
       heroTag.classList.add("is-paused");
       clearTimeout(heroTag._pauseT);
       heroTag._pauseT = setTimeout(function () { heroTag.classList.remove("is-paused"); }, 5000);
     });
+  }
+
+  /* 导语走马灯的「真的放不下才转」：手机端由构建期的 .is-long 直接转（首帧不动），
+     平板 / 桌面靠这里量一次（文本宽 vs 可视宽），宽度变了（拖窗口 / 转屏）重量。 */
+  var heroTrack = heroTag ? $(".ht-track", heroTag) : null;
+  if (heroTrack) {
+    var heroFit = function () {
+      heroTrack.classList.toggle(
+        "is-scroll",
+        heroTag.scrollWidth > heroTag.clientWidth + 1
+      );
+    };
+    heroFit();
+    var heroFitT;
+    window.addEventListener("resize", function () {
+      clearTimeout(heroFitT);
+      heroFitT = setTimeout(heroFit, 120);
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(heroFit);
   }
 
   /* 拼检索串：标题（未内联的来自索引，内联的取自卡片 h3）+ 其余检索词 + 分类词表。

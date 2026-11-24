@@ -3273,9 +3273,9 @@ def render_category_page(
     <div class="dp-top">
       <a class="dp-back" href="{home}">{icon('chevron', 'dp-back-i')}<span>{ui('dp_back')}</span></a>
       <a class="dp-switch" href="{switch_href}" hreflang="{switch_lang}" {al(switch_aria, switch_aria)}><span lang="{switch_lang}">{ui('dp_switch')}</span></a>
-      {blogger_badge()}
     </div>
   </div>
+  {blogger_badge()}
 </header>
 
 <main id="top">
@@ -4029,10 +4029,10 @@ def main() -> None:
         switch_href = "/" if is_en else "/en/"
         switch_hreflang = "zh-CN" if is_en else "en"
 
-        # 首屏导语：手机端收成「单行走马灯」省一行高度（2026-11-23）。
-        # 完整文案仍是真实文本节点（SEO 照抓）；轨道里再放一份 aria-hidden 的副本，
-        # 靠它把 translateX(-50%) 接成无缝循环。副本只在手机端显示，桌面端 display:none，
-        # 桌面排版与改动前完全一样。文案短（英文页 25 字符）时不加 is-long，不做动画。
+        # 首屏导语：手机 / 平板 / 桌面统一「单行走马灯」——永不折行，放不下才转（2026-11-25 桌面端同步）。
+        # 完整文案仍是真实文本节点（SEO 照抓）；轨道里再放一份 aria-hidden 的副本接缝。
+        # 手机端由 .is-long 直接转（首帧不动）；平板 / 桌面由 app.js 量过真放不下才加 .is-scroll。
+        # 文案短（英文页 25 字符）时不加 is-long，不做动画。
         hero_tag_text = ui("hero_tag")
         hero_tag_cls = "ht-track is-long" if len(hero_tag_text) > 34 else "ht-track"
         hero_tag_html = (
@@ -4118,7 +4118,6 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
       </span>
       <kbd>⌘K</kbd>
     </button>
-    <div class="topbar-right">
     <div class="topbar-stats">
       <div class="topbar-pills">
         <a class="stats-pill mint" href="#fresh" {tt(*upair('stat_active_hint', d=EXPIRING_DAYS, n=counts['expiring']))}>{ui('stat_active')} <b>{counts['active']}</b></a>
@@ -4127,9 +4126,8 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
       </div>
       <span class="topbar-rank-note">{ui('stat_rank_note')}</span>
     </div>
-    {blogger_badge()}
-    </div>
   </div>
+  {blogger_badge()}
 </header>
 
 <main id="top">
