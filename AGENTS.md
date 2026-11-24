@@ -27,7 +27,7 @@ python3 scripts/build_site.py       # 生成全部页面；任一校验不过就
 ```
 
 - `build_site.py` 内含 `validate()`、`check_en_pages()`（英文页不许残留中日文）、`check_descriptions()`（120–156 字）与结构化数据体检，失败即中止。
-- 产物（`index.html`、`en/`、`d/`、`en/d/`、`category/`、`en/category/`、合规页、`data/meta.json`、`sitemap.xml`）都提交进仓库，`main` 推送即上线。
+- 产物（`index.html`、`en/`、`d/`、`en/d/`、`category/`、`en/category/`、合规页、`data/meta.json`、`data/search-index.zh.json`、`data/search-index.en.json`、`sitemap.xml`）都提交进仓库，`main` 推送即上线。搜索索引这两份 JSON 是首页搜索弹窗按需 fetch 的数据源（首页只挂 `/data/search-index.<lang>.json?v=<内容哈希>`），漏提交会让页面请求到旧索引。
 - 巡检取本轮计划：`python3 scripts/plan_round.py --json`；结束时用 `--mark-hit` / `--mark-done` / `--mark-zero` 回写 `data/sources.json`。
 - **不要删除**根目录 `googleb403ab28aa8c2b3e.html`（Google Search Console 验证）与 `e4ecde03aa1a475c932d455016e9b95b.txt`（IndexNow key）。
 - 不要提交 `reports/`（内部回测表）与 `scripts/__pycache__/`。
