@@ -6974,5 +6974,53 @@
   "url": "https://www.kaggle.com/docs/efficient-gpu-usage",
   "risk": "The 30 hours is approximate and the page says it can be higher or lower with demand; only P100 and T4 class cards are offered, not enough for large models; interactive sessions drop after 60 idle minutes so long jobs need checkpoints; free tiers can change at any time; kaggle.com often fails to load directly from mainland China.",
   "source": "Kaggle official Efficient GPU Usage Tips documentation (verified 24 November 2026: NVIDIA P100, about 30 hours a week with weekly reset, where to check usage, 60-minute idle timeout, commits cost more) + NodeSeek post-1066396 (November 2026: T4x2 and 30 hours a week in practice)"
+ },
+ "contabo-black-friday-2026": {
+  "title": "[Global]Contabo Black Friday: Cloud VPS Plus 2 (2 EPYC cores/4GB/75GB NVMe) at €7.20 a month, price locked for 24 months",
+  "highlight": "The new Performance entry plan gives 2 AMD EPYC vCPU, 4GB RAM, 75GB NVMe, a 300Mbit port and unlimited traffic for €7.20 a month averaged over a 24-month term (€9.00 before), with Core VPS from €4.40 and Max Performance VDS from €43.20",
+  "regions": "[Global] EU locations are free; some, such as the UK, add a monthly surcharge (Plus 2 in the UK is €2.54 more)",
+  "value": "€43.20 saved over 24 months (20% off, price locked for two years)",
+  "content": "This year's headline plan is Cloud VPS Plus 2: 2 AMD EPYC vCPU, 4GB RAM, 75GB NVMe, a 300Mbit/s port and unlimited traffic subject to a fair usage policy. A 24-month term averages €7.20 a month excluding VAT (€8.71 with 21% VAT) against a €9.00 list price, saving €43.20 and locking that price for two years; 12 months is €7.65 a month (15% off) and 1, 3 or 6 month terms get no discount. Core VPS starts at €4.40 a month on 24 months (4 vCPU, 8GB, 100GB SSD, 200Mbit) and Max Performance VDS at €43.20 (6 dedicated cores, 24GB, 180GB NVMe). Every KVM instance includes one static IPv4 plus a /64 IPv6, root SSH with key injection, a free network-level firewall that drops all inbound traffic until you open ports (any port from 0 to 65535), 30-day snapshots, a VNC console and DDoS protection; Windows is an add-on licence. New monthly contracts for Cloud VPS 4 carry a one-time setup fee.",
+  "conditions": "The discount requires the 24-month term, paid up front; prices exclude VAT, EU locations are free and others add a surcharge; outbound traffic falls under a fair usage policy and disruptive usage can be throttled; the minimum renewal term equals the first term, and post-paid contracts need four weeks' notice.",
+  "steps": [
+   "Open contabo.com/en/black-friday/ and look at the 24-month price for Cloud VPS Plus 2",
+   "On the order page pick a location (EU is free, the UK and others cost more) and the 24-month term, then check the tax-inclusive total",
+   "Log in over SSH as root with the emailed password, or reinstall with your own SSH key",
+   "Open the ports you need in the control panel firewall, which drops all inbound traffic by default"
+  ],
+  "risk": "The low price is a two-year prepayment, about €172.80 in total for Plus 2; shared vCPU cores mean noisy neighbours and route quality you should test yourself, so keep latency-sensitive production databases elsewhere; unlimited outbound traffic is subject to fair use; non-EU locations and taxes add cost; prepaid terms are not refunded on cancellation.",
+  "source": "Contabo official Black Friday and VPS pages (read 24 November 2026: €7.20 on 24 months, Core from €4.40, VDS from €43.20, UK location +€2.54) + official docs.contabo.com (1 IPv4 and /64 IPv6, root SSH, firewall ports, snapshots) + NodeSeek thread (23 November 2026)"
+ },
+ "westpac-altitude-qantas-black-90k": {
+  "title": "[Australia]Westpac Altitude Qantas Black: 90,000 Qantas points plus 50 status credits for A$9,000 of spend",
+  "highlight": "Spend A$9,000 on eligible purchases within 90 days of approval for 90,000 Qantas points and 50 status credits; another A$9,000 in year two adds 60,000 points; the annual fee is A$295 plus a A$155 Qantas Rewards fee, or A$200 in year one for existing Westpac customers",
+  "regions": "[Australia] Australian or New Zealand citizens, permanent residents or holders of a visa valid for at least a year, with a fixed Australian address and A$75,000+ income",
+  "value": "90,000 Qantas points plus 50 status credits (about A$1,350), and 60,000 more points in year two",
+  "content": "New cardholders of Altitude Qantas Black earn 90,000 Qantas points and 50 status credits after A$9,000 of eligible spend within 90 days of approval, then a further 60,000 points after another A$9,000 in the first 90 days of the second membership year, for up to 150,000 points and 50 status credits across two years. The annual card fee is A$295 plus a A$155 Qantas Rewards programme fee; existing Westpac customers who sign in before applying pay A$200 in year one, and some customers invited by email get the first-year fee waived. Points accrue at 1.5 per A$1 on international spend, 0.8 on everyday categories (supermarkets, department stores, fuel, utilities) and 0.4 elsewhere, dropping to 0.25 above A$10,000 in a statement cycle. The card also includes two Qantas Club lounge invitations a year, travel insurance and concierge. At 1.5 Australian cents a point, 90,000 points are worth roughly A$1,350.",
+  "conditions": "The sign-up bonus requires no Westpac credit card in the past 24 months; applicants must be 18 or over, live at a fixed Australian address, have a verifiable Australian taxable income of at least A$75,000 and a minimum A$6,000 credit limit; citizenship, permanent residency or a visa valid for at least a year is required, along with a credit check.",
+  "steps": [
+   "Check that you have held no Westpac credit card in the past 24 months and that you have a Qantas Frequent Flyer number",
+   "Apply from the Westpac Altitude Qantas Black page, signing in first as an existing customer to see the A$200 or waived first-year fee",
+   "Put A$9,000 of eligible spend on the card within 90 days of approval, then another A$9,000 in the same window of year two for 60,000 points",
+   "Use the two Qantas Club invitations and, if you do not want to keep the card, downgrade or close it before the second annual fee"
+  ],
+  "risk": "A credit card application leaves a hard enquiry that affects later credit and mortgage approvals; A$9,000 in 90 days is a hard threshold and missing it wastes the A$450 in fees; the waived first-year fee is a targeted invitation, not a public offer; point value assumes 1.5 Australian cents each and depends on Classic Reward availability; status credits cannot be transferred and do not count towards loyalty bonuses; foreign transactions cost 3%.",
+  "source": "Westpac official Altitude Qantas Black page (read 24 November 2026: 90,000 points and 50 status credits for A$9,000 in 90 days, 60,000 points in year two, A$295 fee, A$200 for existing customers, A$155 Qantas Rewards fee, A$75,000 income floor) + Qantas newsroom release + OzBargain post (24 November 2026, 12:40, targeted fee waiver)"
+ },
+ "perch-ai-starter-free-20-monthly": {
+  "title": "[Global]Perch AI Starter: a free tier with $20 of usage a month, no card, across web, desktop and CLI",
+  "highlight": "The pricing page lists Starter at $0 with $20 of hosted usage each month and one account across web, desktop and CLI, running DeepSeek V4.1 Flash, GLM 5.3 Flash and Laguna S 2.1 plus the Flock financial suite",
+  "regions": "[Global] Sign up on the site or in the app with no regional limit; Starter usage data feeds its training programme by default",
+  "value": "$20 a month on a permanent free tier",
+  "content": "The official pricing page (read 24 November 2026) lists Starter at $0 a month including $20 of hosted usage, covering Laguna S 2.1, DeepSeek V4.1 Flash, GLM 5.3 Flash, Flock and the financial suites, citation checks and Writing Studio. One account works across web, desktop and CLI, and you can plug in your own API key to bypass its limits. Pro is $10 a month during Early Access against a $20 list price and includes up to $150 of usage a month, $75 of it on models you pick, plus Gemini 4 Hydrogen and Carbon, Claude Opus 5.5 and 32 other models, and keeps your work out of training. Ultra is $30 a month with no 5-hour window and up to $450 of weekly-usage room a week. Starter works only inside its own clients and includes no public API, so it cannot feed Cline or Cursor.",
+  "conditions": "Registering a Perch account is enough and no card is needed; Starter has the Data Program on by default, where deidentified usage may feed commercially licensed training, and it must be switched off under Settings then Privacy; the model list rotates, so check the in-app picker.",
+  "steps": [
+   "Open perchai.app or chat.perchai.app, register and choose the $0 Starter plan",
+   "Turn off the Data Program under Settings then Privacy before using it for real work",
+   "Install the desktop app or CLI and sign in with the same account, then pick DeepSeek or GLM in the model picker",
+   "For third-party tools use your own API key, since Starter usage cannot be exported"
+  ],
+  "risk": "It is a third-party hosting and relay platform, so keep sensitive material out and do not sign in with an important identity provider; Starter data feeds training by default; there is no public API and no way into Cursor or Cline; testers report the web client cannot pick models and that busy periods queue, so heavy use means Pro or another service; allowances and models can change at any time.",
+  "source": "Perch AI official pricing page (read 24 November 2026: Starter $0 with $20 a month, Pro $10 Early Access, Ultra $30, supported models and data programme) + AIJP and NodeSeek posts (11 November 2026, with field reports that the web client cannot choose models and the desktop app is needed)"
  }
 }

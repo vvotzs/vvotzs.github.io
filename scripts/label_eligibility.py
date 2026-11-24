@@ -436,6 +436,11 @@ ELIG.update(
             "identity": "local_id", "residency": "local_resident",
             "funding": "purchase", "geo": ["AU"],
         },
+        # 2026-11-24：Westpac Altitude Qantas Black 90,000 分新卡礼
+        "westpac-altitude-qantas-black-90k": {
+            "identity": "local_id", "residency": "local_resident",
+            "funding": "purchase", "geo": ["AU"],
+        },
         "usmart-singsaver-s150": {
             "identity": "local_id", "residency": "local_resident",
             "funding": "min_deposit", "geo": ["SG"],
