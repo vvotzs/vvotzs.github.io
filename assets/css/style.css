@@ -609,13 +609,20 @@ main{ padding-bottom: 0; }
   gap: 6px;
   margin-top: 3px;
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: .02em;
-  color: var(--ink-3);
+  color: var(--ink-2);
 }
-.pager-label{ min-width: 36px; text-align: center; font-feature-settings: "tnum"; }
-/* 左右翻页键：小号扁圆胶囊（34×23）—— 暖白底 + 薄荷细边 + 深薄荷箭头，
-   禁用态退成柔和浅灰；高度压低后翻页区不再占一大块留白 */
+/* 页码加粗、用墨色：一眼看清「第几页 / 共几页」 */
+.pager-label{
+  min-width: 36px;
+  text-align: center;
+  font-feature-settings: "tnum";
+  font-weight: 700;
+  color: var(--ink);
+}
+/* 左右翻页键：小号扁圆胶囊（34×23）—— 薄荷浅底 + 加厚描边 + 深薄荷粗箭头，
+   体积不变、对比度提上来；禁用态退成中性浅灰但轮廓仍在，看得出「这里能点」 */
 .pager-bar .pg{
   width: 34px;
   height: 23px;
@@ -623,20 +630,21 @@ main{ padding-bottom: 0; }
   place-items: center;
   padding: 0;
   border-radius: 999px;
-  border: 1px solid #A7F3D0;
-  background: #FFFDF9;
-  color: #047857;
+  border: 1px solid #6EE7B7;
+  background: #F0FDF9;
+  color: #065F46;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 700;
   line-height: 1;
-  box-shadow: 0 1px 2px rgba(28,25,23,.03);
+  box-shadow: 0 1px 2px rgba(5,150,105,.12);
   transition: background .18s ease, border-color .18s ease, color .18s ease;
 }
-.pager-bar .pg:hover:not(:disabled){ background: var(--mint-soft); border-color: #6EE7B7; }
+.pager-bar .pg:hover:not(:disabled){ background: #DCFCE7; border-color: #34D399; color: #064E3B; }
 .pager-bar .pg:disabled{
-  color: var(--ink-4);
-  border-color: var(--line);
-  background: #FBFAF6;
+  color: #B6B0A6;
+  border-color: rgba(28,25,23,.14);
+  background: #F6F4EF;
   cursor: default;
   box-shadow: none;
 }
