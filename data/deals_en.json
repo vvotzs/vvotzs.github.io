@@ -6839,5 +6839,22 @@
   ],
   "risk": "The terms only promise Token Factory and Tavily credit at registration, while AI Cloud and Toloka are subject to separate eligibility; personal email addresses may be reviewed and disposable ones are refused; credit expires in 90 days and is limited to prototyping, so production or revenue use breaks the terms; spending more than 30% above the allocation can trigger an automatic pause, so set limits before calling the APIs.",
   "source": "Nebius official Builder Program page (read 2026-11-24: free to join, $25 AI Cloud, $25 Token Factory, $25 Tavily, $50 Toloka, $1 certification, free course and office hours) + the official service-specific terms (C.1 issues $25 Token Factory and $25 Tavily codes after verification; C.2 90-day expiry and no transfer; H.2 bans duplicate accounts and production use)"
+ },
+ "autoclaw-weekly-100m-tokens-nov23": {
+  "title": "[China/Global] Zhipu AutoClaw weekly perk: log in Nov 23-29 for 100M tokens",
+  "highlight": "Log in to AutoClaw between 00:00 on 23 November and 23:59 on 29 November 2026 (Beijing time) for 100M tokens (10,000 credits), once per account and all expiring at 23:59 on 29 November; the credit runs the GLM-5.3 family inside the client, with no card and no subscription",
+  "regions": "[China/Global] Zhipu account in mainland China, Z.ai login elsewhere; credit works only inside the AutoClaw client",
+  "value": "100M tokens (10,000 credits)",
+  "content": "This week (23-29 November) logging in to the AutoClaw client grants 100M tokens, i.e. 10,000 credits, once per account, all expiring at 23:59 on 29 November and never accumulating. The official weekly perk rotates its amount (50M last round, 100M this one) and needs neither a card nor a subscription; the credit only runs AutoClaw's built-in models (GLM-5.3 and GLM-5V families) and cannot be turned into an API key. GLM-5.4 is live in AutoClaw but currently only for GLM Coding Plan subscribers, who get 1.5x quota.",
+  "conditions": "A Zhipu or Z.ai account signed in to the AutoClaw client; one claim per account; credit expires 23:59 Beijing time on 29 November 2026; usable only for model calls inside the client, not exportable as an API.",
+  "steps": [
+   "Download the Mac or Windows client from autoclaw.z.ai",
+   "Sign in with a Zhipu / Z.ai account between 23 and 29 November",
+   "Claim this week's 100M tokens inside the client",
+   "Use the credit before 23:59 on 29 November"
+  ],
+  "url": "https://autoclaw.z.ai/cn/blog/news/M11W4/",
+  "risk": "The weekly amount and window change with each announcement, so do not treat it as a standing benefit; the credit dies at 23:59 on 29 November, so claiming late wastes it; GLM-5.4 is currently subscription-only, so free credit may not reach it; credit cannot be used as an API; some rounds required real-name verification, which the client shows at claim time.",
+  "source": "AutoClaw official blog post on the weekly 100M-token perk (published 20 November 2026, campaign 23-29 November)"
  }
 }
