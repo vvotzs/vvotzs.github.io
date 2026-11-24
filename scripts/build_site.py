@@ -1698,7 +1698,9 @@ def period_block(deal: dict) -> str:
     if lt or rt:
         cells.append(f'<span class="pd-t pd-l">{e(lt)}</span>')
         cells.append(f'<span class="pd-t pd-r">{e(rt)}</span>')
-    return '<span class="pd">' + "".join(cells) + "</span>"
+    # 列之间留一个空格文本节点：Grid 容器里纯空白文本不会被渲染成 grid item，视觉零变化，
+    # 但纯文本抓包 / 搜索引擎读到的是「2026 2026 11/04 至 12/31」而不是粘连的「2026202611/04」。
+    return '<span class="pd">' + " ".join(cells) + "</span>"
 
 
 def dp_deadline(deal: dict, today) -> str:
@@ -3232,7 +3234,7 @@ def render_category_page(
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#FAF7F2">
 <link rel="canonical" href="{canon}">
-<link rel="alternate" hreflang="zh-Hans" href="{cat_url(slug, 'zh')}">
+<link rel="alternate" hreflang="zh-CN" href="{cat_url(slug, 'zh')}">
 <link rel="alternate" hreflang="en" href="{cat_url(slug, 'en')}">
 <link rel="alternate" hreflang="x-default" href="{cat_url(slug, 'zh')}">
 
@@ -4047,7 +4049,7 @@ def main() -> None:
         hero_tag_html = (
             f'<p class="hero-tag"><span class="{hero_tag_cls}">'
             f'<span class="ht-main">{e(hero_tag_text)}</span>'
-            f'<span class="ht-copy" aria-hidden="true">{e(hero_tag_text)}</span></span></p>'
+            f'<span class="ht-copy" aria-hidden="true" data-nosnippet>{e(hero_tag_text)}</span></span></p>'
         )
 
         head = f"""<!DOCTYPE html>

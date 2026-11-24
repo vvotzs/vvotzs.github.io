@@ -114,8 +114,8 @@ def write_sitemap(deals: list[dict], today: date | None = None) -> Path:
         )
         zh = cat_url(slug, "zh")
         en = cat_url(slug, "en")
-        # 目录页的 hreflang 用 zh-Hans（与页面 <head> 里的声明一致），中文是简体
-        alts = [("zh-Hans", zh), ("en", en), ("x-default", zh)]
+        # 目录页的 hreflang 用 zh-CN（与全站首页 / 详情页 / 合规页及页面 <head> 声明一致）
+        alts = [("zh-CN", zh), ("en", en), ("x-default", zh)]
         add(zh, alts, cat_last, "daily", "0.9")
         add(en, alts, cat_last, "daily", "0.7")
 
