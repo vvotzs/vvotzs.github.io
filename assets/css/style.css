@@ -324,24 +324,52 @@ a.stats-pill:active{ transform: translateY(0); }
   box-shadow: var(--shadow-1);
   transition: border-color .18s ease, color .18s ease, box-shadow .18s ease;
 }
-/* 顶栏搜索入口的呼吸光晕（Jun 2026-11-25，双端同一套）：常驻一圈很淡的暖橙，
-   3.6s 轻轻一胀一收；光晕只走 box-shadow，不占布局、不影响行高。 */
-.search-btn{
-  border-color: rgba(245,158,11,.40);
-  color: var(--ink);
-  animation: searchGlow 3.6s ease-in-out infinite;
+/* 顶栏搜索入口：黑洞式漩涡光环（Jun 2026-11-25，双端同一套）。
+   外圈是一条 conic-gradient「吸积盘」——暖橙/琥珀/玫红/紫/青/薄荷绕一圈，
+   用 @property 角度变量让它持续旋转（不旋转盒子，宽胶囊也不会被甩歪），
+   外面再叠一层饱和暖橙的呼吸外发光；伪元素 pointer-events:none，绝不挡点击，
+   按钮本体仍是白底深字。 */
+@property --halo-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
+.search-btn{
+  position: relative;
+  border-color: rgba(245,158,11,.55);
+  color: var(--ink);
+  animation: searchGlow 3.8s ease-in-out infinite;
+}
+.search-btn::after{
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 999px;
+  padding: 2px;
+  background: conic-gradient(from var(--halo-angle),
+    #F59E0B, #FB923C, #EF4444, #EC4899, #A855F7, #22D3EE, #10B981, #FBBF24, #F59E0B);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: searchHalo 5s linear infinite;
+  pointer-events: none;
+}
+@keyframes searchHalo{ to{ --halo-angle: 360deg; } }
 @keyframes searchGlow{
   0%, 100%{
-    box-shadow: 0 0 0 2px rgba(245,158,11,.10), 0 5px 14px -10px rgba(180,83,9,.45), var(--shadow-1);
+    box-shadow: 0 0 0 3px rgba(245,158,11,.24), 0 6px 18px -8px rgba(245,158,11,.60), var(--shadow-1);
   }
   50%{
-    box-shadow: 0 0 0 4px rgba(245,158,11,.20), 0 10px 22px -10px rgba(180,83,9,.65), var(--shadow-1);
+    box-shadow: 0 0 0 5px rgba(245,158,11,.36), 0 10px 26px -8px rgba(236,72,153,.48), var(--shadow-1);
   }
 }
-.search-btn:hover{ border-color: rgba(245,158,11,.58); }
 @media (prefers-reduced-motion: reduce){
-  .search-btn{ animation: none; box-shadow: 0 0 0 3px rgba(245,158,11,.15), var(--shadow-1); }
+  .search-btn{
+    animation: none;
+    box-shadow: 0 0 0 4px rgba(245,158,11,.30), 0 8px 20px -8px rgba(245,158,11,.55), var(--shadow-1);
+  }
+  .search-btn::after{ animation: none; }
 }
 
 .search-btn:hover{ border-color: var(--line-2); color: var(--ink); box-shadow: var(--shadow-2); }
