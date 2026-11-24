@@ -7073,19 +7073,19 @@
   "source": "Maya Mobile's official Black Friday page (updated November 23, 2026: 14-day $27.99 and 30-day $49.99 buy-one-get-one, November 23 0:00 EST to December 2 0:00 EST, code issued after activation, three months to redeem, exclusions)"
  },
  "ipv64-free-dyndns": {
-  "title": "[DE] IPv64.net free DynDNS: 3 domains per account across 19 suffixes (Cloudflare-compatible)",
+  "title": "[DE] IPv64.net free DynDNS: 3 domains per account across 19 suffixes",
   "highlight": "A free DynDNS run by Germany's Prox IT UG: registration and use cost nothing, each account gets 3 DynDNS domains under 19 suffixes including ipv64.net, ipv64.de, home64.de, nas64.de and vpn64.de, with DynDNS2, separate A/AAAA updates and IPv6 prefixes, plus Let's Encrypt through acme.sh or Certbot DNS challenges",
   "regions": "[DE] Operated by Prox IT UG in Mülheim an der Ruhr, Germany; registration open worldwide, with 3 DynDNS domains per account on the free tier",
   "value": "3 free domains, long term",
   "content": "IPv64.net is a free DynDNS service from Germany's Prox IT UG. Registration and use cost nothing, and the free tier allows 3 DynDNS domains per account under 19 suffixes such as ipv64.net, ipv64.de, home64.de, nas64.de and vpn64.de. It speaks DynDNS2, updates A and AAAA records together or separately, supports IPv6 prefixes and ignores the shared IPv4 behind DS-Lite or CGNAT. Ready-made update URLs exist for FRITZ!Box, Speedport, UniFi, MikroTik, OPNsense, Synology and a Linux cron job. You can issue Let's Encrypt certificates through the DNS challenge with acme.sh or Certbot, and the DNS servers sit behind load balancers with DDoS protection and failover. You can also point your own domain's nameservers here to manage records, though IPv64 is not a registrar.",
-  "conditions": "Free registration is enough; the free tier caps you at 3 DynDNS domains per account; it is DNS only, with no web hosting or mailboxes; the subdomains belong to IPv64.net and cannot be transferred out; your own domain needs to stay registered elsewhere with nameservers pointed here.",
+  "conditions": "Free registration is enough; the free tier caps you at 3 DynDNS domains per account; it is DNS only, with no web hosting or mailboxes; free subdomains cannot be hosted on Cloudflare (the service only supports NS records and does not guarantee it works); the subdomains belong to IPv64.net and cannot be transferred out; your own domain needs to stay registered elsewhere with nameservers pointed here.",
   "steps": [
    "Open ipv64.net/dyndns and click Register now (free, no card)",
    "Pick a suffix and prefix in your account and register up to 3 DynDNS domains",
    "Copy the device-specific update URL into your router or client (FRITZ!Box, Synology, cron and others)",
    "For HTTPS, issue a Let's Encrypt certificate via the DNS challenge with acme.sh or Certbot on a machine you control"
   ],
-  "risk": "The subdomains stay the property of IPv64.net, so free limits, suffixes and terms can change at any time; three domains are enough for a home network, NAS or self-hosted service entry point but not for a real site; it cannot act as a registrar or transfer domains out; it is a small German company with no SLA, so a shutdown means moving your DNS yourself.",
+  "risk": "The subdomains stay the property of IPv64.net, so free limits, suffixes and terms can change at any time; free subdomains can't be hosted on Cloudflare directly (IPv64 only supports NS records and does not guarantee it, and it does not work as commonly claimed), so treat any \"Cloudflare-ready\" advice as unverified; three domains are enough for a home network, NAS or self-hosted service entry point but not for a real site; it cannot act as a registrar or transfer domains out; it is a small German company with no SLA, so a shutdown means moving your DNS yourself.",
   "source": "IPv64.net's official DynDNS page (read 24 November 2026: 3 DynDNS domains on the free tier, 19 suffixes, DynDNS2, A/AAAA, ACME support, run by Prox IT UG in Germany) + a 2Libra post (23 November 2026) noting the 3-domain limit"
  },
  "chattr-freedom-one-black-friday-80": {

@@ -11945,7 +11945,7 @@
  {
   "id": "ipv64-free-dyndns",
   "dedup_key": "ipv64-net|cloud|de|free-dyndns",
-  "title": "[德区]IPv64.net免费DynDNS：19个子域后缀、每账户3个域名（可套Cloudflare）",
+  "title": "[德区]IPv64.net免费DynDNS：19个子域后缀、每账户3个域名",
   "brand": "IPv64.net",
   "domain": "ipv64.net",
   "category": "cloud",
@@ -11959,7 +11959,7 @@
   "verified": true,
   "last_verified": "2026-11-24",
   "content": "IPv64.net是德国Prox IT UG提供的免费DynDNS：注册完全免费，免费版每账户可用3个DynDNS域名，可在19个后缀下取名（ipv64.net、ipv64.de、home64.de、nas64.de、vpn64.de等）。支持DynDNS2协议，A与AAAA记录可同时或分开更新、支持IPv6前缀，DS-Lite/CGNAT后面可忽略共享IPv4；FRITZ!Box、Speedport、UniFi、MikroTik、OPNsense、Synology与Linux cron都有现成更新URL。可用acme.sh/Certbot的DNS Challenge签Let's Encrypt证书，DNS服务器带负载均衡、DDoS防护与故障切换。也可把自己的域名NS指过来统一管记录（它不是注册商）。",
-  "conditions": "免费注册即用；免费版每账户最多3个DynDNS域名；只提供动态DNS解析，不含建站主机与邮箱；子域名所有权归IPv64.net、不能转出；自带域名需自己持有并改NS。",
+  "conditions": "免费注册即用；免费版每账户最多3个DynDNS域名；只提供动态DNS解析，不含建站主机与邮箱；免费二级域名不能直接托管Cloudflare（官方只支持NS记录、未保证可托管）；子域名不能转出；自带域名需自己持有并改NS。",
   "steps": [
    "打开 ipv64.net/dyndns 点Register now注册账号（免费、无需卡）",
    "在账户里挑后缀与前缀登记DynDNS域名，最多3个",
@@ -11969,7 +11969,7 @@
   "url": "https://ipv64.net/dyndns",
   "source_url": "https://2libra.com/post/domain-service/iwbArYG",
   "source": "IPv64.net官方DynDNS页（2026-11-24实读：免费版3个DynDNS域名、19个后缀、DynDNS2、A/AAAA、ACME支持、Prox IT UG运营、德国托管）+ 2Libra帖（2026-11-23，标注每人可注册3个）",
-  "risk": "二级域名所有权在IPv64.net手里，免费额度、后缀与条款随时可能调整；3个域名只够家庭网络/NAS/自建服务做入口，不适合正式站点；不能当注册商把域名转出；德国小公司运营、无SLA，服务终止需自己改DNS。",
+  "risk": "二级域名所有权在IPv64.net手里，免费额度、后缀与条款随时可能调整；免费二级域名不能直接托管Cloudflare（官方仅支持NS记录、未保证可托管，实测不可直接托管），网传「可套CF」需自行验证；3个域名只够家庭网络/NAS/自建服务做入口，不适合正式站点；不能当注册商把域名转出；德国小公司运营、无SLA，服务终止需自己改DNS。",
   "status": "active",
   "added": "2026-11-24",
   "added_at": "2026-11-24T11:54:00+08:00",
