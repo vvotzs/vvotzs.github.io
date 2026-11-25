@@ -272,6 +272,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vvotzs.github.io/d/elevenlabs-startup-grants/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/elevenlabs-startup-grants/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/elevenlabs-startup-grants/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/elevenlabs-startup-grants/"/>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/en/d/elevenlabs-startup-grants/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/elevenlabs-startup-grants/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/elevenlabs-startup-grants/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/elevenlabs-startup-grants/"/>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vvotzs.github.io/d/bmo-relationship-checking-2000/</loc>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/bmo-relationship-checking-2000/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/bmo-relationship-checking-2000/"/>
@@ -5636,24 +5654,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vvotzs.github.io/d/eskimo-free-esim/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/eskimo-free-esim/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/eskimo-free-esim/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/eskimo-free-esim/"/>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vvotzs.github.io/en/d/eskimo-free-esim/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/eskimo-free-esim/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/eskimo-free-esim/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/eskimo-free-esim/"/>
-    <lastmod>2026-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://vvotzs.github.io/d/pickle-ai-free-agent-jpkr/</loc>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/pickle-ai-free-agent-jpkr/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/pickle-ai-free-agent-jpkr/"/>
@@ -6010,6 +6010,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/true-tat-asean-tourist-sim-8gb/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/true-tat-asean-tourist-sim-8gb/"/>
     <lastmod>2026-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/d/eskimo-free-esim/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/eskimo-free-esim/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/eskimo-free-esim/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/eskimo-free-esim/"/>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/en/d/eskimo-free-esim/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/eskimo-free-esim/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/eskimo-free-esim/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/eskimo-free-esim/"/>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7062,7 +7080,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/jpm-personal-investing-invest-1000-100/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/jpm-personal-investing-invest-1000-100/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/jpm-personal-investing-invest-1000-100/"/>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7071,7 +7089,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/jpm-personal-investing-invest-1000-100/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/jpm-personal-investing-invest-1000-100/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/jpm-personal-investing-invest-1000-100/"/>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7080,7 +7098,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/elevenlabs-black-friday-creator/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/elevenlabs-black-friday-creator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/elevenlabs-black-friday-creator/"/>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7089,7 +7107,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/elevenlabs-black-friday-creator/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/elevenlabs-black-friday-creator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/elevenlabs-black-friday-creator/"/>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7782,7 +7800,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/topcashback-uk-signup-10/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/topcashback-uk-signup-10/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/topcashback-uk-signup-10/"/>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7791,7 +7809,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/topcashback-uk-signup-10/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/topcashback-uk-signup-10/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/topcashback-uk-signup-10/"/>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7890,7 +7908,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/doubao-work-30day-sub/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/doubao-work-30day-sub/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/doubao-work-30day-sub/"/>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7899,7 +7917,7 @@
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/doubao-work-30day-sub/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/doubao-work-30day-sub/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/doubao-work-30day-sub/"/>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7954,6 +7972,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/avoro-black-week-vps/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/avoro-black-week-vps/"/>
     <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/d/eskimo-gift-1gb-code/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/eskimo-gift-1gb-code/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/eskimo-gift-1gb-code/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/eskimo-gift-1gb-code/"/>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vvotzs.github.io/en/d/eskimo-gift-1gb-code/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://vvotzs.github.io/d/eskimo-gift-1gb-code/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vvotzs.github.io/en/d/eskimo-gift-1gb-code/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vvotzs.github.io/d/eskimo-gift-1gb-code/"/>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

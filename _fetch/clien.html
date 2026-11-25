@@ -1,0 +1,2083 @@
+
+
+
+
+ 
+
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<title>클리앙</title>
+	<meta name="description" content="모두의 커뮤니티 클리앙"/>
+	<meta charset="utf-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="referrer" content="unsafe-url">
+<meta name="viewport" content="width=1280" />
+<meta name="author" content="클리앙" />
+<meta name="apple-mobile-web-app-title" content="클리앙">
+
+<link rel="canonical" href="https://www.clien.net/service/">
+
+<link rel="stylesheet" href="/service/css/b.clien-main.noto.css?261004v1.261004v1">
+
+
+<link rel="shortcut icon" href="/service/image/favicon.ico">
+
+<link rel=apple-touch-icon href="/service/image/icon180x180.png"/>
+
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"url": "https://www.clien.net/",
+		"logo": "https://www.clien.net/service/image/logo.png"
+	}
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F2FH9F05GB"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-F2FH9F05GB');
+</script>
+
+ 
+	
+<script async='async' src='https://securepubads.g.doubleclick.net/tag/js/gpt.js'></script>
+<script>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+
+    
+    googletag.cmd.push(function() {
+        googletag.defineSlot('/44950606/cs4-pc-main-top', [336, 280], 'div-pc-main-top').addService(googletag.pubads());
+        googletag.defineSlot('/44950606/cs4-pc-main-under', [970, 250], 'div-pc-main-under').addService(googletag.pubads());
+        googletag.defineSlot('/44950606/cs4-pc-main-center', [728, 90], 'div-pc-main-center').addService(googletag.pubads());
+        googletag.defineSlot('/44950606/cs4-pc-side1', [300, 250], 'div-pc-side-1').addService(googletag.pubads());
+        googletag.defineSlot('/44950606/cs4-pc-side2', [300, 250], 'div-pc-side-2').addService(googletag.pubads());
+        googletag.setConfig({ targeting: { board: ["main"] } });
+        googletag.enableServices();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        googletag.cmd.push(function() {
+            googletag.display('div-pc-main-top');
+            googletag.display('div-pc-main-under');
+            googletag.display('div-pc-main-center');
+            googletag.display('div-pc-side-1');
+            googletag.display('div-pc-side-2');
+        });
+    });
+</script> 
+</head>
+
+<body>
+
+
+<div class="back-to-top" id="top"></div>
+<nav class="header_wrap">
+	<div class="nav_header" data-role="account-open">
+        <div class="nav_header_logo">
+                        <h1 class="header_logo">
+                <a href="/service/" title="클리앙홈 바로가기"><i class="icon-clien"></i><span class="blind">CLIEN</span></a>
+                <span id="eventImgLogo"></span>
+            </h1>
+            <a href="#div_content" class="skip_to">본문 바로가기</a>
+            <a href="#menuTop" class="skip_to">메뉴 바로가기</a>
+            <a href="javascript:;" class="skip_to text-large">보기설정</a>
+            <a href="javascript:;" class="skip_to button-dark">테마설정</a>
+            <div class="header_menu_center">
+	            <div class="header_menu">
+	                <a href="/service/group/clien_all" class="all_view" title="톺아보기 바로가기"><span class="txt">톺아보기</span></a>
+	            </div>
+	            <div class="search ad_banner" data-role="total-search">
+	                <button type="button" class="search_button" data-role="total-submit" title="검색하기"><span class="fa fa-search"></span></button>
+	                <input type="search" name="search" class="search_input" data-role="total-input-keyword" title="통합검색" placeholder="검색어를 입력하세요." />
+	            </div>
+            </div>
+		</div>
+		
+        <div class="header_setting_area ">
+<div class="board_option">
+    <div class="option_group">
+        <a href="javascript:;" class="text-large">
+                <i class="fa fa-text-width" title="화면크게보기"></i>
+        </a>
+        <a href="javascript:;" class="button-dark">
+                <i class="fa fa-adjust" title="다크모드"></i>
+        </a>
+    </div>
+
+</div>            <div class="btn_top_setting" id="set-more">
+                <i class="fa fa-television btn_set"></i>
+                <i class="fa fa-times btn_close"></i>
+            </div>
+		</div>	
+	</div>
+</nav>
+
+<Script>
+
+	var setEventDay = [{month:3, day:1, class:'kr', url:'/service/image/kflag.png', size:26}
+	, {month:4, day:16, class:'ribbon', url:'/service/image/ribbon.png', size:21} 	, {month:6, day:6, class:'kr', url:'/service/image/kflag.png', size:26} 
+	, {month:8, day:15, class:'kr', url:'/service/image/kflag.png', size:26} 	, {month:10, day:3, class:'kr', url:'/service/image/kflag.png', size:26} 
+	, {month:10, day:9, class:'han', url:'/service/image/han_clien_m.png', size:108}  
+	, {month:10, day:29, class:'ribbon', url:'/service/image/ribbon_b.png', size:21}]; 
+	
+	var eventNowDay = new Date(); 
+	var eventNowMonth = eventNowDay.getMonth() + 1; 
+	var eventNowDay = eventNowDay.getDate(); 
+	var eventIsVaild = false;
+	var eventLogoHtml = '';
+
+	setEventDay.forEach(function(value){
+
+		if(eventNowMonth == value.month && eventNowDay == value.day) {
+			if(value.class == 'han') {
+				eventLogoHtml = '<a href="/service" class="image_logo han" title="클리앙홈 바로가기"><img src="'+value.url+'" width="'+value.size+'px"></a>';
+			} else {
+				eventLogoHtml = '<span class="image_logo '+value.class+'"><img src="'+value.url+'" width="'+value.size+'px"></span>';
+			}
+			eventIsVaild = true;
+		};
+	});
+	
+
+	if(eventIsVaild) {
+		console.log(eventLogoHtml);
+		document.getElementById("eventImgLogo").innerHTML = eventLogoHtml;
+	};
+
+</script> 
+<div class="nav_container main">
+	<div class="snb" id="menuTop">
+    <div class="snb_menu">
+        <div class="side_nav" id="menu-scroll">
+            <div class="side_menu_area">
+	                        
+	            <div class="navmenu open">
+    <a class="menu-title " id="com-more">
+        <span class="menu_over">커뮤니티</span>
+        <span class="fa fa-angle-down"></span>
+	</a>
+
+
+        <a class="menu-group all" href="/service/group/board_all">
+
+            <span class="fa fa-angle-down"></span>
+        <span class="menu_over" title="커뮤니티전체">커뮤니티전체</span>
+        
+        </a>
+
+
+        <a class="menu-group" href="/service/group/community">
+
+            <span class="icon-board" alt="C">C</span>
+        <span class="menu_over" title="모두의광장">모두의광장</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/park">
+
+            <span class="icon-board" alt="F">F</span>
+        <span class="menu_over" title="모두의공원">모두의공원</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/image">
+
+            <span class="icon-board" alt="I">I</span>
+        <span class="menu_over" title="사진게시판">사진게시판</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/kin">
+
+            <span class="icon-board" alt="Q">Q</span>
+        <span class="menu_over" title="아무거나질문">아무거나질문</span>
+        
+        </a>
+
+
+        <a class="menu-group" href="/service/group/allinfo">
+
+            <span class="icon-board" alt="D">D</span>
+        <span class="menu_over" title="정보와자료">정보와자료</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/news">
+
+            <span class="icon-board" alt="N">N</span>
+        <span class="menu_over" title="새로운소식">새로운소식</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/useful">
+
+            <span class="icon-board" alt="T">T</span>
+        <span class="menu_over" title="유용한사이트">유용한사이트</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/pds">
+
+            <span class="icon-board" alt="P">P</span>
+        <span class="menu_over" title="자료실">자료실</span>
+        
+        </a>
+
+
+        <a class="menu-group" href="/service/group/allreview">
+
+            <span class="icon-board" alt="E">E</span>
+        <span class="menu_over" title="강좌/사용기">강좌/사용기</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/lecture">
+
+            <span class="icon-board" alt="L">L</span>
+        <span class="menu_over" title="팁과강좌">팁과강좌</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/use">
+
+            <span class="icon-board" alt="U">U</span>
+        <span class="menu_over" title="사용기">사용기</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/chehum">
+
+            <span class="icon-board" alt="·">·</span>
+        <span class="menu_over" title="체험단사용기">체험단사용기</span>
+        
+        </a>
+
+
+        <a class="menu-group" href="/service/group/allsell">
+
+            <span class="icon-board" alt="W">W</span>
+        <span class="menu_over" title="사고팔고">사고팔고</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/jirum">
+
+            <span class="icon-board" alt="J">J</span>
+        <span class="menu_over" title="알뜰구매">알뜰구매</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/sold">
+
+            <span class="icon-board" alt="S">S</span>
+        <span class="menu_over" title="회원중고장터">회원중고장터</span>
+        
+        </a>
+
+
+        <a class="menu-list" href="/service/board/hongbo">
+
+            <span class="icon-board" alt="B">B</span>
+        <span class="menu_over" title="직접홍보">직접홍보</span>
+        
+        </a>
+
+
+        <a class="menu-insurance" href="/service/group/insure">
+
+            <span class="icon-board" alt="·">·</span>
+        <span class="menu_over" title="보험상담실">보험상담실</span>
+        
+        </a>
+
+
+        <a class="menu-promo invisible" href="/service/">
+
+            <span class="icon-board" alt="H">H</span>
+        <span class="menu_over" title="클리앙홈">클리앙홈</span>
+        
+        </a>
+</div>
+<div class="menu_line"></div>    
+	            <div class="menu_somoim">
+    <a class="menu-title" id="more">
+		<span class="menu_over">소모임</span>
+        <span class="fa fa-angle-down"></span>
+	</a>
+	<a class="menu-group somoim" href="/service/group/cm_all">
+		<span class="menu_over">소모임전체</span>
+	</a>
+	
+			<a class="menu-list somoim" href="/service/board/cm_car"><span class="icon-board">·</span><span class="menu_over">굴러간당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_iphonien"><span class="icon-board">·</span><span class="menu_over">아이포니앙</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_stock"><span class="icon-board">·</span><span class="menu_over">주식한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_mac"><span class="icon-board">·</span><span class="menu_over">MaClien</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_ai"><span class="icon-board">·</span><span class="menu_over">AI당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_app"><span class="icon-board">·</span><span class="menu_over">개발한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_japanlive"><span class="icon-board">·</span><span class="menu_over">일본산당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_andro"><span class="icon-board">·</span><span class="menu_over">안드로메당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_girl"><span class="icon-board">·</span><span class="menu_over">소시당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_bike"><span class="icon-board">·</span><span class="menu_over">자전거당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_bts"><span class="icon-board">·</span><span class="menu_over">방탄소년당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_lego"><span class="icon-board">·</span><span class="menu_over">레고당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_nas"><span class="icon-board">·</span><span class="menu_over">나스당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_rowing"><span class="icon-board">·</span><span class="menu_over">노젓는당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_baby"><span class="icon-board">·</span><span class="menu_over">육아당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_vcoin"><span class="icon-board">·</span><span class="menu_over">가상화폐당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_linux"><span class="icon-board">·</span><span class="menu_over">리눅서당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_ebook"><span class="icon-board">·</span><span class="menu_over">e북본당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_wp"><span class="icon-board">·</span><span class="menu_over">윈폰이당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_girlgroup"><span class="icon-board">·</span><span class="menu_over">걸그룹당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_poe"><span class="icon-board">·</span><span class="menu_over">패스오브엑자일당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_oversea"><span class="icon-board">·</span><span class="menu_over">바다건너당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_cat"><span class="icon-board">·</span><span class="menu_over">냐옹이당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_food"><span class="icon-board">·</span><span class="menu_over">맛있겠당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_iot"><span class="icon-board">·</span><span class="menu_over">IoT당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_golf"><span class="icon-board">·</span><span class="menu_over">골프당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_steam"><span class="icon-board">·</span><span class="menu_over">스팀한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_lang"><span class="icon-board">·</span><span class="menu_over">어학당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_coffee"><span class="icon-board">·</span><span class="menu_over">클다방</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_watch"><span class="icon-board">·</span><span class="menu_over">시계찬당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_pctuning"><span class="icon-board">·</span><span class="menu_over">PC튜닝한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_drone"><span class="icon-board">·</span><span class="menu_over">날아올랑</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_eve"><span class="icon-board">·</span><span class="menu_over">이브한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_keyboard"><span class="icon-board">·</span><span class="menu_over">키보드당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_werule"><span class="icon-board">·</span><span class="menu_over">소셜게임한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_3dmaking"><span class="icon-board">·</span><span class="menu_over">3D메이킹</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_70"><span class="icon-board">·</span><span class="menu_over">X세대당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_adhd"><span class="icon-board">·</span><span class="menu_over">ADHD당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_aigurim"><span class="icon-board">·</span><span class="menu_over">AI그림당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_airplane"><span class="icon-board">·</span><span class="menu_over">날아간당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_applewatch"><span class="icon-board">·</span><span class="menu_over">사과시계당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_badmin"><span class="icon-board">·</span><span class="menu_over">배드민턴당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_baseball"><span class="icon-board">·</span><span class="menu_over">야구당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_basket"><span class="icon-board">·</span><span class="menu_over">농구당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_bb"><span class="icon-board">·</span><span class="menu_over">블랙베리당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_bear"><span class="icon-board">·</span><span class="menu_over">곰돌이당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_beer"><span class="icon-board">·</span><span class="menu_over">비어있당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_billiards"><span class="icon-board">·</span><span class="menu_over">FM당구당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_blockchain"><span class="icon-board">·</span><span class="menu_over">블록체인당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_board"><span class="icon-board">·</span><span class="menu_over">보드게임당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_book"><span class="icon-board">·</span><span class="menu_over">활자중독당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_bowling"><span class="icon-board">·</span><span class="menu_over">볼링친당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_camp"><span class="icon-board">·</span><span class="menu_over">캠핑간당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_civilize"><span class="icon-board">·</span><span class="menu_over">문명하셨당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_classic"><span class="icon-board">·</span><span class="menu_over">클래시앙</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_console"><span class="icon-board">·</span><span class="menu_over">콘솔한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_cook"><span class="icon-board">·</span><span class="menu_over">요리한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_cookierun"><span class="icon-board">·</span><span class="menu_over">쿠키런당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_daegu"><span class="icon-board">·</span><span class="menu_over">대구당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_danger"><span class="icon-board">·</span><span class="menu_over">DANGER당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_dduk"><span class="icon-board">·</span><span class="menu_over">뚝딱뚝당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_dia"><span class="icon-board">·</span><span class="menu_over">디아블로당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_dog"><span class="icon-board">·</span><span class="menu_over">개판이당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_dongsup"><span class="icon-board">·</span><span class="menu_over">동숲한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_ebicycle"><span class="icon-board">·</span><span class="menu_over">전기자전거당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_edc"><span class="icon-board">·</span><span class="menu_over">갖고다닌당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_fashion"><span class="icon-board">·</span><span class="menu_over">패셔니앙</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_fish"><span class="icon-board">·</span><span class="menu_over">물고기당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_fisher"><span class="icon-board">·</span><span class="menu_over">도시어부당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_fm"><span class="icon-board">·</span><span class="menu_over">FM한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_formula1"><span class="icon-board">·</span><span class="menu_over">포뮬러당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_gemwar"><span class="icon-board">·</span><span class="menu_over">젬워한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_glasses"><span class="icon-board">·</span><span class="menu_over">안경쓴당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_gta"><span class="icon-board">·</span><span class="menu_over">차턴당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_gun"><span class="icon-board">·</span><span class="menu_over">총쏜당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_gym"><span class="icon-board">·</span><span class="menu_over">땀흘린당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_hearth"><span class="icon-board">·</span><span class="menu_over">하스스톤한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_heroes"><span class="icon-board">·</span><span class="menu_over">히어로즈한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_instar"><span class="icon-board">·</span><span class="menu_over">인스타한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_kara"><span class="icon-board">·</span><span class="menu_over">KARA당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_kordle"><span class="icon-board">·</span><span class="menu_over">꼬들한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_ku"><span class="icon-board">·</span><span class="menu_over">덕질한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_leather"><span class="icon-board">·</span><span class="menu_over">가죽당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_lol"><span class="icon-board">·</span><span class="menu_over">LOLien</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_mabi"><span class="icon-board">·</span><span class="menu_over">Mabinogien</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_main"><span class="icon-board">·</span><span class="menu_over">임시소모임</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_mbike"><span class="icon-board">·</span><span class="menu_over">이륜차당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_midra"><span class="icon-board">·</span><span class="menu_over">미드당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_military"><span class="icon-board">·</span><span class="menu_over">밀리터리당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_mine"><span class="icon-board">·</span><span class="menu_over">땅판당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_monhunt"><span class="icon-board">·</span><span class="menu_over">헌팅한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_mount"><span class="icon-board">·</span><span class="menu_over">오른당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_movie"><span class="icon-board">·</span><span class="menu_over">영화본당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_mtg"><span class="icon-board">·</span><span class="menu_over">MTG한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_music"><span class="icon-board">·</span><span class="menu_over">소리당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_nokien"><span class="icon-board">·</span><span class="menu_over">노키앙</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_note"><span class="icon-board">·</span><span class="menu_over">적는당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_onair"><span class="icon-board">·</span><span class="menu_over">방송한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_photo"><span class="icon-board">·</span><span class="menu_over">찰칵찍당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_pic"><span class="icon-board">·</span><span class="menu_over">그림그린당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_picnic"><span class="icon-board">·</span><span class="menu_over">소풍간당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_plant"><span class="icon-board">·</span><span class="menu_over">심는당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_rasp"><span class="icon-board">·</span><span class="menu_over">라즈베리파이당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_redeem"><span class="icon-board">·</span><span class="menu_over">품앱이당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_rhythm"><span class="icon-board">·</span><span class="menu_over">리듬탄당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_running"><span class="icon-board">·</span><span class="menu_over">달린당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_sea"><span class="icon-board">·</span><span class="menu_over">Sea마당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_sim"><span class="icon-board">·</span><span class="menu_over">SimSim하당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_simsik"><span class="icon-board">·</span><span class="menu_over">심야식당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_slate"><span class="icon-board">·</span><span class="menu_over">윈태블릿당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_snow"><span class="icon-board">·</span><span class="menu_over">미끄러진당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_soccer"><span class="icon-board">·</span><span class="menu_over">축구당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_solo"><span class="icon-board">·</span><span class="menu_over">나혼자산당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_star"><span class="icon-board">·</span><span class="menu_over">스타한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_surfing"><span class="icon-board">·</span><span class="menu_over">파도탄당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_swim"><span class="icon-board">·</span><span class="menu_over">퐁당퐁당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_tennis"><span class="icon-board">·</span><span class="menu_over">테니스친당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_test"><span class="icon-board">·</span><span class="menu_over">테스트당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_thinkpad"><span class="icon-board">·</span><span class="menu_over">빨콩이당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_tiwatch"><span class="icon-board">·</span><span class="menu_over">공대시계당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_tour"><span class="icon-board">·</span><span class="menu_over">여행을떠난당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_tpad"><span class="icon-board">·</span><span class="menu_over">터치패드당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_twit"><span class="icon-board">·</span><span class="menu_over">트윗당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_venture"><span class="icon-board">·</span><span class="menu_over">창업한당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_vr"><span class="icon-board">·</span><span class="menu_over">VR당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_webos"><span class="icon-board">·</span><span class="menu_over">WebOs당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_whiskey"><span class="icon-board">·</span><span class="menu_over">위스키당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_wine"><span class="icon-board">·</span><span class="menu_over">와인마신당</span></a>
+			<a class="menu-list somoim" href="/service/board/cm_wow"><span class="icon-board">·</span><span class="menu_over">WOW당</span></a>
+</div>
+<a class="menu-group somoim etc" href="/service/board/cm_main">
+    <span class="menu_over">임시소모임</span>
+</a>
+<div class="menu_line"></div>        
+            </div>
+        </div>
+        <div class="button_cs">
+            <a href="javascript:;" class="button_dropmenu" data-toggle="dropdown">고객지원</a>
+            <ul class="dropdown-menu">
+                <li><a href="/service/cs/singo/article">게시물 삭제 요청</a></li>
+                <li><a href="/service/cs/singo/article?type=illegal">불법촬영물등 신고</a></li>
+                <li><a href="/service/cs/singo/message">쪽지 신고</a></li>
+                <li><a href="/service/cs/singo/nickname">닉네임 신고</a></li>
+                <li><a href="mailto:admin@clien.net">제보 및 기타 제안</a></li>
+            </ul>
+        </div>
+	</div>
+	<div class="menu_area">
+        <a href="/service" class="link_home" title="클리앙홈">© CLIEN.NET</a>
+        <a href="#menuTop" class="link_top" title="메뉴맨위로"><i class="fa fa-bars"></i></a>
+    </div>
+</div> 
+    <div class="nav_body">
+        <div class="content_main">
+            <div class="bullhorn warning" style="display: none;" id="noticeBullhom">
+	<div class="bullhorn_msg">
+		<span class="bullhorn_label">공지</span><span class="bullhorn_txt">[공지] 검색 및 토픽필터 등 일시 중단안내</span>
+			<a href="/service//board/annonce/19296139" class="bullhorn_link">더보기</a>
+		<button type="button" class="bullhorn_button" onclick="setNoticeCookie();">
+			<div class="button_close"></div>
+		</button>
+	</div>
+</div>
+ 
+            <div class="contents_main">
+					
+
+
+
+
+<div class="section_contents top">
+	<div class="section_list notice">
+		<h2 class="section_title">
+			<a class="news_title" href="/service/board/annonce" title="운영알림판 바로가기">운영알림판 <i class="fa fa-angle-right"></i></a>
+		</h2>
+			<div class="list_item">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/annonce/19271722">
+						<span class="subject" data-role="list-title" title="클리앙 공식 앱 출시 안내 -1.2.0 업데이트">클리앙 공식 앱 출시 안내 -1.2.0 업데이트</span>
+					</a>
+					<span class="list_time">09-30</span>
+				</div>
+			</div>
+			<div class="list_item">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/annonce/19238259">
+						<span class="subject" data-role="list-title" title="[베타] 토픽 필터 기능을 추가합니다.(메인 추가)">[베타] 토픽 필터 기능을 추가합니다.(메인 추가)</span>
+					</a>
+					<span class="list_time">07-30</span>
+				</div>
+			</div>
+	
+<div class="main_top_cmdlfkgirjd">
+	<div id='div-pc-main-top' class="ad_banner"></div>
+</div>
+
+	</div>
+	
+	<!-- MAIN_COMMUNITY_START -->
+<div class="section_list recommended">
+	<h2 class="section_title">
+			<a class="recommended_title" href="/service/group/community" title="모두의 광장">
+				<div class="title">
+					<span class="recommended_title">모두의 광장</span>
+				</div>
+				<i class="fa fa-angle-right"></i>
+			</a>
+	</h2>
+	<div class="section_body">
+			<div class="list_item" data-role="main-list" data-author-id="parksysy888">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298659">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="AI 대표 3사 요금제를 모두 구독할수밖에 없는 이유">AI 대표 3사 요금제를 모두 구독할수밖에 없는 이유</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298659#comment-point">
+							<span class="rSymph05">4</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="declare">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298658">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="C++29에 추가될 break, continue 문법...ㄷㄷ">C++29에 추가될 break, continue 문법...ㄷㄷ</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298658#comment-point">
+							<span class="rSymph05">3</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="euhhsyh">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298656">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="집값 정부탓하시는데~ 주식도 그 기준으로 봐야죠 ㅎㅎ">집값 정부탓하시는데~ 주식도 그 기준으로 봐야죠 ㅎㅎ</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298656#comment-point">
+							<span class="rSymph05">14</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="qrime">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298654">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="[속보] 미국, 한국 등 14곳에 ‘과잉생산 관세’ 예고…“합의국은 15% 상한”">[속보] 미국, 한국 등 14곳에 ‘과잉생산 관세’ 예고…“합의국은 15% 상한”</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="alswnekddnjs">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298652">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="곧 눈이 오고 도로가 얼겠네요">곧 눈이 오고 도로가 얼겠네요</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="lsh86319">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298650">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="한준호의 역할이 정말 기대됩니다">한준호의 역할이 정말 기대됩니다</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298650#comment-point">
+							<span class="rSymph05">8</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="opqrabc">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298649">
+						<span class="shortname" alt="/F01/2026/11/15871231/246c646af7905.png">모공</span>
+						<span class="subject" data-role="list-title" title="이재명 취임당시보다는 코스피 올랐다?의 반박">이재명 취임당시보다는 코스피 올랐다?의 반박</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/park/19298649#comment-point">
+							<span class="rSymph05">7</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="double2">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298648">
+						<span class="shortname" alt="/F01/2026/11/15871229/2463e1ba38c78.jpg">모공</span>
+						<span class="subject" data-role="list-title" title="미국 PCE PPE CPI 수치를 보면요">미국 PCE PPE CPI 수치를 보면요</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/park/19298648#comment-point">
+							<span class="rSymph05">4</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ddalos">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298647">
+						<span class="shortname" alt="/F01/2026/11/15871233/2478040d5cd57.jpg">모공</span>
+						<span class="subject" data-role="list-title" title="게시판 보면서 느끼는점..">게시판 보면서 느끼는점..</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/park/19298647#comment-point">
+							<span class="rSymph05">2</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="bluesolvit">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298646">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="미주식 전반적인 하락에 비트코인도 8천만 깨졌네요">미주식 전반적인 하락에 비트코인도 8천만 깨졌네요</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298646#comment-point">
+							<span class="rSymph05">1</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="xenex">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298645">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="[주식] 반도체주가 잡주가 되었네요 -_-;;;;;">[주식] 반도체주가 잡주가 되었네요 -_-;;;;;</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298645#comment-point">
+							<span class="rSymph05">3</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="nuclei">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298644">
+						<span class="shortname" alt="/F01/2026/11/15871227/24853aba73519.jpg">모공</span>
+						<span class="subject" data-role="list-title" title="5년전에 사재기한 하드 출토 결과">5년전에 사재기한 하드 출토 결과</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/park/19298644#comment-point">
+							<span class="rSymph05">11</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="soarck">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298642">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="한라산에 눈 많이 온 모양이군요.">한라산에 눈 많이 온 모양이군요.</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="zsax497">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298641">
+						<span class="shortname" alt="/F01/2026/11/15871205/2469c918fbf6e.jpg">모공</span>
+						<span class="subject" data-role="list-title" title="사상 처음으로 3전전승 토너먼트 진출 성공한 U17 월드컵 축구대표팀">사상 처음으로 3전전승 토너먼트 진출 성공한 U17 월드컵 축구대표팀</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="popo2076">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298640">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="오늘 미장은 뭐 젠슨황 6번째 불륜녀 여파인가요?">오늘 미장은 뭐 젠슨황 6번째 불륜녀 여파인가요?</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298640#comment-point">
+							<span class="rSymph05">5</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="tkdghcjswo">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298639">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="지금 주식상황이 정부탓이라는 사람들은">지금 주식상황이 정부탓이라는 사람들은</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298639#comment-point">
+							<span class="rSymph05">34</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="zsax497">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298636">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="자기의 좋은 성적을 감추려는 수능 만점자들">자기의 좋은 성적을 감추려는 수능 만점자들</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298636#comment-point">
+							<span class="rSymph05">4</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="nott81">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298627">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="[단독] '중국 전기차보다 싸네'.아이오닉5, 이제 반값에 산다">[단독] '중국 전기차보다 싸네'.아이오닉5, 이제 반값에 산다</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298627#comment-point">
+							<span class="rSymph05">18</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="nachnine">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298626">
+						<span class="shortname" alt="/F01/2026/11/15871170/293e091a6efaf.jpg">모공</span>
+						<span class="subject" data-role="list-title" title="미국 반도체주식 폭락중이네요">미국 반도체주식 폭락중이네요</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/park/19298626#comment-point">
+							<span class="rSymph05">17</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="sazc3r">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298623">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="『스윗 보이』라는 걸작 영화 스토리를 만들어 봤는데요">『스윗 보이』라는 걸작 영화 스토리를 만들어 봤는데요</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298623#comment-point">
+							<span class="rSymph05">5</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="na00131">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298622">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="주식에 스트레스 그만받고 프로미스나인 영상보시져">주식에 스트레스 그만받고 프로미스나인 영상보시져</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298622#comment-point">
+							<span class="rSymph05">2</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="rnfma0325">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298619">
+						<span class="shortname" alt="/F01/2026/11/15871154/2411a67350d5a.jpg">모공</span>
+						<span class="subject" data-role="list-title" title="정청래 - 송영길 말은 곧이곧대로 다 믿지 마세요.">정청래 - 송영길 말은 곧이곧대로 다 믿지 마세요.</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/park/19298619#comment-point">
+							<span class="rSymph05">10</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="hvanb756">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298617">
+						<span class="shortname" alt="/F01/2026/11/15871204/2460e8d76c207.png">모공</span>
+						<span class="subject" data-role="list-title" title="산업단지는 나랏빨과 돈되는 테마가 있어야 합니다..">산업단지는 나랏빨과 돈되는 테마가 있어야 합니다..</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="pjg56">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298615">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="우리나라 육아 관련 제도는 정말 잘되어있는 편입니다(공공 한정)">우리나라 육아 관련 제도는 정말 잘되어있는 편입니다(공공 한정)</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298615#comment-point">
+							<span class="rSymph05">18</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="kabhwan">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298614">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="​관세 시즌이 새롭게 시작되었네요.">​관세 시즌이 새롭게 시작되었네요.</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="mocandy">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298612">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="그냥 정부가 부동산의 용도를 정하는게 불쾌해요">그냥 정부가 부동산의 용도를 정하는게 불쾌해요</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298612#comment-point">
+							<span class="rSymph05">9</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="10hz">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298611">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="제나, 메이, 리브 라이브 중이네요">제나, 메이, 리브 라이브 중이네요</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298611#comment-point">
+							<span class="rSymph05">6</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="goldbird">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298609">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="KORU 상장폐지될까무섭네요">KORU 상장폐지될까무섭네요</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/park/19298609#comment-point">
+							<span class="rSymph05">3</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="firefox">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298608">
+						<span class="shortname" alt="/F01/2026/11/15871141/242575efdfebc.jpg">모공</span>
+						<span class="subject" data-role="list-title" title="[교도통신] 전일본공수, 조종사양성 전문회사 신설. LCC들 자회사 전환.">[교도통신] 전일본공수, 조종사양성 전문회사 신설. LCC들 자회사 전환.</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ddoppa">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298607">
+						<span class="shortname" alt="/F01/2026/11/15871135/240f39d4a59c2.png">모공</span>
+						<span class="subject" data-role="list-title" title="우리나라 항공모함 안만드는겁니까 못 만드는겁니까?">우리나라 항공모함 안만드는겁니까 못 만드는겁니까?</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/park/19298607#comment-point">
+							<span class="rSymph05">32</span>
+						</a>
+				</div>
+			</div>
+	</div>
+</div>
+	<!-- MAIN_COMMUNITY_END -->
+</div>
+
+<div class="section_contents">
+	<div class="section_list allinfo">
+		<h2 class="section_title">
+			<a class="allinfo_title" href="/service/group/allinfo" title="정보와 자료 바로가기">정보와 자료 <i class="fa fa-angle-right"></i></a>
+		</h2>
+		<div class="section_list_area">
+			<div class="list_item" data-role="main-list" data-author-id="ktotheptoj">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/pds/19298610">
+						<span class="shortname" alt="/F01/2026/11/15871142/2918ba864256d.jpg">자료실</span>
+						<span class="subject" data-role="list-title" title="[무료] 다했다 — 하루를 오전·점심·오후·저녁으로 나눠 보는 미리알림 할일 앱">[무료] 다했다 — 하루를 오전·점심·오후·저녁으로 나눠 보는 미리알림 할일 앱</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="iampaprika">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/pds/19298593">
+						<span class="shortname" alt="">자료실</span>
+						<span class="subject" data-role="list-title" title="[자작/무료] 기계식 키보드 소리가 나는 아이폰 계산기 Thock Calc — 리딤 코드 10개 ">[자작/무료] 기계식 키보드 소리가 나는 아이폰 계산기 Thock Calc — 리딤 코드 10개 </span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/pds/19298593#comment-point">
+						<span class="rSymph05">6</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="siseongahn">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/pds/19298389">
+						<span class="shortname" alt="">자료실</span>
+						<span class="subject" data-role="list-title" title="[자작:오픈소스] PineRadio – 브라우저로 듣는 전 세계 80만개의 인터넷 라디오와 오디">[자작:오픈소스] PineRadio – 브라우저로 듣는 전 세계 80만개의 인터넷 라디오와 오디</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/pds/19298389#comment-point">
+						<span class="rSymph05">5</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="xenoxeno">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/pds/19298170">
+						<span class="shortname" alt="">자료실</span>
+						<span class="subject" data-role="list-title" title="[자작/무료] 위치기반 교통정보 안내 앱 '뛸까말까' - 리딤코드 20개 드립니다.">[자작/무료] 위치기반 교통정보 안내 앱 '뛸까말까' - 리딤코드 20개 드립니다.</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/pds/19298170#comment-point">
+						<span class="rSymph05">28</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="wackijaki">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/pds/19298025">
+						<span class="shortname" alt="">자료실</span>
+						<span class="subject" data-role="list-title" title="[자작/무료] 내 고양이 영상으로 바탕화면 펫 만드는 윈도우 앱 피타팻 - 평생권 코드">[자작/무료] 내 고양이 영상으로 바탕화면 펫 만드는 윈도우 앱 피타팻 - 평생권 코드</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/pds/19298025#comment-point">
+						<span class="rSymph05">16</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="joshua">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/news/19298013">
+						<span class="shortname" alt="">새소식</span>
+						<span class="subject" data-role="list-title" title="'한국의 'HAN' 왜 못 쓰나'…가비아, 中 도메인 변경 요구 거부">'한국의 'HAN' 왜 못 쓰나'…가비아, 中 도메인 변경 요구 거부</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/news/19298013#comment-point">
+						<span class="rSymph05">6</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="joshua">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/news/19298012">
+						<span class="shortname" alt="">새소식</span>
+						<span class="subject" data-role="list-title" title="'애플, '프로덕트 레드' 협업 재개...연말 새 색상 출시'">'애플, '프로덕트 레드' 협업 재개...연말 새 색상 출시'</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/news/19298012#comment-point">
+						<span class="rSymph05">3</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="joshua">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/news/19298006">
+						<span class="shortname" alt="">새소식</span>
+						<span class="subject" data-role="list-title" title="항우연, '강체 동축 주로터' 축소모델 풍동시험 성공">항우연, '강체 동축 주로터' 축소모델 풍동시험 성공</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/news/19298006#comment-point">
+						<span class="rSymph05">5</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="joshua">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/news/19298001">
+						<span class="shortname" alt="">새소식</span>
+						<span class="subject" data-role="list-title" title="한-브라질, 첫 방산공동위원회 개최... 양국 방산협력 본격화">한-브라질, 첫 방산공동위원회 개최... 양국 방산협력 본격화</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="joshua">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/news/19297996">
+						<span class="shortname" alt="/F01/2026/11/15870310/1e79db22bb65f.png">새소식</span>
+						<span class="subject" data-role="list-title" title="카카오·토스·네페에서도 ‘주민등록증 진위확인’ 가능... 전자금융거래 안전성 강화">카카오·토스·네페에서도 ‘주민등록증 진위확인’ 가능... 전자금융거래 안전성 강화</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="joshua">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/news/19297992">
+						<span class="shortname" alt="">새소식</span>
+						<span class="subject" data-role="list-title" title="전기택시 전환 활성화 위해 기후부-국토부-택시업계 맞손">전기택시 전환 활성화 위해 기후부-국토부-택시업계 맞손</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/news/19297992#comment-point">
+						<span class="rSymph05">4</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="joshua">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/news/19297990">
+						<span class="shortname" alt="/F01/2026/11/15870305/23615f4412d13.png">새소식</span>
+						<span class="subject" data-role="list-title" title="한국형 위성항법시스템(KPS), 본격 제작·조립·시험 절차 돌입">한국형 위성항법시스템(KPS), 본격 제작·조립·시험 절차 돌입</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="joshua">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/news/19297988">
+						<span class="shortname" alt="">새소식</span>
+						<span class="subject" data-role="list-title" title="공정위, 소니 독과점 지위 남용 조사…중점조사단 첫 복합사건">공정위, 소니 독과점 지위 남용 조사…중점조사단 첫 복합사건</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="shiftyou">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/pds/19297933">
+						<span class="shortname" alt="">자료실</span>
+						<span class="subject" data-role="list-title" title="[무료/macOS] Master Commander 1.0.4 업데이트 되었습니다.">[무료/macOS] Master Commander 1.0.4 업데이트 되었습니다.</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/pds/19297933#comment-point">
+						<span class="rSymph05">4</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="joshua">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/news/19297645">
+						<span class="shortname" alt="">새소식</span>
+						<span class="subject" data-role="list-title" title="[루머] 애플 '아이폰 에어2' 새로운 목업 유출…후면 듀얼 카메라 품는다">[루머] 애플 '아이폰 에어2' 새로운 목업 유출…후면 듀얼 카메라 품는다</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/news/19297645#comment-point">
+						<span class="rSymph05">18</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="joshua">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/news/19297643">
+						<span class="shortname" alt="">새소식</span>
+						<span class="subject" data-role="list-title" title="[루머]삼성전자, 내년 '갤럭시 워치' 신제품 없다">[루머]삼성전자, 내년 '갤럭시 워치' 신제품 없다</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/news/19297643#comment-point">
+						<span class="rSymph05">7</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="section_list allreview">
+		<h2 class="section_title">
+			<a class="allreview_title" href="/service/group/allreview" title="강좌 및 사용기 바로가기">강좌/사용기 <i class="fa fa-angle-right"></i></a>
+		</h2>
+		<div class="section_list_area">
+			<div class="list_item" data-role="main-list" data-author-id="flowermj">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19298653">
+						<span class="shortname" alt="">강좌</span>
+						<span class="subject" data-role="list-title" title="크레마 사운드 숨겨진 ADB 활성화 및 터치 불량 기기 재활용 팁">크레마 사운드 숨겨진 ADB 활성화 및 터치 불량 기기 재활용 팁</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/lecture/19298653#comment-point">
+							<span class="rSymph05">1</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ibluer">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19298625">
+						<span class="shortname" alt="/F01/2026/11/15871168/29384112bd321.png">강좌</span>
+						<span class="subject" data-role="list-title" title="평범한 사람의 경제공부노트 - 우리는 왜 알면서도 태양마차에서 내리지 못할까?">평범한 사람의 경제공부노트 - 우리는 왜 알면서도 태양마차에서 내리지 못할까?</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="hjleesm">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/use/19297917">
+						<span class="shortname" alt="/F01/2026/11/15870199/1d8fd3fe6baae.jpg">사용기</span>
+						<span class="subject" data-role="list-title" title="가족 LLM WIKI 대시보드 한 달 정도 써본 후기입니다.">가족 LLM WIKI 대시보드 한 달 정도 써본 후기입니다.</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/use/19297917#comment-point">
+							<span class="rSymph05">36</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="goyo">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19297750">
+						<span class="shortname" alt="">강좌</span>
+						<span class="subject" data-role="list-title" title="(깨알팁) 폐쇄망 윈도PC 에서 시작 버튼 검색 지연 방지 (웹 검색 비활성화)">(깨알팁) 폐쇄망 윈도PC 에서 시작 버튼 검색 지연 방지 (웹 검색 비활성화)</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/lecture/19297750#comment-point">
+							<span class="rSymph05">3</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="rauff">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19297699">
+						<span class="shortname" alt="/F01/2026/11/15869855/1c1fa5c524037.jpg">강좌</span>
+						<span class="subject" data-role="list-title" title="시계이야기.(잠자는 시계를 점검합시다.)">시계이야기.(잠자는 시계를 점검합시다.)</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/lecture/19297699#comment-point">
+							<span class="rSymph05">2</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ibluer">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19297528">
+						<span class="shortname" alt="/F01/2026/11/15869709/1a1b1c851d6ab.png">강좌</span>
+						<span class="subject" data-role="list-title" title="슬기로운 창업생활 - 예쁜 꼬마 선충이 AI를 가르칠 줄 누가 알았을까">슬기로운 창업생활 - 예쁜 꼬마 선충이 AI를 가르칠 줄 누가 알았을까</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/lecture/19297528#comment-point">
+							<span class="rSymph05">2</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="vcxeen">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/use/19297498">
+						<span class="shortname" alt="/F01/2026/11/15869636/1ecd8a24a1159.jpg">사용기</span>
+						<span class="subject" data-role="list-title" title="ifi GR2 간단 사용기">ifi GR2 간단 사용기</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/use/19297498#comment-point">
+							<span class="rSymph05">6</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="nu11">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/use/19297194">
+						<span class="shortname" alt="/F01/2026/11/15869323/1cd599edf30d8.jpeg">사용기</span>
+						<span class="subject" data-role="list-title" title="세종 만년필 맑은순은 사용기">세종 만년필 맑은순은 사용기</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/use/19297194#comment-point">
+							<span class="rSymph05">12</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ibluer">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19296998">
+						<span class="shortname" alt="/F01/2026/11/15869031/151fa446a6535.png">강좌</span>
+						<span class="subject" data-role="list-title" title="슬기로운 마음생활 - 후회는 왜 달콤할까">슬기로운 마음생활 - 후회는 왜 달콤할까</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="xenoxeno">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/use/19296835">
+						<span class="shortname" alt="/F01/2026/11/15868807/1364c086a69c3.jpg">사용기</span>
+						<span class="subject" data-role="list-title" title="위치정보와 공공데이터를 활용한 앱을 만들어봤습니다.(feat. 뛸까말까)">위치정보와 공공데이터를 활용한 앱을 만들어봤습니다.(feat. 뛸까말까)</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/use/19296835#comment-point">
+							<span class="rSymph05">10</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="candc10">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/use/19296832">
+						<span class="shortname" alt="/F01/2026/11/15868792/136308dbf6daa.jpg">사용기</span>
+						<span class="subject" data-role="list-title" title="[먼지만 쌓여있는 스트림덱의 재발견 #2] 에이전트 현황부터 게임까지, 덱 화면을 하나">[먼지만 쌓여있는 스트림덱의 재발견 #2] 에이전트 현황부터 게임까지, 덱 화면을 하나</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/use/19296832#comment-point">
+							<span class="rSymph05">2</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="nuclei">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19296772">
+						<span class="shortname" alt="">강좌</span>
+						<span class="subject" data-role="list-title" title="오딧세이 3D모니터 AI 실시간 3D 변환성능 올리기 (feat. 코덱스)">오딧세이 3D모니터 AI 실시간 3D 변환성능 올리기 (feat. 코덱스)</span>
+					</a>
+						<a class="list_reply reply_symph" href="/service/board/lecture/19296772#comment-point">
+							<span class="rSymph05">8</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="memmaker">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19296714">
+						<span class="shortname" alt="/F01/2026/11/15868635/1602bc00bfd43.png">강좌</span>
+						<span class="subject" data-role="list-title" title="Unifi 환경에서 애플 티비 SK Btv 보기 (실시간 방송)">Unifi 환경에서 애플 티비 SK Btv 보기 (실시간 방송)</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/lecture/19296714#comment-point">
+							<span class="rSymph05">4</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ibluer">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19296520">
+						<span class="shortname" alt="/F01/2026/11/15868397/ec701cc226c4.png">강좌</span>
+						<span class="subject" data-role="list-title" title="슬기로운 마음생활 - 왜 어떤 일은 오래 해도 지치지 않을까요">슬기로운 마음생활 - 왜 어떤 일은 오래 해도 지치지 않을까요</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/lecture/19296520#comment-point">
+							<span class="rSymph05">4</span>
+						</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ibluer">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19296206">
+						<span class="shortname" alt="/F01/2026/11/15867838/b13b30bfd1cf.png">강좌</span>
+						<span class="subject" data-role="list-title" title="슬기로운 창업생활 - 0에서 1이 어렵다면, 0.1부터">슬기로운 창업생활 - 0에서 1이 어렵다면, 0.1부터</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="kongjak1">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/use/19295948">
+						<span class="shortname" alt="/F01/2026/11/15867563/e78c2ecefc49.jpg">사용기</span>
+						<span class="subject" data-role="list-title" title="옛날 그린 단색 모니터 추억에 젖어, 허접하지만 간단한 크롬 확장 하나 만들어 봤습니">옛날 그린 단색 모니터 추억에 젖어, 허접하지만 간단한 크롬 확장 하나 만들어 봤습니</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+						<a class="list_reply reply_symph" href="/service/board/use/19295948#comment-point">
+							<span class="rSymph05">16</span>
+						</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="main_center_widjrhfirj">
+	<div id='div-pc-main-center' class="ad_banner"></div>
+</div>
+
+<div class="section_contents top">
+	<div class="section_list allsell">
+		<h2 class="section_title">
+			<a class="allsell_title" href="/service/group/allsell" title="사고팔고 바로가기">사고팔고 <i class="fa fa-angle-right"></i></a>
+		</h2>
+		<div class="section_list_area">
+			<div class="list_item" data-role="main-list" data-author-id="sch0830">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298655">
+						<span class="shortname" alt="/F01/2026/11/15871239/24ae586438cf6.jpg">장터</span>
+						<span class="subject" data-role="list-title" title="Kanto SP6HD 화이트 판매합니다.">Kanto SP6HD 화이트 판매합니다.</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="iris_lyn">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298634">
+						<span class="shortname" alt="/F01/2026/11/15871186/245b03aedd2b7.jpeg">장터</span>
+						<span class="subject" data-role="list-title" title="iOS 17.0.3 아이폰 15프로맥스 물리듀얼심 1TB 탈옥가능 신품급">iOS 17.0.3 아이폰 15프로맥스 물리듀얼심 1TB 탈옥가능 신품급</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="iris_lyn">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298633">
+						<span class="shortname" alt="/F01/2026/11/15871183/294c70d2cbcd4.jpeg">장터</span>
+						<span class="subject" data-role="list-title" title="미개봉) 케이스티파이x마뗑킴 페이퍼 미러 아이폰15프로맥스">미개봉) 케이스티파이x마뗑킴 페이퍼 미러 아이폰15프로맥스</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="iris_lyn">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298632">
+						<span class="shortname" alt="/F01/2026/11/15871185/294ca76175fa1.jpeg">장터</span>
+						<span class="subject" data-role="list-title" title="UM2 접지 고속 멀티포트 충전기 PD200W GaN2 블랙">UM2 접지 고속 멀티포트 충전기 PD200W GaN2 블랙</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="iris_lyn">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298631">
+						<span class="shortname" alt="/F01/2026/11/15871173/2447792c10abb.jpeg">장터</span>
+						<span class="subject" data-role="list-title" title="Sharge AeroMag Qi2 10,000mAh 맥세이프 보조배터리 준신품급">Sharge AeroMag Qi2 10,000mAh 맥세이프 보조배터리 준신품급</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="iris_lyn">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298630">
+						<span class="shortname" alt="/F01/2026/11/15871172/2446f27f3b468.jpeg">장터</span>
+						<span class="subject" data-role="list-title" title="A급 아더에러 TRS 그립톡 맥세이프">A급 아더에러 TRS 그립톡 맥세이프</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="daleec">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298620">
+						<span class="shortname" alt="/F01/2026/11/15871161/24253910164cd.png">장터</span>
+						<span class="subject" data-role="list-title" title="반스 어센틱 헤어리 스웨이드 블랙 판매합니다.">반스 어센틱 헤어리 스웨이드 블랙 판매합니다.</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="daleec">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298618">
+						<span class="shortname" alt="/F01/2026/11/15871156/2927fb6527337.png">장터</span>
+						<span class="subject" data-role="list-title" title="(새상품) 온러닝 퍼포먼스 볼캡 펄 판매합니다.">(새상품) 온러닝 퍼포먼스 볼캡 펄 판매합니다.</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="p791216">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298616">
+						<span class="shortname" alt="/F01/2026/11/15871152/2420276bd4a7a.jpg">장터</span>
+						<span class="subject" data-role="list-title" title="(새제품) 크리스마스 장식용 스노우볼 팝니다.">(새제품) 크리스마스 장식용 스노우볼 팝니다.</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="helpsang">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/jirum/19298613">
+						<span class="shortname" alt="/F01/2026/11/15871151/242f4e96d13a4.jpg">알구게</span>
+						<span class="subject" data-role="list-title" title="[플레이스토어] 스타듀밸리 50% 할인 2,950원">[플레이스토어] 스타듀밸리 50% 할인 2,950원</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="cho00524">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298606">
+						<span class="shortname" alt="/F01/2026/11/15871136/2401013b0ed9c.jpeg">장터</span>
+						<span class="subject" data-role="list-title" title="10만) 애플 Mac Pro 타워형 본체 판매합니다.">10만) 애플 Mac Pro 타워형 본체 판매합니다.</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="eatikmik">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298589">
+						<span class="shortname" alt="/F01/2026/11/15871107/23f93189764ed.jpg">장터</span>
+						<span class="subject" data-role="list-title" title="에이서 크롬북 플러스 515 판매합니다">에이서 크롬북 플러스 515 판매합니다</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+					<a class="list_reply reply_symph" href="/service/board/sold/19298589#comment-point">
+						<span class="rSymph05">1</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ggoke12">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298577">
+						<span class="shortname" alt="/F01/2026/11/15871102/23c52b8260108.jpg">장터</span>
+						<span class="subject" data-role="list-title" title="갤럭시버즈4프로 핑크골드 판매">갤럭시버즈4프로 핑크골드 판매</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="garrett78">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298555">
+						<span class="shortname" alt="/F01/2026/11/15871068/2395e2e894ab1.jpg">장터</span>
+						<span class="subject" data-role="list-title" title="아이폰7 제트블랙 128GB 정상해지 공기기">아이폰7 제트블랙 128GB 정상해지 공기기</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="change2209">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/jirum/19298517">
+						<span class="shortname" alt="/F01/2026/11/15871015/236f9e9530106.jpeg">알구게</span>
+						<span class="subject" data-role="list-title" title="[네이버] 인케이스 외 할인">[네이버] 인케이스 외 할인</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+					<a class="list_reply reply_symph" href="/service/board/jirum/19298517#comment-point">
+						<span class="rSymph05">1</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ssubs">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298513">
+						<span class="shortname" alt="">장터</span>
+						<span class="subject" data-role="list-title" title="CGV, 롯데시네마, 메가박스 2D 일반관 / CGV 특별관, 스윗박스(커플석)당일 / CGV 씨네">CGV, 롯데시네마, 메가박스 2D 일반관 / CGV 특별관, 스윗박스(커플석)당일 / CGV 씨네</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>  
+	
+	<div class="section_list hongbo">
+		<h2 class="section_title">
+			<a class="hongbo_title" href="/service/board/hongbo" title="직접홍보 바로가기">직접홍보 <i class="fa fa-angle-right"></i></a>
+		</h2>
+		<div id="hongboInfoList" class="section_list_area"></div>
+	</div>
+</div>
+
+<div class="section_list gallery">
+	<h2 class="section_title">
+		<a class="gallery_title" href="/service/board/image" title="갤러리 바로가기">추천 갤러리 <i class="fa fa-angle-right"></i></a>
+	</h2>
+	<div class="section_gallery">
+			<a class="gallery_list" data-role="main-list" data-author-id="wood_man" href="/service/board/image/19298594">
+					<div class="gallery_img" style="background-image: url(https://edgio.clien.net/F01/2026/11/15871113/28f6074b5623f.jpg?scale=width:480)"></div>
+				<div class="gallery_subject">
+					<div class="gallery_title">
+						<span class="list_title" data-role="list-title" title="90년대 대학교 풍경 (서울대 연고대 이화여대)">90년대 대학교 풍경 (서울대 연고대 이화여대)</span>
+						<span class="list_preview"> 1996년 5월 · 서울대학교 관악캠퍼스 정문 붉은 꽃이 핀 교통섬 너머로 ‘샤’ 모양 정문이 보입니다. 버스와 승용차가 그 아래를</span>
+						<span class="list_reply">3</span>
+						<span class="list_time">11-25</span>
+					</div>
+				</div>
+			</a>
+			<a class="gallery_list" data-role="main-list" data-author-id="gencore" href="/service/board/image/19298480">
+					<div class="gallery_img" style="background-image: url(https://edgio.clien.net/F01/2026/11/15871001/2323a9e5380e2.jpg?scale=width:480)"></div>
+				<div class="gallery_subject">
+					<div class="gallery_title">
+						<span class="list_title" data-role="list-title" title="잔치국수">잔치국수</span>
+						<span class="list_preview">날이 추워지니 뜨끈한 국수가 생각납니다. 멸치국물이 일품입니다.</span>
+						<span class="list_time">11-25</span>
+					</div>
+				</div>
+			</a>
+			<a class="gallery_list" data-role="main-list" data-author-id="gencore" href="/service/board/image/19298475">
+					<div class="gallery_img" style="background-image: url(https://edgio.clien.net/F01/2026/11/15870996/230c30333ad1e.jpg?scale=width:480)"></div>
+				<div class="gallery_subject">
+					<div class="gallery_title">
+						<span class="list_title" data-role="list-title" title="김치 맛집">김치 맛집</span>
+						<span class="list_preview">방송에 나가고 나서 가게 오픈전부터 줄이 상당이 길게 서있는 김치 전문가게 입니다. 미쳐 살생각은 못하고 구경만 했는데 맛있</span>
+						<span class="list_time">11-25</span>
+					</div>
+				</div>
+			</a>
+			<a class="gallery_list" data-role="main-list" data-author-id="gencore" href="/service/board/image/19298472">
+					<div class="gallery_img" style="background-image: url(https://edgio.clien.net/F01/2026/11/15870995/231a412706148.jpg?scale=width:480)"></div>
+				<div class="gallery_subject">
+					<div class="gallery_title">
+						<span class="list_title" data-role="list-title" title="어른이 장난감">어른이 장난감</span>
+						<span class="list_preview">과연 만들수 있을까? 의문이 들었지만 가지고 있는 프라탑의 일부분 입니다. 막상 시간이 생기면 안하게 되더군요. 일처럼 느껴집</span>
+						<span class="list_reply">1</span>
+						<span class="list_time">11-25</span>
+					</div>
+				</div>
+			</a>
+			<a class="gallery_list" data-role="main-list" data-author-id="gencore" href="/service/board/image/19298215">
+					<div class="gallery_img" style="background-image: url(https://edgio.clien.net/F01/2026/11/15870668/2179d47b355a0.jpg?scale=width:480)"></div>
+				<div class="gallery_subject">
+					<div class="gallery_title">
+						<span class="list_title" data-role="list-title" title="키보드 고민">키보드 고민</span>
+						<span class="list_preview">어떤것으로 사용할까 고민중... HHK는 예외입니다. 집에서 사용할 수 있는 사람이 저밖에 없습니다. 일단 긴것으로 가보려고 합니</span>
+						<span class="list_reply">7</span>
+						<span class="list_time">11-25</span>
+					</div>
+				</div>
+			</a>
+			<a class="gallery_list" data-role="main-list" data-author-id="wnsah" href="/service/board/image/19297717">
+					<div class="gallery_img" style="background-image: url(https://edgio.clien.net/F01/2026/11/15869910/2161be9fa49f3.jpg?scale=width:480)"></div>
+				<div class="gallery_subject">
+					<div class="gallery_title">
+						<span class="list_title" data-role="list-title" title="담양">담양</span>
+						<span class="list_preview">메타세콰이어길 만추</span>
+						<span class="list_time">11-24</span>
+					</div>
+				</div>
+			</a>
+	</div>
+</div>
+
+<div class="section_contents">
+	<div class="section_list boardall">
+		<h2 class="section_title">
+			<a class="boardall_title" href="/service/group/board_all" title="커뮤니티 전체게시판 바로가기">최근 커뮤니티 이야기<i class="fa fa-angle-right"></i></a>
+		</h2>
+		<div class="section_list_area">
+            <div class="list_item" data-role="main-list" data-author-id="parksysy888">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298659">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="AI 대표 3사 요금제를 모두 구독할수밖에 없는 이유">AI 대표 3사 요금제를 모두 구독할수밖에 없는 이유</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/park/19298659#comment-point">
+						<span class="rSymph05">4</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="declare">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298658">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="C++29에 추가될 break, continue 문법...ㄷㄷ">C++29에 추가될 break, continue 문법...ㄷㄷ</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/park/19298658#comment-point">
+						<span class="rSymph05">3</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="euhhsyh">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298656">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="집값 정부탓하시는데~ 주식도 그 기준으로 봐야죠 ㅎㅎ">집값 정부탓하시는데~ 주식도 그 기준으로 봐야죠 ㅎㅎ</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/park/19298656#comment-point">
+						<span class="rSymph05">14</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="sch0830">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/sold/19298655">
+						<span class="shortname" alt="/F01/2026/11/15871239/24ae586438cf6.jpg">장터</span>
+						<span class="subject" data-role="list-title" title="Kanto SP6HD 화이트 판매합니다.">Kanto SP6HD 화이트 판매합니다.</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="qrime">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298654">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="[속보] 미국, 한국 등 14곳에 ‘과잉생산 관세’ 예고…“합의국은 15% 상한”">[속보] 미국, 한국 등 14곳에 ‘과잉생산 관세’ 예고…“합의국은 15% 상한”</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="flowermj">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/lecture/19298653">
+						<span class="shortname" alt="">강좌</span>
+						<span class="subject" data-role="list-title" title="크레마 사운드 숨겨진 ADB 활성화 및 터치 불량 기기 재활용 팁">크레마 사운드 숨겨진 ADB 활성화 및 터치 불량 기기 재활용 팁</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/lecture/19298653#comment-point">
+						<span class="rSymph05">1</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="alswnekddnjs">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298652">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="곧 눈이 오고 도로가 얼겠네요">곧 눈이 오고 도로가 얼겠네요</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="jeonguk">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/hongbo/19298651">
+						<span class="shortname" alt="">직홍게</span>
+						<span class="subject" data-role="list-title" title="[클리앙회원 비밀혜택] [현금 47만원OO만원 추가혜택] [전국 당일설치 전액현금]">[클리앙회원 비밀혜택] [현금 47만원OO만원 추가혜택] [전국 당일설치 전액현금]</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="lsh86319">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298650">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="한준호의 역할이 정말 기대됩니다">한준호의 역할이 정말 기대됩니다</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/park/19298650#comment-point">
+						<span class="rSymph05">8</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="opqrabc">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298649">
+						<span class="shortname" alt="/F01/2026/11/15871231/246c646af7905.png">모공</span>
+						<span class="subject" data-role="list-title" title="이재명 취임당시보다는 코스피 올랐다?의 반박">이재명 취임당시보다는 코스피 올랐다?의 반박</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+					<a class="list_reply reply_symph" href="/service/board/park/19298649#comment-point">
+						<span class="rSymph05">7</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="double2">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298648">
+						<span class="shortname" alt="/F01/2026/11/15871229/2463e1ba38c78.jpg">모공</span>
+						<span class="subject" data-role="list-title" title="미국 PCE PPE CPI 수치를 보면요">미국 PCE PPE CPI 수치를 보면요</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+					<a class="list_reply reply_symph" href="/service/board/park/19298648#comment-point">
+						<span class="rSymph05">4</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="ddalos">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298647">
+						<span class="shortname" alt="/F01/2026/11/15871233/2478040d5cd57.jpg">모공</span>
+						<span class="subject" data-role="list-title" title="게시판 보면서 느끼는점..">게시판 보면서 느끼는점..</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+					<a class="list_reply reply_symph" href="/service/board/park/19298647#comment-point">
+						<span class="rSymph05">2</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="bluesolvit">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298646">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="미주식 전반적인 하락에 비트코인도 8천만 깨졌네요">미주식 전반적인 하락에 비트코인도 8천만 깨졌네요</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/park/19298646#comment-point">
+						<span class="rSymph05">1</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="xenex">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298645">
+						<span class="shortname" alt="">모공</span>
+						<span class="subject" data-role="list-title" title="[주식] 반도체주가 잡주가 되었네요 -_-;;;;;">[주식] 반도체주가 잡주가 되었네요 -_-;;;;;</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/park/19298645#comment-point">
+						<span class="rSymph05">3</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="nuclei">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/park/19298644">
+						<span class="shortname" alt="/F01/2026/11/15871227/24853aba73519.jpg">모공</span>
+						<span class="subject" data-role="list-title" title="5년전에 사재기한 하드 출토 결과">5년전에 사재기한 하드 출토 결과</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+					<a class="list_reply reply_symph" href="/service/board/park/19298644#comment-point">
+						<span class="rSymph05">11</span>
+					</a>
+				</div>
+			</div>
+            <div class="list_item" data-role="main-list" data-author-id="max119">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/hongbo/19298643">
+						<span class="shortname" alt="">직홍게</span>
+						<span class="subject" data-role="list-title" title="야간상담中【클리앙회원 추가지원금】＂설치비면제 추가현금＂＃당일지급＃전액현금">야간상담中【클리앙회원 추가지원금】＂설치비면제 추가현금＂＃당일지급＃전액현금</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="section_list cmall">
+		<h2 class="section_title">
+			<a class="cmall_title" href="/service/group/cm_all" title="소모임 전체게시판 바로가기">최근 소모임 이야기 <i class="fa fa-angle-right"></i></a>
+		</h2>
+		<div class="section_list_area">
+			<div class="list_item" data-role="main-list" data-author-id="quiks25">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_stock/19298638">
+						<span class="shortname" alt="">주식한당</span>
+						<span class="subject" data-role="list-title">미국 신문 비지니스 1면 헤드라인 모음 11/25 수 (영문)</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="quiks25">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_stock/19298637">
+						<span class="shortname" alt="">주식한당</span>
+						<span class="subject" data-role="list-title">미국 신문 1면 헤드라인 모음 11/25 수 (영문)</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="bliss8407">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_car/19298629">
+						<span class="shortname" alt="/F01/2026/11/15871175/294bfadd0d7de.png">굴당</span>
+						<span class="subject" data-role="list-title">현대차, 불량인데 “그냥 사용”…중국산 국내 4만대</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+					<a class="list_reply reply_symph" href="/service/board/cm_car/19298629#comment-point">
+						<span class="rSymph05">4</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="sangre72">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_app/19298602">
+						<span class="shortname" alt="">개발한당</span>
+						<span class="subject" data-role="list-title">[앱소개] 브라우저로 PC 게임 원격 플레이하는 프로그램 만들고 있습니다 (1년 코드 1</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ghostv">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_stock/19298596">
+						<span class="shortname" alt="">주식한당</span>
+						<span class="subject" data-role="list-title">미국, 한국.일본.대만에 최혜국(MFN) 관세 제외 기준 15% 관세 부과 제안</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="midok2">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_car/19298582">
+						<span class="shortname" alt="">굴당</span>
+						<span class="subject" data-role="list-title">렉서스 신형 시승기가 최근에 많이 올라오던데...</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/cm_car/19298582#comment-point">
+						<span class="rSymph05">16</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="nicechann">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_mac/19298574">
+						<span class="shortname" alt="">맥당</span>
+						<span class="subject" data-role="list-title">[iOS][Mac] 빠른 메모+위젯/할일/TODO - PinDeck Pro 1.5.1 리딤코드 (30개)</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/cm_mac/19298574#comment-point">
+						<span class="rSymph05">9</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="respole">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_rowing/19298566">
+						<span class="shortname" alt="/F01/2026/11/15871086/23cd44d156635.jpg">로잉당</span>
+						<span class="subject" data-role="list-title">Damper 6 / 10km : Zone 3 : Under ♥140</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="akama">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_girl/19298564">
+						<span class="shortname" alt="/F01/2026/11/15871087/23aaac5472636.jpg">소시당</span>
+						<span class="subject" data-role="list-title">TAEYEON POP-UP [NU : SPECIAL] VISITOR GUIDE NOTICE</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="saintjay">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_car/19298560">
+						<span class="shortname" alt="">굴당</span>
+						<span class="subject" data-role="list-title">현대차 라이트 구독 이슈</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/cm_car/19298560#comment-point">
+						<span class="rSymph05">4</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="kbdyj">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_car/19298557">
+						<span class="shortname" alt="">굴당</span>
+						<span class="subject" data-role="list-title">중고차 하이패스 명의 이전 실패 ㅜ</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/cm_car/19298557#comment-point">
+						<span class="rSymph05">1</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="stockerman7">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_ai/19298547">
+						<span class="shortname" alt="/F01/2026/11/15871055/23966a68d1d02.png">AI당</span>
+						<span class="subject" data-role="list-title">[바이브코딩] 그래서 만들었습니다. Disney+ 전용 언어 학습 플레이어.</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="ubik">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_app/19298539">
+						<span class="shortname" alt="/F01/2026/11/15871048/239a834ab067f.gif">개발한당</span>
+						<span class="subject" data-role="list-title">[구인] 알람 5개 켜 놓고도 못 일어나는 분을 찾습니다</span>
+					</a>
+						<span class="icon_pic fa fa-picture-o"></span>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="sangre72">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_app/19298525">
+						<span class="shortname" alt="">개발한당</span>
+						<span class="subject" data-role="list-title">[앱소개]</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="prayforus">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_car/19298499">
+						<span class="shortname" alt="">굴당</span>
+						<span class="subject" data-role="list-title">뒷바퀴만 올웨더 타이어 질문</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/cm_car/19298499#comment-point">
+						<span class="rSymph05">9</span>
+					</a>
+				</div>
+			</div>
+			<div class="list_item" data-role="main-list" data-author-id="bancoco">
+				<div class="list_title">
+					<a class="list_subject" href="/service/board/cm_iphonien/19298494">
+						<span class="shortname" alt="">아이폰</span>
+						<span class="subject" data-role="list-title">에어팟 맥스 세척후 노켄</span>
+					</a>
+					<a class="list_reply reply_symph" href="/service/board/cm_iphonien/19298494#comment-point">
+						<span class="rSymph05">2</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+            </div>
+        </div>
+        <div class="aside">
+	 <div class="account_section login">
+	<form id="loginForm">
+		<div class="side_account login">
+            <div class="side_account_area">
+                <button type="button" onclick="location.href='/service/auth/login'" name="로그인하기" class="button_submit"><i class="icon-clien"></i><span>로그인</span></button>
+            </div>
+            <div class="account_submit">
+                <div class="account_signup">
+                    <a href="/service/auth/findAccountCert" class="button_signup">아이디&nbsp; · &nbsp;비밀번호 찾기</a>
+					<em></em>
+					<a href="/service/auth/join" class="button_signup">회원가입</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+
+
+ 
+
+    
+    <div class="side_kljfssajfl">
+        <div class="side_posjduenfj">
+
+<div id='div-pc-side-1' class="pc_side ad_banner" data-spy="affix" data-offset-top="202"></div>
+
+        </div>
+        <div class="side_line"></div>
+        <div class="side_posjduenfj">
+
+<div id='div-pc-side-2' class="pc_side ad_banner" data-spy="affix" data-offset-top="202"></div>
+
+        </div>
+	</div>
+</div> 
+	</div>
+</div>
+
+<div class="footer_wrap" id="down">
+		<div class="footer_ad">
+		<div class="main_under">
+<div id='div-pc-main-under' class="ad_banner"></div>
+		</div>
+	</div>
+	<div class="area_terms">
+		<a class="at_item" href="/service/board/rule">이용규칙</a>
+		<a class="at_item" href="/service/board/annonce">운영알림판</a>
+        <a class="at_item" href="/service/board/symposium">운영소통</a>
+		<a class="at_item" href="/service/board/claim">재검토요청</a>
+		<a class="at_item" href="/service/board/faq">도움말</a>
+		<a class="at_item noline" href="/service/board/bug">버그신고</a>
+	</div>
+	<div class="area_legal">
+		<a href="/service/cs/privacy" target="_blank"><strong>개인정보처리방침</strong></a>
+		<a href="/service/cs/conditions" target="_blank">이용약관</a>
+		<a href="/service/cs/policy" target="_blank">책임의 한계와 법적고지</a>
+		<a href="/service/cs/teenager" target="_blank">청소년 보호정책</a>
+	</div>
+	<div class="area_company">© <span id="nowYear"></span>&nbsp;&nbsp;•&nbsp;&nbsp;CLIEN.NET</div>
+
+</div>
+
+<script>
+(function(){
+	var retried = {};
+	var logged = {};
+	var reportDedupTtl = 5 * 60 * 1000;
+	var baseUrl = "/service";
+	var jsPathPrefix = baseUrl + "/js/";
+	var beaconUrl = baseUrl + "/api/client-error/script";
+	var botUaPattern = /(bot|crawler|spider|bingbot|googlebot|yeti|baiduspider|bytespider|duckduckbot|slurp)/i;
+
+	if(botUaPattern.test(navigator.userAgent || '')) {
+		return;
+	}
+
+	function isRetryTarget(src) {
+		var a = document.createElement('a');
+		a.href = src;
+		var origin = location.protocol + '//' + location.host;
+		return a.protocol + '//' + a.host === origin && a.pathname.indexOf(jsPathPrefix) === 0;
+	}
+
+	function isPrerendering() {
+		return document.prerendering === true;
+	}
+
+	function isRecentlyReported(key) {
+		try {
+			var now = Date.now();
+			var storageKey = 'script_load_beacon|' + key;
+			var last = parseInt(sessionStorage.getItem(storageKey) || '0', 10);
+			if(last && now - last < reportDedupTtl) return true;
+			sessionStorage.setItem(storageKey, String(now));
+		} catch(_){}
+		return false;
+	}
+
+	function sendScriptLoadBeacon(status, url, retryUrl) {
+		var key = status + '|' + url;
+		if(logged[key] || isRecentlyReported(key)) return;
+		logged[key] = true;
+		try {
+			if(!navigator.sendBeacon) return;
+			navigator.sendBeacon(beaconUrl,
+				new Blob([JSON.stringify({status: status, url: url, retryUrl: retryUrl || '', ua: navigator.userAgent, ref: location.href, at: Date.now()})],
+					{type: 'application/json'}));
+		} catch(_){}
+	}
+
+	function handleScriptLoadError(src) {
+		if(src.indexOf('_retry=') !== -1) return;
+		if(retried[src]) return;
+		retried[src] = true;
+		sendScriptLoadBeacon('retry_scheduled', src);
+		setTimeout(function(){
+			var r = document.createElement('script');
+			r.src = src + (src.indexOf('?')<0?'?':'&') + '_retry=' + Date.now();
+			r.async = false;
+			r.onload = function(){
+				sendScriptLoadBeacon('retry_success', src, r.src);
+			};
+			r.onerror = function(){
+				sendScriptLoadBeacon('retry_failed', src, r.src);
+			};
+			document.head.appendChild(r);
+		}, 300);
+	}
+
+	window.addEventListener('error', function(e){
+		var t = e.target;
+		if(!t || t.tagName !== 'SCRIPT' || !t.src) return;
+		var src = t.src;
+		if(!isRetryTarget(src)) return;
+		if(isPrerendering()) {
+			document.addEventListener('prerenderingchange', function(){
+				handleScriptLoadError(src);
+			}, {once: true});
+			return;
+		}
+		handleScriptLoadError(src);
+	}, true);
+})();
+</script>
+
+<script src="/service/js/bundle/lib.js?261016v1"></script> 
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script async defer src="//www.instagram.com/embed.js"></script>
+
+<script>
+	let IS_DEBUG = false;
+	const BASE_URL = "/service";
+	const API_HOST = "/service/api";
+	const CDN_URL = "https://edgio.clien.net";
+
+	const COOKIE_DOMAIN = "clien.net";
+
+	let IS_LOGIN = false;
+	let sessionUserId = ''; 
+
+
+	let IsMobile = false;
+
+
+	let PAGE_SETTING_THEME = "";
+	let PAGE_SETTING_FONT_SIZE = "";
+	let PAGE_SETTING_KIND_OF_FONT = "";
+	let PAGE_SETTING_SHORT_CUT = "";
+	let PAGE_SETTING_LIST_SIZE = "";
+	
+		PAGE_SETTING_THEME = "white";
+		PAGE_SETTING_FONT_SIZE = "normal";
+		PAGE_SETTING_KIND_OF_FONT = "basic";
+		PAGE_SETTING_SHORT_CUT = "on";
+		PAGE_SETTING_LIST_SIZE = "normal";
+
+	const HONGBO_IMG_PARAMETER = "?scale=width:480";
+	const COMMENT_IMG_PARAMETER = "?scale=width:480";
+	const IMG_PARAMETER = "?scale=width:740";
+
+	let keyData = {};
+
+				keyData["c"] = "/service/group/community";
+				keyData["f"] = "/service/board/park";
+				keyData["i"] = "/service/board/image";
+				keyData["q"] = "/service/board/kin";
+				keyData["d"] = "/service/group/allinfo";
+				keyData["n"] = "/service/board/news";
+				keyData["t"] = "/service/board/useful";
+				keyData["p"] = "/service/board/pds";
+				keyData["e"] = "/service/group/allreview";
+				keyData["l"] = "/service/board/lecture";
+				keyData["u"] = "/service/board/use";
+				keyData["w"] = "/service/group/allsell";
+				keyData["j"] = "/service/board/jirum";
+				keyData["s"] = "/service/board/sold";
+				keyData["b"] = "/service/board/hongbo";
+				keyData["h"] = "/service/";
+
+	$.ajaxSetup({
+		beforeSend: function(xhr, settings) {
+			if (settings.type === 'POST' || settings.type === 'PUT' || settings.type === 'DELETE') {
+				if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+					xhr.setRequestHeader("X-CSRF-TOKEN", "f1890263-5fd3-4ecf-993f-98dfaa2193a9");
+				}
+			}
+		}
+	});
+</script>
+
+<script src="/service/js/bundle/common-pc.js?261124v1.261103v1"></script> 
+
+<div class="modal_security" id="security_modal">
+    <div class="modal_security_content">
+        <div class="modal_title">
+            <strong><i class="fa fa-shield"></i> 보안 강화를 위한 이메일 인증</strong>
+            <button type="button" class="modal_close" onclick="securityModalClose();" aria-label="close">
+                <div class="modal_button_close"></div>
+            </button>
+        </div>
+
+        <div class="modal_help_msg">
+            <span class="help_subject"><strong>안전한 서비스 이용을 위해 이메일 인증을 완료해 주세요.</strong></span>
+
+            <span class="help_contents">
+         현재 회원님은 <strong>이메일 인증이 완료되지 않은 상태</strong>입니다.<br>
+         최근 급증하는 해킹 및 도용 시도로부터 계정을 보호하기 위해 인증 절차가 강화되었습니다.<br><br>
+
+         <ul class="password_help">
+            <li>이메일 미인증 시 <strong>글쓰기, 댓글 작성 등 게시판 활동이 제한됩니다.</strong></li>
+            <li>이후 <strong>새로운 기기에서 로그인할 때마다 반드시 이메일 인증을 거쳐야 합니다.</strong></li>
+            <li>2단계 인증 사용 회원도 최초 1회는 반드시 인증하여야 합니다.</strong></li>
+            <li><a href="/service/mypage/myInfo">개인정보</a>에서도 이메일 인증을 할 수 있습니다.</li>
+         </ul>
+      </span>
+
+            <a href="/service/auth/email/verify" class="button_2fa" style="margin-top: 15px;">
+                <strong class="button_2fa_title" style="color: #516B82;">지금 이메일 인증하기</strong>
+                <div class="button_2fa_msg">
+                    등록된 이메일 주소를 확인하고 인증번호를 입력하여<br>
+                    인증을 완료해 주세요.
+                </div>
+                <i class="fa fa-envelope-o"></i>
+            </a>
+        </div>
+
+        <div class="modal_footer">
+            <button type="button" class="modal_button_confirm" onclick="securityModalClose();">나중에 하기</button>
+        </div>
+    </div>
+    <div class="modal_bg" onclick="securityModalClose();"></div>
+</div>
+
+<script>
+
+    $(document).ready(function() {
+        if (sessionStorage.getItem('showEmailVerifyModal') === 'true') {
+            sessionStorage.removeItem('showEmailVerifyModal');
+            $("#security_modal").addClass('open');
+        }
+    });
+
+    function securityModalClose() {
+        // 닫기만 수행 (다시 보지 않기 설정 저장 안 함 -> 다음 로그인 시 다시 뜸)
+        $('#security_modal').removeClass('open');
+    }
+</script>
+
+ 
+
+<script src="/service/js/bundle/main.js?261124v1"></script> 
+
+</body>
+</html>

@@ -1,0 +1,1309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>V2EX</title>
+<subtitle>way to explore</subtitle>
+
+
+<link rel="alternate" type="text/html" href="https://www.v2ex.com/" />
+<link rel="self" type="application/atom+xml" href="https://www.v2ex.com/index.xml" />
+<id>https://www.v2ex.com/</id>
+
+<updated>2026-11-25T19:33:23Z</updated>
+
+<rights>Copyright © 2010-2018, V2EX</rights>
+<entry>
+	<title>[问与答] 佬们，我现在有一个这样的需求，怎么实现会比较好</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259855#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259855</id>
+	<published>2026-11-25T19:34:23Z</published>
+	<updated>2026-11-25T19:33:23Z</updated>
+	<author>
+		<name>gegeligegeligo</name>
+		<uri>https://www.v2ex.com/member/gegeligegeligo</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>就是，有时候电脑需要执行一些需要长时间运行的任务，我希望在结束的时候，ai 能够通过 webhook 给我发一条消息。我希望做成一个比较通用的，而不是针对单一任务的工具，所以感觉是用 ai 比较合适。</p>
+<p>实现就是可能定期截屏，比如一分钟一次，然后 ai 分析任务是否已经完成。选哪个模型比较划算呢？我本地部署模型是否能够胜任这样的工作？</p>
+<p>为避免造轮子，这个需求是否有人已经实现了？</p>
+<p>谢谢各位。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[职场话题] 找了 4 个月工作，沟通了 800 多个岗位，终于求职结束</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259852#reply2" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259852</id>
+	<published>2026-11-25T17:07:57Z</published>
+	<updated>2026-11-25T17:41:42Z</updated>
+	<author>
+		<name>victorysl</name>
+		<uri>https://www.v2ex.com/member/victorysl</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>从 6 月底裁员，到 10 月底入职，历时 4 个月的艰难求职之路终于结束了，本来打算入职之前就记录一下这段时间的体验，但是一直没有动笔写完。后面入职之后又因为忙起来了时间不是很充足，一直拖了差不多一个月才写完。字多纯手敲，不通顺的地方兄弟们见谅。</p>
+<h1>整体结论或者感想</h1>
+<ul>
+<li>找工作真的太难了，前面的有差不多两个月的时间发出去四五百个消息都约不到面试。最终入职了一家所谓的「互联网大厂」，虽然不知道能不能平稳度过试用期，不过先干着吧，应该算是目前能拿到的比较好的结果了。下面是基于我个人情况在这一段时间求职过程中的教训或者经验吧，发出来留念一下。</li>
+</ul>
+<blockquote>
+<p><strong>个人情况</strong><br/>
+学历情况：双非本科<br/>
+履历情况：工作 4 年，两份 2 年的工作经历，均来自全球范围内的行业头部公司，但因为工种原因薪资并不突出<br/>
+工种标签：电商运营 / 互联网广告 / 消费电子 / 家电行业<br/>
+城市：北京</p>
+</blockquote>
+<h1>求职前的准备</h1>
+<h2>简历需要花时间</h2>
+<p>简历真的需要好好打磨。最开始是没有项目写，因为在上一份工作里一直按部就班地做事，也没有做出有成绩的项目（甚至我认为可能都算不上项目），后来我逐渐转变了一下思路，对一些结果做了一些包装。这里的思路有（仅针对我所在的电商行业）：</p>
+<ul>
+<li>项目梳理的结构：项目背景、项目结果、我在项目中做的事情。至少要结构化表达出这三个点的内容。</li>
+<li>从哪些地方扒项目出来？我觉得但凡能体现自己做项目思路的事，别管拿大结果还是小结果，只要不是翻车了的，都可以拿出来写。甚至都不一定是自己做的，重点是通过梳理项目，能完整地把项目细节表达出来。只要这一点讲得通，项目就成立。拿我自己来说，我在任期间上市了一个小类目的新品，我自己微操打成了行业的 TOP1，其实这个类目特别小，做到行业第一很简单，写项目的时候我回忆一下大概做了哪些关键的事，分 3-5 个点流畅地表达出来，指标忘了也没事，逻辑自洽即可，自己整理得差不多了，就给 AI 看看有没有遗漏的内容，或者思路上有没有漏洞，让 AI 提提建议，再参考 AI 的建议回忆一下做的事情补进来。我认为这样的项目就已经很完整了。</li>
+<li>埋点激发面试官兴趣：这个是我 N 年前从一个同事那里学来的，就是写职责或者项目细节的时候，不一定非得全表达出来，在一些关键内容上可以留一些悬念，比如 XX 指标通过 XX 动作同比提升了 100%，那这里的动作可以不用写出来，给面试官一些想象空间，让他想在面试的过程中问出来，一方面可以通过埋点掌握面试的主动权（面试时间就这么长，可以通过这种方式压缩面试官自由发挥的空间），另一方面也可以让自己的回答更从容，因为埋点的过程就是自己准备回答的过程。</li>
+</ul>
+<p>总结下来，写项目不是非得自己做，也不是非得拿大结果，核心是让面试官通过项目判断你做事的逻辑思路是不是符合他们的期望。</p>
+<h2>没有必要针对岗位定制简历</h2>
+<p>其实我觉得好像也没有必要针对岗位修改简历。我最开始听到的说法是，简历内容要精准切中岗位需求，我这次也尝试这么做，但我发现投入产出比太低了。我花一天时间改了一份简历，投了一个我非常想去的岗位，从我实际的数据来看，在 Boss 上交换简历的概率是 17%，约面试的概率同样只有 17%，也就是说我花大量时间修改简历最后能拿到面试的概率 = 17% * 17% = 2.9%，当然，针对性修改简历之后概率可能会高一点，但我个人还是倾向于认为太不划算。所以倒不如好好打磨一份简历去海投。</p>
+<h1>求职过程中</h1>
+<h2>平台会员根本没用（针对猎聘）</h2>
+<p>猎聘的会员屁用没有。前司裁员的时候，给每个被裁员工一份猎聘季度会员，有诸如简历置顶、优先沟通、简历优化等权益，闲鱼上可以卖个三四百块钱。我实际用下来，真的一点用都没有。首先简历人工优化这块，猎聘的人会收集你的简历项目以及求职方向，然后再进行一轮电话沟通，最后大概三到五个工作日反馈一份简历。这个流程有这几个问题：</p>
+<ul>
+<li>对面的人根本就没办法在一次电话沟通中了解你长达几年的工作经历，同样也不了解你的领域，所以这个所谓优化简历的人（甚至可能都不是人来优化的）连基本的背景信息都不了解，就不可能产出好的简历内容。</li>
+<li>如果你提供了几个求职方向，他不会给你几个方向的简历，而是会把几个方向的项目以及根据不同方向组织的针对性话术杂糅成一份简历，最终的结果就是四不像。</li>
+<li>黑话连篇，通篇都是「构建多维增长支撑体系」、「流程机制重塑」、「精简多源异构数据采集与处理流程」这种不明所以的屁话，徒增阅读障碍。</li>
+<li>模板丑陋，整份简历套用的模板字体字号间距配色毫无设计感，一眼看上去就没有阅读欲望。</li>
+</ul>
+<h2>真的有金九银十</h2>
+<p>金九银十这个说法似乎有点道理，我从 7 月 1 号开始投递简历，一直到 9 月初的这两个月时间里，我一共只收获了 2 场面试，而进入 9 月之后，我的面试骤增，高峰期一周面了 11 场，10 月数量虽然整体少于 9 月，但因为经过了一个月的大量面试，10 月的面试通过率明显高于 9 月，9 月通过率 50%，10 月通过率 85%。不过我不能完全判断是金九银十的原因，这中间可能还受到其他变量影响，比如我 9 月初把简历改成了最终版、放宽了求职城市的限制，从只限北京扩大到北上深杭、也调整了 Boss 直聘的推荐设置等。</p>
+<table>
+<thead>
+<tr>
+<th align="center">月份</th>
+<th align="center">面试场次</th>
+<th align="center">面试公司数量</th>
+<th align="center">通过场次</th>
+<th align="center">通过率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">7 月</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0%</td>
+</tr>
+<tr>
+<td align="center">8 月</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0%</td>
+</tr>
+<tr>
+<td align="center">9 月</td>
+<td align="center">24</td>
+<td align="center">17</td>
+<td align="center">12</td>
+<td align="center">50%</td>
+</tr>
+<tr>
+<td align="center">10 月</td>
+<td align="center">13</td>
+<td align="center">6</td>
+<td align="center">11</td>
+<td align="center">85%</td>
+</tr>
+</tbody></table><h2>面试一定要想办法让自己松弛</h2>
+<p>面试过程中的松弛感非常重要，对面试越无所谓，面试的紧张感就越少。我发现我前面面试失败，大部分原因就是我太想要结果了，非常想通过面试，我越这么想，面试的时候就越担心自己回答不好，然后就会越来越紧张，紧张是面试里最不该犯的错误，最终结果大概率就是——挂。不过有时候确实没办法控制自己不去在意，特别是我在前面两个月约不到面试的时候，来了一个面试机会就像抓到了救命稻草一样，很难说自己可以做到无所谓。通常来说面试越多反而人越松弛，这个没过，后面还有一大堆面试等着。总而言之，一开始先别挑食，海投+海面，一天安排四五场面试，人都面麻了也顾不上紧张了。</p>
+<h2>没有必要特地去背回答</h2>
+<p>面试之前去背回答我觉得可能不太现实，这个比较偏个人体验。首先是自己背的时候没有对方的反馈，让我没有动力，其次是我觉得应该在面试的过程中针对经常出现的问题动态优化自己的回答，如果一开始就背好自己的回答，我觉得可能会固化自己的思维，当然也不是说第一次面试的时候完全不准备，只是没必要特地把问题都背下来，可以给自己留一点自由发挥的空间，知道回答的框架即可。</p>
+<h2>平台的推荐机制非常垃圾（针对 Boss 直聘）</h2>
+<p>Boss 直聘的推荐机制是真的有问题！从来没有觉得一个推荐机制可以做得这么差，如果经常刷 Boss 的推荐页，它会根据你点击的岗位，反复地推送同一个公司的类似岗位，几乎刷不出来同类公司的同类岗位，刷出来的其他岗位都是边角料公司的岗位，比如我点开了小米、拼多多的几个岗位，结果后面推荐的大公司岗位几乎全是这两家的，小公司岗位的薪资压根就不在你的期望范围内，推荐岗位的体验可以用极差来形容。对于这个情况有几个解法，我实测有效：</p>
+<ul>
+<li>主动搜索感兴趣的公司，和 AI 交流，让 AI 根据自己的兴趣行业或者方向推荐相关的公司，我的体验是，按岗位搜索大多很难找到让自己眼前一亮的公司，所以建议直接找 AI，先搜索公司，再去公司里面找相关岗位。</li>
+<li>关闭自动推荐，这也是小红书上有人尝试的方法，我觉得这个好像有点效果，可以尝试。</li>
+<li>意向城市可以多开几个，或者切换城市查看岗位，这个效果我认为很显著，多开意向城市可以让其他城市的 Boss 有机会联系你，切换城市可以让自己看到更多岗位。不管去不去这个城市，我认为岗位供给更多总归是一件好事。</li>
+</ul>
+<h1>准备拿 Offer 的阶段</h1>
+<h2>公司跟公司的差异比人和狗的差异还要大</h2>
+<p>大公司规范的流程千篇一律，而小公司的离谱操作则让我见证了世界的参差。到了拿 Offer 的环节，更是群魔乱舞。有终面完了临时加面试的、有全程线上面试最后又要求线下面试的、有就想折腾你让你所有面试都线下进行还不给报销的、有面试前报期望薪资一点问题没有结果最后给你涨薪不到 10% 的、还有面试完双方确认了涨幅，结果发 Offer 前又改口说给不了的、还有面试推着推着说岗位没了的……光是举例子就能让我力竭了。当对方不想要你的时候，有一万个离谱理由卡你，以前我都没觉得能有这么草台班子，事实是我以前面的公司还是太少了。</p>
+<h2>勇敢谈薪</h2>
+<p>一定要勇敢地给自己谈薪，人有多大胆，地有多大产！不管自己手上有没有拿得出手的 Offer，对外的口径就是我有更高薪资的 Offer，我这次拿的 6 个 Offer 里面，有 4 个都是来回拉扯过的。最高的涨幅调整超过了 15%。</p>
+<ul>
+<li>第一轮沟通一般 HR 会给一个 20-30% 的涨幅，并且说这是他们公司给的最高的涨幅，反正就是说一堆东西表示已经没法争取了。这一轮一般建议暗示对方，自己还有别的 Offer 在推进，但是也不要说别家给多少，表达自己非常想去这家公司，但希望对方可以给一个更有诚意的涨幅。不管对方松不松口，给对方几天时间做内部沟通。</li>
+<li>第二轮沟通，不管对方在首轮涨幅上有没有调整，都继续施压，说自己拿了更高涨幅的 Offer，并且除此之外还有其他的 Offer 正在推进（这里也是给自己留接下来还可以往上谈涨幅的空间）。一般这里我就直接亮别人给的涨幅，不管有没有，我直接亮我原计划期望的涨幅，这里我一般都是报 45% 涨幅。并表示，如果接近这个涨幅，我就考虑（注意这里是考虑，不是一定去），差距太大，我就不考虑了，必要的话也可以向对方提供脱敏之后的涨幅证明（这里建议是电话录音或者是对话记录，不建议直接给 Offer，如果没有的话，想办法做一个，对方也看不出来），继续让 HR 内部沟通。</li>
+<li>第三轮沟通要么就是对方可以给期望薪资，要么就是还差一点。如果还不调整涨幅，那估计确实就是没得谈了；如果到了期望涨幅或接近，我觉得还可以向 HR 表示自己又拿了更高的 Offer，继续聊，通常这里 HR 就会说：「我如果再去沟通更高的涨幅，你也还是考虑而不是决定。」所以她会让你给一个肯定的答复，如果她继续去申请，你就必须承诺接这个 Offer 并入职。这时候也不要有心理负担，接就完事儿了。我遇到第一个这么谈的 HR 时，回复她时还很有心理压力，觉得我又不去还这么承诺她，有点不太地道。直到我遇到了承诺发 Offer 结果没发的 HR 😅，我也就释怀了。在这个本来就不对等的求职市场里，没必要自己给自己加负担。</li>
+</ul>
+<h2>卡涨幅的公司依然有谈薪的空间</h2>
+<p>对外宣称卡 30% 涨幅的公司，同样有方法可以谈薪。部分所谓大厂，对外都说薪资涨幅卡 30%，完全没得谈。虽然涨幅卡死，但涨幅的计算基数可以聊。比如流水里未拿满的绩效、各项福利折算、绩效占总包的比例、公积金基数与比例等等，这里一定要发挥想象力，我最终的 Offer，涨幅的基数比我的流水多了 14%，我甚至还听说有人的流水算了 15 个月。所以一定要和 HR 拉扯。</p>
+<h2>不要放弃手里任何一个 Offer</h2>
+<p>不到最后入职的那一刻都不要放弃自己手上的任何一个 Offer，即使开的工资很低，因为你不知道入职之前还会遇到什么情况。我以前也是不相信会遇到毁 Offer 的情况，但这次我还真遇到了。6 个 Offer 里有 1 个就被毁了，一开始说只有三面，结果临时说他们公司的面试政策有变化，需要最后加一个线下的终面，面完 HR 给我开到了接近 45% 的涨幅。说给我走 Offer 流程，结果我等了一个星期，给我的结论是 Offer 不发了。如果我因为这家公司给了期望薪资的口头 Offer，就拒绝了其他公司正在或准备推进的 Offer，我这次求职可能就又要重新开始。</p>
+<p>遇到开侮辱性涨幅的 Offer，同样先接受。我的第一个 Offer，面试完沟通好的涨幅是 30%，结果他们内部商量完居然降到了 20%，一气之下我直接拒绝了。后来想想，我有点后悔：我一拒绝，他们立马就可以去找更便宜的人，对他们的面试流程一点影响都没有，我自己还一肚子闷气没地出。再想想，我就应该先接受，聊一个很晚的入职时间，最后不去，不为别的，单纯就想恶心一下他们的招聘进度，有没有恶心到他们我管不着，我心里爽了就行。我承认这种做法不是很地道，姑且自评素质低吧 😂。后来又有一个 Offer，超级长的面试流程，四轮面试都是一个小时以上，最后一轮还从北京去上海线下面试（我甚至还给几个面试官带了星巴克……），前面不管是 HR 还是 HRBP 问我期望薪资的时候，我报了 45% 的涨幅，没有一个人说给不到这个薪资，一路面试非常顺利，业务也表达了对我的满意。结果最终给我的薪资涨幅是 8%……我简直无法相信，经过一番拉扯之后，他们仍不调整薪资，甚至在我接受了这个 Offer 之后，HR 自己都在质疑为什么我有其他 Offer 还愿意接受这个。最后我在入职的前两天说我不去了。这个 HR 中间一直在追我的入职进度，我感觉她应该是知道我最后肯定不会去的，最后还问我不考虑他们的理由是什么，我回都没回，直接删了，我寻思这还需要问吗。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[程序员] antigravity 的 swarm 是个好东西啊</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259851#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259851</id>
+	<published>2026-11-25T16:35:18Z</published>
+	<updated>2026-11-25T16:34:18Z</updated>
+	<author>
+		<name>imqiyue</name>
+		<uri>https://www.v2ex.com/member/imqiyue</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>给我的感觉像是发现了新大陆，以前用 gpt/claude 最多是用 /plan 、/goal 指令来处理任务，现在用了 /swarm 后体验提升了好一大截，知道有哪些“小蜜蜂”角色，在做什么，进度到哪里了，结论是什么。</p>
+<p>并发运行，也给 gemini4 提速不少，gemini4 模型速度相比较 gpt 都还是太慢了， 用的是 neon high。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[问与答] gemini 黑五 99 美金一年亲测有效</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259850#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259850</id>
+	<published>2026-11-25T16:29:53Z</published>
+	<updated>2026-11-25T16:27:53Z</updated>
+	<author>
+		<name>yitwotre</name>
+		<uri>https://www.v2ex.com/member/yitwotre</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>之前选区为了配合线路，选了日本，所以金额是日元。找了其他教程都感觉不太对，最后跟着这个教程走完成功订阅到，日元 14500 大约 91 美金，币种不同，换算完跟教程差不多就是对的，教程如下：</p>
+<p><a href="https://x.com/alin_zone/status/2125546113268899938" rel="nofollow">https://x.com/alin_zone/status/2125546113268899938</a></p>
+
+	]]></content>
+</entry><entry>
+	<title>[OpenAI] 我的 GPT 莫名奇妙额度重置了，有发重置卡吗？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259849#reply1" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259849</id>
+	<published>2026-11-25T16:21:09Z</published>
+	<updated>2026-11-25T16:46:35Z</updated>
+	<author>
+		<name>heavenwwwww</name>
+		<uri>https://www.v2ex.com/member/heavenwwwww</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>昨晚还是 58%，今天上午突然变成了 100%，我看重置卡发的储值，而且是给 ChatGPT Business 的?</p>
+
+	]]></content>
+</entry><entry>
+	<title>[程序员] 我也开源个自己的博客主题</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259848#reply1" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259848</id>
+	<published>2026-11-25T16:00:36Z</published>
+	<updated>2026-11-25T16:29:38Z</updated>
+	<author>
+		<name>moonoops</name>
+		<uri>https://www.v2ex.com/member/moonoops</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>静态博客，AI 友好，约束都用 <a href="http://agents.md" rel="nofollow">agents.md</a> 和 <a href="http://design.md" rel="nofollow">design.md</a> 定好了。</p>
+<p>做这个磨了我好几个晚上，感兴趣的佬们可以拿去许愿式修改</p>
+<p>项目链接：<a href="https://github.com/moonoops/astro-phosphor" rel="nofollow">https://github.com/moonoops/astro-phosphor</a><br/>
+DEMO：<a href="https://moonoops.github.io/astro-phosphor/" rel="nofollow">https://moonoops.github.io/astro-phosphor/</a></p>
+<p>个人站：<br/>
+个人站里面一些涉及后端服务的功能就没放 github 上啦，许愿编程很快</p>
+<p><a href="https://github.com/moonoops/astro-phosphor/raw/main/docs/screenshots/desktop-afternoon.webp" rel="nofollow">https://github.com/moonoops/astro-phosphor/raw/main/docs/screenshots/desktop-afternoon.webp</a></p>
+
+	]]></content>
+</entry><entry>
+	<title>[分享创造] 小时候看 VCD、玩 4399，会暴露年龄吗？我做了个小测验 come on</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259847#reply2" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259847</id>
+	<published>2026-11-25T15:55:17Z</published>
+	<updated>2026-11-25T19:50:08Z</updated>
+	<author>
+		<name>Ethan2026</name>
+		<uri>https://www.v2ex.com/member/Ethan2026</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>小时候在家看电影，你是翻电视节目表等开播，还是把 VCD 塞进影碟机？</p>
+<p>我做了个猜年龄的小网页。中文版有 8 道题，都是小时候的日常，比如出门用什么听歌、放学怎么约朋友。不用注册，也不用填生日。答完会给一个年龄猜测，还能保存一张复古掌机风格的结果图。</p>
+<p><a href="https://iknowyourage-quiz.com/zh" rel="nofollow">玩中文版</a> · <a href="https://iknowyourage-quiz.com/" rel="nofollow">英文版</a></p>
+<p>想看看 V 友能把它难倒几次。测完欢迎回帖说一句「猜大了 5 岁」或者「刚好猜中」，不用报真实年龄。如果有哪道题的选项完全对不上你的童年，我也想知道你当时用的是什么。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[深圳] 短时间在深圳两周，到哪儿能租或买个电动车？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259846#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259846</id>
+	<published>2026-11-25T15:53:02Z</published>
+	<updated>2026-11-25T15:53:02Z</updated>
+	<author>
+		<name>onlyu</name>
+		<uri>https://www.v2ex.com/member/onlyu</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>如题，短时间在深圳两周，到哪儿能租或买个电动车？有意请联系，微信号：burpsuite</p>
+
+	]]></content>
+</entry><entry>
+	<title>[分享创造] # 墨牍（Modu）：极小极简本地 RSS 阅读器</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259845#reply1" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259845</id>
+	<published>2026-11-25T15:25:11Z</published>
+	<updated>2026-11-25T16:34:13Z</updated>
+	<author>
+		<name>Yunz93</name>
+		<uri>https://www.v2ex.com/member/Yunz93</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>市面上的 RSS 阅读器越做越重了。</p>
+<p>很多产品动辄几百 MB 的安装包，打开后塞满了 AI 总结、社交动态、复杂的过滤规则和五花八门的侧边栏。我只是想安静地看几篇订阅的文章，却总觉得自己在操作一套企业级后台系统。</p>
+<p>于是我做了 <strong>墨牍（Modu）</strong>（<a href="https://modu.yunz93.dev/" rel="nofollow">modu.yunz93.dev</a>）。</p>
+<p>它的设计目标非常单纯：<strong>极小体积</strong>，以及<strong>极度简洁</strong>。</p>
+<p><img alt="墨牍-1795620193697-8afa89b84047035a5e0a85dd788da1a3" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://raw.githubusercontent.com/Yunz93/PicRepo/main/images/%E5%A2%A8%E7%89%8D-1795620193697-8afa89b84047035a5e0a85dd788da1a3-d1e720d8.png"/></p>
+<h2>为什么做墨牍？</h2>
+<ul>
+<li>
+<p><strong>6MB 极小体积，轻装上阵</strong>：去掉了所有不必要的冗余，安装包只有 <strong>6MB</strong>，启动飞快，常驻后台也几乎没有存在感。</p>
+</li>
+<li>
+<p><strong>极度简洁，回归阅读</strong>：默认三栏布局，订阅、文章列表和正文同屏呈现；读长文时可一键切入专注模式。外观沿用了墨知的纸质白与金属灰，支持自定义主题色，界面和正文的字体、字号也能分别微调。</p>
+</li>
+<li>
+<p><strong>克制，但阅读细节不含糊</strong>：</p>
+<ul>
+<li>
+<p><strong>按需获取全文</strong>：遇到只给摘要的源，一键抓取全文，而且订阅原文和全文会各自记住阅读位置。</p>
+</li>
+<li>
+<p><strong>对技术文章友好</strong>：代码块支持语法高亮、一键复制和长行横向滚动；公式、表格、图注完整呈现，脚注和目录可直接在阅读区内跳转。</p>
+</li>
+<li>
+<p><strong>图文与音视频</strong>：支持图片懒加载、响应式图片和直链音视频，保留字幕与附件入口，加载失败也能直接跳回原链接。</p>
+</li>
+<li>
+<p><strong>随手整理订阅</strong>：粘贴网址即可自动查找 RSS/Atom 源，支持导入带分组的 OPML 和跨订阅正文搜索；刷新后的新文章等你手动载入，不打断当前阅读节奏。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>纯本地阅读库</strong>：无需注册账号，订阅、收藏、已读状态和阅读进度全部保存在本机。缓存正文支持离线阅读，也随时可以导出完整备份。</p>
+</li>
+</ul>
+<h2>适合谁？</h2>
+<p>如果你也厌倦了臃肿的客户端，平时爱看技术博客或长文，只想找一个启动飞快、界面干净、数据完全掌握在自己手里的 RSS 工具，墨牍应该会合你的胃口。</p>
+<p>Apple Silicon Mac 支持一键安装，装好后可以直接在应用内检查更新、下载并验签升级。欢迎去体验和反馈：</p>
+<p>👉 <strong>官网地址</strong>：<a href="https://modu.yunz93.dev/" rel="nofollow">https://modu.yunz93.dev/</a></p>
+
+	]]></content>
+</entry><entry>
+	<title>[分享创造] 开源了一个能打电话、边聊边干的 Personal Agent，手机上能独立跑，求拍砖</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259844#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259844</id>
+	<published>2026-11-25T15:23:22Z</published>
+	<updated>2026-11-25T15:23:22Z</updated>
+	<author>
+		<name>flystrive</name>
+		<uri>https://www.v2ex.com/member/flystrive</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>大家好，这是我们团队自己做的个人助手 Nova。最近发了 v1.0，目前已更新到 v1.0.2，代码以 GPL-3.0 开源。发上来想听听大家觉得哪里好用、哪里还别扭，有问题直接喷。</p>
+<ul>
+<li><a href="https://github.com/deepnovacore/NovaPersonalAgent" rel="nofollow">GitHub 仓库</a></li>
+<li><a href="https://deepnovacore.github.io/NovaPersonalAgent/" rel="nofollow">官网（更多演示和文档）</a></li>
+</ul>
+<p>先放一条 2 分钟的实录。</p>
+<p><a href="https://www.bilibili.com/video/BV1wEyrz7Edb" rel="nofollow">https://www.bilibili.com/video/BV1wEyrz7Edb</a></p>
+<p><a href="https://youtu.be/YHziCK_cKbQ" rel="nofollow">YouTube 备用链接</a></p>
+<h3>为什么做这个</h3>
+<p>我们平时用助手，多半还是「打字问、等它答」。我们想做一个能直接开口交代事情的助手。它干活的时候你可以继续跟它聊，下次也不用再从头交代背景。做到一半才发现，要让你随时开口打断，语音和任务执行就得分开跑。</p>
+<h3>几个主要的设计</h3>
+<p><img alt="Nova 架构总览" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://i.ibb.co/zWB9P2wP/01-architecture-overview.png"/></p>
+<ul>
+<li><strong>前脑 / 后脑分开</strong>。前脑负责实时语音，你随时能打断它。后脑在后台执行任务。比如你让它点个外卖，它可以在虚拟屏里操作，你这边接着聊别的。结果回来后，再由前脑告诉你。</li>
+</ul>
+<p><img alt="边聊天，边干活，Nova 在后台挑外卖" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://i.ibb.co/8nFpCzvr/02-dual-brain-takeout.png"/></p>
+<ul>
+<li><strong>只问一个关键问题</strong>。需求模糊时，它会先复述已经理解的部分，再问那个会改变方案的问题。它给一份草案，你确认后再动手。</li>
+<li><strong>记忆是从对话里长出来的</strong>。聊过的事会整理成时间线，想法、目标和个人资料的补充会先作为记忆候选。你确认后才记下，每条都有出处，也能改、能删。</li>
+<li><strong>主动提醒，有冷却时间</strong>。早上可以给你一份简报，白天遇到可能相关的事也会提醒。每条提醒先进入建议池，发过的会进入冷却期。像邮件这类操作，它可以起草并存进草稿箱，由你决定是否发送。</li>
+</ul>
+<p><img alt="结合日程和偏好主动提醒" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://i.ibb.co/jtQNXWs/03-proactive-memory.png"/></p>
+<ul>
+<li><strong>手机上能独立运行</strong>。手机上跑的是完整的 Nova Agent，对话调度、记忆抽取和任务执行都能在手机上发起，电脑关机也能用。模型推理默认走你配置的云端 API，也可以接自托管服务。</li>
+<li><strong>多设备接力，端到端加密</strong>。电脑上聊到一半，拿起手机可以接着聊。设备之间通过自己的 Space 同步，可以自托管 relay，也可以通过 Tailscale 配置。中继负责验签和转发密文。</li>
+</ul>
+<p><img alt="Mac 和 iPhone 端到端加密接力" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://i.ibb.co/xtJ7fpJK/04-cross-device-e2ee.png"/></p>
+<p>目前能操作电脑和手机，也能写代码、写文档、做网页。写代码可以接 Codex、OpenCode、CodeBuddy 等工具。</p>
+<h3>平台与体验方式</h3>
+<p>桌面端支持 macOS（arm64）、Windows（x64）和 Linux（Ubuntu 22.04+），手机端支持 iOS 和 Android。</p>
+<ul>
+<li><a href="https://github.com/deepnovacore/NovaPersonalAgent/releases/latest" rel="nofollow">GitHub Releases（桌面安装包和 Android APK）</a></li>
+<li><a href="https://testflight.apple.com/join/eQrtvXYJ" rel="nofollow">iOS TestFlight</a></li>
+<li>命令行版需要 Node.js 22.13+。用 <code>npm install --global nova-personal-agent@latest</code> 安装，执行 <code>npa</code> 启动。</li>
+</ul>
+<h3>还有哪些地方在做</h3>
+<ul>
+<li>Mac 上的本地 ASR / LLM / TTS 语音栈已上线，可以用 Docker 启动。目前只支持 macOS，自托管全双工语音还在整理。</li>
+<li>Windows 和 Linux 的实测覆盖比 macOS 少，遇到问题欢迎在 GitHub 提 issue。</li>
+</ul>
+<p>想请教两个问题。你会在什么场景下直接开口跟助手说话？哪些提醒你希望它主动发，哪些会让你觉得打扰？</p>
+<p>谢谢大家看到这里。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[Google Gemini] 黑 5 的 PRO 反重力无法使用 neon，有相同情况的吗？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259843#reply1" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259843</id>
+	<published>2026-11-25T15:20:56Z</published>
+	<updated>2026-11-25T15:30:24Z</updated>
+	<author>
+		<name>Lunatic1</name>
+		<uri>https://www.v2ex.com/member/Lunatic1</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<ol>
+<li>订阅 plus,google 地址更换为美国</li>
+<li>google one 显示黑五折扣，但显示不支持订阅。</li>
+<li>更改账单地址为美国，订阅了黑五 pro</li>
+<li>反重力、CLI 均不支持 neon，web 支持 neon</li>
+<li>补充下，支付改为了美国，但是最终支付还是显示港币。<br/>
+有类似情况的吗？求解决方案~</li>
+</ol>
+
+	]]></content>
+</entry><entry>
+	<title>[推广] 不用注册就能直接试 MAGI-2，还挺省事</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259842#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259842</id>
+	<published>2026-11-25T15:17:51Z</published>
+	<updated>2026-11-25T15:14:51Z</updated>
+	<author>
+		<name>rozenroseking</name>
+		<uri>https://www.v2ex.com/member/rozenroseking</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>最近想试一下 MAGI-2，主要还是对它的音视频同步生成比较感兴趣——以前用视频模型大多只能出“默片”，音效和配音还得后期另找工具补，这次可以直接把画面、对白、环境音和镜头节奏一起带出来。</p>
+<p>看到 magi-2.run 这边正好开放了免注册的在线试用：<a href="https://magi-2.run" rel="nofollow">https://magi-2.run</a></p>
+<p><img alt="首页" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://i.ibb.co/WWBxZBnZ/magi2-home.jpg"/></p>
+<p>打开就能直接进到生成界面，不用先走一套繁琐的注册流程，对于只想先看看模型底子、测测提示词响应的人来说挺友好的。</p>
+<p><img alt="生成器" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://i.ibb.co/1WJczyg/magi2-generator.jpg"/></p>
+<p>简单逛了一圈界面，实用功能给得挺全的：</p>
+<ul>
+<li>左侧支持 <strong>Text to Video（文生视频）</strong> 和 <strong>Image to Video（图生视频）</strong>，如果一时想不到写什么，输入框下面也自带了几个现成的示例标签（像 Beach sunrise、Neon rain、Window cat 这些），点一下就能直接跑；</li>
+<li>参数这块可以选画幅比例（16:9 等多种常见比例）、720p 分辨率以及 4 秒的免费试用时长；</li>
+<li>比较有意思的是下面还带了 <strong>Generate Audio</strong>（生成音频）、<strong>Web Search</strong> 和 <strong>Return Last Frame</strong>（返回尾帧）几个开关，平时如果想拍连续镜头，用尾帧接着往下续一段会顺手很多；</li>
+<li>右侧可以直接切换 Preview 和 History，跑完的结果能直接在线看。</li>
+</ul>
+<p>目前站内开放了每天几条 4 秒预览的免费试用额度。大家如果最近正好在折腾 AI 视频，或者想找个带环境音的脑洞场景测试一下成片效果，可以直接点进去试两把，有跑出什么有意思的 Prompt 也可以在楼下交流。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[问与答] 一模一样的设备网络，cluade 都能用，为什么 muse 把我识别出来了</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259841#reply5" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259841</id>
+	<published>2026-11-25T15:17:47Z</published>
+	<updated>2026-11-25T16:09:49Z</updated>
+	<author>
+		<name>wyl986</name>
+		<uri>https://www.v2ex.com/member/wyl986</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>我为了用 claude 单独买了一台 windows 机器（老款 ThinkPad X1）</p>
+<ul>
+<li>重装了英文系统：语言 English（US）+ 美西时区</li>
+<li>wireguard 软路由 + 美西家庭 ip：往返延迟不一致/dns 泄露/webRTC 泄露 都没有</li>
+<li>全新的 google 账号</li>
+</ul>
+<p>who.1ms.dog 和 <a href="http://cleanip.io" rel="nofollow">cleanip.io</a> 都显示是美国用户</p>
+<p>在这个机器上我用 Claude Pro 已经 1 个月了， KYC 都没跳</p>
+<hr/>
+<p><strong>但是我注册 muse 提示地区不支持</strong></p>
+<hr/>
+<p>meta 是怎么检查的地区？</p>
+<p>我在哪里可以买到成品号呢？</p>
+
+	]]></content>
+</entry><entry>
+	<title>[云计算] Hostodo 主机服务商 是要跑路了吗？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259840#reply5" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259840</id>
+	<published>2026-11-25T15:10:14Z</published>
+	<updated>2026-11-25T15:35:33Z</updated>
+	<author>
+		<name>spatmund</name>
+		<uri>https://www.v2ex.com/member/spatmund</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>6 年前在 V 站看到了这家主机商的服务价格比较低，给的流量也不错，就在上面建了自己的网站，结果今年正用着，付款以后给我把服务完全删了，提交工单说会给我还有的剩下来的数据跟恢复服务，结果从九月拖到了十一月，就是不解决，回答感觉像是 Ai 写的，一直说自己已经提交申请了，我甚至除了恢复服务外没要任何的赔偿。</p>
+<p>是不是在用这种方式清老用户，还是要跑路了，其他的朋友有遇到这样的问题吗......</p>
+<p>需要证据我可以在下面提供，请问大家遇到这样的情况，有保留证据的情况下，怎么维护自己的权益呢？</p>
+
+	]]></content>
+</entry><entry>
+	<title>[推广] [推广] 38 页产品说明书 PDF，我拆回 PPT 花了两小时</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259839#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259839</id>
+	<published>2026-11-25T15:08:32Z</published>
+	<updated>2026-11-25T11:08:32Z</updated>
+	<author>
+		<name>weishao666</name>
+		<uri>https://www.v2ex.com/member/weishao666</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>上周三下午，做硬件的朋友发来一份 38 页的产品说明书 PDF，说客户要改第 12 到 17 页的几张参数表和三条图注，其他不动。文件是设计那边出的，前面十几页是矢量文字，后面夹了几页扫描的检测报告。</p>
+<p>我的做法是先按页拆开，一页一页判断是文字页还是图片页。文字页把文本框和图片按原坐标提出来，扫描页走识别。38 页跑下来大概二十分钟，参数表基本能对上。但有两处必须手工收尾：一是跨页断开的表格，第 14 页末尾那行被切到了第 15 页，还原后是两张独立的表，得自己把行挪回去；二是字体，PDF 里嵌的字体我本机没有，落到默认字体后字号和行距都会跳，得手动对一遍。</p>
+<p>也有做不到的。第 16 页那张带渐变的示意图，图层在 PDF 里早就合并了，拆出来就是一整张图，改不了里面的字，只能当图贴。页脚的页码是设计时画上去的图形，不是文本框，转完变成一堆散的小块，我最后全删了重新加。</p>
+<p>想问问大家，遇到跨页断开的表格，你们是接受拆成两张，还是宁愿花时间拼回去？我现在看客户后面还要不要改，会改就拼，不改就算。</p>
+<p>工具入口在这里：<a href="https://image2ppt.asia?utm_source=v2ex" rel="nofollow">https://image2ppt.asia?utm_source=v2ex</a><br/>
+（图片、截图、单页 PDF 都能转成可编辑的 PPTX，成品无水印。）</p>
+<p>一个例子（原图 → 可编辑成品）：</p>
+<p><img alt="商务风成员介绍工业 PPT 原图" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://raw.githubusercontent.com/showerberich/editable-ppt-materials/main/materials/%E5%9B%A2%E9%98%9F%E4%BA%BA%E7%89%A9/48_%E5%95%86%E5%8A%A1%E9%A3%8E%E6%88%90%E5%91%98%E4%BB%8B%E7%BB%8D%E5%B7%A5%E4%B8%9APPT/%E5%8E%9F%E5%9B%BE.jpg"/></p>
+<p><img alt="商务风成员介绍工业 PPT 成品" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://raw.githubusercontent.com/showerberich/editable-ppt-materials/main/materials/%E5%9B%A2%E9%98%9F%E4%BA%BA%E7%89%A9/48_%E5%95%86%E5%8A%A1%E9%A3%8E%E6%88%90%E5%91%98%E4%BB%8B%E7%BB%8D%E5%B7%A5%E4%B8%9APPT/%E6%88%90%E5%93%81%E9%A2%84%E8%A7%88.jpg"/></p>
+<p>素材库里随手挑的几页，这类图都能这么转：</p>
+<p><img alt="73_开题报告结构模板 06" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://raw.githubusercontent.com/showerberich/editable-ppt-materials/main/materials/_showcase/s036.jpg"/><br/>
+<img alt="069_项目管理汇报 PPT 模板_p06" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://raw.githubusercontent.com/showerberich/editable-ppt-materials/main/materials/_showcase/s014.jpg"/></p>
+
+	]]></content>
+</entry><entry>
+	<title>[生活] 我发现陪伴我最久的居然是...</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259838#reply5" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259838</id>
+	<published>2026-11-25T15:05:51Z</published>
+	<updated>2026-11-25T19:45:30Z</updated>
+	<author>
+		<name>wrwj</name>
+		<uri>https://www.v2ex.com/member/wrwj</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>Gmail...转眼居然用了 20 年，虽然我不从事互联网相关的职业，那时候还是求了别人好久才给我 Gmail 的邀请码。互联网上很多东西都丢了，但是唯独 Gmail 居然陪伴了我 20 年。。。。感叹</p>
+<p><img alt="说明" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://i.imgur.com/yreWzZS.png"/></p>
+
+	]]></content>
+</entry><entry>
+	<title>[分享创造] 做了一个自用的无线画布工具，处理各种图片问题，免费无广</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259837#reply1" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259837</id>
+	<published>2026-11-25T15:03:28Z</published>
+	<updated>2026-11-25T16:38:14Z</updated>
+	<author>
+		<name>hefmt137</name>
+		<uri>https://www.v2ex.com/member/hefmt137</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>今天分享一个出海小产品，<a href="https://ezimg.app" rel="nofollow">https://ezimg.app</a></p>
+<p>一个纯前端的在线图片编辑工具网站</p>
+<p>没有后端，没有数据库，没有服务器成本</p>
+<p>主要是参考别人做的加了一点自己的使用心得，感觉还挺好用的</p>
+<p>希望有大佬锐评下哈哈哈哈！！！</p>
+
+	]]></content>
+</entry><entry>
+	<title>[推广] 急寻各位中转站长合作，互利共赢</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259836#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259836</id>
+	<published>2026-11-25T14:58:39Z</published>
+	<updated>2026-11-25T14:58:39Z</updated>
+	<author>
+		<name>machuang1983</name>
+		<uri>https://www.v2ex.com/member/machuang1983</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>不是数商哈，本人大厂背景出身，平时与国内各大厂打交道<br/>
+搭建一个平台能够让各位站长直接同时对接多家模型大厂<br/>
+把价值和利益最大化，互利共赢</p>
+<p>✈️（base64）：VGVvTmlrZQ==</p>
+
+	]]></content>
+</entry><entry>
+	<title>[分享发现] 恭喜 anthropic 市值破万亿</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259835#reply6" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259835</id>
+	<published>2026-11-25T14:58:33Z</published>
+	<updated>2026-11-25T16:19:33Z</updated>
+	<author>
+		<name>hrasky</name>
+		<uri>https://www.v2ex.com/member/hrasky</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>希望达子再接再厉，早日破千亿百亿<br/>
+戳破 AI 大泡沫，成功造福全人类</p>
+
+	]]></content>
+</entry><entry>
+	<title>[问与答] 有无几周前被谷歌从 jio 被赶下车，最近几天又上车 99usd Gemini 的老兄，有个问题请教</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259834#reply2" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259834</id>
+	<published>2026-11-25T14:37:33Z</published>
+	<updated>2026-11-25T12:37:33Z</updated>
+	<author>
+		<name>Krylo</name>
+		<uri>https://www.v2ex.com/member/Krylo</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>有无前段时间从 jio 被赶下车，最近几天又上车 99usd Gemini 的老兄，请问</p>
+<p>新开的半价 Google AI PRO 可以正常使用反重力 antigravity 吗</p>
+<p>因为实在不想麻烦将历史对话导来导去。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[程序员] 如何保质量下减少 token 消耗</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259833#reply7" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259833</id>
+	<published>2026-11-25T14:35:04Z</published>
+	<updated>2026-11-25T17:36:06Z</updated>
+	<author>
+		<name>jeffsun</name>
+		<uri>https://www.v2ex.com/member/jeffsun</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>最近在使用 AI Coding 从零开始开发一个中型项目，涉及前后端、数据库、第三方系统集成。</p>
+<p>目前手上有 Google AI Pro 和 OpenCode Go 订阅，但 Antigravity 的 Pro 额度消耗太快，单独使用很难支撑持续开发。</p>
+<p>初步想法是：</p>
+<p>Antigravity 负责需求分析、架构设计、复杂功能开发、疑难问题处理和代码审查。</p>
+<p>OpenCode Go 主要使用 DeepSeek 等模型，负责常规功能开发、代码重构、测试和 Bug 修复。</p>
+<p>想请教一下是以 Antigravity 为主调用 OpenCode，还是以 OpenCode 为主，遇到复杂任务再交给 Antigravity？</p>
+<p>如何实现两个工具之间的任务分发、上下文共享和开发进度同步，尽量减少人工介入？</p>
+<p>对于从零开始开发的中型项目，使用桌面客户端还是 CLI + WSL 的方式更合适？</p>
+<p>保证最终交付的软件质量和可维护性，同时降低 Token 消耗及订阅成本。</p>
+<p>希望有类似实践的 V 友分享一下经验。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[开源软件] [开源自荐] Sshairy：可与安卓端互联、高颜值、低占用的 SSH 客户端</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259832#reply4" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259832</id>
+	<published>2026-11-25T14:25:38Z</published>
+	<updated>2026-11-25T14:54:03Z</updated>
+	<author>
+		<name>Marchen</name>
+		<uri>https://www.v2ex.com/member/Marchen</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>最近开源了一个 SSH 客户端软件，仔细包装了一下，目前已经更新到 0.3.1 了<br/>
+这是一个由 AI 驱动的轻量级 SSH 客户端，支持 windows/linux/mac 跨端使用，终端、SFTP、隧道和服务器监控都在一个窗口内使用起来很方便。同时它拥有 0.62 秒极速启动速度、空闲内存占用仅 100 M 左右，无 Chromium/WebView 依赖，各项性能指标在目前主流现代化界面 SSH 客户端均排第一；同时该软件内置 AI 助手 Airy，设计目标是在保证信息安全的前提下将 AI 真正融入 SSH 工作流程~</p>
+<h4>官网：<a href="https://sshairy.marchen.top" rel="nofollow">https://sshairy.marchen.top</a></h4>
+<h4>开源地址：<a href="https://github.com/Marchen-orz/Sshairy" rel="nofollow">https://github.com/Marchen-orz/Sshairy</a></h4>
+<p>虽然说现在 SSH 工具已经百花齐放了，但是我觉得 Sshairy 目前还是有一些特色的，下面放几个案例展示一下~：</p>
+<h4>首先就是 Sshairy 正式推出安卓端，并且可与 PC 版客户端互联：</h4>
+<p>因为我自己也有手机上使用 SSH 的需求，所以首次推出的安卓版，我就着重解决了如下一些手机版 SSH 的痛点：<br/>
+手机端扫码或者局域网扫描即可配对电脑（当然也可自行搭建虚拟局域网实现远程连接），配对后可<strong>一键同步配置与主机</strong><br/>
+<a href="https://i.imgur.com/FHdLLQU.gif" target="_blank"><img class="embedded_image" rel="noreferrer" src="https://i.imgur.com/FHdLLQU.gif"/></a><br/>
+如果不想同步主机，可以选择临时<strong>通过电脑端连接主机</strong>或者直接<strong>镜像操作电脑端</strong>打开的主机<br/>
+<a href="https://i.imgur.com/mUHfhtx.gif" target="_blank"><img class="embedded_image" rel="noreferrer" src="https://i.imgur.com/mUHfhtx.gif"/></a><br/>
+如果电脑端 agent 运行中有需要审批的命令，也会自动发送到手机端，<strong>可用手机审批</strong><br/>
+<a href="https://i.imgur.com/23CUqpG.gif" target="_blank"><img class="embedded_image" rel="noreferrer" src="https://i.imgur.com/23CUqpG.gif"/></a><br/>
+除了这些功能外，还有<strong>双端文件互传</strong>，<strong>剪切板共享</strong>等等功能就等着佬友们自行体验发现了~还有更多使用场景等待解锁中...</p>
+<h4>然后就是现在产品终于让 AI 从“副驾”走向“主驾”，逐步做到真正的 AI 驱动：</h4>
+<p><a href="https://i.imgur.com/dD10cMf.gif" target="_blank"><img class="embedded_image" rel="noreferrer" src="https://i.imgur.com/dD10cMf.gif"/></a><br/>
+在之前社区的建议下，最新版本中，行内 AI 命令正式升级为<strong>终端行内 Agent</strong>，从以前只能浮窗单步生成命令，变为了可多步生成的行内 Agent，终端也正式升级为了<strong>AI 终端</strong>（虽然还比较雏形）</p>
+<h4>同时因为变为 AI 终端所以行内智能补全、错误智能修正也是必不可少滴~</h4>
+<p><a href="https://i.imgur.com/pPA6Tkd.gif" target="_blank"><img class="embedded_image" rel="noreferrer" src="https://i.imgur.com/pPA6Tkd.gif"/></a> </p>
+<p>现在这个产品有很多功能都还是雏形，有很多不完善的地方，离生产级使用可能还有一段路要走，但是尽早开源又能让更多的朋友参与到产品使用体验中来，发掘出更多的问题，实现社区共建。所以我还是之前的想法：希望各位朋友能始于颜值，最终因为某些设计或功能留存，提出问题和需求，让我能逐步完善这个产品，将这个产品共建得越来越好</p>
+<p>最后，<strong>不得不说 AI 是真的能够创造奇迹，Flutter 跨端是真的 nb！！！</strong></p>
+
+	]]></content>
+</entry><entry>
+	<title>[程序员] cc_task: 用 C 语言写 async/await 协程，还有闭包</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259830#reply4" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259830</id>
+	<published>2026-11-25T14:05:47Z</published>
+	<updated>2026-11-25T18:44:51Z</updated>
+	<author>
+		<name>ivan_wl</name>
+		<uri>https://www.v2ex.com/member/ivan_wl</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p><a href="https://github.com/ivan7wl/cc_task" rel="nofollow">https://github.com/ivan7wl/cc_task</a></p>
+<p>cc_task 是一个 C 语言协程库,用 async/await 的方式写协程，还可以用闭包。</p>
+<p>协程是无栈的，跨恢复点的变量保存在闭包中，非常的轻量，大部分场景下一条 64B CPU cache line 就能放得下。同时也支持有栈协程。</p>
+<pre><code class="language-c">#include "cc_task.h"
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int c = 10; // task_b captures c and uses it as task state
+    cc_task_t *task_b = cc_task_new(CC_TASK(t)
+    {
+        CC_BEGIN(t);
+        printf("B: c = %d\n", ++$(c));
+        CC_YIELD(t);
+        printf("B: c = %d\n", ++$(c));
+        CC_END(t, c);
+    });
+
+    cc_task_t *task_a = cc_task_new(CC_TASK(t)
+    {
+        CC_BEGIN(t);
+        printf("A: await B ...\n");
+
+        cc_uintptr code;
+        CC_AWAIT(t, task_b, code);
+        printf("A: B end, code = %llu\n", (unsigned long long)code);
+        CC_END(t);
+    });
+
+    c = 0; // modifying c does not change the copy captured by task_b
+    cc_task_t *t = task_a;
+    cc_tr_e ret;
+    do
+    {
+        ret = cc_task_resume(&amp;t);
+    }
+    while (ret != cc_tr_end);
+
+    return 0;
+}
+</code></pre>
+<p>由于这个协程非常的简单，代码实际上都没几条，性能也是非常的高，比 C++ 的协程还高。</p>
+<p>列表是实现了一个 TCP echo server/client，与 C++ 实现的做对比。</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th align="right">C 服务端</th>
+<th align="right">C++ 服务端</th>
+<th align="right">C 客户端</th>
+<th align="right">C++ 客户端</th>
+<th align="right">C++ / C（服务端 / 客户端）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空闲 RSS</td>
+<td align="right">960 KiB</td>
+<td align="right">1,880 KiB</td>
+<td align="right">960 KiB</td>
+<td align="right">1,880 KiB</td>
+<td align="right">1.96x / 1.96x</td>
+</tr>
+<tr>
+<td>64 B 每连接新增 RSS</td>
+<td align="right">4.68 KiB</td>
+<td align="right">5.25 KiB</td>
+<td align="right">0.67 KiB</td>
+<td align="right">1.29 KiB</td>
+<td align="right">1.12x / 1.93x</td>
+</tr>
+<tr>
+<td>16 KiB 每连接新增 RSS</td>
+<td align="right">16.49 KiB</td>
+<td align="right">17.11 KiB</td>
+<td align="right">16.59 KiB</td>
+<td align="right">17.12 KiB</td>
+<td align="right">1.04x / 1.03x</td>
+</tr>
+<tr>
+<td>64 B、1024 连接总 RSS</td>
+<td align="right">5.62 MiB</td>
+<td align="right">7.09 MiB</td>
+<td align="right">1.61 MiB</td>
+<td align="right">3.13 MiB</td>
+<td align="right">1.26x / 1.94x</td>
+</tr>
+<tr>
+<td>16 KiB、1024 连接总 RSS</td>
+<td align="right">17.43 MiB</td>
+<td align="right">18.95 MiB</td>
+<td align="right">17.53 MiB</td>
+<td align="right">18.96 MiB</td>
+<td align="right">1.09x / 1.08x</td>
+</tr>
+<tr>
+<td>每 64 B 消息用户态指令数</td>
+<td align="right">401</td>
+<td align="right">593</td>
+<td align="right">439</td>
+<td align="right">979</td>
+<td align="right">1.48x / 2.23x</td>
+</tr>
+<tr>
+<td>每 16 KiB 消息用户态指令数</td>
+<td align="right">721</td>
+<td align="right">778</td>
+<td align="right">518</td>
+<td align="right">1,166</td>
+<td align="right">1.08x / 2.25x</td>
+</tr>
+</tbody></table>
+	]]></content>
+</entry><entry>
+	<title>[分享创造] 如何从全世界找到离你最快的 vps</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259829#reply4" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259829</id>
+	<published>2026-11-25T14:04:46Z</published>
+	<updated>2026-11-25T15:36:21Z</updated>
+	<author>
+		<name>felix1st</name>
+		<uri>https://www.v2ex.com/member/felix1st</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>马上要黑五了，想买 vps， 又不知道买哪个，就让 gemini 写了个免费小玩具，送给大家。</p>
+<p>有 5 个小功能：</p>
+<ol>
+<li>一键测试主流厂商的所有公开机房 * 所有线路 * （ IPv4+IPv6 ） 的延迟</li>
+<li>演示 vps 的 TCP/Ping 延迟曲线图， 去程+回程路由 </li>
+<li>CloudFlare 优选 IP</li>
+<li>国内 3 网 * 31 省测试 ip</li>
+<li>（欧洲、北美、亚太地区）到国内 *  三网的所有 [跨境骨干网] 延迟曲线图</li>
+</ol>
+<p><a href="https://www.findping.com/" rel="nofollow">https://www.findping.com/</a><br/>
+从你的网络出发，找到速度最快的 vps</p>
+
+	]]></content>
+</entry><entry>
+	<title>[推广] 做了个专攻生图的 API 站：GPT Image 2/2.5 一分钱一张，Gemini 3 Pro Image 九分钱，评论抽 20 位 V 友送额度</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259828#reply2" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259828</id>
+	<published>2026-11-25T14:04:35Z</published>
+	<updated>2026-11-25T14:11:18Z</updated>
+	<author>
+		<name>chunqiu233</name>
+		<uri>https://www.v2ex.com/member/chunqiu233</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>这段时间自己做电商和内容自动化需要频繁调生图 API，官方渠道按张算下来成本太高，就顺手把自己的通道整理成了一个专攻图片生成的 API 站：<strong>优米-API</strong>（<a href="https://api.uxmio.com/?utm_source=v2ex" rel="nofollow">https://api.uxmio.com/?utm_source=v2ex</a> ）。</p>
+<p>没有堆几百个用不上的模型，目前只保留了实测效果最好、性价比最高的几个生图主力：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>适用场景</th>
+<th>价格（人民币/张）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gpt-image-2</code> / <code>gpt-image-2.5</code></td>
+<td>批量配图、电商图、性价比主力</td>
+<td><strong>¥0.01</strong></td>
+</tr>
+<tr>
+<td><code>gpt-image-2.6</code></td>
+<td>更高细节与图文排版</td>
+<td><strong>¥0.03</strong></td>
+</tr>
+<tr>
+<td><code>gemini-3.1-flash-image</code></td>
+<td>速度快、语义理解好</td>
+<td><strong>¥0.06</strong></td>
+</tr>
+<tr>
+<td><code>gemini-3-pro-image</code></td>
+<td>高精度商业视觉 / 复杂参考图编辑</td>
+<td><strong>¥0.09</strong></td>
+</tr>
+</tbody></table><p><strong>几个对开发者比较实用的细节：</strong></p>
+<ol>
+<li>完全兼容 OpenAI <code>/v1/images/generations</code> 和 <code>/v1/images/edits</code>（支持多张参考图），可返回 URL 或 <code>b64_json</code>。</li>
+<li>做了国内优化反代加速，不挂代理也能直接请求；支持支付宝/微信小额按需充，没有月租。</li>
+<li>配套做了一个在线生图工作台 <a href="https://image.uxmio.com/?utm_source=v2ex" rel="nofollow">https://image.uxmio.com/?utm_source=v2ex</a> ，和 API 站账号余额完全互通，调接口前可以先在网页里试出满意的 Prompt 和参考图组合。</li>
+<li>注意：结果图片 URL 只在云端保留 48 小时，建议业务侧直接拿 <code>b64_json</code> 或下载转存到自己的对象存储。</li>
+</ol>
+<p>如果有 V 友正好在做 AI 应用、工作流配图或电商自动化，欢迎试试看；想要少量测试额度验证连通性的可以在评论区留一下邮箱前缀或需求，我看到就发几个测试兑换码。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[Google Gemini] 之前模拟器开 12/24 个月 Pro，你们的订阅还在吗？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259826#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259826</id>
+	<published>2026-11-25T13:50:31Z</published>
+	<updated>2026-11-25T13:49:31Z</updated>
+	<author>
+		<name>heirtheloong</name>
+		<uri>https://www.v2ex.com/member/heirtheloong</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>之前在土区 20x 低价之后，还有 1 折 20x，那一波里能拉 12/24 个月的 Pro，我当时拉了号现在还在，老哥们的还活在吗？我看好多学生订阅和 JIO 说掉了，谷歌已经开始杀了。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[推广] 做了个给 Claude Code / Codex 用的云电脑，独享静态 IP，首月 $19.9，附赠 claude 模型额度</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259825#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259825</id>
+	<published>2026-11-25T13:44:59Z</published>
+	<updated>2026-11-25T13:43:59Z</updated>
+	<author>
+		<name>littlecola</name>
+		<uri>https://www.v2ex.com/member/littlecola</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>大家好，我们是 AIHubMix，最近上线了 AIHubMix 云电脑，来 V 站介绍一下，听听大家的意见。</p>
+<p>想解决的问题很简单：用 Claude Code 干活，除了模型订阅，还要自己准备运行环境。租服务器、装工具、管理会话，重度用户也会考虑出门后任务怎么办。</p>
+<p>我们把云电脑和 Agent 工作台做在了一起。你可以接入自己的 Claude Code、Codex 订阅，也可以使用平台提供的模型额度目前支持 claude gpt ds glm。</p>
+<p>目前套餐是：</p>
+<ul>
+<li>首月 $19.9，之后 $49.9/月，可随时取消</li>
+<li>4 vCPU、8GB 内存、120GB 存储</li>
+<li>独享静态公网 IP</li>
+<li>附赠模型额度</li>
+</ul>
+<p>具体用法：</p>
+<p>把项目放到云端，关电脑后继续跑。<br/>
+比如晚上让 Agent 修改代码、跑测试，任务在云电脑上执行，本机合盖不影响云端任务继续运行。</p>
+<p>手机继续接管任务。<br/>
+电脑上开始的任务，出门后可以用手机查看进度、补充要求或确认操作，项目和文件保留在云端。</p>
+<p>也能调用已有的本机环境。<br/>
+如果代码、工具、Skills、MCP 已经配在自己的电脑上，可以授权 Agent 使用，不用全部搬走。这种情况下，本机需要保持开机、联网和唤醒。</p>
+<p>关于大家可能关心的 Claude 账号问题，也说明一下：我们提供固定的云端环境和独享静态 IP，可以减少自己配置、维护环境的麻烦。</p>
+<p>产品地址：<a href="https://aihubmix.com/cloud" rel="nofollow">https://aihubmix.com/cloud</a></p>
+<p>实际运行云端任务需要开通套餐。</p>
+<p>有具体问题可以直接在帖子里问，我们会在这里回复。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[酷工作] [北京五道口][500 元/天] VAST（Tripo）招 AI 全栈研发实习生，做运营工具和 Agent</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259822#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259822</id>
+	<published>2026-11-25T13:20:09Z</published>
+	<updated>2026-11-25T13:20:09Z</updated>
+	<author>
+		<name>az09py</name>
+		<uri>https://www.v2ex.com/member/az09py</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>我们是 VAST 的 Tripo 团队，做面向全球创作者的 AI 3D 生成平台。这次招一位 AI 全栈研发实习生，办公地点在北京五道口，实习日薪 500 元。</p>
+<p><strong>你会做什么</strong></p>
+<p>和品牌、内容、社媒及活动运营的同事一起梳理工作流程，找出反复需要人工衔接的环节，把它们做成真正有人用的工具或 Agent。你也会参与全球营销平台和运营中台的前后端开发，从需求和原型做到上线，再根据使用反馈迭代。</p>
+<p><strong>我们希望你</strong></p>
+<ul>
+<li>本科或研究生在读，有一个能展示的项目，能讲清自己解决了什么问题、为什么这么设计。</li>
+<li>熟悉 Vue 或 React 和 TypeScript，也能用 Node.js、Go 或 Python 写服务端。可以从擅长的一端切入，逐步独立交付完整功能。</li>
+<li>经常用 Claude Code、Codex 或 Cursor 做实际开发，能拆解任务、审查生成的代码，并自己调试和验证。团队提供 Codex、Claude、Gemini 等工具和模型额度。</li>
+</ul>
+<p>如果你有做过的小工具、Agent、MCP、自动化工作流或开源项目，欢迎投递时附上 GitHub、个人网站或作品链接，我们很想看看。</p>
+<p><strong>内推投递</strong></p>
+<p>VAST 还有算法、设计、产品、运营等方向的岗位。可以直接通过 <a href="https://a9ihi0un9c.jobs.feishu.cn/s/vw6AsPMwT_k" rel="nofollow">VAST 飞书内推链接</a> 选择岗位并投递。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[投资] 道琼斯和 dax40 指数已从最高点回撤了 10%，我已抄底。如果霍尔木兹海峡恢复战前状况，现在的加息预期是不是马上就扭转为降息预期了？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259821#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259821</id>
+	<published>2026-11-25T13:14:39Z</published>
+	<updated>2026-11-25T13:13:39Z</updated>
+	<author>
+		<name>runxin</name>
+		<uri>https://www.v2ex.com/member/runxin</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>道琼斯 ETF、德国 DAX30 ETF 最近一共买入了 12w 元，浮亏 4%，</p>
+<p>最近他们在下跌，溢价基本消失了。</p>
+<p>美股马上开启 23 小时交易，那么场内的纳指溢价 5%、甚至 10%，我觉得风险很大，很可能会抹平溢价。</p>
+<p>而道琼斯 ETF 到时候场内的波动会更大。</p>
+<p>我觉得道琼斯和德国 DAX40 的 AI 含量不高，最近这轮下跌应该只是 12 月的加息预期导致的，</p>
+<p>这两天虽然有关税风声，但是我想应该不会像去年那样加很多，而且民主党也不会允许加太多关税。</p>
+<p>美伊战争，目前看来伊朗已经用尽全部能力封锁海峡了，油价不会再上涨太多了，除非伊朗升级到攻击周边国家的原油设施。</p>
+<p>以上就是我的判断，欢迎补充更多我没考虑到的风险，如果没问题，</p>
+<p>我希望我能拿的住，每月工资到手再加仓（不过这几天还是忍不住，除了饭钱，手里现金都已经梭进了），</p>
+<p>跌太多了或者有了新的危机了，也可能会随时割肉撤离。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[问与答] AI 改卷有什么现成的方案？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259820#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259820</id>
+	<published>2026-11-25T13:08:27Z</published>
+	<updated>2026-11-25T13:08:27Z</updated>
+	<author>
+		<name>kilims</name>
+		<uri>https://www.v2ex.com/member/kilims</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>如题，一般现在改卷都是扫描学生答卷，然后上智学网操作<br/>
+倒是试过 vibe coding，让 AI 用操作网页，然后截图识别手写，但是识别正确率不尽如人意<br/>
+有没有什么好的方案可以规避？或者提高正确率，再或者可以能让人共介入检验，让 AI 能尽可能辅助也可</p>
+<p>求分享各位大神的想法</p>
+
+	]]></content>
+</entry><entry>
+	<title>[OpenAI] SpaceX 主任工程師教你：讓 AI 少寫垃圾</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259819#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259819</id>
+	<published>2026-11-25T13:06:32Z</published>
+	<updated>2026-11-24T13:06:32Z</updated>
+	<author>
+		<name>a629</name>
+		<uri>https://www.v2ex.com/member/a629</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>大家都在罵 AI 寫的程式碼是垃圾。SpaceXSI 主任工程師 Lauren Tan（@poteto）在 AI Engineer Code Summit 2026 的演講〈All Code Is Slop (Except Mine)〉說：寫垃圾的從來不只 AI，AI 只會把它身邊的環境放大。</p>
+<p>她的團隊一個月合併一萬多個 PR，撤回比例反而從 0.98% 降到 0.47%。這支影片整理她怎麼做到：把每次糾正變成確定性檢查、拿掉難用的東西、把驗證做好，最後才輪到軟體工廠。</p>
+<div class="embedded_video_wrapper"><iframe allowfullscreen="" class="embedded_video" frameborder="0" id="ytplayer" src="https://www.youtube.com/embed/OPAdcgNb4ts" type="text/html"></iframe></div>
+
+	]]></content>
+</entry><entry>
+	<title>[分享创造] 我做了个苹果备忘录平替，像飞书文档一样编辑，用 iCloud 同步</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259818#reply5" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259818</id>
+	<published>2026-11-25T12:57:52Z</published>
+	<updated>2026-11-25T15:48:35Z</updated>
+	<author>
+		<name>qhhonx</name>
+		<uri>https://www.v2ex.com/member/qhhonx</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>我是 iCloud 重度用户，习惯随时访问自己的文档，但备忘录的编辑体验太糟糕了。</p>
+<p>我想同时拥有飞书文档的编辑体验、iCloud 多端同步和多人实时协作，于是基于开源的 <a href="http://Quiet.md" rel="nofollow">Quiet.md</a> 做了飞记。</p>
+<p>首发内测支持 Mac / iPhone / iPad，欢迎体验。</p>
+<p><a href="https://feinotes.app/" rel="nofollow">TestFlight 公开测试入口</a></p>
+<p>如果你也经常在几台苹果设备之间切换着写，欢迎试试。同步或协作有哪里不顺手，可以直接回帖告诉我。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[技术栈] 分享我与这两天饱受争议的 T3 Code 的协作片段与相关 Skills</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259817#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259817</id>
+	<published>2026-11-25T12:56:42Z</published>
+	<updated>2026-11-25T12:55:42Z</updated>
+	<author>
+		<name>JieyueXing</name>
+		<uri>https://www.v2ex.com/member/JieyueXing</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>视频：<br/>
+<a href="https://x.com/JieyueXing/status/2125558568359477683" rel="nofollow">https://x.com/JieyueXing/status/2125558568359477683</a></p>
+<p>其中的 HTML 面板渲染 T3 自带的，想让你的 Agent 也尽量可视化交流可以参考：<br/>
+<a href="https://github.com/jieyuexing/inline-brief-skill" rel="nofollow">https://github.com/jieyuexing/inline-brief-skill</a></p>
+<p>想配置多模型互相协作参考：<br/>
+<a href="https://github.com/jieyuexing/modelpace" rel="nofollow">https://github.com/jieyuexing/modelpace</a></p>
+<p>不一定要那么死板，非得用上面说的 T3，原 Skill/代码。<br/>
+而是把链接发给 AI 说我们也想要一个这样的，适用于任何工具的话题展开。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[分享创造] [开源] 找不到简洁无广的轻断食 App，自己用 Compose 写了一个：零网络权限、支持超级岛</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259816#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259816</id>
+	<published>2026-11-25T12:55:22Z</published>
+	<updated>2026-11-25T12:55:22Z</updated>
+	<author>
+		<name>hanfengzxh</name>
+		<uri>https://www.v2ex.com/member/hanfengzxh</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>平时一直保持 16:8 轻断食的习惯，偶尔状态好也会试一下 24 小时或 48 小时的长断食，对自己精力和体重管理帮助很大。但找了一圈市面上的同类 App，海外大牌动辄每年大几百的订阅费，国内的又普遍充斥开屏广告、强制登录甚至直播卖代餐。实在找不到一个安安静静计时的工具，索性自己动手写了一个，趁着刚重构完 v2.0 正式开源出来。<img alt="Fasting Tracker 预览" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://solocraft.app/assets/fasting-tracker-showcase-zh.webp"/></p>
+<h3>主要特点</h3>
+<ul>
+<li><strong>开源免费（GPL-3.0）</strong>：无广告、无内购订阅墙、无需注册账号。</li>
+<li><strong>零网络权限</strong>：FOSS 版彻底移除了 <code>INTERNET</code> 权限，数据只存在手机本地（Room SQLite），换机支持手动导出/导入 JSON 备份。</li>
+<li><strong>兼顾日常与长断食</strong>：内置 <code>14:10</code>、<code>16:8</code>、<code>18:6</code>、<code>20:4</code> 以及 <code>24h</code>、<code>48h</code>、<code>72h</code> 和自定义计划；不满 1 小时的误触自动丢弃不污染记录，支持历史补录、周柱状图、月度热力图和桌面小组件。</li>
+<li><strong>Android 16 实时活动 &amp; 澎湃 OS 4 超级岛</strong>：基于原生 <code>Notification.ProgressStyle</code> 实现（无需常驻前台服务），断食和进食窗口都支持上岛，超级岛、锁屏显示、极简通知样式三个开关完全独立。</li>
+</ul>
+<h3>下载与源码目前</h3>
+<p><strong>v2.0 新版在 Google Play 和 F-Droid / IzzyOnDroid 都还在审核上架中</strong>，想尝鲜的 Android 朋友可以直接去 GitHub Releases 下载编译好的 APK：</p>
+<ul>
+<li>产品主页：<a href="https://solocraft.app/zh/fasting-tracker-" rel="nofollow">https://solocraft.app/zh/fasting-tracker-</a> GitHub 仓库：<a href="https://github.com/addozhang/fasting-tracker" rel="nofollow">https://github.com/addozhang/fasting-tracker</a> 欢迎同样在断食的朋友试用拍砖，觉得顺手的话求个 Star 支持一下 </li>
+</ul>
+<p>:)</p>
+
+	]]></content>
+</entry><entry>
+	<title>[JetBrains] 黑五 6 折优惠</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259814#reply6" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259814</id>
+	<published>2026-11-25T12:37:30Z</published>
+	<updated>2026-11-25T15:26:46Z</updated>
+	<author>
+		<name>AutumnVerse</name>
+		<uri>https://www.v2ex.com/member/AutumnVerse</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>刚刚收到邮件，Black Friday Deal: Save 40% on JetBrains subscriptions and upgrades</p>
+<p>本来想着，订阅到期还没续，既然都打折了，再续一年支持一下吧。</p>
+<p>结果付款页面，输入折扣码后，我以前过期的订阅，$299 的价格不给我折扣。那算了吧</p>
+
+	]]></content>
+</entry><entry>
+	<title>[问与答] 本地 AI 破甲版本/无限制本地 ai 做安全实验和硬件改系统等 有大佬经验的分享一下吧</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259812#reply1" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259812</id>
+	<published>2026-11-25T12:28:23Z</published>
+	<updated>2026-11-25T13:32:29Z</updated>
+	<author>
+		<name>ml028</name>
+		<uri>https://www.v2ex.com/member/ml028</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>1，目前类似破 steam 限制一樣，有直接執行的都會觸法，所以只給教程，要自己試？但不够我的需求 不能自动化 ai 自主进行一直尝试研究。。。  卡住了 大佬经验。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[Google Gemini] 已经是 Gemini pro 年度订阅会员了如何参加今年的黑五优惠呢？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259810#reply3" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259810</id>
+	<published>2026-11-25T12:24:02Z</published>
+	<updated>2026-11-25T13:41:47Z</updated>
+	<author>
+		<name>huage</name>
+		<uri>https://www.v2ex.com/member/huage</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>我之前的年度订阅也是 99.99 美金一年，但是还没有到期，如何参加今年黑五活动呢？</p>
+
+	]]></content>
+</entry><entry>
+	<title>[小米] 小米手环 10pro 多人团 有人拼吗</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259808#reply1" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259808</id>
+	<published>2026-11-25T12:17:41Z</published>
+	<updated>2026-11-15T12:21:09Z</updated>
+	<author>
+		<name>AZ887</name>
+		<uri>https://www.v2ex.com/member/AZ887</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p><a href="https://file-link.pinduoduo.com/9O9D22nury" rel="nofollow">https://file-link.pinduoduo.com/9O9D22nury</a></p>
+
+	]]></content>
+</entry><entry>
+	<title>[问与答] 冲了 99usd 一年的 Google ai pro ，怎么使用反重力</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259806#reply8" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259806</id>
+	<published>2026-11-25T12:13:59Z</published>
+	<updated>2026-11-25T14:01:51Z</updated>
+	<author>
+		<name>syh2</name>
+		<uri>https://www.v2ex.com/member/syh2</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>学生版好像 11 月底反重力就不能用高阶模型了，所以充了一年的 Google AI Pro 套餐，99 美金。</p>
+<p>近期政策收紧（2026 年 11 月底生效）： 免费试用/促销类的学生账号在 Antigravity 中被排除在 Gemini 4 系列（包括 Gemini 4 Hydrogen）之外，模型阵容退回与基础免费版（Basic/Free Tier）一致</p>
+<p>之前下载过 antigravity 的应用，但是用起来很难受，而且要开 tun 模式，会影响我使用内部网络的其他服务，有没有什么软件可以只让 antigravity 走特定的代理，其他不走代理</p>
+
+	]]></content>
+</entry><entry>
+	<title>[分享创造] 分享我做的 emoji 挑选工具，里面加了点自己的小创意</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259805#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259805</id>
+	<published>2026-11-25T12:04:15Z</published>
+	<updated>2026-11-25T12:04:15Z</updated>
+	<author>
+		<name>cl003</name>
+		<uri>https://www.v2ex.com/member/cl003</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>我自己平时挺喜欢用 emoji 和各种符号的，不光聊天，做开发、写文本的时候也经常顺手敲几个进去。前阵子突然有个感觉，当年 iphone 刚火那会儿，emoji 存在感特别强，但我感觉现在我用一些聊天软件，它好像慢慢被淡化了。像我平时常用 discord，点开表情面板，最先看到的经常是群里自定义的表情和贴图，不过也不怪他们，各家平台大概也是想靠这些做出点自己的特色吧。</p>
+<p>比起各家自己的表情或贴纸，我觉得 emoji 最不可替代的地方在于它能跟着纯文本走。比方说，手机上打出来，复制到电脑文档里，再发给用另一个软件的朋友，也能跟着文字一起发过去。要是哪天这种通用图形语言真被各家封闭的表情包挤没了，还挺可惜的。后来整理资料的时候，我还去翻了不少 emoji 的来历，甚至跑去读了 unicode 官网的原始提案，越看越觉得有意思，它们其实不只是几个黄脸表情那么简单，里面其实藏着很多多元文化和进步的价值观，很有趣，也很有传播价值。所以就想着，如果能让更多人了解这些背后的东西，这种通用符号应该也能被用得更多吧～</p>
+<p>之前查这些 emoji，我经常会搜到 emojipedia。它本身是个英文站起家的，英文资料确实全，但中文部分说实话很敷衍😓，基本都是生硬的机翻，想多看点背景介绍也没几句话。特别是用手机打开的时候，本来就想顺手复制个符号走人，结果还得在广告堆里翻半天。反正看来看去找了一圈没遇到特别顺手的，尤其是移动端体验好的，前阵子干脆自己动手写了一个，叫绘文字星空：<a href="https://emojiastra.com/" rel="nofollow">emojiastra.com</a>。因为我自己用手机查 emoji 比较多，所以重点把移动端体验用心打磨了一下。用<a href="https://emojiastra.com/emoji-picker" rel="nofollow">emoji 选择器</a>挑表情的时候可以一边往下翻一边点选，选好几个之后还能直接拖动调整顺序，最后一次性全复制走。另外把<a href="https://emojiastra.com/groups/flags/country-flag" rel="nofollow">国旗</a>、<a href="https://emojiastra.com/collections/faces" rel="nofollow">表情</a>和<a href="https://emojiastra.com/collections/hearts" rel="nofollow">爱心</a>单独拎出来做了入口，比如想找某面国旗但死活想不起那个国家的英文名，直接按大洲翻就行。</p>
+<p>我还按中文网上聊天的流行用语整理了一套<a href="https://emojiastra.com/emoji-tags" rel="nofollow">emoji 标签</a>。比如说，“暗中观察”，可以挑个👀或者🫣，再比如说“尴尬又不失礼貌的微笑”，可以搭配“🙂”、“😅”、“😬”，再比如说“懵逼”，可以搭配“🫪”使用，我觉得咱们中文用户使用的 emoji，肯定要搭配我们自己这边的网络流行语用才得劲儿～</p>
+<p>词条里的简体中文释义和例句都是我一个一个动手敲的😂，虽然调研时也会咨询 ai 或者查询维基百科，但是整体文案质量我是要一个一个亲自把关的，主要就是想贴合中文互联网的语境。站里还放了些我自己做的小动画，顺便把 twemoji、谷歌 noto 这些开源图标的下载也接进了词条里，平时写页面需要素材可以直接拿。</p>
+<p>站里还顺手做了两个我觉得挺好玩的小工具：一个是<a href="https://emojiastra.com/emoji-platform-comparison" rel="nofollow">把同一个 emoji 在不同平台上的渲染样子并排放着对比</a>，另一个是<a href="https://emojiastra.com/emoji-to-kaomoji" rel="nofollow">把一句话里的 emoji 自动替换成意思相近的颜文字</a>。</p>
+<p>算是纯为爱发电折腾出来的一个小站吧，发出来跟同样开发或者文案中喜欢使用 emoji 和各种符号的朋友分享一下，有觉得不好用的地方也欢迎随时吐槽吐槽呗🤪</p>
+
+	]]></content>
+</entry><entry>
+	<title>[推广] 自己开 Claude 老封号 配环境麻烦？我们提供了一套本地部署 + 订阅代开方案</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259803#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259803</id>
+	<published>2026-11-25T11:55:57Z</published>
+	<updated>2026-11-25T11:55:57Z</updated>
+	<author>
+		<name>suzkhunter</name>
+		<uri>https://www.v2ex.com/member/suzkhunter</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>自己开 Claude 官方订阅，很多人会碰到这些问题：</p>
+<ul>
+<li>网络或环境不稳定，容易被封</li>
+<li>封了号不知道怎么处理，也没有退款保障</li>
+<li>遇到 KYC 不知道该怎么操作</li>
+</ul>
+<p>我们提供 Claude 官方订阅代开 + 本地部署服务（支持 Pro / Max / Ultra），帮你把这些常见问题解决掉。</p>
+<p>主要能解决：</p>
+<ul>
+<li>支持 Windows/Linux/MacOS 我们远程帮您配置环境，开箱即用不用自己折腾各种配置</li>
+<li>包封号方案下，非违规封禁可以按剩余天数退款</li>
+<li>遇到 KYC 可以先找我们，避免自己操作出错</li>
+<li>整体使用更稳定，减少因为网络或环境导致的问题</li>
+</ul>
+<p>价格和具体方案根据套餐、是否包封号有所不同，可以直接找客服咨询。</p>
+<p>联系方式：</p>
+<ul>
+<li>QQ：168354235</li>
+<li>微信：HeS088</li>
+</ul>
+
+	]]></content>
+</entry><entry>
+	<title>[推广] 白嫖 Muse 30 亿 Token</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259801#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259801</id>
+	<published>2026-11-25T11:44:11Z</published>
+	<updated>2026-11-25T11:44:38Z</updated>
+	<author>
+		<name>jsjgjbzhang</name>
+		<uri>https://www.v2ex.com/member/jsjgjbzhang</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>TG 机器人领取 <a href="https://t.me/sondevstorebot?start=ref_9086269352" rel="nofollow">https://t.me/sondevstorebot?start=ref_9086269352</a></p>
+
+	]]></content>
+</entry><entry>
+	<title>[问与答] 临近上线，但是我好累，不想动了，能跑路吗？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259800#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259800</id>
+	<published>2026-11-25T11:43:48Z</published>
+	<updated>2026-11-25T11:43:48Z</updated>
+	<author>
+		<name>Asuka0947</name>
+		<uri>https://www.v2ex.com/member/Asuka0947</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>3 个人，2 个经理，一个干活的我，银行的项目，甲方只会转发对接人给我，我得去摸索流程，问 A 再问 B 再问 C 再问 D，需求又经常变卦。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[程序员] 在家里先搭一遍公司的整套 AI 架构当灰度环境，有人这么干吗？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259799#reply7" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259799</id>
+	<published>2026-11-25T11:41:38Z</published>
+	<updated>2026-11-25T13:41:38Z</updated>
+	<author>
+		<name>xiaoyaner0201</name>
+		<uri>https://www.v2ex.com/member/xiaoyaner0201</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>最近在做一件事，想听听大家的意见</p>
+<p>公司要建一套面向 AI 的完整架构，我先在家里搭一遍，当作灰度环境。在家里跑通、跑稳的东西，才会推到公司</p>
+<h2>家里搭了什么</h2>
+<p>硬件不多：一台 NAS、一台显卡机，再加几台 Mac。按三层来搭：</p>
+<ul>
+<li>基础设施：代码仓库、CI 调度、镜像仓库、容器部署、监控和链路追踪。所有服务都跑在 Docker 里，部署只走一个入口</li>
+<li>AI 中台：模型网关、Agent 编排、调用记录和评测，统一的身份、权限和 Key 管理</li>
+<li>业务交付：需求进来由 Agent 拆卡，开发、评审、测试几个 Agent 协作提合并请求，再走自动检查 → 合并队列 → 打版本 → 构建镜像 → 定向部署 → 灰度验证 → 全量</li>
+</ul>
+<p>公司用的是同一批开源组件，只是用户多、并发高</p>
+<p>现在基础设施和 AI 中台，交付链路还在一段一段接</p>
+<h2>拿真实问题回来验证</h2>
+<p>这是其中验证的一环。同事在公司报的问题，比如：</p>
+<ul>
+<li>任务排队</li>
+<li>长任务续聊失败</li>
+<li>偶发 401</li>
+<li>内存被打爆</li>
+</ul>
+<p>先在家里复现出来，做 A/B 对比，修好了再推回公司：</p>
+<ul>
+<li>复现用的是脱敏后重写的用例</li>
+<li>代码只从家里流向公司。推之前先把公司那边多出来的改动补回家里，不然两边会互相覆盖</li>
+</ul>
+<h2>还没想清楚的问题</h2>
+<ol>
+<li>规模差一两个数量级的时候，哪些问题在家里基本复现不了？你们是靠压测工具硬造出来，还是干脆只在公司灰度？</li>
+<li>脱敏重写以后的用例，会不会跟真实问题偏得太远？抽象到什么程度比较合适</li>
+<li>整套架构都在家里先搭一遍，是不是太重了？哪几层其实没必要在家里先跑</li>
+</ol>
+<hr/>
+<p>欢迎拍砖，尤其想听「这么做没意义」的反对意见</p>
+
+	]]></content>
+</entry><entry>
+	<title>[生活] 独立开发了一个查配料表的小程序，顺手把食品做成了 RPG 卡牌游戏</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259797#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259797</id>
+	<published>2026-11-25T11:24:15Z</published>
+	<updated>2026-11-25T11:24:15Z</updated>
+	<author>
+		<name>zhigangwu</name>
+		<uri>https://www.v2ex.com/member/zhigangwu</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>平时自己买零食、牛奶和日用食品，经常对着背面密密麻麻的配料表发呆，一堆添加剂和执行标准根本记不住。市面上现有的配料查询工具大多太像体检报告了，看完毫无打开欲望。</p>
+<p>所以这段时间自己独立开发了一个叫 「实料派」 的工具，干脆把“看配料表”这件事做成了开盲盒和卡牌对战。</p>
+<p>核心玩法很简单：</p>
+<p>拍背面，召卡牌：对着食品背面的配料表和营养成分表拍一张，系统解析后会直接生成一张专属的 RPG 风格卡牌。</p>
+<p>一拍验真身：根据配料干净度、营养密度和添加剂风险，直接定级——配料表极简扎实的会出金光闪闪的 UR 传世宗师 或 SSR 实料大师；科技与狠活拉满的，直接现形为 炼金魔王。</p>
+<p>上擂台，实料对轰：抽出来的食品卡牌可以拉上擂台 PK，比如把你常喝的两款牛奶、或者两款肉肠拉出来对轰，谁的实料更硬一目了然。</p>
+<p>底层逻辑上折腾了一些东西：</p>
+<p>不是纯靠大模型瞎胡扯打分，后台整理了一套 1800 种常见食品添加剂的分级库，结合肉制品、乳制品、零食、饮料、宠物粮等不同品类的国标与专属规则做综合判定。</p>
+<p>视觉上做了复古羊皮纸 + 集换式卡牌的风格，想让原本枯燥的“自律挑吃的”变得稍微有点正反馈。</p>
+<p>体验方式：</p>
+<p>微信小程序直接搜：实料派</p>
+<p>目前刚上线没多久，还在高频迭代中。欢迎各位 V 友拿着手边的零食/饮料拍一拍，看看能抽出什么牛鬼蛇神。不管是识别准确率、评分规则还是 UI 交互，有任何槽点直接开喷，我都接着改。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[职场话题] 应届生入职不到半年，想跑路了怎么办</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259796#reply11" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259796</id>
+	<published>2026-11-25T11:16:54Z</published>
+	<updated>2026-11-25T18:39:40Z</updated>
+	<author>
+		<name>Veiled</name>
+		<uri>https://www.v2ex.com/member/Veiled</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>作为一个刚进入社会的社畜，之前还不知道工作中的什么烦心事会影响日常生活，现在算是体会到了。</p>
+<p>到年底了几个项目的事都堆到了一起，各种需求各种会议都集中在几天，连着几天搞到晚上十一点甚至十二点，搞得身心疲惫，晚上做梦都梦见工作上的糟心事。听同事说去年年底经常搞到半夜两三点，听完更加坚定我想跑路的心了，但是刚进来半年不到估计也不好跳槽。</p>
+<p>不知道咋办了，本身我就是个容易内耗的人，对什么事也极度纠结。大家有没有建议啥的。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[推广] 受够了 Anthropic</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259795#reply3" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259795</id>
+	<published>2026-11-25T11:16:15Z</published>
+	<updated>2026-11-25T16:32:14Z</updated>
+	<author>
+		<name>littlecola</name>
+		<uri>https://www.v2ex.com/member/littlecola</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>作为一个只是想和 Claude 对话与合作的正常用户，受够了折腾各种 VPS，指纹浏览器，环境检测，面对封号的担惊受怕和财产损失。我们提出 AIHubMix Cloud 项目：一个开箱即用的云产品，不是环境隔离，直接把你的 claude 封装在环境里面，开箱即用，如果你没有 claude 账户，也会附赠一个小额 claude 额度包。</p>
+<p>目前第一个月 19.9 美金，这么便宜是我们有很多 aws 积分补贴的，环境 IP 都是独享的。</p>
+
+	]]></content>
+</entry><entry>
+	<title>[程序员] 许愿式剪视频：跟 agent 说了一句话，它给我交了条 4K 宣传片</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259794#reply6" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259794</id>
+	<published>2026-11-25T11:12:12Z</published>
+	<updated>2026-11-25T13:28:34Z</updated>
+	<author>
+		<name>tukon479</name>
+		<uri>https://www.v2ex.com/member/tukon479</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>昨天想给自己的项目做个宣传片，懒得开剪映，直接跟 Claude Code 许愿："给我整个 70 秒的视频"。</p>
+<p>然后它真整出来了 👇</p>
+<p><img alt="" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://imgur.com/QiaXYZs"/></p>
+<p><img alt="" class="embedded_image" loading="lazy" referrerpolicy="no-referrer" rel="noreferrer" src="https://imgur.com/gBQccyI"/></p>
+<p>分镜它写，录屏它录（真产品真操作，不是 PPT 动画），配音它配，BGM 都是它自己搓的。我干的活：看一遍，指着某个镜头说"这儿太拖了"，它改。</p>
+<p>能这么玩，是因为我给 agent 做了个东西叫 Ryugi。</p>
+<p>起因很简单：让 agent 出个设计，它甩给我三段 Markdown 描述三种布局，剩下全靠脑补。现在它直接把方案画出来，我在页面上点、圈、评论，反馈自动回到 agent 那边。设计稿、文档、白板、PPT、视频分镜都能这么搞。</p>
+<p>免费，本地跑，Claude Code / Codex / Cursor 这些都能用：</p>
+<p>npx ryugi-artifacts install</p>
+<p>GitHub：<a href="https://github.com/Innei/ryugi" rel="nofollow">https://github.com/Innei/ryugi</a></p>
+<p>评论区说说你想让 agent 画个啥，我挑几个现场做了贴回来 🫡</p>
+
+	]]></content>
+</entry><entry>
+	<title>[推广] 脑子里有个镜头，想先做出来看看：分享视频工具 Magi 2</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259793#reply0" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259793</id>
+	<published>2026-11-25T10:56:58Z</published>
+	<updated>2026-11-25T10:54:58Z</updated>
+	<author>
+		<name>alexwang0707</name>
+		<uri>https://www.v2ex.com/member/alexwang0707</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>雨夜的街口，一个人推开咖啡馆的门，暖光照到湿漉漉的地面，门铃响了一声。</p>
+<p>这样的画面，几句话就能描述出来。但镜头该怎么动、节奏是否合适，看到视频和只看文字，感觉还是不一样。</p>
+<p>最近上线的 Magi 2，就是一个可以拿来尝试这些想法的在线视频工具。可以直接用文字描述场景，也可以上传一张图片，再描述希望人物、物体或镜头如何运动。</p>
+<p>网站地址：<a href="http://magi2-ai.com" rel="nofollow">magi2-ai.com</a></p>
+<p>新用户首次登录有赠送 50 积分</p>
+<p>第一次试，可以从上面咖啡馆的画面开始：只安排推门这一个动作，镜头固定，声音用门铃和雨声。先看看这个短镜头是否符合想象，再调整动作、镜头或声音，不必一开始就塞进完整剧情。</p>
+<p>欢迎有短片、分镜或故事想法的朋友，拿一个一直想做的镜头来试试~</p>
+<p>效果对标 Seedance2.5，成本降低不少！</p>
+
+	]]></content>
+</entry><entry>
+	<title>[Google Gemini] gemini 黑五优惠和账号有关，可以多试试</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/1259792#reply2" />
+	<id>tag:www.v2ex.com,2026-11-25:/t/1259792</id>
+	<published>2026-11-25T10:47:13Z</published>
+	<updated>2026-11-25T11:40:55Z</updated>
+	<author>
+		<name>orcx</name>
+		<uri>https://www.v2ex.com/member/orcx</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>我第一个号是先改的美区，然后花了 4.99 定 plus，刷不出来 99pro</p>
+<p>又用第二个号，都没改区，还是中国，只花了 0.49，可以刷出来 99， 然后改美区，成功调用后才升级了 99</p>
+<p>2 个号都是用了 2 年的号， 用的 starryblu 银行卡</p>
+
+	]]></content>
+</entry>
+</feed>
