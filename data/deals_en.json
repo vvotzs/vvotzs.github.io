@@ -7674,5 +7674,56 @@
   ],
   "risk": "The card check shows $0 but some issuers send a zero-value authorisation SMS; one claim per destination; the free allowance only covers maps and ride-hailing on arrival; no number, so verification texts cannot be received; some currencies round a few cents at checkout.",
   "source": "co:sim official free eSIM page (read 2026-11-26: $0 at checkout, 1GB / 7 days, card verification, new users only, one page per destination)"
+ },
+ "chatgpt-business-first-month-free-5seats": {
+  "title": "[Multi-region] ChatGPT Business first month $0: five Standard seats, $125 waived, plus double usage through 12/31 if created by 11/30",
+  "brand_en": "OpenAI",
+  "highlight": "Eligible accounts see five Standard seats ($25/seat/month) waived for the whole first month, with $0 due today; workspaces created by 11/30 keep double weekly included usage through 12/31",
+  "regions": "[Multi-region] Needs an IP in a target market (Japan, US and others) plus a card that charges; eligibility is rolled out per account, so an original price at checkout means you are not included",
+  "value": "$125 (five Standard seats, first month free)",
+  "content": "OpenAI is giving some ChatGPT accounts a free first month of Business. Open the promo link while signed in, switch the pricing page to Business, choose monthly billing, and keep five Standard seats with zero Premium seats; if checkout shows $0 due today the account qualifies and the $125 monthly price is waived. From month two it renews at $25 per seat per month. Workspaces created between 23 and 30 November also get double the weekly included usage through 31 December, which OpenAI's help centre states officially. In community tests a Japanese IP produced eligibility most often; Google Pay with an Infini card went through while Bybit, Gate and Plasma virtual cards were mostly declined. Ineligible accounts see $0 on the outer page and the original price at checkout.",
+  "conditions": "Eligibility is rolled out per account and is not universal: checkout must show $0, and an original price means trying another account; a target-market IP and a card that actually charges are required, and most virtual cards are declined; the quote assumes five Standard seats on monthly billing, since Premium seats are not free; auto-renew charges $125 after month one, so cancel right after signing up.",
+  "steps": [
+   "Connect through a target-market node (Japan has the highest hit rate) and open chatgpt.com/?promo_campaign=team-1-month-free#pricing while signed in",
+   "Choose Business, switch to monthly billing and confirm the free first month with five Standard seats and zero Premium seats",
+   "At checkout confirm $0 due today, then enter a card and a local billing address to subscribe",
+   "After it goes through, turn off auto-renew under Settings > Subscription and assign the seats to colleagues or friends"
+  ],
+  "risk": "Eligibility is rolled out and can be tightened at any time; OpenAI communities already report bulk sign-ups, so the offer may close without notice; $0 on the outer page with the original price at checkout is common, and most accounts do not qualify; virtual cards are declined often and retrying many cards can trip fraud checks; auto-renew charges $125 after the first month; team and enterprise accounts follow different rules.",
+  "source": "OpenAI promo link behaviour (rechecked 2026-11-26: promo_campaign=team-1-month-free leads to the pricing page) + OpenAI Help Center article on signing up for ChatGPT Business (read 2026-11-25: workspaces created 23-30 November get double weekly included usage through 31 December) + the linux.do tutorial of 2026-11-25 with 11 replies of hands-on results (Bybit Kazakhstan card declined, Starryblu and Infini accepted, most accounts ineligible) + the NodeLoc coupon-check script post of 2026-11-25 + aipromonow's write-up of 2026-11-25"
+ },
+ "kiro-paid-subscribers-10k-credits-dec2026": {
+  "title": "[Global] Kiro (AWS) adds 10,000 bonus credits to every individual paid subscriber on 12/2, usable with any model and worth about $400 (through 2027-01-31)",
+  "brand_en": "Kiro",
+  "highlight": "Every individual paid subscriber (Pro, Pro+, Pro Max, Power) gets 10,000 bonus credits automatically on 2 December, usable with any model including Claude Opus 5.5, GPT-5.6 Sol and Grok 4.7, valid through 31 January 2027",
+  "regions": "[Global] Individual paid subscriptions; team and enterprise accounts are not mentioned in the announcement and Free users are not included",
+  "value": "10,000 credits, about $400 at the $0.04 add-on price",
+  "content": "Kiro, AWS's AI coding IDE and CLI, announced on its official X account on 23 November 2026 that every individual paid subscriber gets an extra 10,000 bonus credits as a thank-you. They land automatically on 2 December with nothing to claim, work with any model and stay valid through 31 January 2027. At the official add-on price of $0.04 per credit that is about $400, the same as a month of allowance on the $200 Power plan. Current individual plans are Pro $20, Pro+ $40, Pro Max $100 and Power $200, billed on the first of each month. A first upgrade to Pro also comes with a free first month and 500 trial credits.",
+  "conditions": "You need an individual paid subscription from Pro at $20 a month; Free users do not qualify; the credits are credited automatically on 2 December and Kiro has not said which date's subscription status counts; team and enterprise accounts are not mentioned; the credits expire on 31 January 2027.",
+  "steps": [
+   "Pick an individual plan at kiro.dev/pricing (from Pro at $20 a month) and subscribe",
+   "Sign in to Kiro after 2 December and confirm the 10,000 bonus credits in the balance",
+   "Use any model, premium ones included, in the IDE or CLI before the 31 January 2027 expiry",
+   "Cancel the renewal once the credits are used if you only wanted this round"
+  ],
+  "risk": "This is an X announcement only, with no matching note on the official blog or pricing page, so the details (which subscription date counts, whether team accounts share it) are unpublished; it is compensation for paying at least $20, not something free; the credits expire on 31 January 2027; model availability is restricted by country, as Kiro states some premium models are unavailable in some regions.",
+  "source": "Kiro's official X account @kirodotdev on 2026-11-23 (every individual paid subscriber gets 10,000 credits, credited 2 December, any model, valid to 2027-01-31) + the official Kiro pricing page read 2026-11-26 (Pro $20, Pro+ $40, Pro Max $100, Power $200, add-on credits $0.04 each, billed on the first of the month) + aipromonow of 2026-11-24 and jidan.si, both citing the official X post"
+ },
+ "freedns-my-free-domains-permanent": {
+  "title": "[Global] FreeDNS now registers free domains permanently: 16 zones with no renewal fee, listed in the PSL, custom NS allowed (kz.ci, pvf.cc, us.ci and more)",
+  "brand_en": "FreeDNS.my",
+  "highlight": "Registration is free, renewal is free and no ads are inserted: pick from 16 zones such as kz.ci, pvf.cc, xyz.ci, us.ci and nl0.net, get manual review within a few days, and point PSL zones at your own name servers",
+  "regions": "[Global] No regional restriction; manual review usually takes a few days and you must supply the IPv4/IPv6 addresses the name should point to",
+  "value": "Free forever (about $10 a year in domain fees saved)",
+  "content": "freedns.my runs its own free registry: 16 zones are open for requests, kz.ci, pvf.cc, xyz.ci, nl0.net, vc.ci, asia.ci, us.ci, de5.net, ddns.ge, l.cd, cc.cd, cn.mt, new.tg, ccwu.cc, bbroot.com and bot.cd. Registration and renewal are both free, no advertising is inserted, and the source is open. Give the A/AAAA records the name should publish and a human reviews the request, usually within a few days; once active you can add sub-names such as www plus CNAME and TXT records yourself, each change reviewed by an operator. For zones on the Public Suffix List such as us.ci and de5.net you can point the name at your own name servers and the change applies immediately. The operator says there is no per-account limit and 12,108 names are currently active.",
+  "conditions": "The request needs the IPv4/IPv6 records to publish and a human may reject it; custom name servers work only for PSL zones, since the registry answers for the rest; sub-name and record changes are reviewed manually; upstream cc/ci registry policy changes can affect a zone.",
+  "steps": [
+   "Open freedns.my/request.php and pick a zone, preferably a PSL one such as us.ci or pvf.cc",
+   "Fill in the name, the IPv4/IPv6 it should point to and your email, then wait for manual review (a few days)",
+   "Once approved, add sub-names and CNAME/TXT records on the manage page; PSL zones can switch to your own NS",
+   "Point the domain at Cloudflare or directly at your server"
+  ],
+  "risk": "These are second-level names that depend on upstream registries, and small cc/ci suffixes have been reclaimed before; review and record checks are run by a very small team, so responses can be slow; do not use them for important services or mail; a free service promising permanence can change its mind, so keep a paid domain for anything that matters.",
+  "source": "freedns.my official site read 2026-11-26 (16 open zones, free including renewals, no ads, A/AAAA/CNAME/TXT, custom NS for PSL zones, 12,108 active names, manual review within days) + the NodeLoc post of 2026-11-23 (registrations made permanent to celebrate pvf.cc, kz.ci and xyz.ci joining the PSL, earlier names switched automatically, operator says no per-account limit)"
  }
 }
