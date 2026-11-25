@@ -234,7 +234,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T19:46:44Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-11-23T20:52:44Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -258,7 +258,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T19:46:46Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-11-24T19:57:36Z",
       "search_domains": [
         "x.com"
@@ -281,7 +281,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T19:46:44Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-11-25T19:46:44Z",
       "entry_url": "https://tg.docofcard.com/rss.json",
       "zero_streak": 0
@@ -301,7 +301,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T19:46:44Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-11-25T11:33:38Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -321,7 +321,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T19:46:44Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -341,8 +341,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T19:46:44Z",
-      "last_hit_at": "2026-11-25T19:46:44Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
+      "last_hit_at": "2026-11-25T21:40:22Z",
       "zero_streak": 0
     },
     {
@@ -513,7 +513,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T22:52:39Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-11-18T04:30:00Z",
       "search_domains": [
         "www.1point3acres.com"
@@ -1157,7 +1157,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-21T10:30:00Z",
       "entry_url": "https://ygkkktg.pages.dev/rss.xml"
     },
@@ -1192,7 +1192,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-20T04:30:00Z",
       "entry_url": "https://t.wanshiwu.fyi/rss.json"
     },
@@ -1210,7 +1210,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-19T13:30:00Z",
       "entry_url": "https://telegram.zhetengsha.eu.org/rss.json"
     },
@@ -1297,8 +1297,10 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
-      "last_hit_at": "2026-10-16T10:30:00Z"
+      "last_crawled_at": "2026-11-25T21:40:24Z",
+      "last_hit_at": "2026-10-16T10:30:00Z",
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T21:40:24Z"
     },
     {
       "id": "reddit-malaysianpf",
@@ -1313,8 +1315,10 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
-      "last_hit_at": "2026-10-15T19:30:00Z"
+      "last_crawled_at": "2026-11-25T21:40:24Z",
+      "last_hit_at": "2026-10-15T19:30:00Z",
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T21:40:24Z"
     },
     {
       "id": "reddit-phinvest",
@@ -1330,8 +1334,10 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T10:10:48Z",
-      "last_hit_at": "2026-10-15T04:30:00Z"
+      "last_crawled_at": "2026-11-25T21:40:24Z",
+      "last_hit_at": "2026-10-15T04:30:00Z",
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T21:40:24Z"
     },
     {
       "id": "reddit-digitalbanksph",
@@ -1346,8 +1352,10 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T10:10:48Z",
-      "last_hit_at": "2026-10-14T13:30:00Z"
+      "last_crawled_at": "2026-11-25T21:40:24Z",
+      "last_hit_at": "2026-10-14T13:30:00Z",
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T21:40:24Z"
     },
     {
       "id": "reddit-dubai",
@@ -1380,12 +1388,13 @@
       "lang": "ko",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
-      "last_hit_at": "2026-10-13T07:30:00Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
+      "last_hit_at": "2026-11-25T21:40:22Z",
       "search_domains": [
         "blog.naver.com",
         "cafe.naver.com"
-      ]
+      ],
+      "zero_streak": 0
     },
     {
       "id": "ppomppu",
@@ -1401,7 +1410,7 @@
       "lang": "ko",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T21:48:45Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-12T16:30:00Z",
       "search_domains": [
         "www.ppomppu.co.kr"
@@ -1438,7 +1447,7 @@
       "lang": "ko",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T21:48:45Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-11T10:30:00Z",
       "search_domains": [
         "www.fmkorea.com"
@@ -1458,7 +1467,7 @@
       "lang": "ko",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T22:52:39Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-10T19:30:00Z",
       "search_domains": [
         "bbs.ruliweb.com"
@@ -1500,7 +1509,7 @@
       "lang": "ja",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T21:48:45Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-09T13:30:00Z",
       "search_domains": [
         "note.com"
@@ -1520,7 +1529,7 @@
       "lang": "ja",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T21:48:45Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-08T22:30:00Z",
       "search_domains": [
         "qiita.com"
@@ -1540,7 +1549,7 @@
       "lang": "ja",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T12:16:06Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-08T07:30:00Z",
       "entry_url": "https://zenn.dev/feed"
     },
@@ -1558,7 +1567,7 @@
       "lang": "th",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-07T16:30:00Z"
     },
     {
@@ -1574,7 +1583,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T01:06:15Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-07T01:30:00Z",
       "search_domains": [
         "seedly.sg"
@@ -1593,7 +1602,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T01:06:15Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-06T10:30:00Z",
       "search_domains": [
         "www.singsaver.com.sg"
@@ -1630,7 +1639,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-23T22:52:39Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-05T04:30:00Z",
       "search_domains": [
         "ringgitplus.com"
@@ -1650,7 +1659,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-10-04T13:30:00Z",
       "entry_url": "https://soyacincau.com/feed"
     },
@@ -1703,8 +1712,10 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T00:47:49Z",
-      "last_hit_at": "2026-10-02T16:30:00Z"
+      "last_crawled_at": "2026-11-25T21:40:24Z",
+      "last_hit_at": "2026-10-02T16:30:00Z",
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T21:40:24Z"
     },
     {
       "id": "futurepedia",
@@ -1800,7 +1811,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-11-24T02:53:48Z",
       "search_domains": [
         "www.aijp.jizhiku.net"
@@ -1956,8 +1967,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": "2026-11-24T02:53:49Z",
-      "last_hit_at": null,
+      "last_crawled_at": "2026-11-25T21:40:22Z",
+      "last_hit_at": "2026-11-25T21:40:22Z",
       "keyword_pool": "airline_esim",
       "entries": [
         {
@@ -1977,7 +1988,8 @@
         "airindia.com": "https://www.airindia.com/in/en/maharaja-club/partner-offers/kolet.html",
         "sunphuquocairways.com": "https://connect.sunphuquocairways.com/sg/en"
       },
-      "note": "2026-11-21 深挖新增：Kolet 的 co-branded 子站（virginatlantic / vietnamairlines / corendon / airindia / klm 等 *.shop.kolet.com）都落在 kolet.com 下；TAROM × Ubigi 与 Virgin Atlantic、myPAL 已有独立条目，命中时先查 dedup"
+      "note": "2026-11-21 深挖新增：Kolet 的 co-branded 子站（virginatlantic / vietnamairlines / corendon / airindia / klm 等 *.shop.kolet.com）都落在 kolet.com 下；TAROM × Ubigi 与 Virgin Atlantic、myPAL 已有独立条目，命中时先查 dedup",
+      "zero_streak": 0
     },
     {
       "id": "media-event-esim",
@@ -1992,7 +2004,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": "2026-11-23T22:52:39Z",
+      "last_crawled_at": "2026-11-25T21:40:22Z",
       "last_hit_at": "2026-11-23T22:52:39Z",
       "keyword_pool": "media_event",
       "entries": [

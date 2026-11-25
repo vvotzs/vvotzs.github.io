@@ -7577,5 +7577,38 @@
   ],
   "risk": "This is an application-based grant, not something everyone can claim, and mismatched products or teams are refused; credits cannot be resold, and the account drops back to Free when they run out or the year ends, so plan the renewal before shipping.",
   "source": "ElevenLabs official Grants page (rechecked 2026-11-26: 12 months Scale, 33,000,000 characters, $5,500+ value, answer within a week, fewer than 25 employees)"
+ },
+ "skt-air-friends-84000p": {
+  "title": "[Korea]SKT air friend code: 84,000 air points on a new line (7,000 a month for 12 months, to 11/30)",
+  "highlight": "Register a friend's code in the air app first, then activate a new 010 line or port in from another carrier, and 7,000 air points land monthly from the 15th of the following month for 12 months — 84,000 points that pay your bill",
+  "regions": "[Korea] Korean residents with local ID (19+); a new 010 number or a port-in from KT/LG U+/MVNOs",
+  "value": "84,000 air points (about $58, paid over 12 months)",
+  "content": "SKT air's friend-code (에어 프렌즈) campaign: the new customer enters the referrer's code in the air app's promotion-code menu and activates the line entirely inside the air app (a new 010 number or a port-in from KT/LG U+/an MVNO), then gets 7,000 air points a month for 12 months from the 15th of the month after activation — 84,000 in total, about $58. Points pay the monthly bill (up to 100% on air X, 50% on other plans under the rules stated to 2026-12-31) or can be spent in the points shop; the referrer gets KRW 20,000 cash per line. The November window runs 11/1–11/30 with no stated closing hour and may end early.",
+  "conditions": "Korean residents 19+ activating with local ID; must be a new 010 line or a port-in from KT/LG U+/an MVNO; activation must happen inside the air app; the friend code has to be registered before activation, one per person and not changeable; it does not stack with other activation promos; the line must stay active when each monthly grant is paid.",
+  "steps": [
+   "Install the SKT air app and sign up",
+   "Enter the friend code under the promotion-code menu and confirm it shows 84,000P before activating",
+   "Pick a plan and activate inside the app: a new 010 number, or take an MNP code from your carrier and port in",
+   "Check the app from the 15th of the following month for 7,000 points a month",
+   "Apply the points to the monthly bill or spend them in the points shop"
+  ],
+  "risk": "Points are paid monthly for 12 months and only while the line is active, so cancelling or porting out stops the rest; the campaign can end early and has no stated closing hour; a person can only register one friend code and cannot switch; it does not stack with other activation promos; points are not cash and cannot be withdrawn.",
+  "source": "SKT air official 에어 프렌즈 page (read 2026-11-26: invitee receives air points monthly for 12 months, referrer KRW 20,000 per line) + partner blogs updated for November 2026 (84,000P = 7,000 x 12, 11/1-11/30, must activate in the air app, code registered before activation)"
+ },
+ "affine-open-source-workspace": {
+  "title": "[Global]AFFiNE open-source workspace: Notion plus Miro in one, free to self-host (78k stars)",
+  "highlight": "A local-first workspace for docs, whiteboards and a knowledge base: MIT editor with a self-hostable backend, unlimited workspaces and members when you host it; cloud Basic is free with 100GB, 100MB files and 10 collaborators",
+  "regions": "[Global] Self-hosting has no regional limits; the free cloud tier allows 10 members per workspace",
+  "value": "Free and open source (cloud Basic free with 100GB)",
+  "content": "AFFiNE is an open-source alternative to Notion plus Miro: the same content flips between a document view and an infinite whiteboard (Edgeless), local-first and offline-capable, with a backend you can self-host to keep the data. The GitHub repo has 78,400 stars and 5,719 forks and was still being pushed on 2026-11-26. The pricing page states: self-hosted FOSS is free with unlimited workspaces and members; cloud Basic is free with 100GB of storage, 100MB per file, up to 10 members per workspace and 30 days of version history; Team is $10 per seat per month and the AFFiNE AI add-on starts at $8.9 per month.",
+  "conditions": "Self-hosting means deploying it yourself (Docker and similar) and running the server; cloud Basic is free with no card; AFFiNE AI and team add-ons cost extra; the editor is MIT but the backend is source-available, not pure MIT.",
+  "steps": [
+   "Download the desktop or mobile app from affine.pro, or sign up for the free cloud Basic",
+   "To self-host, bring up the backend with Docker per the docs and point the client at your server",
+   "Keep docs, whiteboards and tasks in one workspace and invite members as needed",
+   "Add the AFFiNE AI add-on only if you want the AI features"
+  ],
+  "risk": "The backend is source-available rather than pure MIT, so read the licence before commercial use or redistribution; the free cloud tier caps members and storage; self-hosting means maintaining backups and upgrades yourself; AI features are billed separately.",
+  "source": "AFFiNE official pricing page (read 2026-11-26: self-hosted FOSS free, cloud Basic free with 100GB and 10 members, AFFiNE AI from $8.9/month) + GitHub repo toeverything/AFFiNE (read 2026-11-26: 78,429 stars, 5,719 forks, pushed 2026-11-25, MIT editor)"
  }
 }
