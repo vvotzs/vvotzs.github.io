@@ -1163,20 +1163,20 @@
   "source": "Database Mart's official 2026 Black Friday page (read 24 November 2026: sale Nov 15-28 CST, VPS from $0.99/mo, up to 80% off, GPU from $11.60/mo, dedicated from $29.40/mo)"
  },
  "airalo-first-order": {
-  "title": "[Global] Airalo 15% off your first order (November code)",
-  "highlight": "Enter NOVEMBER15! at checkout for 15% off your first eSIM",
-  "regions": "[Global] Local, regional and global plans for 200+ countries",
-  "value": "15% off",
-  "content": "Airalo's discount page pushes NOVEMBER15! in November: new users take 15% off their first eSIM by entering it under Redeem discount code or Apply code at checkout. A referral scheme also gives friends $3 off a first order and the referrer $3 of Airmoney.",
-  "conditions": "Most codes are new users only; the code cannot stack with referral codes or Airmoney; one use per code; campaign codes may end early.",
+  "title": "[Global] Airalo new-customer code NEWTOAIRALO15: 15% off the first eSIM, up to $100 (valid to 1 Jan 2027)",
+  "highlight": "Airalo's official partner code for new customers, NEWTOAIRALO15, takes 15% off the first eSIM up to $100, with terms running to 1 January 2027 or until redemptions run out; the separate BLACK25 Unlimited deal is covered in its own entry",
+  "regions": "[Global] Any country Airalo sells; new accounts only, one code per order",
+  "value": "15% off (capped at $100)",
+  "content": "Airalo's current 15% new-customer code is NEWTOAIRALO15: 15% off any eSIM on the first order, capped at $100, with official terms running to 1 January 2027 or until redemptions run out. It works on the website and in the app and accepts card, PayPal, Alipay, Apple Pay and Google Pay. One code per order, it cannot be combined with an Airmoney referral code, and orders that use a code do not earn Airmoney. The monthly code that used to sit on the official discounts page (for example NOVEMBER15!) now 302s to the homepage, so confirm the new code at checkout (unverified as of 25 November 2026).",
+  "conditions": "New accounts on a first order only; one code per order and no stacking with Airmoney referral codes; orders that use a code earn no Airmoney; the checkout total is the final word; Airalo can revoke a code for abuse or multiple accounts.",
   "steps": [
-   "Install the Airalo app or open the site and choose your eSIM",
-   "Enter NOVEMBER15! on the checkout page and click Apply",
-   "Confirm the discounted price is lower before paying",
-   "Activate the eSIM when you arrive"
+   "Pick a destination and plan on the Airalo website or app",
+   "Enter NEWTOAIRALO15 in the Redeem code field at checkout",
+   "Confirm the price actually dropped before paying",
+   "Install the eSIM when you arrive"
   ],
-  "risk": "Codes rotate monthly and expire without notice; Airalo plans are sold by data plus days and aren't refundable, so size it to the trip.",
-  "source": "Airalo official discounts page (November code) + official referral page"
+  "risk": "The official discounts page is gone, so the code only counts if checkout accepts it; it can run out or be revoked early; plans are sold by data and days and are not refundable if you buy too much; it cannot be stacked with a referral code.",
+  "source": "Airalo official terms (NEWTOAIRALO15: 15% off, capped at $100, valid to 1 January 2027) + Traviva 18 November 2026, eSIMDiscountCodes 18 November 2026 and NETZWELT 23 November 2026 checks; re-checked 25 November 2026: the official discounts page now 302s to the homepage, so verify at checkout"
  },
  "flexiroam-mastercard-gdr-3gb": {
   "title": "[Global] FlexiRoam × Mastercard: free 3GB / 15-day global roaming eSIM",
@@ -7343,5 +7343,70 @@
   ],
   "risk": "Open-source software, so compile it yourself or use the official package rather than a repack; downloading copyrighted material (Bilibili and YouTube included) is still your own compliance risk; BT downloads carry seeding and bandwidth costs; plugins come from the community and individual ones can fall out of date.",
   "source": "GitHub repository XiaoYouChR/Ghost-Downloader-3 (read on 25 November 2026: GPL-3.0, 17,300 stars, v4.5.11 released 20 November 2026, four-platform support and the protocol list) plus the official site gd.xychr.com"
+ },
+ "disney-hulu-black-friday-2026": {
+  "title": "[US] Disney+ x Hulu Black Friday: $4.99/month locked for 12 months ($96 saved, ends 11/30)",
+  "highlight": "The ad-supported Disney+ and Hulu bundle is $4.99/month locked for 12 months instead of $12.99, saving $96 a year; ad-free Premium is $14.99/month (from $21.99); live from 11/24 and ends 11/30 at 11:59 PM PST, disneyplus.com only",
+  "regions": "[US] US residents 18+, new and eligible returning subscribers; current Disney+, Hulu, ESPN or bundle subscribers are not eligible",
+  "value": "$96 saved over 12 months (from $12.99/month)",
+  "content": "Disney's 2026 Black Friday prices the ad-supported Disney+ and Hulu bundle at $4.99/month for 12 months against a $12.99 regular price, saving $96. The ad-free Premium tier is $14.99/month for 12 months (from $21.99). It runs from 11/24 through 11/30 at 11:59 PM PST on disneyplus.com only, and then renews at the then-current price. Hulu content shows inside Disney+ on up to 2 devices at once, with some titles still in the Hulu app; Disney+ Perks needs a separate enrolment.",
+  "conditions": "US residents 18+ only; new and eligible returning subscribers, not current Disney+, Hulu, ESPN or bundle subscribers; cannot be combined with a free trial or any other promo, not payable with gift cards; switching plans forfeits the price; renews at the regular rate after 12 months.",
+  "steps": [
+   "Open the Black Friday landing page on disneyplus.com and pick the Disney+, Hulu Bundle (With Ads)",
+   "Check the checkout page shows $4.99/month and states the 12-month price lock",
+   "Pay with a US payment method (gift cards are refused) and check the renewal price in your account",
+   "Choose the $14.99 Premium tier on the same page if you want no ads",
+   "Note the renewal date 12 months out and cancel beforehand if you do not want it"
+  ],
+  "risk": "US only, with a US payment method and address, so most non-US cards fail; auto-renews at $12.99/month after a year; switching plans kills the discount immediately; gift card payment is rejected.",
+  "source": "Disney+ official landing page read on 25 November 2026 (sale price $4.99/mo for a year, regular $12.99) + the Disney/ABC official release of 24 November 2026 (11/24-11/30, $4.99/month for 12 months, Premium $14.99) + MacRumors, Tom's Guide and 9to5Google checks on 24 November 2026"
+ },
+ "hbomax-black-friday-2026": {
+  "title": "[US] HBO Max Black Friday: $5.49/month locked for 12 months ($66 saved, ends 11/30)",
+  "highlight": "HBO Max Basic (with ads) drops to $5.49/month locked for 12 months from $10.99, saving $66; live 11/23 through 11/30 and only when you subscribe directly on max.com, not through App Store, Google Play or cable",
+  "regions": "[US] US accounts and payment methods; new and eligible returning subscribers, not people already paying",
+  "value": "$66 saved over 12 months (from $10.99/month)",
+  "content": "HBO Max cuts the Basic (with ads) plan from $10.99 to $5.49/month for 12 months, saving $66. It runs from 11/23 to 11/30 and has to be bought directly on max.com. The library covers HBO originals such as The Pitt, House of the Dragon and Game of Thrones plus Warner theatrical films, while NHL, MLB and NCAA live sport sits on selected tiers only. It renews at the regular price after 12 months, and changing tier or switching to a third-party billing path drops the discount.",
+  "conditions": "US account and payment method; new and eligible returning subscribers only, current paying subscribers excluded; direct sign-up on the website, since App Store, Google Play and cable packages generally do not carry this price; renews at the regular rate and changing tiers forfeits the deal.",
+  "steps": [
+   "Open max.com and confirm the Black Friday banner says $5.49/mo for 12 months",
+   "Pick the Basic With Ads monthly plan (not annual) and check the intro price and 12-month lock at checkout",
+   "Pay with a US payment method rather than an in-app purchase",
+   "Confirm the next charge date and amount on the subscription page"
+  ],
+  "risk": "US only; auto-renews at the regular price after a year; live sport only on some tiers and subject to blackouts; in-app store subscriptions do not get this price.",
+  "source": "HBO Max official homepage read on 25 November 2026 (Black Friday deal, $10.99/mo struck through, $5.49/mo for 12 months) + Variety and MacRumors checks on 23-24 November 2026 (starts 11/23, ends 11/30, new and returning subscribers only)"
+ },
+ "peacock-black-friday-2026": {
+  "title": "[US] Peacock Black Friday: Select $29.99 a year (from $89.99, 66% off, ends 11/30)",
+  "highlight": "Peacock is back with a Black Friday sale: Select at $2.99/month for 3 months or $29.99 a year (from $89.99, about 66% off), Premium at $8.99/month for 3 months or $89.99 a year (from $129.99); ends 11/30 and only for people not currently paying",
+  "regions": "[US] US accounts and payment methods; people not currently paying for Peacock (past promo users in the last 12 months may also be excluded)",
+  "value": "$60 saved on a Select annual plan (from $89.99)",
+  "content": "Peacock returns to Black Friday this year. The Select tier (NBC and Bravo shows, without sport, films or Peacock originals) is $2.99/month for 3 months or $29.99 for the first year against $89.99, about 66% off; Premium (Premier League, NFL, NBA plus originals) is $8.99/month for 3 months or $89.99 for the first year against $129.99, 30% off. It runs from 11/23 to 11/30 and is limited to people not currently paying. The public homepage still shows list prices, so confirm the Black Friday price at checkout (unverified as of 25 November 2026). Anyone with Walmart+ already has Peacock Premium included (either Peacock or Paramount+, not both), so no need to buy it again.",
+  "conditions": "US account and payment method; current paying Peacock subscribers cannot join and past promo users in the last 12 months may also be excluded; renews at the then-current price; the homepage does not show the sale price, so verify it at checkout before paying.",
+  "steps": [
+   "Open peacocktv.com, pick Select or Premium and go to checkout",
+   "Check whether checkout shows the Black Friday price ($2.99 or $8.99/month, annual $29.99 or $89.99)",
+   "If the price has not changed, do not pay yet - retry in a clean browser or the next day",
+   "If you have Walmart+, claim the free Peacock from the Walmart+ benefits page instead of paying twice"
+  ],
+  "risk": "The sale price does not appear on the homepage, so you only learn whether you qualify at checkout; non-paying users only; renews at list price after 3 months or a year; Select omits sport and originals, so pick the right tier.",
+  "source": "Peacock official pricing page read on 25 November 2026 (Select $8.99/mo, $89.99/yr; Premium $12.99/mo, $129.99/yr; no sale price on the homepage) + USA TODAY 24 November 2026, Variety 24 November 2026 and MacRumors 23 November 2026 (all report Select $2.99/mo for 3 or $29.99/yr, Premium $8.99/mo for 3 or $89.99/yr, ending 11/30)"
+ },
+ "starz-black-friday-2026": {
+  "title": "[US] STARZ Black Friday: $12 for a year (about $1 a month, ends around 11/30)",
+  "highlight": "STARZ flags \"Best Deal of the Year\" on its homepage: pay $12 once for a full year, about $1 a month, by signing up through \"Claim Special Offer\"; it ended 12/1 in past years and no end date is published (unverified)",
+  "regions": "[US] US accounts; must be bought directly on starz.com, since App Store, Google Play and cable purchases usually do not get this price",
+  "value": "$12 for a year (about $1 a month)",
+  "content": "STARZ repeats last year's Black Friday price: $12 once for a full year, about $1 a month, flagged as \"Best Deal of the Year\" on the homepage, where \"Claim Special Offer\" signs you up at that price. The library leans on originals such as Outlander and the Power franchise plus theatrical films. Buy it directly on starz.com, because App Store, Google Play and cable subscriptions usually cannot get this price; after a year it renews at the then-current monthly rate. The site publishes no end date, past years ended 12/1, and it is unverified as of 25 November 2026.",
+  "conditions": "US account and payment method, bought on the website; eligibility and the renewal price are shown at checkout, so read them before paying; no published end date, so it can disappear at any time.",
+  "steps": [
+   "Open starz.com and look for the Black Friday / Best Deal of the Year banner",
+   "Click Claim Special Offer to register rather than buying in the app store",
+   "Confirm at checkout that it is a one-off $12 for a full year",
+   "Note the renewal date a year out and cancel beforehand if you do not want it"
+  ],
+  "risk": "No published end date, so it may close early; third-party channels miss the price; renews at the regular rate after a year; the catalogue updates slowly, which hurts if you sign up for new shows.",
+  "source": "Cord Cutter Weekly 24 November 2026, Michael Saves 21 November 2026 and US Daily Rewards 24 November 2026 agreeing on $12 a year with past years ending 12/1 + the STARZ homepage offer entry (end date unverified as of 25 November 2026)"
  }
 }
