@@ -7459,5 +7459,90 @@
   "url": "https://pay.ethena.fi/promotions",
   "risk": "Cashback is paid in AVAX, so its value moves with the price; the promotion budget is limited and can end early, so check the remaining budget shown on the terms page before spending. Rewards are calculated on the settled amount at the AVAX price of that moment, and refunds are clawed back while still counting against your cap. Draw winners must still pass KYC before payment. Many exclusions apply, so do not use gift cards or crypto purchases to reach the threshold.",
   "source": "Ethena Pay official Promotion Terms (updated 23 Nov 2026, section 3.1 Black Friday Offer: 50%, $100 cap, $200 threshold, 27 Nov-1 Dec UTC+8, Weekend Draw of ten winners up to $1,000, free entry form, budget-limited) + Ethena announcement (24 Nov 2026) + APPDO Digital Life Guide Telegram (25 Nov 2026)"
+ },
+ "regions-lifegreen-checking-400": {
+  "title": "[US] Regions LifeGreen Checking $400 bonus: $1,000 in direct deposits within 90 days, register by 12/31",
+  "highlight": "Register first, then open: register by 12/31, open a LifeGreen Checking by 01/31/2027 and receive $1,000 in qualifying ACH direct deposits within 90 days for a $400 bonus, paid within 60 days of qualifying; 15 south-eastern states only",
+  "regions": "[US] Only residents of AL, AR, FL, GA, IL, IN, IA, KY, LA, MS, MO, NC, SC, TN and TX",
+  "value": "$400",
+  "content": "Official terms: register your name and email on the offer page first (by 12/31), then open a new personal LifeGreen Checking account by 01/31/2027 and receive $1,000 or more in qualifying ACH direct deposits within 90 days; the $400 is credited within 60 days of qualifying. The name and email used to register must match the ones used to open the account. Zelle and transfers from your own accounts do not count, and the deposits must be new money to Regions. The $8 monthly fee is waived with one $500+ direct deposit ($1,000+ in total) or a $1,500 average balance each month. Anyone who held a personal Regions checking account in the past year is ineligible.",
+  "conditions": "15 states only; register before opening; $1,000 in qualifying ACH direct deposits within 90 days; no personal Regions checking account in the past year.",
+  "steps": [
+   "Register your name and email on the Regions offer page and keep the confirmation",
+   "Open LifeGreen Checking online or in a branch by 01/31/2027 (use code EZV3F2M if asked)",
+   "Have $1,000+ in payroll or government ACH direct deposits post within 90 days",
+   "Wait for the $400 within 60 days of qualifying and keep the account open until it posts"
+  ],
+  "url": "https://www.regions.com/promo/pm/switch-to-regions?promo=EZV3F2M",
+  "risk": "Forum reports say online applications from non-citizens are often declined and a branch visit may be needed; the bonus can take up to 60 days and closing early can forfeit it; direct deposits must be payroll or government, Zelle does not count; the $8 monthly fee applies if you miss the waiver.",
+  "source": "Regions official offer page read on 26 Nov 2026 (register by 12/31, open by 01/31/2027, $1,000 direct deposits in 90 days, paid in 60 days) + US Card Forum thread (121 replies: online declines, branch option, fee-waiver terms) + BankBonus and bonusautopilot term checks"
+ },
+ "usmobile-bf-18mo-unlimited-288": {
+  "title": "[US] US Mobile Black Friday: 18 months of Unlimited Premium for $288 (about $16/mo) plus Pixel 11 Pro for $299",
+  "highlight": "12-hour flash sale on 11/27 from 11:00 to 23:59 ET: pay $288 once for 18 months of the flagship unlimited plan (normally $390 a year) and get the Pixel 11 Pro for $299 (normally $1,099); port-in required, VoIP numbers excluded",
+  "regions": "[US] United States only; port-in from another carrier required, limit 3 plans and 1 phone per household",
+  "value": "Save $297 plus $800 off the phone",
+  "content": "Official Black Friday page: the sale opens on 11/27 from 11:00 to 23:59 ET. Unlimited Premium is $288 paid up front for 18 months, about $16 a month against the regular $390 annual price, a saving of $297. It includes unlimited priority data, 50GB of hotspot, 20GB of roaming in 180+ countries, a free smartwatch plan on Warp, and works on all three networks (Verizon, AT&T, T-Mobile); after the term it renews at $390 a year. The Pixel 11 Pro (256GB) is $299 with a new annual or 18-month plan ($399 without one), locked to US Mobile for 12 months, one per household and in extremely limited supply. The second-network add-on is half price at $67.50 for 18 months.",
+  "conditions": "New customers only and a port-in is required; VoIP numbers are excluded. Limit 3 plans and 1 phone per household. The $288 is paid in full up front and renews at $390 a year after 18 months.",
+  "steps": [
+   "Check you hold a portable non-VoIP number that has not been on US Mobile in the last 90 days",
+   "Be on the offer page at 11:00 ET on 11/27 and pick the 18-month Unlimited Premium option",
+   "Add the Pixel 11 Pro ($299) at checkout and pay $288 plus the phone price",
+   "Activate the SIM or eSIM and complete the port-in when it arrives"
+  ],
+  "url": "https://www.usmobile.com/black-friday-deals",
+  "risk": "The window is only 12 hours and phone stock is extremely limited, so missing out is likely; the plan is prepaid and doubles in price after 18 months; the phone is locked for 12 months; the promotional plan caps Dark Star hotspot at 50GB (the regular plan does not); a failed port-in can void the promotional price.",
+  "source": "US Mobile official Black Friday and Pixel promo pages read on 26 Nov 2026 (11/27 11:00-23:59 ET, $288 for 18 months, $299 Pixel, port-in limits, renewal price) + BestMVNO (25 Nov 2026) and PrepaidCompare (25 Nov 2026) coverage"
+ },
+ "ig-uk-shares1knov-500": {
+  "title": "[UK] IG code SHARES1KNOV: invest GBP 500 for a random GBP 50-1,000 of US shares (open by 11/30)",
+  "highlight": "UK new clients who open with the code by 11/30, invest GBP 500 that month and hold an average of GBP 500 until 28 Feb 2027 receive GBP 50-1,000 of random US shares; no referrer needed and half the investment of the referral scheme",
+  "regions": "[UK] UK residents aged 18+ who are brand-new IG clients",
+  "value": "GBP 50-1,000 (60% get only GBP 50-62)",
+  "content": "IG's official November terms (updated 12 Nov and extended to 11/30): new clients who open a GIA or ISA with the code SHARES1KNOV by 23:59 on 11/30, invest at least GBP 500 in that month and keep an average investment value of GBP 500 or more until 28 Feb 2027 receive a random band of shares: 60% get GBP 50-62, 25% GBP 63-97, 10% GBP 98-182, 4% GBP 183-399 and 1% GBP 400-1,000, credited to the GIA by 31 Mar 2027. A W-8BEN must be filed by 28 Feb 2027, and dipping below GBP 500 purely through market movement does not break the terms. The offer cannot be combined with other IG promotions, only the first one joined counts.",
+  "conditions": "UK resident and a brand-new IG client; open with the code and invest GBP 500 by 11/30; hold an average of GBP 500 until 28 Feb 2027; file a W-8BEN.",
+  "steps": [
+   "Open a GIA or ISA with IG UK using the code SHARES1KNOV before 11/30",
+   "Invest at least GBP 500 in the month you open and keep the average at GBP 500 or more",
+   "Submit a W-8BEN by 28 Feb 2027",
+   "Check the GIA for the random shares by 31 Mar 2027"
+  ],
+  "url": "https://www.ig.com/uk/offers/free-shares",
+  "risk": "Six in ten only get GBP 50-62, so the expected value is around GBP 55-70; GBP 500 stays tied up until the end of February and the opportunity cost can exceed the reward; missing the W-8BEN forfeits it; it is exclusive with other IG promotions.",
+  "source": "IG official offer page and November free-shares terms read on 26 Nov 2026 (1-30 Nov, code SHARES1KNOV, GBP 500 investment, hold to 28 Feb 2027, five probability bands, W-8BEN, paid by 31 Mar 2027) + MoneyMagpie (20 Nov 2026) cross-check"
+ },
+ "flixbus-kolet-free-1gb-esim": {
+  "title": "[Global] FlixBus x Kolet: free 1GB eSIM for 2 days (190+ countries)",
+  "highlight": "Official partnership: enter the co-branded page from the onboard Wi-Fi portal, the Flix app or website, or an international route window sticker, and the 2-day eSIM checks out at Total Free with up to 1GB in 190+ countries",
+  "regions": "[Global] 190+ countries and regions including Europe, South America, India and Australia; data only, mainland China roaming not stated",
+  "value": "1GB for 2 days (about $5)",
+  "content": "Official partnership launched on 15 Sep 2026: FlixBus passengers reach the Kolet co-branded page from the onboard Wi-Fi portal, the Flix app or website, or a window sticker on selected international routes, choose the 2-day plan and it checks out at Free. Once installed it connects to a local network on arrival and the same eSIM can be kept and reused on later trips. The co-branded page read on 26 Nov 2026 shows Duration 2 days / Total Free. It is data only with no number and no voice or SMS; Kolet's airline and OTA deals are mostly 1GB for 48 hours, while this one runs for 2 days.",
+  "conditions": "Enter through a FlixBus channel (onboard Wi-Fi portal, app or website, or a window sticker); an eSIM-capable phone is required; one per person.",
+  "steps": [
+   "Connect to the onboard Wi-Fi on a FlixBus trip, or open the Kolet entry in the Flix app or website",
+   "Choose the 2-day plan on the Kolet page, which shows Free",
+   "Enter your email to receive the eSIM QR code and install it before departure",
+   "Switch the eSIM line on when you land to get online"
+  ],
+  "url": "https://www.kolet.com/partner/flix/shop/fast-checkout",
+  "risk": "The official wording limits it to FlixBus passengers and the entry points appear per trip and region, so opening the page directly may work but can be refused; 1GB goes fast over two days of video; without a number you cannot receive SMS codes.",
+  "source": "Flix official press release (15 Sep 2026: free 2 days up to 1GB, 190+ countries) + Kolet x Flix checkout page read on 26 Nov 2026 (Duration 2 days / Total Free)"
+ },
+ "cli-anything-open-source": {
+  "title": "[Global] CLI-Anything (open source): turn any software into a CLI your AI agent can drive (Apache-2.0, 65k stars)",
+  "highlight": "From HKUDS: generates command-line harnesses for CAD, 3D, Office and other software so Claude Code or Codex can call them; install via CLI-Hub, Apache-2.0 licensed",
+  "regions": "[Global] Public GitHub repository, no regional limits",
+  "value": "Free and open source (65k GitHub stars)",
+  "content": "CLI-Anything, maintained by HKUDS, turns desktop software into command-line interfaces that agents such as Claude Code and Codex can call directly. The repository ships harnesses for individual applications plus a unified entry point, CLI-Hub (pip install cli-anything-hub, then cli-hub install). It is Apache-2.0 licensed, created in March 2026, and now has 65k stars and 312 open issues with active community contributions. You can also write your own harness and open a PR, which is reviewed and added to the hub.",
+  "conditions": "Needs Python and pip; some harnesses require the host application or its licence; it is a local tool with no cloud credits or compute.",
+  "steps": [
+   "Clone the repository or pip install cli-anything-hub",
+   "Use cli-hub to search for the target software and install its harness",
+   "Add the generated CLI to your Claude Code or Codex configuration",
+   "Run the examples in the repository and check the output"
+  ],
+  "url": "https://github.com/HKUDS/CLI-Anything",
+  "risk": "It moves fast with many open issues, so interfaces and harnesses can change; third-party harnesses in CLI-Hub are not individually audited, so read the code before running it; some applications need a valid licence to work.",
+  "source": "GitHub repository read on 26 Nov 2026 (Apache-2.0, 65,564 stars, 5,957 forks, 312 open issues, created 2026-03-08) + GitHub Trending of the day (1,094 stars today)"
  }
 }

@@ -234,7 +234,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T11:33:38Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-23T20:52:44Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -258,13 +258,14 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T11:33:38Z",
+      "last_crawled_at": "2026-11-25T19:46:46Z",
       "last_hit_at": "2026-11-24T19:57:36Z",
       "search_domains": [
         "x.com"
       ],
       "tool": "x-search",
-      "zero_streak": 0
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T19:46:46Z"
     },
     {
       "id": "tg-docofcard",
@@ -280,8 +281,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
-      "last_hit_at": "2026-11-23T19:57:07Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
+      "last_hit_at": "2026-11-25T19:46:44Z",
       "entry_url": "https://tg.docofcard.com/rss.json",
       "zero_streak": 0
     },
@@ -300,7 +301,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T11:33:38Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-25T11:33:38Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -320,7 +321,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T11:33:38Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -340,8 +341,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T11:33:38Z",
-      "last_hit_at": "2026-11-25T00:42:50Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
+      "last_hit_at": "2026-11-25T19:46:44Z",
       "zero_streak": 0
     },
     {
@@ -358,8 +359,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
-      "last_hit_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
+      "last_hit_at": "2026-11-25T19:46:44Z",
       "entry_url": "https://www.uscardforum.com/latest.md",
       "zero_streak": 0
     },
@@ -437,7 +438,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "entry_url": "https://www.nodeloc.com/latest.md",
       "zero_streak": 0
@@ -455,7 +456,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-22T02:08:11Z",
       "zero_streak": 0
     },
@@ -474,7 +475,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-24T00:47:48Z",
       "zero_streak": 0
     },
@@ -575,11 +576,13 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T10:10:48Z",
+      "last_crawled_at": "2026-11-25T19:46:46Z",
       "last_hit_at": "2026-11-17T13:30:00Z",
       "search_domains": [
         "www.flyert.com"
-      ]
+      ],
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T19:46:46Z"
     },
     {
       "id": "naixi",
@@ -595,12 +598,13 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
+      "last_crawled_at": "2026-11-25T19:46:46Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "search_domains": [
         "www.naixi.net"
       ],
-      "zero_streak": 0
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T19:46:46Z"
     },
     {
       "id": "2libra",
@@ -617,12 +621,13 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T19:46:46Z",
       "last_hit_at": "2026-11-24T03:54:09Z",
       "search_domains": [
         "2libra.com"
       ],
-      "zero_streak": 0
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T19:46:46Z"
     },
     {
       "id": "free8",
@@ -638,12 +643,13 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T19:46:46Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "search_domains": [
         "www.free8.net"
       ],
-      "zero_streak": 0
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T19:46:46Z"
     },
     {
       "id": "tg-okhk",
@@ -659,7 +665,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-16T17:30:00Z",
       "entry_url": "https://tg.okhk.net/rss.json"
     },
@@ -731,7 +737,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-15T21:30:00Z"
     },
     {
@@ -748,11 +754,13 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T10:10:48Z",
+      "last_crawled_at": "2026-11-25T19:46:46Z",
       "last_hit_at": "2026-11-15T16:30:00Z",
       "search_domains": [
         "www.withgoddess.com"
-      ]
+      ],
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T19:46:46Z"
     },
     {
       "id": "usdailyrewards",
@@ -804,7 +812,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "zero_streak": 0
     },
@@ -840,7 +848,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T00:42:51Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -858,7 +866,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -875,7 +883,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -892,7 +900,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-14T00:30:00Z"
     },
     {
@@ -908,7 +916,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-13T19:30:00Z"
     },
     {
@@ -924,7 +932,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-24T19:57:36Z",
       "zero_streak": 0
     },
@@ -941,7 +949,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T00:42:51Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-13T09:30:00Z"
     },
     {
@@ -993,7 +1001,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T19:46:46Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
@@ -1009,7 +1017,8 @@
         }
       ],
       "note": "Codashop 活动页路径未摸清（/en/promotions 404），暂不写 verify_urls；候选以游戏商/发行方官方公告为准",
-      "zero_streak": 0
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T19:46:46Z"
     },
     {
       "id": "topup-giftcard",
@@ -1025,7 +1034,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-24T10:10:48Z",
+      "last_crawled_at": "2026-11-25T19:46:46Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
@@ -1041,8 +1050,8 @@
         }
       ],
       "note": "四站均可直连，但按 search_group 统一走 1 条查询；CoinsBee 博客另由 coinsbee-blog 的 rss 覆盖",
-      "zero_streak": 0,
-      "last_zero_at": "2026-11-21T23:40:33Z"
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-25T19:46:46Z"
     },
     {
       "id": "topup-longtail",
@@ -1349,7 +1358,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-16T10:30:00Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-10-13T22:30:00Z"
     },
     {
@@ -1723,7 +1732,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-19T07:04:17Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
       "last_hit_at": "2026-11-20T10:30:00Z"
     },
     {
@@ -1907,8 +1916,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
-      "last_hit_at": "2026-11-23T19:57:07Z",
+      "last_crawled_at": "2026-11-25T19:46:44Z",
+      "last_hit_at": "2026-11-25T19:46:44Z",
       "keyword_pool": "ota_airline",
       "entries": [
         {
