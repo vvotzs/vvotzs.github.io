@@ -5305,20 +5305,20 @@
   "brand_en": "E*TRADE"
  },
  "wells-fargo-everyday-checking-325": {
-  "title": "[US] Wells Fargo Everyday Checking $325: $1,000 in qualifying electronic deposits within 90 days (open by 13 January 2027)",
-  "highlight": "Apply from the official offer page so the code is attached, then take $1,000 in qualifying electronic deposits within 90 days for $325, paid within 30 days; the $15 monthly fee is waived with $500 of monthly deposits or a $1,500 daily balance",
+  "title": "[US]Wells Fargo Everyday Checking $500: $1,000 in qualifying electronic deposits within 90 days (open by 2027-01-12)",
+  "highlight": "Open online from the official welcomebonus page and the offer code is applied automatically; $1,000 in qualifying electronic deposits within 90 days earns $500, paid within 30 days of qualifying; the $15 monthly fee is waived by $500 in monthly deposits or a $1,500 daily balance",
   "regions": "[US] US residents with an SSN/tax ID; non-residents filing W-8 and foreign entities excluded",
-  "value": "$325",
+  "value": "$500",
   "content": "Open from the official offer page with at least $25 and the offer code, by 13 January 2027, then receive $1,000+ in qualifying electronic deposits within 90 calendar days for $325, paid within 30 days of qualifying. Qualifying deposits include ACH salary and government benefits, RTP and FedNow instant payments and third-party pushes to a debit card; internal transfers, mobile check deposits, Zelle and teller or ATM deposits do not count, and Early Pay Day money counts only once officially posted. The $15 monthly fee is waived with $500 in monthly electronic deposits, a $1,500 daily balance, $5,000 in combined deposits or investments, or a primary owner aged 17-24.",
-  "conditions": "New checking customers who are the primary owner; no Wells Fargo personal checking bonus in the past 12 months; anyone filing any version of IRS W-8, and foreign entities, are excluded; Everyday Checking can be opened online, while other accounts at a branch need the emailed offer code first; no stacking with other deposit offers, once per person; the account must be open and unrestricted at payout.",
+  "conditions": "New checking customers and primary account owners only; no Wells Fargo consumer checking bonus in the past 12 months; not for non-resident aliens or foreign entities filing any version of IRS Form W-8; only Everyday Checking can be opened online, other accounts need an emailed code for a branch; cannot be combined with other deposit offers, one per customer; the account must stay open and unrestricted at payout.",
   "steps": [
    "Open Everyday Checking from accountoffers.wellsfargo.com/checkingoffer so the code is applied automatically",
    "Deposit at least $25 and route payroll or other qualifying electronic deposits into the account",
    "Reach $1,000 within 90 days and check for the bonus within the following 30 days",
    "Pick a fee waiver that fits you so the $15 monthly fee does not eat the bonus"
   ],
-  "risk": "Third-party guides still quote $500 while the official page now shows $325, so trust the amount on your own application; the $15 monthly fee can eat most of the bonus; the bonus is taxable on a 1099-INT; closing early can trigger a clawback; non-residents signing Form W-8 are excluded outright.",
-  "source": "Wells Fargo official offer page and terms (read 21 November 2026: $325, open by 13 January 2027, $1,000 in 90 days, Form W-8 signers excluded), Credit Guru (19 November 2026 recheck showing only $325 on the page) and usdailyrewards and Doctor of Credit (10 November 2026 reports of a $500 version)",
+  "risk": "The site carries $325, $400 and $500 versions at the same time, so the amount depends on which page you apply from; an unwaived $15 monthly fee eats most of the bonus; the bonus is taxable income (1099-INT); closing early can claw it back; non-residents filing W-8 do not qualify.",
+  "source": "Wells Fargo official $500 offer page welcomebonus (read 2026-11-26: $500, open by 2027-01-12, $1,000 qualifying electronic deposits in 90 days) + official $325 checkingoffer page still live the same day + uscard.io (2026-11-11, three tiers) + usdailyrewards and Doctor of Credit (reporting the $500 return since 11-10)",
   "brand_en": "Wells Fargo"
  },
  "amex-rewards-checking-300": {
@@ -7610,5 +7610,69 @@
   ],
   "risk": "The backend is source-available rather than pure MIT, so read the licence before commercial use or redistribution; the free cloud tier caps members and storage; self-hosting means maintaining backups and upgrades yourself; AI features are billed separately.",
   "source": "AFFiNE official pricing page (read 2026-11-26: self-hosted FOSS free, cloud Basic free with 100GB and 10 members, AFFiNE AI from $8.9/month) + GitHub repo toeverything/AFFiNE (read 2026-11-26: 78,429 stars, 5,719 forks, pushed 2026-11-25, MIT editor)"
+ },
+ "adobe-for-startups-12m": {
+  "title": "[Global]Adobe for Startups: 12 months of Firefly Pro Plus, Acrobat Studio and Semrush free (up to 5 seats)",
+  "highlight": "Startups founded within five years, with under $15M raised, a company website and business email get one free year of Firefly Pro Plus, Acrobat Studio including Express Premium and Semrush, up to 5 seats",
+  "regions": "[Global] Needs a company website and business email; program terms and country availability are confirmed by Adobe's review",
+  "value": "Free for 12 months (up to 5 seats)",
+  "content": "Adobe launched this startup program on 2026-11-02: companies founded within the past five years, with less than $15M raised in total, a company website and a business email can apply, and once approved get 12 months of free access to Firefly Pro Plus (image, video and audio creation including Photoshop on web and mobile), Acrobat Studio (PDF tools, AI Assistant and Express Premium) and Semrush (keyword, competitor and AI-search visibility analysis) for up to 5 seats. Adobe verifies each applicant, a company can redeem the offer only once, and paid plans take over after the first year.",
+  "conditions": "Company founded within 5 years, under $15M raised, with a website and business email; must apply and pass Adobe's eligibility check; up to 5 seats, more seats are purchased separately; one redemption per company, paid plans after 12 months.",
+  "steps": [
+   "Fill in the company details on the Adobe for Startups page and apply",
+   "Complete the eligibility check from the verification email",
+   "Activate the Firefly Pro Plus, Acrobat Studio and Semrush seats",
+   "Add seats if needed within the year, and decide on a paid plan before it ends"
+  ],
+  "risk": "Adobe reviews every application and some countries or regions are not eligible; it targets registered companies, so individuals and freelancers usually do not qualify; paid plans start after the year; one redemption per company; extra seats cost money.",
+  "source": "Adobe official Adobe for Startups page (read 2026-11-26: 12 months free Firefly Pro Plus / Acrobat Studio incl. Express Premium / Semrush, up to 5 seats, founded within 5 years and under $15M raised) + Adobe blog 2026-11-02 + Semrush news 2026-11-09"
+ },
+ "snowflake-trial-400": {
+  "title": "[Global]Snowflake free trial: $400 for 30 days, email signup with no card",
+  "highlight": "Sign up with a work email for $400 of usage over 30 days on AWS, Azure or GCP; load and query data, run Snowpark and Streamlit, while AI features need a card",
+  "regions": "[Global] Needs a valid work email; the cloud platform, region and edition cannot be changed after signup",
+  "value": "$400 (30 days)",
+  "content": "Snowflake's self-service trial needs only a valid email and no credit card: $400 of usage over 30 days, deducted by the actual consumption of virtual warehouses and storage, ending when either runs out. You pick the cloud platform (AWS, Azure or GCP), region and edition at signup and cannot change them later. The account can load data from S3, Azure or GCS, run SQL and Snowpark, host Streamlit apps and connect BI tools. AI features are off by default until a card is added; external network access, hybrid tables and Openflow are not available on trials. Without an upgrade the account is suspended when the trial ends and leftover credit expires.",
+  "conditions": "Sign up with a valid email, one trial per person; ends after 30 days or when the $400 is used up; AI features need a card first (adding a card does not upgrade the account); trials exclude external network access, hybrid tables and Openflow; the account is suspended and unused credit lost if not upgraded.",
+  "steps": [
+   "Open the trial page on snowflake.com and choose Start for free with a work email",
+   "Choose cloud platform, region and edition (fixed after signup) and accept the self-service terms",
+   "Activate the account from the email, set a username and password, and enter Snowsight",
+   "Watch the remaining balance in the left navigation and practise on an XS warehouse"
+  ],
+  "risk": "AI features stay off until a card is added; trials lack some features such as external network access; the account is suspended and the balance expires at the end; adding a card and upgrading starts metered and threshold billing.",
+  "source": "Snowflake official trial page (read 2026-11-26: $400 / 30 days, two trial options) + official Trial accounts documentation (email only, AI features need a card, trial limitations)"
+ },
+ "mufg-emutoku-4000": {
+  "title": "[Japan]MUFG Emutoku: 4,000 yen digital gift for ages 15-29 opening an account in the app (to 2027-04-30)",
+  "highlight": "If you were 15-29 on 2026-04-01, open your first ordinary deposit account in the MUFG Smart Account app or the MDC app, enter the campaign in MUFG Direct by the end of the following month and receive 4,000 giftee Box Select points",
+  "regions": "[Japan] Japan residents only; needs Japanese residence status and an identity document",
+  "value": "4,000 yen (about $26)",
+  "content": "MUFG's \"En-tame de Entertainment! Emutoku\" campaign: people aged 15-29 on 2026-04-01 who have never held an MUFG ordinary deposit account can open one in the MUFG Smart Account app or the MDC app between 2026-11-09 and 2027-04-30 and enter the campaign in MUFG Direct by the end of the month after opening, which earns 4,000 giftee Box Select points (about 4,000 yen) exchangeable for restaurant e-tickets, streaming coupons and similar. The reward email arrives in the late part of the third month after opening at registered email address 1, which must accept @mufg.jp mail. Account holders can also join the monthly \"Ataru Emutoku\" lottery from a 20,000 yen month-end balance, rising 10,000 yen a month.",
+  "conditions": "Aged 15-29 on 2026-04-01 and living in Japan; first MUFG ordinary deposit account (accounts closed or dormant since 2024-04-01 do not count); must use the designated apps, not a branch, tablet or other app; opening through a points site or similar reward route disqualifies; must complete the entry and keep a unique inbox; one account per person.",
+  "steps": [
+   "Open an ordinary deposit account in the MUFG Smart Account app or the MDC app (have your residence card and ID ready)",
+   "Register MUFG Direct after opening and confirm email address 1 receives mail",
+   "Complete the entry under Home > News & Campaigns > Campaign Entry by the end of the month after opening",
+   "Around three months later, open the reward email and exchange the giftee Box Select points"
+  ],
+  "risk": "Japan residents only; the reward arrives about three months after opening; no resend for a missed entry, a shared inbox or a lost email; opening through a points site forfeits the reward; no community receipt data points yet, to be rechecked within 7 days.",
+  "source": "MUFG official campaign page (read 2026-11-26: ages 15-29, 2026-11-09 to 2027-04-30, app account opening plus entry, 4,000 giftee Box Select points, sent in the late part of the third month) + GetNews and Poitan coverage 2026-11-10 + Kupomiru conditions summary 2026-11-16"
+ },
+ "cosim-free-esim-1gb": {
+  "title": "[Global]co:sim free eSIM: 1GB for 7 days per destination for new users ($0 at checkout, card verification)",
+  "highlight": "Data-only with no number: claim 1GB for 7 days per destination with $0 at checkout; one valid bank card is verified without charge, one claim per destination for new users across 200+ destinations",
+  "regions": "[Global] 200+ destinations (Thailand, Singapore, Malaysia, Japan, Korea, Hong Kong, Turkey and most of Europe); mainland China roaming not stated",
+  "value": "1GB / 7 days (about $5)",
+  "content": "co:sim's free trial: new users claim a 1GB / 7-day data-only eSIM per destination from its Free eSIM pages, with $0 due at checkout and only a valid bank card needed for verification at no charge, no passport or KYC. The eSIM can be installed within 30 days and the 7 days start when it first connects to a local network. Thailand, Malaysia, Singapore, Indonesia, Japan, Korea, Hong Kong, Turkey and most European countries each have their own page, one claim per destination, and top-ups can be added to the same eSIM afterwards.",
+  "conditions": "New users only; one valid bank card for verification ($0, no charge); one claim per destination; install within 30 days, valid 7 days after activation; data-only, no number and no SMS.",
+  "steps": [
+   "Open the free eSIM page for your destination on cosim.io (for example /free-esim/th)",
+   "Sign in, claim the eSIM and enter an email plus card for the $0 checkout",
+   "Install from the QR code and instructions in the email before you fly",
+   "Switch the line on after landing to connect locally, and top up the same eSIM after 1GB or 7 days"
+  ],
+  "risk": "The card check shows $0 but some issuers send a zero-value authorisation SMS; one claim per destination; the free allowance only covers maps and ride-hailing on arrival; no number, so verification texts cannot be received; some currencies round a few cents at checkout.",
+  "source": "co:sim official free eSIM page (read 2026-11-26: $0 at checkout, 1GB / 7 days, card verification, new users only, one page per destination)"
  }
 }

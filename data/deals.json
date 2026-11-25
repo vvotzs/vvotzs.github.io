@@ -774,6 +774,48 @@
   "utility": 0
  },
  {
+  "id": "wells-fargo-everyday-checking-325",
+  "dedup_key": "wellsfargo|bank|us|everyday-checking-325",
+  "title": "[美区]Wells Fargo Everyday Checking$500：90天内$1,000合格电子存款（1/12/2027前开户）",
+  "brand": "Wells Fargo",
+  "domain": "wellsfargo.com",
+  "category": "bank",
+  "value": "$500",
+  "value_num": 500,
+  "value_expected": 500,
+  "cost": "需要交易量",
+  "highlight": "从官方 welcomebonus 活动页线上开户自动带 offer code，90 天内累计 $1,000 合格电子存款即得 $500（史高档），达标后 30 天内到账；月费 $15 可用 $500 月存款或 $1,500 日余额免除",
+  "regions": "[美区] 美国居民（需SSN/税号），排除签W-8的非居民与外国实体",
+  "start": "2026-11-10",
+  "end": "2027-01-12",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "added": "2026-11-21",
+  "content": "从官方 welcomebonus 活动页线上开 Everyday Checking（最低存$25，offer code 自动带上），2027-01-12前开户并在90个日历日内收到合计$1,000以上合格电子存款即得$500，达标后30天内入账。合格电子存款包括ACH工资/政府福利、RTP与FedNow即时到账、第三方推到借记卡的入账；账户互转、手机存票、Zelle、柜台与ATM存款不算，Early Pay Day提前到账要等正式入账。月费$15，可用每月$500电子存款、$1,500日最低余额、$5,000合并存款/投资余额或主账户人17–24岁免除。官网另有只挂$325的checkingoffer页，别从那里进。",
+  "conditions": "仅限新支票客户且为账户主持有人；过去12个月拿过Wells Fargo个人支票开户奖的不行；签任何版本IRS W-8的非居民与外国实体不符；只开Everyday Checking可线上办，网点开其他账户须先用邮箱取offer code；不能与其他存款优惠叠加，每人一次；领奖时账户须未关闭、未受限。",
+  "steps": [
+   "从 accountoffers.wellsfargo.com/welcomebonus 线上开 Everyday Checking（offer code 自动带上）",
+   "开户至少存 $25，并把工资或其他合格电子存款导入新账户",
+   "90 天内累计达标 $1,000，之后 30 天内检查奖励入账",
+   "按自己情况选月费免除条件，避免 $15 月费吃掉奖励"
+  ],
+  "url": "https://accountoffers.wellsfargo.com/welcomebonus/",
+  "source": "Wells Fargo 官方 $500 活动页 welcomebonus（2026-11-26 实读：$500、1/12/2027 前开户、90 天 $1,000 合格电子存款）+ 官方 $325 版 checkingoffer 页（同日仍在架，两页并存）+ uscard.io（2026-11-11 记录三档：welcomebonus $500／welcomeoffer $400／checkingoffer $325）+ usdailyrewards 与 Doctor of Credit（11-10 起报道 $500 回归）",
+  "source_url": "https://usdailyrewards.com/wells-fargo-checking/",
+  "risk": "官网同时挂着 $325、$400、$500 三档，金额以自己申请页上写的为准，从低档链接进就只拿低档；$15 月费不豁免会吃掉大半奖励；奖励属应税收入（1099-INT）；提前关户可能被追回；非居民签 W-8 直接不符合资格。",
+  "status": "active",
+  "added_at": "2026-11-21T16:48:00+08:00",
+  "kyc_level": "foreign_only",
+  "kyc_note": "需 SSN/ITIN 与美国地址，且排除签 W-8 的非居民",
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "funding_requirement": "direct_deposit",
+  "geo_restriction": [
+   "US"
+  ]
+ },
+ {
   "id": "boa-advantage-tiered-1000",
   "dedup_key": "bofa|bank|us|boa-advantage-tiered-1000",
   "title": "[美区]Bank of America Advantage分层开户奖：公开档最高$500，定向版$1,000（1/31/2027前开户）",
@@ -1292,6 +1334,48 @@
   ]
  },
  {
+  "id": "snowflake-trial-400",
+  "dedup_key": "snowflake|cloud|global|trial-400",
+  "title": "[全球]Snowflake免费试用：30天$400额度，邮箱注册免绑卡",
+  "brand": "Snowflake",
+  "domain": "snowflake.com",
+  "category": "cloud",
+  "value": "$400（30天）",
+  "value_num": 400,
+  "cost": "免费试用",
+  "highlight": "工作邮箱注册即得$400额度与30天使用权，AWS/Azure/GCP任选；可装载查询、跑Snowpark与Streamlit，AI功能要加卡才开",
+  "regions": "[全球] 需有效工作邮箱；云平台、区域与版本注册后不可更改",
+  "start": "",
+  "end": "",
+  "content": "Snowflake 自助试用：只需有效邮箱（无需信用卡），30天内可用$400额度，按虚拟仓库与存储的实际消耗扣减，用尽或满30天即止。注册时选定云平台（AWS／Azure／GCP）、区域与版本，之后不能改；可装载S3/Azure/GCS数据、跑SQL与Snowpark、搭Streamlit、连BI工具。AI功能默认关闭，加卡后才启用；外部网络访问、混合表、Openflow等在试用账号不可用。到期未升级账号会被停用，剩余额度作废。",
+  "conditions": "需有效邮箱注册，一人一次；30天或$400用尽即止；AI功能需先绑卡（绑卡不等于升级）；试用账号不支持外部网络访问、混合表与Openflow；到期未升级账号停用、余额作废。",
+  "steps": [
+   "到 snowflake.com 试用页点 Start for free，用工作邮箱注册",
+   "选云平台、区域与版本（注册后不可改），接受自助按需条款",
+   "邮件激活账号、设置用户名密码，进入 Snowsight",
+   "看左侧剩余额度，用 XS 小仓库练习，别开大仓库空转"
+  ],
+  "url": "https://www.snowflake.com/en/snowflake-trial/",
+  "source_url": "https://www.snowflake.com/en/snowflake-trial/",
+  "source": "Snowflake 官方试用页（2026-11-26 实读：$400／30天两种试用）+ 官方文档 Trial accounts（只需有效邮箱、AI 功能需绑卡、试用账号功能限制）",
+  "risk": "AI 功能默认关闭，绑卡才开；试用账号缺外部网络访问等功能；到期停用、余额作废；若绑卡并升级，之后按用量与阈值扣款。",
+  "status": "active",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T06:52:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "barclays-uk-switch-300",
   "dedup_key": "barclays|bank|gb|switch-300",
   "title": "[英区]Barclays转户奖最高£300：£150开户+每月£30连发5个月（10/27起）",
@@ -1375,48 +1459,6 @@
   "funding_requirement": "min_deposit",
   "geo_restriction": [
    "GB"
-  ]
- },
- {
-  "id": "wells-fargo-everyday-checking-325",
-  "dedup_key": "wellsfargo|bank|us|everyday-checking-325",
-  "title": "[美区]Wells Fargo Everyday Checking$325：90天内$1,000合格电子存款（1/13/2027前开户）",
-  "brand": "Wells Fargo",
-  "domain": "wellsfargo.com",
-  "category": "bank",
-  "value": "$325",
-  "value_num": 325,
-  "value_expected": 325,
-  "cost": "需要交易量",
-  "highlight": "从官方活动页开户自动带上 offer code，开户后 90 天内累计 $1,000 合格电子存款即得 $325，达标后 30 天内到账；月费 $15 可用 $500 月存款或 $1,500 日余额免除",
-  "regions": "[美区] 美国居民（需SSN/税号），排除签W-8的非居民与外国实体",
-  "start": "2026-11-10",
-  "end": "2027-01-13",
-  "verified": true,
-  "last_verified": "2026-11-21",
-  "added": "2026-11-21",
-  "content": "从官方活动页开户（最低存$25）自动带上offer code，2027-01-13前开户并在90个日历日内收到合计$1,000以上合格电子存款即得$325，达标后30天内入账。合格电子存款包括ACH工资/政府福利、RTP与FedNow即时到账、第三方推到借记卡的入账；账户互转、手机存票、Zelle、柜台与ATM存款不算，Early Pay Day提前到账要等正式入账。月费$15，可用每月$500电子存款、$1,500日最低余额、$5,000合并存款/投资余额或主账户人17–24岁免除。",
-  "conditions": "仅限新支票客户且为账户主持有人；过去12个月拿过Wells Fargo个人支票开户奖的不行；签任何版本IRS W-8的非居民与外国实体不符；只开Everyday Checking可线上办，网点开其他账户须先用邮箱取offer code；不能与其他存款优惠叠加，每人一次；领奖时账户须未关闭、未受限。",
-  "steps": [
-   "从 accountoffers.wellsfargo.com/checkingoffer 线上开 Everyday Checking（offer code 自动带上）",
-   "开户至少存 $25，并把工资或其他合格电子存款导入新账户",
-   "90 天内累计达标 $1,000，之后 30 天内检查奖励入账",
-   "按自己情况选月费免除条件，避免 $15 月费吃掉奖励"
-  ],
-  "url": "https://accountoffers.wellsfargo.com/checkingoffer/",
-  "source": "Wells Fargo 官方活动页与条款（2026-11-21 实读：$325、1/13/2027 前开户、90 天 $1,000 合格电子存款、排除 W-8 签署人）+ Credit Guru（2026-11-19 复核同一页只显示 $325）+ usdailyrewards 与 Doctor of Credit（11-10 报道的 $500 版本）",
-  "source_url": "https://usdailyrewards.com/wells-fargo-checking/",
-  "risk": "第三方攻略写的 $500 与官方页现在的 $325 不一致，金额以自己申请页上写的为准；$15 月费不豁免会吃掉大半奖励；奖励属应税收入（1099-INT）；提前关户可能被追回；非居民签 W-8 直接不符合资格。",
-  "status": "active",
-  "added_at": "2026-11-21T16:48:00+08:00",
-  "kyc_level": "foreign_only",
-  "kyc_note": "需 SSN/ITIN 与美国地址，且排除签 W-8 的非居民",
-  "utility": 0,
-  "identity_requirement": "local_id",
-  "residency_requirement": "local_resident",
-  "funding_requirement": "direct_deposit",
-  "geo_restriction": [
-   "US"
   ]
  },
  {
@@ -6104,6 +6146,51 @@
   "funding_requirement": "min_deposit",
   "geo_restriction": [
    "PL"
+  ]
+ },
+ {
+  "id": "mufg-emutoku-4000",
+  "dedup_key": "mufg|bank|jp|emutoku-4000",
+  "title": "[日区]三菱UFJエムトク：15–29岁首次App开户送4,000日元礼券（至2027/4/30）",
+  "brand": "MUFG",
+  "domain": "bk.mufg.jp",
+  "category": "bank",
+  "value": "4,000日元（≈$26）",
+  "value_num": 26,
+  "cost": "真正免费",
+  "highlight": "2026-04-01时点15–29岁、首次用スマート口座開設或MDC App开普通存款账户，开户次月底前于三菱UFJダイレクト登记，即得giftee Box Select 4,000积分，可换餐饮与流媒体订阅券",
+  "regions": "[日区] 仅居住日本者；需日本在留资格与本人身份证明",
+  "start": "2026-11-09",
+  "end": "2027-04-30",
+  "content": "这是三菱UFJ银行给15–29岁年轻人的活动：2026-11-09至2027-04-30期间用「スマート口座開設」或「MDC」App首次开普通存款账户，并在开户完成次月底前登录三菱UFJダイレクト完成エントリー，即可领取giftee Box Select 4,000积分（约4,000日元），可换餐饮电子券、流媒体订阅券等。特典邮件在开户月约3个月后的下旬发到登记邮箱1，须能收到@mufg.jp邮件。另有每月「当たるエムトク」抽奖，持有账户者月末余额2万日元起、每月加1万即可参与。",
+  "conditions": "2026-04-01时点15–29岁且居住日本；首次在该行开普通存款账户（2024-04-01后解约或转休眠的旧户不算）；必须走指定App，网点、平板与其他App不算；经积分网站等自有奖励渠道开户不算；须完成エントリー、邮箱唯一可收信；一人一户。",
+  "steps": [
+   "用「スマート口座開設」或「MDC」App新开普通存款账户（备好日本在留卡等本人确认文件）",
+   "开户完成后注册三菱UFJダイレクト，确认「メールアドレス1」能收信",
+   "在开户完成次月底前，从「ホーム＞ニュース・キャンペーン＞キャンペーンエントリー」完成エントリー",
+   "开户月约3个月后查收特典邮件，用giftee Box Select兑换想要的券"
+  ],
+  "url": "https://www.bk.mufg.jp/kouza/lp/emutoku_new/index.html",
+  "source_url": "https://www.bk.mufg.jp/kouza/lp/emutoku_new/index.html",
+  "source": "三菱UFJ银行官方活动页（2026-11-26 实读：15–29岁、2026-11-09～2027-04-30、App开户＋エントリー、giftee Box Select 4,000积分、开户月3个月后下旬发送）+ GetNews／ポイ探 2026-11-10 报道 + クポミル 2026-11-16 条件整理",
+  "risk": "仅日本居住者可参加；特典要等开户后约3个月才发；未エントリー、邮箱与他人共享、邮件丢失都不补发；经积分网站开户直接失去资格；暂无社区实测领取DP，7天内复核。",
+  "status": "active",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T06:52:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "kyc_level": "foreign_only",
+  "kyc_note": "需日本在留资格、日本地址与本人确认文件",
+  "utility": 0,
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_address",
+  "platform_requirement": [
+   "ios",
+   "android"
+  ],
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "JP"
   ]
  },
  {
@@ -12319,6 +12406,50 @@
   ]
  },
  {
+  "id": "cosim-free-esim-1gb",
+  "dedup_key": "co-sim|esim|global|free-esim-1gb",
+  "title": "[全球]co:sim免费eSIM：新用户每目的地1GB/7天（结账$0，需验卡）",
+  "brand": "co:sim",
+  "domain": "cosim.io",
+  "category": "esim",
+  "value": "1GB / 7天（≈$5）",
+  "value_num": 5,
+  "cost": "真正免费",
+  "highlight": "纯流量无号码：按目的地各领1GB/7天，结账显示$0；要一张有效银行卡验卡、不扣费，新用户每目的地限一次，覆盖200+目的地",
+  "regions": "[全球] 200+目的地（泰国、新马、日韩、香港、土耳其与多数欧洲国家等）；中国大陆漫游未标注",
+  "start": "",
+  "end": "",
+  "content": "co:sim 的免费试用：新用户在其 Free eSIM 页按目的地领一张1GB／7天纯流量eSIM，结账金额$0，只要求填一张有效银行卡做验证（不收费），无需护照或实名。eSIM 30天内安装即可，首次连上当地网络后开始计7天；泰国、马来西亚、新加坡、印尼、日本、韩国、香港、土耳其与多数欧洲国家各有独立一页，一人一目的地只能领一次，用完可在这张eSIM上直接充值续用。",
+  "conditions": "仅限新用户；需有效银行卡做一次验证（$0、不扣费）；每个目的地限领一次；须30天内安装，激活后7天有效；纯流量，无号码、收不了短信。",
+  "steps": [
+   "打开 cosim.io 对应目的地的免费eSIM页（如 /free-esim/th）",
+   "登录后点领取，结账填邮箱与银行卡验证（金额$0）",
+   "邮件收到二维码与安装说明，出发前装好",
+   "落地开启该线路自动连当地网络，7天/1GB用完可在同卡充值"
+  ],
+  "url": "https://cosim.io/en/free-esim/th",
+  "source_url": "https://cosim.io/en/free-esim/th",
+  "source": "co:sim 官方免费eSIM页（2026-11-26 实读：$0 at checkout、1GB／7天、需银行卡验证、仅新用户、每目的地一页）",
+  "risk": "验卡显示$0，个别发卡行会发0元预授权短信；每个目的地只能领一次；免费额度只够落地叫车查地图；不含号码，接不了验证码；少数币种结账可能有几分钱取整。",
+  "status": "active",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T06:52:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "existing_card",
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "vowifi": "n/a"
+ },
+ {
   "id": "yahoo-japan-agent-i-stamp-rally",
   "dedup_key": "yahoo-japan|software|jp|agent-i-stamp-rally",
   "title": "[日区]Yahoo!JAPAN「Agent i」集章：5次抽奖+完走50円PayPay（先到2万名）",
@@ -15109,6 +15240,48 @@
   ]
  },
  {
+  "id": "adobe-for-startups-12m",
+  "dedup_key": "adobe|software|global|for-startups-12m",
+  "title": "[全球]Adobe for Startups：初创免费用12个月Firefly Pro Plus+Acrobat Studio+Semrush（最多5席）",
+  "brand": "Adobe",
+  "domain": "adobe.com",
+  "category": "software",
+  "value": "免费12个月（最多5席）",
+  "value_num": 0,
+  "cost": "免费试用",
+  "highlight": "成立5年内、融资低于$1,500万且已有官网与企业邮箱的初创，可免费用Firefly Pro Plus、Acrobat Studio（含Express Premium）与Semrush整12个月，最多5席",
+  "regions": "[全球] 需公司官网与企业邮箱；条款与国家/地区可用性以Adobe审核为准",
+  "start": "2026-11-02",
+  "end": "",
+  "content": "Adobe 2026-11-02 上线的初创扶持计划：成立不超过5年、累计融资低于$1,500万、有公司官网与企业邮箱的初创可申请，通过审核后12个月内免费用 Firefly Pro Plus（图像、视频、音频创作，含Photoshop网页与移动版）、Acrobat Studio（PDF工具＋AI助手＋Express Premium）与 Semrush（关键词、竞品与AI搜索可见度分析），每团队最多5席。Adobe 逐个核验资格，同一家公司只能领一次，一年后可按付费方案续用。",
+  "conditions": "公司须成立5年内、融资低于$1,500万、有官网与企业邮箱；需提交申请并通过Adobe资格核验；最多5席，超出另购；每家公司限领一次，12个月到期转付费。",
+  "steps": [
+   "在 Adobe for Startups 页填公司信息并提交申请",
+   "按验证邮件完成资格核验",
+   "通过后激活 Firefly Pro Plus、Acrobat Studio 与 Semrush 席位",
+   "一年内按需增购席位，到期前决定是否转付费"
+  ],
+  "url": "https://business.adobe.com/solutions/startups.html",
+  "source_url": "https://business.adobe.com/solutions/startups.html",
+  "source": "Adobe 官方 Adobe for Startups 页（2026-11-26 实读：12个月免费 Firefly Pro Plus／Acrobat Studio 含 Express Premium／Semrush、最多5席、成立5年内且融资＜$1,500万）+ Adobe 官方博客 2026-11-02 + Semrush 官方新闻 2026-11-09",
+  "risk": "需通过Adobe审核，部分国家/地区不在可用范围；面向已注册公司，个人与自由职业者一般不符合；一年后转付费；每家公司仅一次；5席以上需另购。",
+  "status": "active",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T06:52:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "business",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "immunefi-base-everest-audit-comp",
   "dedup_key": "immunefi|crypto|global|base-everest-audit-comp",
   "title": "[全球]Immunefi Base Everest审计赛：最高$250,000",
@@ -15165,7 +15338,7 @@
   "start": "2026-10-01",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-21",
   "content": "官方《Sweet Bonus》条款：活动期2026-10-01 12:00 CT至11-30 23:59 CT，新平台用户开户时填码SWEETBONUS，首笔入金须在活动期内，之后30个日历日为入金窗口，按窗口内全部合格账户的净入金定档——$2,500–4,999得$50、$5,000–24,999得$100、$25,000–99,999得$500、$100,000以上得$2,000，奖励在窗口结束后一次性发放。入金与奖励须从首笔入金日起放满12个月，期间奖励不可提现，提前取出会被扣回；交易亏损不算取出。IRA与信托不参与，每人每户限一次，不能与其他tastytrade活动叠加；转入ACATS不收转入费，转出券商最多$75可由tastytrade报销（每次最少$2,000）。",
   "conditions": "从未开过或入金过任何tastytrade账户、也从未拿过其新户奖励；美国合法居民18岁以上；首笔入金须在10/01–11/30（CT）内，30天内完成的入金才计入；只限个人现金/保证金账户，IRA与信托排除；入金与奖励锁12个月；每人每户一次，不可叠加。",
@@ -15176,7 +15349,7 @@
    "入金与奖励保持 12 个月不动，之后可自由提取"
   ],
   "url": "https://tastytrade.com/sweet-bonus/",
-  "source": "tastytrade 官方 Sweet Bonus 页与《Promotion Terms & Conditions》（2026-11-21 实读：10/01–11/30、四档金额、30 天入金窗口、12 个月持有、IRA 排除）+ usdailyrewards（10-15）与 Finder（11-05）复核",
+  "source": "tastytrade 官方 Sweet Bonus 页与《Promotion Terms & Conditions》（2026-11-21 实读：10/01–11/30、四档金额、30 天入金窗口、12 个月持有、IRA 排除）+ usdailyrewards（10-15）与 Finder（11-05）复核；2026-11-26 复核：官方页仍在架，促销期 10/01–11/30/2026、SWEETBONUS 四档金额未变",
   "source_url": "https://usdailyrewards.com/tastytrade-bonus/",
   "risk": "资金要锁 12 个月，等于用流动性换 2% 左右收益；提前取出或转出会被扣回奖励；入金如果买股票要自负涨跌；只限美国居民，非居民无法参加；30 天窗口按清算时间算，踩线转账可能不计入档位。",
   "status": "expiring_soon",
@@ -15258,12 +15431,12 @@
    "赛后 3 个工作日内查看榜单，按通知完成核验领取 USDC/USDT"
   ],
   "url": "https://help.futuur.com/Midterms-Trading-Competition-3f188d28324b80c5ad87d9a950c4c8c5",
-  "source": "Futuur 官方 Midterms Trading Competition 规则页（2026-11-23 实读：免费 Ooms、550USDC 前五分档、10 个赛期内结算市场门槛、11/30 23:59 UTC 截止、USDC/USDT 7 天内发放）",
+  "source": "Futuur 官方 Midterms Trading Competition 规则页（2026-11-23 实读：免费 Ooms、550USDC 前五分档、10 个赛期内结算市场门槛、11/30 23:59 UTC 截止、USDC/USDT 7 天内发放）；2026-11-26 复核：规则页仍在架，赛期 10/14–11/30 23:59 UTC、免费 Ooms 盘、前五名分 550 USDC 未变",
   "risk": "必须在截止前凑满 10 个已结算市场，晚加入可能凑不齐；期末未平仓位不计；领奖需身份与所在地核验，部分司法辖区可能被限制。",
   "kyc_level": "cn_ok",
   "utility": 0,
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-23",
   "status": "expiring_soon",
   "added_at": "2026-11-23T20:56:40+08:00",
@@ -15780,7 +15953,7 @@
   "start": "2026-11-23",
   "end": "2026-11-29",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-24",
   "content": "本期奖励从月初的 S$100 现金+S$30 Grab 券上调：11/23–11/29 通过 SingSaver 链接新开 uSMART SG 账户，单笔存入 S$1,000 并留存 30 天即可三选一——S$150 现金（PayNow）、9,000 Max Miles（约 1.7 美分/里，永不过期）、或 AirPods 5（价值 S$199，每天限量 5 台）。全程不用下任何交易单，钱放现金即可；S$1,000 换 S$150 相当于一个月 15%。SingSaver 活动页（11-22 更新）标注门槛 S$1,000、5 选 1 奖励、总价值 S$170、剩 6 天。",
   "conditions": "须为 uSMART SG 全新客户；须是新加坡公民/PR/EP/S Pass/工作准证持有者；必须走 SingSaver 渠道开户；单笔存入 S$1,000 且留存 30 天；开户 14 天内提交 SingSaver 邮件里的兑换表。",
@@ -15794,7 +15967,7 @@
   ],
   "url": "https://www.singsaver.com.sg/investment/products/usmart-sg",
   "source_url": "https://theshutterwhale.com/blog/2026/11/23/get-s150-cash-or-9000-max-miles-with-usmart-via-singsaver-deposit-s1000-by-29-november-2026",
-  "source": "SingSaver uSMART SG 活动页（2026-11-22 更新：S$1,000 门槛、5 选 1、总价值 S$170、倒计时 6 天）+ The Shutterwhale（2026-11-23）逐项记录奖励与兑换条件",
+  "source": "SingSaver uSMART SG 活动页（2026-11-22 更新：S$1,000 门槛、5 选 1、总价值 S$170、倒计时 6 天）+ The Shutterwhale（2026-11-23）逐项记录奖励与兑换条件；2026-11-26 复核：SingSaver uSMART SG 页在线（页面更新 11-22），奖励与倒计时仍在",
   "risk": "AirPods 每天只放 5 台，抢不到就只剩现金/里数；奖励由 SingSaver 发放，逾期不填兑换表作废；券商账户里有投资风险，不想投资就让钱留在现金；新加坡以外的地址与准证不能参加；奖励档位与名额随时可能调整，入场前先看 SingSaver 页面当前条款。",
   "added_at": "2026-11-24T09:10:00+08:00",
   "status": "expiring_soon",
@@ -16916,11 +17089,11 @@
   ],
   "url": "https://developers.heygen.com/docs/models/heygen-voice",
   "source_url": "https://x.com/bobolv235824/status/2123452438846001638",
-  "source": "HeyGen 官方 Voice 模型文档与 TTS 说明（2026-11-20 核验）+ 官方博客 HeyGen Voice Turbo（2026-10-21 发布、11-02 更新）+ X @bobolv235824 分享（2026-11-19）",
+  "source": "HeyGen 官方 Voice 模型文档与 TTS 说明（2026-11-20 核验）+ 官方博客 HeyGen Voice Turbo（2026-10-21 发布、11-02 更新）+ X @bobolv235824 分享（2026-11-19）；2026-11-26 复核：官方文档仍写 Voice Turbo Free 免费至 November 30, 2026，model 名 heygen-voice-1-turbo-free 可用",
   "risk": "只到 11-30，之后按原价计费；模型名写错会直接扣费；共享容量高峰期频繁 429；不要拿它做生产 SLA。",
   "added_at": "2026-11-20T01:08:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-20",
   "status": "expiring_soon",
   "kyc_level": "none",
