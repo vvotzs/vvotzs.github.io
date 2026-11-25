@@ -7408,5 +7408,56 @@
   ],
   "risk": "No published end date, so it may close early; third-party channels miss the price; renews at the regular rate after a year; the catalogue updates slowly, which hurts if you sign up for new shows.",
   "source": "Cord Cutter Weekly 24 November 2026, Michael Saves 21 November 2026 and US Daily Rewards 24 November 2026 agreeing on $12 a year with past years ending 12/1 + the STARZ homepage offer entry (end date unverified as of 25 November 2026)"
+ },
+ "esimnote-free-1gb-esim": {
+  "title": "[Global] eSimNote free 1GB/10-day eSIM: cannot be installed, the QR code is faked in the browser (avoid)",
+  "highlight": "Archived after testing: on 25 Nov 2026 we read claim.php and its inline JS - \"share to unlock\" just opens a share window and after two seconds flips to \"Share Verified!\" with no check, a 30-second progress bar ends in showFinal(), whose comment reads \"// Generate Dummy QR\", and the QR image is drawn by api.qrserver.com with a made-up \"LPA:1$esimnote.com$TRIAL-<timestamp>\" payload; the page has no form, fetch or backend at all, so scanning it installs nothing. The detail page stays for reference, with alternatives at the top",
+  "regions": "[Global] 12 destinations: US, Europe (33 countries), UK, Germany, France, Spain, Italy, Canada, Australia, Japan, Turkey, Singapore; mainland China is not included (only paid plans on the homepage list China at $2.50/GB)",
+  "value": "1GB / 10 days of data (≈$5, not actually obtainable)",
+  "content": "Archived: the free eSIM cannot be installed. eSimNote's homepage pushes \"Stop Paying Roaming Fees. Start with 1GB Free.\" and \"1,000+ Free Trials Claimed Today\", and claim.php offers a $0.00 \"1GB Data Pack / 10 Days • 5G Speed\" through three steps: pick a destination, share with one friend to unlock, scan the QR code. The 12 destinations are the US, Europe (33 countries), the UK, Germany, France, Spain, Italy, Canada, Australia, Japan, Turkey and Singapore - mainland China is missing. Reading the whole page and its inline JS on 25 November 2026: \"unlockShare()\" only opens a WhatsApp, Facebook or Messenger share window and after two seconds unconditionally prints \"Share Verified!\" and unlocks the next step; \"startGeneration()\" runs a fake 30-second progress bar (Allocating 5G Bandwidth... then Generating Unique ID... then Finalizing...) and its \"showFinal()\" is commented \"// Generate Dummy QR\", drawing a QR image from api.qrserver.com whose payload is \"LPA:1$esimnote.com$TRIAL-<timestamp>\" - an invented activation string, not a carrier profile. There is no form, fetch or backend, no email is sent, and the page still carries three AD SPACE placeholders.",
+  "conditions": "Archived and unobtainable. Historic terms: an eSIM-capable phone (the page lists iPhone XS-14, Galaxy S20-S23, Pixel 3-7, Huawei P40 and Mate 40); the flow asks you to share the link with one friend before the QR code unlocks; none of the 12 destinations include mainland China.",
+  "steps": [
+   "Open esimnote.com and press Claim Free 1GB to reach claim.php",
+   "Pick a destination (US, Europe 33, UK, Germany, France, Spain, Italy, Canada, Australia, Japan, Turkey, Singapore) and press Continue",
+   "Share via WhatsApp, Facebook or Messenger, wait two seconds for \"Share Verified!\", then press Generate QR Code",
+   "The progress bar finishes after 30 seconds and shows a QR code, but it is only a front-end drawing that installs nothing - there is no point retrying"
+  ],
+  "url": "https://esimnote.com/claim.php",
+  "risk": "Archived as unusable: the QR code is just a picture drawn by api.qrserver.com, encoding an invented \"LPA:1$esimnote.com$TRIAL-<timestamp>\" string rather than a carrier profile, so a phone cannot install it and no data follows. \"Share to unlock\" is not verified at all - it passes after two seconds. The page has no form, endpoint or email delivery, so do not enter personal data or pay anything here; the homepage and claim page use \"1,000+ Free Trials Claimed Today\" and \"256-Bit SSL Secure Connection\" plus ad slots to look legitimate, which is bait-page behaviour.",
+  "source": "eSimNote claim page and inline JS read on 25 Nov 2026 (fake share check, 30-second progress bar, `// Generate Dummy QR`, api.qrserver.com payload, no backend) + Ur.io team's test reporting the download fails, relayed by their assistant (25 Nov 2026)"
+ },
+ "travelkon-bfcm-50off-esim": {
+  "title": "[Global] TravelKon Black Friday: one travel eSIM at 50% off each day, 30% off sitewide until 11/30 (Vietnam/Japan/Europe/SEA)",
+  "highlight": "One 50%-off eSIM per day from 11/26 to 11/30: Vietnam Viettel 5GB/day for 7 days at A$9.50, Japan KDDI unlimited 3 days at A$9.50, Orange Global 180+ countries 30 days at A$29.50, Europe Llamaya 25GB at A$12.50, Southeast Asia 5 countries 300GB at A$22.50; everything else is 30% off, applied automatically at checkout, and vouchers can be activated within six months",
+  "regions": "[Global] TravelKon's Australian store and app, priced in AUD; the daily 50% deal lasts 24 hours, the rest of the site is 30% off",
+  "value": "50% off one eSIM per day (Japan unlimited 3 days A$9.50, Europe 25GB A$12.50); 30% off everything else",
+  "content": "TravelKon's Black Friday and Cyber Monday sale: from 26 to 30 November one eSIM is 50% off each day between 12:00am and 11:59pm AWST, and everything else on the site is 30% off, applied automatically at checkout with no code. 26 Nov Vietnam Viettel 5GB/day at A$9.50 for 7 days, A$14.50 for 15 days, A$22.50 for 30 days; 27 Nov Japan KDDI fixed plans from A$7.50 for 12GB over 4 days with true unlimited from A$9.50 for 3 days and A$59.50 for 31 days; 28 Nov Orange Global covering 180+ countries, 30 days up to 20GB for A$29.50; 29 Nov Europe Llamaya with EU calls at A$12.50 for 25GB, A$24.50 for 50GB and A$34.50 for 80GB over 28 days; 30 Nov Southeast Asia 5 (Indonesia, Singapore, Malaysia, Thailand, Hong Kong) 300GB over 30 days for A$22.50. Buy now and activate within six months; redemption codes do not expire and a redeemed QR code stays valid for 60 days. Most plans are data-only and route via Singapore or Europe, so ChatGPT and Gemini work.",
+  "conditions": "The 50% price applies only to that day's product during its 24-hour window in AWST; buying on another day gets 30% off. Needs an unlocked eSIM phone. Charged in AUD, so foreign cards may add a conversion fee. Activate within six months, and use a redeemed QR code within 60 days. Data-only plans have no number, calls or texts.",
+  "steps": [
+   "Open the matching product page on travelkon.com.au and check which eSIM is 50% off that day",
+   "Choose duration and data tier, add it to the cart; the discount is applied at checkout",
+   "Pay and receive the redemption code by email, then redeem it just before you travel",
+   "Add the eSIM to your phone and switch on data roaming when you land"
+  ],
+  "url": "https://www.travelkon.com.au/product/japan-esim-kddi/",
+  "risk": "Only one product is 50% off each day and popular days can sell out. Prices are in AUD, so non-Australian cards face exchange differences and possible 3-D Secure failures. Viettel states OTP texts may not arrive and the plan has no calls or texts; Llamaya calls work only inside the EU. Installing some plans before departure starts the clock (Viettel documents this), so install on arrival. Refunds follow the store policy and poor coverage is not compensated.",
+  "source": "OzBargain store-rep post node/985322 (TravelKon's official account, 25 Nov 2026: five-day 50% lineup, prices, 30% sitewide, ends 30 Nov 23:59 AWST) + TravelKon product pages read on 25 Nov 2026 (Viettel 5GB/day, codes do not expire, QR valid 60 days, most plans use non-Hong Kong IP)"
+ },
+ "ethena-pay-black-friday-50-cashback": {
+  "title": "[47 non-US markets] Ethena Pay Black Friday: 50% AVAX back on the first $200 spent (max $100) plus a 10-winner weekend draw (11/27-11/30)",
+  "highlight": "Official promotion terms: from 00:00 on 27 November to 00:00 on 1 December 2026 (UTC+8), every active cardholder regardless of tier earns 50% AVAX cashback on the first $200 of qualifying spend, capped at $100 per person; the same window runs a Weekend Draw for ten winners paid their total qualifying spend up to $1,000, entered by spending $200 on any single day or via the free entry form",
+  "regions": "[47 non-US markets] Matches Ethena Pay's card coverage: US, UK and EU residents are not eligible, mainland China and Taiwan are not open yet, and an overseas ID is required",
+  "value": "Up to $100 cashback plus a draw prize of up to $1,000",
+  "content": "Ethena Pay's official promotion terms, section 3.1: from 00:00 on 27 November to 00:00 on 1 December 2026 (UTC+8), every active cardholder in good standing earns 50% crypto cashback in AVAX on the first $200 of qualifying spend, capped at $100 per cardholder; spending above that earns the standard cashback of your tier, and the promotion replaces rather than stacks on it. The same window runs the Weekend Draw: ten winners receive a reward equal to their total qualifying spend during the promotion, capped at $1,000 each, entered automatically by spending $200 on any single day (UTC+8) or through the free entry form, with equal odds and a certified independent draw. Rewards are valued at the AVAX settlement price and paid in the order qualifying transactions settle (one to three business days). The promotion budget is limited and the offer ends for everyone when it runs out. Gambling, cash advances, gift cards and crypto purchases, which are excluded from standard cashback, do not count.",
+  "conditions": "Requires an active Ethena Pay card in good standing, any tier. Only qualifying purchases count; gambling, cash advances, gift cards, crypto purchases and P2P transfers are excluded. The budget is limited and can end the promotion early. KYC is required, mainland China and Taiwan are not open, and refunded or reversed purchases do not count and may have rewards clawed back.",
+  "steps": [
+   "If you already hold a card, check it is active and spend with it during the window; otherwise complete Ethena Pay KYC and open one first",
+   "From 00:00 on 27 November (UTC+8) put the first $200 of qualifying spend on the card",
+   "To enter the draw, spend $200 on any single day or use the official free entry form once per person",
+   "Watch for the AVAX cashback after transactions settle; draw winners are emailed after the promotion ends"
+  ],
+  "url": "https://pay.ethena.fi/promotions",
+  "risk": "Cashback is paid in AVAX, so its value moves with the price; the promotion budget is limited and can end early, so check the remaining budget shown on the terms page before spending. Rewards are calculated on the settled amount at the AVAX price of that moment, and refunds are clawed back while still counting against your cap. Draw winners must still pass KYC before payment. Many exclusions apply, so do not use gift cards or crypto purchases to reach the threshold.",
+  "source": "Ethena Pay official Promotion Terms (updated 23 Nov 2026, section 3.1 Black Friday Offer: 50%, $100 cap, $200 threshold, 27 Nov-1 Dec UTC+8, Weekend Draw of ten winners up to $1,000, free entry form, budget-limited) + Ethena announcement (24 Nov 2026) + APPDO Digital Life Guide Telegram (25 Nov 2026)"
  }
 }

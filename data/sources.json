@@ -234,7 +234,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-23T20:52:44Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -258,7 +258,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-24T19:57:36Z",
       "search_domains": [
         "x.com"
@@ -300,8 +300,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
-      "last_hit_at": "2026-11-25T00:42:50Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
+      "last_hit_at": "2026-11-25T11:33:38Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
     },
@@ -320,7 +320,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -340,7 +340,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-25T00:42:50Z",
       "zero_streak": 0
     },
@@ -378,7 +378,7 @@
       "status": "active",
       "added_at": "2026-11-22T05:10:00Z",
       "note": "首页约 203 个卡片、10 个分区（最新福利/跨境券商/香港数字银行/香港实体银行/澳门银行/虚拟银行卡/加密货币/行情工具/跨境工具），每张卡多半指向站内 /post/<id>/ 详情页。站内大量「邀请码：××」「?ref=」「?invite_code=」为站长个人返佣码，收录时必须回溯品牌官网，不得照搬。",
-      "last_crawled_at": "2026-11-24T07:31:45Z"
+      "last_crawled_at": "2026-11-25T11:33:38Z"
     },
     {
       "id": "shuzijumin",
@@ -394,7 +394,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-24T19:57:36Z",
       "search_domains": [
         "shuzijumin.com"
@@ -416,7 +416,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-24T02:53:48Z",
       "search_domains": [
         "www.nodeseek.com"
@@ -533,7 +533,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T00:42:51Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "search_domains": [
         "ecitizen.forum"
@@ -554,7 +554,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T10:10:48Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "search_domains": [
         "yunjumin.com"
@@ -678,8 +678,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
-      "last_hit_at": "2026-11-22T06:16:21Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
+      "last_hit_at": "2026-11-25T11:33:38Z",
       "entry_url": "https://www.ozbargain.com.au/feed",
       "zero_streak": 0
     },
@@ -697,7 +697,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-16T07:30:00Z",
       "entry_url": "https://www.cheapies.nz/feed"
     },
@@ -714,7 +714,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T00:42:51Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "zero_streak": 0
     },
@@ -786,7 +786,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-15T06:30:00Z",
       "entry_url": "https://budgetfitter.uk/feed"
     },
@@ -822,7 +822,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
+      "last_crawled_at": "2026-11-25T11:33:38Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "zero_streak": 0
     },
