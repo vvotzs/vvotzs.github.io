@@ -7295,5 +7295,53 @@
   ],
   "risk": "The site says \"up to $100\" but not what a new account actually gets or any conditions; credits burn per task (100-300 for simple tasks), so big jobs use them fast; the agent writes to your repositories and opens pull requests, so start with a small repo; Slack/Teams integrations are limited by the permissions you grant.",
   "source": "Viktor official pricing page read on 25 November 2026 ($0 free plan, up to $100 in credits, no card, no expiry, all features unlocked) + Product Hunt launch on 24 November 2026 (#5 that day, with the same up-to-$100 credits statement in the official reply)"
+ },
+ "infini-card-ai-50-cashback": {
+  "title": "[Multi-region] Infini card: first card free to open, 30-50% cashback on AI subscriptions and API top-ups, capped at $10 a month ($100 for Elite)",
+  "highlight": "No card-opening fee on the first card and no monthly or annual fee, from a US$10 minimum top-up; direct charges at about 60 AI merchants such as ChatGPT, Claude and Cursor earn 30% (Standard) or 50% (Professional/Elite) back, plus 1.5% or more on ordinary spending",
+  "regions": "[Multi-region] Personal users worldwide (Max cannot be opened in the EU); a channel report says mainland China users can open with a passport plus overseas address proof, which the official site does not state",
+  "value": "30-50% AI cashback, capped at $10 a month ($100 for Elite)",
+  "content": "Personal Infini cards: the first card costs $0 to open (each extra card $10), there is no monthly or annual fee, and the minimum initial top-up is US$10, which goes straight to the card balance. Lite (Visa, Apple/Google Pay, 3% FX fee, works for ChatGPT/Claude); Lite Plus (US BIN, 2% FX fee, works for ChatGPT/Claude/Cursor/OpenRouter, Professional tier or above); Max (Mastercard, 0% FX fee, $0.30 on transactions under $50, not available in the EU); Pro (1% FX fee, does not support ChatGPT/Claude). AI cashback follows the tier on the settlement date: 30% on Standard and 50% on Professional, capped at $10 a month; 50% on Elite, capped at $100, paid on the 2nd of the following month. Ordinary spending earns 1.5% and up, with 3% on the first $1,000 a month for Professional and 5% on the first $10,000 for Elite. Tiers are reassessed daily from the 30-day average balance.",
+  "conditions": "Sumsub identity verification plus an initial top-up of at least US$10; AI cashback counts only merchant-direct charges, so App Store/Google Play, gift cards and third-party top-ups do not qualify; the $100 Elite cap needs a 30-day average balance of $100,000; the tier is taken on the settlement date, so a downgrade shrinks that month's allowance.",
+  "steps": [
+   "Register at infini.money and complete Sumsub verification (passport or local ID plus a selfie)",
+   "Top up at least 10 USDT/USDC (that is spendable card balance, not an opening fee)",
+   "Open one card: Lite or Lite Plus for ChatGPT/Claude payments, Max for large purchases",
+   "Pay the AI service directly on its own site (not through an app store) and check the cashback on the 2nd of the next month"
+  ],
+  "risk": "A stablecoin platform, so the issuer, card BIN and rules can change; Lite charges 3% on non-USD purchases and Max charges $0.30 on transactions under $50; AI cashback only counts merchant-direct charges, so in-app subscriptions and third-party top-ups earn nothing; opening from mainland China comes from one channel report and KYC may still be refused (the official site does not promise it); the balance is held in stablecoins, with platform risk on you.",
+  "source": "Infini official cards page and help centre (read on 25 November 2026: first card free to open, no monthly or annual fee, US$10 minimum top-up; AI merchant cashback 30% Standard / 50% Professional capped at $10, 50% Elite capped at $100 across about 60 merchants; 1.5-5% ordinary cashback) plus the APPDO digital-life channel post of 24 November 2026 (mainland users open with a passport plus overseas address proof, a community claim)"
+ },
+ "volcano-kong-hobby-free": {
+  "title": "[Global] Volcano (Kong) Hobby free tier: functions, Postgres, auth and realtime with no card, overages pause instead of billing",
+  "highlight": "Kong's agent cloud puts functions, Next.js frontend hosting, durable functions, code sandboxes, branchable Postgres, auth, object storage and realtime messaging in one project; Hobby is $0 with no card and pauses at its allowance instead of charging you",
+  "regions": "[Global] Sign up on volcano.dev or from the CLI; no card on the free tier and no regional restriction",
+  "value": "$0 free tier (1GB Postgres, 512MB storage, 100K invocations a month)",
+  "content": "Turn Claude Code, Codex, Cursor, OpenCode or Pi into your deployer: run `npm i -g @volcano.dev/cli && volcano connect --signup` and the agent creates the project, writes the functions, stands up the Next.js frontend and deploys it. One project holds functions (JS/TS/Python/Ruby), durable functions that can suspend for up to a year, human approvals, isolated sandboxes, Postgres with pgvector and branching, Google/GitHub/Microsoft/Apple sign-in, private object storage and realtime messaging; LavaFlow watches the live app and the codebase and opens fix pull requests. Hobby is $0: 100,000 function and frontend invocations, 100,000 realtime events, 512MB storage, a 1GB database, 5GB-hours of sandbox, 5,000 durable executions and 10GB of transfer a month, with unlimited users and MAU.",
+  "conditions": "No card to sign up; Hobby is hard-capped (resources pause until next month at the allowance), with 30-second function timeouts, 128MB memory, one-day logs and 60 requests per second per project, so it suits development and light traffic; production needs Superagent from $17 a month.",
+  "steps": [
+   "Install the CLI with npm i -g @volcano.dev/cli, then run volcano connect --signup (no card)",
+   "Have your coding agent create the project, functions and frontend from the CLI prompts",
+   "Open the volcano.dev dashboard to check usage, logs and that Hobby has no payment method attached",
+   "Upgrade to Superagent ($20 a month, $17 billed annually) once you need public traffic"
+  ],
+  "risk": "An early product that only went public on 20 November 2026, with almost no independent testing; Hobby is hard-capped and resources pause, so do not run production or public sites on it; free allowances and terms can change at any time; the self-healing LavaFlow opens fix pull requests against your repository, so start with a small repo.",
+  "source": "Volcano official pricing page (read on 25 November 2026: HOBBY $0, no credit card needed, 100K function and frontend invocations, 100K realtime events, 512MB storage, 1GB database, 5GB-hours of sandbox, 5,000 durable executions, pauses rather than billing) plus the Product Hunt launch on 20 November 2026 and the official LavaFlow page"
+ },
+ "ghost-downloader-3": {
+  "title": "[Global] Ghost-Downloader-3 open-source downloader: HTTP/BT/magnet/FTP and live streams in one app, GPL-3.0 and free",
+  "highlight": "One app covers HTTP, magnet/BT, FTP, M3U8, MPEG-DASH and eD2k, plus YouTube/Bilibili clip selection and GitHub/HuggingFace mirror acceleration; native on Windows, macOS, Linux and Android with no account and no card",
+  "regions": "[Global] Windows 10+ / macOS 13+ / Linux (glibc 2.35+) / Android 9+, on x86_64 and arm64",
+  "value": "Free and open source (GPL-3.0), replaces five downloaders",
+  "content": "A cross-platform downloader written in Python and Qt (PySide6), GPL-3.0, 17,300 stars on GitHub, with v4.5.11 shipped on 20 November 2026. It covers HTTP, magnet/BT, FTP, M3U8, MPEG-DASH and eD2k; YouTube and Bilibili support clip selection, any quality and subtitles, playlists and multi-part episodes, and GitHub/HuggingFace downloads get mirror acceleration. A browser extension puts a download button next to the video and carries your login state over. Smart chunking avoids file merging, bandwidth is detected automatically, real-browser TLS fingerprints get past anti-bot checks, and you can change the URL, headers or proxy mid-download. It exposes an aria2-compatible RPC for third-party tools and has a Feature Packs plugin ecosystem. No account, no ads, no card.",
+  "conditions": "Free and open source under GPL-3.0, so just install the release; no account needed; YouTube/Bilibili downloads need your own signed-in session; Android needs 9.0 or later and Linux needs glibc 2.35+.",
+  "steps": [
+   "Download the installer for your platform from gd.xychr.com or GitHub Releases (Windows, macOS, Linux, Android)",
+   "Pick a download folder on first launch and enable browser takeover and plugins in settings if you want them",
+   "Paste an HTTP, magnet or video link into a new task, or install the extension and click download on the page",
+   "Turn on the aria2-compatible RPC in settings if scripts need to drive it"
+  ],
+  "risk": "Open-source software, so compile it yourself or use the official package rather than a repack; downloading copyrighted material (Bilibili and YouTube included) is still your own compliance risk; BT downloads carry seeding and bandwidth costs; plugins come from the community and individual ones can fall out of date.",
+  "source": "GitHub repository XiaoYouChR/Ghost-Downloader-3 (read on 25 November 2026: GPL-3.0, 17,300 stars, v4.5.11 released 20 November 2026, four-platform support and the protocol list) plus the official site gd.xychr.com"
  }
 }

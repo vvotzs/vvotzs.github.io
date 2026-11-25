@@ -10092,6 +10092,51 @@
   "utility": 0
  },
  {
+  "id": "infini-card-ai-50-cashback",
+  "dedup_key": "infini|bank|multi|ai-50-cashback",
+  "title": "[多区]Infini U卡首张免开卡费：AI订阅与API充值返现30–50%，每月封顶$10（Elite $100）",
+  "brand": "Infini",
+  "domain": "infini.money",
+  "category": "bank",
+  "value": "AI返现30–50%，每月上限$10（Elite $100）",
+  "value_num": 10,
+  "value_expected": 10,
+  "cost": "需要充值",
+  "highlight": "首张卡开卡费为0、无月费年费，最低充 US$10 即可开通；ChatGPT/Claude/Cursor 等约60家 AI 商户直扣返现 30%（Standard）或 50%（Professional/Elite），普通消费再返 1.5% 起",
+  "regions": "[多区] 全球个人用户（欧盟不可开 Max）；中国大陆据频道实测可用护照 + 海外地址证明开户，官方未写明",
+  "start": "",
+  "end": "",
+  "content": "Infini 个人卡：首张开卡费 $0（第二张起 $10），无月费年费，首次入金最低 US$10、直接进卡内余额。Lite（Visa，支持 Apple/Google Pay，非美元 3% 汇率费，可付 ChatGPT/Claude）；Lite Plus（美国 BIN，汇率费 2%，可付 ChatGPT/Claude/Cursor/OpenRouter，需 Professional 以上）；Max（Mastercard，汇率费 0%，单笔不足 $50 收 $0.30，欧盟不可开）；Pro（汇率费 1%，不支持 ChatGPT/Claude）。AI 返现按结算日等级算：Standard 30%、Professional 50%，每月上限 $10；Elite 50%、上限 $100，次月 2 日发放。普通消费 1.5% 起，Professional 每月首 $1,000 返 3%、Elite 首 $10,000 返 5%。等级按 30 天平均资产每日重算。",
+  "conditions": "需 Sumsub 身份验证并首充≥US$10；AI 返现只认商户直扣，App Store/Google Play、礼品卡、第三方代充不算；Elite 的 $100 上限需 30 天平均资产满 $10 万；等级按结算日当天算，降级当月额度随之缩小。",
+  "steps": [
+   "到 infini.money 注册并完成 Sumsub 身份验证（护照或当地证件 + 人脸）",
+   "充值至少 10 USDT/USDC 到账户（进卡内可消费余额，不是开卡费）",
+   "选一张卡开通：要付 ChatGPT/Claude 选 Lite 或 Lite Plus，大额消费选 Max",
+   "在 AI 官网直接刷卡订阅或充 API（不要走 App Store），次月 2 日看返现到账"
+  ],
+  "url": "https://infini.money/en/personal/cards",
+  "source_url": "https://help.infini.money/en/articles/18241931-infini-ai-%E5%95%86%E6%88%B7%E8%BF%94%E7%8E%B0%E6%B4%BB%E5%8A%A8%E8%A7%84%E5%88%99%E8%AF%B4%E6%98%8E",
+  "source": "Infini 官方卡页与帮助中心（2026-11-25 实读：首张免开卡费、无月费年费、首充 US$10 起；AI 商户返现 Standard 30%/Professional 50% 上限 $10、Elite 50% 上限 $100，约 60 家商户；普通返现 1.5–5%）+ APPDO 数字生活指南 2026-11-24 实测贴（大陆可用护照 + 海外地址证明开卡，属社区口径）",
+  "risk": "稳定币平台，发卡行/卡 BIN 与规则可能调整；Lite 非美元消费收 3%，Max 单笔不足 $50 收 $0.30；AI 返现走商户直扣才算，App 内订阅与第三方代充一律不返；大陆可开卡只有频道实测，KYC 可能被拒（官方未承诺）；卡内余额是稳定币，平台风险自担。",
+  "added_at": "2026-11-25T09:05:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-25",
+  "added": "2026-11-25",
+  "status": "active",
+  "kyc_level": "cn_ok_extra",
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "funding_requirement": "min_deposit",
+  "platform_requirement": [
+   "android",
+   "ios",
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "touch-lebanon-magic-welcome-3gb",
   "dedup_key": "touch|esim|lb|lebanon-magic-welcome-3gb",
   "title": "[黎巴嫩]touch新卡欢迎礼：3GB/月×3个月（$7买Magic预付费卡）",
@@ -12020,6 +12065,92 @@
    "web"
   ],
   "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
+  "id": "volcano-kong-hobby-free",
+  "dedup_key": "volcano|cloud|global|kong-hobby-free",
+  "title": "[全球]Volcano（Kong）Hobby免费云：函数+Postgres+Auth+实时，免绑卡、超额只暂停不计费",
+  "brand": "Volcano",
+  "domain": "volcano.dev",
+  "category": "cloud",
+  "value": "$0 免费档（1GB Postgres、512MB 存储、10万次调用/月）",
+  "value_num": 5,
+  "cost": "真正免费",
+  "highlight": "Kong 的 agent 云：函数、Next.js 前端、durable functions、代码沙箱、分支式 Postgres、Auth、对象存储与实时消息全在一个项目里；Hobby $0 免绑卡，额度用尽只暂停、不扣费",
+  "regions": "[全球] volcano.dev 官网或 CLI 注册；免费档免绑卡，无地区限制",
+  "start": "",
+  "end": "",
+  "content": "把 Claude Code、Codex、Cursor、OpenCode、Pi 装成部署员：`npm i -g @volcano.dev/cli && volcano connect --signup`，agent 自己建项目、写函数、起 Next.js 前端并部署。一个项目内含函数（JS/TS/Python/Ruby）、durable functions（最多挂起一年）、人工审批、隔离沙箱、带 pgvector 与分支的 Postgres、Google/GitHub/Microsoft/Apple 登录、私有对象存储与实时消息；另带 LavaFlow，监控线上代码并直接提修复 PR。Hobby $0：每月 10 万次函数与前端调用、10 万条实时事件、512MB 存储、1GB 数据库、5GB·小时沙箱、5,000 次 durable 执行、10GB 流量，用户与 MAU 不限。",
+  "conditions": "免绑卡注册；免费档是硬上限（额度到顶资源暂停到下月）、函数 30 秒超时、128MB 内存、日志留 1 天、项目级 60 req/s，只够开发与小流量；Superagent $17/月起才适合生产。",
+  "steps": [
+   "安装 CLI：npm i -g @volcano.dev/cli，再 volcano connect --signup（免绑卡）",
+   "在你的编码 agent 里让它按 CLI 提示建项目、写函数与前端",
+   "部署后打开 volcano.dev 面板看额度与日志，确认 Hobby 档没有绑定付款方式",
+   "需要上线公开流量再升 Superagent（$20/月，年付 $17/月）"
+  ],
+  "url": "https://volcano.dev/pricing",
+  "source_url": "https://volcano.dev/pricing",
+  "source": "Volcano 官方定价页（2026-11-25 实读：HOBBY $0、no credit card needed、10 万次函数与前端调用、10 万实时事件、512MB 存储、1GB 数据库、5GB·小时沙箱、5,000 durable 执行、超额暂停不计费）+ Product Hunt 2026-11-20 发布 + LavaFlow 官方介绍页",
+  "risk": "早期产品，2026-11-20 才公开发布，第三方独立测试几乎没有；免费档硬上限且资源会暂停，别拿它跑生产或公开站点；免费额度与条款官方可随时调整；自愈 LavaFlow 会往你的仓库提交修复 PR，先给小范围仓库试。",
+  "added_at": "2026-11-25T09:05:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-25",
+  "added": "2026-11-25",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
+  "id": "ghost-downloader-3",
+  "dedup_key": "ghost|software|global|downloader-3",
+  "title": "[全球]Ghost-Downloader-3开源下载器：HTTP/BT/磁力/FTP/直播流一把抓，GPL-3.0永久免费",
+  "brand": "Ghost-Downloader-3",
+  "domain": "gd.xychr.com",
+  "category": "software",
+  "value": "免费开源（GPL-3.0），顶替五个下载器",
+  "value_num": 5,
+  "cost": "真正免费",
+  "highlight": "一个 App 吃下 HTTP、磁力/BT、FTP、M3U8、MPEG-DASH、eD2k，还带 YouTube/Bilibili 选段与 GitHub/HuggingFace 镜像加速；Windows/macOS/Linux/Android 原生四端，免账号免绑卡",
+  "regions": "[全球] Windows 10+ / macOS 13+ / Linux（glibc 2.35+）/ Android 9+，x86_64 与 arm64",
+  "start": "",
+  "end": "",
+  "content": "Python + Qt（PySide6）写的跨平台下载器，GPL-3.0，GitHub 1.73 万星，2026-11-20 刚发 v4.5.11。协议覆盖 HTTP、磁力/BT、FTP、M3U8、MPEG-DASH 与 eD2k，YouTube/Bilibili 支持选段、任意画质与字幕、播放列表与分P，GitHub/HuggingFace 走镜像加速；浏览器插件跟随视频出现下载按钮，自动带上登录态。智能分片不需合并文件、自动探测带宽、用真实浏览器 TLS 指纹过反爬；下载中可改 URL、请求头与代理，支持 aria2 兼容 RPC 给第三方工具调，另有 Feature Packs 插件生态。全程无账号、无广告、不绑卡。",
+  "conditions": "免费开源（GPL-3.0），直接下载安装包即可；不需要账号；YouTube/Bilibili 下载需自带可用的登录态；Android 端为 9.0 以上，桌面 Linux 要求 glibc 2.35+。",
+  "steps": [
+   "到 gd.xychr.com 或 GitHub Releases 下载对应平台安装包（Windows/macOS/Linux/Android）",
+   "首次启动选下载目录，按需在设置里开浏览器接管与插件",
+   "粘贴 HTTP/磁力/视频链接新建任务，或装浏览器插件在页面直接点下载",
+   "需要脚本调用时在设置里打开 aria2 兼容 RPC"
+  ],
+  "url": "https://gd.xychr.com/",
+  "source_url": "https://github.com/XiaoYouChR/Ghost-Downloader-3",
+  "source": "GitHub 仓库 XiaoYouChR/Ghost-Downloader-3（2026-11-25 实读：GPL-3.0、1.73 万星、v4.5.11 于 2026-11-20 发布、四平台支持与协议清单）+ 官网 gd.xychr.com",
+  "risk": "开源软件，自行编译或下载官方包，别用第三方改包；下载版权内容（含 B 站/YouTube）仍需自己承担合规责任；BT 类下载注意做种与流量成本；插件生态由社区维护，个别插件可能失修。",
+  "added_at": "2026-11-25T09:05:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-25",
+  "added": "2026-11-25",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "none",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web",
+   "android",
+   "ios"
+  ],
   "geo_restriction": [
    "GLOBAL"
   ]
@@ -16202,7 +16333,7 @@
   "start": "2026-11-20",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-23",
+  "last_verified": "2026-11-25",
   "added": "2026-11-20",
   "content": "Roamless早鸟黑五（官方邮件）：App或官网结算时填BLACKFRIDAY50，全部国家与地区数据套餐以及FLEX随用随充余额一律5折，单笔折扣上限$25，即买$50正好打满。覆盖200+目的地，新老客户都能用，到网络星期一2026-11-30。FLEX余额按各国单价逐MB扣、一般不过期，适合囤着下次出国用；与Roamless新用户免费500MB（$1.25额度）是两回事，可叠加使用。",
   "conditions": "只在结算时填码生效，事后不能补；单笔折扣上限$25，拆单能否重复触顶以平台风控为准；仅限新购买，不含已有订单退款重拍；不能与其他优惠码叠加；FLEX余额虽不过期，但条款写「连续12个月无使用会失效」。",
@@ -16213,7 +16344,7 @@
    "付款前核对折后价与 $25 上限，2026-11-30 前完成下单"
   ],
   "url": "https://roamless.com/promo-code",
-  "source": "OzBargain 2026-11-20 的 Roamless 发帖（官方邮件内容：BLACKFRIDAY50、5 折、上限 $25、至 11/30）+ WhatsCheap 同日转载；Roamless 官方促销码页确认 App 内结算处可提交优惠码",
+  "source": "OzBargain 2026-11-20 的 Roamless 发帖（官方邮件内容：BLACKFRIDAY50、5 折、上限 $25、至 11/30）+ WhatsCheap 同日转载；Roamless 官方促销码页确认 App 内结算处可提交优惠码；2026-11-25 复核：roamless.com/promo-code 仍在，促销码页与 FLEX 说明在架，活动到 11-30",
   "risk": "优惠码来自邮件与社区发帖，官方活动页未逐条列出 BLACKFRIDAY50，结算前必须在 App 内确认折扣真的生效；单笔只减 $25，大额需求拆单可能被风控判定为滥用；FLEX 余额按目的地单价扣，中国等贵价地区实际到手流量少于美国；eSIM 需无锁设备，安装后不可转移。",
   "status": "expiring_soon",
   "added_at": "2026-11-20T16:24:00+08:00",
@@ -16416,7 +16547,7 @@
   "start": "2026-10-10",
   "end": "2026-11-28",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-25",
   "added": "2026-11-19",
   "content": "Sendwave「Viva LATAM」活动（10/10–11/28）：美国现有用户在活动期内通过App内邀请码带来3位符合条件的新客户（完成首笔达到当地推荐额度的汇款），即可获得一件Hispanic Heritage纪念T恤。",
   "conditions": "邀请人须为美国50州合法居民且账户正常；被邀请人须是从未注册过的新客，首笔金额不低于其市场对应的抵扣额（如巴西/拉美约$10）。",
@@ -16427,7 +16558,7 @@
    "满 3 次后按邮件指引填写收货信息"
   ],
   "url": "https://www.sendwave.com/en-us/vivalatam/terms",
-  "source": "Sendwave 官方 Viva LATAM 推荐条款（2026-11-22 复核：活动期 2026-10-10 至 2026-11-28 23:59 ET）；Sendwave Viva LATAM官方条款（2026-11-24复核：活动期2026-10-10 00:00 ET至2026-11-28 23:59 ET，3个合规邀请换1件T恤）",
+  "source": "Sendwave 官方 Viva LATAM 推荐条款（2026-11-22 复核：活动期 2026-10-10 至 2026-11-28 23:59 ET）；Sendwave Viva LATAM官方条款（2026-11-24复核：活动期2026-10-10 00:00 ET至2026-11-28 23:59 ET，3个合规邀请换1件T恤）；2026-11-25 复核：官方条款页仍在，活动期 10-10 至 11-28，3 位合格推荐换 T 恤",
   "risk": "奖励是实物、非现金，且有邮寄地区限制；活动 11/28 23:59（美东）截止，之后达标不再计入。",
   "status": "expiring_soon",
   "added_at": "2026-11-19T01:20:37+08:00",
@@ -16505,11 +16636,11 @@
    "出发前在韩国做开通检查，落地日本把数据线路切到这张 eSIM"
   ],
   "url": "https://ktmmobile.com/event/eventDetail.do?ntcartSeq=1772",
-  "source": "kt M모바일官方直营店活动页「eSIM 로밍 mobi, 가을 맞이 단독 0원 혜택」（2026-11-24复核：活动期2026-11-24至11-30，日本不限量3天9,625→0韩元 与 1GB/日3天×2 5,400→0韩元，两款二选一）+ 알뜰에코说明（2026-11-19，1GB/日3天=每天1GB后384Kbps、两张为3天券×2）",
+  "source": "kt M모바일官方直营店活动页「eSIM 로밍 mobi, 가을 맞이 단독 0원 혜택」（2026-11-24复核：活动期2026-11-24至11-30，日本不限量3天9,625→0韩元 与 1GB/日3天×2 5,400→0韩元，两款二选一）+ 알뜰에코说明（2026-11-19，1GB/日3天=每天1GB后384Kbps、两张为3天券×2）；2026-11-25 复核：官方活动页写明 11-24 至 11-30，mobi 首购日本无限 3 天 0 韩元，二选一",
   "risk": "需韩国手机号与App验证，中国大陆用户实际很难参加；0元只限日本两款之一，别的国家只是折扣；库存售完即止且不预告；不限量档每天高速1GB后降到384Kbps；仅日本境内，回国或去中国大陆都不能漫游。",
   "added_at": "2026-11-21T15:27:40+08:00",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-25",
   "added": "2026-11-21",
   "status": "expiring_soon",
   "kyc_level": "cn_ok_extra",
@@ -16779,7 +16910,7 @@
   "start": "",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-25",
   "added": "2026-11-19",
   "content": "ACE Money Transfer官方「£10 First Transfer Campaign」：从未注册或汇过款的新客，在首笔汇往印度的汇款里使用指定促销码、金额达£100（或等值€100），£10直接抵扣在应付金额里，一单一次、不能与其他优惠同用。条款2.6写活动至2026-11-30 23:59（发送国当地时间），页面顶部又标12/31，两边不一致，保守按11/30看。另有Invite a Friend：英国好友首笔£100起、双方各得£10 ACE Wallet积分，积分只能抵最多50%手续费、不可提现。",
   "conditions": "仅新客；仅限汇往印度；首笔≥£100（或等值€100）；必须使用活动页给出的促销码；奖励即时抵扣、每户一次。",
@@ -16790,7 +16921,7 @@
    "想拿邀请奖励就让好友用你的邀请码，双方各得 £10 钱包积分"
   ],
   "url": "https://acemoneytransfer.com/promotion/first-send-bonus-India",
-  "source": "ACE Money Transfer 官方活动页与 £10 First Transfer 条款（2026-11 抓取）+ ACE 官方 Invite a Friend 说明（英国 £100 / 双方 £10）",
+  "source": "ACE Money Transfer 官方活动页与 £10 First Transfer 条款（2026-11 抓取）+ ACE 官方 Invite a Friend 说明（英国 £100 / 双方 £10）；2026-11-25 复核：官方条款页仍在，至 11-30，首笔汇印度满 £100/€100 减 £10",
   "risk": "只限印度走廊；页面顶部写 12/31、条款写 11/30，可能提前结束；促销码必须取自活动页，社区流传的多为个人邀请码，两者不通用；钱包积分只能抵手续费，不等于现金。",
   "status": "expiring_soon",
   "added_at": "2026-11-19T02:57:48+08:00",

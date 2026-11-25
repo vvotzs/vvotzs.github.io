@@ -234,7 +234,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T10:10:48Z",
+      "last_crawled_at": "2026-11-25T00:42:51Z",
       "last_hit_at": "2026-11-23T20:52:44Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -258,7 +258,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T00:42:51Z",
       "last_hit_at": "2026-11-24T19:57:36Z",
       "search_domains": [
         "x.com"
@@ -280,7 +280,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T00:42:51Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "entry_url": "https://tg.docofcard.com/rss.json",
       "zero_streak": 0
@@ -300,8 +300,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
-      "last_hit_at": "2026-11-24T01:53:39Z",
+      "last_crawled_at": "2026-11-25T00:42:50Z",
+      "last_hit_at": "2026-11-25T00:42:50Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
     },
@@ -320,7 +320,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T19:57:36Z",
+      "last_crawled_at": "2026-11-25T00:42:51Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -340,8 +340,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T10:10:48Z",
-      "last_hit_at": "2026-11-22T02:08:11Z",
+      "last_crawled_at": "2026-11-25T00:42:50Z",
+      "last_hit_at": "2026-11-25T00:42:50Z",
       "zero_streak": 0
     },
     {
@@ -533,7 +533,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
+      "last_crawled_at": "2026-11-25T00:42:51Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "search_domains": [
         "ecitizen.forum"
@@ -714,7 +714,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
+      "last_crawled_at": "2026-11-25T00:42:51Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "zero_streak": 0
     },
@@ -840,7 +840,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
+      "last_crawled_at": "2026-11-25T00:42:51Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -941,7 +941,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-24T07:31:45Z",
+      "last_crawled_at": "2026-11-25T00:42:51Z",
       "last_hit_at": "2026-11-13T09:30:00Z"
     },
     {
