@@ -357,6 +357,10 @@ BLOGGER_URL = "https://6yfz.blogspot.com"
 # Sendwave 邀请落地页（Jun 自己的 UK→GCash 指引页，邀请码 JZHANG，新人首笔减 £10）：
 # 挂在 Blogger 徽标正下方，同样只在首页出现（2026-11-26 要求，同日收敛为仅首页）。
 SENDWAVE_URL = "https://sw-JZHANG.antideploy.app"
+# TransferGo 邀请落地页（Jun 自己的 UK→支付宝 €10 指引页，邀请码 202688）：
+# 叠在 Sendwave 徽标正下方，同样只在首页出现（2026-11-26 Jun #18442 要求）。
+# 链接必须是干净 URL：不带参数、括号或任何标点。
+TRANSFERGO_URL = "https://tsg-202688.antideploy.app/"
 
 # 薄荷绿 Pickle 小精灵（页头 / 页脚直接内联，不走 sprite）。
 # 渐变必须写在可见的 <svg> 自己的 <defs> 里：放进 display:none 的 sprite 后，
@@ -561,7 +565,7 @@ def sendwave_badge() -> str:
         'fill="#3C0F19"/>'
     )
     return (
-        '<div class="sw-slot">'
+        # 外层 <div class="sw-slot"> 由 home_badge_stack() 统一包住两枚徽标
         '<span class="sw-pet" aria-hidden="true">'
         f'<span class="sw-pet-tag">{ui("sw_note")}</span>'
         '<span class="sw-pet-i">'
@@ -577,7 +581,47 @@ def sendwave_badge() -> str:
         f'{_S_PATHS}</svg>'
         f'<span class="top-sw-band">{ui("sw_band")}</span>'
         '</span>'
-        '</a></div>'
+        '</a>'
+    )
+
+
+def transfergo_badge() -> str:
+    """Sendwave 徽标正下方的 TransferGo 徽标（Jun 2026-11-26 #18442 要求）。
+
+    与 Sendwave 那枚同一套规格：同宽（桌面 52 / 手机 34）、同圆角（23.3%）、同一支
+    swWag 轻甩动画 —— 只把延时错开半个周期，两枚徽标轮流轻轻甩一下，不同步起跳。
+    底色是 TransferGo 官方宝蓝 #1346F6；图形是官方「双翼 / 箭头」标志的两笔对冲箭头
+    （白 → 右、暖金黄 #F5B700 → 左），路径取自 Jun 自己那张 tsg-202688.antideploy.app
+    落地页的 favicon，与品牌色、造型完全一致；底部压一条深海蓝 #0B122C 的小圆角横幅
+    「新人€10」（英文页 New €10），做法与 Sendwave 的深色底条一致。
+
+    它和 Sendwave 一起排在 .sw-slot 里：桌面上 slot 是 fixed 的那条右侧挂件栈，
+    手机上 slot 是 <main> 里的绝对定位盒，两处都不进文档流，也不会顶动首屏。
+    """
+    return (
+        f'<a class="top-tg" href="{TRANSFERGO_URL}" target="_blank" rel="noopener noreferrer" '
+        f'{al(*U["tg_aria"])} {tt(*U["tg_aria"])}>'
+        '<span class="top-tg-ic" aria-hidden="true">'
+        '<svg class="top-tg-a" viewBox="14 16.4 36 31.2" aria-hidden="true" focusable="false">'
+        '<path d="M17 26h22l-5.4-5.4 4.2-4.2L50 28.6 37.8 40.8l-4.2-4.2L39 31H17v-5Z" fill="#FFFFFF"/>'
+        '<path d="M47 38H25l5.4 5.4-4.2 4.2L14 35.4 26.2 23.2l4.2 4.2L25 33h22v5Z" fill="#F5B700"/>'
+        '</svg>'
+        f'<span class="top-tg-band">{ui("tg_band")}</span>'
+        '</span>'
+        '</a>'
+    )
+
+
+def home_badge_stack() -> str:
+    """首页右上角的挂件栈：Sendwave（带小企鹅与「站长亲测」气泡）+ 正下方 TransferGo。
+
+    只在首页（/、/en/）输出；12 个分类页、986 个详情页、6 个合规页都不出现。
+    """
+    return (
+        '<div class="sw-slot">'
+        f'{sendwave_badge()}'
+        f'{transfergo_badge()}'
+        '</div>'
     )
 
 
@@ -4216,7 +4260,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
 </header>
 
 <main id="top">
-  {sendwave_badge()}
+  {home_badge_stack()}
   <div class="shell">
     <section class="hero">
       <h1>{ui('hero_h1')}</h1>

@@ -362,6 +362,64 @@ button{ font-family: inherit; }
   box-shadow: 0 6px 16px -8px rgba(146,110,0,.8);
 }
 .top-sw:focus-visible{ outline: 2px solid rgba(60,15,25,.5); outline-offset: 3px; border-radius: 10px; }
+/* TransferGo 徽标（Jun 2026-11-26 #18442）：Sendwave 正下方叠的第二枚小挂牌。
+   规格与 Sendwave 完全对齐 —— 同宽 52、同圆角 23.3%、同一支 swWag 轻甩（延时错开
+   半个周期，两枚轮流甩一下）；底色换成 TransferGo 宝蓝 #1346F6，图形是官方
+   「双翼 / 箭头」的两笔对冲箭头（白 → 右、暖金黄 #F5B700 → 左），底部深海蓝
+   #0B122C 小圆角横幅「新人€10」。
+   与 Sendwave 一起排在 .sw-slot 里：桌面 fixed、手机 absolute，都不进文档流。 */
+.top-tg{
+  display: block;
+  width: 52px;
+  /* 与上方 Sendwave 之间留 6px：够近（看得出是一组），又不至于糊成一坨 */
+  margin-top: 6px;
+  text-decoration: none;
+  transform-origin: 50% 0;
+  animation: swWag 2.9s cubic-bezier(.36,.07,.19,.97) 1.95s infinite;
+  will-change: transform;
+}
+.top-tg-ic{
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 52px;
+  border-radius: 23.3%;
+  background: #1346F6;
+  overflow: hidden;
+  box-shadow: 0 4px 12px -8px rgba(11,18,44,.75);
+  transition: box-shadow .18s ease, filter .18s ease;
+}
+/* 双箭头标志：33×28.6，压在 52 方块的上部，底条之上留 3px 呼吸 */
+.top-tg-a{
+  position: absolute;
+  left: 50%;
+  top: 3px;
+  width: 33px;
+  height: 28.6px;
+  transform: translateX(-50%);
+}
+.top-tg-band{
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  height: 13px;
+  border-radius: 4px;
+  background: #0B122C;
+  color: #F5B700;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 13px;
+  letter-spacing: -.01em;
+  text-align: center;
+  white-space: nowrap;
+}
+.top-tg:hover .top-tg-ic{
+  filter: saturate(1.06) brightness(1.06);
+  box-shadow: 0 6px 16px -8px rgba(11,18,44,.9);
+}
+.top-tg:focus-visible{ outline: 2px solid rgba(19,70,246,.55); outline-offset: 3px; border-radius: 10px; }
+
 /* 旧版官方小企鹅（Jun 2026-11-26）：踩在 Sendwave 黄色方框顶边上左右散步的纯装饰小挂件。
    造型取自旧版官方 LOGO 的挥手企鹅（歪头、两眼微差、举翅），已抠掉黄底、透明背景。
    它是 <a> 之外的兄弟节点：pointer-events:none（不拦点击）、aria-hidden（读屏忽略）、
@@ -431,7 +489,9 @@ button{ font-family: inherit; }
 .sw-pet-tag{
   position: absolute;
   left: calc(var(--pet-x) - 2px);
-  bottom: calc(100% + 2px);
+  /* 2026-11-26 #18442：Jun 要求气泡再贴近企鹅头顶，从 +2px 收到 -2px（近 4px），
+     气泡底边正好落在头顶上，小尖角搭在脑袋上 —— 看着像企鹅自己在说话。 */
+  bottom: calc(100% - 2px);
   padding: 2px 4px 2px 4px;
   border-radius: 5px;
   /* 纯白气泡：页面是暖米白（#FAF9F5），纯白底 + 极细酒红描边才浮得起来、
@@ -494,15 +554,18 @@ button{ font-family: inherit; }
   88%{ transform: rotate(-.5deg); }
 }
 @media (prefers-reduced-motion: reduce){
-  .top-sw{ animation: none; }
+  .top-sw, .top-tg{ animation: none; }
   .sw-pet-i, .sw-pet-img, .sw-pet-tag{ animation: none; }
 }
-/* 首页 / 分类页的滑轨让位：Sendwave 挂牌占掉了顶栏正下方那一段，
-   屏幕够高时滑轨照旧居中；不够高时把中心的底线抬到挂牌下面，
-   保证「投稿」永不被挂牌压住（详情页、合规页没有挂牌，滑轨不动）。
-   2026-11-26 挂牌下移 35px（给企鹅与气泡腾地方），下限同步抬到 448px。 */
+/* 首页的滑轨让位：右上角那串挂件（Blogger / Sendwave / TransferGo）占掉了顶栏正下方
+   那一段，屏幕够高时滑轨照旧居中；不够高时把中心的底线抬到挂牌下面，保证「投稿」
+   永不被挂牌压住（详情页、合规页没有挂牌，滑轨不动）。
+   2026-11-26 挂件栈多了一枚 TransferGo（110 高），下限同步从 448 抬到 499。 */
 @media (min-width: 769px){
-  body.has-sw .rail-dock{ top: max(50%, 448px); }
+  /* 2026-11-26 #18442：挂件栈多了一枚 TransferGo（52 + 6 + 52 = 110 高），
+     滑轨下限从 448 抬到 499，让「投稿」永远落在 TransferGo 徽标下方 8px 左右
+     （821 / 900 高的窗口里实测净空 8.7px；1080 高的大屏仍按 50% 居中） */
+  body.has-sw .rail-dock{ top: max(50%, 499px); }
 }
 
 /* 平板 / 手机（≤1080）：桌面那 92px 的滑轨空档在这里不存在，但挂牌也绝不能落回文档流——
@@ -518,6 +581,9 @@ button{ font-family: inherit; }
     top: 0;
     right: 0;
     display: flex;
+    /* 两枚徽标（Sendwave / TransferGo）竖着叠，右缘对齐同一条竖轴 */
+    flex-direction: column;
+    align-items: flex-end;
     justify-content: flex-end;
     /* 左内距 0：绝对定位下这个盒子只剩挂牌自己那么宽，不会用一块透明区
        盖住左边的走马灯 / 标签去抢点击。
@@ -532,8 +598,18 @@ button{ font-family: inherit; }
 }
 /* 矮窗口（1366×768 这类笔记本）：滑轨让位后底部会顶到屏幕，格子高度收 8px 把余量挣回来 */
 @media (min-width: 769px) and (max-height: 820px){
-  body.has-sw .rail-dock{ top: max(50%, 445px); }
-  body.has-sw .rail a{ height: 44px; }
+  /* 矮窗口里滑轨又被抬高一个徽标的高度：中心从 445 抬到 458，单格再从 44 收到 42，
+     1280×700 这类笔记本上「顶部」仍然完整落在视口内：
+     滑轨 472.5 高 → 221.75..694.25，TransferGo 底下留 12.75px、离视口底 5.75px */
+  body.has-sw .rail-dock{ top: max(50%, 458px); }
+  body.has-sw .rail a{ height: 42px; }
+}
+/* 手机（≤768）：挂牌栈多了一枚 TransferGo 之后，滑轨在矮屏上再也不能从挂牌里穿过去。
+   屏幕够高时照旧居中（50% 胜出）；不够高时中心停在 350 → 滑轨顶 175.5，
+   TransferGo 徽标底 163 仍留 12.5px 净空，360×640 / 375×667 这类矮屏也不重叠
+   （2026-11-26 #18442 实测 844 / 800 / 700 / 640 / 568 全部零重叠，且不溢出）。 */
+@media (max-width: 768px){
+  body.has-sw .rail-dock{ top: max(50%, 350px); }
 }
 /* 手机（≤768）：挂牌 34×34，右内距 5px 让它的中线落在 right:7 的 30px 徽标中心上。
    上内距 35（Jun 2026-11-26 #18152 从 46 往上收 11px）：顶栏 55 高，黄框顶边落在 90，
@@ -558,6 +634,17 @@ button{ font-family: inherit; }
   .top-sw{ width: 34px; }
   .top-sw-ic{ width: 34px; height: 34px; border-radius: 8px; }
   .top-sw-s{ top: 2px; width: 21px; height: 21px; }
+  /* TransferGo 手机版：同宽 34，与上枚只隔 5px */
+  .top-tg{ width: 34px; margin-top: 5px; }
+  .top-tg-ic{ width: 34px; height: 34px; border-radius: 8px; }
+  .top-tg-a{ top: 2px; width: 21px; height: 18.2px; }
+  .top-tg-band{
+    left: 2px; right: 2px; bottom: 2px;
+    height: 9px;
+    border-radius: 3px;
+    font-size: 7px;
+    line-height: 9px;
+  }
   .top-sw-band{
     left: 2px; right: 2px; bottom: 2px;
     height: 9px;
@@ -571,7 +658,8 @@ button{ font-family: inherit; }
   .sw-pet-tag{
     left: auto;
     right: -2px;
-    bottom: calc(100% + 3px);
+    /* 2026-11-26 #18442：由 +3px 收到 -1px，胶囊底边压住头顶 1px，贴得更紧 */
+    bottom: calc(100% - 1px);
     width: auto;
     padding: 1.5px 3px;
     border-radius: 999px;

@@ -27,6 +27,10 @@ U: dict[str, tuple[str, str]] = {
     "sw_note": ("站长亲测", "Tested"),
     "sw_aria": ("Sendwave 新人£10，站长亲测（新窗口打开）",
                 "Sendwave: £10 for new users, tested by the site owner (opens in a new tab)"),
+    # Sendwave 正下方那枚 TransferGo 徽标（2026-11-26 Jun #18442 要求）
+    "tg_band": ("新人€10", "New €10"),
+    "tg_aria": ("TransferGo 新人€10（新窗口打开）",
+                "TransferGo: €10 for new users (opens in a new tab)"),
     "search_open": ("搜索优惠、可用地区、类别…", "Search deals, regions, categories…"),
     "search_open_aria": ("搜索优惠、可用地区、类别", "Search deals, regions and categories"),
     "stat_active": ("进行中", "Live"),
