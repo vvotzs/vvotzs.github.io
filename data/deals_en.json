@@ -6285,22 +6285,22 @@
   "source": "NetSpend official offer terms (read 2026-11-23) + UScardforum thread and replies (2026-11-23) + NodeSeek post + Doctor of Credit (updated 2026-11-23)"
  },
  "devin-swe2-free-nov2026": {
-  "title": "[Global] Cognition Devin: SWE-2 free through 30 November, SWE-2 Flash through 4 December (Medium on the free plan)",
-  "highlight": "In Devin Desktop and Devin CLI, SWE-2 is free through 30 November and SWE-2 Flash through 4 December 18:00 UTC; the free plan can select Flash Medium; Devin cloud sessions are excluded",
+  "title": "[Global] Cognition Devin: SWE-2 free to 30 November, SWE-2.1 to 8 December, SWE-2 Flash to 4 December (Medium on the free plan)",
+  "highlight": "In Devin Desktop and Devin CLI, SWE-2 is free through 30 November, the new SWE-2.1 through 8 December and SWE-2 Flash through 4 December 18:00 UTC; the free plan can select Flash Medium; Devin cloud sessions are excluded",
   "regions": "[Global] Devin Desktop (macOS) and Devin CLI, subject to your plan and region",
-  "value": "Free through 4 December",
-  "content": "SWE-2 is free on Devin Desktop and Devin CLI for self-serve plans to 30 November 2026, then $3.00 per million input, $15.00 output and $0.30 cached reads; SWE-2 Flash is free to 18:00 UTC on 4 December 2026, then all three variants at $0.10 input and $0.50 output. SWE-2 Flash Medium works on the free plan while High and Max need paid plans. Flash, released on 4 November 2026, is a lighter coding model about three times faster and a fifth the price. Both are Desktop and CLI only, without Devin cloud sessions.",
+  "value": "Free through 8 December",
+  "content": "SWE-2 is free on Devin Desktop and Devin CLI for self-serve plans to 30 November 2026, then $3.00 per million input and $15.00 output; the new SWE-2.1 is free to 8 December 2026, then $0.50 input and $2.50 output per million (Ultrafast excluded); SWE-2 Flash is free to 18:00 UTC on 4 December 2026, then all three variants at $0.10 input and $0.50 output. SWE-2 Flash Medium works on the free plan while High and Max need paid plans. All three are Desktop and CLI only, without Devin cloud sessions.",
   "conditions": "Desktop and CLI only, excluding cloud sessions; Flash's High and Max need paid plans, leaving Medium on free; voice mode uses another model outside the free window; list prices bill after expiry.",
   "steps": [
    "Install Devin Desktop or Devin CLI and sign in (the Free plan can use Flash Medium)",
-   "Pick SWE-2 or SWE-2 Flash in the model selector",
-   "Finish work before 30 November and 4 December, after which list pricing applies",
-   "Use SWE-2 for larger changes and Flash for everyday edits"
+   "Pick SWE-2, SWE-2.1 or SWE-2 Flash in the model selector",
+   "Finish work before 30 November, 8 December and 4 December, after which list pricing applies",
+   "Use SWE-2.1 for larger work and Flash for everyday edits"
   ],
   "url": "https://docs.devin.ai/desktop/models",
   "source_url": "https://cognition.com/blog/swe-2-flash",
   "risk": "Billing reverts to list price the moment the promotion ends; the models are desktop/CLI only; a very new model without much public track record, so review its code.",
-  "source": "Cognition's official model docs (read 2026-11-23) + launch post (2026-11-04) + company LinkedIn announcement"
+  "source": "Cognition's official model docs (re-checked 2026-11-27) + launch post (2026-11-04)"
  },
  "gate-us-35-usdt-new-user": {
   "title": "[US] Gate US new users: KYC + $50 deposit + $50 spot trade for up to 35 USDT in vouchers (to 14 December)",
@@ -8290,5 +8290,54 @@
   ],
   "risk": "Cashback depends on browser tracking, so ad blockers, VPNs or Brave can break it and missing claims are not guaranteed; the exclusion list is long (iPhone 18 Pro and Pro Max, iPad Mini, iMac, Apple TV 4K, gift cards, AppleCare+ and more earn nothing); GST is excluded so the real rate is under 10%; returns or changes void the whole order; the A$200 cap makes small accessory orders pointless; Australian address and account required.",
   "source": "TopCashback AU Apple merchant page (read 2026-11-26: 10%, $200 cashback per member, Upsized countdown, GST exclusion and exclusion list) plus the OzBargain post of 2026-11-27 00:11 and its comments (stacks with the Black Friday gift card offer, Education Store path, MacBook Pro 14-inch, iPhone 18 Pro and iPad Mini excluded) and ozperks' comparison page (ShopBack 7% the same day, usual rate 2%)"
+ },
+ "cloudflare-email-sending-free": {
+  "title": "[Global] Cloudflare Email Sending is free on the Workers Free plan for verified addresses (from 24 November)",
+  "highlight": "Email Sending now works on Workers Free: after onboarding a sending domain, send to verified destination addresses in your account via the Workers binding, REST API or SMTP, free and outside the monthly quota and daily limit; only sending to arbitrary recipients needs Workers Paid",
+  "regions": "[Global] A Cloudflare account and a domain on Workers; verified recipients can be anywhere",
+  "value": "Free (unlimited to verified addresses)",
+  "content": "Since 24 November 2026 Email Sending is available on the Workers Free plan: onboard a sending domain to Email Service, then send to verified destination addresses in your account through the Workers binding, REST API or SMTP for alerts, reports and notifications without paying or adding a card. Sends to verified addresses are free on every plan and do not count toward the monthly quota or daily limit; sending to unverified recipients requires Workers Paid (3,000 emails a month included, then $0.35 per 1,000).",
+  "conditions": "On the free plan only verified destination addresses in the account receive mail; one unverified address in to/cc/bcc rejects the whole message (E_RECIPIENT_PLAN_RESTRICTED / 403 / 550 5.7.1); arbitrary recipients need Workers Paid.",
+  "steps": [
+   "Register with Cloudflare and onboard a sending domain to Email Service",
+   "Verify your own destination addresses in the account",
+   "Send with env.EMAIL.send() in a Worker, the REST API or SMTP",
+   "Upgrade to Workers Paid when you need to email any user"
+  ],
+  "risk": "Only addresses you verified can receive mail, so user-facing notifications need a paid plan; no delivery SLA on the free tier; Cloudflare forbids bulk spam and suspends abusers; one unverified recipient fails the whole message.",
+  "source": "Cloudflare official changelog (2026-11-24) + Email Service pricing page (read 2026-11-27)"
+ },
+ "skyla-visa-signature-4pct-250": {
+  "title": "[US] Skyla Visa Signature: 4% cash back on everything 22 Nov–5 Dec with no cap, plus a $250 bonus (spend $1,000)",
+  "highlight": "All purchases earn 4x points (1 point = 1 cent, so 4%) from 22 November to 5 December with no cap, for new and existing cardholders; new cards also get 25,000 points ($250) after $1,000 in 90 days, $0 annual fee and 0% APR for 12 months",
+  "regions": "[US] Open nationwide (branches in the Carolinas and Pasadena, California); needs a US SSN/ITIN and credit history",
+  "value": "$250 bonus plus 4% cash back",
+  "content": "Skyla Credit Union's Visa Signature Black Friday boost: from 22 November to 5 December 2026 every eligible purchase earns 4x points (1 point redeems for 1 cent, i.e. 4% back) with no spending cap, for new and existing cardholders; a new card earns 25,000 points ($250) after $1,000 in net purchases within 90 days. No annual fee, 0% APR on purchases for 12 months, limits up to $50,000, and 2% back afterwards. Points redeem as a statement credit or into a Skyla account.",
+  "conditions": "US residents with an SSN/ITIN and credit history; outside the field of membership (Carolinas, Pasadena) join through the American Consumer Council and keep $5 in Primary Savings; cardholders who opened before 1 May 2025 skip the bonus; cash advances and balance transfers do not count.",
+  "steps": [
+   "Open the Skyla Visa Signature page and check the 22 Nov–5 Dec 4x terms",
+   "Apply online (join via ACC and open Primary Savings if outside the field of membership)",
+   "Spend $1,000 net within 90 days for the 25,000 points",
+   "Put large purchases before 5 December to use the 4%",
+   "Redeem points in the Rewards Hub or into a Skyla account"
+  ],
+  "risk": "The 4% ends on 5 December and reverts to 2%; the bonus counts net purchases, so returns reduce it and online orders posting after shipping may miss the 90 days; approval and credit lines are not guaranteed and the temporary virtual card may have a low limit; the credit union can change or end the promotion.",
+  "source": "Skyla official Visa Signature page (read 2026-11-27) + Doctor of Credit (2026-11-23)"
+ },
+ "sony-bank-wallet-ps-8000": {
+  "title": "[JP] Sony Bank WALLET PlayStation design: ¥8,000 for a new account with ¥50,000 on the check date, plus an NFT and a GT7 car",
+  "highlight": "Open a new Sony Bank WALLET with the PlayStation® design from the campaign page and keep at least ¥50,000 in the yen ordinary deposit on the check date to get ¥8,000 cash, a commemorative NFT and a GT7 livery; apply by 31 December",
+  "regions": "[JP] Needs a Japanese address and identity verification; new accounts only, and switching the card design after opening does not count",
+  "value": "¥8,000 (about $52) plus digital extras",
+  "content": "Sony Bank's account-opening gift for sponsoring the GT7 category of the 2026 National Prefectural Esports Championship: anyone who has never held a Sony Bank account opens a Sony Bank WALLET with the PlayStation® design from the campaign page and keeps at least ¥50,000 in the yen ordinary deposit on the balance check date (apply 1 Oct–30 Nov, checked 31 Dec; apply 1–31 Dec, checked 31 Jan 2027) gets ¥8,000 cash plus a commemorative NFT and a GT7 livery. No entry form; cash arrives by the end of the month after the check date; one per person.",
+  "conditions": "Live in Japan and pass identity verification; open a new account and choose the PlayStation® design at opening (changing it later does not qualify); keep at least ¥50,000 in the yen ordinary deposit on the check date after automatic debits; apply 7 Aug–31 Dec; private/incognito applications may be ruled out.",
+  "steps": [
+   "Start from the campaign page and choose Sony Bank WALLET / PlayStation® design",
+   "Finish the online application and identity check",
+   "Fund the yen ordinary deposit to at least ¥50,000 before the check date and keep it there",
+   "Collect ¥8,000 by the next month-end and redeem the NFT and GT7 car with the emailed serial code"
+  ],
+  "risk": "The ¥50,000 must stay in the yen ordinary deposit on the check date, so moving it to foreign currency or time deposits breaks eligibility; closing the account or dropping the balance later forfeits the reward; Japan address and residence/ID documents are required; the NFT and car need self-redemption with the emailed code before it expires.",
+  "source": "Sony Bank official press release (2026-08-07) + Japanese campaign summaries (November 2026)"
  }
 }

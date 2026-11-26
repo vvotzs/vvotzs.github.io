@@ -68,6 +68,13 @@ ELIG.update(
         "apple-card-double-daily-cash": {
             "identity": "local_id", "geo": ["US"],
         },
+        "skyla-visa-signature-4pct-250": {
+            "identity": "local_id", "funding": "purchase", "geo": ["US"],
+        },
+        "sony-bank-wallet-ps-8000": {
+            "identity": "local_id", "residency": "local_resident",
+            "funding": "min_deposit", "geo": ["JP"],
+        },
         "mercury-business-checking-500": {
             "identity": "business", "residency": "local_address",
             "funding": "min_deposit", "geo": ["US"],
