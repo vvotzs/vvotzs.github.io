@@ -7725,5 +7725,56 @@
   ],
   "risk": "These are second-level names that depend on upstream registries, and small cc/ci suffixes have been reclaimed before; review and record checks are run by a very small team, so responses can be slow; do not use them for important services or mail; a free service promising permanence can change its mind, so keep a paid domain for anything that matters.",
   "source": "freedns.my official site read 2026-11-26 (16 open zones, free including renewals, no ads, A/AAAA/CNAME/TXT, custom NS for PSL zones, 12,108 active names, manual review within days) + the NodeLoc post of 2026-11-23 (registrations made permanent to celebrate pvf.cc, kz.ci and xyz.ci joining the PSL, earlier names switched automatically, operator says no per-account limit)"
+ },
+ "arena-ai-50-starter-credits": {
+  "title": "[Global] Arena AI gives new accounts $50: Claude 5.5 and GPT-6 at list price, no card",
+  "brand_en": "Arena AI",
+  "highlight": "A new account shows $50.00 in starter funds with no card; the default Arena Router plugs straight into Claude Code, Codex and OpenCode at the vendors' own list prices, with no markup",
+  "regions": "[Global] Sign up with an email and start; developer preview, credit tied to your own workspace",
+  "value": "$50 starter credit",
+  "content": "Arena (arena.ai) is a gateway that fronts frontier models such as Claude, GPT and Gemini at the vendors' list prices, with its console at platform.arena.ai. A new account shows $50.00 in starter funds on the settings page, and the first request starts drawing on it without any card on file. The official Quickstart ships a curl script that finds Claude Code, Codex and OpenCode on your machine, opens a browser to approve the connection, then creates an API key and writes the model menus. The default model is coding-router-preview, where Arena Router picks a model per request; you can also connect by hand through the OpenAI-compatible https://api.arena.ai/v1 or Anthropic-compatible https://api.arena.ai endpoints.",
+  "conditions": "An email account is enough and no card is needed; the $50 is one-off starter credit and ends when spent; the docs say calling one named model directly requires paid or promotional funds, so stay on the default Router to use starter credit; still a developer preview, so rules and the model list can change.",
+  "steps": [
+   "Sign up at arena.ai, verify the email and open the console at platform.arena.ai",
+   "Check that the settings page shows $50.00 in starter funds",
+   "Run the official curl setup script, or create an API key on the Keys page and point Claude Code, Codex or OpenCode at the OpenAI or Anthropic compatible base URL",
+   "Send a short request and confirm the charge and balance on the Usage page"
+  ],
+  "risk": "The amount is whatever your own settings page shows: some accounts start at once, others were asked to wait for review; named single models do not draw on starter credit and need the Router; policies can change during the preview; requests pass through Arena's servers to the model vendor, so do not send confidential code.",
+  "source": "Arena official docs at platform.arena.ai/docs (OpenAI and Anthropic compatible base URLs, coding-router-preview routing, direct single-model calls need paid or promotional funds) + linux.do post of 2026-11-24 (works on signup, $50 is what the settings page shows, some replies report waiting for review) + kkzui tutorial of 2026-11-24 (settings page shows $50.00 starter funds, no card, first top-up of $250 is doubled)"
+ },
+ "x-subscription-premium-bf-bogo": {
+  "title": "[Multi-region] X Subscription Premium Black Friday buy-one-get-one: first two months for one (US$30, ends Dec 2)",
+  "brand_en": "X Subscription",
+  "highlight": "grok.com/plans is marked pay for one month, get one free: Premium billed monthly costs one month's price for the first two months and includes Grok Bot, the latest Grok models and X Premium perks; Premium monthly only",
+  "regions": "[US/JP/HK and more] Priced by account region: US$30, JPY 5,280 and HK$240 each cover two months; new subscriptions only",
+  "value": "$30 (one month's fee saved)",
+  "content": "The X Subscription's Black Friday deal: on grok.com/plans, after switching billing to monthly, the Premium card is marked with the Black Friday price and the dialog reads pay for one month, get one month free. The Japanese site shows JPY 5,280 for two months, then JPY 5,280 a month on auto-renewal; the US site shows $30 for two months and Hong Kong HK$240 for two months. Premium includes Grok Bot, the latest Grok models, four times the usage pool of Plus, plus Cursor and X Premium benefits such as ad-free scrolling on most surfaces and a priority handle. The countdown on the page runs to 2026-12-02 17:00 Japan time, 16:00 in Beijing; Plus, Super, Ultra and every annual plan stay at list price.",
+  "conditions": "New Premium monthly subscriptions only; Plus, Super, Ultra and all annual plans are excluded; a card is required and the plan auto-renews at list price after the offer period, so cancel at least 24 hours before renewal; prices follow your account's region and currency and exclude tax.",
+  "steps": [
+   "Open grok.com/plans and switch the billing period to monthly",
+   "Press Claim offer on the Premium card and complete payment",
+   "Use Grok, Cursor and X with the shared usage pool",
+   "For only these two months, cancel in subscription management at least 24 hours before the renewal date"
+  ],
+  "risk": "Only the first month is free, so it works out to half price for two months, and the third month renews at list price; third-party sites say new subscribers only although the official page does not spell out the eligibility; prices differ by region, so do not mix the US $30 with the JPY 5,280 figure; third-party models inside Cursor are billed separately.",
+  "source": "Official grok.com/plans page (read 2026-11-26: Black Friday dialog offering one month free with one paid, Premium at JPY 5,280 for two months, countdown to 17:00 JST on 2026-12-02, no such offer on Plus, Super or Ultra) + NodeSeek post of 2026-11-25 + AI Promo Now on 2026-11-25 (US$30 for two months, Premium monthly only) + NewMobileLife Hong Kong on 2026-11-25 (HK$240 for two months)"
+ },
+ "shopback-30-signup-bonus-bf": {
+  "title": "[Multi-region] ShopBack Black Friday: new users get a $30 signup bonus after $10 spend and $10 cashback, ends Nov 30",
+  "brand_en": "ShopBack",
+  "highlight": "Black Friday doubles the referral bonus from $15 to $30: a new user who signs up through an invite link or code, spends $10 and earns $10 in confirmed cashback within 180 days and links PayPal gets $30, and the referrer gets $30 too with no cap",
+  "regions": "[US/AU/DE/HK/SG/MY/TH/TW/KR and 13 countries] Priced in each site's currency, $30 in the US; new users on that local site only",
+  "value": "$30 cashback (usually $15)",
+  "content": "ShopBack is a cashback platform, and for Black Friday it doubled the whole referral programme: a new user who signs up through someone's invite link or code before 2026-11-30 sees $30 attached to the account, up from the usual $15. Turning that into withdrawable money takes three steps within 180 days: spend at least $10 through ShopBack links, reach $10 in confirmed cashback, and link a PayPal withdrawal method. The referrer also earns $30 with no limit on referrals, and a Refer 3 Friends quest running 11/24 to 11/30 pays an extra $15 once three friends qualify. Black Friday boosts such as up to 20% at Walmart, 12% at Sam's Club and 11% at Best Buy can clear the $10 in a single order; orders at Amazon, Udemy, HelloFresh, NordVPN and Kinguin do not count.",
+  "conditions": "New users only, signing up through an invite link or code; spend at least $10 and reach $10 in confirmed cashback within 180 days, with PayPal linked; no multiple accounts on one device and the first order cannot stack other new-customer offers; listed merchants such as Amazon and cancelled or refunded orders do not count; the referral rate applies to signups before 11/30.",
+  "steps": [
+   "Open a ShopBack account through an invite link or by entering an invite code, and verify the phone number",
+   "Install the browser extension or app and shop at qualifying merchants through ShopBack until you pass $10 in spend",
+   "Wait for that cashback to turn Confirmed and reach $10 in total",
+   "Link PayPal under Withdraw Money; the $30 signup bonus can be withdrawn once confirmed"
+  ],
+  "risk": "It is not cash on signup: cashback waits for merchant confirmation, about 75 days at Walmart, and the $30 only unlocks once $10 of confirmed cashback is reached; multiple accounts on one device or posting your invite link on merchant pages voids every bonus; amounts differ by country and sit well below $30 in places such as Singapore; after the promotion the rate drops back to $15.",
+  "source": "Referral World News (2026-11-24: $30 signup and $30 referral, 13 countries, ends 11/30, $10 spend and $10 confirmed cashback within 180 days plus PayPal, extra $15 Refer 3 Friends quest) + ShopBack help-centre Refer a friend and raf-content-system terms (unique device, excluded merchants, 180-day window, withdrawal details required) + US Daily Rewards update of 2026-11-25 (deadline 11:59pm Pacific on 11/30)"
  }
 }

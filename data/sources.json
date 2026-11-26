@@ -234,7 +234,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T22:47:31Z",
+      "last_crawled_at": "2026-11-26T00:45:46Z",
       "last_hit_at": "2026-11-23T20:52:44Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -281,7 +281,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T22:47:31Z",
+      "last_crawled_at": "2026-11-26T00:45:46Z",
       "last_hit_at": "2026-11-25T19:46:44Z",
       "entry_url": "https://tg.docofcard.com/rss.json",
       "zero_streak": 0
@@ -301,7 +301,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T22:47:31Z",
+      "last_crawled_at": "2026-11-26T00:45:46Z",
       "last_hit_at": "2026-11-25T11:33:38Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -321,7 +321,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T22:47:31Z",
+      "last_crawled_at": "2026-11-26T00:45:46Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -494,7 +494,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T20:47:36Z",
+      "last_crawled_at": "2026-11-26T00:45:46Z",
       "last_hit_at": "2026-11-24T10:10:48Z",
       "entry_url": "https://www.v2ex.com/index.xml",
       "zero_streak": 0
@@ -703,7 +703,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T20:47:36Z",
+      "last_crawled_at": "2026-11-26T00:45:46Z",
       "last_hit_at": "2026-11-25T20:47:36Z",
       "entry_url": "https://www.cheapies.nz/feed",
       "zero_streak": 0
@@ -776,8 +776,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T20:47:36Z",
-      "last_hit_at": "2026-11-25T07:56:29Z",
+      "last_crawled_at": "2026-11-26T00:45:46Z",
+      "last_hit_at": "2026-11-26T00:45:46Z",
       "entry_url": "https://www.usdailyrewards.com/feed",
       "zero_streak": 0
     },
@@ -795,7 +795,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T20:47:36Z",
+      "last_crawled_at": "2026-11-26T00:45:46Z",
       "last_hit_at": "2026-11-15T06:30:00Z",
       "entry_url": "https://budgetfitter.uk/feed"
     },
@@ -966,7 +966,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-25T20:47:36Z",
+      "last_crawled_at": "2026-11-26T00:45:46Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
@@ -987,8 +987,8 @@
         "ding.com": "https://www.ding.com/promotions"
       },
       "note": "两域名直连 403/429（2026-11-21 实测），只做核验不抓取：优先运营商官方公告，否则每天最多 1 次浏览器开 verify_urls",
-      "zero_streak": 1,
-      "last_zero_at": "2026-11-25T20:47:36Z"
+      "zero_streak": 2,
+      "last_zero_at": "2026-11-26T00:45:46Z"
     },
     {
       "id": "topup-game",
