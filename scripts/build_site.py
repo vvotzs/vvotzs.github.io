@@ -351,10 +351,11 @@ SUBMIT_ENDPOINT = (
     "AKfycbytBigdTS4LTwtRh6K_jiTPXHOf-6MvljhVuYFDZ9VLfUuTmzgNqNATK_oX2UELJzCJTg/exec"
 )
 TG_GROUP_URL = "https://t.me/+aAqP0DbW_YMxMmNh"
-# Jun 自己的 Blogger 博客：只在首页与分类页的顶栏右上角挂一枚徽标（2026-11-25 要求）。
+# Jun 自己的 Blogger 博客：只在中英文首页（/、/en/）的顶栏右上角挂一枚徽标（2026-11-25 要求；
+# 2026-11-26 收敛为仅首页，分类页 / 详情页 / 合规页一律不挂）。
 BLOGGER_URL = "https://6yfz.blogspot.com"
 # Sendwave 邀请落地页（Jun 自己的 UK→GCash 指引页，邀请码 JZHANG，新人首笔减 £10）：
-# 挂在 Blogger 徽标正下方，同样只在首页与分类页出现（2026-11-26 要求）。
+# 挂在 Blogger 徽标正下方，同样只在首页出现（2026-11-26 要求，同日收敛为仅首页）。
 SENDWAVE_URL = "https://sw-JZHANG.antideploy.app"
 
 # 薄荷绿 Pickle 小精灵（页头 / 页脚直接内联，不走 sprite）。
@@ -502,7 +503,7 @@ def hero_tg_badge() -> str:
 
 
 # 右上角的 Blogger 徽标（Jun 2026-11-25 要求）：亮橙圆角方块 + 白色 B，只在首页（/、/en/）
-# 与分类页的统一顶栏出现，详情页与合规页一律不放。图形取自官方 Simple Icons 的 Blogger
+# 的顶栏出现；分类页、详情页与合规页一律不放（2026-11-26 Jun 拍板收敛）。图形取自官方 Simple Icons 的 Blogger
 # 路径，但拆成两笔：底块用「亮橙 Skinny 橙」#FF5722 的圆角方，B 单独填白（原路径是
 # 一整块「方块挖空 B」，直接填色只能得到一枚与页面同色的 B，白字出不来）。
 # 桌面 36px / 手机 26px，比首屏那枚 12×12 的小图形大一档；闪光是 CSS 伪元素在
@@ -531,7 +532,8 @@ def sendwave_badge() -> str:
     尺寸与 .top-blog 一致（桌面 52 / 手机 34），右缘对齐：两枚徽标的竖直中线重合，
     看上去就是一个挂在 Blogger 徽标下面的小挂牌。
     抖动、扫光全是 CSS 的 transform 动画，不参与布局；图标本身是内联 SVG +
-    纯文本，不引额外请求。只在首页与分类页输出，详情页与合规页不出现。
+    纯文本，不引额外请求。只在首页（/、/en/）输出；分类页、详情页与合规页都不出现
+    （2026-11-26 Jun 拍板收敛为仅首页，顺带解决分类页手机端右上角语言切换被遮挡）。
 
     2026-11-26 Jun 追加：黄色方框顶边上再来一只旧版官方小企鹅（挥手造型，
     assets/img/sw-penguin.webp，抠掉黄底、透明背景），脚丫踩着黄框顶边左右散步；
@@ -3333,7 +3335,7 @@ def render_category_page(
 {ld}
 </script>
 </head>
-<body class="dp cat has-sw">
+<body class="dp cat">
 
 {sprite_svg(CAT_PAGE_ICONS)}
 
@@ -3353,11 +3355,9 @@ def render_category_page(
       <a class="dp-switch" href="{switch_href}" hreflang="{switch_lang}" {al(switch_aria, switch_aria)}><span lang="{switch_lang}">{ui('dp_switch')}</span></a>
     </div>
   </div>
-  {blogger_badge()}
 </header>
 
 <main id="top">
-  {sendwave_badge()}
   <div class="shell dp-wrap">
     <nav class="dp-crumbs" {al(*U['dp_crumb_aria'])}>
       <a href="{home}">{ui('dp_crumb_home')}</a>
