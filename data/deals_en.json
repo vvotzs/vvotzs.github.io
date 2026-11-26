@@ -8470,5 +8470,75 @@
   ],
   "risk": "The 18-month contract must keep being paid; the 200GB and unlimited allowances are temporary and fall back when it ends; heavy use outside the UK triggers the fair use policy; a UK address is required, so customers in China cannot order directly.",
   "source": "giffgaff SIM only page (read 2026-11-27: GBP 12 plan marked Was 50GB with Black Friday 150GB extra free at 200GB, GBP 15 plan Was 100GB with unlimited data for 18 months, 18-month contract, 5GB EU across 37 destinations) + Yuntianming AI Navigation carrier briefing, issue 4 (2026-11-24: activate by 7 December, UK address required, existing customers opt in)"
+ },
+ "longbridge-sg-singsaver-438": {
+  "title": "[Singapore] Longbridge × SingSaver: S$438 cash for a S$10,000 deposit held 90 days (code SINGSAVE, 23–30 Nov)",
+  "highlight": "Open Longbridge SG through SingSaver between 23 and 30 Nov, deposit S$10,000 in one transfer, keep it 90 days and make 3 trades to choose S$438 cash, S$470 of Grab vouchers or a S$444 Apple bundle",
+  "regions": "[Singapore] Singapore citizens, PRs, Employment Pass, S Pass and work permit holders; trades US, HK and Singapore stocks",
+  "value": "S$438 cash (about $325); the smaller tier pays S$210",
+  "content": "Upsized Black Friday tiers: apply through SingSaver with code SINGSAVE, deposit S$10,000 in a single transfer, hold it 90 days and make 3 trades to take S$438 cash via PayNow, S$470 of Grab vouchers or an Apple bundle worth S$444. The lighter tier deposits S$2,000, holds 30 days and makes 1 trade for S$210 cash or S$230 of Grab vouchers. Split deposits do not count; submit the redemption form with your 8-digit login ID within 14 days, and rewards can take up to 16 weeks.",
+  "conditions": "Singapore residents who had never applied for a Longbridge SG account before 23 Nov; SingSaver link and code SINGSAVE only; single deposit, holding period and trade count must all be met; the form must be submitted within 14 days.",
+  "steps": [
+   "Apply through SingSaver's Longbridge page and enter code SINGSAVE",
+   "Complete onboarding and KYC with Singpass/MyInfo",
+   "Deposit S$10,000 (top tier) or S$2,000 (lower tier) in one transfer",
+   "Hold for 90 or 30 days and complete 3 or 1 trades",
+   "Submit SingSaver's redemption form within 14 days with your 8-digit login ID",
+   "Choose cash, Grab vouchers or the Apple bundle"
+  ],
+  "risk": "The S$438 tier ties up S$10,000 for 90 days; brokerage accounts carry investment risk and every trade pays a platform fee (US$0.005 a share, minimum US$0.99); Singapore residency is required; rewards lapse if the form is not submitted.",
+  "source": "SingSaver Longbridge offer page read 27 Nov 2026 (upsized tiers S$210/S$438 cash, S$230/S$470 Grab vouchers, S$444 bundle, 90 days and 3 trades) plus the MAS licence CMS101211 shown on the page"
+ },
+ "webull-sg-singsaver-260": {
+  "title": "[Singapore] Webull × SingSaver: S$260 cash for a S$10,000 deposit held 90 days, on top of Webull's own rewards up to S$1,888",
+  "highlight": "Open Webull SG through SingSaver by 30 Nov, deposit S$10,000 in one transfer and hold 90 days to choose S$260 cash, Galaxy Buds4 Pro with a S$50 voucher, or a Dyson fan with a S$35 top-up, plus Webull's own NVIDIA share rewards",
+  "regions": "[Singapore] Singapore citizens, PRs, Employment Pass, S Pass and work permit holders; trades US, HK and Singapore stocks",
+  "value": "S$260 cash (about $193) plus up to S$1,888 of Webull rewards",
+  "content": "SingSaver tier: deposit S$3,000 in one transfer and hold 30 days for S$110 cash, or deposit S$10,000 and hold 90 days to choose S$260 cash, Galaxy Buds4 Pro with a S$50 eCapitaVoucher (worth S$399) or a Dyson AM07 with a S$35 top-up (worth S$464). Webull's own Welcome Rewards pay NVIDIA fractional shares and stock vouchers by net deposit from S$3,000 up to S$1,888 at S$300,000, with an extra S$50 for three trades of at least US$100 each within 30 days.",
+  "conditions": "Singapore residents who never registered a Webull account, funded one or closed one; SingSaver link only; the SingSaver reward needs a single deposit; the broker's rewards use net deposit and must be reached within 30 days and held for the period.",
+  "steps": [
+   "Apply through SingSaver's Webull SG page",
+   "Complete KYC and make one deposit of S$3,000 or S$10,000",
+   "Hold 30 or 90 days, then place 3 trades of at least US$100 each for the extra S$50",
+   "Submit SingSaver's form within 14 days with your Webull account number",
+   "Claim the broker rewards in My Rewards within 15 business days and use them within the stated windows"
+  ],
+  "risk": "Two rule sets must both be satisfied and the S$260 tier locks S$10,000 for 90 days; the Dyson option costs S$35; withdrawing money can drop the broker tier; Singapore residency is required; investing puts your capital at risk.",
+  "source": "SingSaver Webull SG offer page read 27 Nov 2026 (S$110/S$260 cash, headphones and Dyson options, Webull Welcome Rewards up to S$1,888 plus S$50 for three trades)"
+ },
+ "moomoo-sg-singsaver-130": {
+  "title": "[Singapore] moomoo × SingSaver: S$130 cash for a S$2,000 deposit held 30 days (code SINGSAVER88, by 30 Nov)",
+  "highlight": "Open moomoo SG through SingSaver by 30 Nov, deposit S$2,000 and keep it 30 days, then pick S$130 PayNow cash, S$140 of Grab vouchers or 8,000 Max Miles, plus moomoo's own welcome gifts up to S$1,100",
+  "regions": "[Singapore] Singapore residents only; trades across Singapore, the US, Hong Kong, China, Korea and Japan",
+  "value": "S$130 cash (about $96) / S$140 Grab vouchers / 8,000 Max Miles worth S$144",
+  "content": "Exclusive code SINGSAVER88: deposit S$2,000 and keep it 30 days, then choose S$130 cash, S$140 of Grab vouchers or 8,000 Max Miles worth S$144. moomoo adds its own welcome rewards worth up to S$1,100 for completing tasks. Opening takes about five minutes with Singpass, Singapore stocks are commission-free for the first year, US stocks are commission-free with a US$0.99 platform fee per order, and DDA deposits land instantly.",
+  "conditions": "New moomoo SG users or those who never funded an account; SingSaver link and code SINGSAVER88 only; deposit S$2,000 and hold it 30 days; submit SingSaver's form within 14 days.",
+  "steps": [
+   "Apply through SingSaver's moomoo page and enter code SINGSAVER88",
+   "Open and verify the account with Singpass",
+   "Fund at least S$2,000 by DDA or FAST",
+   "Keep the money in the account for 30 days",
+   "Submit SingSaver's redemption form within 14 days and choose cash, vouchers or miles",
+   "Claim moomoo's own welcome gifts in the app"
+  ],
+  "risk": "The S$130 tier locks S$2,000 for 30 days; the US$0.99 per-order platform fee eats into the reward if you trade often; Singapore residency is required; unsubmitted forms forfeit the reward and tiers can change.",
+  "source": "SingSaver moomoo SG offer page read 27 Nov 2026 (offer to 30 Nov, code SINGSAVER88, S$2,000 minimum held 30 days, S$130 cash / S$140 Grab / 8,000 Max Miles, plus provider welcome rewards up to S$1,100)"
+ },
+ "cfe-internet-mx-free-esim": {
+  "title": "[Mexico] CFE Internet free eSIM: prepaid plans from MXN 35 per 30 days with 1GB, 100 minutes and 50 texts",
+  "highlight": "Mexico's state telecom CFE Internet charges nothing for the eSIM itself; you only buy a prepaid plan, from MXN 35 for 30 days with 1GB, 100 minutes, 50 texts and 600MB of social data, on a local number but only on Mexico-market phones in approved areas",
+  "regions": "[Mexico] Mexico only; sold in approved low-connectivity postal areas, eSIM needs a Mexico-market device, no international roaming",
+  "value": "Free eSIM; cheapest plan MXN 35 a month (about $1.9)",
+  "content": "The eSIM and physical SIM cost nothing and are activated online; you pay only for a prepaid plan. The cheapest, CFE TELECOM 35 AL MES, gives 1GB, 100 minutes, 50 texts and 600MB for social apps (WhatsApp, Telegram, Messenger, Instagram, X; video and outside links use the main data) for 30 days with no hotspot. Day plans: 2GB/7 days MXN 85, 6GB/7 days MXN 105, 10GB/15 days MXN 160. Monthly plans also include 2GB/135, 3GB/155, 4GB/180, 12GB/220, 24GB/275, 35GB/325 and 50GB/510. The network is Altan 4.5G, so check IMEI compatibility with *#06# for Band 28.",
+  "conditions": "Order within an approved low-connectivity postal area; the device must be a Mexico-market model supporting Band 28; registration needs Mexican ID, proof of address and CURP; the eSIM is activated online and payment accepts cards and cash channels such as OXXO.",
+  "steps": [
+   "Check on cfeinternet.mx whether your postal code is eligible to buy",
+   "Check your IMEI with *#06# and verify Band 28 on the compatibility page",
+   "Choose eSIM plus a prepaid plan (from MXN 35 for 30 days) and pay",
+   "Create an account and upload ID and address documents",
+   "Download and activate the eSIM profile"
+  ],
+  "risk": "Purchases are limited to approved low-connectivity areas, so most city addresses cannot order; only Mexico-market phones are supported; there is no roaming, so the line stops working abroad; social data excludes video and outside links and hotspot is disabled; plan prices can change.",
+  "source": "CFE Internet official site read 27 Nov 2026 (SIM cards at no cost, free eSIM activation, MXN 35 monthly plan with 1GB/100 minutes/50 texts/600MB social data, day and monthly price list, IMEI compatibility check) plus a Promodescuentos post of 26 Nov 2026 and Xataka Mexico, Ambito and W Radio coverage of the approved-area and Mexico-market device limits"
  }
 }
