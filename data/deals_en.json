@@ -8256,5 +8256,39 @@
   ],
   "risk": "The €96 is paid up front while the cashback is pending; lost cookies or an old-customer flag can void tracking; the voucher may already be gone; NordVPN renews at full price; only the net price is refunded, not the VAT.",
   "source": "preisjaeger.at community post (read 2026-11-26, quoting Shoop terms: 100% on the Basis net price, new customers only, one order per account, limited voucher, USD settlement within 10%) + NordVPN Germany Black Friday pricing (2026-11-26: Basic €2.99/month net, €80.73 net / about €96 with VAT for 27 months, offer to 12/9) + NETZWELT 2026-11-19 and PC-WELT 2026-11-22 price checks; Shoop's partner page blocks direct fetching, so confirm the rate and voucher before ordering"
+ },
+ "cloudcone-black-friday-2026": {
+  "title": "[Global] CloudCone Black Friday VPS: storage from $12.24/yr, pure SSD from $13.89/yr, lifetime recurring price",
+  "brand_en": "CloudCone",
+  "highlight": "All three lines are marked Lifetime Recurring: storage at $12.24/yr for 1 core / 1GB / 50GB SSD-cached / 3TB, pure SSD at $13.89/yr for 1 core / 1GB / 20GB / 3TB, and Premium SC2 at $29.82/yr for 3 cores / 2GB / 60GB with snapshots and backups; every plan gets a 1Gbps port, one dedicated IPv4 plus three IPv6 and full KVM root",
+  "regions": "[Global] Los Angeles DC4 and St. Louis DC1 in the US; the SSD line is $1 apart between the two",
+  "value": "From $12.24 a year (about $1.02 a month)",
+  "content": "All three Black Friday lines say Lifetime Recurring. Storage BF-26-STOR-VPS-1 is $12.24/yr (1 core / 1GB / 50GB SSD-cached / 3TB, Los Angeles DC4), with 2GB at $19.16 and 4GB at $36.88. Pure SSD BF-26-SSD-VPS-1 is $13.89/yr (1 core / 1GB / 20GB / 3TB, St. Louis DC1; Los Angeles DC4 shows $14.89 at checkout), 2 cores / 2GB at $23.98 and 5 cores / 4GB at $43.50. Premium SC2 starts at $29.82/yr (3 cores / 2GB / 60GB) with one-click apps, snapshots, automated backups and a managed firewall. Everything runs on a 1Gbps port with one IPv4, three IPv6 and full KVM root over SSH, paid by card, PayPal or Alipay.",
+  "conditions": "Annual prepayment; CloudCone has not published an end date and sells while stock lasts; promotional plans cannot be upgraded or swapped, so pick the spec and location once; per-account limits are three storage and five SSD servers; ordinary international routing, not optimised for mainland China.",
+  "steps": [
+   "Open the three Black Friday pages on hello.cloudcone.com and pick a plan",
+   "At checkout choose the location first (SSD line: $13.89 St. Louis, $14.89 Los Angeles), then the OS",
+   "Confirm the annual price and pay by card, PayPal or Alipay",
+   "Log in over SSH and install any panel you need; promotional plans cannot be upgraded later, so choose the spec carefully"
+  ],
+  "risk": "Very cheap annual VPS are always oversold and neighbours can hurt performance; promotional plans cannot be upgraded or swapped, so a wrong pick means buying again; ordinary international routing is unstable to mainland China at peak times; the storage line is SSD-cached (spinning disks with cache) and unsuited to databases; stock may simply be pulled or repriced when it runs out.",
+  "source": "CloudCone's official Black Friday announcement (news.cloudcone.com, published 2026-11-26) and its three official sale pages (read 2026-11-26: storage from $12.24, one IPv4 + three IPv6, root access) plus a 2026-11-26 checkout check reported by the VPS deal blog (St. Louis $13.89 / Los Angeles $14.89, three and five server per-account caps)"
+ },
+ "topcashback-au-apple-10pct-cashback": {
+  "title": "[AU] TopCashback AU × Apple 10% cashback: capped at A$200 per member, Black Friday 24-hour boost (2% normally)",
+  "brand_en": "Apple",
+  "highlight": "Click through TopCashback AU into the Apple Online or Education Store and cashback goes from the usual 2% to 10%, capped at A$200 per member; it stacks with Apple's Black Friday gift card offer, and the Education Store needs the Shop for University link in Apple's footer",
+  "regions": "[AU] Apple's Australian online store only; needs an Australian account and delivery address",
+  "value": "10% back (capped at A$200 per member)",
+  "content": "TopCashback AU's Apple rate went from the usual 2% to 10% today, capped at A$200 per member, with an Upsized countdown on the page; OzBargain says it is the same 24-hour Black Friday window as last year. Both the online store and the Education Store qualify, and the Education Store needs you to click out from TopCashback first and then enter through Shop for University in Apple's footer. Cashback is calculated excluding GST, tracks within 2-7 days and only becomes payable once Apple confirms shipping.",
+  "conditions": "Must click through from TopCashback AU with an empty basket; Apple's online store only (in-app purchases do not count); a partial return, exchange or change voids the whole order; no coupon codes not published by TopCashback; resale, bulk buying or exceeding lifetime unit limits voids cashback; capped at A$200 per member.",
+  "steps": [
+   "Sign in to TopCashback AU, search Apple and click Get Cashback to reach the Australian Apple Store",
+   "For education pricing, enter through Shop for University in Apple's footer before choosing items",
+   "Check out as usual (Apple gift cards are allowed as payment, but buying gift cards earns nothing)",
+   "Come back in 2-7 days to confirm the cashback tracked, then withdraw once above the threshold"
+  ],
+  "risk": "Cashback depends on browser tracking, so ad blockers, VPNs or Brave can break it and missing claims are not guaranteed; the exclusion list is long (iPhone 18 Pro and Pro Max, iPad Mini, iMac, Apple TV 4K, gift cards, AppleCare+ and more earn nothing); GST is excluded so the real rate is under 10%; returns or changes void the whole order; the A$200 cap makes small accessory orders pointless; Australian address and account required.",
+  "source": "TopCashback AU Apple merchant page (read 2026-11-26: 10%, $200 cashback per member, Upsized countdown, GST exclusion and exclusion list) plus the OzBargain post of 2026-11-27 00:11 and its comments (stacks with the Black Friday gift card offer, Education Store path, MacBook Pro 14-inch, iPhone 18 Pro and iPad Mini excluded) and ozperks' comparison page (ShopBack 7% the same day, usual rate 2%)"
  }
 }

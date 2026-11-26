@@ -234,7 +234,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T13:30:12Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -258,7 +258,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T13:30:12Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "search_domains": [
         "x.com"
@@ -282,7 +282,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T13:30:12Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -302,7 +302,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T13:30:12Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -322,7 +322,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T13:30:12Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "zero_streak": 0
     },
@@ -344,7 +344,7 @@
       "entry_url": "https://www.promodescuentos.com/rss/todas",
       "zero_streak": 0,
       "note": "RSS 直连 200（普通 UA，无 Cloudflare），30 条/次，item 带 <category> 与 pepper:merchant 商家+价格；分组 feed 可补读 /rss/grupo/gratis（免单）、/rss/grupo/telefonia-celular（手机通讯）",
-      "last_crawled_at": "2026-11-26T13:30:12Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T13:30:12Z"
     },
     {
@@ -361,7 +361,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T10:30:23Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T10:30:23Z",
       "entry_url": "https://www.uscardforum.com/latest.md",
       "zero_streak": 0
@@ -421,8 +421,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T10:30:23Z",
-      "last_hit_at": "2026-11-26T06:15:49Z",
+      "last_crawled_at": "2026-11-26T14:45:14Z",
+      "last_hit_at": "2026-11-26T14:45:14Z",
       "search_domains": [
         "www.nodeseek.com"
       ],
@@ -498,7 +498,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T10:30:23Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T10:30:23Z",
       "entry_url": "https://www.v2ex.com/index.xml",
       "zero_streak": 0
@@ -580,7 +580,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-17T13:30:00Z",
       "search_domains": [
         "www.flyert.com"
@@ -602,7 +602,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T11:21:57Z",
       "search_domains": [
         "www.naixi.net"
@@ -625,7 +625,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-25T23:44:18Z",
       "search_domains": [
         "2libra.com"
@@ -669,7 +669,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-16T17:30:00Z",
       "entry_url": "https://tg.okhk.net/rss.json"
     },
@@ -688,8 +688,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T10:30:23Z",
-      "last_hit_at": "2026-11-25T11:33:38Z",
+      "last_crawled_at": "2026-11-26T14:45:14Z",
+      "last_hit_at": "2026-11-26T14:45:14Z",
       "entry_url": "https://www.ozbargain.com.au/feed",
       "zero_streak": 0
     },
@@ -854,7 +854,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -872,7 +872,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -889,7 +889,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -940,7 +940,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-24T19:57:36Z",
       "zero_streak": 0
     },
@@ -957,7 +957,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T05:15:58Z",
       "zero_streak": 0
     },
@@ -1011,7 +1011,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-26T10:30:23Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
@@ -1940,7 +1940,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-25T19:46:44Z",
       "keyword_pool": "ota_airline",
       "entries": [
@@ -1981,7 +1981,7 @@
       "entry_url": "https://www.hotukdeals.com/rss/new",
       "zero_streak": 0,
       "note": "Pepper 家族英国站；/rss/new 直连 200、30 条/次，另有 /rss/hot 热榜 feed",
-      "last_crawled_at": "2026-11-26T10:30:23Z"
+      "last_crawled_at": "2026-11-26T14:45:15Z"
     },
     {
       "id": "mydealz",
@@ -2001,7 +2001,7 @@
       "entry_url": "https://www.mydealz.de/rss/alles",
       "zero_streak": 0,
       "note": "Pepper 家族德国站；/rss/alles 直连 200、30 条/次；/rss/gruppe/<slug> 分组 feed 实测 404，用主 feed",
-      "last_crawled_at": "2026-11-26T10:30:23Z"
+      "last_crawled_at": "2026-11-26T14:45:15Z"
     },
     {
       "id": "dealabs",
@@ -2021,7 +2021,7 @@
       "entry_url": "https://www.dealabs.com/rss/tous",
       "zero_streak": 0,
       "note": "Pepper 家族法国站；/rss/tous 直连 200、30 条/次；免单分组 /rss/groupe/gratuit 亦 200，可补读",
-      "last_crawled_at": "2026-11-26T10:30:23Z"
+      "last_crawled_at": "2026-11-26T14:45:15Z"
     },
     {
       "id": "chollometro",
@@ -2041,7 +2041,7 @@
       "entry_url": "https://www.chollometro.com/rss/nuevos",
       "zero_streak": 0,
       "note": "Pepper 家族西班牙站；/rss/nuevos 直连 200、30 条/次",
-      "last_crawled_at": "2026-11-26T10:30:23Z"
+      "last_crawled_at": "2026-11-26T14:45:15Z"
     },
     {
       "id": "pepper-pl",
@@ -2061,7 +2061,7 @@
       "entry_url": "https://www.pepper.pl/rss/wszystkie",
       "zero_streak": 0,
       "note": "Pepper 家族波兰站；/rss/wszystkie 直连 200、30 条/次",
-      "last_crawled_at": "2026-11-26T10:30:23Z"
+      "last_crawled_at": "2026-11-26T14:45:15Z"
     },
     {
       "id": "pepper-nl",
@@ -2081,7 +2081,7 @@
       "entry_url": "https://nl.pepper.com/rss/nieuw",
       "zero_streak": 0,
       "note": "Pepper 家族荷兰站（pepper.com 主域已跳 nl.pepper.com）；/rss/nieuw 直连 200、30 条/次，免费分组 /rss/groep/gratis 亦 200",
-      "last_crawled_at": "2026-11-26T10:30:23Z",
+      "last_crawled_at": "2026-11-26T14:45:15Z",
       "last_hit_at": "2026-11-26T06:15:49Z"
     },
     {
@@ -2123,7 +2123,7 @@
       "entry_url": "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1",
       "zero_streak": 0,
       "note": "首页 rel=alternate 官方 RSS；直连 200、25 条/次；另有 mode=popdeals 人气榜 feed",
-      "last_crawled_at": "2026-11-26T10:30:23Z"
+      "last_crawled_at": "2026-11-26T14:45:15Z"
     },
     {
       "id": "airline-esim-partners",
