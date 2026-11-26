@@ -7776,5 +7776,37 @@
   ],
   "risk": "It is not cash on signup: cashback waits for merchant confirmation, about 75 days at Walmart, and the $30 only unlocks once $10 of confirmed cashback is reached; multiple accounts on one device or posting your invite link on merchant pages voids every bonus; amounts differ by country and sit well below $30 in places such as Singapore; after the promotion the rate drops back to $15.",
   "source": "Referral World News (2026-11-24: $30 signup and $30 referral, 13 countries, ends 11/30, $10 spend and $10 confirmed cashback within 180 days plus PayPal, extra $15 Refer 3 Friends quest) + ShopBack help-centre Refer a friend and raf-content-system terms (unique device, excluded merchants, 180-day window, withdrawal details required) + US Daily Rewards update of 2026-11-25 (deadline 11:59pm Pacific on 11/30)"
+ },
+ "simba-16-recharge-roamfree-500": {
+  "title": "[SG] SIMBA: top up exactly $16 and get a free 500GB China/Japan/Korea roaming pack valid 360 days, plus $16 credit",
+  "highlight": "One top-up of exactly S$16 puts S$16 straight into your SIMBA wallet and inserts a free RoamFree 500 Pack: 500GB of roaming data for China, Japan and South Korea, valid 360 days from the top-up. Any other amount does not count, and new plans or renewals of S$18 or more do not trigger it.",
+  "regions": "[SG] Singapore SIMBA lines only (postpaid, prepaid, business and data-only); the roaming pack works only in China, Japan and South Korea",
+  "value": "500GB China/Japan/Korea roaming plus $16 credit (about $60)",
+  "content": "SIMBA's official Recharge Pack: top up exactly S$16 through topup.simba.sg, the My SIMBA App or cash at a service centre, and the full S$16 lands in your SIMBA wallet with no expiry, usable for plan renewal and excess usage. The same recharge inserts a free RoamFree 500 Pack: 500GB of roaming data for China, Japan and South Korea, valid for 360 days from the top-up date. While roaming there the pack is used first, before the roaming allowance included in your plan. You can recharge S$16 again for a new pack; the new one replaces the old one and restarts the 360 days.",
+  "conditions": "You need an active SIMBA mobile plan, including business and data-only lines. The top-up must be exactly S$16; S$18 or more, or a new sign-up or renewal, does not qualify. Only one 500 Pack can be active at a time and it ends the day your plan is changed or terminated.",
+  "steps": [
+   "Get a SIMBA SIM or eSIM and keep an active mobile plan",
+   "Open topup.simba.sg or the My SIMBA App and pick the $16 Recharge Pack",
+   "Confirm the amount is exactly S$16 and choose to insert the RoamFree 500 Pack",
+   "Check the $16 balance and the 500GB pack with its 360-day term in the app; recharge S$16 again when it runs out"
+  ],
+  "risk": "SIMBA publishes no end date and can change or withdraw the offer at any time. The roaming pack covers only China, Japan and South Korea. The 500GB is subject to fair use and real network speeds. Wallet credit is non-refundable and non-transferable. A plan change terminates the pack that day. SIMBA is a Singapore carrier, so a local number and local registration are required.",
+  "source": "SIMBA official Recharge Pack and terms pages read on 26 Nov 2026 (exactly $16 top-up, $16 credit plus 500GB China/Japan/Korea roaming, 360 days, cannot be bought separately, $18 and above excluded) checked against the official support FAQ"
+ },
+ "gomlab-blackfriday-2026": {
+  "title": "[KR] GOM Lab Black Friday: up to 56% off the whole range, GomMix10 lifetime for KRW 49,000 plus 50 AI credits (11/23-11/30)",
+  "highlight": "23-30 November: the all-in-one content pack drops from KRW 180,000 to 79,000 lifetime (56% off), video editor GomMix10 from 89,000 to 49,000 lifetime with 50 AI credits, and player GomPlayer+ from 22,000 to 11,000 with 20 AI credits; buyers get the GomPlayer+10 upgrade free on 15 December.",
+  "regions": "[KR] gomlab.com only, Korean interface and KRW billing; limited-edition gifts ship inside Korea only",
+  "value": "Save up to KRW 101,000 (about $70)",
+  "content": "GOM Lab's official Black Friday page: up to 56% off the whole range from 23 to 30 November, with limited-edition gifts. The content pack (GomPlayer+, GomMix10, GomCam, GomPic+ and more) is KRW 180,000 down to 79,000 for a lifetime licence. Video editor GomMix10 is 89,000 down to 49,000 lifetime with 50 AI credits, and player GomPlayer+ is 22,000 down to 11,000 with 20 AI credits; both get the GomPlayer+10 version free on 15 December. AI credits are priced at 10 credits per KRW 1,000 and cover AI video generation, subtitle translation and image tools.",
+  "conditions": "Order on the gomlab.com event page with a payment method that works in Korea. The discount is a one-off lifetime price and ends when the event closes. Gifted AI credits are consumable and must be bought again once used. Limited-edition gifts are while stocks last.",
+  "steps": [
+   "Open the gomlab.com Black Friday page and pick what you need (content pack, GomMix10 or GomPlayer+)",
+   "Check out in KRW and confirm the discounted price at payment",
+   "Sign in to the app with the same account and check the AI credits arrived",
+   "Upgrade free to GomPlayer+10 after 15 December"
+  ],
+  "risk": "The Korean store is Korean-language and KRW-only, so foreign cards may be declined. The lifetime price applies only during the event. Gifted AI credits expire and must be repurchased. Limited gifts ship within Korea only. The software is mainly Korean-language.",
+  "source": "GOM Lab official Black Friday event page read on 26 Nov 2026 (23-30 November, up to 56% off, GomMix10 89,000 to 49,000 with 50 AI credits, content pack 180,000 to 79,000, 10 credits per KRW 1,000)"
  }
 }

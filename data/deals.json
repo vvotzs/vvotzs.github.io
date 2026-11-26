@@ -4566,6 +4566,53 @@
   "utility": 0
  },
  {
+  "id": "simba-16-recharge-roamfree-500",
+  "dedup_key": "simba|esim|sg|16-recharge-roamfree-500",
+  "title": "[新加坡]SIMBA充$16送500GB中日韩漫游包：360天有效，另返$16余额",
+  "brand": "SIMBA Telecom",
+  "domain": "simba.sg",
+  "category": "esim",
+  "value": "500GB中日韩漫游+$16余额（≈$60）",
+  "value_num": 60,
+  "cost": "需要充值",
+  "highlight": "一次充正好S$16即可：S$16全额进SIMBA余额，同时插一张免费RoamFree 500 Pack（中日韩500GB漫游、自充值日起360天）；充多充少都不算，$18以上新签/续费也不触发",
+  "regions": "[新加坡] 仅新加坡SIMBA在网号码（后付费/预付/商务/纯数据卡）；漫游包只能在中国、日本、韩国使用",
+  "start": "",
+  "end": "",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T09:58:00+08:00",
+  "content": "SIMBA官方Recharge Pack：在topup.simba.sg、My SIMBA App或客服中心现金，一次充值正好S$16，S$16全额进SIMBA钱包（不过期，可抵套餐续费与超量费），同时插入一张免费的RoamFree 500 Pack——500GB漫游流量，限中国、日本、韩国使用，自充值日起360天有效。漫游时先扣这张包的流量，用完后才扣套餐自带的中日韩漫游额度。可重复充$16换新包，新包会替换旧包并重置360天。",
+  "conditions": "需已开通SIMBA移动套餐（含商务与纯数据卡）；充值金额必须正好S$16，充$18或以上、或走新签/续费都不算；同一时间只能有一张500 Pack生效，换套餐或销号当日失效。",
+  "steps": [
+   "先在SIMBA开卡并保有有效的移动套餐（含纯数据卡）",
+   "打开 topup.simba.sg 或 My SIMBA App，选「$16 Recharge Pack」",
+   "确认充值金额正好S$16，并在充值页勾选插入RoamFree 500 Pack",
+   "到账后在App里核对$16余额与500GB漫游包、360天有效期；用完后可再充$16续包"
+  ],
+  "url": "https://simba.sg/recharge-pack",
+  "source_url": "https://topup.simba.sg/",
+  "source": "SIMBA官方Recharge Pack页与条款页实读（2026-11-26：充值正好$16、$16余额+500GB中日韩漫游、360天、不能单买、$18以上不算）+ support.simba.sg 官方FAQ核对",
+  "risk": "官网未公布活动截止日期，SIMBA保留随时修改或终止的权利；漫游包只覆盖中日韩三国，去别处用不上；500GB受公平使用政策与实际网速约束；钱包余额不可退款、不可转让；换套餐当天漫游包即被终止；SIMBA是新加坡本地运营商，需本地号码与实名登记。",
+  "status": "active",
+  "kyc_level": "foreign_only",
+  "utility": 0,
+  "has_number": true,
+  "vowifi": "unknown",
+  "identity_requirement": "local_id",
+  "residency_requirement": "local_resident",
+  "platform_requirement": [
+   "android",
+   "ios",
+   "web"
+  ],
+  "funding_requirement": "paid_plan",
+  "geo_restriction": [
+   "SG"
+  ]
+ },
+ {
   "id": "lemfi-eu-referral-50",
   "dedup_key": "lemfi|bank|eea|referral-50",
   "title": "[欧区]LemFi邀请：欧洲注册双方各得€50LemFi Cash（首笔须汇欧元区以外）",
@@ -15676,7 +15723,7 @@
   "start": "2026-10-01",
   "end": "2026-12-01",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-18",
   "content": "黑五到12/1：Starter/One两年套餐$2.49/月（合计$67.23，含3个月赠送，约88%off），One+ $3.99/月；年付起$2.99/月。含30天退款保证，One档另含杀毒、广告拦截与泄露监控。",
   "conditions": "需一次性预付24个月；续费按原价；7天免费试用仅部分平台；退款需在30天内申请。",
@@ -16170,7 +16217,7 @@
   "start": "2026-11-20",
   "end": "2026-11-26",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-21",
   "content": "Google黑五抢先场：2026-11-20起至11-26（美东），已在付费订阅Google AI或Google One存储空间的账号，可把Google AI Plus或年付Google AI Pro切成年付折扣价，最高5折，实际折扣按现有套餐与账号给价。美区Google AI Pro（5TB、Gemini 4 Neon、YouTube Premium Lite个人版）年付原价$199.99，折后首年$99.99，满12个月后按$199.99/年自动续费；台湾Pro年付NT$6,500→NT$3,250；AI Plus（400GB、Gemini 4 Hydrogen）同样在折扣范围。Ultra（20TB/30TB）与Pro 10TB档只有月付、不参与。未订阅账号这轮看不到入口，官方说11/27黑五当天另有优惠、内容待公布。社区实测（非官方）：Plus 2TB与本来就是年付的账号常看不到折扣；月付Pro若看不到，先切月付再切回年付，$99.99才会出现（美区多人成功）。澳新：Plus 400GB年付A$44.99、Plus 2TB年付A$74.99、Pro 5TB年付A$184.99。",
   "conditions": "必须已是付费的Google AI或Google One存储订阅用户，免费账号不参与；折扣上限5折、按套餐浮动，结账页才是最终价；只限AI Plus与年付AI Pro，Ultra与Pro 10TB不参加；不能与其他Google One优惠叠加；首年优惠到期按原价自动续费；需有效的Google Payments付款方式。",
@@ -16365,7 +16412,7 @@
   "start": "2026-11-17",
   "end": "2026-11-29",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "content": "DxO 2026黑色星期五：全线5款修图软件打折（四款今年发了新版本），无需优惠码，11-17起至11-29（周日）23:59自动生效。PhotoLab 10从$249.99降到$199.99（人民币¥32,900→¥25,800）；Nik Collection 9七件套插件$179.99→$149.99；ViewPoint 6几何校正$129.99→$99.99；PureRAW 6 RAW预处理$139.99→$99.99；FilmPack 8胶片风格$149.99→$74.99（省$75，折价最大）。均为两台电脑的买断授权，含一定期限免费升级。",
   "conditions": "折扣不能与其他优惠叠加；促销截止2026-11-29 23:59（当地时间）；买断授权仅含该大版本，后续大版本升级需另付费（具体更新期以商品页为准，待核实）；分期付款由PayPal提供且非所有地区可用。",
   "steps": [
@@ -16382,6 +16429,47 @@
   "added": "2026-11-19",
   "kyc_level": "none",
   "utility": 0
+ },
+ {
+  "id": "gomlab-blackfriday-2026",
+  "dedup_key": "gom-lab|software|kr|blackfriday-2026",
+  "title": "[韩区]GOM Lab黑五：全系最高56%折扣，GomMix10终身4.9万韩元+50AI积分（11/23–11/30）",
+  "brand": "GOM Lab",
+  "domain": "gomlab.com",
+  "category": "software",
+  "value": "最高省101,000韩元（≈$70）",
+  "value_num": 70,
+  "cost": "需要充值",
+  "highlight": "11/23–11/30：内容创作包곰이지패스终身18万→7.9万韩元（-56%），视频编辑器GomMix10终身8.9万→4.9万韩元另送50个AI积分，播放器GomPlayer+ 2.2万→1.1万韩元另送20个AI积分，12/15升级GomPlayer+10对现购用户免费",
+  "regions": "[韩区] 韩国官网gomlab.com，韩语界面、韩元结算；限量周边仅寄韩国境内",
+  "start": "2026-11-23",
+  "end": "2026-11-30",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T09:58:00+08:00",
+  "content": "GOM Lab官方黑五活动页：11/23–11/30全产品最高56%折扣并送限量周边。内容创作包（GomPlayer+、GomMix10、GomCam、GomPic+等）终身版180,000→79,000韩元；视频编辑器GomMix10终身版89,000→49,000韩元并送50个AI积分；播放器GomPlayer+终身版22,000→11,000韩元并送20个AI积分；两者均在12/15版更GomPlayer+10时对已购用户免费升级。AI积分按10积分=1,000韩元计价，用于AI视频生成、字幕翻译与图像处理。",
+  "conditions": "在gomlab.com活动页下单，需韩国可用的支付方式；折扣为一次性买断价，活动期结束恢复原价；赠送AI积分为消耗品，用完需另购；磨砂限定周边数量有限。",
+  "steps": [
+   "打开 gomlab.com 黑五活动页，挑需要的产品（内容创作包 / GomMix10 / GomPlayer+）",
+   "在活动页下单并按韩元结账，确认价格已显示折扣价",
+   "装好软件后用同一账号登录，核对赠送的AI积分是否到账",
+   "12/15后按提示免费升级到GomPlayer+10"
+  ],
+  "url": "https://www.gomlab.com/event/page/ORG060-475",
+  "source_url": "https://www.gomlab.com/event/page/ORG060-475",
+  "source": "GOM Lab官方黑五活动页实读（2026-11-26：11/23–11/30、最高56%、GomMix10 89,000→49,000送50 AI积分、곰이지패스180,000→79,000、10积分=1,000韩元）",
+  "risk": "韩国站只有韩语与韩元结算，海外卡可能被拒；买断授权只在活动期按此价；赠送的AI积分有有效期、用完要另买；限量周边寄送仅限韩国境内；软件以韩语界面为主。",
+  "status": "expiring_soon",
+  "kyc_level": "none",
+  "utility": 0,
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "KR"
+  ]
  },
  {
   "id": "ovhcloud-black-friday-2026",
@@ -16845,7 +16933,7 @@
   "start": "2026-11-20",
   "end": "2026-11-27",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-24",
   "content": "Visit Qatar在沙特11月假期期间（2026-11-20至11-27）做Home Away from Home活动：开非卡塔尔车牌车辆经陆路入境的访客，在官网活动页填姓名、邮箱、手机号与车牌登记后，可获3张QR50的WOQOD数字油券（合计QR150）和一张Vodafone卡塔尔eSIM。油券在全卡塔尔WOQOD油站一次性使用，余额不找零不退现；eSIM的二维码与激活步骤通过登记邮箱发送，需自备支持eSIM且未锁网的手机。名额有限，先到先得。",
   "conditions": "必须自驾经陆路入境卡塔尔且车牌非卡塔尔牌照；须在活动页完成登记并确认收到邮件；油券与eSIM按登记信息发放、名额有限；活动不替代签证、车险等入境手续。",
