@@ -8220,5 +8220,41 @@
   ],
   "risk": "100% is a limited-time boost with no published end date, so it can drop back at any moment; a refund or declined payment voids the cashback; a US Rakuten account and a payout method (Big Fat Check or PayPal) are needed, and payment is quarterly; the plan renews at full price after 27 months unless you cancel; purchases through resellers or combined with a free trial do not qualify.",
   "source": "Rakuten Surfshark merchant page (read 2026-11-26: 100% cash back, was 20%; special terms: new surfshark customers on first purchase, one per member, no subscription extensions, no free-trial combinations, cash back added the next day) + US Daily Rewards update of 2026-11-25 ($67.23 for two-year Starter and One, $107.73 One+, site countdown around 30 November, $50 sign-up bonus needs $50 spent within 90 days) + Surfshark Black Friday page (read 2026-11-26: countdown, One includes antivirus and breach monitoring)"
+ },
+ "hsbc-us-premier-3000": {
+  "title": "[US] HSBC Premier checking: up to $3,000 for new clients — $1,000 on $50k (open by 12/31, hold 3 full months)",
+  "brand_en": "HSBC",
+  "highlight": "Open an HSBC US Premier checking account by 12/31, add new money within 30 days and hold it for 3 full months: $50k–$99,999 earns $1,000, $100k $1,500, $250k $2,000, $500k+ $3,000",
+  "regions": "[US] HSBC US Premier checking; the online application is limited to applicants located in the countries HSBC lists (unverified)",
+  "value": "Up to $3,000",
+  "content": "HSBC US pays a four-tier new-client bonus on Premier checking: open by 12/31/2026, add $50,000–$99,999 of new money within 30 days for $1,000, $100,000–$249,999 for $1,500, $250,000–$499,999 for $2,000, or $500,000+ for $3,000, keep the balance for 3 full consecutive months after the opening month, and the bonus lands within 8 weeks. You must stay opted in to HSBC marketing emails. Note that $50,000 does not waive the $50 monthly fee; the fee is waived only with $100,000 in combined balances, $5,000 in monthly direct deposits, an HSBC US mortgage or Private Bank status.",
+  "conditions": "New HSBC US clients only (any past HSBC US account disqualifies you); open by 12/31/2026; new money only, funds already at HSBC do not count; hold the tier balance for 3 full consecutive calendar months; stay subscribed to marketing emails; one bonus per client.",
+  "steps": [
+   "Open the HSBC US Premier campaign page and confirm the current tiers and the 12/31 deadline",
+   "Apply online for a Premier checking account, checking which countries may apply",
+   "Add the qualifying new money within 30 days of opening (CDs, annuities, 529s and retirement accounts do not count)",
+   "Keep the balance for 3 full months starting the month after opening, without unsubscribing from marketing emails",
+   "Check the bonus within 8 weeks; contact the bank if it has not arrived"
+  ],
+  "risk": "The $50,000 tier earns $1,000 but still pays a $50 monthly fee, costing about $150 over the holding period; online applications are limited to listed countries and can be declined or moved to a branch; dropping below the tier forfeits the bonus; the bonus is reported on a 1099-INT.",
+  "source": "HSBC US Premier campaign page and FAQ (read 2026-11-26: 12/31 opening deadline, four tiers, 30-day funding, 3-month hold, marketing opt-in, 8-week payout, $50k tier still pays the monthly fee)"
+ },
+ "nordvpn-de-shoop-100-cashback": {
+  "title": "[DE] NordVPN 100% cashback via Shoop: €80.73 net on 2-year Basic refunded, plus a €10 voucher",
+  "brand_en": "NordVPN",
+  "highlight": "Buy NordVPN 2-year Basic (Black Friday adds 3 free months, 27 months total) through Shoop Germany and new customers get 100% of the net price back, about €80.73, plus a €10 voucher — roughly €15 net for 27 months",
+  "regions": "[DE] Shoop Germany and NordVPN Germany; new NordVPN customers only",
+  "value": "About €80.73 refunded + €10 voucher",
+  "content": "Shoop Germany pays new customers 100% cashback on the net price of NordVPN: the Black Friday 2-year Basic plan is €2.99/month net, 27 months including 3 free months, €80.73 net and about €96 with 19% VAT, and the cashback refunds the full net amount. A limited €10 Shoop voucher stacks on top (issued 5–7 days after the cashback becomes payable, one per person per portal). Only the Basis plan is eligible; NordPass, NordLayer, NordLocker, Incogni and dedicated IP are excluded. You still pay the full amount up front, and the 30-day money-back guarantee limits the downside.",
+  "conditions": "New NordVPN customers only, and you must buy through the Shoop link (clear cookies first, accept all cookies after the redirect); one qualifying order per Shoop account; only the 2-year Basic plan earns 100%; the Shoop voucher is limited, check the partner page before buying; orders are tracked in USD, so exchange-rate differences of up to 10% cannot be disputed.",
+  "steps": [
+   "Sign up or log in to Shoop Germany, search NordVPN and confirm the partner page still shows 100% cashback and the €10 voucher",
+   "Clear browser cookies, then enter NordVPN through the Shoop link",
+   "Pick the 2-year Basic plan with the 3 free months and check the total with VAT (about €96)",
+   "Pay, then confirm the order was tracked in Shoop and wait for the cashback",
+   "Once the voucher arrives, turn off NordVPN auto-renewal to avoid the full renewal price"
+  ],
+  "risk": "The €96 is paid up front while the cashback is pending; lost cookies or an old-customer flag can void tracking; the voucher may already be gone; NordVPN renews at full price; only the net price is refunded, not the VAT.",
+  "source": "preisjaeger.at community post (read 2026-11-26, quoting Shoop terms: 100% on the Basis net price, new customers only, one order per account, limited voucher, USD settlement within 10%) + NordVPN Germany Black Friday pricing (2026-11-26: Basic €2.99/month net, €80.73 net / about €96 with VAT for 27 months, offer to 12/9) + NETZWELT 2026-11-19 and PC-WELT 2026-11-22 price checks; Shoop's partner page blocks direct fetching, so confirm the rate and voucher before ordering"
  }
 }

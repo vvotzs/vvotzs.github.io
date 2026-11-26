@@ -244,6 +244,46 @@
   "utility": 0
  },
  {
+  "id": "hsbc-us-premier-3000",
+  "dedup_key": "hsbc|bank|us|premier-3000",
+  "title": "[美区]HSBC Premier支票新客最高$3,000：存$5万得$1,000（12/31前开户，须保持3个完整月）",
+  "brand": "HSBC",
+  "domain": "us.hsbc.com",
+  "category": "bank",
+  "value": "最高$3,000",
+  "value_num": 3000,
+  "cost": "需要充值",
+  "highlight": "12/31 前开 HSBC 美国 Premier 支票账户，30 天内存入新钱并保持 3 个完整月：$5 万–$9.99 万得 $1,000，$10 万档 $1,500，$25 万档 $2,000，$50 万以上 $3,000",
+  "regions": "[美区] 美国 HSBC Premier 支票；官网限身处其列明国家之一的申请人（待核实）",
+  "end": "2026-12-31",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "content": "HSBC 美国 Premier 新客开户奖分四档：开 Premier 支票账户后 30 天内，往存款和/或合资格投资账户转入新钱 $5 万–$9.99 万得 $1,000、$10 万–$24.99 万得 $1,500、$25 万–$49.99 万得 $2,000、$50 万以上得 $3,000，并从开户次月起连续保持 3 个完整月，达标后 8 周内入账。须全程保持订阅 HSBC 营销邮件。注意：$5 万只够拿奖，不足以免 Premier 每月 $50 账户费，免月费要么账户总值 $10 万、要么月直存 $5,000、要么有 HSBC 美国房贷或 Private Bank 身份。",
+  "conditions": "须为 HSBC 美国新客户（曾开过任何 HSBC 美国账户即不合格）；12/31/2026 前开户；30 天内转入新钱（已存在 HSBC 的资金不算）；连续 3 个完整自然月保持门槛余额；期间不得退订营销邮件；每人/每户限一次，奖励计入应税收入。",
+  "steps": [
+   "打开 HSBC 美国 Premier 活动页，确认当前档位与 12/31 开户截止",
+   "线上申请 Premier 支票账户，注意申请页所列可申请国家与身份证件要求",
+   "开户后 30 天内存入或投入足额新钱，定期存款、年金、529、退休账户不计入",
+   "从开户次月起连续 3 个完整月保持余额，期间别退订营销邮件",
+   "达标后 8 周内查账户到账，未到账联系开户行核资格"
+  ],
+  "url": "https://www.us.hsbc.com/checking-accounts/campaigns/premier-relationship/",
+  "source_url": "https://www.us.hsbc.com/checking-accounts/campaigns/premier-relationship/",
+  "source": "HSBC 美国官网 Premier 活动页与 FAQ（2026-11-26 实读：12/31 前开户、四档 $1,000/$1,500/$2,000/$3,000、30 天内入金、保持 3 个完整月、须保持营销订阅、8 周内发奖、$5 万档仍收 $50 月费）+ 北美羊毛快报 HSBC Premier 教程（2026-10-23，网友实测入金与月费豁免路径）",
+  "risk": "$5 万档拿 $1,000 却每月被扣 $50 账户费，放 3 个月实际少 $150；线上申请只对官网列明国家开放，地址/身份核验不过会被转网点或拒件；提前取款或余额掉档即失去奖励；奖励发 1099-INT 要报税。",
+  "status": "active",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T21:50:00+08:00",
+  "kyc_level": "cn_ok",
+  "kyc_note": "官网要求申请人身处列明国家之一（社区教程称含中国，以申请页列表为准）；需护照与地址证明，$5 万起入金",
+  "identity_requirement": "personal",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "US"
+  ],
+  "utility": 0
+ },
+ {
   "id": "bmo-relationship-checking-2000",
   "dedup_key": "bmo|bank|us|relationship-checking-2000",
   "title": "[美区]BMO Relationship Checking最高$1,000+Growth Money Market$1,000（需专属码，至2027-03-02）",
@@ -2187,48 +2227,6 @@
   "funding_requirement": "min_deposit",
   "geo_restriction": [
    "HK"
-  ]
- },
- {
-  "id": "expressvpn-topcashback-130",
-  "dedup_key": "expressvpn|software|us|topcashback-130",
-  "title": "[美区]ExpressVPN在TopCashback返现130%：2年Pro付$195.72返约$254（倒赚约$59）",
-  "brand": "ExpressVPN",
-  "domain": "topcashback.com",
-  "category": "software",
-  "value": "≈$254 返现（2 年 Pro $195.72，倒赚约 $59）",
-  "value_num": 254,
-  "cost": "需要充值",
-  "highlight": "黑五2年+4个月：Basic $78.12、Advanced $111.72、Pro $195.72；TopCashback美国站新客任意套餐返130%，Pro返约$254、倒赚约$59，商家页倒计时显示加码约11-27 16:00（北京时间）结束",
-  "regions": "[美区] TopCashback美国站跳转ExpressVPN官网下单；返现只给新客首单，按不含税的订阅价算",
-  "start": "",
-  "end": "2026-11-27",
-  "content": "ExpressVPN黑五2年套餐首期28个月：Basic $78.12、Advanced $111.72、Pro $195.72（约$6.99/月，到期分别按$99.95／$119.95／$199.95年付续费）。Advanced与Pro另送holiday.com eSIM 3GB（Pro有效5天，Advanced 3天、150+国，每账号1次，需eSIM机型）。TopCashback美国站把这档返现提到130%：Pro约$254.44、倒赚约$59；Advanced约$145.24、倒赚约$34；Basic约$101.56、倒赚约$23。返现按不含税订阅价算，Dedicated IP等附加不返；30天退款保证有效，但退款订单无返现。",
-  "conditions": "需TopCashback美国站账户，从其ExpressVPN商家页点Get Cash Back跳转；只限ExpressVPN新客户首单；下单前清空购物车、关掉广告拦截，只能用TopCashback页上的优惠码；返现按商品价不含税算，要商家确认后才能提现。",
-  "steps": [
-   "登录TopCashback美国站，搜ExpressVPN，点「Get Cash Back」跳转",
-   "在官网选2年+4个月那档（Basic／Advanced／Pro），确认首期28个月一次付",
-   "结账前清空购物车、不加Dedicated IP等附加、不用站外优惠码",
-   "下单后回TopCashback确认已追踪；缺返现要等95天后才能申诉",
-   "30天退款保证期内别退款，退款会让返现作废"
-  ],
-  "url": "https://www.topcashback.com/expressvpn/",
-  "source_url": "https://usdailyrewards.com/tcb-expressvpn/",
-  "source": "TopCashback美国站ExpressVPN商家页（2026-11-26实读：130%、New Customer任意2年/12/6/1个月套餐、附加不返、站外优惠码作废、需空购物车、缺返现95天后才能申诉、加码倒计时约剩19小时）+ ExpressVPN官网价格页（2026-11-26实读：2年+4个月Basic $78.12／Advanced $111.72／Pro $195.72、续费价、holiday.com eSIM条款）+ 北美羊毛快报2026-11-25更新（121%时点的倒赚测算方法）",
-  "risk": "返现是事后确认制，退款、拒付或商家不认都拿不到，别提前计入预算；130%是限时加码，商家页自己写倒计时，下单前以当日数字为准；附加服务不返；需美国TopCashback账户与可提现的PayPal／银行账户，到账要等结算周期。",
-  "verified": true,
-  "last_verified": "2026-11-26",
-  "added": "2026-11-26",
-  "added_at": "2026-11-26T20:35:00+08:00",
-  "status": "active",
-  "kyc_level": "none",
-  "utility": 0,
-  "funding_requirement": "purchase",
-  "geo_restriction": [
-   "US"
-  ],
-  "platform_requirement": [
-   "web"
   ]
  },
  {
@@ -4182,6 +4180,40 @@
   "geo_restriction": [
    "JP"
   ]
+ },
+ {
+  "id": "nordvpn-de-shoop-100-cashback",
+  "dedup_key": "nordvpn|software|de|shoop-100-cashback",
+  "title": "[德区]NordVPN经Shoop返现100%：2年Basic净价€80.73全返，再送€10券",
+  "brand": "NordVPN",
+  "domain": "nordvpn.com",
+  "category": "software",
+  "value": "约€80.73全返+€10券",
+  "value_num": 80,
+  "cost": "需要充值",
+  "highlight": "从 Shoop 德国站跳转买 NordVPN 2 年 Basic（黑五含 3 个月赠送，共 27 个月），新客户按净价 100% 返现约 €80.73，另送 €10 券，27 个月实付净摊约 €15",
+  "regions": "[德区] 德国 Shoop 站与 NordVPN 德国站；仅限 NordVPN 新客户",
+  "end": "2026-12-09",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "content": "Shoop 德国站对 NordVPN 给新客户 100% 净价返现：NordVPN 黑五 2 年 Basic 为 2.99€/月净价，含 3 个月赠送共 27 个月，官网净价 €80.73、含 19% 增值税约 €96，返现按净价全额返，再叠加限量 €10 Shoop 券（返现可用后 5–7 天发放，每人每站一张）。只返 Basis 套餐，NordPass、NordLayer、NordLocker、Incogni、独立 IP 都不计；返现前仍需先付全款，30 天退款保证可止损。",
+  "conditions": "须为 NordVPN 新客户，且从 Shoop 跳转下单（先清 cookie、跳转后接受全部 cookie）；每 Shoop 账户仅一单有效；只买 2 年 Basic 才有 100%；Shoop 券限量，领前看伙伴页是否还挂券；订单按美元结算，汇率差最多 10% 不可申诉。",
+  "steps": [
+   "注册/登录 Shoop 德国站，搜 NordVPN，确认伙伴页仍写 100% Cashback 与 €10 券",
+   "清空浏览器 cookie 后从 Shoop 的 NordVPN 链接进入官网",
+   "选 2 年 Basic 套餐（含 3 个月赠送），结账前核对含税总价约 €96",
+   "付款后回 Shoop 确认订单被追踪，等返现审核入账",
+   "券到账后再取消 NordVPN 自动续费，避免 27 个月后按原价扣款"
+  ],
+  "url": "https://www.preisjaeger.at/deals/nordvpn-mit-100-cashback-auf-den-netto-preis-10eur-shoop-gutschein-im-2-jahres-paket-basis-neukunde-373454",
+  "source_url": "https://www.shoop.de/cashback/nordvpn",
+  "source": "preisjaeger.at 社区帖（2026-11-26 实读，转述 Shoop 条款：只对 Basis 净价 100% 返现、仅新客户、每账户一单、券限量、美元结算误差≤10%）+ NordVPN 德国站黑五价（2026-11-26：Basic 2.99€/月净价、27 个月 €80.73 净价/约 €96 含税，活动到 12/9）+ NETZWELT（2026-11-19）与 PC-WELT（2026-11-22）价格复核；Shoop 伙伴页直抓被拦，下单前需自查券与比例是否仍在",
+  "risk": "返现要等审核入账，期间 €96 先自付，被判定为老客户或 cookie 丢失会追不到单；券数量有限可能已发完；NordVPN 到期自动按原价续费；只返净价，增值税部分不退。",
+  "status": "active",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T21:50:00+08:00",
+  "kyc_level": "none",
+  "utility": 0
  },
  {
   "id": "tencent-lighthouse-4c4g-109",
@@ -16506,7 +16538,7 @@
   "start": "2026-10-30",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-25",
+  "last_verified": "2026-11-26",
   "added": "2026-11-21",
   "content": "Mercury（fintech，银行服务由Choice Financial Group与Column N.A.提供）重启$500商业账户开户奖：2026-11-30前开户，90天内往新账户存入$5,000即得$500，不要求工资直存、无月费与最低余额。官方《Referred Customer Agreement》（2026-08-27版）：必须用推荐/活动链接进入注册页，从官网首页自行注册拿不到奖；达标门槛与余额保持期以落地页披露为准（2026-11-06条款新增连续保持$5,000要求，社区记为连续30天）。每个自然人/公司只能拿一次，账户须在整个90天资格期与发奖时保持正常。",
   "conditions": "必须是Mercury新客户、从未与Mercury有过账户关系；必须从活动/推荐链接注册，开户后不能换链接；公司须在美国注册并有EIN（未到可用SS-4申请、90天内补）；需成立文件、负责人与25%以上股东证件；余额门槛与保持天数以自己的落地页为准；每个实体/个人限一次。",
@@ -16517,7 +16549,7 @@
    "按落地页要求保持余额，账户维持正常使用直到奖励到账"
   ],
   "url": "https://mercury.com/business-banking",
-  "source": "Mercury 官方《Referred Customer Agreement》（2026-08-27：必须走推荐链接、90 天资格期、余额门槛以落地页为准）+ Doctor of Credit（2026-10-30 报道、11-06 更新连存要求）+ usdailyrewards 与 US Credit Card Guide（11-01 / 11-02，11/30 截止）；2026-11-25 复核：Mercury 官网 business-banking 页不再展示 $500 字样，活动页需经推荐/活动链接打开；Doctor of Credit 2026-11-06 更新条款要求 $5,000 余额连续保持 30 天，活动仍写 11/30 截止。",
+  "source": "Mercury 官方《Referred Customer Agreement》（2026-08-27：必须走推荐链接、90 天资格期、余额门槛以落地页为准）+ Doctor of Credit（2026-10-30 报道、11-06 更新连存要求）+ usdailyrewards 与 US Credit Card Guide（11-01 / 11-02，11/30 截止）；2026-11-25 复核：Mercury 官网 business-banking 页不再展示 $500 字样，活动页需经推荐/活动链接打开；Doctor of Credit 2026-11-06 更新条款要求 $5,000 余额连续保持 30 天，活动仍写 11/30 截止。; 2026-11-26 复核：北美羊毛快报活动页仍挂着 $500 / 90 天存 $5,000 / 11/30 截止且无结束标记；Mercury 官网首页仍不展示 $500，须走推荐/活动链接进入。",
   "source_url": "https://usdailyrewards.com/mercury-business-checking/",
   "risk": "必须走推荐/活动链接，官网自助注册拿不到 $500；个体户不符合，需要已注册公司与 EIN；2026-11-06 条款新增余额保持要求，具体天数以落地页为准；Mercury 可审公司资料并拒批；奖励按其他收入发 1099-MISC，要报税。",
   "status": "expiring_soon",
@@ -16692,6 +16724,48 @@
   ]
  },
  {
+  "id": "expressvpn-topcashback-130",
+  "dedup_key": "expressvpn|software|us|topcashback-130",
+  "title": "[美区]ExpressVPN在TopCashback返现130%：2年Pro付$195.72返约$254（倒赚约$59）",
+  "brand": "ExpressVPN",
+  "domain": "topcashback.com",
+  "category": "software",
+  "value": "≈$254 返现（2 年 Pro $195.72，倒赚约 $59）",
+  "value_num": 254,
+  "cost": "需要充值",
+  "highlight": "黑五2年+4个月：Basic $78.12、Advanced $111.72、Pro $195.72；TopCashback美国站新客任意套餐返130%，Pro返约$254、倒赚约$59，商家页倒计时显示加码约11-27 16:00（北京时间）结束",
+  "regions": "[美区] TopCashback美国站跳转ExpressVPN官网下单；返现只给新客首单，按不含税的订阅价算",
+  "start": "",
+  "end": "2026-11-27",
+  "content": "ExpressVPN黑五2年套餐首期28个月：Basic $78.12、Advanced $111.72、Pro $195.72（约$6.99/月，到期分别按$99.95／$119.95／$199.95年付续费）。Advanced与Pro另送holiday.com eSIM 3GB（Pro有效5天，Advanced 3天、150+国，每账号1次，需eSIM机型）。TopCashback美国站把这档返现提到130%：Pro约$254.44、倒赚约$59；Advanced约$145.24、倒赚约$34；Basic约$101.56、倒赚约$23。返现按不含税订阅价算，Dedicated IP等附加不返；30天退款保证有效，但退款订单无返现。",
+  "conditions": "需TopCashback美国站账户，从其ExpressVPN商家页点Get Cash Back跳转；只限ExpressVPN新客户首单；下单前清空购物车、关掉广告拦截，只能用TopCashback页上的优惠码；返现按商品价不含税算，要商家确认后才能提现。",
+  "steps": [
+   "登录TopCashback美国站，搜ExpressVPN，点「Get Cash Back」跳转",
+   "在官网选2年+4个月那档（Basic／Advanced／Pro），确认首期28个月一次付",
+   "结账前清空购物车、不加Dedicated IP等附加、不用站外优惠码",
+   "下单后回TopCashback确认已追踪；缺返现要等95天后才能申诉",
+   "30天退款保证期内别退款，退款会让返现作废"
+  ],
+  "url": "https://www.topcashback.com/expressvpn/",
+  "source_url": "https://usdailyrewards.com/tcb-expressvpn/",
+  "source": "TopCashback美国站ExpressVPN商家页（2026-11-26实读：130%、New Customer任意2年/12/6/1个月套餐、附加不返、站外优惠码作废、需空购物车、缺返现95天后才能申诉、加码倒计时约剩19小时）+ ExpressVPN官网价格页（2026-11-26实读：2年+4个月Basic $78.12／Advanced $111.72／Pro $195.72、续费价、holiday.com eSIM条款）+ 北美羊毛快报2026-11-25更新（121%时点的倒赚测算方法）",
+  "risk": "返现是事后确认制，退款、拒付或商家不认都拿不到，别提前计入预算；130%是限时加码，商家页自己写倒计时，下单前以当日数字为准；附加服务不返；需美国TopCashback账户与可提现的PayPal／银行账户，到账要等结算周期。",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T20:35:00+08:00",
+  "status": "expiring_soon",
+  "kyc_level": "none",
+  "utility": 0,
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "US"
+  ],
+  "platform_requirement": [
+   "web"
+  ]
+ },
+ {
   "id": "etrade-premium-savings-200",
   "dedup_key": "etrade|bank|us|premium-savings-200",
   "title": "[美区]E*TRADE Premium Savings：存$20,000送$200现金+前6个月4.25%APY（码SAVE200，11/30截止）",
@@ -16756,10 +16830,10 @@
   ],
   "url": "https://us.ovhcloud.com/deals/",
   "source_url": "https://us.ovhcloud.com/deals/",
-  "source": "OVHcloud US黑五页与Public Cloud条款（2026-11-23实读：$200+$100、≥$0.99、90天、仅美国机房）+ OVHcloud文档（$0.99为反欺诈预授权）+ 全球站黑五页（FREETRIAL，11/17–12/1，额度1个月）",
+  "source": "OVHcloud US黑五页与Public Cloud条款（2026-11-23实读：$200+$100、≥$0.99、90天、仅美国机房）+ OVHcloud文档（$0.99为反欺诈预授权）+ 全球站黑五页（FREETRIAL，11/17–12/1，额度1个月）; 2026-11-26 复核：us.ovhcloud.com/deals 仍在线并写明 Public Cloud 首购满 $0.99 送 $200 额度、30 天内到账、活动到 December 1，首购前未买过 Public Cloud 的老客户不算。",
   "risk": "额度最长30天才到账，期间用量先自付；VPS/独服不参与；美国站与全球站额度有效期不同；超额立即按标准价计费。",
   "verified": true,
-  "last_verified": "2026-11-25",
+  "last_verified": "2026-11-26",
   "added": "2026-11-23",
   "added_at": "2026-11-23T20:43:00+08:00",
   "status": "expiring_soon",
@@ -18326,7 +18400,7 @@
   "start": "2026-11-13",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-25",
+  "last_verified": "2026-11-26",
   "added": "2026-11-19",
   "content": "Airalo官方Black Friday（2026-11-13 00:00 UTC至11-30 23:59 UTC）：活动专页对符合条件的Unlimited套餐结账时输入BLACK25，享标准价7.5折，新老客户均可。Unlimited按公平使用政策每天3GB高速（最高20Mbps），超出后降速但可继续用地图、消息与浏览，每24小时重置。购买后可在365天内激活，适合先囤后飞。",
   "conditions": "仅限官方活动页标注eligible的Unlimited套餐（固定流量、区域、全球套餐通常不在内）；必须手动输入BLACK25；一单只能用一个码，不能与推荐码、账户余额、其他优惠叠加；不追溯已完成的订单；以结账页折后价为准。",
@@ -18337,7 +18411,7 @@
    "到达目的地再启用 eSIM，365 天内都能激活"
   ],
   "url": "https://www.airalo.com/campaign-terms/Black-Friday-2026",
-  "source": "Airalo 官方 Black Friday 活动条款（活动期 2026-11-13 至 11-30）+ 官方 Unlimited 套餐页（BLACK25、每日 3GB 高速、365 天激活）；2026-11-25 复核：官方折扣页已 302 跳首页，BLACK25 仍有 NETZWELT 2026-11-23 与北美羊毛快报 2026-11-24 报道，结账页验证。",
+  "source": "Airalo 官方 Black Friday 活动条款（活动期 2026-11-13 至 11-30）+ 官方 Unlimited 套餐页（BLACK25、每日 3GB 高速、365 天激活）；2026-11-25 复核：官方折扣页已 302 跳首页，BLACK25 仍有 NETZWELT 2026-11-23 与北美羊毛快报 2026-11-24 报道，结账页验证。; 2026-11-26 复核：官方条款页 campaign-terms/Black-Friday-2026 仍在线，写明 BLACK25 对 eligible 套餐 25% off、须在指定 Offer 页结账手动输入且仅限标注 eligible 的套餐。",
   "risk": "BLACK25 只对 Unlimited 系列生效，买固定流量套餐不省；「无限」是每天 3GB 高速后降速；一单只能用一码，和首单 15% 码不能叠加；活动码过期即失效。",
   "status": "expiring_soon",
   "added_at": "2026-11-19T11:52:23+08:00",
@@ -19240,10 +19314,10 @@
   ],
   "url": "https://avoro.eu/en/black-friday",
   "source_url": "https://x.com/Leo_zhang2018/status/2124690894725247296",
-  "source": "AVORO 官方黑周页（2026-11-23 实读：三档配置、€2.24/月季付、截止 11-30 23:59 柏林时间、售罄不补）+ X 黑五汇总（2026-11-23）",
+  "source": "AVORO 官方黑周页（2026-11-23 实读：三档配置、€2.24/月季付、截止 11-30 23:59 柏林时间、售罄不补）+ X 黑五汇总（2026-11-23）; 2026-11-26 复核：官方黑周页仍在线（标题改为 up to and including Cyber Monday，页内倒计时写明 2026-11-30 23:59 柏林时间结束），Nano €2.24/月季付、Allrounder €10.92/月、Storage €19.75/月三档价格未变，全部 excl. VAT；RTX PRO 6000 GPU 款已显示 Sold out。",
   "risk": "标价不含税，德国地址实付约高 19%；特价只到 11/30，之后回常规价（Basic €4.07/月起）；售罄不补；小商家，长期稳定性没有大规模实测。",
   "verified": true,
-  "last_verified": "2026-11-25",
+  "last_verified": "2026-11-26",
   "added": "2026-11-23",
   "added_at": "2026-11-23T13:44:00+08:00",
   "status": "expiring_soon",
