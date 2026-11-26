@@ -23,9 +23,9 @@ U: dict[str, tuple[str, str]] = {
     # 顶栏右上角那枚 Blogger 徽标（纯图标，没有可见文字，语义全靠 aria-label 与 title）
     "blog_aria": ("打开 Blogger 博客", "Open the Blogger blog"),
     # Blogger 徽标正下方的 Sendwave 徽标（2026-11-26 要求）：图标内底部横幅 + 图标正下方小字
-    "sw_band": ("新人10镑", "£10 New"),
+    "sw_band": ("新人£10", "£10 New"),
     "sw_note": ("站长亲测", "Tested"),
-    "sw_aria": ("Sendwave 新人10镑，站长亲测（新窗口打开）",
+    "sw_aria": ("Sendwave 新人£10，站长亲测（新窗口打开）",
                 "Sendwave: £10 for new users, tested by the site owner (opens in a new tab)"),
     "search_open": ("搜索优惠、可用地区、类别…", "Search deals, regions, categories…"),
     "search_open_aria": ("搜索优惠、可用地区、类别", "Search deals, regions and categories"),

@@ -278,7 +278,7 @@ button{ font-family: inherit; }
 
 /* Sendwave 徽标（Jun 2026-11-26）：挂在 Blogger 徽标正下方的一枚持续抖动的小挂牌。
    视觉照参考图：亮黄底 #F7EA00 圆角方块 + 官方 SW_Symbol 的深酒红 #3C0F19 双波浪 S，
-   方块底部压一条深色圆角横幅「新人10镑」（国内 App 节日图标那种底条），方块正下方
+   方块底部压一条深色小圆角横幅「新人£10」（国内 App 节日图标那种底条），方块正下方
    再用 10px 纯文本写「站长亲测」。
    桌面（≥1081）：52×52，与 .top-blog 同宽同 right → 两枚徽标竖直中线重合；
    用 fixed 钉在顶栏正下方那 92px 的滑轨空档里，永远压不到正文，滑轨已让位（见下）。
@@ -325,14 +325,16 @@ button{ font-family: inherit; }
   height: 32px;
   transform: translateX(-50%);
 }
-/* 图标底部横幅：参考国内 App 节日图标在图标底部叠一条「不打烊」的做法 */
+/* 图标底部横幅：参考国内 App 节日图标在图标底部叠一条「不打烊」的做法。
+   2026-11-26 按 Jun 实拍图把底条的 999px 满胶囊收成 4px 小圆角（手机 3px），
+   不再是大半圆；底条两端仍在图标内缩 3px，贴着黄色外框底部的小圆角走。 */
 .top-sw-band{
   position: absolute;
   left: 3px;
   right: 3px;
   bottom: 3px;
   height: 13px;
-  border-radius: 999px;
+  border-radius: 4px;
   background: #3C0F19;
   color: #F7EA00;
   font-size: 9px;
@@ -357,6 +359,69 @@ button{ font-family: inherit; }
   box-shadow: 0 6px 16px -8px rgba(146,110,0,.8);
 }
 .top-sw:focus-visible{ outline: 2px solid rgba(60,15,25,.5); outline-offset: 3px; border-radius: 10px; }
+/* 旧版官方小企鹅（Jun 2026-11-26）：贴在 Sendwave 挂牌旁边踱步的纯装饰小挂件。
+   造型取自旧版官方 LOGO 的挥手企鹅（歪头、两眼微差、举翅），已抠掉黄底、透明背景。
+   它是 <a> 之外的兄弟节点：pointer-events:none（不拦点击）、aria-hidden（读屏忽略）、
+   不参与文档流（absolute），只有 transform 动画。
+   桌面（≥1081）：挂牌是 fixed，左侧就是会滚过去的卡片内容，所以企鹅改在挂牌正下方
+   那道 128→168px 的右侧空档里来回走；平板（769–1080）：挂牌是 absolute、跟着页面走，
+   企鹅贴在挂牌左侧 hero 行与走马灯之间的空档；手机（≤768）：内容列一直铺到挂牌两边，
+   只有挂牌底下那道 39px 右内边（走马灯右缘→屏幕右缘、滑轨上方）是空的，企鹅就走在
+   那里。三种位置逐一实测过不压走马灯、TG 图标、更新时间、抽奖角标与右侧滑轨。 */
+.sw-pet{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.sw-pet-i{
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 26px;
+  /* 左右来回跮步：lift 1 向左、lift 2 向右，掉头那一刻用 scaleX 转身 */
+  animation: swPace 7.6s cubic-bezier(.42,0,.58,1) infinite;
+  will-change: transform;
+}
+.sw-pet-img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* 步态：以脚底为轴一摇一摆，配合轻微颠动，四步一循环 */
+  transform-origin: 50% 94%;
+  animation: swWaddle 1.15s ease-in-out infinite;
+}
+/* 脚下一小片柔影：让它在空白里也像踩在地上，不抢眼 */
+.sw-pet-sh{
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  width: 15px;
+  height: 3px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(60,15,25,.22), rgba(60,15,25,0) 74%);
+}
+@keyframes swPace{
+  0%, 6%    { transform: translateX(0) scaleX(-1); }
+  44%, 50%  { transform: translateX(-22px) scaleX(-1); }
+  56%       { transform: translateX(-22px) scaleX(1); }
+  94%, 100% { transform: translateX(0) scaleX(1); }
+}
+@keyframes swWaddle{
+  0%   { transform: rotate(-4.2deg) translateY(0); }
+  25%  { transform: rotate(-.6deg) translateY(-.7px); }
+  50%  { transform: rotate(4.2deg) translateY(0); }
+  75%  { transform: rotate(.6deg) translateY(-.7px); }
+  100% { transform: rotate(-4.2deg) translateY(0); }
+}
 @keyframes swWag{
   0%, 58%, 100%{ transform: rotate(0); }
   64%{ transform: rotate(-3.4deg); }
@@ -367,6 +432,7 @@ button{ font-family: inherit; }
 }
 @media (prefers-reduced-motion: reduce){
   .top-sw{ animation: none; }
+  .sw-pet-i, .sw-pet-img{ animation: none; }
 }
 /* 首页 / 分类页的滑轨让位：Sendwave 挂牌占掉了顶栏正下方那一段，
    屏幕够高时滑轨照旧居中；不够高时把中心的底线抬到挂牌下面，
@@ -393,6 +459,17 @@ button{ font-family: inherit; }
        盖住左边的走马灯 / 标签去抢点击 */
     padding: 3px 20px 2px 0;
   }
+  /* 平板 / 小台式：挂牌左侧（hero 那行文字与走马灯之间的空档）贴着踱步，
+     右缘留 8px 不碰挂牌，底边跟挂牌底边平齐 */
+  .sw-pet{
+    left: auto;
+    top: auto;
+    right: calc(100% + 8px);
+    bottom: 6px;
+    width: 18px;
+    height: 26px;
+    display: block;
+  }
 }
 /* 矮窗口（1366×768 这类笔记本）：滑轨让位后底部会顶到屏幕，格子高度收 8px 把余量挣回来 */
 @media (min-width: 769px) and (max-height: 820px){
@@ -408,11 +485,31 @@ button{ font-family: inherit; }
   .top-sw-band{
     left: 2px; right: 2px; bottom: 2px;
     height: 9px;
+    border-radius: 3px;
     font-size: 7px;
     line-height: 9px;
     letter-spacing: -.02em;
   }
   .top-sw-note{ font-size: 8.5px; }
+  /* 手机：挂牌底下（「站长亲测」下方、走马灯右缘右侧、滑轨上方）才是真空的，
+     企鹅收成 18px 高，在屏幕右内边那道 39px 里小幅跮步，全程不进内容列 */
+  .sw-pet{
+    left: auto;
+    right: 8px;
+    top: calc(100% + 4px);
+    bottom: auto;
+    width: 12px;
+    height: 18px;
+    display: block;
+  }
+  .sw-pet-i{ width: 12px; height: 18px; animation-name: swPaceSm; }
+  .sw-pet-sh{ width: 11px; height: 2.5px; }
+}
+@keyframes swPaceSm{
+  0%, 6%    { transform: translateX(0) scaleX(-1); }
+  44%, 50%  { transform: translateX(-18px) scaleX(-1); }
+  56%       { transform: translateX(-18px) scaleX(1); }
+  94%, 100% { transform: translateX(0) scaleX(1); }
 }
 
 /* 统计徽标：全站只在顶栏保留这一份 */

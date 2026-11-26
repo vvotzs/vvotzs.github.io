@@ -526,12 +526,17 @@ def sendwave_badge() -> str:
     """Blogger 徽标正下方的 Sendwave 徽标（Jun 2026-11-26 要求）。
 
     视觉照 Jun 的两张参考图：亮黄底（#F7EA00）圆角方块 + 官方 SW_Symbol 的深酒红
-    （#3C0F19）双波浪 S，方块底部压一条深色圆角横幅写「新人10镑」（参考国内 App
+    （#3C0F19）双波浪 S，方块底部压一条深色小圆角横幅写「新人£10」（参考国内 App
     节日图标在图标底部叠底条的做法）；方块正下方再用 10px 纯文本写「站长亲测」。
     尺寸与 .top-blog 一致（桌面 52 / 手机 34），右缘对齐：两枚徽标的竖直中线重合，
     看上去就是一个挂在 Blogger 徽标下面的小挂牌。
     抖动、扫光全是 CSS 的 transform 动画，不参与布局；图标本身是内联 SVG +
     纯文本，不引额外请求。只在首页与分类页输出，详情页与合规页不出现。
+
+    2026-11-26 Jun 追加：挂牌旁边再来一只旧版官方小企鹅（挥手造型，assets/img/
+    sw-penguin.webp，抠掉黄底、透明背景），贴着挂牌左右来回踱步。它是纯装饰：
+    在 <a> 之外、aria-hidden、pointer-events:none，不拦点击也不跳转；走位与步态
+    全在 CSS（.sw-pet / @keyframes swPace / swWaddle），不占文档流。
     """
     _S_PATHS = (
         '<path d="M119.295 69.18C119.755 66.185 120 63.12 120 60C120 58.18 119.92 56.38 119.76 '
@@ -550,6 +555,13 @@ def sendwave_badge() -> str:
     )
     return (
         '<div class="sw-slot">'
+        '<span class="sw-pet" aria-hidden="true">'
+        '<span class="sw-pet-i">'
+        '<span class="sw-pet-sh"></span>'
+        '<img class="sw-pet-img" src="/assets/img/sw-penguin.webp" width="18" height="26" alt="" '
+        'loading="lazy" decoding="async" draggable="false">'
+        '</span>'
+        '</span>'
         f'<a class="top-sw" href="{SENDWAVE_URL}" target="_blank" rel="noopener noreferrer" '
         f'{al(*U["sw_aria"])} {tt(*U["sw_aria"])}>'
         '<span class="top-sw-ic" aria-hidden="true">'
