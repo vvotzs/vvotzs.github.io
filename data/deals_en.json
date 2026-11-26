@@ -8100,5 +8100,91 @@
   ],
   "risk": "Every price is first year only and renewals go back to the regular rate (about $11.62 a year for .com), so work out the multi-year cost; the two main codes end 12/1 00:00 UTC, earlier than some rivals; transfers carry a 60-day lock and take 5–7 days; premium names and some extensions are excluded.",
   "source": "Dynadot official Black Friday/Cyber Monday page (read 2026-11-26: sale starts 11/23 00:00 UTC, .com transfer $10.49 with BFCOM26, .net $7.49, .io $21.40, bundle $19.99); Rangka price check 2026-11-25 (.com registration $8.99 with 899COM, both codes end 12/1 00:00 UTC)"
+ },
+ "fifth-third-momentum-checking-450": {
+  "title": "[US] Fifth Third checking $450: $300 for $500 in direct deposits, plus $150 for holding $5,000 for 90 days (open by 3/31/2027)",
+  "brand_en": "Fifth Third Bank",
+  "highlight": "Open Momentum or Preferred Checking with the offer code and get $300 after $500 in qualifying payroll direct deposits within 90 days; move in $5,000 of new money within 45 days and hold it for 90 days for another $150",
+  "regions": "[US] Florida, Georgia, Illinois, Indiana, Kentucky, Michigan, North Carolina, Ohio, Tennessee, West Virginia and South Carolina only (some CA/TX/AZ branches may open); most applicants need a branch within 50 miles or a phone application",
+  "value": "$450 ($300 direct-deposit bonus + $150 balance bonus)",
+  "content": "Fifth Third raised its new-customer checking bonus to $300 plus $150 on November 24, 2026, with accounts openable through March 31, 2027. Open Momentum or Preferred Checking online or in a branch with the offer code, then receive $500 or more in qualifying payroll or government direct deposits within 90 days (split across payments is fine) for $300. Bring $5,000 or more of new money from outside the bank within 45 days and keep it there for 90 days for another $150. It is a soft credit pull with no early-closure penalty, and the bonus posts within 10 business days of qualifying.",
+  "conditions": "Needs a US tax ID (SSN or ITIN) and a physical address in a participating state; the offer code must be provided at opening; transfers from your own account elsewhere, Zelle, mobile check deposit and ATM deposits do not count as direct deposits; existing customers and anyone who closed an account in the last 13 months are excluded; the bonus is reported as interest.",
+  "steps": [
+   "Open Momentum or Preferred Checking from the Fifth Third offer page or an in-state branch and enter the offer code",
+   "Receive $500 or more in payroll or government ACH direct deposits within 90 days",
+   "For the extra $150, move at least $5,000 of new money in within 45 days and hold that balance for 90 days",
+   "Watch for the bonus within 10 business days of qualifying and keep the account in good standing"
+  ],
+  "risk": "The official link returns 404 from outside the US, so confirm terms on the in-state application page; the $150 tier ties up $5,000 for 90 days, so take only the $300 if that money is needed elsewhere; the bank limits one account bonus per customer per year; missing the 90-day window forfeits the bonus; the bonus is taxable on Form 1099-INT.",
+  "source": "Doctor of Credit update of 2026-11-24 ($300 + $150, open through 2027-03-31, state list, 4,094-comment DP thread) plus Fifth Third's official checking-offer page (returns 404 to non-US IPs on 2026-11-26; open from an in-state network)"
+ },
+ "povo-fukusen-new-line-data-bonus": {
+  "title": "[Japan] povo2.0 second-line sign-up: code AUKAITEKI gives 0.1GB plus 10 unlimited 24-hour passes (¥0 monthly)",
+  "brand_en": "povo2.0",
+  "highlight": "povo2.0 has no monthly fee, no contract and no activation fee; sign up or port in, enter AUKAITEKI during application and activate the SIM in the campaign window to get 0.1GB for 24 hours plus ten 24-hour unlimited-data promo codes; eSIM works too",
+  "regions": "[Japan] Japanese number or eSIM, Japanese ID and address needed; data works inside Japan only",
+  "value": "0.1GB for 24 hours plus ten 24-hour unlimited passes (once per person)",
+  "content": "povo2.0 (au network) second-line sign-up campaign, running since June 19, 2026 with no announced end: sign up new, or port in from au, UQ mobile, povo1.0 or another carrier, enter the campaign code AUKAITEKI on the contract application screen, and finish SIM activation during the campaign period. You get 0.1GB for 24 hours (applied right after activation) and ten 24-hour unlimited-data promo codes sent to the registered email, which must be entered by the end of the month after the SIM activation date. The monthly fee is ¥0 with no contract term and no activation fee (from a sixth line under the same name it is ¥3,850 per line). The data-only plan is eSIM only and needs one topping purchase at sign-up; the voice-plus-data plan has no such requirement.",
+  "conditions": "Aged 13 or over with Japanese ID and address; the code must be entered on the application screen and the SIM activated within the campaign window (activating between 9:30 and 20:00 is recommended); only the first line under one name counts; promo codes must be entered by the end of the month after activation; the data-only plan is eSIM only.",
+  "steps": [
+   "Install the povo2.0 app, tap the new-customer option and enter AUKAITEKI in the code field to confirm the data you get",
+   "Complete the new sign-up or port-in and finish SIM activation within the campaign window",
+   "Open Promo Code at the bottom of the Home tab and enter each of the ten 24-hour unlimited codes from the email",
+   "Use each pass within its own 24 hours; they do not accumulate"
+  ],
+  "risk": "Promo codes expire without replacement, so enter them before the end of the month after activation; porting in needs the old line cancelled with an MNP reservation; unlimited passes are throttled at busy times; a line with no paid purchase for 180 days can be suspended or cancelled; this is a Japanese local plan, not a travel eSIM, and cannot roam abroad including mainland China.",
+  "source": "povo2.0 official campaign page for the second-line sign-up offer (read 2026-11-26: code AUKAITEKI, 0.1GB plus ten 24-hour unlimited passes, running from 2026-06-19, code needed at application with SIM activation inside the window, first line only) and povo's official campaign index"
+ },
+ "ecos-trial-mining-s21xp-30d": {
+  "title": "[Global] ECOS free 30-day trial mining: S21 XP 270TH/s, vendor estimates up to $300 (no card)",
+  "brand_en": "ECOS",
+  "highlight": "Register, activate Trial Mining in the dashboard and mine free for 30 days on a Bitmain S21 XP at 270TH/s (13.5J/TH) with no card; it ends automatically on day 30 with no renewal or charge, and output moves with network difficulty and BTC price",
+  "regions": "[Global] Sign up online; the hardware sits in an Armenian data centre; KYC in the account is needed before withdrawal",
+  "value": "30 days at 270TH/s (vendor estimate up to $300, not guaranteed)",
+  "content": "ECOS's TRY BEFORE BUY trial runs from an Armenian data centre: register, open Trial Mining in the dashboard and activate 30 days on a Bitmain S21 XP at 270TH/s (SHA-256, 13.5J/TH, 3,645W). The hardware stays in the data centre, with nothing to buy or ship. The official page says no credit card is needed, the trial ends by itself on day 30 without becoming a paid plan or charging automatically, and continuing means buying a separate contract. Output depends on Bitcoin network difficulty and price, and the page states that no return is promised while showing a sample estimate of up to $300. The Rewards program (clicker, daily check-in, a weekly 100,000 THD draw) adds more free hashrate.",
+  "conditions": "An ECOS account with a verified email, aged 18 or over; one trial per account; KYC as required in the account before withdrawal; output and withdrawal eligibility follow the rules shown in your account.",
+  "steps": [
+   "Create an ECOS account at cp.ecos.am (no card needed)",
+   "Open Trial Mining in the dashboard and activate the 30-day trial",
+   "Track hashrate and output in the dashboard and complete KYC as the account requires within the 30 days",
+   "Decide before day 30 whether to buy a contract; doing nothing ends the trial"
+  ],
+  "risk": "The $300 figure is marketing: 30 days of real output can be far lower; check whether your account sets a minimum withdrawal, since small hashrate often mines less than it can withdraw; cloud mining is a high-risk category, so do not rush into a paid contract; the Rewards code mentioned in a visitor submission could not be confirmed on an official page; access and KYC from mainland China may be restricted.",
+  "source": "ECOS official trial-mining page (read 2026-11-26: 30 days on S21 XP at 270TH/s, 13.5J/TH, 3,645W, no credit card, automatic end with no renewal, no promised return, sample estimate up to $300) and the cp.ecos.am login page (same day: TRY BEFORE BUY, Antminer S21 XP 270TH/s for 30 days); the visitor-submitted Rewards code 500BTC could not be verified and is not included. No independent community test yet."
+ },
+ "purevpn-130-cashback-topcashback-au": {
+  "title": "[AU] PureVPN 130% cashback via TopCashback AU: 2-year Max paid US$95.85, tracked at A$179.17 (about A$80 profit)",
+  "brand_en": "PureVPN",
+  "highlight": "Click through TopCashback AU into a new PureVPN account and get 130% cashback on 1-year, 2-year and monthly Standard, Plus or Max plans; one member reported 2-year Max at US$95.85 paying back A$179.17",
+  "regions": "[AU] Through a TopCashback AU account; PureVPN works worldwide and cashback settles in Australian dollars",
+  "value": "130% back (2-year Max: US$95.85 paid, A$179.17 back, about A$80 profit)",
+  "content": "A TopCashback AU cashback offer for new PureVPN customers, first posted on OzBargain on November 26, 2026: click through from TopCashback AU into a new PureVPN account and get 130% back on 1-year, 2-year and monthly Standard, Plus and Max plans. Five-year plans, Teams multi-user plans and add-ons are excluded, and renewals earn nothing. Cashback is calculated on the amount excluding GST, so the real rate lands a little below 130%. One member paid US$95.85 for 2-year Max (checked out from a US IP, no GST) and saw A$179.17 tracked in 18 minutes, roughly A$80 ahead after the purchase price. One purchase per member every 21 days; paying in crypto earns no cashback.",
+  "conditions": "Must click through from TopCashback AU and open a new PureVPN account (renewals do not qualify); 1-year, 2-year and monthly Standard/Plus/Max only; one purchase per member every 21 days; no coupon codes not published on the platform, no gift cards, no crypto payments; the order has to track within 48 hours.",
+  "steps": [
+   "Sign in to TopCashback AU, search PureVPN and click Get Cashback to be redirected",
+   "Open a new PureVPN account and choose 2-year Max (or a 1-year or monthly plan), checking the price excludes GST",
+   "After paying, confirm the cashback tracked in TopCashback within 48 hours",
+   "Withdraw once you reach the TopCashback threshold; use a prepaid card or cancel auto-renewal if you do not want to continue"
+  ],
+  "risk": "Cashback depends on tracking: if nothing tracks in 48 hours, ask PureVPN for a refund and rebuy through a fresh click, and missing-cashback claims are not guaranteed; the GST exclusion means the real rate is under 130%; withdrawal from TopCashback has its own threshold and waiting period; PureVPN's speed reputation is average and renewal returns to full price; orders placed from a non-Australian IP may be voided, so check TopCashback AU's payout rules for overseas or NZ accounts first.",
+  "source": "OzBargain post of 2026-11-26 (full TopCashback AU terms: 130%, 1-year/2-year/monthly Standard/Plus/Max only, one purchase per 21 days, GST excluded, no crypto) plus a comment DP (2-year Max paid US$95.85, A$179.17 tracked in 18 minutes)"
+ },
+ "kazakhstan-eresidency-freedom-49": {
+  "title": "[Kazakhstan] $49 eResidency opens a Freedom Bank account: no-fee multicurrency Mastercard (direct sign-up $120)",
+  "brand_en": "Freedom Bank",
+  "highlight": "Apply inside the Freedom Banker app (Become a client, then Apply for eResidency) and the operator fee is a one-time $49 instead of $120 in the eResidency app; passport NFC plus a selfie completes KYC online, and the local account and Mastercard cost nothing to open or keep, with no renewal needed",
+  "regions": "[Kazakhstan] Fully online for adults 18+ with an NFC biometric passport valid at least 6 months; a +86 phone and email are enough, and a mainland China connection tends to pass review",
+  "value": "Save $71 ($49 vs $120 direct); plus a local bank account and multicurrency Mastercard",
+  "content": "Kazakhstan's official eResidency (an AIFC programme) currently has two prices. Applying through the Freedom Banker app (Become a client, then Apply for eResidency) charges a one-time $49 operator fee, shown against a struck-through $120; installing the eResidency app directly costs $120, while the government site and terms still list a $299 first-year tariff. The flow: apply in the bank app, photograph your passport and selfie in the eResidency app (the passport must be biometric with an NFC chip), pay $49 by Visa, Mastercard, MIR, USDT or USDC, receive the eSIM and IIN, then return to the bank app, complete the questionnaire and open the eResidency card. The bank's own FAQ says the card and account cost nothing, cover 11 currencies, issue a Mastercard that works with Apple and Google Pay, include the first month of eSIM ($15 per month afterwards, optional), and that the annual data update is not required for the account or card to keep working.",
+  "conditions": "Aged 18 or over with an NFC biometric passport valid for at least six months; a +86 phone number and email for verification; the bank still decides on its own risk checks whether to open the account and the $49 is not refunded if KYC is refused; the $49 is a partner-channel promotional price (the bank's customer channel says through 2026-11-30), so check the amount on the payment screen.",
+  "steps": [
+   "Install Freedom Banker and tap Become a client, then Apply for eResidency (do not install the eResidency app first)",
+   "Install the eResidency app from the bank's link and complete KYC with your passport page and a selfie (NFC passport required)",
+   "Confirm the payment screen shows $49 against a struck-through $120, then pay",
+   "Activate the eSIM you receive by email and note your IIN, then log back into Freedom Banker with the eSIM number and open the card",
+   "Choose a card design in the app; physical plastic costs extra and the eSIM is $15 per month from month two if you keep it"
+  ],
+  "risk": "The $49 is a promotional partner price that the bank's customer channel says ends 11-30, after which it may return to $120 or even $299, so check the checkout amount; a refused KYC does not refund the $49; the eSIM costs $15 a month from month two unless you cancel it in the app; Kazakhstan has currency controls and wire-in/wire-out costs are untested; skipping the annual data update does not break the card but the operator may mark the status inactive; it is a real bank rather than a crypto card, but compliance and tax reporting remain your own call.",
+  "source": "Freedom Bank's official eResidency card page (read 2026-11-26: $49 one-time operator fee, $120 direct, NFC passport, 18+, no card or account fee, optional $15/month eSIM from month two, annual update not needed for the account) plus a Naixi forum walkthrough of 2026-11-24 (+86 phone and a CN connection work, instant approval, several members confirmed) and Russian-language channels reporting the $49 price runs through 2026-11-30"
  }
 }

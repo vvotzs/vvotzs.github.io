@@ -234,8 +234,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T10:30:23Z",
-      "last_hit_at": "2026-11-23T20:52:44Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_hit_at": "2026-11-26T11:21:57Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
       "zero_streak": 0
@@ -268,25 +268,6 @@
       "last_zero_at": "2026-11-25T19:46:46Z"
     },
     {
-      "id": "tg-docofcard",
-      "name": "DocOfCard 银行·卡粉优惠频道",
-      "url": "https://tg.docofcard.com/",
-      "tier": "P0",
-      "entry_type": "rss",
-      "cadence_h": 1,
-      "categories": [
-        "bank",
-        "esim"
-      ],
-      "lang": "zh",
-      "status": "active",
-      "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T09:02:04Z",
-      "last_hit_at": "2026-11-25T19:46:44Z",
-      "entry_url": "https://tg.docofcard.com/rss.json",
-      "zero_streak": 0
-    },
-    {
       "id": "mini-appdo",
       "name": "Mini AppDo 数字生活·软件优惠频道",
       "url": "https://mini.appdo.xyz/",
@@ -301,7 +282,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T09:02:04Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-25T11:33:38Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -460,7 +441,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-26T07:30:46Z",
       "entry_url": "https://www.nodeloc.com/latest.md",
       "zero_streak": 0
@@ -598,7 +579,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-17T13:30:00Z",
       "search_domains": [
         "www.flyert.com"
@@ -620,12 +601,12 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
-      "last_hit_at": "2026-11-23T19:57:07Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
+      "last_hit_at": "2026-11-26T11:21:57Z",
       "search_domains": [
         "www.naixi.net"
       ],
-      "zero_streak": 1,
+      "zero_streak": 0,
       "last_zero_at": "2026-11-25T19:46:46Z"
     },
     {
@@ -643,7 +624,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-25T23:44:18Z",
       "search_domains": [
         "2libra.com"
@@ -687,7 +668,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-16T17:30:00Z",
       "entry_url": "https://tg.okhk.net/rss.json"
     },
@@ -760,7 +741,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-15T21:30:00Z"
     },
     {
@@ -777,7 +758,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-15T16:30:00Z",
       "search_domains": [
         "www.withgoddess.com"
@@ -871,7 +852,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -889,7 +870,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -906,7 +887,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -955,7 +936,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-24T19:57:36Z",
       "zero_streak": 0
     },
@@ -972,7 +953,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T06:15:49Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-26T05:15:58Z",
       "zero_streak": 0
     },
@@ -1955,7 +1936,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": "2026-11-26T07:30:46Z",
+      "last_crawled_at": "2026-11-26T11:21:57Z",
       "last_hit_at": "2026-11-25T19:46:44Z",
       "keyword_pool": "ota_airline",
       "entries": [
@@ -2430,6 +2411,28 @@
       "last_hit_at": "2026-11-06T10:30:00Z",
       "paused_at": "2026-11-21T04:30:00Z",
       "paused_reason": "P2 配额已满；中东分区优惠密度低（r/dubai 已覆盖）"
+    },
+    {
+      "id": "tg-docofcard",
+      "name": "DocOfCard 银行·卡粉优惠频道",
+      "url": "https://tg.docofcard.com/",
+      "tier": "P0",
+      "entry_type": "rss",
+      "cadence_h": 1,
+      "categories": [
+        "bank",
+        "esim"
+      ],
+      "lang": "zh",
+      "status": "paused",
+      "added_at": "2026-11-21T10:30:00Z",
+      "last_crawled_at": "2026-11-26T09:02:04Z",
+      "last_hit_at": "2026-11-25T19:46:44Z",
+      "entry_url": "https://tg.docofcard.com/rss.json",
+      "zero_streak": 0,
+      "tier_before_pause": "P0",
+      "paused_at": "2026-11-26T11:22:07Z",
+      "paused_reason": "2026-11-26 起 /rss.json 与 latest.rss 全部返回 Discourse JS 登录壳（time.fly），直抓不到内容，先暂停待换端点"
     }
   ],
   "term_sets": {
