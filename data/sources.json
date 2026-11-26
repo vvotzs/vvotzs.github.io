@@ -3,7 +3,7 @@
   "generated_at": "2026-11-23T20:35:00+08:00",
   "_meta": {
     "title": "羊毛情报局采集源表（P0/P1/P2 分层调度）",
-    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets；第十轮（2026-11-22）：新增 banknav（P1，list，海外银行卡/eSIM/券商导航），1point3acres 因 403 拦截与零产出降为 P2；第十一轮（2026-11-23）：Jun 拍板改为 24 小时整点每小时一轮、取消夜间休眠，分级周期改为 P0=1h / P1=3h / P2=24h（x-deals 起 P0 cadence 1h），每轮源位 12→30、P2 每轮保底 1→2",
+    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets；第十轮（2026-11-22）：新增 banknav（P1，list，海外银行卡/eSIM/券商导航），1point3acres 因 403 拦截与零产出降为 P2；第十一轮（2026-11-23）：Jun 拍板改为 24 小时整点每小时一轮、取消夜间休眠，分级周期改为 P0=1h / P1=3h / P2=24h（x-deals 起 P0 cadence 1h），每轮源位 12→30、P2 每轮保底 1→2；第十二轮（2026-11-26，Jun 指令）：接入 promodescuentos.com（P0 1h，RSS /rss/todas）与 Pepper 家族 hotukdeals / mydealz / dealabs / chollometro / pepper.pl / nl.pepper.com / preisjaeger.at 及 slickdeals（P1 3h，均实测 RSS 直连 200）；pepper.it 2025-08-14 停站、pelando.com.br 与 desidime.com 为 Cloudflare 403、redflagdeals.com 无可用 RSS，三者只走 web_search / 浏览器兜底",
     "cadence": {
       "rounds_per_day": 24,
       "round_times_local": [
@@ -39,7 +39,7 @@
       "p2_reserve_per_round": 2
     },
     "tier_policy": {
-      "P0": "每小时都跑（cadence 1h，priority 3，≤6 个）：投稿队列、X 检索、可直抓的 TG 优惠频道、HN/Show HN、GitHub Trending",
+      "P0": "每小时都跑（cadence 1h，priority 3，≤8 个）：投稿队列、X 检索、可直抓的 TG 优惠频道、HN/Show HN、GitHub Trending",
       "P1": "每 3 小时轮换（cadence 3h，priority 2，≤120 个）：核心论坛、海外羊毛站、Reddit、AI 首发榜，以及 3 个 search_group 充值源 topup-telecom / topup-game / topup-giftcard",
       "P2": "每 24 小时长尾（cadence 24h，priority 1）：其余外语社区、小众博客、长尾平台（含 topup-longtail 与 coinsbee-blog），总数 ≤49",
       "priority": "priority 由 tier 推导（P0=3 / P1=2 / P2=1），不单独存；本表不存主观可信度评语，也不存 data_quality",
@@ -55,24 +55,24 @@
     },
     "capacity": {
       "slots_per_day": 720,
-      "P0_slots_per_day": 144,
-      "P1_slots_per_day": 528,
+      "P0_slots_per_day": 168,
+      "P1_slots_per_day": 344,
       "P2_slots_per_day": 48,
-      "note": "每小时 30 个源位 × 24 轮；P0 6 个×24=144，P1 35 个每 3h 一轮、每日需求约 280 个源位，P2 44 个每日 44 个源位，均在容量内"
+      "note": "每小时 30 个源位 × 24 轮；P0 7 个×24=168，P1 43 个每 3h 一轮、每日需求约 344 个源位，P2 44 个每日 44 个源位，均在 720 源位容量内"
     },
     "writeback": "plan_round.py --mark-done / --mark-hit / --mark-zero 回写 last_crawled_at、last_hit_at 与 zero_streak；P0 14 天无产出→P1、P1 30 天→P2、P2 90 天→paused（manual 源不参与；升级只能人工）",
     "paused_policy": "paused_sources 不进调度、不占 P2 配额；恢复用 plan_round.py 的 --activate 或人工移回 sources",
     "counts": {
-      "scheduled": 85,
-      "P0": 6,
-      "P1": 35,
+      "scheduled": 94,
+      "P0": 7,
+      "P1": 43,
       "P2": 44,
       "manual": 5,
       "paused": 11
     },
     "search_group": "entries[].kind=search_group：domains 最多 4 个，整组每轮只发 1 条 `(site:a OR site:b …) (词集)` 查询；after_date = last_crawled_at − 1 天（首抓取今天 − 30 天）；blocked 域名只核验不抓取（优先合作方/发行方官方页，否则每天最多 1 次浏览器开 verify_urls）；「这组有产出」= 至少 1 条结果 URL 落在组内域名、其 url 与 dedup_key 都不在 deals/candidates，且按 Q4(e) 写成候选/条目，满足才 --mark-hit；discovered_from 写 `<组id>:<域名>`；零结果用 --mark-zero，下次自动改用 fallback 词集",
     "manual_policy": "status=manual 的源留在表内注明手动，但不进调度、不占 P1/P2 源位、不参与降频，只在线索出现时人工核",
-    "updated_at": "2026-11-21T10:45:00Z"
+    "updated_at": "2026-11-26T11:58:42+08:00"
   },
   "keyword_groups": [
     {
@@ -344,6 +344,25 @@
       "last_crawled_at": "2026-11-26T03:47:48Z",
       "last_hit_at": "2026-11-25T21:40:22Z",
       "zero_streak": 0
+    },
+    {
+      "id": "promodescuentos",
+      "name": "Promodescuentos（墨西哥）优惠社区 · 全站 RSS",
+      "url": "https://www.promodescuentos.com/",
+      "tier": "P0",
+      "entry_type": "rss",
+      "cadence_h": 1,
+      "categories": [
+        "esim",
+        "bank",
+        "software"
+      ],
+      "lang": "es",
+      "status": "active",
+      "added_at": "2026-11-26T11:58:42+08:00",
+      "entry_url": "https://www.promodescuentos.com/rss/todas",
+      "zero_streak": 0,
+      "note": "RSS 直连 200（普通 UA，无 Cloudflare），30 条/次，item 带 <category> 与 pepper:merchant 商家+价格；分组 feed 可补读 /rss/grupo/gratis（免单）、/rss/grupo/telefonia-celular（手机通讯）"
     },
     {
       "id": "uscardforum",
@@ -1955,6 +1974,158 @@
       },
       "note": "2026-11-21 深挖新增：显式写了 free eSIM 的 OTA 会员 / 联名入口优先（Klook Rewards、Trip.com 白金+、Agoda VIP Diamond、Omio × Kolet）；纯满减码（Klook 99% off、$1 eSIM）不收录",
       "zero_streak": 0
+    },
+    {
+      "id": "hotukdeals",
+      "name": "HotUKDeals（英国）优惠社区",
+      "url": "https://www.hotukdeals.com/",
+      "tier": "P1",
+      "entry_type": "rss",
+      "cadence_h": 3,
+      "categories": [
+        "bank",
+        "esim",
+        "software"
+      ],
+      "lang": "en",
+      "status": "active",
+      "added_at": "2026-11-26T11:58:42+08:00",
+      "entry_url": "https://www.hotukdeals.com/rss/new",
+      "zero_streak": 0,
+      "note": "Pepper 家族英国站；/rss/new 直连 200、30 条/次，另有 /rss/hot 热榜 feed"
+    },
+    {
+      "id": "mydealz",
+      "name": "MyDealz（德国）优惠社区",
+      "url": "https://www.mydealz.de/",
+      "tier": "P1",
+      "entry_type": "rss",
+      "cadence_h": 3,
+      "categories": [
+        "bank",
+        "esim",
+        "software"
+      ],
+      "lang": "de",
+      "status": "active",
+      "added_at": "2026-11-26T11:58:42+08:00",
+      "entry_url": "https://www.mydealz.de/rss/alles",
+      "zero_streak": 0,
+      "note": "Pepper 家族德国站；/rss/alles 直连 200、30 条/次；/rss/gruppe/<slug> 分组 feed 实测 404，用主 feed"
+    },
+    {
+      "id": "dealabs",
+      "name": "Dealabs（法国）优惠社区",
+      "url": "https://www.dealabs.com/",
+      "tier": "P1",
+      "entry_type": "rss",
+      "cadence_h": 3,
+      "categories": [
+        "bank",
+        "esim",
+        "software"
+      ],
+      "lang": "fr",
+      "status": "active",
+      "added_at": "2026-11-26T11:58:42+08:00",
+      "entry_url": "https://www.dealabs.com/rss/tous",
+      "zero_streak": 0,
+      "note": "Pepper 家族法国站；/rss/tous 直连 200、30 条/次；免单分组 /rss/groupe/gratuit 亦 200，可补读"
+    },
+    {
+      "id": "chollometro",
+      "name": "Chollometro（西班牙）优惠社区",
+      "url": "https://www.chollometro.com/",
+      "tier": "P1",
+      "entry_type": "rss",
+      "cadence_h": 3,
+      "categories": [
+        "bank",
+        "esim",
+        "software"
+      ],
+      "lang": "es",
+      "status": "active",
+      "added_at": "2026-11-26T11:58:42+08:00",
+      "entry_url": "https://www.chollometro.com/rss/nuevos",
+      "zero_streak": 0,
+      "note": "Pepper 家族西班牙站；/rss/nuevos 直连 200、30 条/次"
+    },
+    {
+      "id": "pepper-pl",
+      "name": "Pepper.pl（波兰）优惠社区",
+      "url": "https://www.pepper.pl/",
+      "tier": "P1",
+      "entry_type": "rss",
+      "cadence_h": 3,
+      "categories": [
+        "bank",
+        "esim",
+        "software"
+      ],
+      "lang": "pl",
+      "status": "active",
+      "added_at": "2026-11-26T11:58:42+08:00",
+      "entry_url": "https://www.pepper.pl/rss/wszystkie",
+      "zero_streak": 0,
+      "note": "Pepper 家族波兰站；/rss/wszystkie 直连 200、30 条/次"
+    },
+    {
+      "id": "pepper-nl",
+      "name": "Pepper NL（荷兰）优惠社区",
+      "url": "https://nl.pepper.com/",
+      "tier": "P1",
+      "entry_type": "rss",
+      "cadence_h": 3,
+      "categories": [
+        "bank",
+        "esim",
+        "software"
+      ],
+      "lang": "nl",
+      "status": "active",
+      "added_at": "2026-11-26T11:58:42+08:00",
+      "entry_url": "https://nl.pepper.com/rss/nieuw",
+      "zero_streak": 0,
+      "note": "Pepper 家族荷兰站（pepper.com 主域已跳 nl.pepper.com）；/rss/nieuw 直连 200、30 条/次，免费分组 /rss/groep/gratis 亦 200"
+    },
+    {
+      "id": "preisjaeger",
+      "name": "Preisjäger（奥地利）优惠社区",
+      "url": "https://www.preisjaeger.at/",
+      "tier": "P1",
+      "entry_type": "rss",
+      "cadence_h": 3,
+      "categories": [
+        "bank",
+        "esim",
+        "software"
+      ],
+      "lang": "de",
+      "status": "active",
+      "added_at": "2026-11-26T11:58:42+08:00",
+      "entry_url": "https://www.preisjaeger.at/rss/alle",
+      "zero_streak": 0,
+      "note": "Pepper 家族奥地利站；/rss/alle 直连 200、30 条/次"
+    },
+    {
+      "id": "slickdeals",
+      "name": "Slickdeals（美国）优惠社区 · 首页 feed",
+      "url": "https://slickdeals.net/",
+      "tier": "P1",
+      "entry_type": "rss",
+      "cadence_h": 3,
+      "categories": [
+        "software",
+        "esim",
+        "cloud"
+      ],
+      "lang": "en",
+      "status": "active",
+      "added_at": "2026-11-26T11:58:42+08:00",
+      "entry_url": "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1",
+      "zero_streak": 0,
+      "note": "首页 rel=alternate 官方 RSS；直连 200、25 条/次；另有 mode=popdeals 人气榜 feed"
     },
     {
       "id": "airline-esim-partners",
