@@ -6489,20 +6489,20 @@
   "source": "Alibaba Cloud Model Studio Token Plan personal documentation (read 2026-11-23: new-user price until 30 Nov, four tiers of credits, qwen4-max-preview offline 25 Nov) + qwen4-max-preview model page + third-party price check (2026-11-17: GA pay-as-you-go rates and 1 million tokens for 90 days)"
  },
  "opencode-zen-free-models": {
-  "title": "[Global] OpenCode: 11 free models in the client, including DeepSeek V4.1 Flash",
-  "highlight": "Free model list inside the OpenCode client: Big Pickle, DeepSeek V4.1 Flash Free, Hy4 Flash Free, Nemotron 3.5 Lightning and eight more bill neither input nor output; calling the API directly returns 403",
+  "title": "[Global] OpenCode: 12 free models in the client, including Seaglass Alpha with a 1M context",
+  "highlight": "The free-model list in the OpenCode client adds Seaglass Alpha Free: 1,048,576-token context and up to 131K output per reply, alongside Big Pickle, Tidepool Alpha, Iceman and DeepSeek V4.1 Flash Free — 12 models that bill neither input nor output",
   "regions": "[Global] Requires the OpenCode client; Beam Free is blocked in some countries",
-  "value": "11 models free (inside the client)",
-  "content": "The OpenCode client's free-model table, read on 23 November 2026, lists Big Pickle, Tidepool Alpha Free, Iceman Free, DeepSeek V4.1 Flash Free, Beam Free, Flint 40B Free, Hy4 Flash Free, MiMo-V2.6-Flash Free, Nemotron 3.5 Lightning Free, Nemotron 3.5 Super VL Free and Jev 1.13 Free: eleven models with free input and output. Pick them with /models inside the client. Inkling 2 Small was removed on 19 November and GLM-5.3-Flash on 18 November.",
-  "conditions": "Free models run only inside the OpenCode client; direct API calls return 403; data from the free period may be used to improve Big Pickle, Tidepool and Iceman; daily limits surface as a 'Free usage limit' message with no published reset time.",
+  "value": "12 models free (inside the client)",
+  "content": "The OpenCode client's free-model table, read on 26 November 2026, lists 12 models: Seaglass Alpha Free (added 26 November; 1,048,576-token context, up to 131,072 output tokens, six reasoning levels, tool calls), Big Pickle, Tidepool Alpha Free, Iceman Free, DeepSeek V4.1 Flash Free, Beam Free, Flint 40B Free, Hy4 Flash Free, MiMo-V2.6-Flash Free, Nemotron 3.5 Lightning Free, Nemotron 3.5 Super VL Free and Jev 1.13 Free, all free on input and output. Pick them with /models inside the client. Inkling 2 Small (19 November) and GLM-5.3-Flash (18 November) have been withdrawn.",
+  "conditions": "Free models run only inside the OpenCode client; direct API calls return 403; data from the free period may be used to improve Big Pickle, Tidepool, Iceman and Seaglass Alpha; Beam Free is unavailable in China (including Hong Kong and Macau), Russia, Iran and 19 other places; daily limits surface as a 'Free usage limit' message with no published reset time.",
   "steps": [
    "Install the OpenCode client and sign in",
    "Type /models in a session",
    "Choose a model ending in Free, or Big Pickle",
    "When the quota runs out, switch models or connect your own provider key"
   ],
-  "risk": "Free quotas are rate-limited by day with no published numbers, and users often report the limit firing without much use; there is no end date, so models can be withdrawn or become paid; Beam Free is unavailable in some countries.",
-  "source": "OpenCode official Console Models documentation (read 2026-11-23: free-tier chat models require OpenCode) + that.promo free-model list (re-checked 2026-11-23: 11 models, 2 removed) + GitHub issue #59387 user reports on quota messages"
+  "risk": "Free quotas are rate-limited by day with no published numbers, and users often report the limit firing without much use; there is no end date, so models can be withdrawn or become paid; Beam Free is unavailable in China including Hong Kong and Macau, Russia and Iran; the developers behind Seaglass Alpha, Big Pickle and the other stealth models are undisclosed, and their free periods keep conversation data to improve the model.",
+  "source": "OpenCode official Console Models documentation, Free models section (read 2026-11-26: 12 free models including Seaglass Alpha Free, Beam Free's 22 excluded places, Seaglass data retention) + ORIENS 2026-11-26 (Seaglass Alpha: 1,048,576 context, 131,072 max output, released 26 November, developer undisclosed) + that.promo free-model list (2026-11-23: 11 models, 2 withdrawn)"
  },
  "tradingview-cme-the-leap-nov2026": {
   "title": "[Global] TradingView × CME Group The Leap paper trading contest: $50,000 prize pool",
@@ -8186,5 +8186,39 @@
   ],
   "risk": "The $49 is a promotional partner price that the bank's customer channel says ends 11-30, after which it may return to $120 or even $299, so check the checkout amount; a refused KYC does not refund the $49; the eSIM costs $15 a month from month two unless you cancel it in the app; Kazakhstan has currency controls and wire-in/wire-out costs are untested; skipping the annual data update does not break the card but the operator may mark the status inactive; it is a real bank rather than a crypto card, but compliance and tax reporting remain your own call.",
   "source": "Freedom Bank's official eResidency card page (read 2026-11-26: $49 one-time operator fee, $120 direct, NFC passport, 18+, no card or account fee, optional $15/month eSIM from month two, annual update not needed for the account) plus a Naixi forum walkthrough of 2026-11-24 (+86 phone and a CN connection work, instant approval, several members confirmed) and Russian-language channels reporting the $49 price runs through 2026-11-30"
+ },
+ "expressvpn-topcashback-130": {
+  "title": "[US] ExpressVPN at 130% cash back on TopCashback: $195.72 for two-year Pro returns about $254, roughly $59 ahead",
+  "highlight": "Black Friday puts two years plus four months at $78.12 Basic, $111.72 Advanced and $195.72 Pro; TopCashback's US site pays new customers 130% on any plan, so Pro returns about $254 and lands roughly $59 ahead, with the boosted rate's own countdown ending around 27 November",
+  "regions": "[US] Order ExpressVPN through TopCashback's US site; cashback covers a new customer's first order only, calculated on the pre-tax subscription price",
+  "value": "About $254 cash back ($195.72 for two-year Pro, roughly $59 ahead)",
+  "content": "ExpressVPN's Black Friday price is $78.12 Basic, $111.72 Advanced and $195.72 Pro for the first 28 months (about $6.99 a month; they renew at $99.95, $119.95 and $199.95 a year). Advanced and Pro also include a holiday.com eSIM of 3GB, valid five days on Pro and three on Advanced, across 150+ destinations, one per account and only on eSIM-capable phones. TopCashback's US site pays 130% back: Pro returns about $254.44 for roughly $59 ahead, Advanced about $145.24 for $34, Basic about $101.56 for $23. Cashback is on the pre-tax subscription price, add-ons such as a dedicated IP earn nothing, and the 30-day refund still applies but a refunded order earns nothing.",
+  "conditions": "Register on TopCashback's US site and click Get Cash Back from its ExpressVPN page; new ExpressVPN customers only, first order; empty the cart and turn off ad blockers before ordering, and use only the code shown on TopCashback; cashback is calculated before tax and only becomes withdrawable once the merchant confirms.",
+  "steps": [
+   "Sign in to TopCashback US, search for ExpressVPN and click Get Cash Back",
+   "Pick the two-year plus four-month plan on the ExpressVPN site (Basic, Advanced or Pro) and check that 28 months are billed upfront",
+   "Empty the cart, skip add-ons such as a dedicated IP and avoid outside coupon codes",
+   "Confirm the cash back tracks in TopCashback afterwards; missing claims can only be filed after 95 days",
+   "Do not take the 30-day refund, since a refund voids the cash back"
+  ],
+  "risk": "Cash back is confirmed after the fact, so a refund, a declined payment or a merchant rejection leaves nothing — do not count it in advance; 130% is a limited-time rate with its own countdown on the merchant page, so check the figure on the day; add-ons earn nothing; a US TopCashback account with a withdrawable PayPal or bank account is needed, and payment waits for the settlement cycle.",
+  "source": "TopCashback US ExpressVPN merchant page (read 2026-11-26: 130%, new customers on any 2-year, 12, 6 or 1-month plan, add-ons excluded, outside codes void cash back, empty cart required, missing claims only after 95 days, boost countdown about 19 hours left) + ExpressVPN order page (read 2026-11-26: 2 years plus 4 months at $78.12 Basic, $111.72 Advanced, $195.72 Pro, renewal prices, holiday.com eSIM terms) + US Daily Rewards update of 2026-11-25 (method for the 121% calculation)"
+ },
+ "surfshark-rakuten-100-cashback": {
+  "title": "[US] Surfshark at 100% cash back on Rakuten: two-year One at $67.23 returns the whole price, so 27 months are free",
+  "highlight": "Black Friday puts two years (27 months upfront) at $67.23 for both Starter and One, and $107.73 for One+; Rakuten's rate for new customers jumps from the usual 20% to 100%, returning all $67.23, and spending $50 within 90 days earns its $50 sign-up bonus too",
+  "regions": "[US] Order through Rakuten's US site; new customers' first purchase only, cashback calculated before tax",
+  "value": "About $67 cash back (all of the $67.23 two-year One)",
+  "content": "Surfshark's Black Friday price is $67.23 for two years, 27 months upfront, on both Starter and One (about $2.49 a month), and $107.73 for One+; the site counts down to roughly 30 November. Rakuten has lifted Surfshark from its usual 20% to 100% (merchant page read 2026-11-26): all $67.23 comes back, so 27 months cost nothing. One costs the same as Starter and adds antivirus, breach monitoring and private search, so take One. Cashback is for a new customer's first purchase, once per member, excludes renewals, extensions and free trials, posts automatically the next day and is paid on Rakuten's quarterly cycle. The 30-day refund still applies, but a refunded order loses the cashback.",
+  "conditions": "A US Rakuten account is needed; start from Rakuten's Surfshark page with Shop Now; new Surfshark customers' first purchase only, once per Rakuten member; no coupon codes outside Rakuten and no free trial; cashback is on the pre-tax price and pays out quarterly once the merchant confirms.",
+  "steps": [
+   "Register or sign in to Rakuten US, search for Surfshark and click Shop Now",
+   "Choose One on the two-year plan (27 months upfront) and check the total is $67.23",
+   "Do not use coupon codes outside Rakuten and do not pick a free trial",
+   "Check the next day that the cash back posted in your Rakuten account and collect it quarterly",
+   "Turn off auto-renewal in Surfshark if you do not want the full-price renewal"
+  ],
+  "risk": "100% is a limited-time boost with no published end date, so it can drop back at any moment; a refund or declined payment voids the cashback; a US Rakuten account and a payout method (Big Fat Check or PayPal) are needed, and payment is quarterly; the plan renews at full price after 27 months unless you cancel; purchases through resellers or combined with a free trial do not qualify.",
+  "source": "Rakuten Surfshark merchant page (read 2026-11-26: 100% cash back, was 20%; special terms: new surfshark customers on first purchase, one per member, no subscription extensions, no free-trial combinations, cash back added the next day) + US Daily Rewards update of 2026-11-25 ($67.23 for two-year Starter and One, $107.73 One+, site countdown around 30 November, $50 sign-up bonus needs $50 spent within 90 days) + Surfshark Black Friday page (read 2026-11-26: countdown, One includes antivirus and breach monitoring)"
  }
 }

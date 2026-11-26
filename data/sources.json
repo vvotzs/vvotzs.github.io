@@ -302,8 +302,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T10:30:23Z",
-      "last_hit_at": "2026-11-24T01:53:39Z",
+      "last_crawled_at": "2026-11-26T12:14:58Z",
+      "last_hit_at": "2026-11-26T12:14:58Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
     },
@@ -322,8 +322,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T10:30:23Z",
-      "last_hit_at": "2026-11-25T21:40:22Z",
+      "last_crawled_at": "2026-11-26T12:14:58Z",
+      "last_hit_at": "2026-11-26T12:14:58Z",
       "zero_streak": 0
     },
     {
@@ -344,8 +344,8 @@
       "entry_url": "https://www.promodescuentos.com/rss/todas",
       "zero_streak": 0,
       "note": "RSS 直连 200（普通 UA，无 Cloudflare），30 条/次，item 带 <category> 与 pepper:merchant 商家+价格；分组 feed 可补读 /rss/grupo/gratis（免单）、/rss/grupo/telefonia-celular（手机通讯）",
-      "last_crawled_at": "2026-11-26T10:30:23Z",
-      "last_hit_at": "2026-11-26T06:15:49Z"
+      "last_crawled_at": "2026-11-26T12:14:58Z",
+      "last_hit_at": "2026-11-26T12:14:58Z"
     },
     {
       "id": "uscardforum",
@@ -381,8 +381,9 @@
       "status": "active",
       "added_at": "2026-11-22T05:10:00Z",
       "note": "首页约 203 个卡片、10 个分区（最新福利/跨境券商/香港数字银行/香港实体银行/澳门银行/虚拟银行卡/加密货币/行情工具/跨境工具），每张卡多半指向站内 /post/<id>/ 详情页。站内大量「邀请码：××」「?ref=」「?invite_code=」为站长个人返佣码，收录时必须回溯品牌官网，不得照搬。",
-      "last_crawled_at": "2026-11-26T09:02:04Z",
-      "zero_streak": 0
+      "last_crawled_at": "2026-11-26T12:14:58Z",
+      "zero_streak": 0,
+      "last_hit_at": "2026-11-26T12:14:58Z"
     },
     {
       "id": "shuzijumin",
@@ -706,8 +707,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T09:02:04Z",
-      "last_hit_at": "2026-11-25T20:47:36Z",
+      "last_crawled_at": "2026-11-26T12:14:58Z",
+      "last_hit_at": "2026-11-26T12:14:58Z",
       "entry_url": "https://www.cheapies.nz/feed",
       "zero_streak": 0
     },
@@ -724,8 +725,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T09:02:04Z",
-      "last_hit_at": "2026-11-24T01:53:39Z",
+      "last_crawled_at": "2026-11-26T12:14:58Z",
+      "last_hit_at": "2026-11-26T12:14:58Z",
       "zero_streak": 0
     },
     {
@@ -798,9 +799,10 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T09:02:04Z",
-      "last_hit_at": "2026-11-15T06:30:00Z",
-      "entry_url": "https://budgetfitter.uk/feed"
+      "last_crawled_at": "2026-11-26T12:14:58Z",
+      "last_hit_at": "2026-11-26T12:14:58Z",
+      "entry_url": "https://budgetfitter.uk/feed",
+      "zero_streak": 0
     },
     {
       "id": "bitrefill",
@@ -816,8 +818,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T09:02:04Z",
-      "last_hit_at": "2026-11-24T01:53:39Z",
+      "last_crawled_at": "2026-11-26T12:14:58Z",
+      "last_hit_at": "2026-11-26T12:14:58Z",
       "zero_streak": 0
     },
     {
@@ -834,8 +836,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T09:02:04Z",
-      "last_hit_at": "2026-11-24T01:53:39Z",
+      "last_crawled_at": "2026-11-26T12:14:58Z",
+      "last_hit_at": "2026-11-26T12:14:58Z",
       "zero_streak": 0
     },
     {
