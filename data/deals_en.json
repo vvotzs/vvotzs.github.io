@@ -8389,5 +8389,38 @@
   ],
   "risk": "Quota is per Cloud project, not per account, and each of the eight apps has its own bucket; a single tool call can spend several requests, so do not size anything from chat turns. From 2027-02-01 agents calling REST directly drop to Standard quota, and from 2027-04-01 Scaled-tier Gmail, Calendar and Drive MCP usage is billed from the first request, so switching to Scaled for a higher cap starts costing money at once. MCP and CLI read your own Workspace data, so check what scope you grant and share.",
   "source": "Google Workspace official blog 2026-11-24, 'Simplifying agent access while keeping organizations in control: MCP servers, CLI, standardized usage tiers' (MCP servers and gwscli reach GA, 8 apps, Standard and Scaled tiers, MCP required from 2027-02-01, Scaled billing from 2027-04-01) + Google for Developers, 'Usage tiers and quotas for Google Workspace APIs and MCP servers' (Standard tier 5,000 requests a day per project per product with no billing account or card, some tools count as multiple requests, last updated 2026-11-24) + gwscli release notes marking GA the same day"
+ },
+ "olive-smart-touch-vpoint-5000": {
+  "title": "[Japan]SMBC Olive Smart Touch: 5,000 yen V Point Pay for a new Olive card plus one phone tap payment (general tier, apply by Nov 30)",
+  "highlight": "Open Olive Flexible Pay (credit mode) during the campaign and make one smartphone Visa tap payment via Apple Pay, Google Pay or Samsung Pay by the end of the month after joining, with no minimum amount, for a 5,000 yen V Point Pay gift on the general tier; this version closes Nov 30",
+  "regions": "[Japan] Japan residents only; a Japanese address and Japanese mobile number are required to open an Olive account",
+  "value": "5,000 yen V Point Pay (about $33 on the general tier; Gold 7,000, Platinum 10,000)",
+  "content": "SMBC's Olive Smart Touch plan: open Olive Flexible Pay (credit mode) during the campaign and make at least one smartphone Visa tap payment (only Apple Pay, Google Pay and Samsung Pay count) by the end of the month after joining, and you get a V Point Pay gift of 5,000 yen on the general tier, 7,000 yen on Gold or 10,000 yen on Platinum Preferred, with no minimum spend. The gift code arrives by email by the end of the second month after joining and is charged in the V Point Pay app. Applications for this version close on 2026-11-30; a new plan with different conditions and amounts starts on December 1.",
+  "conditions": "Open an Olive account and newly apply for Olive Flexible Pay in credit mode (Visa only, Infinite excluded); make one smartphone Visa tap payment by the end of the month after joining; anyone holding a designated SMBC card on 2026-09-30 or issued one since 2021-02-01 is excluded; physical card taps, iD, debit mode and V Point Pay purchases do not count.",
+  "steps": [
+   "Open an Olive account and apply for Olive Flexible Pay (credit mode) at the same time, with your residence card or other ID ready",
+   "After approval and the card notice, log in to the SMBC app and confirm the credit mode enrollment is complete",
+   "Add the card to Apple Pay, Google Pay or Samsung Pay and make one Visa tap payment at any shop (no minimum amount)",
+   "Watch the registered inbox around the end of the second month after joining for the V Point Pay gift code and charge it in the V Point Pay app"
+  ],
+  "risk": "Japan residents only, so an overseas identity will not pass verification; the reward is paid about two months after joining and is forfeited if the account is closed or suspended, and lost emails are not resent; the current plan ends Nov 30, so do not leave the application to the last day; higher tiers pay more but Gold and Platinum carry annual fees, so do not upgrade just for 2,000 yen.",
+  "source": "SMBC Card official campaign page (read 2026-11-27: plan ends with applications through 2026-11-30 and a new plan starts 2026-12-01; new enrollment plus one smartphone Visa tap payment by the end of the following month; 5,000/7,000/10,000 yen V Point Pay gifts by tier; holders of designated cards on 2026-09-30 or with an issuance history since 2021-02-01 excluded) + Kupomiru conditions summary 2026-11-16; no community DP yet",
+  "brand_en": "SMBC"
+ },
+ "saily-black-friday-20": {
+  "title": "[Global]Saily Black Friday code Sailybf26: 20% off every eSIM plan (Nov 23-29, activate within 180 days)",
+  "highlight": "Enter Sailybf26 at checkout for 20% off the list price on country, regional, cruise and Ultra plans, open to new and existing users; prepaid plans can be activated any time within 180 days",
+  "regions": "[Global] Country, regional, cruise and Ultra plans across 200+ destinations",
+  "value": "20% off all plans ($10 off a $50 plan)",
+  "content": "Saily's official Black Friday sale (2026-11-23 to 11-29): enter Sailybf26 at checkout for 20% off the list price on all eSIM plans, covering country, regional and cruise plans plus the Ultra subscription, for new and existing users, one code per order. Prepaid plans can be activated within 180 days of purchase, so you can stock up now: United States 1GB/7 days $3.99 to $3.19, Japan 10GB/30 days $17.99 to $14.39, Europe regional 10GB/30 days $35.99 to $28.79. A plan not activated within 180 days activates automatically and its validity starts then.",
+  "conditions": "Type Sailybf26 manually at the saily.com or app checkout, since there is no automatic discount; the discount is calculated on the list price, one code per order, and does not stack with referral codes or account credit; activate within 180 days of purchase or the plan starts automatically; Ultra is a subscription billed and cancelled under its own terms.",
+  "steps": [
+   "Pick a destination and plan on saily.com or in the app",
+   "Click Go to checkout, then Got a coupon?",
+   "Enter Sailybf26, apply it and confirm the price drops by 20% before paying",
+   "Install the eSIM before you travel and activate it within 180 days"
+  ],
+  "risk": "This is 20% off, not free, and the code must be typed manually or you pay full price; an unactivated plan starts by itself after 180 days and its data then expires; Ultra is a recurring subscription; no community DP yet on the discounted prices or device compatibility.",
+  "source": "Saily official Black Friday page (read 2026-11-27: 20% off all plans with Sailybf26, November 23-29, activation within 180 days or automatic activation) + Cybernews discounted-price examples 2026-11-25 + Les Numeriques 2026-11-26; no community DP yet"
  }
 }
