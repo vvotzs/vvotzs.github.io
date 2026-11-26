@@ -287,11 +287,24 @@ button{ font-family: inherit; }
    也不会像 fixed 那样在滚动时盖住卡片右侧的价格。 */
 .sw-slot{
   position: fixed;
-  top: calc(var(--topbar) + 4px);
+  top: calc(var(--topbar) + 39px);
   right: 27px;
   /* 低于滑轨的 55：万一在极矮窗口里两者撞上，让「投稿」先接到点击 */
   z-index: 54;
   display: block;
+  /* 小企鹅挂件的量尺（各断点各自覆盖）：
+     --sw-pt   挂牌顶部内距 = 黄色方框顶边离槽顶的距离（企鹅的脚就踩在这条线上）
+     --sw-w    黄色方框宽度（企鹅的踱步跑道）
+     --pet-h   企鹅高度，宽度按 41:60 原图比例自动算
+     --pet-x   企鹅在黄框里的起跑位置
+     --pet-go  左右踱步幅度（气泡与企鹅共用同一个值，两者永远同一步调） */
+  --sw-pt: 0px;
+  --sw-w: 52px;
+  --pet-h: 20px;
+  /* 起跑点与幅度都避开 23.3% 的圆角：脚丫（约图宽 20%~80%）全程踩在顶边直线段上，
+     不会悬空在圆角外——实测直线段为 12.1~39.9px，脚丫落在 12.7~39px */
+  --pet-x: 10px;
+  --pet-go: 18px;
 }
 .top-sw{
   display: flex;
@@ -344,39 +357,40 @@ button{ font-family: inherit; }
   text-align: center;
   white-space: nowrap;
 }
-.top-sw-note{
-  /* Jun 2026-11-26 追加要求：挂牌下的「站长亲测 / Tested」适当收小，整组更紧凑，
-     与上面的 Blogger 徽标和下方右侧滑轨之间都留出舒服的间距 */
-  font-size: 9px;
-  line-height: 1;
-  font-weight: 600;
-  letter-spacing: .02em;
-  color: var(--ink-2);
-  white-space: nowrap;
-}
 .top-sw:hover .top-sw-ic{
   filter: saturate(1.04) brightness(1.02);
   box-shadow: 0 6px 16px -8px rgba(146,110,0,.8);
 }
 .top-sw:focus-visible{ outline: 2px solid rgba(60,15,25,.5); outline-offset: 3px; border-radius: 10px; }
-/* 旧版官方小企鹅（Jun 2026-11-26）：贴在 Sendwave 挂牌旁边踱步的纯装饰小挂件。
+/* 旧版官方小企鹅（Jun 2026-11-26）：踩在 Sendwave 黄色方框顶边上左右散步的纯装饰小挂件。
    造型取自旧版官方 LOGO 的挥手企鹅（歪头、两眼微差、举翅），已抠掉黄底、透明背景。
    它是 <a> 之外的兄弟节点：pointer-events:none（不拦点击）、aria-hidden（读屏忽略）、
    不参与文档流（absolute），只有 transform 动画。
-   桌面（≥1081）：挂牌是 fixed，左侧就是会滚过去的卡片内容，所以企鹅改在挂牌正下方
-   那道 128→168px 的右侧空档里来回走；平板（769–1080）：挂牌是 absolute、跟着页面走，
-   企鹅贴在挂牌左侧 hero 行与走马灯之间的空档；手机（≤768）：内容列一直铺到挂牌两边，
-   只有挂牌底下那道 39px 右内边（走马灯右缘→屏幕右缘、滑轨上方）是空的，企鹅就走在
-   那里。三种位置逐一实测过不压走马灯、TG 图标、更新时间、抽奖角标与右侧滑轨。 */
+
+   位置（双端同一套）：脚丫踩在 .top-sw-ic 黄色方框的顶边上，只在这枚方框的宽度范围内
+   左右来回踱步 —— 所以左缘永远离内容列还有距离，既不进走马灯 / 卡片 / 「抽奖」分区，
+   也不会像改版前那样跑到挂牌下面孤零零地站着。
+
+   「站长亲测 / Tested」不再写在方框下面，而是企鹅头侧那枚小气泡里（Jun #18005）：
+   气泡 .sw-pet-tag 是 .sw-pet-i 的**兄弟**，和企鹅共用同一个 --pet-go 位移，所以它
+   跟着企鹅一起走；而掉头时做 scaleX 镜像的只有 .sw-pet-i 里的图片，气泡里的字永远
+   正着，不会跟着翻面。
+
+   三层各管一段，互不抢 transform：
+     .sw-pet-tag  水平位移（与企鹅同步）
+     .sw-pet-i   水平位移 + 掉头 scaleX
+     .sw-pet-img 步态摇摆 swWaddle
+
+   竖向：气泡(≈14) + 脚底留白 + 企鹅(20) 全在黄框顶边之上，因此挂牌整体下移到顶栏下方
+   39px 处 —— 实测 1280 / 980 上 Blogger 徽标底边（y=56）到黄框顶边（y=100）有 44px
+   净空：气泡顶在 63.5（离 Blogger 7.5px）、企鹅头顶在 80，双端都不会撞上去。 */
 .sw-pet{
   position: absolute;
   left: 0;
-  right: 0;
-  top: calc(100% + 4px);
-  height: 26px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  width: var(--sw-w);
+  /* 脚丫压进黄框顶边 1px，看着是踩在边上而不是浮在上面 */
+  bottom: calc(100% - var(--sw-pt) - 1px);
+  height: var(--pet-h);
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
@@ -384,10 +398,12 @@ button{ font-family: inherit; }
 .sw-pet-i{
   position: relative;
   display: block;
-  width: 18px;
-  height: 26px;
-  /* 左右来回跮步：lift 1 向左、lift 2 向右，掉头那一刻用 scaleX 转身 */
-  animation: swPace 7.6s cubic-bezier(.42,0,.58,1) infinite;
+  /* 41:60 的原图比例 */
+  width: calc(var(--pet-h) * 0.6833);
+  height: var(--pet-h);
+  margin-left: var(--pet-x);
+  /* 左右来回踱步：0→50% 往右走，掉头后 54→96% 往左走 */
+  animation: swPace 9.4s cubic-bezier(.42,0,.58,1) infinite;
   will-change: transform;
 }
 .sw-pet-img{
@@ -395,25 +411,72 @@ button{ font-family: inherit; }
   width: 100%;
   height: 100%;
   /* 步态：以脚底为轴一摇一摆，配合轻微颠动，四步一循环 */
-  transform-origin: 50% 94%;
+  transform-origin: 50% 96%;
   animation: swWaddle 1.15s ease-in-out infinite;
 }
-/* 脚下一小片柔影：让它在空白里也像踩在地上，不抢眼 */
+/* 脚下一小片柔影：踩在黄框顶边上更像有实体的脚，不抢眼 */
 .sw-pet-sh{
   position: absolute;
   left: 50%;
-  bottom: -1px;
-  width: 15px;
-  height: 3px;
+  bottom: 0;
+  width: 11px;
+  height: 2.5px;
   transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(60,15,25,.22), rgba(60,15,25,0) 74%);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(60,15,25,.26), rgba(60,15,25,0) 76%);
+}
+/* 企鹅头侧的小气泡：暖白底 + 极细酒红描边 + 下方小尖角指向企鹅脑袋。
+   left 与 bottom 都把 --pet-x 算进去，起点正好贴在企鹅左肩外侧；
+   位移用与企鹅同一个 --pet-go，两者永远同步。 */
+.sw-pet-tag{
+  position: absolute;
+  left: calc(var(--pet-x) - 2px);
+  bottom: calc(100% + 2px);
+  padding: 2px 4px 2px 4px;
+  border-radius: 5px;
+  /* 纯白气泡：页面是暖米白（#FAF9F5），纯白底 + 极细酒红描边才浮得起来、
+     又不抢黄色方框的戏（与站内白卡同一套配色语言） */
+  background: #FFFFFF;
+  border: 1px solid rgba(60,15,25,.16);
+  box-shadow: 0 2px 6px -4px rgba(60,15,25,.5);
+  font-size: 8.5px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: #5A2230;
+  white-space: nowrap;
+  animation: swTagPace 9.4s cubic-bezier(.42,0,.58,1) infinite;
+  will-change: transform;
+}
+/* 气泡下方的小尖角：指向企鹅头顶，像它自己在说话。
+   用一枚 45° 旋转的小方块压在气泡底边上（而不是 border 三角），
+   方块上半部分正好盖住气泡的 1px 描边，尾巴和气泡是同一种皮。 */
+.sw-pet-tag::after{
+  content: "";
+  position: absolute;
+  top: auto;
+  bottom: -3.6px;
+  left: 8px;
+  width: 6px;
+  height: 6px;
+  background: #FFFFFF;
+  border-right: 1px solid rgba(60,15,25,.16);
+  border-bottom: 1px solid rgba(60,15,25,.16);
+  border-bottom-right-radius: 1.5px;
+  transform: rotate(45deg);
 }
 @keyframes swPace{
-  0%, 6%    { transform: translateX(0) scaleX(-1); }
-  44%, 50%  { transform: translateX(-22px) scaleX(-1); }
-  56%       { transform: translateX(-22px) scaleX(1); }
-  94%, 100% { transform: translateX(0) scaleX(1); }
+  0%, 4%       { transform: translateX(0) scaleX(1); }
+  46%, 50%     { transform: translateX(var(--pet-go)) scaleX(1); }
+  /* 50→50.01% 之间瞬时转身：窗口极窄，所以永远不会出现“压成一条线”的半帧 */
+  50.01%, 54%  { transform: translateX(var(--pet-go)) scaleX(-1); }
+  96%, 100%    { transform: translateX(0) scaleX(-1); }
+}
+/* 气泡只做平移、绝不 scaleX，掉头时字不会反过来 */
+@keyframes swTagPace{
+  0%, 4%    { transform: translateX(0); }
+  46%, 54%  { transform: translateX(var(--pet-go)); }
+  96%, 100% { transform: translateX(0); }
 }
 @keyframes swWaddle{
   0%   { transform: rotate(-4.2deg) translateY(0); }
@@ -432,13 +495,14 @@ button{ font-family: inherit; }
 }
 @media (prefers-reduced-motion: reduce){
   .top-sw{ animation: none; }
-  .sw-pet-i, .sw-pet-img{ animation: none; }
+  .sw-pet-i, .sw-pet-img, .sw-pet-tag{ animation: none; }
 }
 /* 首页 / 分类页的滑轨让位：Sendwave 挂牌占掉了顶栏正下方那一段，
    屏幕够高时滑轨照旧居中；不够高时把中心的底线抬到挂牌下面，
-   保证「投稿」永不被挂牌压住（详情页、合规页没有挂牌，滑轨不动）。 */
+   保证「投稿」永不被挂牌压住（详情页、合规页没有挂牌，滑轨不动）。
+   2026-11-26 挂牌下移 35px（给企鹅与气泡腾地方），下限同步抬到 448px。 */
 @media (min-width: 769px){
-  body.has-sw .rail-dock{ top: max(50%, 414px); }
+  body.has-sw .rail-dock{ top: max(50%, 448px); }
 }
 
 /* 平板 / 手机（≤1080）：桌面那 92px 的滑轨空档在这里不存在，但挂牌也绝不能落回文档流——
@@ -456,30 +520,36 @@ button{ font-family: inherit; }
     display: flex;
     justify-content: flex-end;
     /* 左内距 0：绝对定位下这个盒子只剩挂牌自己那么宽，不会用一块透明区
-       盖住左边的走马灯 / 标签去抢点击 */
-    padding: 3px 20px 2px 0;
-  }
-  /* 平板 / 小台式：挂牌左侧（hero 那行文字与走马灯之间的空档）贴着踱步，
-     右缘留 8px 不碰挂牌，底边跟挂牌底边平齐 */
-  .sw-pet{
-    left: auto;
-    top: auto;
-    right: calc(100% + 8px);
-    bottom: 6px;
-    width: 18px;
-    height: 26px;
-    display: block;
+       盖住左边的走马灯 / 标签去抢点击。
+       上内距 39：挂牌从顶栏正下方再往下让出企鹅＋气泡的高度（见下） */
+    padding: 39px 20px 2px 0;
+    --sw-pt: 39px;
+    --sw-w: 52px;
+    --pet-h: 20px;
+    --pet-x: 10px;
+    --pet-go: 14px;
   }
 }
 /* 矮窗口（1366×768 这类笔记本）：滑轨让位后底部会顶到屏幕，格子高度收 8px 把余量挣回来 */
 @media (min-width: 769px) and (max-height: 820px){
-  body.has-sw .rail-dock{ top: max(50%, 379px); }
+  body.has-sw .rail-dock{ top: max(50%, 445px); }
   body.has-sw .rail a{ height: 44px; }
 }
-/* 手机（≤768）：挂牌 34×34，右内距 5px 让它的中线落在 right:7 的 30px 徽标中心上 */
+/* 手机（≤768）：挂牌 34×34，右内距 5px 让它的中线落在 right:7 的 30px 徽标中心上。
+   上内距 46：顶栏 55 高，黄框顶边落在 101，企鹅（16 高）踩在 101、头顶 85，
+   气泡再往上是 59 —— 全部在顶栏下方、右侧 40px 空档里，不遮内容也不挤出留白。
+   气泡改成两行（站长/亲测）才装得进这道 40px 空档，并且还能跟着企鹅走 12px；
+   英文站只有「Tested」一个词，不会被拆行（见下面的 html[lang="en"] 例外）。 */
 @media (max-width: 768px){
-  .sw-slot{ padding: 3px 5px 2px 0; }
-  .top-sw{ width: 34px; gap: 2px; }
+  .sw-slot{
+    padding: 46px 5px 2px 0;
+    --sw-pt: 46px;
+    --sw-w: 34px;
+    --pet-h: 16px;
+    --pet-x: 6px;
+    --pet-go: 9px;
+  }
+  .top-sw{ width: 34px; }
   .top-sw-ic{ width: 34px; height: 34px; border-radius: 8px; }
   .top-sw-s{ top: 2px; width: 21px; height: 21px; }
   .top-sw-band{
@@ -490,26 +560,28 @@ button{ font-family: inherit; }
     line-height: 9px;
     letter-spacing: -.02em;
   }
-  .top-sw-note{ font-size: 8.5px; }
-  /* 手机：挂牌底下（「站长亲测」下方、走马灯右缘右侧、滑轨上方）才是真空的，
-     企鹅收成 18px 高，在屏幕右内边那道 39px 里小幅跮步，全程不进内容列 */
-  .sw-pet{
-    left: auto;
-    right: 8px;
-    top: calc(100% + 4px);
-    bottom: auto;
-    width: 12px;
-    height: 18px;
-    display: block;
+  .sw-pet-tag{
+    width: 22px;
+    padding: 2px 1px;
+    font-size: 8px;
+    line-height: 1.12;
+    letter-spacing: 0;
+    text-align: center;
+    white-space: normal;
+    word-break: break-all;
   }
-  .sw-pet-i{ width: 12px; height: 18px; animation-name: swPaceSm; }
-  .sw-pet-sh{ width: 11px; height: 2.5px; }
+  .sw-pet-tag::after{ left: 7px; bottom: -3px; width: 5px; height: 5px; border-bottom-right-radius: 1px; }
+  .sw-pet-sh{ width: 9px; }
+  /* 英文站气泡里只有一个「Tested」,盒子比中文的「站长/亲测」宽一点，
+     字号与踱步幅度各收一点，气泡右缘才能离屏幕右内边还有 3px 余量 */
+  html[lang="en"] .sw-slot{ --pet-go: 7px; }
+  html[lang="en"] .sw-pet-tag{ font-size: 7.5px; }
 }
-@keyframes swPaceSm{
-  0%, 6%    { transform: translateX(0) scaleX(-1); }
-  44%, 50%  { transform: translateX(-18px) scaleX(-1); }
-  56%       { transform: translateX(-18px) scaleX(1); }
-  94%, 100% { transform: translateX(0) scaleX(1); }
+/* 英文站：气泡里只有一个「Tested」，不拆行，盒子自然窄一些 */
+html[lang="en"] .sw-pet-tag{
+  width: auto;
+  white-space: nowrap;
+  word-break: normal;
 }
 
 /* 统计徽标：全站只在顶栏保留这一份 */

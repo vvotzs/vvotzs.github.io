@@ -533,10 +533,15 @@ def sendwave_badge() -> str:
     抖动、扫光全是 CSS 的 transform 动画，不参与布局；图标本身是内联 SVG +
     纯文本，不引额外请求。只在首页与分类页输出，详情页与合规页不出现。
 
-    2026-11-26 Jun 追加：挂牌旁边再来一只旧版官方小企鹅（挥手造型，assets/img/
-    sw-penguin.webp，抠掉黄底、透明背景），贴着挂牌左右来回踱步。它是纯装饰：
-    在 <a> 之外、aria-hidden、pointer-events:none，不拦点击也不跳转；走位与步态
-    全在 CSS（.sw-pet / @keyframes swPace / swWaddle），不占文档流。
+    2026-11-26 Jun 追加：黄色方框顶边上再来一只旧版官方小企鹅（挥手造型，
+    assets/img/sw-penguin.webp，抠掉黄底、透明背景），脚丫踩着黄框顶边左右散步；
+    「站长亲测 / Tested」不再压在方框下面，改成企鹅头顶那枚小气泡里的字，跟着企鹅
+    一起走（Jun #18005）。它是纯装饰：在 <a> 之外、aria-hidden、pointer-events:none，
+    不拦点击也不跳转；写法和步态全在 CSS（.sw-pet / .sw-pet-tag / @keyframes
+    swPace / swTagPace / swWaddle），不占文档流。
+
+    气泡必须是 .sw-pet-i（做 scaleX 转身的那层）的**兄弟**而不是子节点，这样企鹅掉头
+    时只有图片镜像，气泡里的字永远正着（Jun #18005 特别叮嘱）。
     """
     _S_PATHS = (
         '<path d="M119.295 69.18C119.755 66.185 120 63.12 120 60C120 58.18 119.92 56.38 119.76 '
@@ -556,9 +561,10 @@ def sendwave_badge() -> str:
     return (
         '<div class="sw-slot">'
         '<span class="sw-pet" aria-hidden="true">'
+        f'<span class="sw-pet-tag">{ui("sw_note")}</span>'
         '<span class="sw-pet-i">'
         '<span class="sw-pet-sh"></span>'
-        '<img class="sw-pet-img" src="/assets/img/sw-penguin.webp" width="18" height="26" alt="" '
+        '<img class="sw-pet-img" src="/assets/img/sw-penguin.webp" width="41" height="60" alt="" '
         'loading="lazy" decoding="async" draggable="false">'
         '</span>'
         '</span>'
@@ -569,7 +575,6 @@ def sendwave_badge() -> str:
         f'{_S_PATHS}</svg>'
         f'<span class="top-sw-band">{ui("sw_band")}</span>'
         '</span>'
-        f'<span class="top-sw-note">{ui("sw_note")}</span>'
         '</a></div>'
     )
 
