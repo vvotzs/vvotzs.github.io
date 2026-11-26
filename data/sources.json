@@ -259,7 +259,7 @@
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-26T01:40:09Z",
-      "last_hit_at": "2026-11-26T01:40:09Z",
+      "last_hit_at": "2026-11-24T19:57:36Z",
       "search_domains": [
         "x.com"
       ],
@@ -342,7 +342,7 @@
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-26T01:40:09Z",
-      "last_hit_at": "2026-11-26T01:40:09Z",
+      "last_hit_at": "2026-11-25T21:40:22Z",
       "zero_streak": 0
     },
     {
@@ -380,7 +380,6 @@
       "added_at": "2026-11-22T05:10:00Z",
       "note": "首页约 203 个卡片、10 个分区（最新福利/跨境券商/香港数字银行/香港实体银行/澳门银行/虚拟银行卡/加密货币/行情工具/跨境工具），每张卡多半指向站内 /post/<id>/ 详情页。站内大量「邀请码：××」「?ref=」「?invite_code=」为站长个人返佣码，收录时必须回溯品牌官网，不得照搬。",
       "last_crawled_at": "2026-11-26T01:40:09Z",
-      "last_hit_at": "2026-11-26T01:40:09Z",
       "zero_streak": 0
     },
     {
@@ -537,7 +536,7 @@
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-26T01:40:09Z",
-      "last_hit_at": "2026-11-26T01:40:09Z",
+      "last_hit_at": "2026-11-24T01:53:39Z",
       "search_domains": [
         "ecitizen.forum"
       ],
@@ -558,7 +557,7 @@
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-26T01:40:09Z",
-      "last_hit_at": "2026-11-26T01:40:09Z",
+      "last_hit_at": "2026-11-24T01:53:39Z",
       "search_domains": [
         "yunjumin.com"
       ],
@@ -724,7 +723,7 @@
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-26T01:40:09Z",
-      "last_hit_at": "2026-11-26T01:40:09Z",
+      "last_hit_at": "2026-11-24T01:53:39Z",
       "zero_streak": 0
     },
     {
@@ -834,7 +833,7 @@
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
       "last_crawled_at": "2026-11-26T01:40:09Z",
-      "last_hit_at": "2026-11-26T01:40:09Z",
+      "last_hit_at": "2026-11-24T01:53:39Z",
       "zero_streak": 0
     },
     {
