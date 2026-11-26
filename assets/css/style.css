@@ -276,6 +276,133 @@ button{ font-family: inherit; }
   .top-blog::after{ animation: none; opacity: 0; }
 }
 
+/* Sendwave 徽标（Jun 2026-11-26）：挂在 Blogger 徽标正下方的一枚持续抖动的小挂牌。
+   视觉照参考图：亮黄底 #F7EA00 圆角方块 + 官方 SW_Symbol 的深酒红 #3C0F19 双波浪 S，
+   方块底部压一条深色圆角横幅「新人10镑」（国内 App 节日图标那种底条），方块正下方
+   再用 10px 纯文本写「站长亲测」。
+   桌面（≥1081）：52×52，与 .top-blog 同宽同 right → 两枚徽标竖直中线重合；
+   用 fixed 钉在顶栏正下方那 92px 的滑轨空档里，永远压不到正文，滑轨已让位（见下）。
+   手机 / 平板（≤1080）：空档没了，挂牌改落回文档流，右缘仍与徽标同一根竖轴，
+   跟着页面滚走 —— 不会像 fixed 那样在滚动时盖住卡片右侧的价格。 */
+.sw-slot{
+  position: fixed;
+  top: calc(var(--topbar) + 4px);
+  right: 27px;
+  /* 低于滑轨的 55：万一在极矮窗口里两者撞上，让「投稿」先接到点击 */
+  z-index: 54;
+  display: block;
+}
+.top-sw{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 52px;
+  text-decoration: none;
+  color: var(--ink-2);
+  /* 抖动：以徽标顶边为轴轻轻甩动，纯 transform，不参与布局、不撑宽高 */
+  transform-origin: 50% 0;
+  animation: swWag 2.9s cubic-bezier(.36,.07,.19,.97) .5s infinite;
+  will-change: transform;
+}
+.top-sw-ic{
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 52px;
+  border-radius: 23.3%;
+  background: #F7EA00;
+  overflow: hidden;                 /* 横幅与 S 都裁在圆角方块里，抖动不会溢出 */
+  box-shadow: 0 4px 12px -8px rgba(146,110,0,.65);
+  transition: box-shadow .18s ease, filter .18s ease;
+}
+.top-sw-s{
+  position: absolute;
+  left: 50%;
+  top: 3px;
+  width: 32px;
+  height: 32px;
+  transform: translateX(-50%);
+}
+/* 图标底部横幅：参考国内 App 节日图标在图标底部叠一条「不打烊」的做法 */
+.top-sw-band{
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  height: 13px;
+  border-radius: 999px;
+  background: #3C0F19;
+  color: #F7EA00;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 13px;
+  letter-spacing: -.01em;
+  text-align: center;
+  white-space: nowrap;
+}
+.top-sw-note{
+  font-size: 10px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.top-sw:hover .top-sw-ic{
+  filter: saturate(1.04) brightness(1.02);
+  box-shadow: 0 6px 16px -8px rgba(146,110,0,.8);
+}
+.top-sw:focus-visible{ outline: 2px solid rgba(60,15,25,.5); outline-offset: 3px; border-radius: 10px; }
+@keyframes swWag{
+  0%, 58%, 100%{ transform: rotate(0); }
+  64%{ transform: rotate(-3.4deg); }
+  70%{ transform: rotate(2.8deg); }
+  76%{ transform: rotate(-2deg); }
+  82%{ transform: rotate(1.2deg); }
+  88%{ transform: rotate(-.5deg); }
+}
+@media (prefers-reduced-motion: reduce){
+  .top-sw{ animation: none; }
+}
+/* 首页 / 分类页的滑轨让位：Sendwave 挂牌占掉了顶栏正下方那一段，
+   屏幕够高时滑轨照旧居中；不够高时把中心的底线抬到挂牌下面，
+   保证「投稿」永不被挂牌压住（详情页、合规页没有挂牌，滑轨不动）。 */
+@media (min-width: 769px){
+  body.has-sw .rail-dock{ top: max(50%, 414px); }
+}
+
+/* 平板（≤1080）：内容区的 92px 滑轨空档没有了，挂牌改落回文档流右端；
+   右内距 20px 与 .top-blog 的 right 对齐，中线仍重合。 */
+@media (max-width: 1080px){
+  .sw-slot{
+    position: static;
+    display: flex;
+    justify-content: flex-end;
+    padding: 3px 20px 2px;
+  }
+}
+/* 矮窗口（1366×768 这类笔记本）：滑轨让位后底部会顶到屏幕，格子高度收 8px 把余量挣回来 */
+@media (min-width: 769px) and (max-height: 820px){
+  body.has-sw .rail-dock{ top: max(50%, 379px); }
+  body.has-sw .rail a{ height: 44px; }
+}
+/* 手机（≤768）：挂牌 34×34，右内距 5px 让它的中线落在 right:7 的 30px 徽标中心上 */
+@media (max-width: 768px){
+  .sw-slot{ padding: 3px 5px 2px; }
+  .top-sw{ width: 34px; gap: 2px; }
+  .top-sw-ic{ width: 34px; height: 34px; border-radius: 8px; }
+  .top-sw-s{ top: 2px; width: 21px; height: 21px; }
+  .top-sw-band{
+    left: 2px; right: 2px; bottom: 2px;
+    height: 9px;
+    font-size: 7px;
+    line-height: 9px;
+    letter-spacing: -.02em;
+  }
+  .top-sw-note{ font-size: 9.5px; }
+}
+
 /* 统计徽标：全站只在顶栏保留这一份 */
 .stats-pill{
   display: inline-flex;

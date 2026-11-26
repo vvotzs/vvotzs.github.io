@@ -353,6 +353,9 @@ SUBMIT_ENDPOINT = (
 TG_GROUP_URL = "https://t.me/+aAqP0DbW_YMxMmNh"
 # Jun 自己的 Blogger 博客：只在首页与分类页的顶栏右上角挂一枚徽标（2026-11-25 要求）。
 BLOGGER_URL = "https://6yfz.blogspot.com"
+# Sendwave 邀请落地页（Jun 自己的 UK→GCash 指引页，邀请码 JZHANG，新人首笔减 £10）：
+# 挂在 Blogger 徽标正下方，同样只在首页与分类页出现（2026-11-26 要求）。
+SENDWAVE_URL = "https://sw-JZHANG.antideploy.app"
 
 # 薄荷绿 Pickle 小精灵（页头 / 页脚直接内联，不走 sprite）。
 # 渐变必须写在可见的 <svg> 自己的 <defs> 里：放进 display:none 的 sprite 后，
@@ -516,6 +519,46 @@ def blogger_badge() -> str:
         '.977.45.977.976s-.45.976-.975.976zm-2.55-7.95c.527 0 .976.45.976.975s-.45.975-.975.975h-3.6c-.525 '
         '0-.976-.45-.976-.975s.45-.975.975-.975h3.6z"/>'
         '</svg></a>'
+    )
+
+
+def sendwave_badge() -> str:
+    """Blogger 徽标正下方的 Sendwave 徽标（Jun 2026-11-26 要求）。
+
+    视觉照 Jun 的两张参考图：亮黄底（#F7EA00）圆角方块 + 官方 SW_Symbol 的深酒红
+    （#3C0F19）双波浪 S，方块底部压一条深色圆角横幅写「新人10镑」（参考国内 App
+    节日图标在图标底部叠底条的做法）；方块正下方再用 10px 纯文本写「站长亲测」。
+    尺寸与 .top-blog 一致（桌面 52 / 手机 34），右缘对齐：两枚徽标的竖直中线重合，
+    看上去就是一个挂在 Blogger 徽标下面的小挂牌。
+    抖动、扫光全是 CSS 的 transform 动画，不参与布局；图标本身是内联 SVG +
+    纯文本，不引额外请求。只在首页与分类页输出，详情页与合规页不出现。
+    """
+    _S_PATHS = (
+        '<path d="M119.295 69.18C119.755 66.185 120 63.12 120 60C120 58.18 119.92 56.38 119.76 '
+        '54.605C118.36 39.165 105.99 26.18 78.845 26.18H63.11C59.34 26.18 42.855 25.92 42.855 '
+        '18.885C42.855 9.87999 76.03 8.47001 99.325 15.74L99.735 15.06C89.155 5.695 75.245 0 60 '
+        '0C49.945 0 40.46 2.45 32.15 6.845C20.27 13.13 13.11 22.7 13.11 31.425C13.11 48.085 '
+        '27.655 54.735 45.505 54.735C52.395 54.735 77.435 54.735 83.395 54.735C99.605 54.735 '
+        '117.18 54.49 118.54 69.18H119.295Z" fill="#3C0F19"/>'
+        '<path d="M0.704987 50.8199C0.244987 53.8149 0 56.8799 0 59.9999C0 61.8199 0.0799902 '
+        '63.6199 0.23999 65.3949C1.63999 80.8349 14.01 93.8199 41.155 93.8199H56.89C60.66 '
+        '93.8199 77.145 94.0799 77.145 101.115C77.145 110.12 43.97 111.53 20.675 104.26L20.265 '
+        '104.94C30.845 114.305 44.755 120 60 120C70.055 120 79.54 117.55 87.85 113.155C99.73 '
+        '106.87 106.89 97.2999 106.89 88.575C106.89 71.915 92.345 65.0949 74.495 65.0949C67.605 '
+        '65.0949 42.565 65.2599 36.605 65.2599C20.395 65.2599 2.81999 65.5049 1.45999 50.8149H0.704987V50.8199Z" '
+        'fill="#3C0F19"/>'
+    )
+    return (
+        '<div class="sw-slot">'
+        f'<a class="top-sw" href="{SENDWAVE_URL}" target="_blank" rel="noopener noreferrer" '
+        f'{al(*U["sw_aria"])} {tt(*U["sw_aria"])}>'
+        '<span class="top-sw-ic" aria-hidden="true">'
+        '<svg class="top-sw-s" viewBox="0 0 120 120" aria-hidden="true" focusable="false">'
+        f'{_S_PATHS}</svg>'
+        f'<span class="top-sw-band">{ui("sw_band")}</span>'
+        '</span>'
+        f'<span class="top-sw-note">{ui("sw_note")}</span>'
+        '</a></div>'
     )
 
 
@@ -3273,7 +3316,7 @@ def render_category_page(
 {ld}
 </script>
 </head>
-<body class="dp cat">
+<body class="dp cat has-sw">
 
 {sprite_svg(CAT_PAGE_ICONS)}
 
@@ -3297,6 +3340,7 @@ def render_category_page(
 </header>
 
 <main id="top">
+  {sendwave_badge()}
   <div class="shell dp-wrap">
     <nav class="dp-crumbs" {al(*U['dp_crumb_aria'])}>
       <a href="{home}">{ui('dp_crumb_home')}</a>
@@ -4118,7 +4162,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
 {jsonld}
 </script>
 </head>
-<body>
+<body class="has-sw">
 
 {sprite_svg()}
 {vector_defs()}
@@ -4155,6 +4199,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
 </header>
 
 <main id="top">
+  {sendwave_badge()}
   <div class="shell">
     <section class="hero">
       <h1>{ui('hero_h1')}</h1>
