@@ -8422,5 +8422,53 @@
   ],
   "risk": "This is 20% off, not free, and the code must be typed manually or you pay full price; an unactivated plan starts by itself after 180 days and its data then expires; Ultra is a recurring subscription; no community DP yet on the discounted prices or device compatibility.",
   "source": "Saily official Black Friday page (read 2026-11-27: 20% off all plans with Sailybf26, November 23-29, activation within 180 days or automatic activation) + Cybernews discounted-price examples 2026-11-25 + Les Numeriques 2026-11-26; no community DP yet"
+ },
+ "povo2-hapitas-esim-6500": {
+  "title": "[JP] povo2.0 x Hapitas new eSIM: 6,500 yen of points back (code HAPITAS1GB, boosted until 30 Nov)",
+  "highlight": "KDDI's zero-monthly-fee povo2.0 via Hapitas: sign up as a new line, activate the eSIM and buy any paid top-up within 3 days of activation (the 24-hour unlimited pack at 330 yen is cheapest) to bank 6,500 points after about 90 days, about 6,170 yen net; code HAPITAS1GB also adds 1GB",
+  "regions": "[JP] New eSIM lines in Japan only; physical SIMs and existing customers are excluded",
+  "value": "6,500 yen of points (about 6,170 yen net after the 330 yen top-up)",
+  "content": "KDDI's povo2.0 is a zero-monthly-fee SIM, and the Hapitas offer requires a new application with the eSIM activated, then any paid data top-up within 3 days of activation (the 24-hour unlimited pack at 330 yen is the cheapest), with 6,500 points credited after roughly 90 days of validation. Points are 1 point to 1 yen and convert to cash or e-money, leaving about 6,170 yen net after the 330 yen pack. The code HAPITAS1GB must be entered during sign-up and adds a 1GB/24-hour data bonus. The same offer pays 5,600 points on Moppy and 5,700 on Point Income, so Hapitas is currently highest; the boosted rate is listed until 30 November.",
+  "conditions": "Apply through the Hapitas offer page and choose eSIM; anyone who has applied for povo2.0 before (even if cancelled) is excluded; physical SIMs and applications started on povo's own site or app do not count; the paid top-up must be bought within 3 days of activation; validation takes about 90 days; Japanese ID and address required.",
+  "steps": [
+   "Log in to Hapitas, open the povo2.0 offer and click through",
+   "Choose the contract type (voice plus data or data only) and eSIM, entering HAPITAS1GB in the code field",
+   "Complete identity verification in the povo app and activate the eSIM",
+   "Buy any paid top-up within 3 days of activation (330 yen for 24 hours unlimited is cheapest) and wait about 90 days for the points"
+  ],
+  "risk": "Points are validated only after about 90 days and a wrong click path or missing code cannot be appealed (this offer does not accept ledger enquiries); povo suspends lines left without a top-up for long periods; points are not cash on the spot and withdrawing takes a payout request; Japanese ID and address are required, so applying from mainland China is not possible.",
+  "source": "Hapitas offer page (read 2026-11-27: 6,500 points, headline boosted until 30 Nov, condition is eSIM activation plus a top-up within 3 days, code HAPITAS1GB required) + PointNavi (2026-11-26: 6,500 points) + Lecter Lab (2026-11-20: 330 yen cheapest top-up, about 90 days validation, rejection rules)"
+ },
+ "visible-plus-pro-annual-225": {
+  "title": "[US] Visible+ Pro annual at USD 225 (was 450): code BLACKFRIDAY locks the price for 3 years",
+  "highlight": "Visible on Verizon: the Visible+ Pro annual plan normally costs 450 dollars, but code BLACKFRIDAY at checkout brings the first year to 225, with years two and three renewing at the same 225 automatically; unlimited premium data, 15Mbps hotspot, 4K video, 24 Global Pass days a year and an included smartwatch line",
+  "regions": "[US] New US customers only, with a US address and an unlocked phone",
+  "value": "225 dollars saved a year, 675 over three years",
+  "content": "The Visible+ Pro annual plan normally costs 450 dollars a year; enter BLACKFRIDAY at checkout in this Black Friday promotion to pay 225 for the first year (about 18.75 a month), with years two and three renewing at the same rate as long as the plan is unchanged and service is not interrupted. The plan includes unlimited premium data on Verizon 5G and 4G LTE without prioritisation slowdowns, hotspot capped at 15Mbps, video up to 4K on 5G Ultra Wideband, unlimited talk and text to Mexico and Canada plus roaming there, 500 monthly minutes to more than 85 countries, unlimited texting to more than 200, 24 Global Pass days a year across 140 countries (speed drops to 3G after 2GB a day), an included smartwatch line and 15 dollars a month off Home Internet. A parallel monthly code HOLIDAYHACK takes 6 dollars a month off (Visible 25 to 19 for 12 months, Visible+ 35 to 29 for 36 months, Visible+ Pro 45 to 39 for 60 months) and does not apply to annual plans.",
+  "conditions": "New customers only; annual plans cannot use HOLIDAYHACK; paid up front with no refund after activation; downgrading or cancelling ends the discount; the annual price includes taxes and fees; ordering or activating from outside the US is often blocked by fraud checks.",
+  "steps": [
+   "Open visible.com/plans/annual and choose the Visible+ Pro annual plan",
+   "Enter BLACKFRIDAY at checkout and confirm the price drops from 450 to 225 dollars",
+   "Activate service with an eSIM or a physical SIM",
+   "Keep the same plan at renewal to stay at 225 dollars in years two and three"
+  ],
+  "risk": "No published end date, so the offer can end at any time; the annual payment is not refundable; switching plans or letting service lapse forfeits the discount; orders and activations outside the US are frequently blocked; Global Pass slows to 3G after 2GB a day rather than being unlimited high speed.",
+  "source": "Visible annual plans page (read 2026-11-27: 450 to 225 dollars, code BLACKFRIDAY, years two and three at the same rate, HOLIDAYHACK excluded on annual plans) + visible.com/plans for the plan features + Yuntianming AI Navigation carrier briefing, issue 4 (2026-11-24)"
+ },
+ "giffgaff-200gb-12-18m-bf": {
+  "title": "[UK] giffgaff Black Friday 200GB: GBP 12 a month for 18 months, 150GB extra each month (activate by 7 Dec)",
+  "highlight": "giffgaff boosts its 18-month contracts for Black Friday: the GBP 12 plan goes from 50GB to 200GB for the first 18 months, while the GBP 15 plan gets unlimited data for 18 months; 5GB of EU roaming across 37 destinations, hotspot allowed, no credit check, activate by 23:59 on 7 December",
+  "regions": "[UK] Mainly for use in the UK, with 5GB of EU roaming across 37 destinations",
+  "value": "200GB a month for 18 months instead of 50GB",
+  "content": "giffgaff has boosted its 18-month contracts for Black Friday: the GBP 12 plan was 50GB a month and becomes 200GB for the first 18 months (150GB extra), dropping back to 50GB afterwards, while the GBP 15 plan gets unlimited data for the 18 months. Both include up to 5GB of EU roaming across 37 destinations, allow a plan change each month without affecting the contract length, need no credit check, support tethering and run on O2. A UK residential address and age 18 or over are required, activation must happen by 23:59 on 7 December 2026, and existing customers must opt in from the app.",
+  "conditions": "18-month contract; UK address and age 18 or over; activate by 23:59 on 7 December 2026; the 200GB and unlimited allowances are promotional and drop back when the contract ends; existing customers must opt in from the app.",
+  "steps": [
+   "Open giffgaff.com/sim-only-deals and pick the GBP 12 200GB plan on an 18-month contract",
+   "Choose an eSIM or a physical SIM and enter a UK address",
+   "Activate by 7 December and confirm the plan shows 200GB in the app",
+   "Change plans at the same price each month if needed; the contract length is unaffected"
+  ],
+  "risk": "The 18-month contract must keep being paid; the 200GB and unlimited allowances are temporary and fall back when it ends; heavy use outside the UK triggers the fair use policy; a UK address is required, so customers in China cannot order directly.",
+  "source": "giffgaff SIM only page (read 2026-11-27: GBP 12 plan marked Was 50GB with Black Friday 150GB extra free at 200GB, GBP 15 plan Was 100GB with unlimited data for 18 months, 18-month contract, 5GB EU across 37 destinations) + Yuntianming AI Navigation carrier briefing, issue 4 (2026-11-24: activate by 7 December, UK address required, existing customers opt in)"
  }
 }
