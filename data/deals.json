@@ -2199,10 +2199,10 @@
   "value": "≈$254 返现（2 年 Pro $195.72，倒赚约 $59）",
   "value_num": 254,
   "cost": "需要充值",
-  "highlight": "黑五2年+4个月：Basic $78.12、Advanced $111.72、Pro $195.72；TopCashback美国站新客任意套餐返130%，Pro返约$254、倒赚约$59，加码页面倒计时约11-27结束",
+  "highlight": "黑五2年+4个月：Basic $78.12、Advanced $111.72、Pro $195.72；TopCashback美国站新客任意套餐返130%，Pro返约$254、倒赚约$59，商家页倒计时显示加码约11-27 16:00（北京时间）结束",
   "regions": "[美区] TopCashback美国站跳转ExpressVPN官网下单；返现只给新客首单，按不含税的订阅价算",
   "start": "",
-  "end": "",
+  "end": "2026-11-27",
   "content": "ExpressVPN黑五2年套餐首期28个月：Basic $78.12、Advanced $111.72、Pro $195.72（约$6.99/月，到期分别按$99.95／$119.95／$199.95年付续费）。Advanced与Pro另送holiday.com eSIM 3GB（Pro有效5天，Advanced 3天、150+国，每账号1次，需eSIM机型）。TopCashback美国站把这档返现提到130%：Pro约$254.44、倒赚约$59；Advanced约$145.24、倒赚约$34；Basic约$101.56、倒赚约$23。返现按不含税订阅价算，Dedicated IP等附加不返；30天退款保证有效，但退款订单无返现。",
   "conditions": "需TopCashback美国站账户，从其ExpressVPN商家页点Get Cash Back跳转；只限ExpressVPN新客户首单；下单前清空购物车、关掉广告拦截，只能用TopCashback页上的优惠码；返现按商品价不含税算，要商家确认后才能提现。",
   "steps": [
