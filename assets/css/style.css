@@ -282,8 +282,9 @@ button{ font-family: inherit; }
    再用 10px 纯文本写「站长亲测」。
    桌面（≥1081）：52×52，与 .top-blog 同宽同 right → 两枚徽标竖直中线重合；
    用 fixed 钉在顶栏正下方那 92px 的滑轨空档里，永远压不到正文，滑轨已让位（见下）。
-   手机 / 平板（≤1080）：空档没了，挂牌改落回文档流，右缘仍与徽标同一根竖轴，
-   跟着页面滚走 —— 不会像 fixed 那样在滚动时盖住卡片右侧的价格。 */
+   手机 / 平板（≤1080）：空档没了，挂牌改成相对 <main> 的绝对定位（顶栏正下方右侧），
+   右缘仍与徽标同一根竖轴，跟着页面滚走 —— 既不占文档流把走马灯顶下去，
+   也不会像 fixed 那样在滚动时盖住卡片右侧的价格。 */
 .sw-slot{
   position: fixed;
   top: calc(var(--topbar) + 4px);
@@ -342,8 +343,10 @@ button{ font-family: inherit; }
   white-space: nowrap;
 }
 .top-sw-note{
-  font-size: 10px;
-  line-height: 1.1;
+  /* Jun 2026-11-26 追加要求：挂牌下的「站长亲测 / Tested」适当收小，整组更紧凑，
+     与上面的 Blogger 徽标和下方右侧滑轨之间都留出舒服的间距 */
+  font-size: 9px;
+  line-height: 1;
   font-weight: 600;
   letter-spacing: .02em;
   color: var(--ink-2);
@@ -372,14 +375,23 @@ button{ font-family: inherit; }
   body.has-sw .rail-dock{ top: max(50%, 414px); }
 }
 
-/* 平板（≤1080）：内容区的 92px 滑轨空档没有了，挂牌改落回文档流右端；
-   右内距 20px 与 .top-blog 的 right 对齐，中线仍重合。 */
+/* 平板 / 手机（≤1080）：桌面那 92px 的滑轨空档在这里不存在，但挂牌也绝不能落回文档流——
+   一旦进流，它会把左侧走马灯和「最新收录…抽奖」标签整条往下顶 50–70px，
+   顶栏下方就空出一大块白（Jun 2026-11-26 的两张截图都拍到了）。
+   改为相对 <main> 的绝对定位：紧贴顶栏正下方右侧、与 .top-blog 同一根竖轴，随页面滚动；
+   不是 fixed，所以滚下去时不会像桌面那样钉在屏幕上盖住卡片右侧的价格。
+   右内距（平板 20 / 手机 5）与 .top-blog 的 right 对齐，两枚徽标中线仍重合。 */
 @media (max-width: 1080px){
+  main{ position: relative; }
   .sw-slot{
-    position: static;
+    position: absolute;
+    top: 0;
+    right: 0;
     display: flex;
     justify-content: flex-end;
-    padding: 3px 20px 2px;
+    /* 左内距 0：绝对定位下这个盒子只剩挂牌自己那么宽，不会用一块透明区
+       盖住左边的走马灯 / 标签去抢点击 */
+    padding: 3px 20px 2px 0;
   }
 }
 /* 矮窗口（1366×768 这类笔记本）：滑轨让位后底部会顶到屏幕，格子高度收 8px 把余量挣回来 */
@@ -389,7 +401,7 @@ button{ font-family: inherit; }
 }
 /* 手机（≤768）：挂牌 34×34，右内距 5px 让它的中线落在 right:7 的 30px 徽标中心上 */
 @media (max-width: 768px){
-  .sw-slot{ padding: 3px 5px 2px; }
+  .sw-slot{ padding: 3px 5px 2px 0; }
   .top-sw{ width: 34px; gap: 2px; }
   .top-sw-ic{ width: 34px; height: 34px; border-radius: 8px; }
   .top-sw-s{ top: 2px; width: 21px; height: 21px; }
@@ -400,7 +412,7 @@ button{ font-family: inherit; }
     line-height: 9px;
     letter-spacing: -.02em;
   }
-  .top-sw-note{ font-size: 9.5px; }
+  .top-sw-note{ font-size: 8.5px; }
 }
 
 /* 统计徽标：全站只在顶栏保留这一份 */
@@ -2429,7 +2441,9 @@ footer{
     display: flex;
     align-items: center;
     gap: 2px 8px;   /* 导语与上面一行之间只留 2px，首屏不再多一层呼吸 */
-    padding: 0;
+    /* Sendwave 挂牌现在绝对定位在这一行右侧、不占文档流：右内距 39px（5 + 34）之外
+       再让 9px，更新时间与 TG 徽标就不会贴着挂牌的左边 */
+    padding: 0 9px 0 0;
     flex-wrap: nowrap;
   }
   /* 首屏导语：手机端单行走马灯，只占一行（基础样式里已经是同一套，这里只改字号与配色）。
@@ -2632,6 +2646,9 @@ footer{
     /* 这一行的上下留白留在行上、不放在按钮身上：按钮盒子只包住文字，
        长按蓝框与点击热区就不会向上压到标语行、向下压到第一行小卡。 */
     padding-top: 4px;
+    /* 右边再让 9px：Sendwave 挂牌贴在顶栏下方右侧（x 从 346 起），
+       这颗「抽奖 8」角标不能贴到挂牌的肚子上 */
+    padding-right: 9px;
     border-bottom: 1px solid rgba(28,25,23,.08);
     margin-bottom: 6px;
   }
