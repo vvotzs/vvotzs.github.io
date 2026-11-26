@@ -7993,7 +7993,7 @@
   "title": "[UK] CTExcel Black Friday half price: 22GB a month of UK-China data for 6 months at GBP 29.70 (code CTEXCEL50)",
   "highlight": "New customers get the first order half price: the 22GB plan (shared UK and mainland China data, 5GB usable in Europe) drops from GBP 9.90 to GBP 4.95 per 30 days, up to 6 months for GBP 29.70, with 500 UK minutes and unlimited UK texts; activation needs WiFi Calling",
   "regions": "[UK] CTExcel UK on the EE network; data works while roaming in mainland China; the plan includes 5GB of European roaming",
-  "value": "GBP 29.70 saved over 6 months (about USD 37)",
+  "value": "GBP 29.70 saved",
   "content": "China Telecom Europe's UK brand has a Black Friday code: new customers enter CTEXCEL50 at checkout for half price on the UK-China plan, up to six months, excluding the GBP 4.9 tier. The 22GB plan normally costs GBP 9.90 per 30 days; half price is GBP 4.95, or GBP 29.70 for six months, including 22GB shared between the UK and mainland China (5GB of it usable in Europe), 500 UK minutes and unlimited UK texts. It runs on EE with 4G only. First activation must happen on a UK or EU network, or by pulling up WiFi Calling and dialling 888, and the line needs usage within 10 days. Keeping the number takes any billable action within 180 days, such as one GBP 0.1 text. The 365-day China annual plan was withdrawn in September 2026.",
   "conditions": "New customers only; existing lines cannot take the discount and a new card is required. The GBP 4.9 tier is excluded. CTEXCEL50 must be entered at checkout and covers at most 6 months. First activation needs a UK/EU network or WiFi Calling before dialling 888, with usage within 10 days. eSIM or physical SIM, no contract.",
   "steps": [
@@ -8009,7 +8009,7 @@
   "title": "[US] RackNerd x AdminBolt giveaway: 100 free VPS for a year, 3 cores / 4GB / 60GB SSD / 7TB, released in batches by comment",
   "highlight": "RackNerd and the AdminBolt panel give away 100 VPS free for a full year: 3 vCPU, 4GB RAM, 60GB SSD, 7TB a month, 1Gbps, a dedicated IPv4 and full root, with no payment method and no renewal obligation; slots come in batches in the LowEndTalk thread and winners are drawn from keyword replies",
   "regions": "[US] RackNerd US locations (several to choose from); 1Gbps, dedicated IPv4, full root, SSH reachable",
-  "value": "About USD 48 to 95 (comparable annual plans start at USD 47.98)",
+  "value": "USD 48-95 free",
   "content": "RackNerd's official LowEndTalk giveaway hands out 100 VPS free for a year: 3 vCPU, 4GB RAM, 60GB SSD, 7TB monthly transfer, 1Gbps, a dedicated IPv4 and full root, with SSH and all ports open, plus the RackNerd ctrl panel for one-click AdminBolt, reinstalls and an HTML5 console. No purchase, no payment method and no forced renewal. The 100 boxes are released in batches; each batch announces a reply keyword and selection method in the thread and winners are drawn at random, and on 2026-11-26 people were still entering the current batch. Winners must try AdminBolt and post feedback in the thread to extend the AdminBolt licence to the end of the VPS's first year, and 20 lifetime licences are drawn separately.",
   "conditions": "A LowEndTalk account is required (registrations are reviewed by hand, which can take a while); reply with the keyword of the current batch, one win counted per person; winners must open AdminBolt and link their feedback in the thread to get the full year of licensing; losing entries can join later batches.",
   "steps": [
@@ -8025,7 +8025,7 @@
   "title": "[Global] Factory Droid free plan at USD 0: bring your own model (sign in with ChatGPT, Copilot or OpenRouter, or use your own key)",
   "highlight": "The Droid coding agent now has a USD 0 individual tier: sign in with ChatGPT, GitHub Copilot, OpenRouter or Vercel AI Gateway, or plug in your own API key or endpoint, and the agent itself costs nothing while model usage runs on what you already pay for",
   "regions": "[Global] A factory.ai account; needs a ChatGPT/Copilot/OpenRouter subscription or your own API key",
-  "value": "USD 20 a month (Pro features; model usage on you)",
+  "value": "USD 20 a month",
   "content": "Factory, an AI software engineering agent, added a Free individual tier to its pricing page: USD 0 a month, bring your own inference. Sign in with ChatGPT, GitHub Copilot, OpenRouter or Vercel AI Gateway, or connect your own API key or custom model endpoint, and the tool charges nothing while the tokens come from your existing subscription or API credit. The paid Pro tier at USD 20 a month adds the full model catalogue and desktop, CLI and SDK access; Teams is USD 60 a month plus USD 40 per person, with Business and Enterprise above that. It suits people who already have Copilot or OpenRouter credit and want to try Droid for coding.",
   "conditions": "You need a Factory account and one of ChatGPT, GitHub Copilot, OpenRouter or Vercel AI Gateway to sign in with, or a compatible API key; the free tier only waives the tool fee, while model tokens are billed to your own account; the full model list and desktop/CLI/SDK access largely sit behind the USD 20 Pro tier.",
   "steps": [
@@ -8041,7 +8041,7 @@
   "title": "[Japan] povo2.0 users get ChatGPT 5.5, 5.5 Pro and 5.5 Thinking free and unlimited, plus 3 Nano Banana 2 images a day",
   "highlight": "On povo2.0, whose base fee is zero yen, povo AI adds ChatGPT 5.5, 5.5 Pro and 5.5 Thinking with no extra charge and unlimited use; Nano Banana 2 image generation is available three times a day, provided the account still holds data allowance",
   "regions": "[Japan] povo2.0 subscribers in Japan (au network, Japanese ID and payment method needed)",
-  "value": "About USD 20 a month (compared with ChatGPT Plus; the Pro tier costs more)",
+  "value": "USD 20 a month",
   "content": "From 2026-10-22 KDDI added ChatGPT 5.5, ChatGPT 5.5 Pro and ChatGPT 5.5 Thinking to povo AI, free and unlimited for povo2.0 subscribers, plus three Nano Banana 2 images a day. povo AI lives inside the povo2.0 app (version 1.62.0 or newer); the AI costs nothing but each conversation spends your own data allowance, and with 0.00GB left it will not open until you buy a topping, redeem a promo code or use Data Oasis. You cannot sign in with your own ChatGPT account, and a few paid features are missing. Perplexity Sonar was retired on 23 November and GPT-5 follows on 11 December.",
   "conditions": "An active povo2.0 line (au network, opened with Japanese ID and payment method) with data allowance left; app version 1.62.0 or newer; usable only inside the app, not with your own ChatGPT account; Nano Banana 2 images are capped at three a day.",
   "steps": [
