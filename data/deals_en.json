@@ -8540,5 +8540,21 @@
   ],
   "risk": "Purchases are limited to approved low-connectivity areas, so most city addresses cannot order; only Mexico-market phones are supported; there is no roaming, so the line stops working abroad; social data excludes video and outside links and hotspot is disabled; plan prices can change.",
   "source": "CFE Internet official site read 27 Nov 2026 (SIM cards at no cost, free eSIM activation, MXN 35 monthly plan with 1GB/100 minutes/50 texts/600MB social data, day and monthly price list, IMEI compatibility check) plus a Promodescuentos post of 26 Nov 2026 and Xataka Mexico, Ambito and W Radio coverage of the approved-area and Mexico-market device limits"
+ },
+ "gomo-th-annual-99-esim": {
+  "title": "[Thailand] GOMO by AIS: THB 99 a year for 10GB of 5G plus 10 minutes, eSIM available",
+  "highlight": "AIS's GOMO annual pack costs THB 99 and gives 10GB of full-speed 5G for the whole year, 10 cross-network minutes, unlimited AIS Super WiFi and a number valid 365 days with no monthly fee, and you can pick an eSIM at checkout",
+  "regions": "[Thailand] Thailand only; sold to holders of a Thai national ID; data works inside Thailand only",
+  "value": "THB 99 a year (about $3.1) for 10GB across the year and a number kept for 365 days",
+  "content": "The GOMO 5G No Expired annual pack is THB 99 (about $3.1) for 365 days: 10GB of 5G at up to 1,000Mbps (data stops when used up but the number stays valid for the full year), 10 cross-network minutes, unlimited AIS Super WiFi and up to three months of GrabUnlimited, with no monthly fee or contract. Renewing means buying the same annual pack again, which adds another 365 days. The 199 baht pack gives 25GB and 50 minutes. Extra minutes bill at 1 baht for the first minute and 0.5 baht per 30 seconds after, texts at 2 baht. The eSIM costs the same as a physical SIM and is chosen at checkout on the AIS online store.",
+  "conditions": "Thai national ID holders only (the official listing says Thai only); activate online in the GOMO Thailand app within 30 days of purchase; annual data is for use in Thailand and does not carry over; the phone must support eSIM.",
+  "steps": [
+   "Buy the THB 99 annual pack on the AIS online store and choose eSIM",
+   "Complete verification and activation with your Thai ID in the GOMO Thailand app within 30 days",
+   "Turn the eSIM on in Thailand and top up with add-on packs if needed",
+   "Buy the annual pack again before expiry to extend 365 days and get 10GB again"
+  ],
+  "risk": "Thai ID only, so a foreign passport cannot open it; data stops when used up and does not roll over; only 10 minutes a year are included and extra calls bill at standard rates; the eSIM must be activated within 30 days; pack contents can change.",
+  "source": "AIS official GOMO pack page read 27 Nov 2026 (THB 99/199 annual packs, 10GB/25GB per 365 days, 10 or 50 minutes, AIS Super WiFi, physical SIM and eSIM) plus the AIS Official Shopee listing terms (Thai ID only, activation within 30 days)"
  }
 }
