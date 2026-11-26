@@ -2570,18 +2570,18 @@
  },
  "bamboosim-bfcm-45off": {
   "title": "[Global] BambooSIM Black Friday: 45% off travel eSIMs (50% off two) plus 100 free transit eSIMs for past customers",
-  "highlight": "Code BFCMO50 takes 45% off one travel eSIM and 50% off two or more across 200+ destinations; Japan unlimited 15 days drops to about $37.29.",
+  "highlight": "Code BFCMC50, open to everyone on travel eSIMs and physical SIMs: 45% off a single item and 50% off every item when one order holds two or more; customers who ordered in the last 12 months can claim one of 100 free transit eSIMs from their account dashboard",
   "regions": "[Global] Travel eSIMs for 200+ countries; free transit eSIMs only for customers who ordered in the past year",
   "value": "45% off, 50% off two",
-  "content": "A second-anniversary Black Friday sale with code BFCMO50: travel eSIMs at 45% off, or 50% for two or more, across 200+ destinations including Japan, China, Korea, Thailand, Europe and the US, with Japan's unlimited 15-day plan down to about $37.29. Past customers who ordered within the last year can claim one free Transit eSIM for layovers, limited to 100 first come. Plans are prepaid without contracts, install by QR code and start only when connecting to a local network on arrival.",
-  "conditions": "Enter BFCMO50 at checkout; 50% off needs two or more; the free Transit eSIM is for customers who ordered in the past year, 100 available; the sale ends 10:59 on 1 December 2026 Australian eastern time.",
+  "content": "Second-anniversary Black Friday sale with code BFCMC50: 45% off any single travel eSIM or physical SIM and 50% off every eligible item when an order holds two or more, mixing destinations and plans across 200+ destinations including Japan, China, Korea, Thailand, Europe and the US. Japan's KDDI unlimited 15-day plan is NZ$45.74 at 45% off, or NZ$83.16 for two (New Zealand pricing, 14GB hotspot). Past customers with an unrefunded order in the last 12 months may see a birthday banner in their dashboard and claim one transit eSIM, choosing Singapore 3GB/3 days, Mainland China with Hong Kong and Macau 1GB/day for 2 days, or Dubai 1GB/24 hours; all are data-only with hotspot, drop to 128kbps after the allowance and need the QR code requested within 6 months.",
+  "conditions": "Enter BFCMC50 at checkout; the 50% tier needs two or more items in the same order; the free transit eSIM is limited to accounts that ordered in the last 12 months, 100 in total, and only when the dashboard shows the birthday banner; the sale ends 10:59 on 1 December 2026 Australian eastern time.",
   "steps": [
-   "Pick a destination and plan at bamboosim.com (Japan unlimited 15 days is about $37.29)",
-   "Enter BFCMO50 at checkout for 45% off one or 50% off two",
-   "Install the QR code after payment; it activates on first connection abroad. Past customers can claim the free transit eSIM separately"
+   "Pick a destination and plan at bamboosim.com, mixing eSIMs and physical SIMs if you like",
+   "Enter BFCMC50 at checkout: 45% off one item, 50% off two or more in the same order",
+   "Install after payment; the plan starts on first connection abroad. Past customers should check the dashboard for the birthday banner first"
   ],
-  "risk": "Whether the code still applies is best confirmed on the checkout total (unverified). The free transit eSIM is scarce and limited to past customers. Reseller plans are non-refundable, so a wrong destination is money lost.",
-  "source": "OzBargain BambooSIM merchant page (posted 2026-11-17, checked 2026-11-19) + BambooSIM official plan pages"
+  "risk": "Reseller plans are non-refundable, so a wrong destination is money lost; the 50% tier requires two items in one order, and mixing different plans counts; the free transit eSIM is capped at 100 and only claimable when the banner appears, with the QR code needed within 6 months; prices follow the site's currency, so NZ, AU and JP storefronts show different numbers and the checkout total is what counts.",
+  "source": "ChoiceCheapies BambooSIM official merchant post (published 17 November 2026, updated 18 November; re-read 27 November 2026: code BFCMC50, 45% off one and 50% off two in one order, NZ price tables, three transit eSIM choices capped at 100, ends 30 November 2026 23:59 UTC) + OzBargain BambooSIM merchant page"
  },
  "qiniu-conatus-free-100m-daily": {
   "title": "[CN] Qiniu Conatus free model: 100M tokens a day after real-name verification (until Nov 30)",
@@ -8339,5 +8339,21 @@
   ],
   "risk": "The ¥50,000 must stay in the yen ordinary deposit on the check date, so moving it to foreign currency or time deposits breaks eligibility; closing the account or dropping the balance later forfeits the reward; Japan address and residence/ID documents are required; the NFT and car need self-redemption with the emailed code before it expires.",
   "source": "Sony Bank official press release (2026-08-07) + Japanese campaign summaries (November 2026)"
+ },
+ "coinsbee-nectar-hunt-bf-2026": {
+  "title": "[Global] CoinsBee Black Friday Nectar Hunt: play a free merge game and unlock gift-card discount codes (23 Nov - 7 Dec)",
+  "highlight": "A free merge game in the browser: open crates to unlock CoinsBee discount codes good on gift cards, mobile top-ups and game credits; runs 23 November to 7 December, playing is free, you only spend when you redeem a code, one code per order",
+  "regions": "[Global] Free to play on the web, 18+ only; codes work only on coinsbee.com and some countries may be excluded",
+  "value": "Discount codes (US$500 code pool, each with a minimum order value)",
+  "content": "CoinsBee's official Black Friday Nectar Hunt at nectar.coinsbee.com: tap the honey pot for items and merge two matching items into a better one; every 10 merges earns a Bronze crate, big merges bring Silver, and Gold and Diamond crates are luck. Opening crates collects nectar that unlocks CoinsBee discount codes from a US$500 discount budget that runs out when it is gone. Playing and unlocking cost nothing; you pay only when you use a code on coinsbee.com, picking gift cards, mobile top-ups or game credits, reaching that code's minimum order value and entering the code in the promo code field at checkout. One code per order; codes cannot be combined with other promotions, cashed out, transferred or resold.",
+  "conditions": "18 or older and bound by CoinsBee's terms; free to take part with no purchase; each code carries its own minimum order value; one code per order, no stacking with other promotions, no cash value or resale; scripts, bots and multiple accounts are banned and offending codes are voided; codes are limited and stop when the pool is exhausted.",
+  "steps": [
+   "Open nectar.coinsbee.com and tap the honey pot for items, then merge matching pairs",
+   "Collect nectar and open Bronze, Silver, Gold or Diamond crates to reveal a discount code",
+   "Pick gift cards, top-ups or game credits on coinsbee.com until you reach that code's minimum order",
+   "Enter the code in the promo code field at checkout, apply it and pay"
+  ],
+  "risk": "Code amounts and their minimum order values are not published and the terms still carry placeholder fields for the pool and partner, so trust the in-game and checkout screens; codes stop when the pool is used up; using a code usually means topping up an order, which means buying more than you planned; CoinsBee gift cards are non-refundable and some brands carry regional limits.",
+  "source": "CoinsBee official blog campaign post (published 23 November 2026: 23 November to 7 December, US$500 code pool, one code per order, per-code minimum order value, no scripts or multiple accounts; page re-read 27 November 2026 and still live)"
  }
 }
