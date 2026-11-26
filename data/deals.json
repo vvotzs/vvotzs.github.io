@@ -4649,6 +4649,48 @@
   ]
  },
  {
+  "id": "freeai-free-tokens-30k-daily",
+  "dedup_key": "free-ai|ai|global|tokens-30k-daily",
+  "title": "[全球]Free.ai免费额度：注册每日3万Tokens、.edu每月50万（573款模型，免绑卡）",
+  "brand": "Free.ai",
+  "domain": "free.ai",
+  "category": "ai",
+  "value": "每日3万Tokens（.edu每月50万）≈$60/年",
+  "value_num": 60,
+  "cost": "真正免费",
+  "highlight": "邮箱验证即得每天3万Tokens、573款模型共用一池，免绑卡可商用；.edu邮箱另加每月50万Tokens和Pro级API Key，视频限每2天1条",
+  "regions": "[全球] 网页版全球可用，无地区限制；.edu认证需学校邮箱",
+  "start": "",
+  "end": "",
+  "url": "https://free.ai/pricing",
+  "source_url": "https://www.nodeseek.com/post-1079125-1",
+  "source": "Free.ai官方定价页（2026-11-26实读）：邮箱验证后30,000 tokens/天永久免费、匿名6,000/天、无需信用卡、可商用、视频每2天一clip；FAQ写明认证.edu每月500,000 tokens+自托管模型Pro档API Key，申请入口free.ai/edu；NodeSeek 2026-11-25实测帖",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T14:20:00+08:00",
+  "content": "Free.ai把573个模型、481个工具放在同一个token池里：确认邮箱后每天3万tokens永久免费（未注册每天6000），不绑卡、可商用；聊天、出图、音乐、转录、OCR在池内不限次数，只有视频限每2天1条。学生与教师用认证过的.edu邮箱在free.ai/edu申请，每月50万tokens并拿到自托管模型的Pro档API Key；GPT、Claude、Gemini等外部模型按token从同一余额扣，单价更高。",
+  "conditions": "需邮箱验证才解锁每日3万tokens；教育版要学校邮箱认证；外部模型（GPT/Claude/Gemini）消耗更快，免费池以自托管模型为主。",
+  "steps": [
+   "打开 free.ai 用邮箱注册，点确认邮件里的链接解锁每日额度",
+   "进入 Chat 或任一工具直接使用，控制台可看当日 token 余量",
+   "学生/教师到 free.ai/edu 用学校邮箱申请，通过后每月 50 万 tokens 与 Pro 档 API Key",
+   "需要时在 /pricing 买 token 包或订阅，外部模型从同一余额扣"
+  ],
+  "risk": "免费池以自托管开源模型为主，GPT/Claude等外部模型单价高、很快烧完；视频每2天限1条；教育版要真实学校邮箱，临时edu域名可能被回收；模型由聚合平台上下架，具体可用清单会变。",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "lemfi-eu-referral-50",
   "dedup_key": "lemfi|bank|eea|referral-50",
   "title": "[欧区]LemFi邀请：欧洲注册双方各得€50LemFi Cash（首笔须汇欧元区以外）",
@@ -12749,6 +12791,52 @@
   "vowifi": "n/a"
  },
  {
+  "id": "privjet-free-esim-1gb-74",
+  "dedup_key": "privjet|esim|global|free-esim-1gb-74",
+  "title": "[全球]PrivJet免费eSIM：每账号1GB/7天、74国可用（免绑卡，需WhatsApp验号）",
+  "brand": "PrivJet",
+  "domain": "privjet.net",
+  "category": "esim",
+  "value": "1GB / 7天（≈$5）",
+  "value_num": 5,
+  "cost": "真正免费",
+  "highlight": "私人包机平台送的纯流量eSIM：每个账号1GB/7天、74国可选，不绑卡不实名，只在App内领，手机号要WhatsApp或语音验号，每天每国限量",
+  "regions": "[全球] 74国可领（日韩、新马泰菲越、港澳门、美英德法意西、土耳其、哈萨克等）；手机号所属国与当前所在国除外",
+  "start": "",
+  "end": "",
+  "url": "https://www.privjet.net/en/free-esim",
+  "source_url": "https://www.promodescuentos.com/ofertas/privjet-esim-con-1-gb-de-datos-gratis-para-viajar-a-74-paises-sin-tarjeta-1210715",
+  "source": "PrivJet官方免费eSIM页与活动条款（privjet.net/en/free-esim、/free-esim/terms，条款2026-11-05更新，2026-11-26实读：每账号1次1GB、74国、7天、无支付信息、App内领取、WhatsApp/通话验号、每日每国限量）+ promodescuentos 2026-11-16帖",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T14:22:00+08:00",
+  "content": "PrivJet（私人包机平台，运营方OnlineBuilders LLC）给每个账号一次免费eSIM：1GB纯流量、落地首连起至少7天，走eSIM Access（Redtea Mobile）在当地网络上跑，覆盖74国，含日韩、新马泰菲越、港澳门、美英德法意西、土耳其、哈萨克。只能在iOS/Android App内领：手机号经WhatsApp或语音通话验证，虚拟号与收码平台号一律不行，且必须勾选接收其短信/WhatsApp推销（可随时退订、eSIM保留）。手机号所属国与领卡时所在国不在列表内，需出行前选目的地；领取后7天内必须安装，否则作废。",
+  "conditions": "18岁以上、一个账号一次；App内领取并WhatsApp/语音验号（不收虚拟号与接码号）；每日每国限量；出行前领取、7天内安装，落地后7天有效；纯流量无号码，收不了短信。",
+  "steps": [
+   "装 PrivJet App（iOS/Android）注册，10分钟后再点领取",
+   "用 WhatsApp 发预设码或用语音通话接6位码，确认手机号",
+   "勾选接收短信/WhatsApp优惠，选目的地国家领取eSIM",
+   "出发前按 App 或二维码安装，落地开启线路自动连网"
+  ],
+  "risk": "每天每国放出少量免费卡，热门目的地常当天领完；必须接收营销短信/WhatsApp（可退订）；不含号码，接不了验证码；覆盖与网速取决于当地合作运营商，限流或断网自负。",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "phone",
+  "residency_requirement": "none",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "any_number",
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "vowifi": "n/a"
+ },
+ {
   "id": "yahoo-japan-agent-i-stamp-rally",
   "dedup_key": "yahoo-japan|software|jp|agent-i-stamp-rally",
   "title": "[日区]Yahoo!JAPAN「Agent i」集章：5次抽奖+完走50円PayPay（先到2万名）",
@@ -16527,6 +16615,45 @@
   ]
  },
  {
+  "id": "clipframe-pro-free-1year",
+  "dedup_key": "clipframe|software|global|pro-free-1year",
+  "title": "[全球]ClipFrame Pro免费1年：AI长视频切片原价$89（11/27前兑换，Windows）",
+  "brand": "ClipFrame",
+  "domain": "sharewareonsale.com",
+  "category": "software",
+  "value": "$89",
+  "value_num": 89,
+  "cost": "真正免费",
+  "highlight": "原价$89的AI切片工具送1年Pro：自动找高光、加字幕、竖屏重构、导出无水印，每月120分钟AI处理；1台Windows、非商用",
+  "regions": "[全球] Windows 7/8/10/11（32/64位），安装包与激活码由SharewareOnSale发放",
+  "start": "2026-11-21",
+  "end": "2026-11-27",
+  "url": "https://sharewareonsale.com/s/free-clipframe-100-discount",
+  "source_url": "https://sharewareonsale.com/s/free-clipframe-100-discount",
+  "source": "SharewareOnSale官方活动页（2026-11-26实读：$89原价现价$0、100% off、条款写明1台电脑1年非商用、无免费更新与技术支持）+ sawahits 2026-11-22实装复核（授权显示12个月至2027-11-22，控制台显示本地剪辑/导出10次上限、版本号0.1.0与标称v1.2.0不一致）",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T14:24:00+08:00",
+  "content": "SharewareOnSale限时送ClipFrame Pro一年授权（原价$89）：把长视频自动切成TikTok/Shorts/Reels竖屏短片，AI找高光、自动字幕、智能重构，导出无水印，每月120分钟AI处理。授权为1台Windows电脑、仅非商用、1年；需先注册ClipFrame账号，再从Billing页粘贴激活码兑换。实测安装包版本号与页面标称不一致，本地剪辑/导出在控制台显示10次上限（官方文案写不限），按控制台额度用；升级版本可能让授权失效。",
+  "conditions": "活动期内（约至11/27 06:00 UTC）领取激活码并在App内兑换；1台Windows、非商用、1年、无免费更新与技术支持，升级或重装可能失效。",
+  "steps": [
+   "打开 SharewareOnSale 的 ClipFrame 页面领取激活码并下载安装包",
+   "安装后在登录页点 Sign up 注册免费 ClipFrame 账号",
+   "进左侧 Billing 页粘贴激活码，Redeem 后确认显示 Pro 12个月",
+   "在控制台核对每月120分钟AI额度与本地剪辑/导出计数，别更新版本"
+  ],
+  "risk": "仅非商用、1台电脑、1年，更新后授权可能失效且无技术支持；安装包放在第三方站点，建议自行扫描；实测控制台本地剪辑/导出各10次，与「不限」文案不符；活动随时可能结束。",
+  "status": "expiring_soon",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "kiroween-2026-4000-credits",
   "dedup_key": "kiro-aws|ai|global|kiroween-2026-4000-credits",
   "title": "[全球]Kiroween 2026黑客松报名送4,000 Kiro积分（≈$80，12/1前申请）",
@@ -17079,7 +17206,7 @@
   "start": "2026-10-26",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "content": "Proton 2026黑五（10-26开卖，到网络星期一11-30）：Proton Unlimited年付首年12个月$77.88（$6.49/月，原价$12.99/月，续订$119.88/年）；Mail Plus年付$29.88（$2.49/月，续订$47.88/年），含15GB空间、10个加密邮箱地址、1个自定义域名；公开页还有Unlimited首月$1（之后$12.99/月）的欢迎价。全系含30天无理由退款。",
   "conditions": "需一次付清整年费用；新用户从public黑五页进入（结算链接带BF2026NEW），老用户需登录后在账户页领专属价；年付方案到期自动按$119.88/年续订，需自己提前取消；退款每人限一次、30天内。",
   "steps": [
@@ -17249,7 +17376,7 @@
   "start": "2025-01-01",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-18",
   "content": "持有U.S. Bank Altitude Connect信用卡的用户，可在GigSky App内免费领取5GB/15天的国际eSIM，活动期内可重复领取（多数Visa卡权益只限一次）；11/30之后该权益缩为一次性1GB/15天（与普通Visa Signature一致）。2026-11-22报道补充：现在领到的5GB可以存着，365天内激活即可，不必马上出行。",
   "conditions": "需持本人名下的Altitude Connect卡且状态正常，并把该卡设为GigSky App默认支付方式；领取截止2026-11-30；领取后365天内激活，激活后15天内用完5GB。",
@@ -17466,7 +17593,7 @@
   "start": "2026-11-23",
   "end": "2026-12-02",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "content": "Maya Mobile黑五买一送一：11/23 00:00 EST至12/2 00:00 EST，在官网或App买14天（$27.99）或30天（$49.99）套餐，落地激活首张套餐后系统会发出一张同款免费套餐码（发到注册邮箱或App内），留到下趟旅行用，需在3个月内兑换、只能在同一Maya账号上用，不能用在赚到它的那一单。3天与7天套餐不参加，第三方转售/市场渠道购买不算，也不能叠加其它优惠码。",
   "conditions": "需在官网或App直购指定14天或30天套餐；必须先激活已购套餐才发免费码；免费码3个月内兑换、只能用于下一单；每个账号一次；3天/7天套餐、转售渠道、其它促销码均不参加。",
   "steps": [
@@ -17994,7 +18121,7 @@
   "risk": "只打App本身，Things Cloud同步账号不在折扣内；跨端要按平台分别付费；iOS版与Mac版价格按App Store地区与汇率不同；活动到11/30结束即回原价；iPad版同期同享-30%，具体价格以App Store为准。",
   "added_at": "2026-11-24T19:07:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-24",
   "status": "expiring_soon",
   "kyc_level": "none",

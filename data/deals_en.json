@@ -7908,5 +7908,53 @@
   ],
   "risk": "The trial lasts 30 days and then bills as you go, so set a budget first; a small provider with less stable capacity and slower model updates than the majors; EU hosting adds latency from Asia; zero retention is the vendor's claim, so still judge sensitive data yourself.",
   "source": "Regolo official pricing page read 2026-11-26 (Free Trial, 30 days, 1M tokens per day, no credit card, all core models, stricter limits) plus the official model page listing Qwen3.8-27B, Gemma 4 31B, DeepSeek V4 Flash and GLM-5.3"
+ },
+ "freeai-free-tokens-30k-daily": {
+  "title": "[Global] Free.ai free allowance: 30,000 tokens a day after signup, 500,000 a month for .edu (573 models, no card)",
+  "highlight": "Confirm your email for 30,000 tokens a day across 573 models from one balance, no card and commercial use allowed; a verified .edu email adds 500,000 tokens a month plus Pro-tier API keys, with video limited to one clip every two days",
+  "regions": "[Global] Web app reachable worldwide with no regional restriction; the education plan needs a school email address",
+  "value": "30,000 tokens a day (500,000 a month for .edu), about $60 a year",
+  "content": "Free.ai puts 573 models and 481 tools on one token balance: after confirming an email you get 30,000 tokens a day for free (6,000 a day without an account), no card, commercial use allowed, and chat, images, music, transcription and OCR are uncapped inside the allowance, while video is limited to one clip every two days. Students and teachers with a verified .edu address apply at free.ai/edu for 500,000 tokens a month plus Pro-tier API keys for self-hosted models. External models such as GPT, Claude and Gemini bill from the same balance at higher rates.",
+  "conditions": "Confirm your email to unlock the daily 30,000 tokens; the education plan needs a school email; external models (GPT, Claude, Gemini) burn the allowance faster and the free pool is mostly self-hosted models.",
+  "steps": [
+   "Sign up at free.ai with an email and click the confirmation link to unlock the daily allowance",
+   "Use chat or any tool straight away and watch the remaining tokens in the console",
+   "Students and teachers apply at free.ai/edu with a school email for 500,000 tokens a month and Pro-tier API keys",
+   "Buy a token pack or subscription at /pricing when needed; external models draw on the same balance"
+  ],
+  "risk": "The free pool is mostly self-hosted open models, while GPT and Claude burn it fast; video is capped at one clip every two days; the education plan needs a real school address and throwaway .edu domains may be reclaimed; the catalogue of models changes as the aggregator adds and drops them.",
+  "source": "Free.ai official pricing page read 2026-11-26 (30,000 tokens a day after email confirmation, 6,000 anonymously, no credit card, commercial use, one video clip every two days) plus the FAQ stating a verified .edu email gets 500,000 tokens a month and Pro-tier API keys, with the application at free.ai/edu; NodeSeek hands-on post from 2026-11-25"
+ },
+ "privjet-free-esim-1gb-74": {
+  "title": "[Global] PrivJet free eSIM: 1GB for 7 days per account in 74 countries (no card, WhatsApp number check)",
+  "highlight": "A private-jet marketplace hands out a data-only eSIM: 1GB for 7 days per account across 74 destinations, no card and no ID, claimed only in the app with a mobile number verified by WhatsApp or voice call, limited daily stock per country",
+  "regions": "[Global] 74 destinations (Japan, Korea, Singapore, Malaysia, Thailand, the Philippines, Vietnam, Hong Kong, Macao, the US, UK, Germany, France, Italy, Spain, Turkey, Kazakhstan and more); the country of your mobile number and your current country are excluded",
+  "value": "1GB for 7 days (about $5)",
+  "content": "PrivJet, a private-jet marketplace run by OnlineBuilders LLC, gives every account one free eSIM: 1GB of data, valid at least 7 days from the first connection, running on local networks through eSIM Access (Redtea Mobile) in 74 countries including Japan, Korea, Singapore, Malaysia, Thailand, the Philippines, Vietnam, Hong Kong, Macao, the US, UK, Germany, France, Italy, Spain, Turkey and Kazakhstan. It can only be claimed inside the iOS or Android app, with the mobile number verified by WhatsApp or a voice call; virtual numbers and SMS-receiving services are rejected, and marketing consent for its SMS and WhatsApp offers is mandatory (you can unsubscribe later and keep the eSIM). Your home country and the country you are in when claiming are not available, so claim before you travel, and install within 7 days or it lapses.",
+  "conditions": "18 or over, one claim per account; claim in the app and verify the number by WhatsApp or voice call (no virtual or disposable numbers); limited stock per country each day; claim before travelling and install within 7 days for at least 7 days of use after landing; data-only with no number and no SMS.",
+  "steps": [
+   "Install the PrivJet app on iOS or Android and sign up, then wait 10 minutes before claiming",
+   "Confirm the mobile number with the prepared WhatsApp message or the voice call reading a 6-digit code",
+   "Accept SMS and WhatsApp offers, choose the destination country and claim the eSIM",
+   "Install from the app or QR code before departure and switch the line on after landing"
+  ],
+  "risk": "Only a few free eSIMs are released per country each day, so popular destinations often run out; marketing SMS and WhatsApp consent is required (unsubscribe any time); no number, so verification texts cannot be received; coverage and speed depend on the local partner network.",
+  "source": "PrivJet official free eSIM page and promotion terms (privjet.net/en/free-esim and /free-esim/terms, terms updated 2026-11-05, read 2026-11-26: one 1GB eSIM per account, 74 countries, 7 days, no payment details, app only, WhatsApp or call verification, limited daily stock) plus the promodescuentos post of 2026-11-16"
+ },
+ "clipframe-pro-free-1year": {
+  "title": "[Global] ClipFrame Pro free for a year: AI long-video clipping worth $89 (redeem by Nov 27, Windows)",
+  "highlight": "A 1-year Pro licence for the $89 AI clipping tool: it finds highlights, adds captions, reframes to vertical and exports without a watermark, with 120 AI minutes a month on one Windows PC for non-commercial use",
+  "regions": "[Global] Windows 7/8/10/11 (32 and 64-bit); the installer and code come from SharewareOnSale",
+  "value": "$89",
+  "content": "SharewareOnSale is giving away a one-year ClipFrame Pro licence (worth $89): it cuts long videos into vertical TikTok, Shorts and Reels clips, finds highlights with AI, adds captions, reframes automatically and exports without a watermark, with 120 AI processing minutes a month. The licence covers one Windows PC, non-commercial use only, for one year; register a ClipFrame account first, then paste the activation code on the Billing page. A hands-on install showed a version number that differs from the listing and a console showing 10 local edits and 10 local exports rather than the advertised unlimited, so plan for what the console shows, and updating the app may unregister the licence.",
+  "conditions": "Claim the code and redeem it inside the app before the offer ends (about 06:00 UTC on Nov 27); one Windows PC, non-commercial, one year, no free updates or support, and updating or reinstalling may break the licence.",
+  "steps": [
+   "Open the ClipFrame page on SharewareOnSale, get the activation code and download the installer",
+   "After installing, click Sign up on the login screen and create a free ClipFrame account",
+   "Open Billing in the left sidebar, paste the code and redeem it, confirming Pro shows 12 months",
+   "Check the 120 AI minutes a month and the local edit/export counters in the dashboard and do not update the app"
+  ],
+  "risk": "Non-commercial use only, one PC, one year, and an update may unregister it with no support; the installer is hosted by a third-party giveaway site, so scan it yourself; the hands-on console showed 10 local edits and exports against an 'unlimited' claim; the giveaway can end early.",
+  "source": "SharewareOnSale official offer page read 2026-11-26 ($89 list price, now $0, 100% off, terms state one computer, one year, non-commercial, no free updates or support) plus a sawahits hands-on check on 2026-11-22 (licence showed 12 months to 2027-11-22, console showed 10 local edits and exports, version 0.1.0 against the listed v1.2.0)"
  }
 }
