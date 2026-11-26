@@ -8052,5 +8052,53 @@
   ],
   "risk": "It needs a Japanese au line, which outsiders can rarely obtain; the AI is free but eats data, so it costs money indirectly; it is an in-app edition with fewer features than paid ChatGPT and no way to carry conversations out; models can be retired as OpenAI changes its API (GPT-5 on 11 December); terms can change at any time.",
   "source": "povo2.0 official press release (2026-10-22: ChatGPT 5.5/5.5 Pro/5.5 Thinking unlimited, Nano Banana 2 three times a day, for povo2.0 subscribers at no charge) + povo AI service page (updated 2026-11-24: app 1.62.0+, unusable at 0.00GB, no sign-in with your own account)"
+ },
+ "citizens-checking-savings-3000": {
+  "title": "[US] Citizens checking + savings up to $3,000: $1,000 monthly direct deposit for 12 months plus full gas rebate (open both by 11/30)",
+  "highlight": "Open a first checking account and a new savings account the same day: get every dollar of gas you put on the debit card back each month ($50 or $100 a month, up to $1,200 over 12 months), and a single $15,000 new-money deposit into savings adds up to $1,800 more",
+  "regions": "[US] Only residents of CT, DC, DE, FL, MD, MA, MI, NH, NJ, NY, OH, PA, RI, VT or VA",
+  "value": "Up to $3,000 ($1,200 checking + $1,800 savings)",
+  "content": "Citizens' Move Money offer (accounts opened 10/1–11/30/2026): open a first eligible checking account and a new savings account on the same day, then each month receive one qualifying direct deposit of $1,000 or more and buy gas with that account's debit card. The bonus matches what you actually spend on fuel, capped at $50 a month ($600 over 12 months) for One Deposit, EverValue and Student Checking, or $100 a month ($1,200) for Quest and Private Client Checking. The savings bonus needs a single $15,000 new-money deposit within 10 business days of opening and pays up to $1,800 by balance tier. Bonuses post on the last day of the month after the month you qualify.",
+  "conditions": "Physical address in CT, DC, DE, FL, MD, MA, MI, NH, NJ, NY, OH, PA, RI, VT or VA; new customers with no Citizens personal checking account in the past 6 months; checking and savings must be opened the same day; Zelle, Venmo and PayPal deposits do not count as direct deposits; cannot be combined with another checking or savings offer; accounts must stay in good standing.",
+  "steps": [
+   "Open a first eligible checking account and a new savings account on the same day through the offer page",
+   "Route $1,000 or more a month of salary or benefits as direct deposit into the checking account",
+   "Buy gas with that account's debit card at merchants coded 5541/5542 and get the amount back each month",
+   "For the savings bonus, deposit $15,000 of new money from outside Citizens within 10 business days and keep it there"
+  ],
+  "risk": "The gas bonus matches actual fuel spending with a monthly cap, so it is not a free $1,200, and you must qualify every month; deposits must be real payroll or benefit payments; both accounts must be opened the same day and stay open, a missed month forfeits that month and closing forfeits the rest; it cannot be combined with the $400 checking offer; bonuses are reported as interest.",
+  "source": "Citizens official offer page and terms (read 2026-11-26: 10/1–11/30 same-day checking + savings, $1,000 monthly direct deposit, 1:1 gas rebate capped at $100/month and $1,200/year, $15,000 new money for up to $1,800); Wallet Hacks update 2026-11-23, CNBC Select review 2026-11-19"
+ },
+ "truist-one-checking-500": {
+  "title": "[US] Truist One/Marquee checking $500: two $2,000 direct deposits and 20 card purchases within 120 days (code at opening, through 2/2/2027)",
+  "highlight": "Open a new Truist One or Marquee checking account, receive two qualifying ACH direct deposits totaling $2,000 or more and make 20 debit card purchases within 120 days to get $500; the promo code must be entered when you open, it cannot be added later",
+  "regions": "[US] Only residents of AL, AR, FL, GA, IN, KY, MD, MS, NC, NJ, OH, PA, SC, TN, TX, VA, WV or DC",
+  "value": "$500",
+  "content": "Truist Checking $500 offer (accounts opened 7/14/2026–2/2/2027, terms updated 2026-10-14): open a new Truist One Checking or Marquee Checking online, in a branch or by phone, then within 120 days of opening receive at least two qualifying ACH direct deposits totaling $2,000 or more and make at least 20 Truist debit card purchases that post to the account. The $500 is deposited into the new account within 10 business days of qualifying. Minimum opening deposit is $50 for One Checking and $100 for Marquee.",
+  "conditions": "A valid promo code must be entered during account opening and cannot be added afterwards; 18+, US taxpayer ID and a physical address in AL, AR, FL, GA, IN, KY, MD, MS, NC, NJ, OH, PA, SC, TN, TX, VA, WV or DC; not eligible if you hold a Truist personal checking account or closed one on or after 7/14/2025; ATM withdrawals and Zelle do not count as purchases.",
+  "steps": [
+   "Open the account from the Truist offer page, enter a valid promo code and accept the offer (minimum $50 for One Checking)",
+   "Receive two or more qualifying ACH direct deposits totaling $2,000+ within 120 days",
+   "Make 20 or more Truist debit card purchases that post within the same 120 days",
+   "Look for the $500 in the new account within 10 business days of qualifying and keep it open until it arrives"
+  ],
+  "risk": "The promo code is single-use and there is no way to enroll after opening, so you need a code from the bank or an official channel first; the 20 purchases must be debit card spend that posts, ATM withdrawals and Zelle do not count; everything must be done within 120 days; a zero or restricted balance at payout forfeits the reward; cannot be combined with other checking offers; reported as interest.",
+  "source": "Truist official Truist Checking $500 Offer terms (read on truist.com 2026-11-26: open 7/14/26–2/2/27, two $2,000 direct deposits plus 20 debit purchases within 120 days, 17 states plus DC, terms updated 2026-10-14); Hustler Money Blog 2026-11-18 notes the raise from $400 to $500"
+ },
+ "dynadot-black-friday-domains-2026": {
+  "title": "[Global] Dynadot Black Friday domains: .com registration $8.99 (code 899COM), transfer $10.49 (code BFCOM26), .io $21.40",
+  "highlight": ".com registration drops to $8.99 and .com transfer to $10.49, both codes valid through 12/1 00:00 UTC; plus .net $7.49, .io $21.40, some extensions at $1.99 and a .com+.org+.net bundle for $19.99",
+  "regions": "[Global] Available worldwide in USD, credit card or PayPal",
+  "value": "Save $2.63 (.com first year $8.99, regular $11.62)",
+  "content": "Dynadot's 2026 Black Friday and Cyber Monday sale (starts 11/23 00:00 UTC, overall through about 12/7): new .com registrations drop to $8.99 with code 899COM (regular $11.62), .com transfers to $10.49 with code BFCOM26, and both codes run to 12/1 00:00 UTC. Also .net at $7.49 (11/21–12/5), .io at $21.40 (11/23–11/30), some extensions at $1.99 (through 12/6) and a .com+.org+.net bundle for $19.99 (through 11/30). A transfer usually adds another year of registration.",
+  "conditions": "Needs a Dynadot account; first year only, premium domains excluded; each code is single-use or limited and may end early; a transfer needs the domain unlocked at the current registrar with an auth code, and domains registered or transferred within 60 days cannot move; the checkout page is the final price.",
+  "steps": [
+   "Sign up or log in at Dynadot and open the official Black Friday page",
+   "Search for the extension you want and apply code 899COM at checkout for a $8.99 .com registration",
+   "To transfer: unlock the domain and get its auth code, then start the bulk transfer and apply code BFCOM26 ($10.49)",
+   "Compare the first-year price with the renewal price before paying; codes revert to the regular price once they expire"
+  ],
+  "risk": "Every price is first year only and renewals go back to the regular rate (about $11.62 a year for .com), so work out the multi-year cost; the two main codes end 12/1 00:00 UTC, earlier than some rivals; transfers carry a 60-day lock and take 5–7 days; premium names and some extensions are excluded.",
+  "source": "Dynadot official Black Friday/Cyber Monday page (read 2026-11-26: sale starts 11/23 00:00 UTC, .com transfer $10.49 with BFCOM26, .net $7.49, .io $21.40, bundle $19.99); Rangka price check 2026-11-25 (.com registration $8.99 with 899COM, both codes end 12/1 00:00 UTC)"
  }
 }
