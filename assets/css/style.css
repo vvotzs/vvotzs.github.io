@@ -536,14 +536,20 @@ button{ font-family: inherit; }
   body.has-sw .rail a{ height: 44px; }
 }
 /* 手机（≤768）：挂牌 34×34，右内距 5px 让它的中线落在 right:7 的 30px 徽标中心上。
-   上内距 46：顶栏 55 高，黄框顶边落在 101，企鹅（16 高）踩在 101、头顶 85，
-   气泡再往上是 59 —— 全部在顶栏下方、右侧 40px 空档里，不遮内容也不挤出留白。
-   气泡改成两行（站长/亲测）才装得进这道 40px 空档，并且还能跟着企鹅走 12px；
-   英文站只有「Tested」一个词，不会被拆行（见下面的 html[lang="en"] 例外）。 */
+   上内距 35（Jun 2026-11-26 #18152 从 46 往上收 11px）：顶栏 55 高，黄框顶边落在 90，
+   企鹅（16 高）踩在 90、头顶 74，单行胶囊占 58~71 —— Blogger 徽标底边 42 到胶囊顶 58
+   还剩 16px，胶囊底 71 到分区标签行顶 74.9 也不碰（标签行最右「抽奖 8」在 341）。
+   挂牌整体上收后，那枚两行高框让出的竖直高度全还给下面：黄框底 124，
+   离下方滑轨「投稿」（手机 top≈225）更从容。
+   「站长亲测 / Tested」改成单行小圆胶囊（原先折成两行的高白框已被 Jun 否掉）：
+   字 8px、999px 圆角、上下内距 1.5px、左右 3px、无尖角，整宽约 40px（8px 汉字
+   4 个字正好 32px）；右缘贴到离屏幕右缘 3px 处（badge 右缘 385 上再出 2px），
+   左缘落在 347，与「11-26 14:10 更新」的右缘（337，.hero 右内距 12px 让出来的）
+   留 10px，360px 屏同样成立。胶囊本身稳稳不动，只有企鹅在黄框顶边踱步。 */
 @media (max-width: 768px){
   .sw-slot{
-    padding: 46px 5px 2px 0;
-    --sw-pt: 46px;
+    padding: 35px 5px 2px 0;
+    --sw-pt: 35px;
     --sw-w: 34px;
     --pet-h: 16px;
     --pet-x: 6px;
@@ -560,24 +566,29 @@ button{ font-family: inherit; }
     line-height: 9px;
     letter-spacing: -.02em;
   }
+  /* 单行小圆胶囊：宽高都由内容定（不再写死 22px），右缘贴到离屏幕 3px，
+     不再跟着企鹅左右跑（跟随留给桌面端那枚留了余量的小气泡）。 */
   .sw-pet-tag{
-    width: 22px;
-    padding: 2px 1px;
+    left: auto;
+    right: -2px;
+    bottom: calc(100% + 3px);
+    width: auto;
+    padding: 1.5px 3px;
+    border-radius: 999px;
     font-size: 8px;
-    line-height: 1.12;
+    line-height: 1;
     letter-spacing: 0;
     text-align: center;
-    white-space: normal;
-    word-break: break-all;
+    white-space: nowrap;
+    word-break: normal;
+    animation: none;
+    will-change: auto;
   }
-  .sw-pet-tag::after{ left: 7px; bottom: -3px; width: 5px; height: 5px; border-bottom-right-radius: 1px; }
+  /* 胶囊不要尖角尾巴：一枚干净的圆胶囊贴在企鹅头顶上方 */
+  .sw-pet-tag::after{ display: none; }
   .sw-pet-sh{ width: 9px; }
-  /* 英文站气泡里只有一个「Tested」,盒子比中文的「站长/亲测」宽一点，
-     字号与踱步幅度各收一点，气泡右缘才能离屏幕右内边还有 3px 余量 */
-  html[lang="en"] .sw-slot{ --pet-go: 7px; }
-  html[lang="en"] .sw-pet-tag{ font-size: 7.5px; }
 }
-/* 英文站：气泡里只有一个「Tested」，不拆行，盒子自然窄一些 */
+/* 英文站：胶囊里只有一个「Tested」，盒子自然更窄，右缘照样贴 3px */
 html[lang="en"] .sw-pet-tag{
   width: auto;
   white-space: nowrap;
@@ -2611,8 +2622,9 @@ footer{
     align-items: center;
     gap: 2px 8px;   /* 导语与上面一行之间只留 2px，首屏不再多一层呼吸 */
     /* Sendwave 挂牌现在绝对定位在这一行右侧、不占文档流：右内距 39px（5 + 34）之外
-       再让 9px，更新时间与 TG 徽标就不会贴着挂牌的左边 */
-    padding: 0 9px 0 0;
+       再让 12px（原 9px）：更新时间的右缘落到 337，与「站长亲测」小胶囊的左缘
+       347 之间留 10px，两者不会挤在一起，走马灯的文字也从这里淡出。 */
+    padding: 0 12px 0 0;
     flex-wrap: nowrap;
   }
   /* 首屏导语：手机端单行走马灯，只占一行（基础样式里已经是同一套，这里只改字号与配色）。
