@@ -7876,5 +7876,37 @@
   ],
   "risk": "These are data-only eSIMs with no phone number and no SMS. Coverage and throttling follow the plan you choose and some countries use partner networks. A code works once, so a wrong plan has to be refunded and rebought. The discount only applies at purchase and is not refunded afterwards. Refund and change rules follow Ubigi's terms.",
   "source": "Ubigi official Black Friday page read on 26 November 2026 (19 November to 3 December 2026, code BLACKFRIDAY, 20% off selected Unlimited plans, one use per code, Japan 30-day unlimited JPY 10,500, US and Europe 30-day unlimited JPY 10,000, activate within six months) plus the official FAQ (code at the last checkout step, validity starts on activation)"
+ },
+ "tokenrouter-free-model-route": {
+  "title": "[Global] TokenRouter free model route: DeepSeek V4.1 Flash at $0 in and out (plus two more free models, no card)",
+  "highlight": "Register, create a key and switch the model name to deepseek/deepseek-v4.1-flash-1017-free: input and output both bill at $0. stealth/union-alpha and NVIDIA Nemotron sit on free routes in the same default group, and the vendor states no end date.",
+  "regions": "[Global] A TokenRouter account; sign-ups are not accepted from Russia, Iran, Belarus, Syria, Cuba or North Korea",
+  "value": "Free API (DeepSeek V4.1 Flash at $0 per million tokens)",
+  "content": "TokenRouter, PaleBlueDot AI's OpenAI-compatible gateway, lists a free route for DeepSeek V4.1 Flash: the model id deepseek/deepseek-v4.1-flash-1017-free bills $0 for input and output, and existing accounts only change the model name without a new endpoint or key. stealth/union-alpha and nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free are also zero-priced in the same default group; everything else is metered. The vendor gives no end date, so the route can return to paid pricing at any time.",
+  "conditions": "Sign up and create a key, no card needed; sign-ups from Russia, Iran, Belarus, Syria, Cuba and North Korea are refused; free routes are rate-limited and the model list can change; only the openai and openai-response endpoints are supported.",
+  "steps": [
+   "Register at tokenrouter.com, verify the email and create an API key in the console",
+   "Set base_url to https://api.tokenrouter.com/v1 (OpenAI compatible)",
+   "Set the model to deepseek/deepseek-v4.1-flash-1017-free",
+   "Check the console usage page after the first calls to confirm the billing is zero"
+  ],
+  "risk": "A small gateway whose free routes can be pulled or repriced at any time; requests pass through a third party, so avoid sensitive content; free routes carry no SLA and may throttle at peak, so keep production traffic off them; the site also sells credit top-ups, so don't top up by mistake.",
+  "source": "TokenRouter official pricing API read 2026-11-26: deepseek/deepseek-v4.1-flash-1017-free, stealth/union-alpha and nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free all report model_ratio and model_price of 0 in the default group, the model page marks the first as Free Self-hosted Inference, and aifree.dev reported the launch on 2026-11-25"
+ },
+ "regolo-free-30-day-1m-tokens": {
+  "title": "[Global] Regolo: 30 days free with 1M tokens a day on every core model, no card (EU data centre, zero retention)",
+  "highlight": "A new account gets a 30-day trial with 1M tokens a day, all core models and no credit card; the OpenAI-compatible endpoint only needs a new base_url, and inference runs in an EU data centre with zero data retention",
+  "regions": "[Global] Sign up on the Regolo site; compute runs in an EU (Italy) data centre and is reachable worldwide",
+  "value": "30 days at 1M tokens a day (about 30M tokens)",
+  "content": "Regolo.ai serves open models from an EU data centre over an OpenAI-compatible API, and its pricing page states the free trial terms: 30 days, 1M tokens per day, every core model (the model page lists Qwen3.8-27B, Gemma 4 31B, DeepSeek V4 Flash and GLM-5.3) and no credit card. Point base_url at https://api.regolo.ai/v1 with your own key. The vendor advertises zero data retention and 100% renewable power; after the trial the account stays open and moves to pay-as-you-go or a subscription.",
+  "conditions": "Register and start the 30-day trial; 1M tokens a day with stricter rate limits than paid plans (fair usage throttling); the free tier covers core chat and embedding models only, and billing starts after the trial.",
+  "steps": [
+   "Sign up at regolo.ai, no credit card required",
+   "Generate an API key in the console",
+   "In your client set base_url to https://api.regolo.ai/v1 and pick a core model",
+   "Watch the remaining days and daily token usage in the console and decide before the trial ends"
+  ],
+  "risk": "The trial lasts 30 days and then bills as you go, so set a budget first; a small provider with less stable capacity and slower model updates than the majors; EU hosting adds latency from Asia; zero retention is the vendor's claim, so still judge sensitive data yourself.",
+  "source": "Regolo official pricing page read 2026-11-26 (Free Trial, 30 days, 1M tokens per day, no credit card, all core models, stricter limits) plus the official model page listing Qwen3.8-27B, Gemma 4 31B, DeepSeek V4 Flash and GLM-5.3"
  }
 }

@@ -234,7 +234,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T02:39:04Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-23T20:52:44Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -258,7 +258,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T03:47:48Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-24T19:57:36Z",
       "search_domains": [
         "x.com"
@@ -281,7 +281,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T02:39:04Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-25T19:46:44Z",
       "entry_url": "https://tg.docofcard.com/rss.json",
       "zero_streak": 0
@@ -301,7 +301,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T02:39:04Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-25T11:33:38Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -321,7 +321,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T02:39:04Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -341,7 +341,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T03:47:48Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-25T21:40:22Z",
       "zero_streak": 0
     },
@@ -362,7 +362,8 @@
       "added_at": "2026-11-26T11:58:42+08:00",
       "entry_url": "https://www.promodescuentos.com/rss/todas",
       "zero_streak": 0,
-      "note": "RSS 直连 200（普通 UA，无 Cloudflare），30 条/次，item 带 <category> 与 pepper:merchant 商家+价格；分组 feed 可补读 /rss/grupo/gratis（免单）、/rss/grupo/telefonia-celular（手机通讯）"
+      "note": "RSS 直连 200（普通 UA，无 Cloudflare），30 条/次，item 带 <category> 与 pepper:merchant 商家+价格；分组 feed 可补读 /rss/grupo/gratis（免单）、/rss/grupo/telefonia-celular（手机通讯）",
+      "last_crawled_at": "2026-11-26T05:15:59Z"
     },
     {
       "id": "uscardforum",
@@ -398,7 +399,7 @@
       "status": "active",
       "added_at": "2026-11-22T05:10:00Z",
       "note": "首页约 203 个卡片、10 个分区（最新福利/跨境券商/香港数字银行/香港实体银行/澳门银行/虚拟银行卡/加密货币/行情工具/跨境工具），每张卡多半指向站内 /post/<id>/ 详情页。站内大量「邀请码：××」「?ref=」「?invite_code=」为站长个人返佣码，收录时必须回溯品牌官网，不得照搬。",
-      "last_crawled_at": "2026-11-26T01:40:09Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "zero_streak": 0
     },
     {
@@ -476,7 +477,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T23:44:18Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-22T02:08:11Z",
       "zero_streak": 0
     },
@@ -514,7 +515,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T00:45:46Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-24T10:10:48Z",
       "entry_url": "https://www.v2ex.com/index.xml",
       "zero_streak": 0
@@ -554,7 +555,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T01:40:09Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "search_domains": [
         "ecitizen.forum"
@@ -575,7 +576,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T01:40:09Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "search_domains": [
         "yunjumin.com"
@@ -723,7 +724,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T00:45:46Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-25T20:47:36Z",
       "entry_url": "https://www.cheapies.nz/feed",
       "zero_streak": 0
@@ -741,7 +742,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T01:40:09Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "zero_streak": 0
     },
@@ -796,7 +797,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T00:45:46Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-26T00:45:46Z",
       "entry_url": "https://www.usdailyrewards.com/feed",
       "zero_streak": 0
@@ -815,7 +816,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T00:45:46Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-15T06:30:00Z",
       "entry_url": "https://budgetfitter.uk/feed"
     },
@@ -851,7 +852,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T01:40:09Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-24T01:53:39Z",
       "zero_streak": 0
     },
@@ -921,7 +922,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T23:44:18Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-14T00:30:00Z"
     },
     {
@@ -937,7 +938,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T23:44:18Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-13T19:30:00Z"
     },
     {
@@ -970,8 +971,9 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-25T23:44:18Z",
-      "last_hit_at": "2026-11-13T09:30:00Z"
+      "last_crawled_at": "2026-11-26T05:15:58Z",
+      "last_hit_at": "2026-11-26T05:15:58Z",
+      "zero_streak": 0
     },
     {
       "id": "topup-telecom",
@@ -986,7 +988,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-26T00:45:46Z",
+      "last_crawled_at": "2026-11-26T05:15:59Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
@@ -1992,7 +1994,8 @@
       "added_at": "2026-11-26T11:58:42+08:00",
       "entry_url": "https://www.hotukdeals.com/rss/new",
       "zero_streak": 0,
-      "note": "Pepper 家族英国站；/rss/new 直连 200、30 条/次，另有 /rss/hot 热榜 feed"
+      "note": "Pepper 家族英国站；/rss/new 直连 200、30 条/次，另有 /rss/hot 热榜 feed",
+      "last_crawled_at": "2026-11-26T05:15:59Z"
     },
     {
       "id": "mydealz",
@@ -2011,7 +2014,8 @@
       "added_at": "2026-11-26T11:58:42+08:00",
       "entry_url": "https://www.mydealz.de/rss/alles",
       "zero_streak": 0,
-      "note": "Pepper 家族德国站；/rss/alles 直连 200、30 条/次；/rss/gruppe/<slug> 分组 feed 实测 404，用主 feed"
+      "note": "Pepper 家族德国站；/rss/alles 直连 200、30 条/次；/rss/gruppe/<slug> 分组 feed 实测 404，用主 feed",
+      "last_crawled_at": "2026-11-26T05:15:59Z"
     },
     {
       "id": "dealabs",
@@ -2030,7 +2034,8 @@
       "added_at": "2026-11-26T11:58:42+08:00",
       "entry_url": "https://www.dealabs.com/rss/tous",
       "zero_streak": 0,
-      "note": "Pepper 家族法国站；/rss/tous 直连 200、30 条/次；免单分组 /rss/groupe/gratuit 亦 200，可补读"
+      "note": "Pepper 家族法国站；/rss/tous 直连 200、30 条/次；免单分组 /rss/groupe/gratuit 亦 200，可补读",
+      "last_crawled_at": "2026-11-26T05:15:59Z"
     },
     {
       "id": "chollometro",
@@ -2049,7 +2054,8 @@
       "added_at": "2026-11-26T11:58:42+08:00",
       "entry_url": "https://www.chollometro.com/rss/nuevos",
       "zero_streak": 0,
-      "note": "Pepper 家族西班牙站；/rss/nuevos 直连 200、30 条/次"
+      "note": "Pepper 家族西班牙站；/rss/nuevos 直连 200、30 条/次",
+      "last_crawled_at": "2026-11-26T05:15:59Z"
     },
     {
       "id": "pepper-pl",
@@ -2068,7 +2074,8 @@
       "added_at": "2026-11-26T11:58:42+08:00",
       "entry_url": "https://www.pepper.pl/rss/wszystkie",
       "zero_streak": 0,
-      "note": "Pepper 家族波兰站；/rss/wszystkie 直连 200、30 条/次"
+      "note": "Pepper 家族波兰站；/rss/wszystkie 直连 200、30 条/次",
+      "last_crawled_at": "2026-11-26T05:15:59Z"
     },
     {
       "id": "pepper-nl",
@@ -2087,7 +2094,8 @@
       "added_at": "2026-11-26T11:58:42+08:00",
       "entry_url": "https://nl.pepper.com/rss/nieuw",
       "zero_streak": 0,
-      "note": "Pepper 家族荷兰站（pepper.com 主域已跳 nl.pepper.com）；/rss/nieuw 直连 200、30 条/次，免费分组 /rss/groep/gratis 亦 200"
+      "note": "Pepper 家族荷兰站（pepper.com 主域已跳 nl.pepper.com）；/rss/nieuw 直连 200、30 条/次，免费分组 /rss/groep/gratis 亦 200",
+      "last_crawled_at": "2026-11-26T05:15:59Z"
     },
     {
       "id": "preisjaeger",
@@ -2106,7 +2114,8 @@
       "added_at": "2026-11-26T11:58:42+08:00",
       "entry_url": "https://www.preisjaeger.at/rss/alle",
       "zero_streak": 0,
-      "note": "Pepper 家族奥地利站；/rss/alle 直连 200、30 条/次"
+      "note": "Pepper 家族奥地利站；/rss/alle 直连 200、30 条/次",
+      "last_crawled_at": "2026-11-26T05:15:59Z"
     },
     {
       "id": "slickdeals",
@@ -2125,7 +2134,8 @@
       "added_at": "2026-11-26T11:58:42+08:00",
       "entry_url": "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1",
       "zero_streak": 0,
-      "note": "首页 rel=alternate 官方 RSS；直连 200、25 条/次；另有 mode=popdeals 人气榜 feed"
+      "note": "首页 rel=alternate 官方 RSS；直连 200、25 条/次；另有 mode=popdeals 人气榜 feed",
+      "last_crawled_at": "2026-11-26T05:15:59Z"
     },
     {
       "id": "airline-esim-partners",

@@ -7798,6 +7798,49 @@
   "utility": 0
  },
  {
+  "id": "regolo-free-30-day-1m-tokens",
+  "dedup_key": "regolo|ai|global|free-30-day-1m-tokens",
+  "title": "[全球]Regolo 30天免费：每天100万token全核心模型，免绑卡（欧盟机房/零留存）",
+  "brand": "Regolo",
+  "domain": "regolo.ai",
+  "category": "ai",
+  "value": "30天×每日100万token（约3,000万token）",
+  "value_num": 20,
+  "cost": "免费试用",
+  "highlight": "注册即得30天试用，每天100万token、全部Core模型可调、不用信用卡；欧盟机房零数据留存，OpenAI兼容端点换个base_url就能接",
+  "regions": "[全球] Regolo官网注册；算力在欧盟（意大利）机房，全球可访问",
+  "start": "",
+  "end": "",
+  "url": "https://regolo.ai/pricing",
+  "source_url": "https://regolo.ai/pricing",
+  "source": "Regolo官方定价页（2026-11-26实读：Free Trial 30天、每天1M tokens、No credit card required、全部Core Models、速率更严）+ 官网模型页（Qwen3.8-27B、Gemma 4 31B、DeepSeek V4 Flash、GLM-5.3）",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T13:22:00+08:00",
+  "content": "Regolo.ai 是在欧盟机房跑开源模型的 OpenAI 兼容 API，定价页写明免费试用：30天、每天100万token、全部 Core 模型可调（模型页列有 Qwen3.8-27B、Gemma 4 31B、DeepSeek V4 Flash、GLM-5.3 等），不需要信用卡。把 base_url 换成 https://api.regolo.ai/v1、填自己的 Key 就能接；官方主打零数据留存与100%绿电，试用结束账号不注销，转按量或订阅。",
+  "conditions": "需注册并领取30天试用；每天100万token上限，速率限制比付费档更严（fair usage throttling）；免费仅覆盖 Core 聊天/嵌入模型，到期后按量计费。",
+  "steps": [
+   "在 regolo.ai 注册账号，无需信用卡",
+   "在控制台生成 API Key",
+   "客户端里把 base_url 改为 https://api.regolo.ai/v1，model 选 Core 模型",
+   "在控制台看剩余天数与当日 token 用量，到期前决定是否转付费"
+  ],
+  "risk": "试用只有30天，到期转按量计费，记得先设好预算；小厂稳定性与模型更新不如大厂；欧盟机房对国内延迟偏高；零留存是官方口径，敏感数据仍自行评估。",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "residency_requirement": "none",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "octopus-mobile-welcome-150",
   "dedup_key": "octopus|bank|hk|mobile-welcome-150",
   "title": "[香港]手机八达通新客迎新HK$150增值额：加卡+单笔HK$100消费+登记（至2027-01-03）",
@@ -10551,6 +10594,49 @@
    "GLOBAL"
   ],
   "cost": "真正免费"
+ },
+ {
+  "id": "tokenrouter-free-model-route",
+  "dedup_key": "tokenrouter|ai|global|free-model-route",
+  "title": "[全球]TokenRouter免费模型路由：DeepSeek V4.1 Flash输入输出$0（另有2款免费，免绑卡）",
+  "brand": "TokenRouter",
+  "domain": "tokenrouter.com",
+  "category": "ai",
+  "value": "免费API（DeepSeek V4.1 Flash $0/百万token）",
+  "value_num": 10,
+  "cost": "真正免费",
+  "highlight": "注册建Key把模型名换成deepseek/deepseek-v4.1-flash-1017-free，输入输出都按$0计费；同组还有stealth/union-alpha与NVIDIA Nemotron两条免费路由，官方未标截止日",
+  "regions": "[全球] TokenRouter账号；俄罗斯、伊朗、白俄罗斯、叙利亚、古巴、朝鲜不开放注册",
+  "start": "",
+  "end": "",
+  "url": "https://www.tokenrouter.com/models/",
+  "source_url": "https://api.tokenrouter.com/api/pricing",
+  "source": "TokenRouter官方模型价格API（2026-11-26实读：deepseek/deepseek-v4.1-flash-1017-free、stealth/union-alpha、nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free 三项 model_ratio与model_price均为0、同属default组）+ 官网模型页标注Free Self-hosted Inference + aifree.dev 2026-11-25报道上线",
+  "verified": true,
+  "last_verified": "2026-11-26",
+  "added": "2026-11-26",
+  "added_at": "2026-11-26T13:19:00+08:00",
+  "content": "TokenRouter（PaleBlueDot AI 的聚合网关，OpenAI 兼容）把 DeepSeek V4.1 Flash 的免费路由挂了出来：模型名 deepseek/deepseek-v4.1-flash-1017-free，输入输出都按 $0 计费，老账号不用换 endpoint 和 Key，改模型名即可。同属 default 组的还有 stealth/union-alpha 与 nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free 两条免费路由，其余模型按量付费。官方未标截止日，随时可能恢复收费。",
+  "conditions": "注册账号建 Key 即可，免绑卡；俄罗斯、伊朗、白俄罗斯、叙利亚、古巴、朝鲜不开放；免费路由有速率限制，额度与可用模型随时调整；只走 openai 与 openai-response 端点。",
+  "steps": [
+   "在 tokenrouter.com 注册并用邮箱验证，进 Console 生成 API Key",
+   "把 base_url 设为 https://api.tokenrouter.com/v1（OpenAI 兼容）",
+   "model 填 deepseek/deepseek-v4.1-flash-1017-free",
+   "调完看 Console 用量页确认计费为 0，避免误用付费模型"
+  ],
+  "risk": "小厂聚合网关，免费路由随时下架或改价；请求经第三方转发，敏感内容别发；免费路由无 SLA、高峰可能限速，别压生产业务；官网另有充值返券活动，别误充。",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "residency_requirement": "none",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "touch-lebanon-magic-welcome-3gb",
@@ -15568,7 +15654,7 @@
   "kyc_level": "cn_ok",
   "utility": 0,
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-23",
   "status": "expiring_soon",
   "added_at": "2026-11-23T20:56:40+08:00",
@@ -16044,7 +16130,7 @@
   "start": "2026-11-01",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-19",
   "content": "우리은행的알뜰폰品牌2026-11-01至11-30黑五活动：对象9款套餐（청년드림 5G 125GB+/LTE 71GB+/5G 50GB+/100GB+/LTE 15GB+、멤버십 데이터 업 LTE 17GB+/10GB+、더블쿠폰 LTE 71GB+/15GB+；WON셀럽与삼성월렛머니另有页面），开通后到活动页应募：连续6个月每月发꿀머니（1꿀=1韩元），按套餐10,500–29,500韩元；同时每月5,000韩元会员券（会员页自领）。新开用户额外：500MB/50분、멤버십 데이터업 10GB+/17GB+三款送Naver Pay 5万韩元；청년드림 6款送bhc 뿌링클+可乐券。USIM免费、eSIM 2,750韩元下载费以账单折扣全返；친구추천双方各得10,000꿀머니。官方称「点数+券合计后体感通信费0元」，账单仍按原价扣。",
   "conditions": "19歳以上、活动期内开通（新开或携号转网）并在活动页完成应募；需保持开通、套餐不变、不暂停不转名，且持续同意营销与短信；꿀머니从开通次次月（2027-01）起每月末发共6个月，需加入우리WON멤버스；每人1回线；Npay 2027-03-18前发；券60天有效。",
@@ -16392,7 +16478,7 @@
   "source": "PolyAI官方定价页（2026-11-23实读：Free credit was $20 now $100 for sign-ups before 1 Dec；Voice output free until 1 Dec；并发2→10）+ Cekura定价解读（2026-11-18）+ X @raw_logits 公告（2026-11-22）",
   "risk": "官方页只写12月1日、没标年份与额度有效期；额度耗尽自动转按量；语音输出免费也只到12/1；API不含电话线路，实际跑外呼要另付。",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-23",
   "added_at": "2026-11-23T20:41:00+08:00",
   "status": "expiring_soon",
@@ -17220,7 +17306,7 @@
   "risk": "11-30 活动结束即停服、不转付费；额度用尽直接拒绝；官方建议不要用于敏感数据或生产环境；实名信息的用途由平台条款决定。",
   "added_at": "2026-11-20T01:05:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-24",
+  "last_verified": "2026-11-26",
   "added": "2026-11-20",
   "status": "expiring_soon",
   "kyc_level": "cn_ok",
