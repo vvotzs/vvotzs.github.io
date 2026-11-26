@@ -8355,5 +8355,39 @@
   ],
   "risk": "Code amounts and their minimum order values are not published and the terms still carry placeholder fields for the pool and partner, so trust the in-game and checkout screens; codes stop when the pool is used up; using a code usually means topping up an order, which means buying more than you planned; CoinsBee gift cards are non-refundable and some brands carry regional limits.",
   "source": "CoinsBee official blog campaign post (published 23 November 2026: 23 November to 7 December, US$500 code pool, one code per order, per-code minimum order value, no scripts or multiple accounts; page re-read 27 November 2026 and still live)"
+ },
+ "clodhost-free-vps-beta": {
+  "title": "[Global] ClodHost beta: first 2 vCPU/4GB/40GB NVMe VPS free forever, plus a free domain for a year",
+  "brand_en": "ClodHost",
+  "highlight": "Sign up during the beta and your first Small server stays free forever: 2 vCPU, 4GB RAM, 40GB NVMe, 20TB a month, plus a free domain for the first year with SSL; the card only takes a $0.00 Stripe authorization",
+  "regions": "[Global] No country list published; sign in with Google or an email link, and you need a card Stripe can authorize for $0",
+  "value": "Free 2C/4GB VPS",
+  "content": "ClodHost is a managed Ubuntu VPS with Claude Code pre-installed, and during the beta the first Small server is free forever: 2 vCPU, 4GB RAM, 40GB NVMe, 20TB of transfer a month, plus a free domain for the first year, automatic HTTPS/SSL and Cloudflare CDN in front. You sign in with Google or an email link, then add a card only so Stripe can run a $0.00 authorization that filters out bots; the official FAQ says nothing is charged, there is no subscription and no trial that expires, and the retail price is $24.95/mo. The server is persistent and gives you root, and the web chat runs DeepSeek V4.1 Flash without a meter; other models such as Claude need your own API key or prepaid credit at their listed rates.",
+  "conditions": "Sign in with Google or an email link, then pass a $0 Stripe card check with nothing charged; only the first Small server is free, larger sizes are billed; unlimited chat covers typing in the web box by hand, while scripts and automation need your own key; the Terms forbid reaching the server over SSH or any interface other than the official one.",
+  "steps": [
+   "Open clodhost.com and sign in with Google or an emailed magic link",
+   "Complete the $0.00 Stripe card authorization (nothing charged, no subscription)",
+   "Create the first Small server and confirm it is 2 vCPU / 4GB / 40GB NVMe and marked free",
+   "Describe what you want so Claude deploys it, and you get yourname.clodhost.com; keep important data backed up to GitHub"
+  ],
+  "risk": "A very new service still in beta: no end date is published and the Terms keep the right to throttle, change features and change prices, so 'free forever' is today's promise rather than a guarantee. The FAQ says full root while the Terms forbid SSH or any non-official interface, so treat the Terms as what applies and keep nothing critical there. The card must pass a Stripe $0 authorization, and virtual or prepaid cards may be refused; NodeSeek users report queues and open disbelief, so back everything up and treat it as a test box first.",
+  "source": "ClodHost site clodhost.com (read 2026-11-27: first server free, first domain free, $0 card check never charged; homepage shows 3.3k+ builders and 233k+ prompts served) + official FAQ /faq ($0.00 Stripe authorization only, no subscription, free during beta, Small lists at $24.95/mo, unlimited chat is hand-typed in the web box on the default model, automation needs your own key) + official tutorial /tutorials/getting-started (Google or magic-link sign-in, $0 check) + NodeSeek thread 992626 (2026-10-19, replies doubt the queue and the vendor) | no community report of a server actually running yet"
+ },
+ "google-workspace-mcp-free-tier": {
+  "title": "[Global] Google Workspace MCP goes GA: 5,000 free calls a day across 8 apps, no card",
+  "brand_en": "Google Workspace",
+  "highlight": "MCP servers and the gwscli command line went GA on 2026-11-24; the Standard tier needs no billing account or card and gives each of the 8 GA apps 5,000 requests a day, throttling without a bill once you pass it",
+  "regions": "[Global] Open to all Workspace customers and developers; a personal Google account is enough and the Standard tier needs no Cloud billing account",
+  "value": "5K requests a day",
+  "content": "On 2026-11-24 Google made the Workspace MCP servers and the official gwscli command line generally available, rolling out to everyone within two weeks. The eight GA apps are Gmail, Drive, Docs, Sheets, Slides, Calendar, Chat and Tasks, with Keep coming soon. The default Standard tier costs nothing: 5,000 requests per day per project per product, plus per-minute rate limits, with no Cloud billing account or credit card required, so one project can reach 40,000 calls a day across the eight apps; past the quota requests are throttled until the window resets and no bill appears. Web and cloud agents connect to the hosted MCP servers, while terminal and sandbox agents use gwscli, which ships packaged skills, dynamic command discovery and scoped sign-in.",
+  "conditions": "A personal Google account is enough and the Standard tier needs no billing account or card; quota is counted per Cloud project, and some MCP tools spend several requests per call; from 2027-02-01 AI agents must reach Workspace through MCP, and direct REST callers stay capped at Standard quota; choosing the Scaled tier removes the daily free MCP allowance.",
+  "steps": [
+   "Enable the Workspace MCP service you need in the Google Cloud console (one of the 8 hosts such as gmailmcp, calendarmcp or drivemcp)",
+   "Keep the project on the default Standard tier without linking a billing account",
+   "Point a web or cloud agent at the hosted MCP endpoint, or install the official gwscli for terminal agents",
+   "Check daily usage in the Cloud console API quota dashboard, and do not count one chat turn as one request"
+  ],
+  "risk": "Quota is per Cloud project, not per account, and each of the eight apps has its own bucket; a single tool call can spend several requests, so do not size anything from chat turns. From 2027-02-01 agents calling REST directly drop to Standard quota, and from 2027-04-01 Scaled-tier Gmail, Calendar and Drive MCP usage is billed from the first request, so switching to Scaled for a higher cap starts costing money at once. MCP and CLI read your own Workspace data, so check what scope you grant and share.",
+  "source": "Google Workspace official blog 2026-11-24, 'Simplifying agent access while keeping organizations in control: MCP servers, CLI, standardized usage tiers' (MCP servers and gwscli reach GA, 8 apps, Standard and Scaled tiers, MCP required from 2027-02-01, Scaled billing from 2027-04-01) + Google for Developers, 'Usage tiers and quotas for Google Workspace APIs and MCP servers' (Standard tier 5,000 requests a day per project per product with no billing account or card, some tools count as multiple requests, last updated 2026-11-24) + gwscli release notes marking GA the same day"
  }
 }
