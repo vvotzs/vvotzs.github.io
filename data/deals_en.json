@@ -9297,5 +9297,57 @@
   ],
   "risk": "The website does not fix the allowances, so the app decides what you get; one claim per person means a wrong country choice is wasted; the Malaysia tier needs a Singapore number; a few hundred megabytes only cover maps and messaging on arrival.",
   "source": "Yoho Mobile official free-eSIM guide page (read 2026-11-27; allowances shown in-app) plus note.com's comparison of six no-payment eSIM trials (2026-07-26) and rangka.com's roundup (2026-11-05)"
+ },
+ "liveterminal-lite-12m-free-trial": {
+  "title": "[Global]LiveTerminal Lite: 12 months free on Black Friday, 4 vCPU / 8GB / 10GB NVMe with no traffic cap (sign up by Nov 30)",
+  "highlight": "New accounts that send \"LET Cyber Monday\" in the panel chat get 12 months at $0: 4 vCPU Ryzen 9 7950X3D, 8GB DDR5, 10GB NVMe, a 1Gbps shared uplink with no monthly cap, in Hetzner Helsinki; NAT shared IPv4 with incoming traffic through port mappings you choose",
+  "regions": "[Global] Hetzner HEL1 in Helsinki, Finland; new accounts signing up before 23:59 PT on Nov 30, one free account per person",
+  "value": "About $119.88 (12 months at $9.99, billed monthly after)",
+  "content": "LiveTerminal.ai's Cyber Monday post on LowEndTalk: accounts created before 23:59 PT on Nov 30 that send \"LET Cyber Monday\" in the dashboard chat are switched to Lite with 12 months free, giving 4 vCPU (AMD Ryzen 9 7950X3D, shared), 8GB DDR5, 10GB NVMe, KVM on Cloud Hypervisor, Hetzner HEL1 in Helsinki, a 1Gbps shared uplink up to 800Mbps per machine and no monthly traffic cap. Networking is NAT shared IPv4 with outgoing traffic on a shared address and incoming traffic through port mappings you choose. After 12 months it bills at $9.99 a month, and extra vCPU or RAM can be added per second (+$0.043 per vCPU-hour, +$0.014 per GB-hour).",
+  "conditions": "New accounts only, created before 23:59 PT on Nov 30, one free account per person; the machine must be actively used for coding, builds and tests rather than as an idle site, bot or VPN, and machines unused for 14 days are reclaimed after a warning email; two or three lines of feedback each month; mining, scanning, spam or resale ends the account.",
+  "steps": [
+   "Sign up for a new account at liveterminal.ai",
+   "Open the dashboard chat at the bottom right and write \"LET Cyber Monday\"",
+   "Wait for the account to be switched to Lite with a 12-month free trial",
+   "Create a machine and use the credentials the panel generates for SSH, setting the incoming port mappings yourself",
+   "Send a couple of lines of feedback each month and keep the machine from idling for 14 days"
+  ],
+  "risk": "Launch-day reports are shaky: several users on LowEndTalk and NodeLoc said the dashboard chat bot did not answer, signup looped back to login, and one saw a \"full\" message. NAT shared IPv4 means ports 22, 80, 443 and 53 are unavailable, so it cannot host a public site, and the disk is only 10GB. It auto-renews at $9.99 a month after 12 months, and idle machines are reclaimed after 14 days, so it does not suit a parked spare box.",
+  "source": "Official LowEndTalk post by the LiveTerminal account (Nov 27, 2026: deadline 23:59 PT Nov 30, $0 for 12 months then $9.99 a month, 4 vCPU/8GB/10GB NVMe/no traffic cap/NAT shared IPv4) plus 1VPS, VPSOFF and zhujitips write-ups (Nov 27) and the NodeLoc thread 119744 (Nov 27, with signup errors and a sold-out report)"
+ },
+ "qwenwork-minimax-m31-flash-free": {
+  "title": "[China]QwenWork MiniMax M3.1 Flash: 7 days of free text inference with no credits used (ends Dec 2)",
+  "highlight": "From Nov 26 11:00 to Dec 2 23:59, picking the MiniMax M3.1 Flash model marked free in QwenWork costs no credits for chat, writing and office tasks; web search, multimodal and other add-ons still burn credits",
+  "regions": "[China] QwenWork personal and enterprise standard editions; the international edition and enterprise flagship edition are excluded",
+  "value": "7 days of free text inference (add-ons still charged)",
+  "content": "Official QwenWork campaign: for seven days from 11:00 on Nov 26 to 23:59 on Dec 2, 2026 (Beijing time), personal and enterprise standard users who pick MiniMax M3.1 Flash, marked free in the model list, use no credits for text inference in chat, writing and office tasks, with no signup or activation needed. The waiver covers only large-language-model text inference; multimodal understanding and generation (images, documents, audio and video, image creation), request summaries, web page summaries, web search and other billable items in agent runs still draw credits. Billing resumes after the window, and past sessions and work are unaffected. The model has a per-minute request cap, so peak hours queue.",
+  "conditions": "A QwenWork account is needed (personal or enterprise standard edition; enterprise flagship and international editions are excluded); use the web, desktop or DingTalk desktop entry; an account in arrears cannot call the model; proxies, crawlers, scripts, automation and merged multi-account allowances are prohibited and can be throttled or banned.",
+  "steps": [
+   "Sign in to QwenWork (web, desktop or the DingTalk desktop entry)",
+   "Pick MiniMax M3.1 Flash, the model marked free, in the model list",
+   "Run chat, writing and office tasks and check the session history and billing show no credits used",
+   "Switch to web search or multimodal only when needed, since those still cost credits",
+   "Finish the tasks you want to test before 23:59 on Dec 2, when billing resumes"
+  ],
+  "risk": "Only text inference is free, while web search and multimodal still draw credits, so agent runs are easy to misread as fully free; there is a per-minute request cap and peak-hour queueing; the campaign can be adjusted for technical reasons; scripts or multi-account use can get accounts banned.",
+  "source": "Official QwenWork campaign page \"MiniMax M3.1 Flash limited-time free activity\" (read Nov 28, 2026: Nov 26 11:00 to Dec 2 23:59, personal and enterprise standard editions, text inference free of credits, add-ons charged) plus X posts by @BlockInsight214 and @Michael_liyang (Nov 27, 2026)",
+  "brand_en": "QwenWork (Alibaba Qwen Office)"
+ },
+ "openference-glm-deepseek-free-models": {
+  "title": "[Global]Openference free models: GLM-5.3-Flash-Free and DeepSeek-V4.1-Flash-1017-Free at $0 with 1M context (through Dec 4 and Dec 31)",
+  "highlight": "One endpoint in both OpenAI and Anthropic formats, with GLM-5.3-Flash-Free and DeepSeek-V4.1-Flash-1017-Free at 1M context, $0 pricing and no draw on plan allowance; accounts without a plan need a balance of at least $1, which free calls never spend",
+  "regions": "[Global] Email signup, with no regional limits stated",
+  "value": "Both models at $0 for input and output (GLM through Dec 4, DeepSeek through Dec 31)",
+  "content": "Openference's official free-model page lists GLM-5.3-Flash-Free (free through Dec 4, 2026 UTC) and DeepSeek-V4.1-Flash-1017-Free (free through Dec 31, 2026 UTC) at $0 per million tokens, with 1M context, image and video input and tool calling, and calls that draw on neither the plan allowance nor the balance. The same host serves OpenAI (/v1/chat/completions) and Anthropic (/v1/messages) formats. Free models answer only with streaming (send stream:true, otherwise 400 streaming_required); an account without a plan needs at least $1 in credits, otherwise 402 free_model_requires_credits. Free usage has its own fair-use limits: too many in-flight requests return 429, and an exhausted daily allowance returns 429 with resets_at.",
+  "conditions": "Register and create an API key; free models must be called with streaming; without a subscription the balance must be at least $1, which is never spent; the model is removed the day after its last free day (404 free_model_ended), so nothing permanent should depend on it; fair-use concurrency and daily caps apply.",
+  "steps": [
+   "Register at openference.com and create an API key in the dashboard",
+   "Without a plan, add at least $1 of credit (free calls do not spend it)",
+   "Set the base URL to https://api.openference.com/v1 and pick GLM-5.3-Flash-Free or DeepSeek-V4.1-Flash-1017-Free",
+   "Always send stream:true; clients such as Cursor, Cline and Claude Code stream by default",
+   "Finish testing before Dec 4 and Dec 31, then move to a paid model"
+  ],
+  "risk": "Free access is time-limited and the model disappears afterwards, so do not build a long-term workflow on it; accounts without a plan must hold $1, which reads like paying for something free; non-streaming clients get a 400; concurrency and daily caps make batch jobs hit 429.",
+  "source": "Openference official \"Free AI API\" page (verified Nov 18, 2026: two free models, last free days Dec 4 and Dec 31, $1 balance requirement, streaming only) plus the official docs plans and models pages (same terms and the 402/400 error codes) and the GLM-5.3-Flash-Free model page ($0 pricing, 1M context)"
  }
 }
