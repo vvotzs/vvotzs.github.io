@@ -8898,5 +8898,84 @@
   ],
   "risk": "The site is currently down under sale traffic and behind a bot check, so the ordering window is short and stock can vanish. $0.79 a month is an extreme price from a small host: overselling and business risk are real, so keep production off it. Whether it renews at $0.79 is unconfirmed, and ordering through a proxy easily trips fraud checks.",
   "source": "NodeSeek post-1085054 (2026-11-27 06:06 UTC: Basic-1, code BFVPS, $0.79/month) and post-1085041 (same, with review link) | LowEndTalk Black Friday 2026 master list entry for 2026-11-27: Cloudnium $0.79/m 2GB VPS in US/CA | portal.cloudnium.net hit a Cloudflare challenge at 15:38 on 2026-11-27 so the official page could not be re-checked; community reported 504s at the same time"
+ },
+ "porkbun-black-friday-2026": {
+  "title": "[Global] Porkbun Black Friday domains from $1.03 for the first year: .asia $1.03, .xyz $1.29, .one $1.53, .io $20.91",
+  "highlight": "Porkbun's official Black Friday page runs until 23:59 UTC on 4 December: .asia $1.03, .xyz $1.29, .cyou $1.28, .one $1.53, .me $2.17, .co $2.37, .cloud $2.87 and .io $20.91 are all first-year prices, with free WHOIS privacy and free SSL on every registration",
+  "regions": "[Global] The whole Porkbun store, priced by extension; checkout takes cards and PayPal",
+  "value": "From $1.03 for the first year (.asia); .com stays at $11.81",
+  "content": "Porkbun's 2026 Black Friday page is still live and says it runs until 23:59 UTC on 4 December, warning that prices stay but shelves empty. First-year prices read off the page: .asia $1.03, .cyou $1.28, .xyz $1.29, .one $1.53, .icu $1.54, .shop $2.06, .blog $2.06, .me $2.17, .co $2.37, .cloud $2.87 and .io $20.91; the $11.81 .com and $12.52 .net figures are everyday prices, not part of the sale. Everything runs through the same checkout with free WHOIS privacy and free SSL by default, which makes it a cheap first year for test sites, panels and side projects, as long as the renewal price is part of the maths for anything kept long term.",
+  "conditions": "First-year registrations only, with renewals at each extension's regular price (.xyz and .cyou tend to be above $10); an account and a card or PayPal are needed; popular extensions and short names go first and prices or stock can change, so confirm in the cart before paying.",
+  "steps": [
+   "Open porkbun.com/event/blackfriday and pick an extension",
+   "Search the name you want and confirm the first-year price in the cart",
+   "Create or sign in to an account with free WHOIS privacy ticked",
+   "Check out, then read the renewal price and auto-renew setting in the account"
+  ],
+  "risk": "The discount covers year one only and renewals jump to the regular price, so long-term holding needs the total cost; in-demand extensions clear out during the sale; the cheapest extensions are ones like .xyz and .cyou with low resale value; registrations cannot be refunded.",
+  "source": "Porkbun official Black Friday page (read 2026-11-27 16:56: runs to 23:59 UTC on 4 Dec, each TLD's first-year price copied) + X posts by @Leo_zhang2018 (2026-11-27 16:31 Beijing, with the official entry link) and @vpsing_de on subdomains at the same time"
+ },
+ "qoder-developer-pass-ultra": {
+  "title": "[Global] Qoder Developer Pass Ultra: open-source contributors get a free month of Ultra with 20,000 Credits (worth $200)",
+  "highlight": "A GitHub account at least two years old with public open-source activity in the last 90 days is enough to apply, with review in 5 to 7 working days: new or non-paying individuals get one month of Ultra with 20,000 Credits, while paying subscribers get 20,000 Credits on top with 3 months to use them, with no card and no posting or referral requirements",
+  "regions": "[Global] Individual accounts in Qoder's supported regions; Teams and Enterprise seats do not qualify",
+  "value": "20,000 Credits (about $200)",
+  "content": "Qoder, Alibaba's agentic coding platform, opened its Developer Pass Ultra on 27 November and takes applications continuously. There are three baseline conditions: an individual Qoder account in a supported region, a GitHub account at least two years old, and public open-source activity in the last 90 days, meaning commits, reviews, releases or issue maintenance in a repository under an OSI-approved licence. One contribution standard out of six will do: maintained repositories totalling at least 1,000 stars (awesome-style lists excluded); projects depended on by at least 100 public repositories or 30 packages; at least 50,000 monthly downloads across package registries; at least 20 merged pull requests in other people's repositories in the past 12 months; at least 10 outside contributors merged in your own repositories in the past 12 months; or core membership in an open-source foundation or a major language project. Applicants below the bar can still apply with one to three representative repositories and a short note. Approved passes land on the account automatically and fall back to the free tier without auto-renewing.",
+  "conditions": "An individual Qoder account (free to create) plus a GitHub account two years old meeting any one contribution standard; one pass per person and Teams or Enterprise seats are excluded; review takes 5 to 7 working days and only successful applicants are emailed; the month of Ultra includes 20,000 Credits valid for one month (three months for the top-up pack), and unused credits expire.",
+  "steps": [
+   "Register and sign in to an individual Qoder account",
+   "Open the Developer Pass Ultra page on docs.qoder.com and press apply",
+   "Fill in the GitHub profile, the Qoder account email and one to three repositories with a short contribution note",
+   "Wait for the review email; once approved the pass is credited and works across Qoder, the IDE, the CLI and plugins"
+  ],
+  "risk": "The bar is high for ordinary users and only real maintainers clear it; only successful applicants are told, with no reason given on rejection; credits expire after a month, so they cannot be banked; the terms ban invented contributions and buying or sharing accounts, and violations are clawed back.",
+  "source": "Qoder official event document (read 2026-11-27 16:58: both tiers, three baseline conditions, six contribution standards, review and expiry rules) + linux.do thread (2026-11-27) + third-party checks by two Chinese deal-verification sites (2026-11-27) + X roundup by @ShuaiMilo (2026-11-27 16:44 Beijing)"
+ },
+ "kimi-for-science-2026": {
+  "title": "[Global] Kimi for Science: up to CNY 150,000 of API credits for selected researchers (about 7 billion tokens, first round closes 8 December)",
+  "highlight": "Open to researchers and teams in the natural sciences, engineering and related interdisciplinary fields, with credits allocated by research need: up to CNY 150,000 of Kimi API credit (around 7 billion tokens, not cash), plus technical support, early access to new models and long-term collaboration; the first round closes on 8 December and resubmissions replace earlier ones",
+  "regions": "[Global] Applied for online by researchers in the natural sciences and engineering at universities and research institutes; credits follow the review result",
+  "value": "Up to CNY 150,000 (about $20,000) of API credit",
+  "content": "Moonshot AI opened the first round of Kimi for Science on 26 November for three kinds of work: improving an existing research workflow with Kimi, trying new research methods, or attacking harder scientific problems. Selected applicants receive up to CNY 150,000 of Kimi API usage (officially about 7 billion tokens, not a cash grant) sized to their research needs and the review, plus support from the Kimi team, early access to new models, curated research and community resources, and longer-term collaboration for strong teams. A good application covers the researchers, the research task, data sources, the current workflow, how Kimi would be used and the metrics for validating results, with token estimates and milestones optional. The first round closes on 8 December, further rounds follow, and a later submission replaces an earlier one.",
+  "conditions": "The first round is limited to researchers and teams in the natural sciences, engineering and related interdisciplinary fields; the form asks for the research task, data sources, current workflow and expected usage; submit by 8 December, and resubmitting replaces the earlier application; results go to the application email, with selection and amount decided by the review.",
+  "steps": [
+   "Open the application entry on kimi.com/news/kimi-for-science-program",
+   "Prepare researcher details, the research task, data sources, the current workflow, planned Kimi use and validation metrics",
+   "Fill in the form and submit before 8 December, resubmitting if anything changes",
+   "Wait for the review email, then use the allocated credits through the API"
+  ],
+  "risk": "Selection is by review, so ordinary users will not get it; credits are API usage rather than cash and cannot be withdrawn; a vague research plan will not be selected; the number of places and the timing of later rounds are unpublished.",
+  "source": "Kimi official announcement page (published 2026-11-26, read 2026-11-27 16:59: 8 December deadline, up to CNY 150,000 of API credit for about 7 billion tokens, FAQ and required materials) + Hong Kong Economic Times (2026-11-27) + Nanjing Institute of Technology notice forwarding the call (2026-11-27) + X roundup by @ShuaiMilo (2026-11-27 16:44 Beijing)"
+ },
+ "crawl4ai-cloud-free-credits": {
+  "title": "[Global] Crawl4AI Cloud: 1,000 free credits a month, no card, across 109 scraping tools",
+  "highlight": "The official hosted API from the Crawl4AI team: verify an email and get a key with 1,000 credits a month and no card; a plain page costs 0.1 credit, a real-browser page 0.5 and a hard site 2, failed calls are free, and one key reaches 109 tools over 47 sites plus any web page",
+  "regions": "[Global] Hosted in the US, the EU (Germany) and Singapore; an email verification gets the key and no card is needed",
+  "value": "1,000 credits a month (roughly 10,000 plain pages)",
+  "content": "Crawl4AI is the open-source crawler with 87,000 GitHub stars, and its official Cloud version now includes 1,000 free credits every month: verifying an email issues an API key without a card. Credits are spent per call, with a plain page at 0.1 credit, a page needing a real browser at 0.5 and a hard site at 2, and failed calls are not charged, so the monthly grant covers roughly 10,000 plain pages. Rate limits are 10 requests a minute with two in flight. One key reaches 109 tools: scraping and structured extraction from any page, listing a whole site and crawling it level by level, its own search plus Google's results page, Google Maps and reviews, the Meta ad library, and structured rows from 47 sites including YouTube, Amazon, Reddit, GitHub and Hacker News, all also usable as an MCP server inside an agent. The team says Cloud is in soft launch, so prices and the free grant can change; self-hosting the open-source crawler removes the limits.",
+  "conditions": "An email verification issues the key; the free grant is 1,000 credits a month at 10 requests a minute and 2 concurrent; prices and the grant can change during the soft launch; scraping third-party sites is the caller's responsibility under robots rules and local law.",
+  "steps": [
+   "Open crawl4ai.com and verify an email to get a free API key",
+   "Put the key into the API calls or the MCP server",
+   "Scrape one plain page (0.1 credit) to confirm the grant and the output"
+  ],
+  "risk": "Prices and the free grant may change while Cloud is in soft launch; the grant resets monthly and does not accumulate; the rate limit is low, so bulk scraping needs a queue or self-hosting; scraping other people's sites carries compliance duties; SOC 2 is still in progress, targeted for January 2027.",
+  "source": "Crawl4AI Cloud homepage (read 2026-11-27 17:00: 1,000 free credits a month, no card, US/EU/SG regions, 109 tools over 47 sites, 87k stars) + X post by @okeyccronald (2026-11-27 16:50 Beijing, checked against the official page and self-described as not hands-on; the $0.001 credit price and the 0.1/0.5/2 charges come from that post)"
+ },
+ "ahamo-stella-ai-set-discount": {
+  "title": "[Japan] ahamo x Stella AI: first month free plus 11 months off, a full year without the monthly fee (up to JPY 2,728 a month)",
+  "highlight": "Signing up for Stella AI on an eligible plan gives the first month free and then 11 months of credit equal to the monthly fee, a full year at no cost: Light JPY 1,078, Standard JPY 1,628 and Premium JPY 2,728 for 250, 1,000 and 3,000 uses a month",
+  "regions": "[Japan] Customers on ahamo, eximo, eximo Poikatsu or docomo MAX and the other eligible plans; JAL Mobile powered by ahamo is excluded",
+  "value": "A year without the monthly fee (about JPY 32,736 on Premium)",
+  "content": "Docomo and SUPERNOVA run a Stella AI set discount for ahamo and other eligible plans: the first month of Stella AI is free and the following 11 months carry a credit equal to the monthly fee, which adds up to a full year at no cost, worth up to about JPY 32,736 on the Premium tier at JPY 2,728 a month. Stella AI offers the latest models including ChatGPT, Deep Research (about 150 runs a month on Premium) and the Stella Extension for browsers and Office, with usage counted in credits: 250, 1,000 and 3,000 a month across the three tiers. The official page notes a price revision from 1 December 2026, so tier prices and credit allowances after that date follow the published revision.",
+  "conditions": "A line on ahamo, eximo, eximo Poikatsu, docomo MAX or another eligible plan is required; the Stella AI account must be linked to a d ACCOUNT; JAL Mobile powered by ahamo is excluded; the discount is a monthly-fee credit rather than cash and ends if the plan is changed or cancelled; prices and credits may change with the 1 December revision.",
+  "steps": [
+   "Confirm the ahamo or eximo plan is on the eligible list",
+   "Create a Stella AI account at stella-ai.net by linking a d ACCOUNT",
+   "Pick a tier (Light, Standard or Premium) and the first month is free automatically",
+   "From month two the set discount applies for 11 months without a code; check before it ends whether to keep the subscription"
+  ],
+  "risk": "A paid ahamo line is needed, so this is a plan perk rather than a free product; it is not cash, and cancelling or changing the plan ends it; the 1 December price revision changes what the credit is worth; AI usage is counted in runs, with follow-ups in the same thread counted too; a d ACCOUNT link is mandatory.",
+  "source": "ahamo official campaign page (read 2026-11-27 17:02: eligible plans, first month free plus 11 months of set discount, three tiers and their credits, 2026-12-01 revision notice) + Stella AI official sign-up page (eligible plans and the JAL Mobile exclusion) + K-tai Watch, ITmedia and Mynavi coverage (2024-11-22) of how the set discount works"
  }
 }
