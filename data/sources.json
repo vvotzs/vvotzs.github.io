@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-23T20:35:00+08:00",
+  "generated_at": "2026-11-27T14:10:00+08:00",
   "_meta": {
     "title": "羊毛情报局采集源表（P0/P1/P2 分层调度）",
-    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets；第十轮（2026-11-22）：新增 banknav（P1，list，海外银行卡/eSIM/券商导航），1point3acres 因 403 拦截与零产出降为 P2；第十一轮（2026-11-23）：Jun 拍板改为 24 小时整点每小时一轮、取消夜间休眠，分级周期改为 P0=1h / P1=3h / P2=24h（x-deals 起 P0 cadence 1h），每轮源位 12→30、P2 每轮保底 1→2；第十二轮（2026-11-26，Jun 指令）：接入 promodescuentos.com（P0 1h，RSS /rss/todas）与 Pepper 家族 hotukdeals / mydealz / dealabs / chollometro / pepper.pl / nl.pepper.com / preisjaeger.at 及 slickdeals（P1 3h，均实测 RSS 直连 200）；pepper.it 2025-08-14 停站、pelando.com.br 与 desidime.com 为 Cloudflare 403、redflagdeals.com 无可用 RSS，三者只走 web_search / 浏览器兜底",
+    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets；第十轮（2026-11-22）：新增 banknav（P1，list，海外银行卡/eSIM/券商导航），1point3acres 因 403 拦截与零产出降为 P2；第十一轮（2026-11-23）：Jun 拍板改为 24 小时整点每小时一轮、取消夜间休眠，分级周期改为 P0=1h / P1=3h / P2=24h（x-deals 起 P0 cadence 1h），每轮源位 12→30、P2 每轮保底 1→2；第十二轮（2026-11-26，Jun 指令）：接入 promodescuentos.com（P0 1h，RSS /rss/todas）与 Pepper 家族 hotukdeals / mydealz / dealabs / chollometro / pepper.pl / nl.pepper.com / preisjaeger.at 及 slickdeals（P1 3h，均实测 RSS 直连 200）；pepper.it 2025-08-14 停站、pelando.com.br 与 desidime.com 为 Cloudflare 403、redflagdeals.com 无可用 RSS，三者只走 web_search / 浏览器兜底；第十三轮（2026-11-27，Jun 指令）：接入 YouTube 频道 @ddktricks（channel_id UCwvqKV96OXClu581qZZ_0Uw，P1 3h，官方 videos.xml RSS 实测 200/15 条）——该频道以免费 eSIM 教程为主，视频只作线索，收录一律回溯品牌官网条款，排除 Telegram 转售与订阅陷阱。",
     "cadence": {
       "rounds_per_day": 24,
       "round_times_local": [
@@ -58,21 +58,21 @@
       "P0_slots_per_day": 168,
       "P1_slots_per_day": 344,
       "P2_slots_per_day": 48,
-      "note": "每小时 30 个源位 × 24 轮；P0 7 个×24=168，P1 43 个每 3h 一轮、每日需求约 344 个源位，P2 44 个每日 44 个源位，均在 720 源位容量内"
+      "note": "每小时 30 个源位 × 24 轮；P0 6 个×24=144，P1 44 个每 3h 一轮、每日需求约 352 个源位，P2 44 个每日 44 个源位，均在 720 源位容量内"
     },
     "writeback": "plan_round.py --mark-done / --mark-hit / --mark-zero 回写 last_crawled_at、last_hit_at 与 zero_streak；P0 14 天无产出→P1、P1 30 天→P2、P2 90 天→paused（manual 源不参与；升级只能人工）",
     "paused_policy": "paused_sources 不进调度、不占 P2 配额；恢复用 plan_round.py 的 --activate 或人工移回 sources",
     "counts": {
       "scheduled": 94,
-      "P0": 7,
-      "P1": 43,
+      "P0": 6,
+      "P1": 44,
       "P2": 44,
       "manual": 5,
-      "paused": 11
+      "paused": 12
     },
     "search_group": "entries[].kind=search_group：domains 最多 4 个，整组每轮只发 1 条 `(site:a OR site:b …) (词集)` 查询；after_date = last_crawled_at − 1 天（首抓取今天 − 30 天）；blocked 域名只核验不抓取（优先合作方/发行方官方页，否则每天最多 1 次浏览器开 verify_urls）；「这组有产出」= 至少 1 条结果 URL 落在组内域名、其 url 与 dedup_key 都不在 deals/candidates，且按 Q4(e) 写成候选/条目，满足才 --mark-hit；discovered_from 写 `<组id>:<域名>`；零结果用 --mark-zero，下次自动改用 fallback 词集",
     "manual_policy": "status=manual 的源留在表内注明手动，但不进调度、不占 P1/P2 源位、不参与降频，只在线索出现时人工核",
-    "updated_at": "2026-11-26T11:58:42+08:00"
+    "updated_at": "2026-11-27T14:10:00+08:00"
   },
   "keyword_groups": [
     {
@@ -2126,6 +2126,23 @@
       "zero_streak": 0,
       "note": "首页 rel=alternate 官方 RSS；直连 200、25 条/次；另有 mode=popdeals 人气榜 feed",
       "last_crawled_at": "2026-11-27T04:12:34Z"
+    },
+    {
+      "id": "youtube-ddktricks",
+      "name": "DDK TrickS（YouTube 免费 eSIM 频道）",
+      "url": "https://www.youtube.com/@ddktricks",
+      "tier": "P1",
+      "entry_type": "rss",
+      "cadence_h": 3,
+      "categories": [
+        "esim"
+      ],
+      "lang": "en",
+      "status": "active",
+      "added_at": "2026-11-27T14:10:00+08:00",
+      "entry_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwvqKV96OXClu581qZZ_0Uw",
+      "zero_streak": 0,
+      "note": "channel_id UCwvqKV96OXClu581qZZ_0Uw（1.07K 订阅、115,763 总观看，2025-03-22 建号，41 支视频/30 条在架）。官方 videos.xml 实测 200（27,377 B，最近 15 条，覆盖 2026-02-03 至 2026-11-17）；裸 UA 与连续请求会间歇 503，须带浏览器 UA 并重试。更新约 1–2 条/月，以免费 eSIM 教程为主。视频简介常挂 Telegram 机器人/转售链接（t.me/ddktrick2、t.me/Ukesimbot）与第三方分销（zamesims 等），只作线索：收录必须回溯品牌官网条款，频道本身不作 source_url；标题含 Trick/Unlimited 的绕过类内容不收。"
     },
     {
       "id": "airline-esim-partners",
