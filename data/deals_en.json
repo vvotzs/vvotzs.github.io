@@ -8556,5 +8556,69 @@
   ],
   "risk": "Thai ID only, so a foreign passport cannot open it; data stops when used up and does not roll over; only 10 minutes a year are included and extra calls bill at standard rates; the eSIM must be activated within 30 days; pack contents can change.",
   "source": "AIS official GOMO pack page read 27 Nov 2026 (THB 99/199 annual packs, 10GB/25GB per 365 days, 10 or 50 minutes, AIS Super WiFi, physical SIM and eSIM) plus the AIS Official Shopee listing terms (Thai ID only, activation within 30 days)"
+ },
+ "claude-duet-promo-credit": {
+  "title": "[US] Claude Duet promotional credit: $500 a week up to $3,000 (Nov 23 – Dec 31, eligibility list already closed)",
+  "highlight": "Accounts that already had both Claude Duet and a paid US plan before Nov 23 get the credit added in stages: $500 a week, up to $3,000 in total, with nothing to claim and unused weekly credit reset to zero",
+  "regions": "[US] Personal Pro, Max and Ultra plans billed in the US or a US territory plus Team; Enterprise and government or public-sector Team excluded",
+  "value": "$3,000",
+  "content": "From Nov 23 to Dec 31, 2026 at 11:59 PM PT, Anthropic adds promotional credit to some Claude Duet accounts: $500 a week, capped at $3,000, following each account's weekly reset. The credit shows up as Claude Duet credit under Settings > Usage on the web, with nothing to apply for or buy. It is spent inside Claude Duet at standard API rates before your plan limits, but it does not reset those limits and does not cover Cowork sessions, Claude Code sessions started by Duet, fast mode, Claude Fable, or long-context work that needs usage credits. Unused weekly credit expires at each reset; the final week's credit lasts until Dec 31.",
+  "conditions": "The eligibility list closed at 00:00 PT on Nov 23, 2026: it covers accounts that already had Claude Duet and a paid US plan (personal Pro/Max/Ultra billed in the US or a US territory with no plan billed elsewhere; Team uses its billing country on file) and had actually used Duet. New subscriptions, new Team seats and turning Duet on later do not qualify. One credit per person, and accounts that fit both a personal plan and Team get it on the personal plan.",
+  "steps": [
+   "Open Settings > Usage on the Claude web app and look for Claude Duet credit",
+   "Use Claude Duet normally; the credit is deducted first automatically",
+   "Check each account or Team seat you have, one at a time",
+   "Spend the week's $500 before the reset, since unused credit expires"
+  ],
+  "risk": "The list is closed, so new and newly enabled Duet accounts cannot take part; it does not cover Cowork, Claude Code sessions Duet starts, fast mode, Fable or long context; weekly credit expires; cancelling, going past due, pausing or moving to the free plan ends it, and Team credit does not follow a moved seat.",
+  "source": "Claude Help Center article on the Claude Duet promotional credit updated Nov 23, 2026 (Nov 23 – Dec 31 23:59 PT, $500 a week, $3,000 cap, list locked) plus DealNews (Nov 26) and user screenshots of the credit from Linux.do and r/claudecode"
+ },
+ "krungthai-wealth-gother-esim-10gb": {
+  "title": "[Thailand] Krungthai WEALTH x Gother: a free 10GB/7-day eSIM, up to 2 per customer (to Dec 31, limited to 3,000)",
+  "highlight": "Krungthai WEALTH customers who book through Gother and pay with a KTC-Krungthai card can claim a free 10GB/7-day eSIM in Krungthai NEXT, one for ICONIC and PRECIOUS+ and two for PRIVATE BANKING VISA INFINITE, usable in Japan, China, South Korea, Hong Kong and Taiwan",
+  "regions": "[Thailand] Krungthai WEALTH customers who meet the bank's asset threshold with the named KTC co-branded cards; the eSIM only works in Japan, China, South Korea, Hong Kong and Taiwan",
+  "value": "10GB x 1-2 eSIMs (about $30-60)",
+  "content": "From Oct 20 to Dec 31, 2026, Krungthai WEALTH runs a three-way campaign with Gother and KTC: eligible wealth customers who book flights, hotels or activities through Gother and pay in full with a KTC-Krungthai co-branded card can claim a free eSIM in the Krungthai NEXT app. The eSIM gives 10GB for 7 days and works only in Japan, China, South Korea, Hong Kong and Taiwan. KTC-KRUNGTHAI ICONIC and PRECIOUS+ get one, PRIVATE BANKING VISA INFINITE gets two, and the whole campaign is capped at 3,000 eSIMs. Claims close Dec 31 and the eSIM must be activated by Jan 31, 2027, with the 7 days starting at activation. The same campaign also offers up to 8% off Gother bookings and one overseas airport transfer.",
+  "conditions": "You must be a Krungthai WEALTH customer meeting the bank's asset threshold; pay a Gother booking in full with KTC-KRUNGTHAI ICONIC, PRECIOUS+ or PRIVATE BANKING VISA INFINITE; contact Gother (02-001-5855) at least 15 business days ahead to book and give the claim code; one claim per booking; the eSIM cannot be transferred or exchanged for cash; limited to 3,000 in total.",
+  "steps": [
+   "Pick a trip on Gother (gother.com/th-th/promotions/ktc) and pay in full with a KTC-Krungthai card",
+   "Call Gother at least 15 business days ahead to confirm the booking and follow its instructions",
+   "Claim the eSIM code on the campaign page in the Krungthai NEXT app",
+   "Install the eSIM as Gother instructs and activate it before Jan 31, 2027 (valid 7 days from activation)"
+  ],
+  "risk": "The bar is high: a wealth-customer asset threshold, a specific co-branded card and a paid Gother booking; only 3,000 eSIMs exist for the whole campaign; the 7 days run from activation with no rollover; it is a data-only eSIM with no number; the bank disclaims responsibility for the eSIM service, so support goes through Gother.",
+  "source": "Krungthai WEALTH official campaign page detail/128 read 27 Nov 2026 (Oct 20 - Dec 31 claim window, travel to Dec 31 2027, 10GB/7-day eSIM, 1-2 per card tier, 3,000 cap, activation by Jan 31 2027) plus the Thai government news site (Nov 13) and Bangkok Today"
+ },
+ "nubank-nucel-free-trial-10d": {
+  "title": "[Brazil] Nubank NuCel 10-day free trial: 5GB, unlimited local calls and 1,100 texts, eSIM available",
+  "highlight": "Nubank's own MVNO NuCel gives a 10-day free trial with 5GB of data, WhatsApp that does not count against it, unlimited local calls in Brazil and 1,100 texts, set up as an eSIM in the app on a temporary number so you keep your own",
+  "regions": "[Brazil] Nubank customers only (invitations emailed to Ultravioleta customers from Nov 2026); a Brazilian number that works only inside Brazil",
+  "value": "5GB plus unlimited local calls (about $10)",
+  "content": "NuCel, Nubank's MVNO, offers a 10-day free trial: up to 5GB of mobile data, WhatsApp messages, voice notes, images and video that do not use the allowance, unlimited local and long-distance calls to Brazilian landlines and mobiles, and 1,100 domestic texts, all on a temporary number, so your own number stays put and porting in is blocked during the trial. From Nov 16, 2026 Nubank emails invitations to Ultravioleta customers and everything happens in the Nubank app, with an eSIM or a free physical SIM by post. The trial ends at 10 days or 5GB, whichever comes first, and turns into the paid NuCel 25GB plan (from BRL 45 a month, plus 10GB extra for the first three months) unless you cancel first.",
+  "conditions": "You need a Nubank account and a Brazilian CPF and must never have had NuCel before (one trial per CPF); apply in the Nubank app and attach a valid payment method; an eSIM counts from the moment you claim it (not activating within 10 days moves you to the paid plan), a physical SIM counts from activation (no activation in 30 days cancels it); no add-on packs and no number porting during the trial; cancel in the app before it ends or you are charged for NuCel 25GB.",
+  "steps": [
+   "Check for Nubank's NuCel trial invitation email (Ultravioleta customers are invited first)",
+   "Open the NuCel section of the Nubank app, choose eSIM and attach a payment method",
+   "Scan and install the eSIM to start the 10-day / 5GB clock",
+   "Cancel in the app before the trial ends, or port your number and move to a paid plan"
+  ],
+  "risk": "Auto-renewal trap: not cancelling means being charged the NuCel 25GB monthly fee, with daily retries for three days and then line cancellation if the payment method fails; an eSIM starts the clock at claim time and can move you to the paid plan without activation; the official terms page still shows an April-July 2026 activation window while the current rollout is invite-only, so no invitation means no entry in the app; it works only inside Brazil.",
+  "source": "Nubank official Oferta Teste de NuCel terms (10 days or 5GB, unlimited local calls, 1,100 texts, one per CPF, eSIM timing rules, automatic move to NuCel 25GB) plus Tecnoblog, Mobiletime and antihype reports of Nov 16-17 2026 confirming in-app eSIM activation and the Ultravioleta invitation"
+ },
+ "sandscale-free-tier": {
+  "title": "[Global] Sandscale free tier: 100 awake vCPU-hours a month of microVM sandboxes, 3 boxes at once and 5GB of storage",
+  "highlight": "Firecracker microVM sandboxes for coding agents: the free tier gives 100 awake vCPU-hours a month, 3 boxes at once, 5GB of storage and up to 2 vCPU per box, with paused and idle time free and no card required",
+  "regions": "[Global] Sign up online; billing counts only awake time, paused and idle boxes are free, regions follow the platform's available zones",
+  "value": "Free (100 vCPU-hours a month)",
+  "content": "Sandscale runs Firecracker microVM sandboxes, workspaces and build hosts for coding agents such as Claude Code and Codex, with an SDK and MCP integration, billing only while a box is awake. The free tier costs $0 and includes 100 awake vCPU-hours a month, up to 3 boxes at once, 5GB of storage, one workspace, a maximum of 2 vCPU per box and a 4-hour session limit with no burst. Pro is $20 a month billed annually ($25 monthly) for 1,500 awake vCPU-hours, up to 16 vCPU, preview links and 4x burst. It launched on Product Hunt on Nov 26, 2026.",
+  "conditions": "Sign up and use it without a card; the free tier allows at most 2 vCPU per box, 3 boxes at once and 4-hour sessions; the 100 awake vCPU-hours a month stop when used up and further use needs Pro; only awake time is billed.",
+  "steps": [
+   "Create a free account at sandscale.dev, no card needed",
+   "Connect through the SDK or MCP and create a sandbox or workspace",
+   "Pause the box when the agent finishes so billing stops",
+   "Watch the remaining awake vCPU-hours in the console"
+  ],
+  "risk": "Launched only on Nov 26, 2026, so reliability and the long-term free allowance are unproven; the free tier is small (100 vCPU-hours a month, 2 vCPU per box, 4-hour sessions) and suits light tests only; production or long tasks need a paid plan.",
+  "source": "Sandscale official pricing page read 27 Nov 2026 (Free $0, 100 awake vCPU-hours, 3 boxes at once, 5GB storage, 2 vCPU per box, 4-hour sessions; Pro $20 annual or $25 monthly, 1,500 hours, 16 vCPU) plus the Nov 26 2026 NewAIToolsToday launch listing"
  }
 }
