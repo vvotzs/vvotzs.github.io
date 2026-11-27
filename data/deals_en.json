@@ -7457,7 +7457,7 @@
    "Watch for the AVAX cashback after transactions settle; draw winners are emailed after the promotion ends"
   ],
   "url": "https://pay.ethena.fi/promotions",
-  "risk": "Cashback is paid in AVAX, so its value moves with the price; the promotion budget is limited and can end early, so check the remaining budget shown on the terms page before spending. Rewards are calculated on the settled amount at the AVAX price of that moment, and refunds are clawed back while still counting against your cap. Draw winners must still pass KYC before payment. Many exclusions apply, so do not use gift cards or crypto purchases to reach the threshold.",
+  "risk": "Cashback is paid in AVAX, so its value moves with the price; the promotion budget is limited and can end early, so check the remaining budget shown on the terms page before spending. Rewards are calculated on the settled amount at the AVAX price of that moment, and refunds are clawed back while still counting against your cap. Draw winners must still pass KYC before payment. Many exclusions apply, so do not use gift cards or crypto purchases to reach the threshold. On 27 Nov 2026 at 11:06 UTC+8 the terms page showed only $854.36 (0.9%) of budget left and flagged it as running low, so the offer may end within hours.",
   "source": "Ethena Pay official Promotion Terms (updated 23 Nov 2026, section 3.1 Black Friday Offer: 50%, $100 cap, $200 threshold, 27 Nov-1 Dec UTC+8, Weekend Draw of ten winners up to $1,000, free entry form, budget-limited) + Ethena announcement (24 Nov 2026) + APPDO Digital Life Guide Telegram (25 Nov 2026)"
  },
  "regions-lifegreen-checking-400": {
@@ -8738,5 +8738,52 @@
   ],
   "risk": "Beta benefits can close at any time, as SenseTime says paid tiers are coming soon, so do not put production on it; the official FAQ and API docs disagree on limits, one quoting 1,500 calls per model every five hours and the other credit pools, so trust what the console deducts; the free tier is Lite and U1 Fast, not the flagship; peak hours may throttle or return 429; real-name data stays with a mainland platform.",
   "source": "SenseTime FAQ read 27 Nov 2026 (as of 2026-08-27 the Free beta is 0/month, 1,500 calls per model per five hours, paid tiers not yet live, up to 20 API keys) plus the official Token Plan and API docs as quoted in a hands-on review from 8 Nov 2026 (general pool 120,000 per five hours and 1.2 million per week, Flash-Lite pool 60,000 and 600,000, base_url token.sensenova.cn/v1) and SenseTime's 2 Nov release of SenseNova 6.8 Flash, which added the models to Token Plan"
+ },
+ "cue-manus-invite-plus-free": {
+  "title": "[Multi] Cue by Manus: free Cue Plus with an invite code (no fixed end date, not a one-month trial)",
+  "highlight": "Manus's standalone personal-agent app; an invite activation includes complimentary Cue Plus with no fixed end date, and every agent gets its own email, phone number, wallet and computer",
+  "regions": "[Multi] macOS/Windows/iOS/Android, invite code required; supported countries not published",
+  "value": "Cue Plus (price not listed; Pro $100/mo, Max $200/mo)",
+  "content": "Cue launched on 28 September 2026 as Manus's standalone app for personal agents (cue.im). Each agent has its own email address, phone number, wallet and computer, can take calls, send mail and pay within the budget you set, and several agents can work together in one group chat. Cue's help centre states that activating with an invitation code includes complimentary Plus access with no fixed end date: it is not a one-month trial and does not convert into a paid subscription. You can create a free account first and enter a code on the invite screen; each code has limited seats and stops working once they are used.",
+  "conditions": "An invitation code is required (from Cue's invite email or an existing user; seats per code are limited). You must be 18+ and not in a US-embargoed jurisdiction. The agent phone number (about $9.99/mo) and cloud computers are billed separately; complimentary Plus does not auto-renew.",
+  "steps": [
+   "Download Cue for macOS/Windows or the mobile app at cue.im and create a free account",
+   "Enter the invitation code when prompted and finish activation",
+   "Confirm that Cue Plus shows on the account; buy a phone number or cloud computer only if needed"
+  ],
+  "risk": "Invite codes are scarce and run out fast, so public codes often fail. Plus has no listed price, so don't budget on the reported $20/mo. Phone numbers and cloud computers cost extra. Registration may stall on phone verification; on mobile, signing in with Google skips it. Complimentary Plus can change at any time.",
+  "source": "Cue help centre (read 27 Nov 2026: invite activation includes complimentary Plus with no fixed end date and no auto-renewal; Pro $100/mo, Max $200/mo), invitation-code article, and a NodeSeek post on 25 Nov 2026 (code 8QTSK; Google sign-in on mobile skips phone verification)"
+ },
+ "chong-hing-rao-500-hk2026": {
+  "title": "[HK] Chong Hing Bank remote account opening: HK$500 cash rebate + 10% time deposit + up to HK$100 voucher (to 31 Dec)",
+  "highlight": "New customers who open remotely in the app with a promo code, place one HK$20,000 three-month time deposit and keep assets until year-end get HK$500 cash back, plus a 1-month 10% deposit rate and an opening voucher",
+  "regions": "[HK] Hong Kong residents or mainland residents physically in Hong Kong; the HK$500 tier is for ages 18–40",
+  "value": "HK$500 cash rebate + up to HK$100 voucher (about HK$600)",
+  "content": "From 4 November to 31 December 2026, new customers who open an account remotely in the Chong Hing Mobile Banking app and enter code CHWCR02 (HK$500 cash rebate) or CHWPC02 (HK$500 Pacific Coffee e-voucher), then place a first 3-month HKD/USD/AUD time deposit of at least HK$20,000 / US$3,000 / AU$4,000 and keep total assets of HK$20,000 through 31 December, receive the reward by 31 January 2027; this tier is limited to ages 18–40. Separately, a first login after opening earns up to HK$100 in e-vouchers (code WEB02), a 1-month HKD time deposit of HK$5,000–20,000 earns a 10% total annual rate, and the first three months of HKD savings earn an extra 2.6% on the first HK$50,000.",
+  "conditions": "New customers only (no account in the past 7 years, no credit card), personal accounts, not joint. The promo code must be entered at opening and cannot be added later. Ages 18–40 for the HK$500 tier. Deposit of at least HK$20,000 and total assets maintained until 31 December. Hong Kong only, limited quota.",
+  "steps": [
+   "Download Chong Hing Mobile Banking and open remotely with an HKID or mainland resident ID",
+   "Enter CHWCR02 (cash) or CHWPC02 (coffee voucher) in the promo-code field",
+   "Log in for the first time to claim the welcome e-voucher (code WEB02)",
+   "Place the 3-month deposit and keep total assets of at least HK$20,000 until 31 December"
+  ],
+  "risk": "The HK$500 requires locking money in a 3-month deposit and holding HK$20,000 of assets through year-end, so early withdrawal can disqualify you. You must be in Hong Kong or hold an HKID, the tier is limited to ages 18–40, and quota is first come, first served. The 10% rate applies to one month only on HK$5,000–20,000, and rates follow the bank's daily board.",
+  "source": "Chong Hing Bank remote-opening welcome page and terms PDF (read 27 Nov 2026: campaign 4 Nov–31 Dec 2026, HK$500 rebate code CHWCR02, ages 18–40, HK$20,000 deposit and total-asset requirement, HK$100 voucher code WEB02, 1-month 10% deposit; remote opening supports HK residents and mainland residents in Hong Kong)"
+ },
+ "ecos-rewards-500thd-500btc": {
+  "title": "[Global] ECOS Rewards: build mining power for free, plus 500 THD with code 500BTC and 350 THD over 30 days",
+  "highlight": "Daily check-in style THD points convert into Bitcoin mining power: sign up for a draw ticket, reach 100 THD in three active days to start a farm, 350 THD over 30 days, and 200 THD each for referrals; a submission says code 500BTC adds 500 THD",
+  "regions": "[Global] Email signup on the official site, 18+; some jurisdictions excluded under ECOS terms",
+  "value": "500 THD (about $13) + 350 THD over 30 days + 200 THD per referral",
+  "content": "ECOS Rewards replaced rewards with THD points, where 1 THD is 1 TH/s of power for one day. Signing up grants 100 MP and a draw ticket; one tap in Clicker or one scan in Hash Hunters counts as an active day, the first three days total 100 THD (enough to start a farm) and 30 active days total 350 THD. Each invited friend gives both sides 200 THD, and friends' purchases return up to 20%. ECOS's own converter, assuming a five-year contract at current FPPS and BTC price, values 500 THD at roughly $13; THD cannot be withdrawn or sold and only converts into power. Weekly draws share a 100,000 THD pool. A visitor submission says entering 500BTC in the dashboard promo-code field grants another 500 THD, once per account, until 30 June 2027 15:12 UTC or 10,000 redemptions; the code is not listed on ECOS's own page and needs testing.",
+  "conditions": "Ages 18+, email signup. Free with no card, though KYC is needed before any payout. THD only converts into power and cannot be withdrawn or transferred. A farm needs at least 100 THD. The 500BTC code is not published officially and may already be exhausted.",
+  "steps": [
+   "Register an ECOS account with email and open Rewards",
+   "Try 500BTC in the promo-code field and check whether 500 THD lands",
+   "Tap Clicker or run one Hash Hunters scan daily until you reach 100 THD and start a farm",
+   "Share your referral link (200 THD each side) or join the weekly draw to build more"
+  ],
+  "risk": "THD is not cash: the $13 figure is a five-year theoretical estimate that moves with BTC price and difficulty. The 500BTC code appears only on third-party listings and may be used up. Free power needs daily activity, and a skipped day slows progress. Cloud-mining platforms carry regulatory and counterparty risk, so don't deposit money.",
+  "source": "Visitor submission (Gmail 26 Nov 2026 18:29, processed) + ECOS official Rewards page read 27 Nov 2026 (THD mechanics, 100 THD to start, 350 THD over 30 days, 200 THD per referral, 100,000 THD draw pool) + develif listing (500BTC code: 500 THD, until 30 June 2027 15:12 UTC or 10,000 redemptions)"
  }
 }
