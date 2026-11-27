@@ -8620,5 +8620,37 @@
   ],
   "risk": "Launched only on Nov 26, 2026, so reliability and the long-term free allowance are unproven; the free tier is small (100 vCPU-hours a month, 2 vCPU per box, 4-hour sessions) and suits light tests only; production or long tasks need a paid plan.",
   "source": "Sandscale official pricing page read 27 Nov 2026 (Free $0, 100 awake vCPU-hours, 3 boxes at once, 5GB storage, 2 vCPU per box, 4-hour sessions; Pro $20 annual or $25 monthly, 1,500 hours, 16 vCPU) plus the Nov 26 2026 NewAIToolsToday launch listing"
+ },
+ "meshy-black-friday-2026": {
+  "title": "[Global] Meshy Black Friday: up to 50% off yearly Pro and Premium, plus 2 extra months for free-plan users (Nov 23 - Dec 2, no code)",
+  "highlight": "AI 3D model and texture generation: yearly Pro and Premium drop up to 50% at checkout from November 23 to December 2, free-plan users who subscribe get 2 extra months, and no code is needed; new users can take MESHYSTART50 for half off the first month and any account MESHYFALL30 for 30% off the first month (both until November 30); the free plan includes 100 credits a month and connecting Discord adds another 100",
+  "regions": "[Global] Sign up anywhere; the exact discount depends on the plan and your region, so the checkout page is the reference",
+  "value": "100 free credits a month; up to 50% off yearly plans",
+  "content": "Meshy turns text or images into 3D models and textures for games, 3D printing and product renders. The free plan gives 100 credits a month, reset at 00:00 UTC on the first of each month, and connecting Discord adds 100 once; featuring a model in the community earns 50, sharing on X pays per unique click, and following creators also earns credits. The Contributor Program hands active creators a free Pro membership every month. For Black Friday, yearly Pro and Premium take up to 50% off automatically at checkout from November 23 to December 2, and free-plan users who subscribe get 2 extra months on the same plan, with no code and no stacking. New subscribers can also use MESHYSTART50 for half off the first month and any account MESHYFALL30 for 30% off, both until November 30. Subscribers can buy extra credit packs for 20% less.",
+  "conditions": "A Meshy account with just an email, no card; the Black Friday discount only applies to yearly Pro and Premium and is applied at checkout; MESHYSTART50 is for new subscribers and the first month only; no code stacks with the Black Friday deal; the education plan needs a school email and approval.",
+  "steps": [
+   "Sign up free at meshy.ai and try the 100 monthly credits",
+   "For a year: order yearly Pro or Premium between November 23 and December 2 to get up to 50% off plus 2 extra months automatically",
+   "For one month: use MESHYSTART50 (new users) or MESHYFALL30, then switch off auto-renew straight away",
+   "Open Subscriptions and the Get Free Credits section to add credits from Discord and community tasks"
+  ],
+  "risk": "The free plan is only 100 credits a month (Meshy's own example is about 10 Meshy 6 Lite models), so real volume needs a paid plan; free-plan output carries a CC BY 4.0 licence, so commercial use needs attribution; first-month codes only cut the first month and the plan renews at full price, so turn off auto-renew; the Black Friday deal ends December 2 and cannot be combined with codes like MESHYYEAR20.",
+  "source": "Meshy's official promo page and pricing page (read 27 November 2026: Black Friday November 23 - December 2, up to 50% off yearly Pro and Premium, 2 extra months for free-plan users, no code, no stacking; MESHYSTART50 and MESHYFALL30 until November 30; MESHYYEAR20 until December 31) plus the official help article Can I Get Free Credits (100 credits a month on the free plan, 100 for connecting Discord, community and Contributor Program rewards, purchased credits never expire)"
+ },
+ "suno-black-friday-2026": {
+  "title": "[Global] Suno Black Friday: extra 30% off yearly plans, Pro $67.20 for the first year (until Dec 1; free plan gives 50 song credits a day)",
+  "highlight": "AI songwriting: until 02:00 UTC on December 1 the yearly plans take another 30% off on top of the 20% annual saving, so Pro drops from $96 to $67.20 and Premier from $288 to $201.60, applied at checkout with no code; the free plan stays $0 with 50 song credits a day",
+  "regions": "[Global] Available worldwide, with small price differences by region; the free plan needs no card",
+  "value": "Save about $28.80 to $86.40 a year; the free plan costs $0",
+  "content": "Suno turns a text description into a finished song with vocals. The free plan is $0 forever: 50 song credits a day, the free models, uploads up to 8 minutes, but a shared queue, no downloads and no commercial rights. For Black Friday, yearly plans take an extra 30% off on top of the usual annual saving until 02:00 UTC on December 1, applied automatically at checkout with no code: Pro goes from $96 to $67.20 a year (2,500 credits a month, 20 downloads, commercial rights, two stem types) and Premier from $288 to $201.60 (10,000 credits a month, 60 downloads, Suno Studio, three stem types, uploads up to 30 minutes). The discount covers the first year only, and the plan renews at full price.",
+  "conditions": "A Suno account is enough for the free plan; the Black Friday discount applies to yearly billing only and is applied automatically; the free plan has no downloads, no commercial rights and no extra credit purchases; decide before the renewal date whether to keep the paid plan.",
+  "steps": [
+   "Sign up at suno.com and try the 50 daily credits on the free plan",
+   "On the pricing page switch billing to Annual and pick Pro or Premier",
+   "Check that the checkout shows the extra Black Friday 30% before paying",
+   "Note the renewal date and review the plan before it renews at full price"
+  ],
+  "risk": "The discount covers the first year only and renews at full price; songs made on the free plan cannot be downloaded or used commercially, so commercial use needs a paid plan; 50 credits a day is roughly three to five songs; prices and taxes vary by region, so the checkout page is the reference.",
+  "source": "Data embedded in Suno's official pricing page (read 27 November 2026: saleSeed slug bfcm-2026, ends_at 2026-12-01T02:00:00Z, offer label Extra 30% off annual plans; Free $0 with 50 credits a day, Pro $10 a month or $96 a year, Premier $30 a month or $288 a year)"
  }
 }

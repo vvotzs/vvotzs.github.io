@@ -17470,7 +17470,7 @@
   "start": "2026-09-14",
   "end": "2026-12-02",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "added": "2026-11-19",
   "content": "2026-09-14至12-02期间开户可拿£175+£35加码，合计£210。开户后45天内须：用CASS整体转户并带入至少2个Direct Debit或常设指令、存入≥£1,000、用借记卡完成5笔以上消费（线下、线上、手机钱包均可）、登录数字银行；奖励在满足全部条件的次月20日发放，每人/每个联名账户一次。账户另带£250免息透支额度（视资质）与7.00% AER的Regular Saver。",
   "conditions": "英国居民、新客户，从未持有first direct任何产品；2018-01-01起开过HSBC活期账户者不可参加；45天内完成转户+2个直扣或常设指令+存£1,000+刷5笔+登录网银；£35加码只限2026-09-14至12-02开户。",
@@ -18827,7 +18827,7 @@
   "start": "2026-10-26",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "content": "Proton 2026黑五（10-26开卖，到网络星期一11-30）：Proton Unlimited年付首年12个月$77.88（$6.49/月，原价$12.99/月，续订$119.88/年）；Mail Plus年付$29.88（$2.49/月，续订$47.88/年），含15GB空间、10个加密邮箱地址、1个自定义域名；公开页还有Unlimited首月$1（之后$12.99/月）的欢迎价。全系含30天无理由退款。",
   "conditions": "需一次付清整年费用；新用户从public黑五页进入（结算链接带BF2026NEW），老用户需登录后在账户页领专属价；年付方案到期自动按$119.88/年续订，需自己提前取消；退款每人限一次、30天内。",
   "steps": [
@@ -19102,7 +19102,7 @@
   "start": "2025-01-01",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "added": "2026-11-18",
   "content": "持有U.S. Bank Altitude Connect信用卡的用户，可在GigSky App内免费领取5GB/15天的国际eSIM，活动期内可重复领取（多数Visa卡权益只限一次）；11/30之后该权益缩为一次性1GB/15天（与普通Visa Signature一致）。2026-11-22报道补充：现在领到的5GB可以存着，365天内激活即可，不必马上出行。",
   "conditions": "需持本人名下的Altitude Connect卡且状态正常，并把该卡设为GigSky App默认支付方式；领取截止2026-11-30；领取后365天内激活，激活后15天内用完5GB。",
@@ -19303,6 +19303,39 @@
   "geo_restriction": [
    "GLOBAL"
   ]
+ },
+ {
+  "id": "suno-black-friday-2026",
+  "dedup_key": "suno|ai|global|black-friday-2026",
+  "title": "[全球]Suno黑五年付再减30%：Pro首年$67.20、Premier $201.60（至12/1，免费档每日50 credits）",
+  "brand": "Suno",
+  "domain": "suno.com",
+  "category": "ai",
+  "value": "年付省约$28.80–$86.40；免费档$0",
+  "value_num": 29,
+  "cost": "免费试用",
+  "highlight": "AI作曲：黑五至12/1 02:00 UTC年付在8折基础上再减30%，Pro $96→$67.20（月付$10）、Premier $288→$201.60，结账自动减、不用码；免费档永久$0，每天50 song credits",
+  "regions": "[全球] 全球可注册（地区定价略有差异），免费档免绑卡",
+  "end": "2026-12-01",
+  "verified": true,
+  "last_verified": "2026-11-27",
+  "content": "Suno 用文字描述直接作曲并带人声，免费档永久$0：每天50 song credits、可用免费模型、上传8分钟音频，但共享排队、不能下载、无商用权。黑五年付在原本8折上再减30%（至12/1 02:00 UTC，北京时间12/1 10:00，结账自动生效、无需优惠码）：Pro 年付$96→$67.20（每月2,500 credits、20次下载、可商用、2种分轨），Premier $288→$201.60（每月10,000 credits、60次下载、Suno Studio与3种分轨、可上传30分钟音频）。折扣只减首年，次年按原价续订。",
+  "conditions": "注册Suno账号即可用免费档；黑五折扣仅对年付生效且自动应用；免费档不能商用、不能下载、不能买额外credits；想长期用要在续订前决定是否保留。",
+  "steps": [
+   "打开 suno.com 注册，先用免费档每天50 credits试做",
+   "在定价页把计费切到Annual，选Pro或Premier",
+   "确认结账页显示黑五30%额外折扣后再付款",
+   "订完记好续订日，次年按时评估是否继续"
+  ],
+  "url": "https://suno.com/pricing",
+  "source_url": "https://suno.com/pricing",
+  "source": "Suno官方定价页内嵌活动数据（2026-11-27实读：saleSeed slug bfcm-2026、ends_at 2026-12-01T02:00:00Z、offer_label “Extra 30% off annual plans”；Free $0每日50 credits、Pro $10/月或$96/年、Premier $30/月或$288/年）",
+  "risk": "折扣只限首年，续订回原价；免费档生成的歌不能下载、不能商用，商用必须订阅；免费档每天50 credits约3–5首歌，做完整作品要付费；地区定价与税费不同，结账页为准。",
+  "status": "expiring_soon",
+  "added": "2026-11-27",
+  "added_at": "2026-11-27T09:58:00+08:00",
+  "kyc_level": "none",
+  "utility": 0
  },
  {
   "id": "maya-mobile-black-friday-bogo-esim",
@@ -19877,7 +19910,7 @@
   "start": "2026-11-26",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "added": "2026-11-25",
   "added_at": "2026-11-25T19:42:00+08:00",
   "content": "TravelKon 黑五网一：11/26–11/30 每天 12:00am–11:59pm AWST 一款 eSIM 打 5 折，其余商品全站 7 折，结账自动减、不用码。11/26 越南 Viettel 5GB/天：7天A$9.50、15天A$14.50、30天A$22.50；11/27 日本 KDDI：定量 12GB/4天A$7.50 起，真不限量 3天A$9.50、31天A$59.50；11/28 Orange 全球 180+国 30天最高20GB A$29.50；11/29 欧洲 Llamaya（含欧盟通话）28天 25GB A$12.50、50GB A$24.50、80GB A$34.50；11/30 东南亚5国（印尼/新/马/泰/港）300GB/30天A$22.50。买下后可 6 个月内再激活，兑换码不过期、二维码兑换后 60 天有效；纯数据为主，日本 KDDI 与 Llamaya 为当地网络，多数套餐走新加坡或欧洲出口 IP（ChatGPT、Gemini 可用）。",
@@ -20670,6 +20703,40 @@
   "geo_restriction": [
    "GLOBAL"
   ]
+ },
+ {
+  "id": "meshy-black-friday-2026",
+  "dedup_key": "meshy|ai|global|black-friday-2026",
+  "title": "[全球]Meshy黑五：Pro/Premium年付最高5折+免费用户加送2个月（11/23–12/2，免码）",
+  "brand": "Meshy",
+  "domain": "meshy.ai",
+  "category": "ai",
+  "value": "免费100 credits/月；年付最高5折",
+  "value_num": 0,
+  "cost": "免费试用",
+  "highlight": "AI生成3D模型/贴图：11/23–12/2年付Pro/Premium结账自动最高5折、免费用户订同档另送2个月，免码；新客码MESHYSTART50首月5折、任意账号MESHYFALL30首月7折（均至11/30）；免费账号每月100credits，连Discord再送100",
+  "regions": "[全球] 全球可注册；折扣幅度按方案与所在地区不同，结账页为准",
+  "start": "2026-11-23",
+  "end": "2026-12-02",
+  "verified": true,
+  "last_verified": "2026-11-27",
+  "content": "Meshy 用文字或图片生成3D模型与贴图，适合游戏、3D打印与产品渲染。免费档每月100 credits（UTC每月1日0点重置），连Discord再送100一次性，社区发表作品每个精选得50、分享到X按独立点击计奖、关注创作者也能拿，创作者计划每月可领免费Pro。黑五11/23–12/2年付Pro/Premium结账自动最高5折，免费用户订阅同档另送2个月，不用码也不能与其他码叠加；新客首月码MESHYSTART50五折、任意账号MESHYFALL30七折，均11/30截止。订阅者另可8折买额外credit包。",
+  "conditions": "需注册Meshy账号（邮箱即可、免卡）；黑五只对年付Pro/Premium生效且结账自动减；MESHYSTART50仅限新订阅者首月；所有折扣码不可与黑五折扣叠加；教育计划需学校邮箱审核。",
+  "steps": [
+   "在 meshy.ai 注册免费账号，先领每月100 credits试做模型",
+   "想要年付：11/23–12/2 直接订Pro/Premium年付，结账自动5折并送2个月",
+   "只试一个月：用 MESHYSTART50（新客）或 MESHYFALL30 抵首月，订完立刻关自动续费",
+   "去Subscriptions页看“Get Free Credits”，连Discord与社区任务再补额度"
+  ],
+  "url": "https://www.meshy.ai/pricing",
+  "source_url": "https://www.meshy.ai/promo-code",
+  "source": "Meshy官方Promo页与定价页（2026-11-27实读：黑五11/23–12/2年付Pro/Premium最高5折、免费用户加送2个月、免码、不可叠加；MESHYSTART50与MESHYFALL30至11/30；MESHYYEAR20至12/31）＋官方帮助中心《Can I Get Free Credits》（免费档每月100 credits、Discord +100、社区与创作者计划奖励、购买credits不过期）",
+  "risk": "免费档只有100 credits/月（官方示例约10个Meshy 6 Lite模型），量大必须付费；免费档产出为CC BY 4.0，商用要署名；首月折扣码只减首月，之后按原价续订，务必关自动续费；黑五只到12/2且不与MESHYYEAR20等码叠加。",
+  "status": "expiring_soon",
+  "added": "2026-11-27",
+  "added_at": "2026-11-27T09:46:00+08:00",
+  "kyc_level": "none",
+  "utility": 0
  },
  {
   "id": "thai-aipass-gemini-enterprise-free",
