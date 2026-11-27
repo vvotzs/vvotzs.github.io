@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-27T14:10:00+08:00",
+  "generated_at": "2026-11-27T18:48:00+08:00",
   "_meta": {
     "title": "羊毛情报局采集源表（P0/P1/P2 分层调度）",
-    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets；第十轮（2026-11-22）：新增 banknav（P1，list，海外银行卡/eSIM/券商导航），1point3acres 因 403 拦截与零产出降为 P2；第十一轮（2026-11-23）：Jun 拍板改为 24 小时整点每小时一轮、取消夜间休眠，分级周期改为 P0=1h / P1=3h / P2=24h（x-deals 起 P0 cadence 1h），每轮源位 12→30、P2 每轮保底 1→2；第十二轮（2026-11-26，Jun 指令）：接入 promodescuentos.com（P0 1h，RSS /rss/todas）与 Pepper 家族 hotukdeals / mydealz / dealabs / chollometro / pepper.pl / nl.pepper.com / preisjaeger.at 及 slickdeals（P1 3h，均实测 RSS 直连 200）；pepper.it 2025-08-14 停站、pelando.com.br 与 desidime.com 为 Cloudflare 403、redflagdeals.com 无可用 RSS，三者只走 web_search / 浏览器兜底；第十三轮（2026-11-27，Jun 指令）：接入 YouTube 频道 @ddktricks（channel_id UCwvqKV96OXClu581qZZ_0Uw，P1 3h，官方 videos.xml RSS 实测 200/15 条）——该频道以免费 eSIM 教程为主，视频只作线索，收录一律回溯品牌官网条款，排除 Telegram 转售与订阅陷阱。",
+    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets；第十轮（2026-11-22）：新增 banknav（P1，list，海外银行卡/eSIM/券商导航），1point3acres 因 403 拦截与零产出降为 P2；第十一轮（2026-11-23）：Jun 拍板改为 24 小时整点每小时一轮、取消夜间休眠，分级周期改为 P0=1h / P1=3h / P2=24h（x-deals 起 P0 cadence 1h），每轮源位 12→30、P2 每轮保底 1→2；第十二轮（2026-11-26，Jun 指令）：接入 promodescuentos.com（P0 1h，RSS /rss/todas）与 Pepper 家族 hotukdeals / mydealz / dealabs / chollometro / pepper.pl / nl.pepper.com / preisjaeger.at 及 slickdeals（P1 3h，均实测 RSS 直连 200）；pepper.it 2025-08-14 停站、pelando.com.br 与 desidime.com 为 Cloudflare 403、redflagdeals.com 无可用 RSS，三者只走 web_search / 浏览器兜底；第十三轮（2026-11-27，Jun 指令）：接入 YouTube 频道 @ddktricks（channel_id UCwvqKV96OXClu581qZZ_0Uw，P1 3h，官方 videos.xml RSS 实测 200/15 条）——该频道以免费 eSIM 教程为主，视频只作线索，收录一律回溯品牌官网条款，排除 Telegram 转售与订阅陷阱。；第十四轮（2026-11-27，Jun 指令）：接入萌社区 moe.one 福利版（forum-4，P2 24h，list，无 RSS，最新优先列表 forum-4-1.htm?digest=5）——近 30 天帖子以自建节点/长效接码/公益 AI 中转为主，只作线索，收录一律回溯官方源。",
     "cadence": {
       "rounds_per_day": 24,
       "round_times_local": [
@@ -58,21 +58,21 @@
       "P0_slots_per_day": 168,
       "P1_slots_per_day": 344,
       "P2_slots_per_day": 48,
-      "note": "每小时 30 个源位 × 24 轮；P0 6 个×24=144，P1 44 个每 3h 一轮、每日需求约 352 个源位，P2 44 个每日 44 个源位，均在 720 源位容量内"
+      "note": "每小时 30 个源位 × 24 轮；P0 6 个×24=144，P1 44 个每 3h 一轮、每日需求约 352 个源位，P2 45 个每日 45 个源位，均在 720 源位容量内"
     },
     "writeback": "plan_round.py --mark-done / --mark-hit / --mark-zero 回写 last_crawled_at、last_hit_at 与 zero_streak；P0 14 天无产出→P1、P1 30 天→P2、P2 90 天→paused（manual 源不参与；升级只能人工）",
     "paused_policy": "paused_sources 不进调度、不占 P2 配额；恢复用 plan_round.py 的 --activate 或人工移回 sources",
     "counts": {
-      "scheduled": 94,
+      "scheduled": 95,
       "P0": 6,
       "P1": 44,
-      "P2": 44,
+      "P2": 45,
       "manual": 5,
       "paused": 12
     },
     "search_group": "entries[].kind=search_group：domains 最多 4 个，整组每轮只发 1 条 `(site:a OR site:b …) (词集)` 查询；after_date = last_crawled_at − 1 天（首抓取今天 − 30 天）；blocked 域名只核验不抓取（优先合作方/发行方官方页，否则每天最多 1 次浏览器开 verify_urls）；「这组有产出」= 至少 1 条结果 URL 落在组内域名、其 url 与 dedup_key 都不在 deals/candidates，且按 Q4(e) 写成候选/条目，满足才 --mark-hit；discovered_from 写 `<组id>:<域名>`；零结果用 --mark-zero，下次自动改用 fallback 词集",
     "manual_policy": "status=manual 的源留在表内注明手动，但不进调度、不占 P1/P2 源位、不参与降频，只在线索出现时人工核",
-    "updated_at": "2026-11-27T14:10:00+08:00"
+    "updated_at": "2026-11-27T18:48:00+08:00"
   },
   "keyword_groups": [
     {
@@ -2217,6 +2217,25 @@
       },
       "note": "2026-11-21 深挖新增（Jun 补充线索）：音乐节 / 活动方 × 运营商免费流量与科技媒体 × eSIM 合作都必须回到官方页核实；只挂官方直链，媒体专属返利码（如 ESIMCOMPARE / CWJK257）不收录",
       "zero_streak": 0
+    },
+    {
+      "id": "moe-one",
+      "name": "萌社区 moe.one 福利版",
+      "url": "https://moe.one/forum-4.htm",
+      "tier": "P2",
+      "entry_type": "list",
+      "cadence_h": 24,
+      "categories": [
+        "ai",
+        "cloud",
+        "software"
+      ],
+      "lang": "zh",
+      "status": "active",
+      "added_at": "2026-11-27T18:48:00+08:00",
+      "entry_url": "https://moe.one/forum-4-1.htm?digest=5",
+      "zero_streak": 0,
+      "note": "Xiuno 版式中文社区「萌社区」福利版（资源活动分享，174 主题 / 9 页）。无 RSS（/rss.php 404，forum-4.htm?rss 直接返回同一 HTML），按发布时间倒序的列表入口为 forum-4-1.htm?digest=5（每页 20 条，按 tid 倒序）；默认 forum-4.htm 按最后回复排序。列表里的时间只写相对值（7天前/1月前）且 <time> 无 datetime，精确到分的发布时间要从帖子页 <time datetime> 的 Unix 秒换算（北京时间）。裸 UA 直连会返回 Cloudflare 522，须带浏览器 UA 才 200。版内约九成为个人自建代理节点、机场/公益 AI 中转站、长效接码与音乐分享，且部分帖子需登录或回复后才可见；这些一律只作线索，收录必须回溯品牌官网或活动方页面核验，不得照搬论坛转述；会员专属发号（如萌社区免费域名专区，仅限社区成员）与已停发/已炸号帖子不收。"
     }
   ],
   "paused_sources": [
