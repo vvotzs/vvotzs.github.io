@@ -9366,5 +9366,53 @@
   ],
   "risk": "The 500 credits are a lifetime allowance, not a monthly refill, so running out means a paid plan or your own key; built-in models spend 60-120 credits per million input tokens and 360-540 per million output tokens, so heavy work drains them fast; the free tier has only 100MB of cloud storage and no multi-device sync; desktop only, no phone apps; agent orchestration still makes mistakes, so back up important files.",
   "source": "Orkas official pricing page orkas.ai/pricing (read Nov 28, 2026: 500 bonus lifetime credits on the Free plan, claimed by signing in inside the desktop app, built-in Claude Opus 5.5/GPT-6.2 Sol/Kimi K3, MIT-licensed local-first, five projects x five members and 100MB storage) plus the that.promo listing (rechecked Nov 27, 2026: web sign-in grants no credits)"
+ },
+ "modelbest-minicpm-v47-free-api": {
+  "title": "[Global]ModelBest MiniCPM-V 4.7 vision APIs are free for a limited time: 1B and 35B-A3B at 0 credits, 256K context",
+  "highlight": "Both MiniCPM-V-4.7-1B and 35B-A3B are flagged is_free in ModelBest's model catalogue, with input and output priced at 0 so calls spend no credits; text, image and video input, 256K context, and both OpenAI- and Anthropic-compatible endpoints",
+  "regions": "[Global] Callable from both the China site and the international site, no regional limit",
+  "value": "Two vision models at 0 credits for a limited time, plus 100 signup credits (no end date published)",
+  "content": "ModelBest, the cloud platform of Chinese model maker ModelBest (MiniCPM), has put both MiniCPM-V 4.7 vision models on limited-time free pricing. The 1.3B model suits screenshot reading and chart Q&A, while the 35B-A3B is the first MoE in the family (35.2B total parameters) and handles documents, OCR, multi-image and video. The catalogue returns is_free=true with input and output pricing at 0, so calls spend no credits; both models take text, images and video, 256K context, thinking mode, function calling and context caching, with OpenAI- and Anthropic-compatible protocols at api.modelbest.cn/v1 (China) and api.modelbest.ai/v1 (international).",
+  "conditions": "The China site requires a mainland Chinese phone number for the login code (email signup must bind a phone); the international site accepts email, Google or GitHub, and reports differ on whether it also asks for a phone. The free period has no published end date; only these two models are free, everything else spends credits.",
+  "steps": [
+   "Sign up at platform.modelbest.cn (or platform.modelbest.ai outside China) and verify by phone or email",
+   "Open the console, go to API Keys and create a key",
+   "Set base_url to https://api.modelbest.cn/v1 (or .ai abroad) and model to MiniCPM-V-4.7-1B or MiniCPM-V-4.7-35B-A3B",
+   "Call it with the OpenAI SDK, passing images and video as base64 data URLs; add chat_template_kwargs.enable_thinking=true to switch thinking mode on"
+  ],
+  "risk": "The free period has no published end date and can turn into paid pricing at any time (the vendor promises a week's notice); the China site needs a mainland phone number, so overseas users must use the international site; free tier is still rate-limited, so bulk image or video jobs can hit throttling; only two independent write-ups covered it so far, and the price table is visible only after login or through the API; no SLA, so do not run production traffic on it.",
+  "source": "ModelBest platform model catalogue (platform.modelbest.cn/models, read Nov 28, 2026 from the API: MiniCPM-V-4.7-1B and MiniCPM-V-4.7-35B-A3B both is_free=true, input_pricing/output_pricing=0, context_window=256000, supports_anthropic=true) plus the portal (100 signup credits) and two independent reports on Nov 26, 2026 (jidan.si, aipromonow.com)"
+ },
+ "ebs-aisoop-free-ai-kr": {
+  "title": "[Korea]EBS AI이솦 free AI practice: ChatGPT, Gemini, Claude and two more, 40,000 tokens a day (Korean phone verification)",
+  "highlight": "Korea's public broadcaster EBS runs a free nationwide AI learning platform: after one mobile-phone identity check you can use ChatGPT, Gemini, Claude, LG EXAONE and Upstage Solar with a combined 40,000 tokens a day, and an AI-skills diagnosis before Dec 16 adds a KRW 5,000 GS25 voucher",
+  "regions": "[Korea] Inside Korea, requires a Korean mobile number for verification",
+  "value": "Five commercial models free, 40,000 tokens per person per day (no end date)",
+  "content": "EBS AI이솦 (ebsai.co.kr) is EBS's rewrite of its coding platform into an AI learning platform, opened on Nov 26, 2026 and free for everyone in Korea with government funding. After one mobile-phone identity check (guardian consent under 14) and consent to send prompts to the model providers, you can use OpenAI, Anthropic, Google, LG AI Research and Upstage models at no cost. Each person gets a combined 40,000 tokens a day across the five models and course windows, resetting the next day; image generation only works on Gemini, attachments are capped at three files of 10MB, and chats are kept 90 days.",
+  "conditions": "Requires a Korean mobile number for the in-app identity check (a guardian's verification under 14); the 40,000 daily tokens are shared across the five models and lock for the day once used; image generation is Gemini-only; the GS25 KRW 5,000 voucher needs a completed AI-skills diagnosis before Dec 16 and is limited to upper-elementary, secondary students and lifelong-education instructors, with a 10-day window to enter delivery details.",
+  "steps": [
+   "Open ebsai.co.kr and register with an EBS account (under 14: guardian consent first)",
+   "On first entering AI practice, complete the mobile-phone identity check and consent to sending prompts to the model providers",
+   "Watch the today's-usage figure at the top of the practice screen and switch models to compare answers on the same question",
+   "If eligible, finish the AI competency diagnosis by Dec 16, view the report, tap to enter, and submit delivery details within 10 days"
+  ],
+  "risk": "A Korean mobile number is mandatory, so foreigners, visitors and anyone with only a Chinese number cannot use it; the 40,000 tokens are shared across models and course use, so long documents and video tasks drain them fast; the GS25 voucher is limited to students and instructors; chats disappear from the list after 90 days; the models run inside the EBS platform, not as the vendors' own paid accounts.",
+  "source": "EBS AI이솦 official site (read Nov 28, 2026: the consent screen lists OpenAI, Anthropic, Google, LG AI Research and Upstage as model providers; the FAQ states 40,000 tokens per person per day shared across models and reset daily) plus the official event page (AI competency diagnosis Nov 26 - Dec 16, GS25 KRW 5,000 voucher for all participants, limited to the three designated groups) and a Nov 27, 2026 ROVEORA report"
+ },
+ "linemo-5th-anniversary-paypay-20000": {
+  "title": "[Japan]LINEMO 5th-anniversary week 4: up to JPY 20,000 PayPay for porting or a new number on Best Plan V, no activation fee (apply Nov 23 - Dec 6)",
+  "highlight": "LINEMO's site lists PayPay JPY 12,000 for new subscribers, and this week adds a limited JPY 8,000 on top, so Best Plan V by port-in or new number reaches JPY 20,000; the JPY 3,850 activation fee is waived in the same window, and both eSIM and physical SIM qualify",
+  "regions": "[Japan] Inside Japan, needs a Japanese address and ID documents",
+  "value": "Up to JPY 20,000 in PayPay (about $130), plus the JPY 3,850 activation fee waived",
+  "content": "LINEMO's 5th-anniversary campaign, fourth week: apply Nov 23 - Dec 6, 2026 and activate by the end of the month after applying. The site lists PayPay JPY 12,000 (or Visa JPY 7,000) for new subscribers, and this week adds a limited JPY 8,000 on Best Plan V or JPY 4,000 on Best Plan for port-ins and new numbers, for up to JPY 20,000 on Best Plan V and JPY 16,000 on Best Plan. The JPY 3,850 activation fee is waived and deducted on the first bill; Best Plan V is 30GB for JPY 2,970 a month and Best Plan starts at 3GB for JPY 990.",
+  "conditions": "Apply for Best Plan or Best Plan V by port-in or new number and activate by the end of the month after applying; port-ins from SoftBank, LINEMO or Y!mobile lines do not get the usual benefit; the PayPay code arrives by SMS and expires if not charged in time; a Japanese address and ID documents are required, and eSIM or physical SIM both work.",
+  "steps": [
+   "On linemo.jp choose Best Plan V (30GB, JPY 2,970) or Best Plan, with eSIM or a physical SIM",
+   "Apply by port-in (MNP) or with a new number, remembering SoftBank-group port-ins lose the usual benefit",
+   "Activate by the end of the month after applying; the JPY 3,850 activation fee is deducted on the first bill",
+   "Charge the PayPay code sent by SMS around two months after activation before it expires"
+  ],
+  "risk": "The reward is PayPay points, not cash, usable only inside PayPay; the code comes by SMS with a charging deadline and is not reissued; SoftBank, LINEMO and Y!mobile port-ins do not qualify for the usual benefit; a Japanese address and ID are required so short-term visitors cannot apply; you still pay the monthly fee, so the JPY 20,000 offsets it rather than being free money.",
+  "source": "LINEMO official press release Nov 23, 2026 (read Nov 28, 2026: PayPay add-on JPY 8,000 on Best Plan V and JPY 4,000 on Best Plan, apply Nov 23 - Dec 6, activation by the month after, activation fee JPY 3,850 to 0) plus the site header (new subscribers PayPay JPY 12,000 / Visa JPY 7,000) and an All Connect roundup on Nov 27, 2026 for plan prices"
  }
 }

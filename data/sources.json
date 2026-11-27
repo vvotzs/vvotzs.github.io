@@ -234,7 +234,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T19:23:45Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-27T12:20:03Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -258,8 +258,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T19:23:45Z",
-      "last_hit_at": "2026-11-27T19:23:45Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
+      "last_hit_at": "2026-11-27T21:17:17Z",
       "search_domains": [
         "x.com"
       ],
@@ -282,7 +282,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T19:23:45Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-27T03:17:15Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -302,7 +302,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T19:23:45Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -322,8 +322,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T19:23:45Z",
-      "last_hit_at": "2026-11-26T13:30:12Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
+      "last_hit_at": "2026-11-27T21:17:17Z",
       "zero_streak": 0
     },
     {
@@ -344,7 +344,7 @@
       "entry_url": "https://www.promodescuentos.com/rss/todas",
       "zero_streak": 0,
       "note": "RSS 直连 200（普通 UA，无 Cloudflare），30 条/次，item 带 <category> 与 pepper:merchant 商家+价格；分组 feed 可补读 /rss/grupo/gratis（免单）、/rss/grupo/telefonia-celular（手机通讯）",
-      "last_crawled_at": "2026-11-27T19:23:45Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-27T06:15:27Z"
     },
     {
@@ -460,7 +460,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "zero_streak": 0
     },
@@ -581,7 +581,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-17T13:30:00Z",
       "search_domains": [
         "www.flyert.com"
@@ -603,7 +603,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-26T11:21:57Z",
       "search_domains": [
         "www.naixi.net"
@@ -648,7 +648,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "search_domains": [
         "www.free8.net"
@@ -760,7 +760,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-15T16:30:00Z",
       "search_domains": [
         "www.withgoddess.com"
@@ -855,7 +855,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -873,7 +873,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -890,7 +890,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -907,7 +907,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "zero_streak": 0
     },
@@ -924,7 +924,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "zero_streak": 0
     },
@@ -958,7 +958,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-27T12:20:03Z",
       "zero_streak": 0
     },
@@ -975,7 +975,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "keyword_pool": "topup",
       "entries": [
@@ -1045,7 +1045,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-26T19:09:04Z",
       "keyword_pool": "topup",
       "entries": [
@@ -1379,7 +1379,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T20:08:52Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-10-13T22:30:00Z"
     },
     {
@@ -1759,7 +1759,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-26T20:08:52Z",
+      "last_crawled_at": "2026-11-27T21:17:17Z",
       "last_hit_at": "2026-11-20T10:30:00Z"
     },
     {
