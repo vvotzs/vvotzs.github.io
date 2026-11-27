@@ -6248,7 +6248,7 @@
    "Open a ticket to unblock port 25 if you need to send mail"
   ],
   "risk": "512MB is very small; the BFAVA overlap is inconsistent between users; unmetered traffic has a fair-use clause; latency from China is high; the company is long-established but small.",
-  "source": "AvaHost homepage (read 2026-11-23) + NodeSeek Black Friday post and comments (2026-11-19)"
+  "source": "AvaHost homepage (read 2026-11-23) + NodeSeek Black Friday post and comments (2026-11-19) | Re-checked 27 Nov 2026: ava.hosting still shows the Black Friday VPS Nano at EUR 11/yr (1 vCPU, 512MB, 20GB NVMe, IPv4, code BFAVA for 20% off) with 768 of 1,024 left and the countdown to 2 Dec 2026"
  },
  "avoro-black-week-vps": {
   "title": "[DE] AVORO Black Week VPS: Frankfurt Nano 1 vCPU/1GB from EUR 2.24 a month quarterly",
@@ -6773,12 +6773,12 @@
   "source": "Klistra official pricing page (read 2026-11-24: the Free plan gives 350 credits to use within 60 days for the first 200 accounts with no card; Pro is $25 a month or $20 billed yearly with 600 credits) + the Show HN launch posts (18 and 21 November 2026, where the author describes credit pricing and video costs)"
  },
  "qoder-hungerg-free-model": {
-  "title": "[Global] Qoder's anonymous HungerG model is free for a week: unlimited calls for individuals, 0 credits even at Max thinking",
+  "title": "[Global] Qoder's anonymous HungerG model free for a week: personal accounts pay no credits (to Nov 30, with a daily fair-use cap)",
   "brand_en": "Qoder",
-  "highlight": "The official document states that from 23 Nov 24:00 to 30 Nov 24:00 individual users pay no credits for HungerG, get no daily cap, can use Free accounts with zero balance, and Max thinking strength is also free",
+  "highlight": "Qoder's own docs say HungerG costs no credits for personal accounts from 23 Nov 24:00 to 30 Nov 24:00, free tiers and zero-balance accounts included; usage is not metered per call, but each account has a high daily fair-use cap, and once it is hit you must switch models or wait for the next day",
   "regions": "[Global] Qoder international personal accounts; Teams and Enterprise are excluded and HungerG only appears inside Qoder and Qoder IDE",
   "value": "$0 (7 days of unlimited calls)",
-  "content": "Qoder's international edition has made an anonymised model called HungerG free for a week: from 23 November 2026 24:00 to 30 November 24:00, personal accounts (Free, Pro trial, Lite, Pro, Pro+, Ultra) pay no credits for it, have no daily cap and can use it with a zero balance. Thinking strength can be Low, Medium, High or Max, and Max carries a 0.0x multiplier, so it costs nothing either. No coupon is needed: pick HungerG in the model menu. Only HungerG itself is free, so features that call a different model in the background are billed normally, and paying users get queue priority at peak times.",
+  "content": "Qoder has put an undisclosed anonymous model, HungerG, on a free run: from 2026-11-23 24:00 to 11-30 24:00 (UTC+8), personal Free, Pro-trial, Lite, Pro, Pro+ and Ultra accounts are not charged credits for calling it, and a zero balance still works. Calls themselves are not metered, but each account has a high daily fair-use cap that ordinary personal use rarely reaches; if you do hit it, HungerG is locked for the rest of that day and you must switch models or wait for the automatic reset. Thinking strength can be set to Low, Medium, High or Max, where Max has a 0.0x multiplier and still costs nothing. No coupon is needed: pick HungerG in the model menu. Only HungerG itself is free, backend calls to other models bill normally, and paid users jump the queue at peak times.",
   "conditions": "A Qoder international personal account (Teams and Enterprise do not see HungerG); it works only in Qoder and Qoder IDE, not the JetBrains plugin, CLI, QoderWake, cloud agents, mobile or web; relaying or sharing accounts is prohibited.",
   "steps": [
    "Sign up or log in to a Qoder international personal account",
@@ -6786,8 +6786,8 @@
    "Select HungerG in the model menu",
    "Raise thinking strength to Max if you like, at no credit cost during the campaign"
   ],
-  "risk": "The model is anonymous and its identity is undisclosed, so capability and stability have to be tested yourself; queues slow down at peak times; after the campaign the published multiplier applies and a zero balance stops working; Qoder may adjust the rules or end the campaign early.",
-  "source": "Qoder official campaign document (read 2026-11-24: 23 Nov 24:00 to 30 Nov 24:00, HungerG free with no daily cap for individuals and 0.0x at Max thinking)"
+  "risk": "The model's identity is undisclosed and the vendor says it will reveal it later, so capability and stability need your own testing; hitting the daily cap blocks HungerG for that day with no paid way around it; queues slow at peak; after the campaign the published multiplier applies and a zero balance stops working; Qoder reserves the right to change the rules or end early.",
+  "source": "Qoder's official event doc read 24 Nov 2026 (23 Nov 24:00 - 30 Nov 24:00, no credits charged, Max thinking at 0.0x); re-checked 27 Nov 2026: the Japanese doc still states 2026-11-23 24:00 to 11-30 24:00 UTC+8, HungerG free for Free and zero-credit accounts, Teams/Enterprise excluded, and now spells out a per-account daily fair-use cap after which HungerG is unavailable until the next day (the earlier 'no daily limit' wording has been corrected against the official page)"
  },
  "qatar-visit-saudi-holiday-free-esim": {
   "title": "[QA] Visit Qatar Saudi holiday bundle: drive in and get a free Vodafone eSIM plus QR150 of fuel (20–27 Nov)",
@@ -8055,11 +8055,11 @@
  },
  "citizens-checking-savings-3000": {
   "title": "[US] Citizens checking + savings up to $3,000: $1,000 monthly direct deposit for 12 months plus full gas rebate (open both by 11/30)",
-  "highlight": "Open a first checking account and a new savings account the same day: get every dollar of gas you put on the debit card back each month ($50 or $100 a month, up to $1,200 over 12 months), and a single $15,000 new-money deposit into savings adds up to $1,800 more",
+  "highlight": "Open a first checking account and a new savings account on the same day: one $1,000 direct deposit each month plus debit-card gas purchases earn 1:1 cash back (capped at $50 or $100 a month, up to $1,200 over 12 months), and a single $40,000 deposit of new money into savings adds up to $1,800, with the $15,000-$39,999 tier paying $600",
   "regions": "[US] Only residents of CT, DC, DE, FL, MD, MA, MI, NH, NJ, NY, OH, PA, RI, VT or VA",
   "value": "Up to $3,000 ($1,200 checking + $1,800 savings)",
-  "content": "Citizens' Move Money offer (accounts opened 10/1–11/30/2026): open a first eligible checking account and a new savings account on the same day, then each month receive one qualifying direct deposit of $1,000 or more and buy gas with that account's debit card. The bonus matches what you actually spend on fuel, capped at $50 a month ($600 over 12 months) for One Deposit, EverValue and Student Checking, or $100 a month ($1,200) for Quest and Private Client Checking. The savings bonus needs a single $15,000 new-money deposit within 10 business days of opening and pays up to $1,800 by balance tier. Bonuses post on the last day of the month after the month you qualify.",
-  "conditions": "Physical address in CT, DC, DE, FL, MD, MA, MI, NH, NJ, NY, OH, PA, RI, VT or VA; new customers with no Citizens personal checking account in the past 6 months; checking and savings must be opened the same day; Zelle, Venmo and PayPal deposits do not count as direct deposits; cannot be combined with another checking or savings offer; accounts must stay in good standing.",
+  "content": "Citizens' Move Money offer (accounts opened Oct 1 - Nov 30, with the page now saying extended through 11/30/26): open your first qualifying checking account and a new savings account on the same day, take at least one direct deposit of $1,000 or more each month and use the debit card for gas, and Citizens matches your actual gas spend 1:1, capped at $50 a month ($600 over 12 months) for One Deposit, EverValue and Student, or $100 a month ($1,200) for Quest and Private Client. The savings side pays by deposit size: $40,000 or more of new money kept at the required balance earns $150 a month, $1,800 over 12 months, while $15,000 to $39,999 earns $50 a month, $600 in total. Bonuses post on the last day of the month after you qualify.",
+  "conditions": "Your physical address must be in CT/DC/DE/FL/MD/MA/MI/NH/NJ/NY/OH/PA/RI/VT/VA; you must be new with no Citizens personal checking account in the past six months; checking and savings must be opened the same day; the savings bonus is tiered at $40,000+ for up to $1,800 and $15,000-$39,999 for up to $600; Zelle, Venmo and PayPal deposits do not count as direct deposits; the offer cannot be combined with other checking or savings offers; the accounts must stay in good standing.",
   "steps": [
    "Open a first eligible checking account and a new savings account on the same day through the offer page",
    "Route $1,000 or more a month of salary or benefits as direct deposit into the checking account",
@@ -8067,7 +8067,7 @@
    "For the savings bonus, deposit $15,000 of new money from outside Citizens within 10 business days and keep it there"
   ],
   "risk": "The gas bonus matches actual fuel spending with a monthly cap, so it is not a free $1,200, and you must qualify every month; deposits must be real payroll or benefit payments; both accounts must be opened the same day and stay open, a missed month forfeits that month and closing forfeits the rest; it cannot be combined with the $400 checking offer; bonuses are reported as interest.",
-  "source": "Citizens official offer page and terms (read 2026-11-26: 10/1–11/30 same-day checking + savings, $1,000 monthly direct deposit, 1:1 gas rebate capped at $100/month and $1,200/year, $15,000 new money for up to $1,800); Wallet Hacks update 2026-11-23, CNBC Select review 2026-11-19"
+  "source": "Citizens official offer page and terms read 27 Nov 2026 (Oct 1 - Nov 30 same-day checking plus savings, $1,000 monthly direct deposit, 1:1 gas cash back capped at $100 a month and $1,200 a year, savings $40,000+ for $1,800 and $15,000-$39,999 for $600, page marked now extended through 11/30/26) plus Wallet Hacks' 23 Nov update and CNBC Select's 19 Nov review"
  },
  "truist-one-checking-500": {
   "title": "[US] Truist One/Marquee checking $500: two $2,000 direct deposits and 20 card purchases within 120 days (code at opening, through 2/2/2027)",
@@ -8652,5 +8652,91 @@
   ],
   "risk": "The discount covers the first year only and renews at full price; songs made on the free plan cannot be downloaded or used commercially, so commercial use needs a paid plan; 50 credits a day is roughly three to five songs; prices and taxes vary by region, so the checkout page is the reference.",
   "source": "Data embedded in Suno's official pricing page (read 27 November 2026: saleSeed slug bfcm-2026, ends_at 2026-12-01T02:00:00Z, offer label Extra 30% off annual plans; Free $0 with 50 credits a day, Pro $10 a month or $96 a year, Premier $30 a month or $288 a year)"
+ },
+ "keybank-checking-300-500-nov2026": {
+  "title": "[US] KeyBank checking: $300 or $500 for $2,000/$5,000 in direct deposits within 90 days (open by Dec 11)",
+  "brand_en": "KeyBank",
+  "highlight": "Open Key Smart Checking with code KDMA0526 and take $2,000 in qualifying direct deposits within 90 days for $300; open Key Select Checking with code KDMB0526 and take $5,000 for $500, credited within 60 days of meeting the terms",
+  "regions": "[US] Only in KeyBank branch states: AK/CO/CT/ID/IN/ME/MA/MI/NY/OH/OR/PA/UT/VT/WA",
+  "value": "$300 or $500 (one tier only)",
+  "content": "KeyBank's current bonus runs through Dec 11. Key Smart Checking has no monthly fee: open with code KDMA0526, deposit at least $10, make $2,000 or more in qualifying direct deposits within 90 days and get $300. Key Select Checking costs $25 a month, waived for the first three months and then by $3,000 in monthly direct deposits or a $15,000 combined balance, and pays interest plus an annual bonus: open with code KDMB0526, deposit at least $50, make $5,000 in direct deposits within 90 days and get $500. You can take only one tier, the bonus lands within 60 days of qualifying, and the account must still be open when it pays.",
+  "conditions": "Your address must be in a KeyBank state; you must be a new customer with no KeyBank checking account opened or closed in the past 12 months; direct deposits must come from an employer, pension or government agency by ACH, while transfers between your own accounts and person-to-person payments do not count; the offer code must be entered when you open the account and cannot be added later.",
+  "steps": [
+   "Pick the Key Smart (KDMA0526) or Key Select (KDMB0526) link on KeyBank's official offers page",
+   "Enter the matching offer code when opening and fund the $10 or $50 minimum",
+   "Route $2,000 or $5,000 in salary or benefits as direct deposits within 90 days",
+   "Check the bonus within 60 days of qualifying and keep the account open"
+  ],
+  "risk": "The two tiers are mutually exclusive; Key Select carries a $25 monthly fee unless you meet the deposit or balance waiver; bonuses are reported as interest on a 1099-INT; closing the account or going negative forfeits it; applications from outside the branch states are often declined.",
+  "source": "KeyBank official offers page read 27 Nov 2026 (Key Smart $300 with code KDMA0526 and $2,000 in direct deposits; Key Select $500 with code KDMB0526 and $5,000; both require opening by 12/11/26 and pay within 60 days) plus HustlerMoneyBlog's 25 Nov roundup for the state list"
+ },
+ "maribank-sg-referral-nov2026": {
+  "title": "[Singapore] MariBank November referral: S$8-15 cash plus up to S$80 in new-card rewards (ends Nov 30)",
+  "brand_en": "MariBank",
+  "highlight": "Enter a referral code on your first application between Nov 1 and Nov 30: S$8 for the savings or invest bundle, S$15 for the credit-card or instant-loan bundle, credited instantly, plus S$30 welcome cashback and a S$50 Shopee voucher pack with the card bundle",
+  "regions": "[Singapore] Singapore citizens, PRs and valid-pass holders only, verified with Singpass; limited to the first 10,000 successful referrals",
+  "value": "S$8-15 referral cash plus up to S$80 in new-card rewards",
+  "content": "MariBank's November Refer & Get Rewarded campaign runs from Nov 1 to Nov 30 and is capped at the first 10,000 successful referrals. Enter someone's referral code on your first application: the Mari Savings or Mari Invest bundle pays S$8 and the Mari Credit Card or Instant Loan bundle pays S$15, credited instantly to your Mari Savings Account, which pays up to 3.08% a year. The card bundle also carries up to S$80 in new-to-card rewards: S$30 welcome cashback after spending S$300 within 30 days of approval, and a S$50 Shopee voucher pack through Shopee Instant Checkout. Both the application and the approval must happen before Nov 30, and the code cannot be added afterwards.",
+  "conditions": "You must not have held any MariBank personal account before Nov 1, 2026 and this must be your first successful application; you must open in Singapore with Singpass as a citizen, PR or valid-pass holder; the referral code can only be entered on the first application; bundle products must be applied for in one go; closing the account within six months of the reward being paid lets MariBank claw it back.",
+  "steps": [
+   "Get a referral code generated in an existing customer's app, then download the MariBank app and register a Singapore number",
+   "Choose the product bundle first (S$8 for savings/invest, S$15 for card/loan) and enter the code in the Referral/Promo Code field",
+   "Complete Singpass/MyInfo verification and be approved before Nov 30",
+   "With the card bundle, spend S$300 within 30 days of approval and use Shopee Instant Checkout for the voucher pack"
+  ],
+  "risk": "Whether the S$30 card cashback stacks with a referral code is unclear, since the card spend terms say it does not combine with referral or promo codes, so do not count S$95 as guaranteed; the card needs a S$30,000 annual income and approval; codes posted publicly may not be valid referrals; the cap can fill up; closing the account within six months revokes the reward.",
+  "source": "MariBank help centre read 27 Nov 2026 (Nov 1-30 window, S$8 for savings/invest bundles, S$15 for card/loan bundles, up to S$80 new-to-card rewards, up to 3.08% p.a., first 10,000 referrals) plus Seedly and rangka November write-ups noting the S$30 cashback stacking caveat"
+ },
+ "eivi-500-credits-eivi500": {
+  "title": "[Global] EIVI: 500 free credits for new users with code EIVI500, no card (Google login)",
+  "brand_en": "EIVI",
+  "highlight": "After signing up, enter EIVI500 in the Coupon Code box on the Credits page to receive 500 credits, with no card and no paid plan required; Google sign-in is currently the only option",
+  "regions": "[Global] Open worldwide; currently Google account sign-in only",
+  "value": "500 credits",
+  "content": "EIVI, an AI video studio at eivi.pro, gives new users 500 credits: sign in with Google, open the Credits page, enter EIVI500 in the Coupon Code box and the credits land immediately, with no card and no purchase needed. Credits pay for video and generation tasks on the platform, and different tools burn different amounts. The site is a client-rendered single-page app, so the model list and credit costs only appear after login, and EIVI has not published the code's expiry or cap on any public page. The linux.do post from Nov 25 and several hands-on write-ups confirm the credits arrive, while some users saw the sign-up spinner hang and got in with Google sign-in.",
+  "conditions": "You need a Google account, as email and other sign-up routes are not offered; one redemption per account; no cap or deadline has been published, so a used-up or expired code is only visible on the Credits page; credits cannot be withdrawn or transferred.",
+  "steps": [
+   "Open eivi.pro and sign in with a Google account to register",
+   "Go to the Credits page and find the Coupon Code field",
+   "Enter EIVI500 and submit, then confirm the balance rose by 500 credits",
+   "Check what each model or tool costs before spending the credits"
+  ],
+  "risk": "The code is not officially announced, so it can expire or run out at any time; the platform is new and keeps its model list and credit pricing opaque, and sign-up sometimes hangs; credits have no cash value and may not cover much once the campaign ends.",
+  "source": "EIVI site read 27 Nov 2026 (an AI Video Studio with a Credits page and Coupon Code redemption field plus a /redeem route, terms behind login) and the linux.do thread t/topic/3241976 from 25 Nov with hands-on replies, plus uupc, storemini and aishare write-ups the same day"
+ },
+ "zenlayer-black-friday-2026": {
+  "title": "[Global] Zenlayer Black Friday: $100 top-up becomes $150, $25 back on a new account's first order, bare metal flash sale 50% off (to Dec 2)",
+  "brand_en": "Zenlayer",
+  "highlight": "A single $100 top-up shows $150 in balance, existing accounts included, and the bonus never expires; new accounts get $25 back within 48 hours of the first paid order, and select bare metal is 50% off with traffic 40% off from Nov 23 to Dec 1, from $98.60 a month",
+  "regions": "[Global] Open worldwide; the flash sale covers Ho Chi Minh City, Singapore, Jakarta, Manila, Tokyo, Hong Kong, Frankfurt, London, Dubai, Miami, Los Angeles and Chicago",
+  "value": "$50 bonus balance plus $25 back for new accounts",
+  "content": "Zenlayer's Black Friday runs from Nov 2 to Dec 2. Top up $100 in one payment and the balance reads $150, existing accounts included, and the bonus balance never expires. A new account's first top-up and first order also get $25 back within 48 hours, for any order size and once only. From Nov 23 to Dec 1 a flash sale puts select bare metal servers and their IPv4 at 50% off and traffic or flat-rate bandwidth at 40% off: Miami or Los Angeles E3 with 32GB RAM, 2TB HDD and 3TB of traffic is $98.60 a month against a $193 list price, with renewals at the same rate. Bare metal outside the flash sale still takes 15% to 35% off by term for three, six or twelve months.",
+  "conditions": "The bonus counts only a single top-up of $100 or more, as split payments are not combined; the $25 back needs a new account's first top-up and first order placed during the campaign; the 50% flash-sale price does not stack with term discounts; bonus balance only offsets usage and its withdrawal and refund terms follow Zenlayer's policy; servers are single-tenant and billed monthly with no setup fee.",
+  "steps": [
+   "Sign up from the Zenlayer Cloud Black Friday page and top up at least $100 in one payment, confirming the $150 balance",
+   "Order a flash-sale server tagged up to 50% off from the page or the console",
+   "Check that the $25 is credited within 48 hours of a new account's first paid order",
+   "Switch the traffic package to 1TB or flat-rate bandwidth if you prefer, and verify the monthly and renewal price at checkout"
+  ],
+  "url": "https://cloud.zenlayer.com/promotions/black-friday",
+  "source": "Zenlayer Cloud official Black Friday page read 27 Nov 2026 (Nov 2 - Dec 2, $100 top-up shows $150 for new and existing accounts, $25 back on a new account's first order, bonus never expires; Nov 23 - Dec 1 flash sale with 50% off bare metal and 40% off traffic, 15-35% by term otherwise) plus the official LowEndTalk thread and idcoffer, zhujitips and daniao price tables from 23-25 Nov",
+  "risk": "The entry bar is a $100 top-up and what you get is prepaid balance, not cash; the $98.60 starting price is a full bare metal server, so it is not for people who only want free resources; flash-sale models are limited and sell out; how the $25 back is paid and whether it can be withdrawn is restricted; the 50% flash-sale price does not stack with term discounts, so confirm the final and renewal price at checkout."
+ },
+ "sensenova-token-plan-free-beta": {
+  "title": "[China] SenseTime SenseNova Token Plan free in beta: CNY 0/month API keys, OpenAI-compatible",
+  "brand_en": "SenseTime SenseNova",
+  "highlight": "The beta Free tier is CNY 0/month: a general credit pool of 120,000 per rolling five hours and 1.2 million per week, plus a Flash-Lite pool of 60,000 and 600,000, with one key covering SenseNova 6.8 Flash Lite and U1 Fast over OpenAI and Anthropic compatible endpoints",
+  "regions": "[China] Registration needs a mainland Chinese phone number and real-name verification; the endpoint is https://token.sensenova.cn/v1 and access from outside China is not verified",
+  "value": "CNY 0/month beta credits",
+  "content": "SenseTime's SenseNova Token Plan keeps its Free tier at CNY 0 a month during the public beta. Register with a mainland Chinese number, complete real-name verification, then create an API key in the console at platform.sensenova.cn, up to 20 keys per account. The free tier officially lists SenseNova 6.8 Flash Lite and SenseNova U1 Fast. Endpoints are OpenAI compatible, so you set base_url to https://token.sensenova.cn/v1 and change the model name, and an Anthropic Messages compatible endpoint lets OpenClaw, Hermes Agent or OpenCode plug in directly. Usage draws on rolling credit pools: a general pool of 120,000 credits per rolling five hours and 1.2 million per week, plus a Flash-Lite pool of 60,000 and 600,000 that spills into the general pool when exhausted. SenseTime says beta rules can change with advance notice.",
+  "conditions": "A mainland Chinese mobile number and real-name verification are required; registration is limited to where the platform operates; each account may hold up to 20 API keys and a key is shown only once; the free tier covers only the models listed on the official page, while others follow the console's billing; credits refill on rolling windows rather than resetting daily.",
+  "steps": [
+   "Register at platform.sensenova.cn, pass real-name verification and create an sk- key under API Keys, saving it immediately as it is shown once",
+   "Check the official Token Plan page for the CNY 0 Free tier and the model list it covers",
+   "Point the OpenAI SDK at https://token.sensenova.cn/v1 and set the model to an official ID such as sensenova-6.8-flash-lite",
+   "Send one chat.completions request and check credit usage and remaining balance in the console"
+  ],
+  "risk": "Beta benefits can close at any time, as SenseTime says paid tiers are coming soon, so do not put production on it; the official FAQ and API docs disagree on limits, one quoting 1,500 calls per model every five hours and the other credit pools, so trust what the console deducts; the free tier is Lite and U1 Fast, not the flagship; peak hours may throttle or return 429; real-name data stays with a mainland platform.",
+  "source": "SenseTime FAQ read 27 Nov 2026 (as of 2026-08-27 the Free beta is 0/month, 1,500 calls per model per five hours, paid tiers not yet live, up to 20 API keys) plus the official Token Plan and API docs as quoted in a hands-on review from 8 Nov 2026 (general pool 120,000 per five hours and 1.2 million per week, Flash-Lite pool 60,000 and 600,000, base_url token.sensenova.cn/v1) and SenseTime's 2 Nov release of SenseNova 6.8 Flash, which added the models to Token Plan"
  }
 }
