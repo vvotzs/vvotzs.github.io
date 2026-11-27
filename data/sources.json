@@ -258,8 +258,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T04:12:34Z",
-      "last_hit_at": "2026-11-26T13:30:12Z",
+      "last_crawled_at": "2026-11-27T05:10:02Z",
+      "last_hit_at": "2026-11-27T05:10:02Z",
       "search_domains": [
         "x.com"
       ],
@@ -399,8 +399,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T01:13:21Z",
-      "last_hit_at": "2026-11-26T02:39:04Z",
+      "last_crawled_at": "2026-11-27T05:10:02Z",
+      "last_hit_at": "2026-11-27T05:10:02Z",
       "search_domains": [
         "shuzijumin.com"
       ],
@@ -818,7 +818,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T01:21:17Z",
+      "last_crawled_at": "2026-11-27T05:10:06Z",
       "last_hit_at": "2026-11-26T12:14:58Z",
       "zero_streak": 0
     },

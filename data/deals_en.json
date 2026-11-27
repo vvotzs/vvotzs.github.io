@@ -4380,21 +4380,21 @@
   "source": "Clearpay Invite a Friend terms and help centre (£10 credit, £50 minimum order, 90-day validity, checked 21 November 2026) plus the TopReferrals Clearpay entry"
  },
  "zilch-refer-5": {
-  "title": "[UK] Zilch referral: £5 in Rewards each after the friend's first Tap and Pay",
-  "highlight": "A new Zilch user joins through a friend's link, passes ID checks, gets the Zilch card and makes one Tap and Pay purchase in store, and both sides receive £5 in Rewards; Zilch sets no cap on referrals",
-  "regions": "[UK] UK residents 18+ who are new to Zilch",
-  "value": "£5 (≈$7)",
-  "content": "The referral page promises both sides £5 in Rewards once the friend makes a first Tap and Pay purchase: the friend registers through the personal link, verifies within 30 days, gets the Zilch card, adds it to a mobile wallet and pays in store by tap, and both get £5 of Rewards, with the amount subject to promotional change at the friend's signup. Zilch is a UK buy-now-pay-later virtual card whose Rewards offset spending in the app rather than cash, and while referrals are described as unlimited, risk checks watch for bulk signups on one device or address.",
-  "conditions": "UK residents 18+; new to Zilch; register through the personal link and verify within 30 calendar days, obtaining the Zilch card; add it to a mobile wallet and make one in-store Tap and Pay purchase; the amount follows the signup day.",
+  "title": "[UK] Zilch double referral: £10 in Rewards each when the link is shared before 30 Nov 12:00",
+  "highlight": "Zilch's official competition terms double the referral reward to £10: share your link between 13 Nov 13:00 and 30 Nov 12:00, and both sides get £10 in Rewards once the friend registers and passes checks, paid within a day, with no cap on referrals",
+  "regions": "[UK] UK residents with a UK credit file",
+  "value": "£10 (≈$13)",
+  "content": "Zilch's Competition Terms \"£10 Referrals\" say: share your referral link with a friend between 13:00 on 13 November and 12:00 on 30 November 2026, and once the friend registers through it and passes checks both sides receive £10 in Rewards, credited within one day of registration, with no limit on referrals. The public referral page and help centre still say £5, so the £10 appears only in these promotion terms and the app balance is what counts. Rewards offset spending inside the app and are not cash. The friend must pass ID checks and be issued the Zilch card; forum reports say roughly a month of UK credit history is needed to be accepted.",
+  "conditions": "UK resident, 18+; new to Zilch; a UK credit file is needed (forum reports suggest a month of history); register through the referral link before 12:00 on 30 Nov and pass ID checks (the help centre still mentions a first in-store Tap and Pay; the app is authoritative).",
   "steps": [
    "Ask an existing Zilch user for their referral link",
    "Register through the link, complete ID checks and get approved for the Zilch card",
    "Add the Zilch card to Apple Pay or Google Pay",
-   "Make one Tap and Pay purchase in store and both sides receive £5 in Rewards"
+   "Make one Tap and Pay purchase in store (the promotion terms only require registration) and both sides receive £10 in Rewards"
   ],
   "url": "https://www.zilch.com/uk/referral/",
-  "risk": "Rewards can only be spent inside Zilch, not withdrawn as cash; a real in-store Tap and Pay is required, so registering without buying earns nothing; Zilch is buy-now-pay-later and credit limits affect your file, with fees for missed payments; the referral page and help centre describe the trigger slightly differently, so follow the app.",
-  "source": "Zilch Refer and earn page and Zilch help centre (£5 in Rewards, Tap and Pay trigger, 30-day window, checked 21 November 2026) plus the TopReferrals Zilch entry"
+  "risk": "The referral page and help centre still show £5 and the £10 lives only in the competition terms, so the offer can end early and the app balance is the proof; real UK credit history and ID checks are required and bulk signups on one device are targeted by risk checks; Rewards are not cash and cannot be transferred, and Zilch is buy-now-pay-later with credit-file impact and fees for missed payments.",
+  "source": "Zilch Competition Terms \"£10 Referrals\" (link-share window 13 Nov 13:00–30 Nov 12:00, read 27 November 2026) plus Digital Resident/NaiXi forum reports (14 November 2026: UK credit file needed, runs to 30 November)"
  },
  "rebtel-invite-10": {
   "title": "[Global] Rebtel invite: $10 of call credit each after a $1+ first payment",
