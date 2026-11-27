@@ -9447,5 +9447,89 @@
   ],
   "risk": "Only valid at the official checkout; resold or shared keys risk a ban. The license covers the software only, so heavy Claude or GPT use can cost more in API fees in a year than the license saves. The $198 figure is a list price that is discounted 50% most of the time, so do not treat it as saving $118.80. Free updates cover Premium features only; cloud storage and similar extras are billed separately. The 14-day refund must be requested inside the window.",
   "source": "TypingMind official changelog 'Black Friday / Cyber Monday 2026 Sale' (Nov 19, 2026: 60% off Premium lifetime, code BLACKFRIDAY2026, $79.20 instead of $198, ends November 30) plus the official buy page typingmind.com/buy read Nov 28, 2026 (Premium $79.20 / $198, Standard $39, Extended $79), the official docs page docs.typingmind.com/resources/typingmind-black-friday (same code, price and steps) and an I4U price check on Nov 27, 2026 (the page has carried a standing 50% off, $99)"
+ },
+ "skt-air-musinsa-zero-won-12m": {
+  "title": "[Korea]SKT air x Musinsa: 7-71GB plans at KRW 0 for 12 months (to Dec 2)",
+  "highlight": "Open a new 010 line or port in through the Musinsa event page between 11/22 and 12/2, pick the 7GB, 15GB, 30GB or 71GB plan, and bonus-pack points plus the air rewards programme bring the monthly bill to zero for 12 months; extras include KRW 10,000 Musinsa money, two 15% coupons and a limited-edition bag",
+  "regions": "[Korea] Korean nationals 19+ with local ID; new 010 number or a port-in from another carrier",
+  "value": "Up to KRW 490,000 (≈$360)",
+  "content": "SKT's digital brand air joins Musinsa's Black Friday event for the first time: between 22 November and 2 December, sign up only through sktair-event.com/musinsa with a new 010 number or by porting in from KT, LG U+ or an MVNO, and the 7GB (KRW 29,000), 15GB (38,000), 30GB (44,000) and 71GB (45,000) plans come to zero won a month for 12 months once bonus-pack points and the air rewards programme (step counter, check-ins, predictions, counted as up to 10,000P) are applied. The 100GB plan costs 3,900 won a month and unlimited air X 6,900 won. Buyers also get two 15% Musinsa coupons (capped at 50,000 won each), 10,000 Musinsa money for the first 300 and a foldable Boston bag for the first 2,500; there is no contract but the line must stay active until 28 December.",
+  "conditions": "Korean nationals 19+ with local ID; sign up through the event page with a new 010 number or a port-in; no contract, but keep the line until 12/28; the monthly credit depends on the rewards programme, so skipping check-ins leaves a shortfall; each coupon is capped at 50,000 won.",
+  "steps": [
+   "Open sktair-event.com/musinsa and complete ID verification",
+   "Pick the 7GB, 15GB, 30GB or 71GB plan and check the price after bonus-pack points",
+   "Activate a new 010 number or take an MNP code and port in through the page",
+   "After activation, take part in the air app's step counter and check-ins to fill the monthly 10,000P",
+   "Confirm Musinsa money and coupons arrive on the registered number, and keep the line to 12/28"
+  ],
+  "risk": "Zero won depends on points, so tasks must keep going up to the cap; the line has to stay active until 12/28 or the perks can be clawed back; coupons and the bag are limited; it only works for Korean nationals, so foreign residents cannot open the plan.",
+  "source": "SKT air official event page (read 2026-11-28: four plans at zero won after bonus-pack points, 100GB at 3,900 won, air X at 6,900 won, Musinsa money for the first 300, two 15% coupons, 2,500 bags, 11/22-12/2, line kept to 12/28) + SK Telecom newsroom release 2026-11-22 + Musinsa event notice 2026-11-22 + Ppomppu thread 2026-11-25"
+ },
+ "halo-post-training-competition-2026": {
+  "title": "[Global]Halo post-training contest: free entry, $1.5M compute and API credits plus $200k cash (apply by Nov 30)",
+  "highlight": "Held online 1-10 December with free applications, 17 tracks share $200,000 in cash (30k, 15k and 10k overall) and accepted teams divide $1.5M in compute and API credits from OpenAI, Google DeepMind, Mistral, NVIDIA, Modal, AWS and others; submit the form by 30 November",
+  "regions": "[Global] Online; not open to residents of Russia, Belarus or US-sanctioned regions",
+  "value": "$200k cash + $1.5M credits",
+  "content": "The first competition built on White Circle's open-source post-training framework Halo runs online from 1 to 10 December, free to enter, with applications closing 30 November. The 17 tracks split in two: making Halo faster on gpt-oss, Gemma, Mistral and Nemotron, or post-training a model on a task you choose. Overall prizes are $30,000, $15,000 and $10,000, and each track pays $5,000, $3,000 and $1,000. Accepted participants also draw on $1.5M in partner credits: OpenAI API, Mistral, Modal serverless GPUs, Baseten, Nebius Token Factory, OpenRouter, AWS GPUs, Lovable and White Circle grading credits. Teams of one to four; submissions must be open source.",
+  "conditions": "Researchers, engineers, scientists or PhD students aged 18+, in teams of one to four; the application must link models or projects you have trained, built or published; not open to residents of Russia, Belarus or comprehensively sanctioned regions; acceptance is at the organiser's discretion and per-person credit amounts are unpublished, granted while supplies last.",
+  "steps": [
+   "Read the 17 tracks and partners on whitecircle.com/halo/competition",
+   "Prepare links to models or projects you have trained or published",
+   "Submit the application through the official Luma form by 30 November",
+   "If accepted, join the Discord and claim your track partner's credits",
+   "Build with Halo from 1 December and submit open-source work by 10 December"
+  ],
+  "risk": "The $1.5M is a total pool with no per-person figure, granted while supplies last and subject to expiry; acceptance is selective, so applying does not guarantee anything; credits are for competition work only and cannot be shared or resold; submissions must be open source and use both Halo and the track partner's technology, and the organiser may rerun and publish them.",
+  "source": "White Circle Halo competition page (re-checked 27 Nov 2026: 1-10 Dec, applications close 30 Nov, $200k cash, $1.5M compute and API credits, 17 tracks, teams of 1-4, 18+, open-source submissions) + whitecircle/halo GitHub README (updated 24 Nov 2026) + Data Licensing News 26 Nov 2026 + that.promo verified 27 Nov 2026"
+ },
+ "surfshark-cashbackxl-100-nl": {
+  "title": "[NL]Surfshark 100% cashback via CashbackXL: 27-month Starter €53.73 fully returned",
+  "highlight": "CashbackXL's Dutch site lists up to 100% cashback on surfshark.com, paid on the order total excluding VAT, so the Black Friday 27-month Starter at €53.73 (One €61.83) comes straight back; new customers only, no cashback on renewals",
+  "regions": "[NL] CashbackXL Netherlands and surfshark.com; new customers only",
+  "value": "€53.73 back (≈$58)",
+  "content": "The Dutch cashback site CashbackXL lists \"Tot 100% Cashback\" for Surfshark: new customers click through from CashbackXL to surfshark.com and the full order amount excluding VAT is returned. Paired with Surfshark's Black Friday 27-month term (Starter at US$1.99 a month, €53.73 in total; One €61.83; One+ €107.73) the whole subscription comes back, so 27 months cost nothing. The CashbackXL page still showed full-value payouts of €59.06 and €46.78 on 27 November, with a 94% registration rate, confirmation in about two hours and approval within two months. The matching Pepper NL post on 27 November was marked with four days left.",
+  "conditions": "New customers only, renewals do not qualify; you must click through from CashbackXL with ad blockers off and cookies allowed or tracking fails; cashback is computed on the euro amount excluding VAT; Surfshark accepts no claims, so an untracked order cannot be fixed; payment takes about two months.",
+  "steps": [
+   "Register and sign in at CashbackXL Netherlands",
+   "Click \"Shop & ontvang cashback\" on the Surfshark merchant page",
+   "Buy the 27-month Starter or One plan at the Black Friday price without ad blockers or clearing cookies",
+   "Check the transaction appears in CashbackXL and watch confirmation and approval",
+   "Collect the payout in about two months and withdraw it to a bank account"
+  ],
+  "risk": "Surfshark does not accept claims, so a missed or rejected cashback cannot be corrected and you end up paying full price; approval can take two months; cashback is on the euro amount excluding VAT, so currency and VAT can leave you slightly short; you pay in full first and are refunded later.",
+  "source": "CashbackXL Surfshark merchant page (read 28 Nov 2026: up to 100% cashback, 2-hour confirmation, 2-month approval, 94% registration, €59.06 and €46.78 full payouts on 27 Nov, new customers only, no claims) + Surfshark Netherlands pricing page (Starter 27 months €53.73, One €61.83, One+ €107.73) + nl.pepper post 27 Nov 2026 (27 months free, four days left)"
+ },
+ "solid-card-referral-10-60": {
+  "title": "[Multi-region]Solid virtual Visa referral: $10 card credit at $150 spend, $50 more at $5,000 in 90 days",
+  "highlight": "Since 17 November a new customer who spends $150 across three or more shops in 30 days ($10+ each) gets $10 in card credit and so does the referrer; $5,000 within 90 days adds $50 each, while referrers also earn 1% of spending and upgrade bonuses up to $2,000 per friend",
+  "regions": "[Multi-region] Around 69 countries; not new US customers, China, India, Indonesia and others",
+  "value": "$10–$60 credit",
+  "content": "Solid, a free virtual Visa card issued by Wirex with no fee on dollar spending, replaced its one-off $25 referral reward on 17 November 2026 with ongoing rewards: a friend who signs up through your link, passes KYC and activates the card and then spends $150 in total at three or more different merchants within 30 days ($10 or more each) gives both of you $10 in card credit; $5,000 spent within 90 days adds $50 each, for up to $60 per person. Referrers also earn 1% of the friend's spending, paid every Thursday in soFUSE, plus upgrade bonuses when the friend takes Prime ($20) or Ultra ($100), capped at $2,000 per friend. Card credit can only be spent with the card, cannot be withdrawn and does not expire; the part it pays for earns no cashback.",
+  "conditions": "Sign up through a referral link, pass KYC and activate the virtual card; only everyday spending counts, so transfers, wallet top-ups, gift cards and game credit, crypto, gambling, taxes and refunds are excluded; each merchant needs $10 or more and purchases under $2 do not count; new US customers and residents of China, India, Indonesia, Russia, Turkey and Vietnam are outside the supported list.",
+  "steps": [
+   "Sign up in the Solid app through a referral link and complete verification",
+   "Activate the free virtual Visa card and top up a dollar balance",
+   "Spend $150 in total at three or more different merchants ($10+ each) within 30 days",
+   "Reach $5,000 in spending within 90 days to unlock the second $50",
+   "Watch card credit under Rewards in the app, which is applied first at checkout"
+  ],
+  "risk": "Card credit is not cash: it only works with the Solid card and the portion it covers earns no cashback; rewards can be reviewed for up to 14 days before payout; self-referral, multiple accounts or split purchases made just to hit the threshold are treated as abuse and clawed back; supported countries follow the app's signup page, so China and similar markets cannot open an account.",
+  "source": "Solid help centre (read 28 Nov 2026: new rules from 17 Nov 2026, $150 across 3 merchants for $10 card credit, $5,000 in 90 days for $50, 1% spend share plus Prime $20/Ultra $100 upgrade bonuses, $2,000 per friend, credit not withdrawable, exclusion list) + solid.xyz blog post 19 Nov 2026 + BonusRoam verification 22 Nov 2026 (about 69 countries; not new US customers or residents of China, India, Indonesia, Russia, Turkey, Vietnam)"
+ },
+ "bait-mx-qr-free-esim-2gb": {
+  "title": "[Mexico]Bait in-store QR free eSIM: 2 GB for 7 days with social data and local minutes (to 12/31 or 100,000 cards)",
+  "highlight": "Scan Bait's QR code at Walmart, Bodega Aurrera, Mi Bodega or Sam's Club stores or their online shops and activate a free eSIM with 2,048 MB (1,638 MB in Mexico plus 410 MB for Mexico, US and Canada), social data, local minutes and SMS for 7 days, one per customer",
+  "regions": "[MX] Mexican CURP required; activate by scanning at partner stores",
+  "value": "2 GB for 7 days",
+  "content": "Bait, a Mexican operator on the Altán network, runs a \"Promo QR eSIM\": scanning Bait's dedicated QR code at Walmart, Walmart Express, Bodega Aurrera, Mi Bodega, Sam's Club or their online stores activates a free eSIM with 2,048 MB (1,638 MB usable in Mexico plus 410 MB across Mexico, the US and Canada), social-media data plus local minutes and SMS, valid 7 days, one per customer, until 31 December 2026 or 100,000 cards, whichever comes first. The same promotion also hands out a physical SIM with a MXN 50 seven-day package to shoppers meeting an in-store spend. A Promodescuentos user reported a successful install, but that post says 12 GB for 30 days, which does not match the official 2 GB seven-day terms.",
+  "conditions": "Registering needs a Mexican CURP, which the operator reports to the CRT; activation only works by scanning at partner stores or their official shops, not online sign-up; one per customer, no renewal after 7 days; extra data must be bought separately.",
+  "steps": [
+   "Visit a Walmart, Bodega Aurrera, Mi Bodega or Sam's Club store and find Bait's QR code",
+   "Scan it, then enter your CURP and email to complete registration",
+   "Download and install the eSIM profile on an unlocked, eSIM-capable phone",
+   "Switch the line on inside Mexico and use the 2 GB plus local minutes within 7 days"
+  ],
+  "risk": "The free allowance is only 2 GB for 7 days and is a trial, not a main data line; you must scan in a store, so it cannot be claimed online; a CURP is required, which visitors rarely have; the 100,000-card cap can end it early; community posts describe a bigger package than the official terms, so check the plan at the counter before activating.",
+  "source": "Bait official promo page mibait.com/PUJ (QR promo eSIM: 2,048 MB for 7 days, until 31 Dec 2026 or 100,000 cards) as read and cross-checked by Chip Virtual on 4 Nov 2026 + Selectra.mx update 3 Nov 2026 (scan-to-get eSIM, one per customer, 100,000 cap, store list) + Promodescuentos thread 25 Nov 2026 (user installed it; the post says 12 GB for 30 days, which conflicts with the official terms) + Promodescuentos free and mobile subgroups RSS scan 28 Nov 2026"
  }
 }
