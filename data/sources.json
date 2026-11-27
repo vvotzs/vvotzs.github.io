@@ -381,7 +381,7 @@
       "status": "active",
       "added_at": "2026-11-22T05:10:00Z",
       "note": "首页约 203 个卡片、10 个分区（最新福利/跨境券商/香港数字银行/香港实体银行/澳门银行/虚拟银行卡/加密货币/行情工具/跨境工具），每张卡多半指向站内 /post/<id>/ 详情页。站内大量「邀请码：××」「?ref=」「?invite_code=」为站长个人返佣码，收录时必须回溯品牌官网，不得照搬。",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T11:36:15Z",
       "zero_streak": 0,
       "last_hit_at": "2026-11-26T12:14:58Z"
     },
@@ -538,7 +538,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T11:36:15Z",
       "last_hit_at": "2026-11-26T23:07:32Z",
       "search_domains": [
         "ecitizen.forum"
@@ -559,7 +559,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T11:36:15Z",
       "last_hit_at": "2026-11-26T13:30:22Z",
       "search_domains": [
         "yunjumin.com"
@@ -626,7 +626,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T11:36:15Z",
       "last_hit_at": "2026-11-25T23:44:18Z",
       "search_domains": [
         "2libra.com"
@@ -708,7 +708,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T11:36:15Z",
       "last_hit_at": "2026-11-26T12:14:58Z",
       "entry_url": "https://www.cheapies.nz/feed",
       "zero_streak": 0
@@ -837,7 +837,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T11:36:15Z",
       "last_hit_at": "2026-11-26T12:14:58Z",
       "zero_streak": 0
     },
@@ -1012,7 +1012,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T11:36:15Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [

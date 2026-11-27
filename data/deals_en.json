@@ -2560,7 +2560,7 @@
   "value": "2GB global + 2GB APAC (Infinite)",
   "content": "A Visa cardholder benefit with Travelgoogoo: enter a qualifying APAC-issued Visa card number at travelgoogoo.com/en/visa to claim a free 365-day eSIM annual plan. Reports from three communities on 2026-11-27 put the tiers at 2GB global + 2GB APAC for Infinite, 1GB global + 1GB APAC for Signature and 1GB global for Platinum, while a September MileLion report said 4GB + 4GB for Infinite, so the redemption page is the final word. Unlimited messaging covers text and images in WhatsApp, Telegram, LINE, WeChat, iMessage and Zalo, while calls and video use data. Data validity starts at the first connection abroad and lasts one year.",
   "conditions": "Only Visa Infinite, Signature or Platinum issued in Asia-Pacific. One redemption per card number and phone number per year, at most two by 2027-11-30. An eSIM-capable phone is required (iPhone XS or later, or a 2019 or newer flagship Android). It is a data-only plan with no local number, and calls use data. A pre-authorisation on the card is required during redemption.",
-  "risk": "Only APAC-issued Visa cards work, and European or US cards do not. Data allowances differ between reports (4GB + 4GB in September, 2GB + 2GB across three tests on 11/27), so trust the redemption page. The pre-auth is reported as $1 by some and $10 by others, both frozen and then returned. Some users report Telegram is not actually unmetered. Data is small, so heavy users need a separate plan, and the redemption page sometimes returns a 500 error from mainland China.",
+  "risk": "Only APAC-issued Visa cards work, and European or US cards do not. Data allowances differ between reports (4GB + 4GB in September, 2GB + 2GB across three tests on 11/27), so trust the redemption page. The pre-auth is reported as $1 by some and $10 by others, both frozen and then returned. Some users report Telegram is not actually unmetered. Data is small, so heavy users need a separate plan, and the redemption page sometimes returns a 500 error from mainland China. A linux.do thread on 26 Nov 2026 reports uneven card acceptance: a CITIC Visa debit card passed, while Bank of Communications and ICBC Constellation cards were rejected; the page checks the card number before the authorization hold.",
   "source": "Travelgoogoo x Visa official redemption page + The MileLion (2026-09-13, 4GB + 4GB) + NodeSeek post-1084058 and NodeLoc t/119603 (2026-11-26 to 27 tests: Infinite 2G + 2G, Signature 1G + 1G, Platinum 1G, $1-$10 pre-auth) + several X reports on 2026-11-27; the official page is a JS app that cannot be read directly, so the redemption page governs",
   "steps": [
    "Open travelgoogoo.com/en/visa, click Redeem Now and enter your 16-digit Visa card number",
@@ -9041,5 +9041,69 @@
   ],
   "risk": "Renewals are excluded, so existing customers can only buy a new subscription or upgrade. Without the code at checkout you pay full price and cannot apply it later. Subscriptions renew yearly at list price, so watch the renewal date. The student pack and open-source licences are already free, so do not buy them twice, and team or enterprise purchases are excluded.",
   "source": "JetBrains official blog 2026-11-25 (Save 40% on New JetBrains Subscriptions and Upgrades: 40% off a new annual individual IDE or ReSharper subscription and upgrades to annual All Products Pack or dotUltimate, code BF2026, valid November 25 to December 2 2026, multi-year purchases allowed, code single use, renewals excluded) and JetBrains store list prices for All Products Pack ($299 first year, $239 second, $179 from the third year)"
+ },
+ "maaltalknow-free-1gb-esim": {
+  "title": "[Global] MaaltalkNow free 1GB eSIM: 7 days in 65 destinations, claim in app (Korea excluded)",
+  "highlight": "An AI travel app's welcome gift: sign in with Google or Apple, tap the in-app banner and get a 1GB / 7-day travel eSIM covering the US, Canada, Mexico, the UK, France, Italy, Japan, Spain, Portugal and the Caribbean (65 destinations), no card needed",
+  "regions": "[Global] 65 destinations incl. US, Canada, Mexico, UK, France, Italy, Japan, Spain, Portugal, 8 South American and 18 Caribbean countries; Korean users excluded",
+  "value": "1GB / 7 days (about $5)",
+  "content": "MaaltalkNow, an AI travel assistant, gives new users a welcome eSIM: sign in with Google or Apple in the app, tap the campaign banner on the home screen and get 1GB valid for 7 days across 65 destinations - Mexico, Canada, the US, the UK, France, Italy, Japan, Spain, Portugal, Greece, eight South American countries and 18 Caribbean countries. Activate within a year of claiming; data only, no number. The page states Korean users are not eligible for this event (they get 5% off AI-recommended eSIMs instead). Duplicate or fraudulent claims are cancelled and the gift cannot be transferred or resold.",
+  "conditions": "An eSIM-capable, carrier-unlocked phone; sign up with Google or Apple and claim inside the app only; Korean users not eligible; one claim per account; activate within one year.",
+  "steps": [
+   "Download the MaaltalkNow app from the App Store or Google Play using the campaign page",
+   "Sign in with Google or Apple and accept the required terms",
+   "Tap the campaign banner and add the free 1GB / 7-day eSIM to your phone",
+   "On arrival switch mobile data to this eSIM; top up in the app when it runs out"
+  ],
+  "risk": "1GB covers maps and messages only and video will burn it fast; no end date is published, so the event can stop at any time; the networks and speeds behind the 65 destinations are not listed; Korean accounts or Korean IPs may be rejected; the operator is registered in Wyoming with support only by email and phone.",
+  "source": "MaaltalkNow official free welcome eSIM page (read 27 Nov 2026: 1GB / 7 days, 65 destinations, claim in app, activate within a year, Korean users excluded)"
+ },
+ "pexx-free-1gb-esim": {
+  "title": "[Global] PEXX free 1GB eSIM: 120+ destinations, 2GB more per invited friend (KYC required)",
+  "highlight": "A cross-border payments app with a travel eSIM built in: 1GB on activation with no code and no purchase, plus a 2GB voucher every time an invited friend finishes KYC",
+  "regions": "[Global] 120+ destinations offered in the app; check the app for your country",
+  "value": "1GB free + 2GB per referral",
+  "content": "PEXX is a Singapore-based cross-border payments platform with a travel eSIM inside its app (120+ destinations by its own count). Its published terms say every eligible user gets 1GB of free eSIM data when activating a PEXX eSIM - no referral code and no purchase needed, once per account. Invite a friend who downloads the app and completes KYC with your code and you get a 2GB data voucher, issued within three weeks of their KYC, with no cap on referrals; the friend still keeps their own free 1GB. Rewards are app vouchers only, cannot be cashed out or transferred, and the promotion runs until PEXX amends or ends it.",
+  "conditions": "Register a PEXX account and complete KYC; the 1GB is issued only when you activate a PEXX eSIM in the app; referral rewards depend on the friend finishing KYC; one account per person, multi-accounts or fake referrals are disqualified.",
+  "steps": [
+   "Download the PEXX app, register and complete KYC",
+   "Open the eSIM section from Wallet or Rewards, pick a destination and the 1GB plan, which checks out at $0",
+   "Install the eSIM and switch data on when you land",
+   "Share your in-app invite link; a friend who completes KYC earns you a 2GB voucher"
+  ],
+  "risk": "The terms do not state how long the free 1GB lasts - the app tells you when it is issued; KYC means handing ID documents to a payments company; the eSIM is a customer-acquisition feature and the promotion can change or end without notice; rewards are data vouchers, not cash.",
+  "source": "PEXX help centre terms 'Up to 3GB Free eSIM Data' (published 14 May 2026, ongoing: 1GB on activation, no code needed; 2GB per referee who completes KYC, issued within 3 weeks) + PEXX official LinkedIn (23 Jun 2026: 1GB free on download)"
+ },
+ "airhub-free-trial-200mb": {
+  "title": "[Global] Airhub free trial eSIM: 200MB / 3 days in 101+ countries, email only",
+  "highlight": "Enter an email on the official trial page and get an eSIM QR code: 200MB for 3 days across 101+ countries, no credit card and no account",
+  "regions": "[Global] 101+ countries and regions; the claim page lists the exact coverage",
+  "value": "200MB / 3 days (about $2)",
+  "content": "Airhub's free trial: enter an email address on the official free-trial page and you get an eSIM QR code that installs in minutes, giving 200MB of data for 3 days across 101+ countries and regions. Airhub says it is data only with no number, so it suits maps, ride-hailing and messages on arrival, and it is a cheap way to check your phone accepts eSIM. The page asks for no card. When the 200MB or the 3 days run out, top up a paid plan in the Airhub app; the trial does not auto-renew. The page does not say how many times one person can claim - check the terms shown when you claim.",
+  "conditions": "An eSIM-capable, carrier-unlocked phone and a working email; the trial ends when 200MB is used or 3 days pass, whichever comes first; claims per person are not published - check the claim page.",
+  "steps": [
+   "Open Airhub's official free eSIM trial page",
+   "Submit your email and wait for the eSIM QR code",
+   "Scan the QR code with your phone camera and add the eSIM",
+   "Select it for mobile data and enable data roaming; the clock starts on first connection"
+  ],
+  "risk": "200MB only covers testing and a short emergency - heavy use can finish it in half a day; no end date or per-person claim limit is published and both can tighten at any time; no number means no SMS codes; popular destinations are covered but check the app for obscure ones.",
+  "source": "Airhub official free-trial article (updated 26 Oct 2026: 200MB / 3 days, 101+ countries, QR code by email, no credit card)"
+ },
+ "thomas-cook-kolet-free-1gb": {
+  "title": "[UK] Thomas Cook package holiday includes a free Kolet eSIM: 1GB / 48 hours",
+  "highlight": "A UK OTA's partnership with French eSIM brand Kolet: book any package holiday and get 1GB of data, with a personal redemption link emailed 72 hours before departure and usable for 48 hours on arrival",
+  "regions": "[UK] Thomas Cook package holiday bookings in the UK, destinations across 72 countries",
+  "value": "1GB / 48 hours (about $5)",
+  "content": "UK online travel agency Thomas Cook partnered with French eSIM brand Kolet: book a package holiday (72 destinations, 20,000+ hotels, 190+ airline partners) and, 72 hours before departure, you get an email with a personal redemption link for 1GB of free data, usable for 48 hours after you land. The Kolet eSIM installs once and works in 190+ countries, enough for a taxi, finding the hotel and a message home without queueing for an airport SIM or hunting for public Wi-Fi. The offer is limited to first-time Kolet users.",
+  "conditions": "Book a package holiday with Thomas Cook UK - flight-only or hotel-only bookings do not qualify; first-time Kolet users only; the redemption link arrives by email 72 hours before departure, so install the eSIM before you board.",
+  "steps": [
+   "Book and pay for a Thomas Cook package holiday and opt in to booking-related promotional emails",
+   "Look for the Kolet redemption email 72 hours before departure",
+   "Open the link and claim the 1GB eSIM, then install it on your phone",
+   "Enable data on that eSIM on arrival and use the 1GB within 48 hours"
+  ],
+  "risk": "1GB over 48 hours only covers arrival day and you pay for data afterwards; it requires a real package-holiday booking, so you are trading the cost of a trip for 1GB; miss the email or opt out of marketing and the link may never arrive; other Kolet partnerships have had terms that differed from what the app showed, so confirm your destination after claiming.",
+  "source": "Thomas Cook official press release (28 Jul 2026: 1GB / 48-hour Kolet eSIM with every package holiday, personal link emailed 72 hours before departure, first-time Kolet users)"
  }
 }
