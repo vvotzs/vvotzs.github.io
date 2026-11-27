@@ -286,6 +286,7 @@ MARKET_TAGS = {
     "法区": ["FR"], "德区": ["DE"], "荷区": ["NL"], "波区": ["PL"],
     "克区": ["HR"], "爱尔兰": ["IE"], "沙特": ["SA"], "卡塔尔": ["QA"],
     "黎巴嫩": ["LB"], "马来": ["MY"], "印尼": ["ID"], "秘鲁": ["PE"],
+    "越南": ["VN"], "越南区": ["VN"], "巴西": ["BR"], "巴西区": ["BR"],
     "亚太发卡": ["APAC"], "亚洲 12 国": ["ASIA"], "欧区": ["EEA"],
     "EEA 欧区": ["EEA"], "欧区 17 国": ["EEA"], "欧洲+英国": ["EEA", "GB"],
     "多区": ["MULTI"], "美区/多区": ["MULTI"], "非美 47 国": ["MULTI"],
@@ -325,6 +326,8 @@ BRAND_SLUGS = {
     "Google Flow": "google", "Microsoft Azure": "microsoft", "Nous Research": "nous",
     "Cognition / Poke": "cognition", "American Express": "amex", "A1 Hrvatska": "a1",
     "TD Bank": "td", "Citizens Bank": "citizens", "Ally Bank": "ally", "PNC Bank": "pnc", "KT M mobile": "kt", "kt M mobile": "kt",
+    "T-Mobile": "tmobile", "Google Fi": "googlefi", "U Mobile": "umobile",
+    "Yoho Mobile": "yoho", "TextNow": "textnow", "MobiFone": "mobifone",
 }
 
 MARKET_TOKENS = {

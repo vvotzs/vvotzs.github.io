@@ -862,6 +862,50 @@ ELIG.update(
     }
 )
 
+# 2026-11-27 全量历史免费 eSIM 深挖新增 10 条
+ELIG.update(
+    {
+        "tmobile-trial-30d": {
+            "identity": "none", "residency": "none", "phone": "none",
+            "platform": ["android", "ios"], "geo": ["US"],
+        },
+        "google-fi-free-trial-7d": {
+            "identity": "none", "residency": "local_resident", "phone": "none",
+            "platform": ["android"], "geo": ["US"],
+        },
+        "textnow-free-esim": {
+            "identity": "none", "residency": "none", "phone": "none",
+            "platform": ["android", "ios"], "geo": ["US"],
+        },
+        "mobifone-vietnam-free-esim-10gb": {
+            "identity": "photo_id", "residency": "none", "phone": "none",
+            "platform": ["web"], "geo": ["VN"],
+        },
+        "tim-test-drive-esim-30gb": {
+            "identity": "local_id", "residency": "none", "phone": "none",
+            "platform": ["android", "ios"], "geo": ["BR"],
+        },
+        "umobile-ultra5g-trial-7d": {
+            "identity": "local_id", "residency": "citizen_only", "phone": "none",
+            "platform": ["android", "ios"], "geo": ["MY"],
+        },
+        "walutomat-esim-1grosz": {
+            "identity": "photo_id", "residency": "none", "phone": "none",
+            "funding": "min_deposit", "platform": ["android", "ios"], "geo": ["PL"],
+        },
+        "roameogo-free-1gb": {
+            "identity": "email", "platform": ["web"], "geo": ["GLOBAL"],
+        },
+        "airvoy-free-data-tasks": {
+            "identity": "phone", "phone": "any_number",
+            "platform": ["android", "ios"], "geo": ["GLOBAL"],
+        },
+        "yoho-mobile-free-esim-asia": {
+            "identity": "email", "platform": ["android", "ios"], "geo": ["GLOBAL"],
+        },
+    }
+)
+
 # 非 Bank / eSIM 分类里也手工挂了这组字段的条目（AI / 云 / 软件共 15 条）。
 # main() 对这两类以外的条目一律清空字段以回到默认值，跑一次就会把它们删掉，
 # 所以这里显式保留：只有明确列出的 id 才能留在非 Bank / eSIM 分类里。

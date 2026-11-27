@@ -398,6 +398,22 @@ KYC_NOTES.update(
     }
 )
 
+# 2026-11-27 全量历史免费 eSIM 深挖新增 10 条
+KYC.update(
+    {
+        "tmobile-trial-30d": "cn_ok_extra",
+        "google-fi-free-trial-7d": "foreign_only",
+        "textnow-free-esim": "cn_ok_extra",
+        "mobifone-vietnam-free-esim-10gb": "cn_ok_extra",
+        "tim-test-drive-esim-30gb": "foreign_only",
+        "umobile-ultra5g-trial-7d": "foreign_only",
+        "walutomat-esim-1grosz": "cn_ok_extra",
+        "roameogo-free-1gb": "none",
+        "airvoy-free-data-tasks": "none",
+        "yoho-mobile-free-esim-asia": "none",
+    }
+)
+
 # ------------------------------------------------------------------ vowifi
 VOWIFI: dict[str, str] = {}
 
@@ -431,6 +447,13 @@ _NUMBERED = {
     "mpt-po-pyaw-po-ya-10x-data",
     "atom-flexi-friday-100gb-spin",
     "true-tat-asean-tourist-sim-8gb",
+    # 2026-11-27 新增含号条目
+    "tmobile-trial-30d",
+    "google-fi-free-trial-7d",
+    "textnow-free-esim",
+    "mobifone-vietnam-free-esim-10gb",
+    "tim-test-drive-esim-30gb",
+    "umobile-ultra5g-trial-7d",
 }
 VOWIFI.update({i: "unknown" for i in _NUMBERED})
 VOWIFI["saily-us-number-annual"] = "false"  # App 内 VoIP，不是运营商 VoWiFi
