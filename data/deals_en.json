@@ -175,7 +175,7 @@
   "source": "Santander UK official switch page \"Switch. Save. Get £240.\" + official £240 Switcher T&Cs (2026-10 edition, offer from 2026-10-27) + official press release (2026-09-01)"
  },
  "ally-spending-300": {
-  "title": "[US] Ally checking $300: $1,000 of direct deposits for 6 months (code ALLY300, to 11/30)",
+  "title": "[US]Ally Spending Account $300: $1,000 of direct deposits a month for six months (code ALLY300, now to 12/10)",
   "highlight": "Open your first Spending Account with code ALLY300 and get $50 for every month with $1,000 of direct deposits, up to 6 months and $300 in total; no monthly fee, no minimum balance",
   "regions": "[US] Online nationwide with Ally Bank, an FDIC member, needing US identity and address",
   "value": "$300",
@@ -527,7 +527,7 @@
    "If you won't keep it, cancel or downgrade before the first year ends"
   ],
   "risk": "The discount is first-year only and the second year auto-renews at $18.33/mo (Creator), so forgetting to cancel costs more than double; credits are shared across products and dubbing/music burn fast; commercial use follows the official terms.",
-  "source": "ElevenLabs official pricing page, Black Friday banner and Creator/Pro first-year prices (rechecked 2026-11-19, Ends December 1)"
+  "source": "ElevenLabs official pricing page, Black Friday banner and Creator/Pro first-year prices (rechecked 2026-11-19, Ends December 1) Re-checked 2026-11-27: Creator still $99 for the first year ($220/yr after), Pro $445.50 first year ($990/yr after), banner still says until Dec 1."
  },
  "notion-education": {
   "title": "[Global] Notion education plan: Plus free",
@@ -8834,5 +8834,69 @@
   ],
   "risk": "You must stay on the plan to collect all eight instalments; changing or cancelling ends the reward. Korean real-name verification and a Korean number are required, which makes it hard to join from mainland China. S Plus and prepaid plans are excluded and event codes cannot be combined. The page notes the promotion may end early.",
   "source": "U+ Mobile official event page '유모바일 인기요금제 무료체험 찬스!' (read 2026-11-27: promotion 11/27-11/30, code 8개월무료체험, gift 40,000 KRW Naver Pay as 5,000 x 8 months, S Plus and prepaid excluded, plan change or cancellation voids it); no community DP on payouts yet"
+ },
+ "mistral-pro-education-student": {
+  "title": "[Global]Mistral Pro for students: $5.99/month for up to 12 months (normally $14.99), plus $150 Vibe Code each month",
+  "highlight": "Mistral's own pricing FAQ states verified students pay $5.99/month for Pro (normally $14.99) for up to 12 months; the school-issued institutional email is the only proof accepted, and personal addresses such as Gmail or Outlook do not qualify. The Pro subscription page also shows $150 of Vibe Code plus $15 of API credit each month; community reports say mainland Chinese university emails pass and a domestic Visa card works",
+  "regions": "[Global] Priced in USD or EUR by region; student status is judged only by the domain of the school-issued email",
+  "value": "About $108 saved a year, plus $165 of credit a month ($150 Vibe Code + $15 API)",
+  "content": "Mistral's pricing page says verified students can get Mistral Pro for $5.99/month instead of $14.99, for a maximum of 12 months, only on accounts that have never used Vibe (formerly Le Chat), taxes excluded. Pro includes all-day Vibe coding, higher message and search limits and 100+ connectors; the subscription page separately shows $150 of Vibe Code and $15 of API credit a month, $165 in total. Community reports say a mainland Chinese university address passes institutional verification, a domestic Visa card pays, and the subscription-only API key works against api.mistral.ai/v1 in clients such as Claude Code and OpenCode. The discount is worth roughly $108 over a year.",
+  "conditions": "You need an institutional email issued by your school; personal addresses (Gmail, iCloud, Outlook) and student IDs or enrolment letters are not accepted. The account must never have used Vibe or Le Chat. A card is required for the $5.99 monthly subscription, taxes excluded, and the price runs for at most 12 months.",
+  "steps": [
+   "Register a Mistral account with your school email, or change an existing account's email to it",
+   "Open chat.mistral.ai/upgrade/student, or tick \"I'm a student\" on the Pro card of the pricing page",
+   "Verify the institutional email and subscribe at $5.99/month",
+   "Collect the $150 Vibe Code and $15 API credit, and copy the subscription-only API key if you want to use it in other clients"
+  ],
+  "risk": "Student status rests entirely on the email domain: lose the mailbox or fail a review and the student price goes. Forget to cancel and it renews at $14.99. Community reports say billing is all at peak rates with low cache hits, so the $165 face value buys less than it looks. Using someone else's school email breaks the terms and can get the account closed.",
+  "source": "Mistral official pricing page FAQ (read 2026-11-27: \"Verified students can get Mistral Pro for $5.99 / month (normally $14.99)\", 12-month cap, first-time Vibe users only) and the Mistral Help Center Education plan article (institutional email only) | Community: NodeSeek post-1037112 and post-1036101 (2026-11-06/07: $15 API + $150 Vibe Code = $165, mainland edu emails pass, domestic Visa accepted, peak-rate billing)"
+ },
+ "dartnode-black-friday-vps-10": {
+  "title": "[US]DartNode Black Friday VPS-1: 1 vCPU/1GB/10GB for $10 a year, native IPv6, renews at the same price",
+  "highlight": "A Black Friday cornerstone: 1 vCPU, 1GB RAM, 10GB SSD, native IPv6, 1Gbps on AS399646, $10 prepaid for a year and renewing at the same price. Add IPv4 at checkout for $2 a year. The page says stock is unlimited and the event closes 11:59 PM CT on 11/30",
+  "regions": "[US] Multiple US locations, assigned by available capacity; the page states 1Gbps and AS399646",
+  "value": "$10 a year (about $0.83 a month), plus $2 a year for IPv4",
+  "content": "DartNode's Black Friday Invasion page lists VPS-1 as a cornerstone deal: 1 vCPU, 1GB RAM, 10GB SSD, native IPv6 included, 1Gbps on AS399646, $10 prepaid for a full year. The page says it renews at the same price and has no quantity limit; a dedicated IPv4 address costs $2 a year at checkout. The event runs from 00:00 CT on 11/27 to 23:59 CT on 11/30, with a flash drop every three hours (60 minutes or until sold out) and staged unlocks at 100, 300 and 600 orders. The same page runs a no-purchase giveaway of 10 VPS-3 (2C4G/100GB) and 5 RYZEN-5 (4C8G/200GB) boxes free for a year. The page does not state SSH access, open ports or Docker support; check the control panel after activation.",
+  "conditions": "You must order from the Black Friday page and pay $10 for a year, not monthly. IPv6 is native and IPv4 costs $2 a year extra. Flash drops have their own time window and stock, and giveaway entries need a reply in the LowEndTalk thread, one per account.",
+  "steps": [
+   "Open dartnode.com/landing/black-friday and register or sign in",
+   "Under Cornerstone deals choose \"VPS-1 (1 vCPU / 1GB / 10GB) - $10/year\"",
+   "At checkout decide whether to add IPv4 for $2 a year and pay the $10 yearly price",
+   "After activation check IPv6 reachability, and buy IPv4 separately if you need it"
+  ],
+  "risk": "Only native IPv6 is included, so IPv4-only networks and some applications cannot reach it until you add IPv4 for $2. A $10 yearly box from a small host carries overselling and closure risk, so keep production off it. Each flash drop lasts only 60 minutes, and the site sits behind a bot check you may have to clear by hand.",
+  "source": "DartNode official Black Friday page (read 2026-11-27 15:37: VPS-1 $10/yr, 1 vCPU/1GB/10GB SSD, native IPv6, IPv4 +$2/yr, unlimited stock, renews at the same price, event to 23:59 CT 11/30) and NodeSeek post-1085040 (2026-11-27, same $10/year and $2 IPv4 detail)"
+ },
+ "dartnode-black-friday-giveaway": {
+  "title": "[US]DartNode Black Friday giveaway: 15 VPS free for a year plus a 9950X dedicated box, just reply on LowEndTalk",
+  "highlight": "Nothing to buy: like and reply to DartNode's LowEndTalk Black Friday thread with the entry phrase and you are in, one entry per account. The pool has 10 VPS-3 and 5 RYZEN-5 boxes free for a year plus one Ryzen 9 9950X/128GB dedicated server, drawn live after the 23:30 CST cutoff on 11/30",
+  "regions": "[US] Online draw; physical prizes (Legion Go 2, Switch 2) ship to the continental US only, or you can take account credit instead",
+  "value": "10 VPS-3 (2C4G/100GB) and 5 RYZEN-5 (4C8G/200GB) free for a year, plus one Ryzen 9 9950X dedicated server",
+  "content": "DartNode's Black Friday page states the community giveaway needs no purchase: go to its LowEndTalk promo thread, thank the post and reply with the entry phrase posted there, one entry per LowEndTalk account, no verification. Prizes: one Lenovo Legion Go 2 (or $1,473 account credit), one Nintendo Switch 2 (or $499 credit), one Ryzen 9 9950X dedicated server (16C32T, 128GB DDR5, 1TB NVMe) free for a year, five RYZEN-5 VPS (4C8G/200GB) free for a year and ten VPS-3 (2C4G/100GB) free for a year. Server prizes renew only if the winner chooses, at $249, $19.95 or $7.95 a month. Entries close 23:30 CST on 11/30; winners are drawn live on Cyber Monday and have 48 hours to claim.",
+  "conditions": "You need a LowEndTalk account, must thank and reply in the official thread with the entry phrase, one entry per account. Physical prizes ship to the continental US only and can be swapped for account credit. Winners must claim within 48 hours or the prize is redrawn; entrants must be 18+ and follow the AUP.",
+  "steps": [
+   "Open the Community giveaway section of dartnode.com/landing/black-friday and follow the link to the LowEndTalk thread",
+   "Thank the promo post and reply with the entry phrase (one entry per account)",
+   "Finish before 23:30 CST on 11/30 and watch the Cyber Monday stream for the draw",
+   "Watch LowEndTalk private messages and claim within 48 hours if you win"
+  ],
+  "risk": "Odds are low: 15 servers and two physical prizes against everyone who enters, so never pay for a chance. Physical prizes ship only within the continental US; elsewhere only account credit works. Server prizes expire after a year and cost money only if you choose to renew. Small hosts can close, so do not keep your only copy of important data on a prize box.",
+  "source": "DartNode official Black Friday page giveaway terms (read 2026-11-27 15:37: no purchase necessary, LowEndTalk reply entry, 11/30 23:30 CST cutoff, prize list and renewal prices, physical prizes US-only)"
+ },
+ "cloudnium-black-friday-079": {
+  "title": "[US/CA]Cloudnium Black Friday: 2C2G/20GB/1TB for $0.79 a month (code BFVPS, normally $3.99)",
+  "highlight": "First Black Friday tier, Basic-1: 2 vCPU, 2GB RAM, 20GB SSD and 1TB a month, cut from $3.99 to $0.79 a month with code BFVPS at checkout, in Dallas, Seattle, Los Angeles, Chicago or Toronto. The site was overwhelmed as the sale opened; several community posts agree on the plan and the code",
+  "regions": "[US/CA] Dallas, Seattle, Los Angeles and Chicago in the US plus Toronto in Canada; Alipay and cards at checkout",
+  "value": "$0.79 a month (about $9.48 a year) instead of $3.99",
+  "content": "Cloudnium's first Black Friday tier, on sale from 14:00 Beijing time on 11/27, is Basic-1: 2 vCPU, 2GB RAM, 20GB SSD and 1TB of monthly traffic on KVM, in Dallas, Seattle, Los Angeles, Chicago or Toronto. The list price is $3.99 a month; with coupon BFVPS at checkout it drops to $0.79 a month, about $9.48 a year. Two independent NodeSeek posts give the same plan and code, and LowEndTalk's Black Friday timetable lists the same $0.79/m 2GB offer. The vendor warns against ordering through a proxy and asks for a real country in the signup. This entry could not be re-checked on the official site: at 15:38 on 2026-11-27 portal.cloudnium.net stopped at a Cloudflare challenge while the community reported 504s, so stock and renewal terms are unverified.",
+  "conditions": "Pay monthly and enter code BFVPS at checkout; the code covers the Basic-1 2C2G plan only. Yearly pricing and renewal terms are unverified. Do not use a proxy when ordering, and give a real country in your details. Stock is first come first served from 14:00 Beijing time on 11/27.",
+  "steps": [
+   "Register at portal.cloudnium.net once it recovers, without a proxy",
+   "Choose the Basic-1 plan and a location, with the monthly billing cycle",
+   "Apply code BFVPS at checkout and confirm the price shows $0.79 a month before paying",
+   "After activation test latency from your location before keeping it long term"
+  ],
+  "risk": "The site is currently down under sale traffic and behind a bot check, so the ordering window is short and stock can vanish. $0.79 a month is an extreme price from a small host: overselling and business risk are real, so keep production off it. Whether it renews at $0.79 is unconfirmed, and ordering through a proxy easily trips fraud checks.",
+  "source": "NodeSeek post-1085054 (2026-11-27 06:06 UTC: Basic-1, code BFVPS, $0.79/month) and post-1085041 (same, with review link) | LowEndTalk Black Friday 2026 master list entry for 2026-11-27: Cloudnium $0.79/m 2GB VPS in US/CA | portal.cloudnium.net hit a Cloudflare challenge at 15:38 on 2026-11-27 so the official page could not be re-checked; community reported 504s at the same time"
  }
 }
