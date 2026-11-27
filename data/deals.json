@@ -5377,6 +5377,51 @@
   "utility": 0
  },
  {
+  "id": "paradev-pro-bfcm2026-90d",
+  "dedup_key": "paradev|software|global|pro-bfcm2026-90d",
+  "title": "[全球]Paradev Pro黑五码BFCM2026：免费90天（省$60，绑卡防自动续订）",
+  "brand": "Paradev",
+  "domain": "paradev.com",
+  "category": "software",
+  "value": "Pro免费3个月（省$60）",
+  "value_num": 60,
+  "cost": "免费试用",
+  "highlight": "原 Superset、MIT 开源的多代理工作台：结账填 BFCM2026，Pro（月付 $20）连用 3 个月实付 $0；不含模型额度，需自备 Claude Code / Codex 的 Key；仅 macOS/Linux 桌面端",
+  "regions": "[全球] 桌面端仅 macOS / Linux；iOS / Android App 可遥控本机代理",
+  "start": "2026-11-25",
+  "end": "",
+  "content": "Paradev（原 Superset）把 Claude Code、Codex 等编码代理放进同一个工作台：每个任务自动开独立 Git worktree，多代理并行不互撞，还能按 Sentry / GitHub 事件自动触发修 Bug。Pro 档另有手机端远程遥控本机代理与合盖保活。结账填 BFCM2026，Pro 月付（$20/月）连续 3 个月 0 元，省 $60，到期按原价自动续订。桌面端只支持 macOS 与 Linux，模型额度不含在内，用哪个代理就自备哪家的 Key。",
+  "conditions": "在 paradev.com 选 Pro 月付，结账优惠码栏填 BFCM2026 并确认总价显示 $0 再提交；需绑卡，仅限新购；不含模型/API 额度；90 天后自动按 $20/月续订，不用要提前取消。",
+  "steps": [
+   "在 paradev.com 下载 macOS 或 Linux 桌面端并注册账号",
+   "到 Pricing 页选 Pro、按年付切回月付，结账点「Have a discount code?」填 BFCM2026",
+   "确认应付金额变成 $0 再提交（有卡验证扣款会原路退回）",
+   "装好本机 Claude Code / Codex 后接进 Paradev，90 天到期前在账号页取消订阅"
+  ],
+  "url": "https://paradev.com/pricing",
+  "source_url": "https://x.com/ParadevAI/status/2125722327702983097",
+  "source": "Paradev 官方 X @ParadevAI（2026-11-25 公告：MIT 开源、100+ 并行代理、iOS/Android App，「Claim your pro upgrade for 90 days free → code BFCM2026」）+ 官网 Pricing 页 2026-11-27 实读（Free $0、Pro $20/月，年付折 $16/月）+ @DavisNc9527 2026-11-27 实测（结账显示 0 元再支付、省 $60、仅 macOS/Linux、不含模型额度）",
+  "risk": "忘记取消就按 $20/月原价续订；模型额度另计，代理跑起来的 token 费用不在内；团队/企业采购不适用此码；Windows 无桌面端；个人自建工作台仍要自己维护 git 仓库与分支。",
+  "status": "active",
+  "added": "2026-11-27",
+  "added_at": "2026-11-27T18:40:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-27",
+  "kyc_level": "none",
+  "utility": 0,
+  "platform_requirement": [
+   "macos",
+   "linux",
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "identity_requirement": "email",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "lemfi-eu-referral-50",
   "dedup_key": "lemfi|bank|eea|referral-50",
   "title": "[欧区]LemFi邀请：欧洲注册双方各得€50LemFi Cash（首笔须汇欧元区以外）",
@@ -6053,6 +6098,48 @@
   ],
   "geo_restriction": [
    "GLOBAL"
+  ]
+ },
+ {
+  "id": "rarecloud-black-friday-2026",
+  "dedup_key": "rarecloud|cloud|eea|black-friday-2026",
+  "title": "[欧区]RareCloud黑五：VPS最高5折＋充值按档加赠最高2倍（赠额有时效）",
+  "brand": "RareCloud",
+  "domain": "rarecloud.io",
+  "category": "cloud",
+  "value": "充值最高翻倍；VPS 最高省 50%",
+  "value_num": 50,
+  "cost": "需要充值",
+  "highlight": "官网黑五横幅现行：KVM VPS 最高 5 折（3 年付低至 €1.56/月、11 个机房、NVMe 全 root）；充值按档加赠 +50% / +75% / 2×，入口在控制台 Add credit",
+  "regions": "[欧区] 欧元结算，11 个机房（含香港、东京与欧美节点）",
+  "start": "",
+  "end": "",
+  "content": "RareCloud 官网顶部黑五横幅挂两档：一是 KVM VPS 最高 5 折，年付折算低至 €1.56/月，11 个机房、NVMe、全 root，另可加购 Kubernetes、S3 对象存储与按 GB 计的住宅代理；二是充值按档加赠，横幅标 +50% / +75% / 2× 三档，按钮直达控制台 Add credit 页。加赠属平台赠送额度，与本金分开：本金永久有效，赠额有使用期限，过往同款活动为每账户一次、赠额 60 天内用完，本轮具体金额档位与时效需在结算页确认。",
+  "conditions": "充值最低 €10，加赠按单笔金额分档，须在控制台 Add credit 页看清适用档再付；赠额不能提现且有有效期；VPS 折扣走 /kvm-vps 的套餐页下单，与加赠是否同单叠加未写明。",
+  "steps": [
+   "打开 rarecloud.io 顶部黑五横幅，先看 /kvm-vps 上当前的折扣套餐与机房",
+   "注册后在控制台 Billing → Add credit 选金额，确认右侧显示的加赠档位与有效期",
+   "充值到账后回 /kvm-vps 下单，或直接开按小时计费的 Cloud VM",
+   "开通后测延迟与 IO，再决定是否长付；赠额优先于本金扣除"
+  ],
+  "url": "https://rarecloud.io/kvm-vps/",
+  "source_url": "https://rarecloud.io/",
+  "source": "RareCloud 官网黑五横幅（2026-11-27 18:25 实读：『Black Friday · Up to 50% off VPS · Up to double credit on top-ups』，档位标 +50%/+75%/2×，CTA 指向 console.rarecloud.io/billing/credit/add?utm_campaign=black-friday-2026）+ KVM 页实读（From €1.56/mo on a 3-year plan、11 locations、NVMe 全 root）+ LowEndBox 2026-08 同系列充值活动与 LowEndTalk 讨论（赠额 60 天有效、每账户一次、先扣赠额后扣本金，属上一轮活动口径，本轮未公布）",
+  "risk": "赠额是促销额度，冲多了用不完会作废（上一轮为 60 天）；小商家，2024–2026 有停机、工单慢的社区评价，别放生产；按小时计费的 Cloud VM 余额不足仍会继续跑并出账单；VPS 折扣与充值加赠能否同单叠加官方没写明。",
+  "status": "active",
+  "added": "2026-11-27",
+  "added_at": "2026-11-27T18:40:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-27",
+  "kyc_level": "none",
+  "utility": 0,
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "min_deposit",
+  "identity_requirement": "email",
+  "geo_restriction": [
+   "EU"
   ]
  },
  {
@@ -8041,6 +8128,51 @@
   "status": "active",
   "kyc_level": "none",
   "utility": 0
+ },
+ {
+  "id": "glm-coding-plan-flash-double",
+  "dedup_key": "ai|ai|global|glm-coding-plan-flash-double",
+  "title": "[全球/中国区]GLM Coding Plan双倍Flash用量：GLM-5.3-Flash积分减半（11/24–12/24）",
+  "brand": "Z.ai",
+  "domain": "z.ai",
+  "category": "ai",
+  "value": "GLM-5.3-Flash 等效额度×2",
+  "value_num": 20,
+  "cost": "需要充值",
+  "highlight": "活动期内 GLM-5.3-Flash 抵扣系数全砍一半（输入2.3→1.15、缓存0.56→0.28、输出8→4），Lite/Pro/Max 自动生效、不用领码；套餐积分上限不变，等于同样的钱跑两倍 Flash",
+  "regions": "[全球/中国区] 国际站 docs.z.ai、国内站 bigmodel.cn，套餐与可用工具一致",
+  "start": "2026-11-24",
+  "end": "2026-12-24",
+  "content": "GLM Coding Plan 把 GLM-5.3-Flash（含视觉理解 MCP）的积分抵扣系数在活动期内全部按 50% 结算：输入 2.3→1.15、缓存命中 0.56→0.28、输出 8→4，套餐积分上限不变（Lite 每 5 小时 2,000 / 每周 10,000；Pro 12,000 / 60,000；Max 28,000 / 140,000），同样的额度能换两倍 Flash 用量。官方估算缓存命中 95% 时，Lite 每周 Flash 可用量从约 1.46–2.92 亿 Tokens 提到 2.92–5.84 亿，Pro 提到 17.54–35.10 亿，Max 提到 40.94–81.90 亿。非高峰时段本就按五折扣，可与活动叠加；高峰为周一至周五 14:00–18:00（UTC+8）。",
+  "conditions": "需已订阅 GLM Coding Plan（Lite/Pro/Max 任一），在官方支持的工具（Claude Code、OpenCode 等）里调用才走套餐额度；自动生效不用领码；第三方客户端直连 API 不参与；活动到期恢复原系数。",
+  "steps": [
+   "确认账号已订阅 GLM Coding Plan，并在支持的工具里按接入指引配好模型",
+   "把日常写码/补测试的模型切到 GLM-5.3-Flash，定方案与审查留给 GLM-5.4",
+   "到「用量统计」看积分消耗是否按减半后的系数扣",
+   "把重活排到非高峰时段（避开周一至周五 14:00–18:00），两档五折叠加"
+  ],
+  "url": "https://docs.bigmodel.cn/cn/coding-plan/overview",
+  "source_url": "https://docs.z.ai/devpack/overview",
+  "source": "智谱官方文档 2026-11-27 实读（Coding Plan 套餐概览：『限时活动：11 月 24 日至 12 月 24 日，调用 GLM-5.3-Flash 所产生的消耗全部按原抵扣系数的 50% 结算，即可用额度为原来的 2 倍』；积分表 2.3/0.56/8 划改为 1.15/0.28/4；非高峰五折、高峰周一至周五 14:00–18:00）+ docs.z.ai 英文版同条 + GLM-5.3-Flash 模型页（活动期内额度为原来 2 倍）",
+  "risk": "只对 GLM-5.3-Flash 生效，GLM-5.4/5.3 系数不变，别把 Flash 当旗舰用；额度只在指定工具内抵扣，自己写脚本直连 API 要另付；活动 12/24 结束且无续期公告；积分按 5 小时滚动窗口刷新，用完要等窗口。",
+  "status": "active",
+  "added": "2026-11-27",
+  "added_at": "2026-11-27T18:40:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-27",
+  "kyc_level": "cn_ok",
+  "utility": 0,
+  "platform_requirement": [
+   "web",
+   "windows",
+   "macos",
+   "linux"
+  ],
+  "funding_requirement": "purchase",
+  "identity_requirement": "phone",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
  },
  {
   "id": "taptap-send-uk-first-transfer",
@@ -11767,10 +11899,10 @@
   "url": "https://infini.money/en/personal/cards",
   "source_url": "https://help.infini.money/en/articles/18241931-infini-ai-%E5%95%86%E6%88%B7%E8%BF%94%E7%8E%B0%E6%B4%BB%E5%8A%A8%E8%A7%84%E5%88%99%E8%AF%B4%E6%98%8E",
   "source": "Infini 官方卡页与帮助中心（2026-11-25 实读：首张免开卡费、无月费年费、首充 US$10 起；AI 商户返现 Standard 30%/Professional 50% 上限 $10、Elite 50% 上限 $100，约 60 家商户；普通返现 1.5–5%）+ APPDO 数字生活指南 2026-11-24 实测贴（大陆可用护照 + 海外地址证明开卡，属社区口径）",
-  "risk": "稳定币平台，发卡行/卡 BIN 与规则可能调整；Lite 非美元消费收 3%，Max 单笔不足 $50 收 $0.30；AI 返现走商户直扣才算，App 内订阅与第三方代充一律不返；大陆可开卡只有频道实测，KYC 可能被拒（官方未承诺）；卡内余额是稳定币，平台风险自担。",
+  "risk": "稳定币平台，发卡行/卡 BIN 与规则可能调整；Lite 非美元消费收 3%，Max 单笔不足 $50 收 $0.30；AI 返现走商户直扣才算，App 内订阅与第三方代充一律不返；大陆可开卡只有频道实测，KYC 可能被拒（官方未承诺）；卡内余额是稳定币，平台风险自担。 2026-11-26–27 X 与频道多起反馈：入金与 Bybit 转账数小时不到账、充值后提现受阻、客服先说技术跟进后不回；官方页面确认 Lite Plus 只对 Professional（30 天平均资产 $2,000）以上开放，Standard 仍可开 Lite。建议只放一次性小额、用完即提，别把大额当存钱罐。",
   "added_at": "2026-11-25T09:05:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-25",
+  "last_verified": "2026-11-27",
   "added": "2026-11-25",
   "status": "active",
   "kyc_level": "cn_ok_extra",
@@ -18332,6 +18464,51 @@
   "utility": 0
  },
  {
+  "id": "jetbrains-black-friday-bf2026",
+  "dedup_key": "jetbrains|software|global|black-friday-bf2026",
+  "title": "[全球]JetBrains黑五码BF2026：个人年付订阅与升全家桶6折（11/25–12/2）",
+  "brand": "JetBrains",
+  "domain": "jetbrains.com",
+  "category": "software",
+  "value": "6折（All Products Pack 首年省约$120）",
+  "value_num": 120,
+  "cost": "需要充值",
+  "highlight": "新购个人年付 IDE（IDEA、PyCharm、WebStorm、GoLand 等）或 ReSharper，以及把个人年付升级到 All Products Pack / dotUltimate，结账填 BF2026 打 6 折；可一次付 2–3 年锁同价",
+  "regions": "[全球] 官网直购，按地区货币结算",
+  "start": "2026-11-25",
+  "end": "2026-12-02",
+  "content": "JetBrains 黑五：新购个人年付的单款 IDE（IntelliJ IDEA、PyCharm、WebStorm、GoLand、Rider 等）或 ReSharper，以及把现有个人年付升级到 All Products Pack / dotUltimate，结账点「Have a discount code?」填 BF2026 即 6 折，All Products Pack 首年 $299 折后约 $180；想锁更久可在结账时一次付 2–3 年，同享 6 折。多件可放同一购物车，码只用一次但对该车里所有合资格订阅生效。",
+  "conditions": "仅限新购个人年付与升级（现有订阅需剩至少 30 天），码每人限用一次；续费、月付、组织/团队采购不参加；不能与其他折扣叠加（续订连续折扣除外）；须在付款前填码，事后无法补。",
+  "steps": [
+   "打开 jetbrains.com 对应 IDE 的购买页，选个人年付（或多年度）",
+   "结账时点「Have a discount code?」填 BF2026 并应用",
+   "确认应付金额变成 6 折再付款（升级单按剩余价值折算）",
+   "到账号订阅页核对到期日，次年不想续就提前关掉自动续订"
+  ],
+  "url": "https://www.jetbrains.com/store/",
+  "source_url": "https://blog.jetbrains.com/blog/2026/11/25/black-friday-2026/",
+  "source": "JetBrains 官方博客 2026-11-25（Save 40% on New JetBrains Subscriptions and Upgrades：新购个人年付 IDE/ReSharper 与升级到 All Products Pack、dotUltimate 打 6 折，码 BF2026，有效期 11/25–12/2，可一次付 2–3 年，码限用一次、续费不适用）+ JetBrains 商店 All Products Pack 个人价（首年 $299、次年 $239、第三年起 $179）",
+  "risk": "不适用于续费，老用户只能买新订阅或升级；漏填码就按原价扣款且事后不能补；订阅默认按年自动续费，次年恢复原价；学生包、开源授权本来就免费，别重复买；团队采购与企业版不参加。",
+  "status": "expiring_soon",
+  "added": "2026-11-27",
+  "added_at": "2026-11-27T18:40:00+08:00",
+  "verified": true,
+  "last_verified": "2026-11-27",
+  "kyc_level": "none",
+  "utility": 0,
+  "platform_requirement": [
+   "web",
+   "windows",
+   "macos",
+   "linux"
+  ],
+  "funding_requirement": "purchase",
+  "identity_requirement": "email",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "uu-remote-vip-annual-half-2026",
   "dedup_key": "netease-uu|software|cn|remote-vip-annual-half-2026",
   "title": "[中国区]网易UU远程VIP年卡五折：¥119/年（原价¥238，12/1前注册可领）",
@@ -18542,7 +18719,7 @@
   "start": "2026-11-24",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "added": "2026-11-25",
   "content": "迪士尼2026黑五把Disney+与Hulu合订包（含广告）打到$4.99/月，锁价12个月，原价$12.99/月，一年省$96；无广告Premium档$14.99/月（原$21.99），同样锁12个月。11/24开卖、11/30 23:59（美西）截止，只在disneyplus.com下单，12个月后按当时原价自动续费。合订包在Disney+里可看Hulu内容（最多2台同时播放），部分Hulu内容仍须在Hulu应用看；Disney+ Perks会员权益需另行登记。",
   "conditions": "仅美国居民、18岁以上；新用户与合格回流用户，现役Disney+、Hulu、ESPN或合订包订阅者不能参加；不能与免费试用或其他促销、合订包叠加，不能用礼品卡付款；中途换套餐即失去黑五价；到期按原价自动续费。",
@@ -20011,7 +20188,7 @@
   "start": "2026-11-13",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "added": "2026-11-19",
   "content": "Airalo官方Black Friday（2026-11-13 00:00 UTC至11-30 23:59 UTC）：活动专页对符合条件的Unlimited套餐结账时输入BLACK25，享标准价7.5折，新老客户均可。Unlimited按公平使用政策每天3GB高速（最高20Mbps），超出后降速但可继续用地图、消息与浏览，每24小时重置。购买后可在365天内激活，适合先囤后飞。",
   "conditions": "仅限官方活动页标注eligible的Unlimited套餐（固定流量、区域、全球套餐通常不在内）；必须手动输入BLACK25；一单只能用一个码，不能与推荐码、账户余额、其他优惠叠加；不追溯已完成的订单；以结账页折后价为准。",
@@ -20213,7 +20390,7 @@
   "start": "2026-10-20",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "added": "2026-11-20",
   "content": "Fireworks官方博客《Train Muse Glimmer for free》宣布Free Weights Club首期：Muse Glimmer 30B（多模态、30B量级）在2026-11-30前用SFT、DPO与RL训练全部免费，无需信用卡，可用Managed Training（网页端或API）跑SFT，也可用Serverless Training API自己写训练循环。官方文档与cookbook补充：LoRA SFT在UI与Serverless Training API上免费，仅对2026-12-01T00:00:00-08:00之前启动的任务生效（脚本默认拒绝之后启动，除非加--allow-paid）。官方样板：用Kalshi预测题cookbook训练一轮LoRA，在未见过的题目上把准确率从53.2%提到58.3%，比对照组Jev高11.2个百分点。训练产物是LoRA adapter，可promote成模型，但对外提供服务仍需on-demand部署（按GPU小时计费）。",
   "conditions": "注册Fireworks账号、免绑卡；免费只覆盖训练——推理以及训练中的评估采样都按token单独计费；Serverless上Muse Glimmer 30B自2026-09-25起已下架；博客写SFT/DPO/RL全免但cookbook只明确LoRA SFT免费，DPO/RL以任务创建页计费提示为准。",
@@ -21338,7 +21515,7 @@
   "start": "2026-11-23",
   "end": "2026-11-29",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "added": "2026-11-24",
   "content": "本周（11/23–11/29）登录 AutoClaw 客户端即领 100M Tokens，折 10,000 积分，每账号限领一次，额度 29 日 23:59 统一失效、不累积。官方周福利每期额度轮换（上一期 50M、本期 100M），领取不要求绑卡或订阅；额度只能用于 AutoClaw 内置模型（GLM-5.3、GLM-5V 系列），导不出 API Key。GLM-5.4 已在 AutoClaw 上线，但目前只对 GLM Coding Plan 订阅用户开放、享 1.5 倍额度。",
   "conditions": "需智谱或 Z.ai 账号并登录 AutoClaw 客户端；每账号限领一次；额度 2026-11-29 23:59（北京时间）失效；仅限客户端内模型调用，不能导出为 API。",

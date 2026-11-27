@@ -59,7 +59,7 @@
 "@id": "https://vvotzs.github.io/d/fireworks-glimmer-free-training/#offer"
 },
 "datePublished": "2026-11-20",
-"dateModified": "2026-11-26",
+"dateModified": "2026-11-27",
 "primaryImageOfPage": {
 "@type": "ImageObject",
 "url": "https://vvotzs.github.io/assets/og-cover.png"
@@ -195,7 +195,7 @@
 <section class="dp-sec"><h2>亮点</h2><p class="dp-lead">Fireworks 的 Free Weights Club 首期：多模态 Muse Glimmer 30B 用 SFT、DPO、RL 训练都不要钱，到 2026-11-30 截止，免绑卡；拿来跑自己的 LoRA 微调实验够了</p></section><section class="dp-sec"><h2>优惠内容</h2><p>Fireworks官方博客《Train Muse Glimmer for free》宣布Free Weights Club首期：Muse Glimmer 30B（多模态、30B量级）在2026-11-30前用SFT、DPO与RL训练全部免费，无需信用卡，可用Managed Training（网页端或API）跑SFT，也可用Serverless Training API自己写训练循环。官方文档与cookbook补充：LoRA SFT在UI与Serverless Training API上免费，仅对2026-12-01T00:00:00-08:00之前启动的任务生效（脚本默认拒绝之后启动，除非加--allow-paid）。官方样板：用Kalshi预测题cookbook训练一轮LoRA，在未见过的题目上把准确率从53.2%提到58.3%，比对照组Jev高11.2个百分点。训练产物是LoRA adapter，可promote成模型，但对外提供服务仍需on-demand部署（按GPU小时计费）。</p></section><section class="dp-sec"><h2>参与条件</h2><p>注册Fireworks账号、免绑卡；免费只覆盖训练——推理以及训练中的评估采样都按token单独计费；Serverless上Muse Glimmer 30B自2026-09-25起已下架；博客写SFT/DPO/RL全免但cookbook只明确LoRA SFT免费，DPO/RL以任务创建页计费提示为准。</p></section><section class="dp-sec"><h2>参与步骤</h2><ol class="dp-steps"><li>注册 Fireworks 账号（免绑卡）</li><li>在 Managed Training 或 Serverless Training API 里选 `accounts/fireworks/models/muse-glimmer-30b`</li><li>准备 chat JSONL 数据，启动 LoRA SFT（可用官方 cookbook 的 muse_glimmer starter）</li><li>看 launch 打印的采样 token 费用行，确认只有评估采样计费</li><li>把训练好的 LoRA promote 成模型；要对外服务再开 on-demand 部署</li></ol></section><section class="dp-sec is-risk"><h2>风险提示</h2><p>只免训练，推理和评估采样照价收费，跑大评估集会出账单；训练完要上线还得按 GPU 小时部署；博客与文档对 DPO/RL 是否覆盖口径不一致；11-30 之后启动的任务不再免费。</p></section>
 <section class="dp-sec dp-meta-sec">
 <h2>来源与核验</h2>
-<p class="dp-meta"><span><i>来源</i>Fireworks 官方博客（2026-10-20，11-17 更新）+ 官方 cookbook 与模型页促销说明（2026-11-20 核对）+ that.promo / Token Thrift 2026-11-19 复核；2026-11-26复核：官方博客仍写「free SFT, DPO, and RL through November 30」</span><span><i>最后验证</i>2026-11-26</span><span><i>收录</i>2026-11-20</span></p>
+<p class="dp-meta"><span><i>来源</i>Fireworks 官方博客（2026-10-20，11-17 更新）+ 官方 cookbook 与模型页促销说明（2026-11-20 核对）+ that.promo / Token Thrift 2026-11-19 复核；2026-11-26复核：官方博客仍写「free SFT, DPO, and RL through November 30」</span><span><i>最后验证</i>2026-11-27</span><span><i>收录</i>2026-11-20</span></p>
 </section>
 <section class="dp-more" aria-label="相关推荐"><h2>相关推荐</h2><ul><li><a href="/d/foxl-200-credits/"><span class="dp-rel-t"><i>全球</i>Foxl v0.10.7：新账号送200credits，每邀请一位好友再+100（免Key、免订阅）</span><span class="dp-rel-v">≈$5</span></a></li><li><a href="/d/freeai-free-tokens-30k-daily/"><span class="dp-rel-t"><i>全球</i>Free.ai免费额度：注册每日3万Tokens、.edu每月50万（573款模型，免绑卡）</span><span class="dp-rel-v">$60</span></a></li><li><a href="/d/factory-droid-free-plan/"><span class="dp-rel-t"><i>全球</i>Factory Droid免费版$0：自带模型（ChatGPT/Copilot/OpenRouter登录或自备API Key）</span><span class="dp-rel-v">$20/月</span></a></li><li><a href="/d/exa-api-40-credits-codes/"><span class="dp-rel-t"><i>全球</i>Exa搜索API：两个$20兑换码可叠+每月$10免费额度</span><span class="dp-rel-v">$40 + $10/月</span></a></li><li><a href="/d/firsty-free-esim-global/"><span class="dp-rel-t"><i>全球</i>Firsty免费eSIM：看广告换流量，每天最高360MB（176国）</span><span class="dp-rel-v">≈$1</span></a></li><li><a href="/d/firefox-builtin-vpn-unlimited-2027/"><span class="dp-rel-t"><i>全球</i>Firefox内置VPN无限流量：免费开放到2027-01-31</span><span class="dp-rel-v">≈$5</span></a></li></ul></section>
 <nav class="dp-nav" aria-label="面包屑">
@@ -213,7 +213,7 @@
 </span>
 羊毛情报局 · © 2026
 </span>
-<span class="foot-up">最后验证 2026-11-26</span>
+<span class="foot-up">最后验证 2026-11-27</span>
 <span class="foot-legal" aria-label="站点信息页面"><a href="/about/">关于</a><span class="foot-legal-sep" aria-hidden="true">·</span><a href="/privacy/">隐私</a><span class="foot-legal-sep" aria-hidden="true">·</span><a href="/disclosure/">披露</a><span class="foot-legal-sep" aria-hidden="true">·</span><button class="foot-cookie" type="button" data-consent-open aria-label="打开 Cookie 设置，管理统计与广告同意">Cookie 设置</button></span>
 <a class="foot-top" href="#top">↑</a>
 </div>

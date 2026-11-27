@@ -8977,5 +8977,69 @@
   ],
   "risk": "A paid ahamo line is needed, so this is a plan perk rather than a free product; it is not cash, and cancelling or changing the plan ends it; the 1 December price revision changes what the credit is worth; AI usage is counted in runs, with follow-ups in the same thread counted too; a d ACCOUNT link is mandatory.",
   "source": "ahamo official campaign page (read 2026-11-27 17:02: eligible plans, first month free plus 11 months of set discount, three tiers and their credits, 2026-12-01 revision notice) + Stella AI official sign-up page (eligible plans and the JAL Mobile exclusion) + K-tai Watch, ITmedia and Mynavi coverage (2024-11-22) of how the set discount works"
+ },
+ "paradev-pro-bfcm2026-90d": {
+  "title": "[Global] Paradev Pro Black Friday code BFCM2026: 90 days free (save $60, card required, cancel before renewal)",
+  "highlight": "Formerly Superset, an MIT-licensed workspace for coding agents: enter BFCM2026 at checkout and Pro ($20/month) is $0 for three months. Model credits are not included, so bring your own Claude Code or Codex key. Desktop apps are macOS and Linux only.",
+  "regions": "[Global] Desktop apps for macOS and Linux only; the iOS and Android apps control agents on your own machine",
+  "value": "90 days of Pro free (save $60)",
+  "content": "Paradev (formerly Superset) runs Claude Code, Codex and other coding agents side by side: each task gets its own Git worktree so parallel agents do not collide, and Sentry or GitHub events can trigger fixes automatically. Pro adds remote control of your own machine from the phone app and keeps sessions alive when the lid closes. Enter BFCM2026 at checkout and the $20 monthly Pro plan costs $0 for three consecutive months, saving $60 before it renews at full price. Desktop support is macOS and Linux only, and model usage is billed by whichever provider you connect.",
+  "conditions": "Choose the monthly Pro plan at paradev.com, enter BFCM2026 in the discount code field and confirm the total shows $0 before submitting. A card is required and the code applies to new purchases only, no model or API credits are included, and the plan renews at $20 a month after 90 days unless you cancel.",
+  "steps": [
+   "Download the macOS or Linux desktop app from paradev.com and create an account",
+   "On the Pricing page pick Pro on monthly billing and enter BFCM2026 under \"Have a discount code?\"",
+   "Check that the amount due is $0 before submitting; the card verification charge is refunded",
+   "Connect your local Claude Code or Codex install, and cancel in the account page before the 90 days end"
+  ],
+  "risk": "Miss the cancellation and it renews at the full $20 a month. Model usage is not included, so agent token costs are separate. Team and enterprise purchases cannot use the code. There is no Windows desktop app, and you still maintain your own repositories and branches.",
+  "source": "Paradev official X account @ParadevAI (2026-11-25: MIT-licensed, 100+ parallel agents, iOS/Android apps, \"Claim your pro upgrade for 90 days free - code BFCM2026\") and the paradev.com pricing page read on 2026-11-27 (Free $0, Pro $20/month or $16/month yearly) plus @DavisNc9527 (2026-11-27: code shows $0 at checkout, saves $60, macOS/Linux only, no model credits)"
+ },
+ "glm-coding-plan-flash-double": {
+  "title": "[Global/China] GLM Coding Plan double Flash quota: GLM-5.3-Flash credits halved (11/24-12/24)",
+  "highlight": "Through the promotion GLM-5.3-Flash is charged at half its normal credit multipliers (input 2.3 to 1.15, cached 0.56 to 0.28, output 8 to 4) on Lite, Pro and Max automatically, so the same plan runs twice the Flash usage",
+  "regions": "[Global/China] docs.z.ai for the international site and bigmodel.cn for the China site; same plans and supported tools",
+  "value": "Twice the effective GLM-5.3-Flash quota",
+  "content": "GLM Coding Plan charges GLM-5.3-Flash, including the visual-understanding MCP, at 50% of its normal multiplier from November 24 to December 24: input 2.3 to 1.15, cached input 0.56 to 0.28, output 8 to 4. Plan ceilings stay the same (Lite 2,000 per five hours and 10,000 a week, Pro 12,000 and 60,000, Max 28,000 and 140,000), so the same credits buy twice the Flash usage. Official estimates: at a 95% cache hit rate Lite goes from roughly 146-292 million Flash tokens a week to 292-584 million, Pro to 1.75-3.51 billion and Max to 4.09-8.19 billion. Off-peak calls were already charged at half and stack with this, and peak hours are Monday to Friday 14:00-18:00 UTC+8.",
+  "conditions": "An active GLM Coding Plan (Lite, Pro or Max) is required, and calls must go through the officially supported tools to spend plan credits. The discount applies automatically with no code, direct API calls outside those tools do not qualify, and multipliers return to normal after the promotion.",
+  "steps": [
+   "Confirm the account has a GLM Coding Plan and a supported tool is configured per the official guide",
+   "Point day-to-day coding and test writing at GLM-5.3-Flash, leaving planning and review to GLM-5.4",
+   "Watch the usage page to confirm credits are deducted at the halved multipliers",
+   "Schedule heavy work off-peak, outside Monday to Friday 14:00-18:00 UTC+8, to stack both 50% discounts"
+  ],
+  "risk": "Only GLM-5.3-Flash qualifies; GLM-5.4 and GLM-5.3 keep their multipliers, so do not treat Flash as the flagship. Credits only work inside the supported tools, and scripts calling the API directly pay separately. The promotion ends December 24 with no announced extension, and credits refresh on a rolling five-hour window.",
+  "source": "Zhipu official documentation read on 2026-11-27 (Coding Plan overview: \"Limited-Time Offer: From November 24 to December 24, all usage of GLM-5.3-Flash will be charged at 50% of the original quota consumption rate, effectively doubling your available quota\"; multiplier table struck through 2.3/0.56/8 and set to 1.15/0.28/4; off-peak 50% and peak Monday to Friday 14:00-18:00 UTC+8) plus the docs.z.ai English version and the GLM-5.3-Flash model page"
+ },
+ "rarecloud-black-friday-2026": {
+  "title": "[EU] RareCloud Black Friday: up to 50% off VPS and up to double credit on top-ups (bonus credit expires)",
+  "highlight": "Live promo bar: KVM VPS up to 50% off (from EUR 1.56 a month on a three-year term, 11 locations, NVMe, full root) plus tiered top-up bonuses of +50%, +75% and 2x through the console Add credit page",
+  "regions": "[EU] Billed in euros, 11 locations including Hong Kong, Tokyo, Europe and the US",
+  "value": "Up to double credit; up to 50% off VPS",
+  "content": "RareCloud's site-wide Black Friday bar lists two offers: up to 50% off KVM VPS, from EUR 1.56 a month on a three-year term with 11 locations, NVMe storage and full root, alongside Kubernetes, S3-compatible object storage and residential proxies billed per GB; and tiered top-up bonuses marked +50%, +75% and 2x that link straight to the console Add credit page. Bonus credit is promotional: the money you pay never expires, while the bonus carries an expiry date, and the previous campaign of this kind allowed one top-up per account with bonus credit lasting 60 days. This round's thresholds and expiry are only shown at the console checkout, so confirm them before paying.",
+  "conditions": "The smallest top-up is EUR 10 and the bonus tier depends on the amount, so check the figure and expiry shown on the Add credit page first. Bonus credit cannot be withdrawn and expires. VPS discounts are ordered from the /kvm-vps plan pages, and whether the two offers combine on one order is not stated.",
+  "steps": [
+   "Open the Black Friday bar on rarecloud.io and review the discounted plans and locations on /kvm-vps",
+   "After signing up, go to Billing then Add credit, pick an amount and read the bonus tier and expiry shown beside it",
+   "Order from /kvm-vps once the credit lands, or spin up an hourly Cloud VM directly",
+   "Test latency and disk speed after activation before committing to a longer term; bonus credit is consumed before your own balance"
+  ],
+  "risk": "Bonus credit is promotional and expires, so topping up more than you can spend in the window wastes it (60 days in the previous campaign). This is a small host with community reports of downtime and slow tickets between 2024 and 2026, so keep production elsewhere. Hourly Cloud VMs keep running and billing when the balance runs out, and the vendor does not say whether the VPS discount stacks with the top-up bonus.",
+  "source": "RareCloud official Black Friday bar read on 2026-11-27 18:25 (\"Black Friday - Up to 50% off VPS - Up to double credit on top-ups\", tiers +50%, +75% and 2x, linking to console.rarecloud.io/billing/credit/add?utm_campaign=black-friday-2026) and the KVM page (from EUR 1.56 a month on a three-year plan, 11 locations, NVMe, full root), plus LowEndBox August 2026 coverage and LowEndTalk discussion of the earlier identical campaign (60-day bonus expiry, one per account, bonus spent first), which this round has not republished"
+ },
+ "jetbrains-black-friday-bf2026": {
+  "title": "[Global] JetBrains Black Friday code BF2026: 40% off personal annual subscriptions and upgrades (11/25-12/2)",
+  "highlight": "New personal annual IDE subscriptions (IDEA, PyCharm, WebStorm, GoLand and others) or ReSharper, and upgrades from a personal annual plan to All Products Pack or dotUltimate, are 40% off with BF2026 at checkout; pay two or three years upfront at the same price",
+  "regions": "[Global] Bought directly from jetbrains.com in the local currency",
+  "value": "40% off (about $120 saved on the first year of All Products Pack)",
+  "content": "JetBrains is running its Black Friday deal from November 25 to December 2: a new annual individual subscription to any JetBrains IDE (IntelliJ IDEA, PyCharm, WebStorm, GoLand, Rider and the rest) or to ReSharper, and an upgrade from an existing individual annual IDE or ReSharper plan to annual All Products Pack or dotUltimate, cost 40% less with code BF2026 entered under \"Have a discount code?\" at checkout. All Products Pack is $299 for the first year, about $180 after the discount, and you can pay for two or three years at checkout for the same 40%. Several eligible subscriptions can share one cart; the code is used once but applies to every eligible item in that cart.",
+  "conditions": "Only new personal annual subscriptions and upgrades qualify, and an upgrade needs at least 30 days left on the current plan. Renewals, monthly plans and organization or team purchases are excluded, the code works once per customer, other discounts cannot be combined apart from continuity discounts, and the code has to be entered before paying.",
+  "steps": [
+   "Open the purchase page for the IDE you want at jetbrains.com and pick a personal annual term, or a multi-year one",
+   "At checkout click \"Have a discount code?\", enter BF2026 and apply it",
+   "Check the amount due shows the 40% discount before paying; upgrades are prorated to the remaining value",
+   "Confirm the end date in your account subscriptions page and turn off auto-renewal if you do not plan to continue"
+  ],
+  "risk": "Renewals are excluded, so existing customers can only buy a new subscription or upgrade. Without the code at checkout you pay full price and cannot apply it later. Subscriptions renew yearly at list price, so watch the renewal date. The student pack and open-source licences are already free, so do not buy them twice, and team or enterprise purchases are excluded.",
+  "source": "JetBrains official blog 2026-11-25 (Save 40% on New JetBrains Subscriptions and Upgrades: 40% off a new annual individual IDE or ReSharper subscription and upgrades to annual All Products Pack or dotUltimate, code BF2026, valid November 25 to December 2 2026, multi-year purchases allowed, code single use, renewals excluded) and JetBrains store list prices for All Products Pack ($299 first year, $239 second, $179 from the third year)"
  }
 }
