@@ -475,6 +475,13 @@ ELIG.update(
             "identity": "local_id", "residency": "local_resident",
             "phone": "local_number", "funding": "paid_plan", "geo": ["KR"],
         },
+        "uplus-umobile-8month-free-code": {
+            "identity": "local_id", "residency": "local_resident",
+            "phone": "local_number", "funding": "paid_plan", "geo": ["KR"],
+        },
+        "nomad-black-friday-2026": {
+            "funding": "purchase", "geo": ["GLOBAL"],
+        },
         "ymobile-yahoo-store-benefits": {
             "identity": "local_id", "residency": "local_resident",
             "phone": "local_number", "funding": "paid_plan", "geo": ["JP"],

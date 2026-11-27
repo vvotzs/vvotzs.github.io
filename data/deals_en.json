@@ -2554,19 +2554,19 @@
   "source": "Monzo official Refer a Friend page and referral terms (v4.0 / 2026-08-13, v1.1 / 2026-10-29, checked 2026-11-19) + r/beermoneyuk thread"
  },
  "travelgoogoo-visa-free-esim-apac": {
-  "title": "[APAC-issued cards] Travelgoogoo x Visa free eSIM: 4GB global + 4GB APAC and a year of unlimited messaging on Infinite",
-  "highlight": "Enter a 16-digit Visa card number from an Asia-Pacific issuer and get a Travelgoogoo 365 annual eSIM covering 123 countries, with messaging that does not eat data.",
-  "regions": "[APAC-issued] Visa Infinite, Signature or Platinum cards issued in Asia-Pacific only; data covers 123 countries",
-  "value": "4GB global + 4GB APAC (Infinite)",
-  "content": "A Visa and Travelgoogoo cardholder benefit: enter a qualifying APAC-issued Visa's 16 digits at travelgoogoo.com/en/visa for a free Travelgoogoo 365 annual eSIM. Tiers rose on 7 September 2026: Infinite gives 4GB global plus 4GB APAC and a year of unlimited messaging, Signature 2GB global with 1GB APAC per the redemption page, and Platinum 1GB global with the 365 card itself free. Unlimited messaging means text and images in iMessage, WhatsApp, Telegram, LINE, WeChat, Viber and Zalo, while voice and video use data. A $1 pre-authorisation verifies the card and is returned, and data counts from the first local connection with a one-year validity.",
-  "conditions": "APAC-issued Visa Infinite, Signature or Platinum only; one redemption per card and phone number a year, up to two by 30 November 2027; an eSIM phone (iPhone XS or later, or a 2019-or-later flagship Android); data only with no local number and voice over data.",
+  "title": "[APAC cards]Travelgoogoo x Visa free eSIM: 1-2GB global plus APAC data by card tier, unlimited messaging for a year",
+  "highlight": "Enter a 16-digit APAC-issued Visa card to claim a 365-day eSIM, with 1-2GB of global data plus the same amount for APAC and a year of unmetered messaging apps; a $1-$10 card pre-auth is required",
+  "regions": "[APAC-issued cards] Visa Infinite, Signature or Platinum issued in Asia-Pacific only; data covers 123 countries",
+  "value": "2GB global + 2GB APAC (Infinite)",
+  "content": "A Visa cardholder benefit with Travelgoogoo: enter a qualifying APAC-issued Visa card number at travelgoogoo.com/en/visa to claim a free 365-day eSIM annual plan. Reports from three communities on 2026-11-27 put the tiers at 2GB global + 2GB APAC for Infinite, 1GB global + 1GB APAC for Signature and 1GB global for Platinum, while a September MileLion report said 4GB + 4GB for Infinite, so the redemption page is the final word. Unlimited messaging covers text and images in WhatsApp, Telegram, LINE, WeChat, iMessage and Zalo, while calls and video use data. Data validity starts at the first connection abroad and lasts one year.",
+  "conditions": "Only Visa Infinite, Signature or Platinum issued in Asia-Pacific. One redemption per card number and phone number per year, at most two by 2027-11-30. An eSIM-capable phone is required (iPhone XS or later, or a 2019 or newer flagship Android). It is a data-only plan with no local number, and calls use data. A pre-authorisation on the card is required during redemption.",
+  "risk": "Only APAC-issued Visa cards work, and European or US cards do not. Data allowances differ between reports (4GB + 4GB in September, 2GB + 2GB across three tests on 11/27), so trust the redemption page. The pre-auth is reported as $1 by some and $10 by others, both frozen and then returned. Some users report Telegram is not actually unmetered. Data is small, so heavy users need a separate plan, and the redemption page sometimes returns a 500 error from mainland China.",
+  "source": "Travelgoogoo x Visa official redemption page + The MileLion (2026-09-13, 4GB + 4GB) + NodeSeek post-1084058 and NodeLoc t/119603 (2026-11-26 to 27 tests: Infinite 2G + 2G, Signature 1G + 1G, Platinum 1G, $1-$10 pre-auth) + several X reports on 2026-11-27; the official page is a JS app that cannot be read directly, so the redemption page governs",
   "steps": [
-   "Open travelgoogoo.com/en/visa, tap Redeem Now and enter the 16-digit Visa number",
-   "Sign up and pass the $1 card authorisation (it is reversed)",
-   "Install the eSIM from the emailed QR code and activate it when you travel; valid for a year"
-  ],
-  "risk": "Only APAC-issued cards qualify, so European and US cards are rejected. Signature and Platinum APAC allowances are reported inconsistently (unverified). The data is small for heavy use, and the redemption page intermittently returns 500 from mainland China.",
-  "source": "Travelgoogoo x Visa official redemption page + The MileLion (2026-09-13) and CardExpert hands-on (2026-04-23)"
+   "Open travelgoogoo.com/en/visa, click Redeem Now and enter your 16-digit Visa card number",
+   "Register as prompted and complete the pre-authorisation (frozen, then returned)",
+   "Install the eSIM from the QR code in your email, then activate it on the trip; it stays valid for one year"
+  ]
  },
  "bamboosim-bfcm-45off": {
   "title": "[Global] BambooSIM Black Friday: 45% off travel eSIMs (50% off two) plus 100 free transit eSIMs for past customers",
@@ -8802,5 +8802,37 @@
   ],
   "risk": "Only the maximum is published and most people land in the low tiers (a third-party roundup puts the floor at S$18), so do not count on S$8,000; cashback offsets the card balance rather than arriving as cash; the card needs approval and an income threshold; no community payout reports yet (none found on Reddit or Seedly), so trust what the app shows.",
   "source": "Trust Bank official Refer and Earn page and homepage read on 27 Nov 2026 (referrer gets an S$50-8,000 scratch card per card sign-up and both sides get S$8-1,888 for a savings sign-up; new-to-card sign-up gift is a sure-win cashback of up to S$8,000 or up to US$8,000 in shares until Jan 31, 2027) plus numbers.sg's 25 Nov 2026 independent check noting the S$8,000 figure is one of six tiers and that cashback lands on the card, and DLCuration's November steps for the Rewards then Quests flow and expiry"
+ },
+ "nomad-black-friday-2026": {
+  "title": "[Global]Nomad Black Friday: 30% off any eSIM with code FRIDAY30, plus double data on 30-day US plans of 10GB+",
+  "highlight": "Two live offers on the official homepage: enter FRIDAY30 at checkout for 30% off sitewide, and get a free same-size data add-on when you buy a 30-day US plan of 10GB or more",
+  "regions": "[Global] Plans for 200+ destinations sitewide; the double-data add-on applies only to 30-day US plans of 10GB or more",
+  "value": "30% off sitewide; a free same-size add-on on US 30-day 10GB+ plans (about $25)",
+  "content": "Nomad's homepage on 2026-11-27 carries two Black Friday offers. First, type FRIDAY30 at checkout for 30% off the list price of any eSIM (third-party code sites and comparison sites put the deadline at December 4; the official page states no date). Second, the US Double Data Deal adds a free data pack of the same size when you buy a 30-day US plan of 10GB or more, doubling your data. Both can be used on the same order but are calculated on the list price, so neither stacks with regional auto-discounts, referral codes, plans under $5 or unlimited plans.",
+  "conditions": "You must type FRIDAY30 manually at the nomadesim.com or app checkout; there is no automatic discount. The code does not apply to plans already on sale, plans priced below $5, unlimited plans or some specially priced regional plans. Double data applies only to 30-day US plans of 10GB or more bought in the same order. One code per order; it does not stack with referral codes, points or regional discounts.",
+  "steps": [
+   "Pick a destination and plan on the Nomad website or app",
+   "For the US, choose a 30-day plan of 10GB or more to trigger the Double Data add-on",
+   "Enter FRIDAY30 in the promo field at checkout and confirm the total drops by 30% before paying",
+   "Install the eSIM from the email or app and activate it after you land"
+  ],
+  "risk": "This is 30% off, not free, and forgetting the code or a dead code means full price. The official page gives no end date; December 4 comes from third parties and it may end earlier. It cannot stack with plans already on sale, regional auto-discounts or referral codes, so the checkout total is the real price. Double data covers only 30-day US plans of 10GB or more, not short plans, and claiming the 1GB free trial forfeits the first-purchase discount.",
+  "source": "Nomad official homepage banners (read 2026-11-27: Our Biggest Travel Sale Is Here, save 30% with code FRIDAY30, and USA Double Data Deal, a free same-size add-on with a 30-day US plan of 10GB or more, both limited time with no stated end date) + Rangka 2026-11-19 (FRIDAY30 dated to 12-04, no stacking with regional discounts) + Dealhack checkout test 2026-11-26 (worked in 14 of 18 checks); no community DP on discounted prices yet"
+ },
+ "uplus-umobile-8month-free-code": {
+  "title": "[KR]U+ Mobile code 8-month free trial: 40,000 KRW of Naver Pay on popular plans (Nov 27-30)",
+  "highlight": "Apply by November 30 with the code 8개월무료체험 in the event-code field and activate a qualifying popular plan to collect 40,000 KRW of Naver Pay over eight months; SIM and eSIM both count, new lines and ports both qualify",
+  "regions": "[South Korea] New or ported-in customers of U+ Mobile, LG U+'s budget MVNO",
+  "value": "40,000 KRW of Naver Pay (5,000 x 8 months, about $27)",
+  "content": "U+ Mobile, LG U+'s budget MVNO, runs a November promotion: apply for one of the designated popular plans between 2026-11-27 and 11-30, type 8개월무료체험 in the event-code field of the application, and after activation you receive 5,000 KRW of Naver Pay each month for eight months, 40,000 KRW in total (about $27). Both SIM and eSIM activation qualify, as do new numbers and number ports. S Plus plans and prepaid activations are excluded, and changing the plan, cancelling, suspending the line or transferring ownership later voids the reward. Event-code promotions cannot be combined with one another.",
+  "conditions": "Apply between 11/27 and 11/30 and finish activation by 11/30, entering 8개월무료체험 in the code field of the application. Only new lines or number ports count; S Plus and prepaid activations do not. Marketing-consent must be ticked. Do not change the plan, cancel, suspend or transfer the line afterwards. Korean real-name verification and a Korean mobile number are required.",
+  "steps": [
+   "Choose one of the designated popular plans on the U+ Mobile website or app (SIM or eSIM)",
+   "Type 8개월무료체험 in the event-code field when filling in the application",
+   "Complete identity verification and activation with marketing consent ticked",
+   "From the second month after activation, 5,000 KRW of Naver Pay arrives around the 20th each month for eight months"
+  ],
+  "risk": "You must stay on the plan to collect all eight instalments; changing or cancelling ends the reward. Korean real-name verification and a Korean number are required, which makes it hard to join from mainland China. S Plus and prepaid plans are excluded and event codes cannot be combined. The page notes the promotion may end early.",
+  "source": "U+ Mobile official event page '유모바일 인기요금제 무료체험 찬스!' (read 2026-11-27: promotion 11/27-11/30, code 8개월무료체험, gift 40,000 KRW Naver Pay as 5,000 x 8 months, S Plus and prepaid excluded, plan change or cancellation voids it); no community DP on payouts yet"
  }
 }
