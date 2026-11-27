@@ -2319,6 +2319,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
     </span>
     <span class="foot-up">{ui('f_last_verified')} {e(deal.get('last_verified') or added_day(deal, today))}</span>
     {legal_footer(lang)}
+    {icp_footer()}
     <a class="foot-top" href="#top">↑</a>
   </div>
 </footer>
@@ -2587,6 +2588,25 @@ def legal_footer(lang: str) -> str:
     )
 
 
+# 萌国 ICP 备案：链接地址与文案由萌备审核通知给出，全站（中英、四类页脚）共用一处。
+ICP_BEIAN_HREF = "https://icp.gov.moe/?keyword=20260970"
+ICP_BEIAN_TEXT = "萌ICP备20260970号"
+
+
+def icp_footer() -> str:
+    """页脚紧接合规链接的备案小字（电脑端与手机端都显示，不隐藏）。
+
+    单独一颗 .foot-icp：电脑端/平板并进页脚同一行末位，手机端（≤768px）由
+    .foot-icp{flex-basis:100%} 固定独占第二行，各页高度一致，也不会把
+    「关于 · 隐私 · 披露」那组链接拆散。
+    """
+    return (
+        f'<span class="foot-icp">'
+        f'<a href="{e(ICP_BEIAN_HREF)}" target="_blank" rel="noopener noreferrer">'
+        f'{e(ICP_BEIAN_TEXT)}</a></span>'
+    )
+
+
 def render_legal_page(kind: str, lang: str, today) -> str:
     """一条合规页（单语）：顶栏 + 面包屑 + 标题导语 + 分节正文 + 页脚。"""
     set_lang(lang)
@@ -2738,6 +2758,7 @@ def render_legal_page(kind: str, lang: str, today) -> str:
       {ui('foot_brand', y=today.year)}
     </span>
     {legal_footer(lang)}
+    {icp_footer()}
     <a class="foot-top" href="#top">{ui('foot_top')}</a>
   </div>
 </footer>
@@ -3478,6 +3499,7 @@ def render_category_page(
       {ui('foot_brand', y=today.year)}
     </span>
     {legal_footer(lang)}
+    {icp_footer()}
     <a class="foot-top" href="#top">↑</a>
   </div>
 </footer>
@@ -3568,6 +3590,9 @@ def check_en_pages(paths: list[Path]) -> None:
         # 解码后显示成原字（不再是 %E7%89%A1… 乱码），网址里带汉字是链接本身的事实。
         # 只摘掉这一个按钮的文本，其余可见正文仍是零容忍。
         body = re.sub(r'<button class="[^"]*url-copy[^"]*"[^>]*>.*?</button>', " ", body, flags=re.S)
+        # 页脚备案号是登记机关给定的专有名称（「萌ICP备20260970号」），中英页共用同一串，
+        # 不能翻译也不能省略：和语言切换徽标一样按白名单剔掉，其余正文仍零容忍。
+        body = body.replace(ICP_BEIAN_TEXT, "")
         for needle, kind in ((_EN_CJK_RE, "中文 / 日文"), (_EN_FW_RE, "全角标点")):
             for m in needle.finditer(body):
                 snippet = re.sub(r"\s+", " ", body[max(0, m.start() - 30): m.start() + 30]).strip()
@@ -4530,6 +4555,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
     </span>
     <span class="foot-up">{ui('foot_updated', t=e(last_updated))}</span>
     {legal_footer(lang)}
+    {icp_footer()}
     <a class="foot-top" href="#top">{ui('foot_top')}</a>
   </div>
 </footer>
