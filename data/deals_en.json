@@ -9349,5 +9349,22 @@
   ],
   "risk": "Free access is time-limited and the model disappears afterwards, so do not build a long-term workflow on it; accounts without a plan must hold $1, which reads like paying for something free; non-streaming clients get a 400; concurrency and daily caps make batch jobs hit 429.",
   "source": "Openference official \"Free AI API\" page (verified Nov 18, 2026: two free models, last free days Dec 4 and Dec 31, $1 balance requirement, streaming only) plus the official docs plans and models pages (same terms and the 402/400 error codes) and the GLM-5.3-Flash-Free model page ($0 pricing, 1M context)"
+ },
+ "orkas-free-500-lifetime-credits": {
+  "title": "[Global]Orkas open-source local multi-agent app: 500 lifetime credits free, claimed by signing in to the desktop app (Claude Opus 5.5/GPT-6.2)",
+  "highlight": "An MIT-licensed, local-first multi-agent desktop app whose free plan grants 500 lifetime credits, credited only when you sign in inside the desktop app; it can drive Claude Opus 5.5, GPT-6.2 Sol and Kimi K3, or your own Claude Code/Codex agents, with data kept on your machine",
+  "regions": "[Global] macOS and Windows desktop; signing in on the web does not grant the credits",
+  "value": "500 lifetime credits (about 350 task chats / 76 images / 2,000 searches)",
+  "content": "Orkas is an MIT-licensed, local-first multi-agent desktop app for macOS and Windows that keeps data on the device by default. Its free plan includes 500 lifetime credits that do not reset, credited only after signing in inside the desktop app, not on the web. A Commander splits work and hands it to specialist agents, and it can drive local agents such as Claude Code, Codex, OpenCode, OpenClaw and Hermes, use Orkas built-in models (Claude Opus 5.5, GPT-6.2 Sol, Kimi K3) or your own API key. 500 credits cover roughly 70-350 task chats, 2,000 web searches, 76 images or 62 seconds of video, plus five shared projects (five members each) and 100MB of cloud storage.",
+  "conditions": "Download the macOS or Windows desktop app and sign in inside it (web sign-in grants nothing); the 500 credits are lifetime, not monthly, and are not refilled; built-in models spend credits while your own API key does not; free tier allows five shared projects of five members; there is no mobile app.",
+  "steps": [
+   "Download the macOS or Windows desktop app from orkas.ai/download and install it",
+   "Sign in inside the desktop app, not only on the website, or the credits will not arrive",
+   "Check the credits page to confirm the 500 lifetime credits landed",
+   "Give the Commander a first task, or connect Claude Code/Codex and your own API key",
+   "Try the built-in models within the free allowance, then subscribe or keep using your own key"
+  ],
+  "risk": "The 500 credits are a lifetime allowance, not a monthly refill, so running out means a paid plan or your own key; built-in models spend 60-120 credits per million input tokens and 360-540 per million output tokens, so heavy work drains them fast; the free tier has only 100MB of cloud storage and no multi-device sync; desktop only, no phone apps; agent orchestration still makes mistakes, so back up important files.",
+  "source": "Orkas official pricing page orkas.ai/pricing (read Nov 28, 2026: 500 bonus lifetime credits on the Free plan, claimed by signing in inside the desktop app, built-in Claude Opus 5.5/GPT-6.2 Sol/Kimi K3, MIT-licensed local-first, five projects x five members and 100MB storage) plus the that.promo listing (rechecked Nov 27, 2026: web sign-in grants no credits)"
  }
 }
