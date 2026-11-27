@@ -7006,6 +7006,54 @@
   ]
  },
  {
+  "id": "satispay-alba35-35-bonus",
+  "dedup_key": "satispay|bank|de|alba35-35-bonus",
+  "title": "[意区/德区]Satispay新用户€35奖励：码ALBA35，App内消费€5即到账（12/21前）",
+  "brand": "Satispay",
+  "domain": "satispay.com",
+  "category": "bank",
+  "value": "€35（约$38，净赚约€30）",
+  "value_num": 30,
+  "value_expected": 35,
+  "cost": "需要交易量",
+  "highlight": "注册填公码ALBA35、设好Budget、30天内用App消费满€5，€35直接入账可继续消费；中国护照NFC扫芯片能过KYC，但要意大利税号+地址",
+  "regions": "[意区/德区] 需意大利税号与地址；欧盟手机号收码",
+  "start": "2026-09-23",
+  "end": "2026-12-21",
+  "content": "Satispay是卢森堡持牌电子货币机构，意大利最常用的扫码支付App之一。Welcome新人奖励€35：注册时填公码ALBA35，2天内补齐证件完成KYC，设好Budget（最低€50，之后可改回0），30天内用App在合作商户消费满€5，奖金即入账，可继续扫码消费。€50不是押金、无锁定期，验完IBAN可转回银行卡。意区要意大利税号（Codice Fiscale）+真实地址，德区地址注册也有人实测、到账按标准30天内发放。奖金不能转到银行账户。",
+  "conditions": "仅限从未注册过Satispay的新用户，每人一次；注册时填码，2天内完成KYC；须设Budget（首扣€50）并在30天内用App消费≥€5；奖金属App内抵扣、不可提现。",
+  "steps": [
+   "下App后用公码ALBA35注册，填手机号收验证码",
+   "填税号、地址，NFC扫护照芯片并自拍完成KYC，绑IBAN等1–3个工作日审核",
+   "审核通过后在App里设Budget（最低€50）",
+   "30天内在合作商户用App付满€5，回App「个人资料/交易记录」确认€35到账"
+  ],
+  "url": "https://www.satispay.com/it-it/",
+  "source_url": "https://x.com/404latitude/status/2126279131885404236",
+  "source": "Satispay官方Welcome条款2026-11-27实读（新用户限一次、2天内完成注册、须设Budget、30天内消费满额、奖金仅App内抵扣、计划有效至2026-12-31）+ Tom's Hardware Italia／QualeBanca（ALBA35=€35、码至2026-12-21）+ X @404latitude 2026-11-27实测（意区买€6.48车票后2分钟到账€35；德区地址注册待发放）",
+  "risk": "必须意大利税号+地址，中国护照能过KYC但要NFC扫芯片；Budget首扣€50，绑卡余额不足会失败；奖金只能消费不能提现；KYC不过或余额为负可能不发；目前仅个别社区实测，风控随时可能收紧。",
+  "verified": true,
+  "last_verified": "2026-11-27",
+  "added": "2026-11-27",
+  "added_at": "2026-11-27T20:22:00+08:00",
+  "status": "active",
+  "kyc_level": "foreign_only",
+  "kyc_note": "需意大利税号与地址，中国护照可NFC完成实名，但居住地门槛卡在意区",
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_address",
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "phone_requirement": "specific_country",
+  "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "IT",
+   "DE"
+  ],
+  "utility": 0
+ },
+ {
   "id": "inception-mercury-100m-free-tokens",
   "dedup_key": "inception|ai|global|mercury-100m-free-tokens",
   "title": "[全球]Inception Mercury 3：新账号送1亿免费tokens（免绑卡，OpenAI兼容）",
@@ -9987,6 +10035,51 @@
   "utility": 0
  },
  {
+  "id": "ecos-rewards-500thd-500btc",
+  "dedup_key": "ecos|crypto|global|rewards-500thd-500btc",
+  "title": "[全球]ECOS Rewards免充值攒算力：官方码500BTC领500THD，Achievers赛事免费参赛",
+  "highlight": "邮箱注册送100 MP+抽奖券，3个活跃日攒100 THD开农场，30天350 THD；邀请双方各200 THD；官方码500BTC再得500 THD；每周Achievers联赛免费参加，每天首点各得1分",
+  "brand": "ECOS",
+  "domain": "ecos.am",
+  "category": "crypto",
+  "value": "500 THD（官方换算器5年理论值约$13，非现金）+30天350 THD+邀请各200 THD",
+  "value_num": 13,
+  "cost": "真正免费",
+  "regions": "[全球] 18岁以上；受制裁与受限辖区不可用",
+  "start": "2026-11-16",
+  "end": "2027-06-30",
+  "content": "THD积分制：1 THD=1 TH/s算力跑1天，注册送100 MP+抽奖券，每天点Clicker或扫Hash Hunters算活跃日，前3天100 THD可开农场，30天350 THD，邀请双方各200 THD。官方码500BTC领500 THD，每账号1次、无需购买、18+，至莫斯科时间2027-06-30 18:12或满1万次。18周周赛的Achievers联赛免费，每天首次点击与首次扫描（UTC）各1分，奖池13,000 THD、第一名2,000。THD不可提现，只能换算力。",
+  "conditions": "18岁以上，邮箱注册；免费无需绑卡，提现前可能需KYC；THD只能换算力、不可提现转让；开农场需≥100 THD、升级≥200 THD；赛事与兑换规则以站内页为准。",
+  "steps": [
+   "用邮箱注册ECOS账号并进入Rewards",
+   "在Promo Code栏填500BTC，确认500 THD到账",
+   "每天点一次Clicker或扫一次Hash Hunters累计活跃日，凑够100 THD开农场",
+   "想多攒：分享邀请链接（双方各200 THD）、参加每周抽奖或Achievers联赛"
+  ],
+  "url": "https://ecos.am/en/rewards",
+  "source_url": "https://ecos.am/en/rewards",
+  "source": "ECOS官方Rewards页与Rewards条款2026-11-27实读（THD机制、100 THD开农场、30天350 THD、邀请各200 THD、10万THD周抽奖、THD不可提现、18+与制裁/受限辖区）+ ECOS官方LinkedIn 2026-11-18赛事说明（三联赛、各25名、Achievers奖池10,000 THD与第一名2,000 THD）+ ECOS合作部sales@ecos.am 2026-11-27邮件确认（500BTC为官方码：500 THD、每账号1次、无需购买、18+、至莫斯科时间2027-06-30 18:12或满1万次；18周赛事、每联赛50名、Achievers奖池13,000 THD、第一名2,000 THD）｜公开Rewards页未展示该码，以站内到账为准｜暂无社区实测",
+  "risk": "THD不是现金也不可提现，官方换算器的约$13是5年满产理论值、不含电费，BTC价与难度变动都会缩水；免费算力要天天打卡；云挖矿平台有监管与跑路风险，别充值；500BTC码与赛事奖池以站内实际到账为准。",
+  "added_at": "2026-11-27T12:04:40+08:00",
+  "verified": true,
+  "last_verified": "2026-11-27",
+  "added": "2026-11-27",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "platform_requirement": [
+   "web"
+  ],
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "kyc_note": "仅需邮箱注册即可赚THD；领加密奖品或大额奖品前才可能要求KYC（条款10.5）",
+  "residency_requirement": "none",
+  "phone_requirement": "none"
+ },
+ {
   "id": "skrill-uk-raf-10-off-100",
   "dedup_key": "skrill|bank|gb|raf-10-off-100",
   "title": "[英区]Skrill跨区汇款£100减£10（可开万事达卡）",
@@ -10357,46 +10450,6 @@
    "US"
   ],
   "dedup_key": "visible|esim|us|free-trial-15d"
- },
- {
-  "id": "ecos-rewards-500thd-500btc",
-  "dedup_key": "ecos|crypto|global|rewards-500thd-500btc",
-  "title": "[全球]ECOS Rewards免充值攒算力：码500BTC再领500THD+30天350THD",
-  "highlight": "签到式攒THD积分换比特币算力：注册送抽奖券，前3天100THD即可开农场，30天350THD，邀请双方各200THD；投稿称码500BTC另送500THD",
-  "brand": "ECOS",
-  "domain": "ecos.am",
-  "category": "crypto",
-  "value": "500 THD（约$13）+30天350 THD+邀请各200 THD",
-  "value_num": 13,
-  "cost": "真正免费",
-  "regions": "[全球] 官网邮箱注册，18岁以上；按ECOS条款部分辖区不可用",
-  "start": "2026-11-26",
-  "end": "",
-  "content": "ECOS把奖励改成THD积分，1 THD=1 TH/s算力跑1天：注册送100 MP+1张抽奖券，每天在Clicker点一下或Hash Hunters扫一次算1个活跃日，前3天共100 THD就能开农场，满30天累计350 THD；邀请好友双方各得200 THD，好友消费最多再返20%。官方换算器按5年合约、FPPS与BTC价估算，500 THD约值$13，THD不能提现或转卖，只能换算力。另有每周抽奖、奖池10万THD。投稿称站内Promo Code填500BTC可再领500 THD（每账号1次，至2027-06-30 15:12 UTC或满1万次），官方页未列该码，待自测。",
-  "conditions": "18岁以上，邮箱注册；免费无需绑卡，但提现前需完成KYC；THD只能兑换算力、不可提现转让；开农场需≥100 THD；500BTC码官方未公示，可能已满额。",
-  "steps": [
-   "用邮箱注册ECOS账号并进入Rewards",
-   "在Promo Code栏试填500BTC，确认是否到账500 THD",
-   "每天点一次Clicker或Hash Hunters累计活跃日，凑够100 THD开农场",
-   "想多攒：分享邀请链接（双方各200 THD），或参加每周抽奖"
-  ],
-  "url": "https://ecos.am/en/rewards",
-  "source_url": "https://ecos.am/en/rewards",
-  "source": "访客投稿（Gmail 2026-11-26 18:29，投稿邮件已处理）+ ECOS官方Rewards页2026-11-27实读（THD机制、100 THD开农场、30天350 THD、邀请各200 THD、10万THD抽奖池）+ develif收录页（500BTC码：500 THD、至2027-06-30 15:12 UTC或1万次兑换）",
-  "risk": "THD不等于现金，官方估算$13是5年合约理论值，BTC价与难度变化都会影响；500BTC码只在第三方收录页出现，可能已领完；免费算力要天天打卡，断签不清零但进度会拖长；云挖矿平台有监管与跑路风险，别充值。",
-  "added_at": "2026-11-27T12:04:40+08:00",
-  "verified": true,
-  "last_verified": "2026-11-27",
-  "added": "2026-11-27",
-  "status": "active",
-  "kyc_level": "cn_ok_extra",
-  "utility": 0,
-  "identity_requirement": "photo_id",
-  "platform_requirement": [
-   "web"
-  ],
-  "funding_requirement": "none",
-  "geo_restriction": []
  },
  {
   "id": "etisalat-wasel-flexi-10gb-esim",
@@ -12063,6 +12116,50 @@
   "funding_requirement": "existing_card",
   "geo_restriction": [
    "BR"
+  ]
+ },
+ {
+  "id": "ai21-free-trial-10-credits",
+  "dedup_key": "ai21-labs|ai|global|free-trial-10-credits",
+  "title": "[全球]AI21免费试用：新账号$10 API额度，7天有效、免绑卡",
+  "brand": "AI21 Labs",
+  "domain": "ai21.com",
+  "category": "ai",
+  "value": "$10 API额度",
+  "value_num": 10,
+  "cost": "免费试用",
+  "highlight": "注册AI21 Studio即得$10额度、7天内用完，免绑卡；Jamba Mini输入$0.2/百万token，$10约合5,000万输入token的测试量",
+  "regions": "[全球] 线上邮箱注册，官方未列地区限制",
+  "start": "",
+  "end": "",
+  "content": "AI21 Studio给新账号$10试用额度，7天内有效、不用绑卡：注册后即可调Jamba Mini（输入$0.2/百万token、输出$0.4/百万）与Jamba Large（$2/$8）的API与SDK，也能在playground试长上下文与RAG。$10按Mini输入价约合5,000万token，够把原型跑通、做完对比评测；到期或额度用尽后转按量计费，不自动扣款。官方标unlimited seats，团队可各自注册试用。",
+  "conditions": "需邮箱注册AI21账号；$10额度7天内有效、过期作废；仅新账号一次；额度用尽后要继续调用需自行绑卡按量付费。",
+  "steps": [
+   "打开 ai21.com/pricing 点 Start Now for FREE 注册账号",
+   "进入Studio创建API Key",
+   "用Jamba Mini/Large的API或playground跑测试",
+   "7天内用完额度，需要继续再绑卡按量付费"
+  ],
+  "url": "https://www.ai21.com/pricing",
+  "source_url": "https://www.ai21.com/pricing",
+  "source": "AI21官方定价页2026-11-27实读（Free Trial $10 credits for 7 days、no credit card required、Jamba Mini $0.2/$0.4、Jamba Large $2/$8、unlimited seats）+ X @RushixWeb3 2026-11-26 转述（$10额度、Jamba、7天、免卡）",
+  "risk": "7天窗口很短，过期额度清零；Jamba Large单价是Mini的10倍，$10只够少量调用；额度不可转移或折现；继续用需绑卡按量计费，注意别留自动续费。",
+  "verified": true,
+  "last_verified": "2026-11-27",
+  "added": "2026-11-27",
+  "added_at": "2026-11-27T20:23:00+08:00",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "residency_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "phone_requirement": "none",
+  "funding_requirement": "none",
+  "geo_restriction": [
+   "GLOBAL"
   ]
  },
  {
@@ -18652,11 +18749,11 @@
   ],
   "url": "https://chatgpt.com/?promo_campaign=team-1-month-free#pricing",
   "source_url": "https://linux.do/t/topic/3242161",
-  "source": "OpenAI 活动链接行为（2026-11-26 复核：promo_campaign=team-1-month-free 直达价格页）+ OpenAI 帮助中心 Business 注册页（2026-11-25 实读：11/23–11/30 新建工作区双倍周额度至 12/31）+ linux.do 2026-11-25 教程与 11 条跟帖实测（Bybit 哈萨克卡被拒、Starryblu 与 Infini 通过、多数号无资格）+ NodeLoc 2026-11-25 券状态自查脚本帖 + AI 优惠雷达 2026-11-25 整理",
+  "source": "OpenAI 活动链接行为（2026-11-26 复核：promo_campaign=team-1-month-free 直达价格页）+ OpenAI 帮助中心 Business 注册页（2026-11-25 实读：11/23–11/30 新建工作区双倍周额度至 12/31）+ linux.do 2026-11-25 教程与 11 条跟帖实测（Bybit 哈萨克卡被拒、Starryblu 与 Infini 通过、多数号无资格）+ NodeLoc 2026-11-25 券状态自查脚本帖 + AI 优惠雷达 2026-11-25 整理；2026-11-27 复核：活动链接与 chatgpt.com/pricing 均在线（HTTP 200），资格继续按账号灰度",
   "risk": "资格灰度且随时收紧，社区已有批量开号，官方随时可能关闸；外层显示$0但结账跳原价是常态，多数账号拿不到；虚拟卡拒付率高，反复试卡可能触发风控；首月后自动扣$125，忘关续订就是实付；团队/企业邮箱账号规则不同。",
   "added_at": "2026-11-26T07:55:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "added": "2026-11-26",
   "status": "expiring_soon",
   "kyc_level": "none",
@@ -19878,11 +19975,11 @@
   ],
   "url": "https://www.ashampoo.com/en-us/redeem?code=po11_free",
   "source_url": "https://www.ozbargain.com.au/freebies",
-  "source": "Ashampoo 官方兑换页 + OzBargain / Cheapies.nz 官方商家帖（2026-11-14 至 11-16）+ 智玩社复核（2026-11-18）；2026-11-23 复核兑换页仍可打开；2026-11-26 复核：兑换页仍接受 PO11_free，Cheapies／WhatsCheap 确认活动期 11/1–11/30、须订阅邮件列表",
+  "source": "Ashampoo 官方兑换页 + OzBargain / Cheapies.nz 官方商家帖（2026-11-14 至 11-16）+ 智玩社复核（2026-11-18）；2026-11-23 复核兑换页仍可打开；2026-11-26 复核：兑换页仍接受 PO11_free，Cheapies／WhatsCheap 确认活动期 11/1–11/30、须订阅邮件列表；2026-11-27 复核：兑换页仍把 PO11_free 解析到 Photo Optimizer 11 商品，活动至 11/30",
   "risk": "必须订阅营销邮件才能领；只有 Windows 版；授权绑定 1 台 PC，换机需重新处理；官网限免可能提前结束；只从官网下载安装包，别用第三方“破解版”。",
   "added_at": "2026-11-19T19:16:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "added": "2026-11-19",
   "status": "expiring_soon",
   "kyc_level": "none",
@@ -20380,6 +20477,49 @@
   ]
  },
  {
+  "id": "roamless-blackfriday50-5off",
+  "dedup_key": "roamless|esim|global|blackfriday50-5off",
+  "title": "[全球]Roamless黑五当天7折：全部数据套餐码BLACKFRIDAY30，单笔最多减$25（仅11/27）",
+  "brand": "Roamless",
+  "domain": "roamless.com",
+  "category": "esim",
+  "value": "最高$25（7折上限）",
+  "value_num": 25,
+  "cost": "需要交易量",
+  "highlight": "结算时填 BLACKFRIDAY30，所有国家/地区套餐与 FLEX 随用随充一律 7 折、单笔上限 $25，新老用户都能用；官方页标注今日有效",
+  "regions": "[全球] Roamless App与官网，覆盖200+目的地；需eSIM兼容且无锁设备",
+  "start": "2026-11-27",
+  "end": "2026-11-27",
+  "verified": true,
+  "last_verified": "2026-11-27",
+  "added": "2026-11-20",
+  "content": "Roamless黑五当天（2026-11-27）全场数据套餐7折：App或官网结算时填BLACKFRIDAY30，单笔折扣上限$25，覆盖200+目的地，新老用户都能用，官方促销页明写「今日有效」。FLEX随用随充余额同样适用，按各国单价逐MB扣、一般不过期，适合囤着下次出国用；11-20起那轮早鸟5折码BLACKFRIDAY50已不在官方页出现，结算价以页面实际折扣为准。与Roamless新用户免费500MB（$1.25额度）是两回事，可叠加使用。",
+  "conditions": "只在结算时填码生效，事后不能补；单笔上限$25（约消费$83才打满）；仅限2026-11-27当天；不能与其他优惠码叠加；FLEX余额连续12个月无使用会失效。",
+  "steps": [
+   "下载 Roamless App 或打开 roamless.com 并登录",
+   "选好国家/地区套餐，或直接充值 FLEX 随用随充余额",
+   "在 Review & Pay 页面点 Apply Promo Code，填入 BLACKFRIDAY30 并确认折扣已生效",
+   "付款前核对折后价与 $25 上限，11/27 当天完成下单"
+  ],
+  "url": "https://roamless.com/promo-code",
+  "source": "Roamless官方促销码页2026-11-27实读（弹窗与公告：Black Friday 30% off、All data products、Max $25 off、Use code BLACKFRIDAY30、Today only）+ OzBargain 2026-11-20 早鸟发帖（BLACKFRIDAY50、5折、上限$25、至11/30）+ WhatsCheap 同日转载；2026-11-26 复核时官方页已不列 BLACKFRIDAY50；2026-11-27 复核：官方页现只挂 BLACKFRIDAY30 今日7折",
+  "risk": "官方只标「今日有效」，明天起折扣即失效；单笔只减$25，大额需求拆单可能被风控判定为滥用；FLEX余额按目的地单价扣，中国等贵价地区实际到手流量少于美国；eSIM需无锁设备，安装后不可转移；结算前务必确认折扣真的生效。",
+  "status": "expiring_soon",
+  "added_at": "2026-11-20T16:24:00+08:00",
+  "source_url": "https://www.ozbargain.com.au/deals/roamless.com",
+  "kyc_level": "none",
+  "vowifi": "n/a",
+  "utility": 0,
+  "platform_requirement": [
+   "android",
+   "ios"
+  ],
+  "funding_requirement": "purchase",
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "bitget-wallet-card-usdc",
   "dedup_key": "bitget|crypto|multi|wallet-card-usdc",
   "title": "[多区]Bitget Wallet Card开卡礼：消费$5得5USDC（最高累计$25）",
@@ -20447,49 +20587,6 @@
   "kyc_level": "none",
   "vowifi": "n/a",
   "utility": 0,
-  "funding_requirement": "purchase",
-  "geo_restriction": [
-   "GLOBAL"
-  ]
- },
- {
-  "id": "roamless-blackfriday50-5off",
-  "dedup_key": "roamless|esim|global|blackfriday50-5off",
-  "title": "[全球]Roamless早鸟黑五5折：全部eSIM套餐与FLEX随用随充，单笔最多减$25（码BLACKFRIDAY50）",
-  "brand": "Roamless",
-  "domain": "roamless.com",
-  "category": "esim",
-  "value": "$25",
-  "value_num": 25,
-  "cost": "需要交易量",
-  "highlight": "结算时填 BLACKFRIDAY50，所有国家/地区套餐与 FLEX 随用随充一律 5 折、单笔上限 $25（买 $50 打满），新老用户都能用，到网络星期一 11/30",
-  "regions": "[全球] Roamless App与官网，覆盖200+目的地；需eSIM兼容且无锁设备",
-  "start": "2026-11-20",
-  "end": "2026-11-30",
-  "verified": true,
-  "last_verified": "2026-11-26",
-  "added": "2026-11-20",
-  "content": "Roamless早鸟黑五（官方邮件）：App或官网结算时填BLACKFRIDAY50，全部国家与地区数据套餐以及FLEX随用随充余额一律5折，单笔折扣上限$25，即买$50正好打满。覆盖200+目的地，新老客户都能用，到网络星期一2026-11-30。FLEX余额按各国单价逐MB扣、一般不过期，适合囤着下次出国用；与Roamless新用户免费500MB（$1.25额度）是两回事，可叠加使用。",
-  "conditions": "只在结算时填码生效，事后不能补；单笔折扣上限$25，拆单能否重复触顶以平台风控为准；仅限新购买，不含已有订单退款重拍；不能与其他优惠码叠加；FLEX余额虽不过期，但条款写「连续12个月无使用会失效」。",
-  "steps": [
-   "下载 Roamless App 或打开 roamless.com 并登录",
-   "选好国家/地区套餐，或直接充值 FLEX 随用随充余额",
-   "在 Review & Pay 页面点 Apply Promo Code，填入 BLACKFRIDAY50 并确认折扣已生效",
-   "付款前核对折后价与 $25 上限，2026-11-30 前完成下单"
-  ],
-  "url": "https://roamless.com/promo-code",
-  "source": "OzBargain 2026-11-20 的 Roamless 发帖（官方邮件内容：BLACKFRIDAY50、5 折、上限 $25、至 11/30）+ WhatsCheap 同日转载；Roamless 官方促销码页确认 App 内结算处可提交优惠码；2026-11-25 复核：roamless.com/promo-code 仍在，促销码页与 FLEX 说明在架，活动到 11-30；2026-11-26 复核：roamless.com/promo-code 仍在架，页面现列 WEB101（首单 9 折）等常驻活动，未列 BLACKFRIDAY50，优惠码仍按官方邮件与 OzBargain 口径，务必在结算页确认折扣生效，活动到 11-30",
-  "risk": "优惠码来自邮件与社区发帖，官方活动页未逐条列出 BLACKFRIDAY50，结算前必须在 App 内确认折扣真的生效；单笔只减 $25，大额需求拆单可能被风控判定为滥用；FLEX 余额按目的地单价扣，中国等贵价地区实际到手流量少于美国；eSIM 需无锁设备，安装后不可转移。",
-  "status": "expiring_soon",
-  "added_at": "2026-11-20T16:24:00+08:00",
-  "source_url": "https://www.ozbargain.com.au/deals/roamless.com",
-  "kyc_level": "none",
-  "vowifi": "n/a",
-  "utility": 0,
-  "platform_requirement": [
-   "android",
-   "ios"
-  ],
   "funding_requirement": "purchase",
   "geo_restriction": [
    "GLOBAL"
@@ -21552,11 +21649,11 @@
   ],
   "url": "https://www.workbuddy.cn",
   "source_url": "https://linux.do/c/welfare/36",
-  "source": "腾讯混元 / WorkBuddy 官方 11-16 公告（Hy4 flash 首发限免至 11-30）+ iGetoken、Token FBI 复核（2026-11-17）",
+  "source": "腾讯混元 / WorkBuddy 官方 11-16 公告（Hy4 flash 首发限免至 11-30）+ iGetoken、Token FBI 复核（2026-11-17）；2026-11-27 复核：workbuddy.cn 在线（HTTP 200），限免仍写到 11/30，实际倍率以客户端模型列表显示为准",
   "risk": "每日免费额度具体数值以客户端为准，别当成无限量；高峰会排队；领的是产品内额度，无法给 Claude Code / Cursor 等外部工具用；11/30 后恢复积分计费。",
   "added_at": "2026-11-19T19:06:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-26",
+  "last_verified": "2026-11-27",
   "added": "2026-11-19",
   "status": "expiring_soon",
   "kyc_level": "none",

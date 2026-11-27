@@ -234,8 +234,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T10:28:14Z",
-      "last_hit_at": "2026-11-27T03:17:15Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_hit_at": "2026-11-27T12:20:03Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
       "zero_streak": 0
@@ -258,8 +258,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T10:28:14Z",
-      "last_hit_at": "2026-11-27T10:28:14Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_hit_at": "2026-11-27T12:20:03Z",
       "search_domains": [
         "x.com"
       ],
@@ -282,7 +282,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T10:28:14Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-27T03:17:15Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -302,7 +302,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T10:28:14Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -322,7 +322,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T10:28:14Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "zero_streak": 0
     },
@@ -344,7 +344,7 @@
       "entry_url": "https://www.promodescuentos.com/rss/todas",
       "zero_streak": 0,
       "note": "RSS 直连 200（普通 UA，无 Cloudflare），30 条/次，item 带 <category> 与 pepper:merchant 商家+价格；分组 feed 可补读 /rss/grupo/gratis（免单）、/rss/grupo/telefonia-celular（手机通讯）",
-      "last_crawled_at": "2026-11-27T10:28:14Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-27T06:15:27Z"
     },
     {
@@ -361,7 +361,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T06:15:27Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T16:29:05Z",
       "entry_url": "https://www.uscardforum.com/latest.md",
       "zero_streak": 0
@@ -421,7 +421,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-27T07:47:32Z",
       "search_domains": [
         "www.nodeseek.com"
@@ -442,7 +442,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T06:15:27Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T07:30:46Z",
       "entry_url": "https://www.nodeloc.com/latest.md",
       "zero_streak": 0
@@ -460,7 +460,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T06:15:27Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "zero_streak": 0
     },
@@ -479,7 +479,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T16:29:05Z",
       "zero_streak": 0
     },
@@ -581,7 +581,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-17T13:30:00Z",
       "search_domains": [
         "www.flyert.com"
@@ -603,7 +603,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T11:21:57Z",
       "search_domains": [
         "www.naixi.net"
@@ -648,7 +648,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "search_domains": [
         "www.free8.net"
@@ -760,7 +760,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-15T16:30:00Z",
       "search_domains": [
         "www.withgoddess.com"
@@ -855,7 +855,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T06:15:27Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -873,7 +873,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T06:15:27Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -890,7 +890,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T06:15:27Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -907,7 +907,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T06:15:27Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "zero_streak": 0
     },
@@ -924,7 +924,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T06:15:27Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "zero_streak": 0
     },
@@ -958,8 +958,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T06:15:27Z",
-      "last_hit_at": "2026-11-26T05:15:58Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
+      "last_hit_at": "2026-11-27T12:20:03Z",
       "zero_streak": 0
     },
     {
@@ -975,7 +975,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "keyword_pool": "topup",
       "entries": [
@@ -1045,7 +1045,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-27T07:47:32Z",
+      "last_crawled_at": "2026-11-27T12:20:03Z",
       "last_hit_at": "2026-11-26T19:09:04Z",
       "keyword_pool": "topup",
       "entries": [
@@ -2235,7 +2235,8 @@
       "added_at": "2026-11-27T18:48:00+08:00",
       "entry_url": "https://moe.one/forum-4-1.htm?digest=5",
       "zero_streak": 0,
-      "note": "Xiuno 版式中文社区「萌社区」福利版（资源活动分享，174 主题 / 9 页）。无 RSS（/rss.php 404，forum-4.htm?rss 直接返回同一 HTML），按发布时间倒序的列表入口为 forum-4-1.htm?digest=5（每页 20 条，按 tid 倒序）；默认 forum-4.htm 按最后回复排序。列表里的时间只写相对值（7天前/1月前）且 <time> 无 datetime，精确到分的发布时间要从帖子页 <time datetime> 的 Unix 秒换算（北京时间）。裸 UA 直连会返回 Cloudflare 522，须带浏览器 UA 才 200。版内约九成为个人自建代理节点、机场/公益 AI 中转站、长效接码与音乐分享，且部分帖子需登录或回复后才可见；这些一律只作线索，收录必须回溯品牌官网或活动方页面核验，不得照搬论坛转述；会员专属发号（如萌社区免费域名专区，仅限社区成员）与已停发/已炸号帖子不收。"
+      "note": "Xiuno 版式中文社区「萌社区」福利版（资源活动分享，174 主题 / 9 页）。无 RSS（/rss.php 404，forum-4.htm?rss 直接返回同一 HTML），按发布时间倒序的列表入口为 forum-4-1.htm?digest=5（每页 20 条，按 tid 倒序）；默认 forum-4.htm 按最后回复排序。列表里的时间只写相对值（7天前/1月前）且 <time> 无 datetime，精确到分的发布时间要从帖子页 <time datetime> 的 Unix 秒换算（北京时间）。裸 UA 直连会返回 Cloudflare 522，须带浏览器 UA 才 200。版内约九成为个人自建代理节点、机场/公益 AI 中转站、长效接码与音乐分享，且部分帖子需登录或回复后才可见；这些一律只作线索，收录必须回溯品牌官网或活动方页面核验，不得照搬论坛转述；会员专属发号（如萌社区免费域名专区，仅限社区成员）与已停发/已炸号帖子不收。",
+      "last_crawled_at": "2026-11-27T12:20:03Z"
     }
   ],
   "paused_sources": [
