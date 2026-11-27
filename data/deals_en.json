@@ -9414,5 +9414,38 @@
   ],
   "risk": "The reward is PayPay points, not cash, usable only inside PayPay; the code comes by SMS with a charging deadline and is not reissued; SoftBank, LINEMO and Y!mobile port-ins do not qualify for the usual benefit; a Japanese address and ID are required so short-term visitors cannot apply; you still pay the monthly fee, so the JPY 20,000 offsets it rather than being free money.",
   "source": "LINEMO official press release Nov 23, 2026 (read Nov 28, 2026: PayPay add-on JPY 8,000 on Best Plan V and JPY 4,000 on Best Plan, apply Nov 23 - Dec 6, activation by the month after, activation fee JPY 3,850 to 0) plus the site header (new subscribers PayPay JPY 12,000 / Visa JPY 7,000) and an All Connect roundup on Nov 27, 2026 for plan prices"
+ },
+ "tencent-cloudbase-miniprogram-ai-pack": {
+  "title": "[China]Tencent CloudBase mini-program growth plan (phase 2): 1B tokens and 100,000 images free, plus a 6-month environment (apply by Dec 31)",
+  "highlight": "Sign up through the WeChat Mini Program admin console and get a Hunyuan token and image-generation pack valid six months from approval; text credit covers hy4, hy4-flash, hy3 and deepseek-v4.1-flash, but only inside mini-program and cloud-function/cloud-run calls",
+  "regions": "[China] Mainland China WeChat ecosystem, requires a WeChat Mini Program account (individuals can register one)",
+  "value": "1B tokens + 100,000 images of credit, plus a 6-month personal cloud environment (or a CNY 120 voucher)",
+  "content": "Tencent CloudBase and the WeChat Mini Program console run a growth plan whose phase 2 (sign up July 1 to Dec 31, 2026) grants an AI resource pack: 1 billion text tokens and 100,000 image generations, valid six months from approval. Accounts without a cloud environment also get a six-month personal environment; accounts that already have one get a CNY 120 CloudBase voucher instead. Credit covers hy4, hy4-flash, hy3, deepseek-v4.1-flash and Hunyuan image models, and can only be spent from the mini-program client or cloud functions/cloud run.",
+  "conditions": "You need a WeChat Mini Program account (individuals can register one) and must apply under Industry Capabilities -> Mini Program Growth Plan in the WeChat admin console; one application per mini program, and the bound Tencent Cloud account or environment cannot be changed afterwards; credit only works in the mini-program client, cloud functions/cloud run and the CloudBase console, and the old image model shuts down on Dec 1, so calls need manual migration.",
+  "steps": [
+   "Register a WeChat Mini Program account on the WeChat public platform (free, individuals accepted)",
+   "Log into mp.weixin.qq.com as the mini program admin and apply under Industry Capabilities -> Mini Program Growth Plan, choosing the WeChat cloud environment to bind",
+   "Confirm; the AI resource pack lands in that environment automatically (convert a Tencent Cloud environment to a WeChat cloud environment first if needed)",
+   "Call the models from the mini-program client or cloud functions, and watch usage under AI model usage in the CloudBase console"
+  ],
+  "risk": "The credit is not a general-purpose API key: since Nov 24 use from AI tools, web SDKs, third-party APIs or raw HTTP calls is billed to your paid plan and can get the resource pack suspended; once text credit runs out, calls fall back to the plan and fail outright on quota-based plans; image credit is not covered after it runs out; hy4-preview retires Dec 7 and HY-Image-3.0-Plus on Dec 1; China mainland WeChat ecosystem only.",
+  "source": "Tencent CloudBase official docs 'Mini Program Growth Plan' (read Nov 28, 2026: phase 2 runs Jul 1-Dec 31, 1B tokens and 100,000 images, six months from approval, application path and limits, phase-1 users get 900M tokens and 90,000 images auto-topped up) plus the official enforcement notice (from Nov 24 only the mini-program base library, cloud functions/cloud run and the CloudBase console may consume the pack) and the official introduction page",
+  "brand_en": "Tencent CloudBase"
+ },
+ "typingmind-blackfriday-lifetime-60": {
+  "title": "[Global]TypingMind Black Friday: Premium lifetime 60% off, code BLACKFRIDAY2026, $79.20 one-time (ends Nov 30)",
+  "highlight": "Official code BLACKFRIDAY2026 cuts the Premium lifetime license from $198 to $79.20 as a one-time purchase with free updates and a 14-day refund window; unlocks multi-model parallel chat, projects, Artifacts/Canvas, unlimited plugins and MCP",
+  "regions": "[Global] Sold on typingmind.com/buy; the code only applies to Lifetime Premium, model API costs are separate",
+  "value": "About $118.80 off list ($198 to $79.20, one-time purchase with free updates)",
+  "content": "TypingMind's 2026 Black Friday offer: enter the code BLACKFRIDAY2026 at checkout on the official site to take 60% off the Premium lifetime license, paying $79.20 instead of $198. It is a one-time purchase with no renewal, free updates and a 14-day money-back guarantee; the changelog and buy page both state the offer ends November 30. Premium includes everything in Standard and Extended plus multi-model parallel chats, projects and folders, Artifacts and Canvas, and unlimited plugins and MCP servers. The app itself has no subscription; you connect your own API keys and pay each provider per token.",
+  "conditions": "The code only works on Lifetime Premium; Standard stays $39 and Extended $79. You must supply your own OpenAI, Anthropic or Google API keys and pay for model usage separately. The $198 list price has been discounted 50% ($99) on the page for months, so the real saving against the usual price is about $19.80. Ends Nov 30 and cannot be applied after the fact.",
+  "steps": [
+   "Open typingmind.com/buy, choose Premium and click Buy Premium",
+   "Enter BLACKFRIDAY2026 in the discount field and check the price moves from $198 to $79.20",
+   "Pay once by card or PayPal and receive the license key by email",
+   "Activate the license in TypingMind, then add your own model API keys"
+  ],
+  "risk": "Only valid at the official checkout; resold or shared keys risk a ban. The license covers the software only, so heavy Claude or GPT use can cost more in API fees in a year than the license saves. The $198 figure is a list price that is discounted 50% most of the time, so do not treat it as saving $118.80. Free updates cover Premium features only; cloud storage and similar extras are billed separately. The 14-day refund must be requested inside the window.",
+  "source": "TypingMind official changelog 'Black Friday / Cyber Monday 2026 Sale' (Nov 19, 2026: 60% off Premium lifetime, code BLACKFRIDAY2026, $79.20 instead of $198, ends November 30) plus the official buy page typingmind.com/buy read Nov 28, 2026 (Premium $79.20 / $198, Standard $39, Extended $79), the official docs page docs.typingmind.com/resources/typingmind-black-friday (same code, price and steps) and an I4U price check on Nov 27, 2026 (the page has carried a standing 50% off, $99)"
  }
 }
