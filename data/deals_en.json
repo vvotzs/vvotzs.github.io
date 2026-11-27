@@ -8785,5 +8785,22 @@
   ],
   "risk": "THD is not cash: the $13 figure is a five-year theoretical estimate that moves with BTC price and difficulty. The 500BTC code appears only on third-party listings and may be used up. Free power needs daily activity, and a skipped day slows progress. Cloud-mining platforms carry regulatory and counterparty risk, so don't deposit money.",
   "source": "Visitor submission (Gmail 26 Nov 2026 18:29, processed) + ECOS official Rewards page read 27 Nov 2026 (THD mechanics, 100 THD to start, 350 THD over 30 days, 200 THD per referral, 100,000 THD draw pool) + develif listing (500BTC code: 500 THD, until 30 June 2027 15:12 UTC or 10,000 redemptions)"
+ },
+ "trust-bank-sg-refer-and-earn": {
+  "title": "[Singapore] Trust Bank new-to-card: sure-win cashback up to S$8,000 with a referral code, or US$8,000 in stock (to Jan 31, 2027)",
+  "brand_en": "Trust Bank",
+  "highlight": "Enter someone's referral code when you first register in the app: apply for a credit card and pick Cashback for a sure-win scratch card (the site says up to S$8,000), or pick Stockback for up to US$8,000 in shares; open only a savings account and both sides get an S$8-1,888 cashback scratch card",
+  "regions": "[Singapore] Singapore citizens, PRs and pass holders, verified with Singpass; foreigners need a S$60,000 annual income for the card",
+  "value": "Card gift up to S$8,000 (most tiers S$888 or less); savings scratch cards of S$8-1,888 for both sides",
+  "content": "Register in the Trust app with someone's referral code, which has to be entered at sign-up and cannot be added later. A new customer who applies for the Freedom or Link credit card and chooses Cashback gets a sure-win cashback scratch card; the site only says \"up to S$8,000\" and does not publish the tiers, while a third party read six amounts of S$18, S$28, S$88, S$288, S$888 and S$8,000. Choosing Stockback pays up to US$8,000 in shares instead. Opening only a savings account pays both sides an S$8-1,888 cashback scratch card. The card sign-up gift runs to Jan 31, 2027 and the card appears under Rewards then Quests within 24 hours; cashback is credited against the card account, not paid as cash.",
+  "conditions": "Never held a Trust account, including closed ones; the referral code can only be entered at first registration in the app; the card gift needs an approved card application and an annual income of S$30,000 (citizens/PRs) or S$60,000 (foreigners); only Singapore citizens, PRs and pass holders can open, through Singpass and MyInfo; unrevealed scratch cards expire.",
+  "steps": [
+   "Ask an existing Trust customer for their referral code and download the Trust app",
+   "Enter the code on the Get Started screen at first registration, as it cannot be added later",
+   "Apply for a Freedom or Link credit card and set the reward mode to Cashback (or Stockback for shares)",
+   "Within 24 hours of approval, reveal the card under Rewards then Quests in the app to have the cashback offset the card balance"
+  ],
+  "risk": "Only the maximum is published and most people land in the low tiers (a third-party roundup puts the floor at S$18), so do not count on S$8,000; cashback offsets the card balance rather than arriving as cash; the card needs approval and an income threshold; no community payout reports yet (none found on Reddit or Seedly), so trust what the app shows.",
+  "source": "Trust Bank official Refer and Earn page and homepage read on 27 Nov 2026 (referrer gets an S$50-8,000 scratch card per card sign-up and both sides get S$8-1,888 for a savings sign-up; new-to-card sign-up gift is a sure-win cashback of up to S$8,000 or up to US$8,000 in shares until Jan 31, 2027) plus numbers.sg's 25 Nov 2026 independent check noting the S$8,000 figure is one of six tiers and that cashback lands on the card, and DLCuration's November steps for the Rewards then Quests flow and expiry"
  }
 }
