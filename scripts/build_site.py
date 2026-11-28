@@ -123,7 +123,10 @@ CONSENT_REQUIRED = "0"
 # Google 打架时直接退回平台名 GitHub）。改主名只需要动这三行。
 SITE_WEB_ID = SITE_URL + "#website"
 SITE_WEB_NAME = "羊毛情报局"
-SITE_WEB_ALT = ["Deal Hunter", "羊毛情报局 · 全球优惠情报"]
+# 备用名：英文名在前；最后一条是 Google 站点名文档 troubleshooting 里建议的
+# 「把子域名当备用名」兜底（必须全小写）。宁可显示 vvotzs.github.io，
+# 也比被回退成平台名 GitHub 好。
+SITE_WEB_ALT = ["Deal Hunter", "羊毛情报局 · 全球优惠情报", "vvotzs.github.io"]
 
 # ------------------------------------------------ 首页瘦身（2026-11-21 第七轮定稿）
 # 分类区只内联按 S 分排序的前 N 条，其余全部交给分类目录页 /category/<slug>/ 承接；
