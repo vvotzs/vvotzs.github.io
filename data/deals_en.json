@@ -9659,5 +9659,21 @@
   ],
   "risk": "Two sets of numbers conflict: the flash page says RM800 for RM1,000 of spending while the card page says RM500 for RM3,000, so check the application page and T&C before applying. MyKad is mandatory, so non-Malaysians cannot apply. A credit card brings annual fees and a hard credit check, so do not apply purely for the gift. Forum users report quota cuts after applying, and the credit must be claimed before the deadline. The flash deal ends 11/30 at 11:00.",
   "source": "RinggitPlus official blog (2026-11-23: guaranteed RM800 Touch 'n Go credit on HSBC Visa Signature, RM500 on Live+ and TravelOne, spend RM1,000 within 60 days, new customers only, flash deal ends 11/30 11:00) plus the RinggitPlus HSBC Visa Signature card page (live in November 2026: iPhone 18 Pro draw or guaranteed RM500 with RM3,000 spend, 18-30 November) and the campaign T&C PDF requiring a MyKad and a RinggitPlus application, with Lowyat forum reports of RM800 credits received in March 2025"
+ },
+ "mobi-year-end-8country-300mb-free": {
+  "title": "[Korea]mobi year-end gift: 300MB/1-day eSIM for 0 KRW in Japan, Thailand, US, Vietnam, HK/Macau, Indonesia, China and the Philippines (100% off)",
+  "highlight": "mobi's early year-end gift lists eight destinations - Japan, Thailand, USA, Vietnam, Hong Kong/Macau, Indonesia, China and the Philippines - each with a 300MB/1-day data-only eSIM cut from 1,000 KRW to 0 KRW; ordering needs only a phone number check, no account signup",
+  "regions": "[Korea] Ordering needs a Korean mobile number for the SMS check; the eSIM works locally in each of the eight destinations, data only with no number",
+  "value": "One 300MB/1-day eSIM per destination (1,000 KRW face value each)",
+  "content": "mobi, the eSIM roaming brand of KT's MVNO kt M모바일, runs a year-end gift page: in Japan, Thailand, the USA, Vietnam, Hong Kong/Macau, Indonesia, China and the Philippines one 300MB/1-day data-only eSIM each drops from 1,000 KRW to 0 KRW, while other plans on the same page are 31-32% off (Japan unlimited for three days is 2,970 KRW). Checkout only asks for a phone number and an SMS code, with no account signup; the QR can be issued for 180 days after purchase and the eSIM stays usable for 90 days after issue, and you can run the in-Korea activation check before departure. It rides local networks via APN mobile.three.com.hk with 3HK/CSL and Plus as roaming providers. After the 300MB the speed drops to 384Kbps but stays unlimited, and top-ups are not possible.",
+  "conditions": "Needs a Korean mobile number to receive the SMS code (whether an overseas number works is not stated); the page presents it as limited stock, first come first served, with no end date published; data only, no number and no calls or SMS; 384Kbps cap after 300MB, no top-up and no refund; the device must be unlocked and the eSIM must not have been bound to another phone.",
+  "steps": [
+   "Open mobiesim.co.kr/events/november-promotion/products and pick Japan, Thailand, the USA, Vietnam, Hong Kong/Macau, Indonesia, China or the Philippines",
+   "Choose the 300MB per day, 1-day product listed at 0 KRW and tap 바로 구매하기",
+   "Enter a Korean mobile number, receive the SMS code and finish the order (no account needed)",
+   "Install the QR, run the activation check while still in Korea, then switch the data line to this eSIM on arrival"
+  ],
+  "risk": "A Korean mobile number is required, so mainland Chinese users will struggle to join; whether an overseas number can receive the code is unverified. Whether this stacks with kt M모바일's November Japan unlimited 3-day freebie is not stated and needs checking, as both read as first-purchase offers. The 300MB expires at the end of its day with no top-up, and stock is limited with no end date, so the page can close without notice.",
+  "source": "mobi (주식회사 케이티엠모바일) official campaign page '미리 받는 연말 선물' read on 28 Nov 2026: all eight destinations marked 0 KRW and up; Japan 300MB/1 day cut from 1,000 KRW to 0 KRW (100%), data only, 384Kbps unlimited after the allowance, QR issuable within 180 days and usable 90 days after issue, APN mobile.three.com.hk, roaming via 3HK/CSL and Plus; the buy button leads to a login screen asking for 휴대폰 번호를 인증해 주세요 (phone SMS verification); dasaja.co.kr post 14 Nov 2026 (first come, 0 KRW, links the same page)"
  }
 }
