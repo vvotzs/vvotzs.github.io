@@ -9531,5 +9531,37 @@
   ],
   "risk": "The free allowance is only 2 GB for 7 days and is a trial, not a main data line; you must scan in a store, so it cannot be claimed online; a CURP is required, which visitors rarely have; the 100,000-card cap can end it early; community posts describe a bigger package than the official terms, so check the plan at the counter before activating.",
   "source": "Bait official promo page mibait.com/PUJ (QR promo eSIM: 2,048 MB for 7 days, until 31 Dec 2026 or 100,000 cards) as read and cross-checked by Chip Virtual on 4 Nov 2026 + Selectra.mx update 3 Nov 2026 (scan-to-get eSIM, one per customer, 100,000 cap, store list) + Promodescuentos thread 25 Nov 2026 (user installed it; the post says 12 GB for 30 days, which conflicts with the official terms) + Promodescuentos free and mobile subgroups RSS scan 28 Nov 2026"
+ },
+ "youplay-adblock-lifetime-free": {
+  "title": "[Multi-region]YouPlay ad-block video browser: iOS lifetime Premium in-app price now $0.00 (was $6.99, iOS 18+)",
+  "highlight": "The YouPlay Premium Lifetime in-app purchase in the App Store is temporarily $0.00 instead of $6.99 for Black Friday: install the app, tap the crown icon, pick the lifetime tier and confirm the Apple sheet shows 0.00 to keep ad blocking, background playback and picture-in-picture for good",
+  "regions": "[Multi-region] App Store worldwide (claimed in US/GB/AU/KR/NL/PL stores), iPhone and iPad only",
+  "value": "About $6.99 (the lifetime Premium in-app purchase drops to $0.00)",
+  "content": "YouPlay is an iOS/iPadOS video browser that combines ad blocking, background playback and picture-in-picture. During Black Friday its 'YouPlay Premium Lifetime' in-app purchase shows $0.00 instead of $6.99: install the app, tap the crown in the top-left corner, choose the lifetime tier and confirm the Apple sheet reads 0.00 before approving, and the premium unlock lands on your Apple ID so it survives a reinstall. The developer marks it as a limited-time promotion that can revert without notice; users in the Korean and Dutch communities claimed it on Nov 26-27, and older iPads need iPadOS 18 or later.",
+  "conditions": "Requires iOS or iPadOS 18.0 or later. You must take the lifetime tier from the in-app crown screen and the Apple confirmation sheet must show 0.00; picking a monthly ($0.99-$1.99) or yearly ($5.99-$9.99) tier charges you as usual. Limited-time promotion with no published end date.",
+  "steps": [
+   "Install YouPlay: AdBlock Video Browser (id6751497996) from the App Store",
+   "Open the app and tap the crown icon in the top-left corner",
+   "Pick the Lifetime tier and check that the Apple purchase sheet shows 0.00 before confirming",
+   "Keep using the app as normal; the premium unlock stays tied to your Apple ID and survives reinstalls"
+  ],
+  "risk": "Limited-time promotion with no stated end date, so the price can return to $6.99 at any moment. Check that the Apple sheet shows 0.00 before approving, since choosing another tier bills you at the subscription price. The app is a video web browser with ad blocking, not a YouTube Premium substitute. Storefront prices differ by region, so trust the App Store checkout. It is a one-person app, so long-term maintenance is not guaranteed.",
+  "source": "Slickdeals frontpage post on Nov 27, 2026 (Lifetime Premium from $6.99 to free, must claim via the crown inside the app, commenters confirmed the 0.00 charge) plus the US App Store listing read Nov 28, 2026 (in-app purchases list 'YouPlay Premium Lifetime $0.00' alongside monthly $1.99/$0.99 and yearly $5.99/$9.99) and posts on Dutch Pepper (Nov 26), Polish kupse (Nov 27) and Korean Clien (Nov 27) describing the same steps and premium surviving a reinstall"
+ },
+ "uob-evol-singsaver-400-sg": {
+  "title": "[Singapore]UOB EVOL card via SingSaver: S$400 cash or a S$80 floor (Nov 3-30, first 3 applicants daily at 2pm)",
+  "highlight": "SingSaver Black Friday flash deal: apply for the UOB EVOL card through SingSaver between Nov 3 and Nov 30, be one of the first 3 applicants at 2pm SGT on any day and spend S$500 within 30 days of approval to get S$400 cash by PayNow; every other eligible applicant gets at least S$80, and the reward stacks with UOB's own welcome offer",
+  "regions": "[Singapore] New-to-UOB credit cardmembers only, age 21+, annual income from S$30,000; needs a Singapore address and local mobile number",
+  "value": "S$400 (about $300) or a S$80 (about $60) floor",
+  "content": "UOB EVOL is a no-annual-fee Singapore cashback card (10% on local online and mobile contactless spend, no FX fees). SingSaver's Black Friday flash deal adds a signup reward: apply through the SingSaver link between Nov 3 and Nov 30, be among the first 3 applications from 2pm SGT on a given day and spend S$500 within 30 days of approval to receive S$400 in cash by PayNow; eligible applicants who miss the top-3 slot still get S$80. The reward stacks with UOB's own welcome offer. The 10% accelerated rate needs S$800 of monthly spend and is capped at S$80 a month; below that the card pays 0.3% to 1%.",
+  "conditions": "New-to-UOB credit cardmembers only, 21+, annual income of at least S$30,000. You must apply through the SingSaver link and spend S$500 within 30 days of approval. The S$400 tier is limited to the first 3 applications each day from 2pm, and everyone else gets S$80. Cannot be combined with other SingSaver flash deals, and no independent community data point exists yet.",
+  "steps": [
+   "Open the UOB EVOL page on SingSaver and use the Black Friday flash deal application link",
+   "Enter your Singapore address, income and pass details and submit the UOB card application",
+   "Spend S$500 in total within 30 days of approval",
+   "Receive the reward as PayNow cash and watch for the SingSaver email"
+  ],
+  "risk": "The S$400 tier takes only the first 3 applications each day, so most people land on S$80. It requires a new cardmember meeting the income floor, so non-residents cannot apply. You must hit S$500 of spend within 30 days or nothing is paid. The accelerated cashback needs S$800 a month, otherwise the base rate is 0.3%. No independent community data point exists yet, so treat SingSaver's and UOB's terms as the source of truth and re-check within a week.",
+  "source": "SingSaver UOB EVOL card page read Nov 28, 2026 (updated Nov 17, 2026: SingSaver Flash Deal valid Nov 3-30, 2026, first 3 applicants daily at 2pm get S$400, everyone else S$80, S$500 spend within 30 days, new-to-UOB only)"
  }
 }

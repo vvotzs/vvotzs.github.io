@@ -19947,7 +19947,7 @@
   "start": "2026-11-24",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "added": "2026-11-25",
   "content": "迪士尼2026黑五把Disney+与Hulu合订包（含广告）打到$4.99/月，锁价12个月，原价$12.99/月，一年省$96；无广告Premium档$14.99/月（原$21.99），同样锁12个月。11/24开卖、11/30 23:59（美西）截止，只在disneyplus.com下单，12个月后按当时原价自动续费。合订包在Disney+里可看Hulu内容（最多2台同时播放），部分Hulu内容仍须在Hulu应用看；Disney+ Perks会员权益需另行登记。",
   "conditions": "仅美国居民、18岁以上；新用户与合格回流用户，现役Disney+、Hulu、ESPN或合订包订阅者不能参加；不能与免费试用或其他促销、合订包叠加，不能用礼品卡付款；中途换套餐即失去黑五价；到期按原价自动续费。",
@@ -19960,7 +19960,7 @@
   ],
   "url": "https://www.disneyplus.com/",
   "source_url": "https://abc.com/news/1cbbbdbb-e529-47ac-9050-25efe99b0059/category/3722338",
-  "source": "Disney+ 官网首页落地页（2026-11-25 实读：sale price $4.99/mo for a year，原价 $12.99）+ Disney/ABC 官方新闻稿 2026-11-24（写明 11/24–11/30、$4.99/月×12、Premium $14.99）+ MacRumors、Tom's Guide、9to5Google 2026-11-24 同步复核",
+  "source": "Disney+ 官网首页落地页（2026-11-25 实读：sale price $4.99/mo for a year，原价 $12.99）+ Disney/ABC 官方新闻稿 2026-11-24（写明 11/24–11/30、$4.99/月×12、Premium $14.99）+ MacRumors、Tom's Guide、9to5Google 2026-11-24 同步复核；2026-11-28复核：disneyplus.com/welcome/disney-bundle-duo 仍挂黑五价$4.99/月12个月（Premium $14.99/月），条款写明11/30 23:59 PT截止、美国18岁以上新客与合格回流客",
   "risk": "美区限定，需美国支付方式与地址，国内卡多半过不了；12 个月后自动按 $12.99/月扣款；中途换套餐优惠立即作废；礼品卡支付会被拒。",
   "status": "expiring_soon",
   "added_at": "2026-11-25T16:20:00+08:00",
@@ -21283,7 +21283,7 @@
   "start": "2026-11-13",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "added": "2026-11-19",
   "content": "Airalo官方Black Friday（2026-11-13 00:00 UTC至11-30 23:59 UTC）：活动专页对符合条件的Unlimited套餐结账时输入BLACK25，享标准价7.5折，新老客户均可。Unlimited按公平使用政策每天3GB高速（最高20Mbps），超出后降速但可继续用地图、消息与浏览，每24小时重置。购买后可在365天内激活，适合先囤后飞。",
   "conditions": "仅限官方活动页标注eligible的Unlimited套餐（固定流量、区域、全球套餐通常不在内）；必须手动输入BLACK25；一单只能用一个码，不能与推荐码、账户余额、其他优惠叠加；不追溯已完成的订单；以结账页折后价为准。",
@@ -21294,7 +21294,7 @@
    "到达目的地再启用 eSIM，365 天内都能激活"
   ],
   "url": "https://www.airalo.com/campaign-terms/Black-Friday-2026",
-  "source": "Airalo 官方 Black Friday 活动条款（活动期 2026-11-13 至 11-30）+ 官方 Unlimited 套餐页（BLACK25、每日 3GB 高速、365 天激活）；2026-11-25 复核：官方折扣页已 302 跳首页，BLACK25 仍有 NETZWELT 2026-11-23 与北美羊毛快报 2026-11-24 报道，结账页验证。; 2026-11-26 复核：官方条款页 campaign-terms/Black-Friday-2026 仍在线，写明 BLACK25 对 eligible 套餐 25% off、须在指定 Offer 页结账手动输入且仅限标注 eligible 的套餐。",
+  "source": "Airalo 官方 Black Friday 活动条款（活动期 2026-11-13 至 11-30）+ 官方 Unlimited 套餐页（BLACK25、每日 3GB 高速、365 天激活）；2026-11-25 复核：官方折扣页已 302 跳首页，BLACK25 仍有 NETZWELT 2026-11-23 与北美羊毛快报 2026-11-24 报道，结账页验证。; 2026-11-26 复核：官方条款页 campaign-terms/Black-Friday-2026 仍在线，写明 BLACK25 对 eligible 套餐 25% off、须在指定 Offer 页结账手动输入且仅限标注 eligible 的套餐。；2026-11-28复核：Airalo Black Friday/Cyber Monday 条款页仍在（BLACK25、eligible plans 25% off、每人限用一次），活动至11/30",
   "risk": "BLACK25 只对 Unlimited 系列生效，买固定流量套餐不省；「无限」是每天 3GB 高速后降速；一单只能用一码，和首单 15% 码不能叠加；活动码过期即失效。",
   "status": "expiring_soon",
   "added_at": "2026-11-19T11:52:23+08:00",
@@ -22429,6 +22429,50 @@
   ]
  },
  {
+  "id": "youplay-adblock-lifetime-free",
+  "dedup_key": "youplay|software|multi|adblock-lifetime-free",
+  "title": "[多区]YouPlay广告拦截视频浏览器：iOS终身Premium内购价归零免费领（原$6.99，需iOS18+）",
+  "brand": "YouPlay",
+  "domain": "apps.apple.com",
+  "category": "software",
+  "value": "≈$6.99（终身Premium内购价降为$0.00）",
+  "value_num": 7,
+  "cost": "真正免费",
+  "highlight": "App Store里YouPlay的「Premium Lifetime」内购黑五限时从$6.99降为$0.00：装好App点左上角皇冠图标选终身档，Apple确认页显示0.00就白拿，广告拦截、后台播放、画中画永久解锁",
+  "regions": "[多区] 全球App Store（美/英/澳/韩/荷/波等区实测可领），仅iPhone/iPad",
+  "start": "2026-11-26",
+  "end": "2026-11-30",
+  "verified": true,
+  "last_verified": "2026-11-28",
+  "added": "2026-11-28",
+  "added_at": "2026-11-28T08:45:00+08:00",
+  "content": "YouPlay是iOS/iPadOS上的视频浏览器，把广告拦截、后台播放和画中画做在一起。黑五期间App Store的「YouPlay Premium Lifetime」内购价从$6.99降为$0.00：装好App后点左上角皇冠，选终身档，确认Apple弹窗价格是0.00再付款，即0元入账，删掉重装Premium仍绑在Apple ID上。官方标的是限时活动、随时可能恢复原价；台区/韩区社区11/26–11/27实测可领，部分旧iPad需iPadOS18以上。",
+  "conditions": "需iOS/iPadOS 18.0以上、支持eSIM无关；必须走App内皇冠图标的终身档内购，Apple确认页价格须显示0.00，误点月付$0.99–1.99或年付$5.99–9.99会照常扣费；限时活动，随时结束，官方未公布具体截止。",
+  "steps": [
+   "在App Store搜YouPlay: AdBlock Video Browser（id6751497996）并安装",
+   "打开App，点左上角皇冠图标进入Premium页面",
+   "选「Lifetime/终身」档，确认Apple内购弹窗价格显示0.00后再确认",
+   "领取后可继续用免费版即可，Premium权益绑定Apple ID，重装仍在"
+  ],
+  "url": "https://apps.apple.com/us/app/youplay-adblock-video-browser/id6751497996",
+  "source": "Slickdeals首页帖 2026-11-27（Lifetime Premium $6.99→免费领取，需在App内点皇冠领取，评论区用户实测0.00成功）+ App Store美区商品页 2026-11-28 实读（In-App Purchases 列表含「YouPlay Premium Lifetime $0.00」，另有月付$1.99/$0.99、年付$5.99/$9.99）+ 荷兰Pepper 2026-11-26、波兰kupse 2026-11-27、韩国Clien 2026-11-27帖（同一步骤，重装后Premium保留）",
+  "source_url": "https://slickdeals.net/f/20420985-youplay-adblock-video-browser-free-lifetime-premium-at-apple-app-store-6-99",
+  "risk": "限时活动、官方未写明截止日，可能随时恢复$6.99；领取时务必看清Apple内购弹窗是0.00，选错档会按订阅价扣费；App只做视频网页浏览与广告拦截，不含YouTube会员内容；地区区服价格显示不同（部分区显示₩0/€0），以App Store结算页为准；作者为个人开发者，长期维护不确定。",
+  "status": "expiring_soon",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "account",
+  "residency_requirement": "none",
+  "phone_requirement": "none",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "workbuddy-hy4-flash-free-nov2026",
   "dedup_key": "tencentcloud|ai|global|workbuddy-hy4-flash-free-nov2026",
   "title": "[中国区/国际版]腾讯WorkBuddy：混元Hy4 Flash限时免费（11/16–11/30，额度每日发放）",
@@ -22703,7 +22747,7 @@
   "start": "2026-11-23",
   "end": "2026-11-29",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "added": "2026-11-24",
   "content": "本周（11/23–11/29）登录 AutoClaw 客户端即领 100M Tokens，折 10,000 积分，每账号限领一次，额度 29 日 23:59 统一失效、不累积。官方周福利每期额度轮换（上一期 50M、本期 100M），领取不要求绑卡或订阅；额度只能用于 AutoClaw 内置模型（GLM-5.3、GLM-5V 系列），导不出 API Key。GLM-5.4 已在 AutoClaw 上线，但目前只对 GLM Coding Plan 订阅用户开放、享 1.5 倍额度。",
   "conditions": "需智谱或 Z.ai 账号并登录 AutoClaw 客户端；每账号限领一次；额度 2026-11-29 23:59（北京时间）失效；仅限客户端内模型调用，不能导出为 API。",
@@ -22715,7 +22759,7 @@
   ],
   "url": "https://autoclaw.z.ai/cn/blog/news/M11W4/",
   "source_url": "https://autoclaw.z.ai/cn/blog/news/M11W4/",
-  "source": "AutoClaw 官方博客《每周福利｜100M Tokens 等你领取！》（2026-11-20 发布，活动 11/23–11/29）；2026-11-26 复核：官方博客 M11W4 页在架，写明 11/23 00:00–11/29 23:59（北京时间）登录即领 100M Tokens（=10,000 积分），每账号 1 次，额度 11/29 23:59 失效",
+  "source": "AutoClaw 官方博客《每周福利｜100M Tokens 等你领取！》（2026-11-20 发布，活动 11/23–11/29）；2026-11-26 复核：官方博客 M11W4 页在架，写明 11/23 00:00–11/29 23:59（北京时间）登录即领 100M Tokens（=10,000 积分），每账号 1 次，额度 11/29 23:59 失效；2026-11-28复核：官方博客仍写活动11/23 00:00–11/29 23:59（北京时间）、每账号限领一次、奖励11/29 23:59失效，未提前结束",
   "risk": "周福利每期额度与时长随公告轮换，别当成长期权益；额度到 29 日 23:59 统一失效，晚领等于白领；GLM-5.4 目前只对 Coding Plan 订阅开放，免费额度未必能调；额度不能当 API 用；部分期次要求实名，以客户端提示为准。",
   "added_at": "2026-11-24T08:52:00+08:00",
   "status": "expiring_soon",
@@ -22897,7 +22941,7 @@
   "start": "2026-11-23",
   "end": "2026-12-02",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "content": "Meshy 用文字或图片生成3D模型与贴图，适合游戏、3D打印与产品渲染。免费档每月100 credits（UTC每月1日0点重置），连Discord再送100一次性，社区发表作品每个精选得50、分享到X按独立点击计奖、关注创作者也能拿，创作者计划每月可领免费Pro。黑五11/23–12/2年付Pro/Premium结账自动最高5折，免费用户订阅同档另送2个月，不用码也不能与其他码叠加；新客首月码MESHYSTART50五折、任意账号MESHYFALL30七折，均11/30截止。订阅者另可8折买额外credit包。",
   "conditions": "需注册Meshy账号（邮箱即可、免卡）；黑五只对年付Pro/Premium生效且结账自动减；MESHYSTART50仅限新订阅者首月；所有折扣码不可与黑五折扣叠加；教育计划需学校邮箱审核。",
   "steps": [
@@ -22908,7 +22952,7 @@
   ],
   "url": "https://www.meshy.ai/pricing",
   "source_url": "https://www.meshy.ai/promo-code",
-  "source": "Meshy官方Promo页与定价页（2026-11-27实读：黑五11/23–12/2年付Pro/Premium最高5折、免费用户加送2个月、免码、不可叠加；MESHYSTART50与MESHYFALL30至11/30；MESHYYEAR20至12/31）＋官方帮助中心《Can I Get Free Credits》（免费档每月100 credits、Discord +100、社区与创作者计划奖励、购买credits不过期）",
+  "source": "Meshy官方Promo页与定价页（2026-11-27实读：黑五11/23–12/2年付Pro/Premium最高5折、免费用户加送2个月、免码、不可叠加；MESHYSTART50与MESHYFALL30至11/30；MESHYYEAR20至12/31）＋官方帮助中心《Can I Get Free Credits》（免费档每月100 credits、Discord +100、社区与创作者计划奖励、购买credits不过期）；2026-11-28复核：meshy.ai/pricing 与官方promo-code页仍写11/23–12/2，Pro/Premium年付最高5折、免费档升年付多送2个月、无需优惠码",
   "risk": "免费档只有100 credits/月（官方示例约10个Meshy 6 Lite模型），量大必须付费；免费档产出为CC BY 4.0，商用要署名；首月折扣码只减首月，之后按原价续订，务必关自动续费；黑五只到12/2且不与MESHYYEAR20等码叠加。",
   "status": "expiring_soon",
   "added": "2026-11-27",
@@ -24081,6 +24125,50 @@
   "funding_requirement": "purchase",
   "geo_restriction": [
    "GLOBAL"
+  ]
+ },
+ {
+  "id": "uob-evol-singsaver-400-sg",
+  "dedup_key": "uob|bank|sg|evol-singsaver-400",
+  "title": "[新加坡]UOB EVOL卡经SingSaver申请：S$400现金或S$80保底（11/3–11/30，每天14:00限前3名）",
+  "brand": "UOB",
+  "domain": "singsaver.com.sg",
+  "category": "bank",
+  "value": "S$400（≈$300）或保底S$80（≈$60）",
+  "value_num": 300,
+  "cost": "需要交易量",
+  "highlight": "SingSaver黑五闪购：11/3–11/30经SingSaver申请UOB EVOL信用卡，每天14:00前3名申请并在批卡30天内消费S$500，可得S$400现金（PayNow发放）；其余合格申请者保底S$80，可与UOB官方开户礼叠加",
+  "regions": "[新加坡] 仅新客户（new-to-UOB信用卡持有人）、21岁以上、年收入≥S$30,000；须用新加坡地址与本地手机号申请",
+  "start": "2026-11-03",
+  "end": "2026-11-30",
+  "verified": true,
+  "last_verified": "2026-11-28",
+  "added": "2026-11-28",
+  "added_at": "2026-11-28T09:05:00+08:00",
+  "content": "UOB EVOL是新加坡无年费的返现卡（本地网购与手机闪付10%、外币0手续费），SingSaver这轮黑五闪购把它做成开户礼：11/3–11/30经SingSaver链接申请，每天新加坡时间14:00起前3名递件、并在批卡后30天内累计消费S$500，即得S$400现金（PayNow）；没抢到名额的合格申请者保底S$80。奖励可与UOB自家Welcome Offer叠加。EVOL月消费满S$800才享10%加速返现（每月上限S$80），否则主要是0.3%–1%基础返现。",
+  "conditions": "仅限从未持有UOB信用卡的新客，21岁以上、年收入S$30,000起；必须经SingSaver链接申请、批卡30天内刷满S$500；S$400档每天14:00只取前3名，其余为S$80；不可与其它SingSaver闪购重复；暂无独立社区实测DP。",
+  "steps": [
+   "在SingSaver的UOB EVOL页面点申请链接（黑五闪购入口）",
+   "填写新加坡住址、收入与准证信息，提交UOB信用卡申请",
+   "批卡后30天内累计消费满S$500",
+   "奖励以PayNow现金形式发放，留意SingSaver邮件通知"
+  ],
+  "url": "https://www.singsaver.com.sg/credit-card/products/uob-evol-card",
+  "source": "SingSaver官网UOB EVOL卡页 2026-11-28 实读（Updated 17 Nov 2026：SingSaver Flash Deal 3–30 November 2026、每天14:00前3名S$400、其余S$80、批卡30天内消费S$500、new-to-UOB）",
+  "source_url": "https://www.singsaver.com.sg/credit-card/products/uob-evol-card",
+  "risk": "S$400档每天只取前3名，抢不到只有S$80；必须新客且收入达标，非新加坡居民无法申请；批卡30天内要刷满S$500，撤销或逾期不发奖；返现加速档要求月消费S$800，刷不满只有0.3%基础返现；本条目暂无独立社区实测，条款以SingSaver与UOB官网为准，建议7天内再核。",
+  "status": "expiring_soon",
+  "kyc_level": "foreign_only",
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "purchase",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "SG"
   ]
  }
 ]
