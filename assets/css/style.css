@@ -1215,27 +1215,37 @@ main{ padding-bottom: 0; }
   min-width: 0;
 }
 
-/* 有 JS：分类内改为横向吸附翻页（手机 5 张/页、桌面双列 8 张/页） */
+/* 有 JS：分类内翻页（手机 5 张/页、桌面双列 8 张/页）—— 只用「显示哪一页」切页。
+
+   这里曾经是 overflow-x: auto + scroll-snap-type: x mandatory + JS 写 scrollLeft 的
+   横向吸附轨道。2026-11-28 彻底撤掉：滚动容器 + 吸附 + 手写 scrollLeft 在 Android
+   WebView / 各家内置浏览器（大字号、系统放大、刷新后恢复滚动位置）下会让轨道内容按
+   旧偏移重绘，pp 实拍到的就是整排卡片左边被抹掉、只剩右半截文字，卡片自己的虚线框、
+   白底却好好的——那是重绘偏移，不是布局算错，怎么调卡片都不会好。
+
+   现在所有页叠在同一个网格格里（grid-area: 1 / 1），只有当前页可见：
+     · 页面里根本不存在可横向滚动的元素，也就不存在任何 scrollLeft / 吸附偏移；
+     · 容器高度 = 最高的一页，切页时下方内容不跳、翻页条不挪位；
+     · 非当前页 visibility: hidden（不绘制、不吃点击），仍参与布局所以高度稳定。 */
 html.js .module:not(.hot-strip) .track{
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  overscroll-behavior-x: contain;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0;
-  scrollbar-width: none;
+  overflow: visible;
 }
-html.js .module:not(.hot-strip) .track::-webkit-scrollbar{ display: none; }
 html.js .page{
-  flex: 0 0 100%;
+  grid-area: 1 / 1;
   width: 100%;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  max-width: 100%;
+  min-width: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-content: start;
   gap: 12px;
+}
+html.js .page.is-off{
+  visibility: hidden;
+  pointer-events: none;
 }
 html.js .pager-bar{ display: flex; }
 
@@ -2778,7 +2788,6 @@ footer{
   .track{
     grid-template-columns: minmax(0, 1fr);
     gap: 4px;
-    -webkit-overflow-scrolling: touch;
   }
   /* 首帧别摊成「一长条」：app.js 是 defer，手机上常常先把未分页的 HTML 画出来——
      这时几十张 .card 全是 .track 的直接子元素，单列排下去会把整站拉成两万多像素
@@ -2787,10 +2796,7 @@ footer{
      关掉 JS 的浏览器由首页 <noscript> 里的同一条规则还原成完整列表。 */
   .module:not(.hot-strip) .track > .card:nth-child(n + 6){ display: none; }
   html.js .page{
-    flex: 0 0 100%;
     width: 100%;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -3218,9 +3224,6 @@ footer{
 
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
-  /* 卡片横滑容器 .track 自带 scroll-behavior:smooth（见第 9 节），
-     这里一并关掉，与 app.js 的 scrollBehavior() 口径一致 */
-  .track{ scroll-behavior: auto; }
   *{ transition: none !important; animation: none !important; }
 }
 

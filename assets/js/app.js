@@ -1,6 +1,6 @@
 /* 羊毛情报局 — interaction layer
    1. 单开手风琴（手机端整卡可点）              2. 搜索 / 筛选 / 排序（索引按需 fetch，不占首屏）
-   3. 分类内左右横滑翻页（手机 5 张/页 · 桌面 8 张/页） 4. 热榜板 tab（桌面双板 / 手机单板）
+   3. 分类内整页切换（手机 5 张/页 · 桌面 8 张/页，按钮 / 左右滑翻页） 4. 热榜板 tab（桌面双板 / 手机单板）
    5. 右侧竖版滑轨高亮（桌面 + 手机）            6. 图标兜底
    7. 跳转卡落到分类详情（自动翻到所在页）       8. 筛选状态同步到 URL
    静态卡片已在 HTML 里，脚本只做增强，禁用 JS 也能正常阅读。 */
@@ -457,22 +457,43 @@
     track.appendChild(frag);
   }
 
-  function pageCount(m) {
-    return Math.max(1, Math.ceil(m.total / perOf(m)));
+  /* 切到第 idx 页：只改「哪一页可见」，不碰任何滚动位置。
+     非当前页仍留在布局里占位（visibility: hidden，不绘制、不吃点击），
+     所以分区高度恒等于最高的一页——切页时翻页条与下一个分区都不会跳动。 */
+  function showPage(m, idx) {
+    if (!m.bar && !m.track) return;
+    var pages = m.track ? $$(".page", m.track) : [];
+    if (!pages.length) {
+      if (m.bar) m.bar.style.display = "none";
+      return;
+    }
+    idx = Math.min(Math.max(idx || 0, 0), pages.length - 1);
+    m._idx = idx;
+    pages.forEach(function (p, i) {
+      var off = i !== idx;
+      p.classList.toggle("is-off", off);
+      /* 藏起来的那几页不该被读屏念到，也不该被 Tab 键走进去 */
+      if (off) {
+        p.setAttribute("aria-hidden", "true");
+        p.setAttribute("inert", "");
+      } else {
+        p.removeAttribute("aria-hidden");
+        p.removeAttribute("inert");
+      }
+    });
+    applyBar(m, { pages: pages.length, show: pages.length > 1, idx: idx });
   }
 
-  /* 页码 1 / N 与左右按钮的可用状态，跟着横滑位置走。
-     读（clientWidth / scrollLeft 会强制排版）和写分开：render 一次读完全部分区再写，
-     整个页面只排一次版；单个分区刷新时 updateBar 两步连着做也一样。 */
-  function barState(m) {
-    var pages = pageCount(m);
-    var show = !m.isJump && m.total > 0 && pages > 1;
-    var idx = 0;
-    if (show && m.track) {
-      var w = m.track.clientWidth || 1;
-      idx = Math.min(Math.max(Math.round(m.track.scrollLeft / w), 0), pages - 1);
-    }
-    return { pages: pages, show: show, idx: idx };
+  /* 往前 / 往后翻一页；到头了返回 false（按钮已经 disabled，手指多滑一下也没事） */
+  function stepPage(m, dir) {
+    if (!m.track) return false;
+    var pages = $$(".page", m.track);
+    if (!pages.length) return false;
+    var cur = m._idx || 0;
+    var next = Math.min(Math.max(cur + dir, 0), pages.length - 1);
+    if (next === cur) return false;
+    showPage(m, next);
+    return true;
   }
 
   /* 页码拆两段：当前页（粗 / 大 / 斜 / 下划线）+「/ 总数」（细、灰） */
@@ -485,6 +506,7 @@
   }
 
   function applyBar(m, st) {
+    if (!m.bar) return;
     m.bar.style.display = st.show ? "flex" : "none";
     if (!st.show) return;
     setPagerLabel(m, st.idx, st.pages);
@@ -492,11 +514,6 @@
     var next = $("[data-next]", m.bar);
     if (prev) prev.disabled = st.idx <= 0;
     if (next) next.disabled = st.idx >= st.pages - 1;
-  }
-
-  function updateBar(m) {
-    if (!m.bar) return;
-    applyBar(m, barState(m));
   }
 
   function render() {
@@ -553,45 +570,69 @@
 
     RESULT_ELS.forEach(function (el) { el.textContent = matchedTotal; });
 
-    /* 上面全是写：条数、轨道、分页 DOM。翻页条要读 clientWidth / scrollLeft（会强制排版），
-       轨道回第 1 页的 scrollLeft 写入同样会逼一次排版——以前每个分区各逼一次，320 张卡的
-       整页就排了 11 遍。这里把读和 scrollLeft 都挪到所有分区搭好之后：整页只排一次版。 */
+    /* 上面全是写：条数、轨道、分页 DOM。重建之后每块都回到第 1 页——只改「哪一页可见」，
+       不再写 scrollLeft（轨道已经不是滚动容器了），所以这里读不到任何布局，
+       320 张卡的整页依旧只排一次版。 */
     modules.forEach(function (m) {
-      if (m.track) m.track.scrollLeft = 0;
-    });
-    var barStates = modules.map(function (m) { return m.bar ? barState(m) : null; });
-    barStates.forEach(function (st, i) {
-      if (st) applyBar(modules[i], st);
+      if (m.track || m.bar) showPage(m, 0);
     });
 
     syncNav();
     syncURL();
   }
 
-  /* 分类内左右翻页按钮（手机 / 桌面同一套） */
+  /* 分类内左右翻页按钮（手机 / 桌面同一套）：直接切页，没有滚动动画 */
   document.addEventListener("click", function (ev) {
     var btn = ev.target.closest("[data-prev], [data-next]");
     if (!btn) return;
     var m = modules.filter(function (x) { return x.bar && x.bar.contains(btn); })[0];
     if (!m || !m.track) return;
     ev.preventDefault();
-    var dir = btn.hasAttribute("data-prev") ? -1 : 1;
-    m.track.scrollBy({ left: dir * m.track.clientWidth, behavior: "smooth" });
-    // 平滑滚动期间先按目标页刷新页码，手指直接滑动时再由 scroll 事件接管
-    var pages = pageCount(m);
-    var idx = Math.min(Math.max(Math.round(m.track.scrollLeft / (m.track.clientWidth || 1)) + dir, 0), pages - 1);
-    setPagerLabel(m, idx, pages);
-    clearTimeout(m._tick);
-    m._tick = setTimeout(function () { updateBar(m); }, 380);
+    stepPage(m, btn.hasAttribute("data-prev") ? -1 : 1);
   });
 
-  document.addEventListener("scroll", function (ev) {
-    var track = ev.target;
-    if (!track || !track.hasAttribute || !track.hasAttribute("data-track")) return;
-    var m = modules.filter(function (x) { return x.track === track; })[0];
+  /* 手指左右滑 = 翻页。
+     轨道已经不是滚动容器了，横滑得自己认：横向位移够大、且明显大于竖向位移才翻页，
+     其余手势一概不管（竖向照常滚页面）。滑动结束后 0.4s 内的 click 一律吃掉，
+     免得「滑一下」顺手把手指落点上的卡片展开或跳走。 */
+  var touchState = null;
+  var swipeStamp = 0;
+
+  document.addEventListener("touchstart", function (ev) {
+    touchState = null;
+    if (ev.touches.length !== 1) return;
+    var track = ev.target.closest && ev.target.closest("[data-track]");
+    if (!track || !track.closest || !track.closest(".module:not(.hot-strip)")) return;
+    touchState = { track: track, x: ev.touches[0].clientX, y: ev.touches[0].clientY, live: true };
+  }, { passive: true });
+
+  document.addEventListener("touchmove", function (ev) {
+    if (!touchState || !touchState.live) return;
+    var dx = ev.touches[0].clientX - touchState.x;
+    var dy = ev.touches[0].clientY - touchState.y;
+    /* 先竖向走起来了：这是滚页面，不是翻页，本轮手势不再判断 */
+    if (Math.abs(dy) > 24 && Math.abs(dy) > Math.abs(dx)) touchState.live = false;
+  }, { passive: true });
+
+  document.addEventListener("touchend", function (ev) {
+    var ts = touchState;
+    touchState = null;
+    if (!ts || !ts.live) return;
+    var pt = ev.changedTouches[0];
+    var dx = pt.clientX - ts.x;
+    var dy = pt.clientY - ts.y;
+    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    var m = modules.filter(function (x) { return x.track === ts.track; })[0];
     if (!m) return;
-    clearTimeout(m._tick);
-    m._tick = setTimeout(function () { updateBar(m); }, 80);
+    if (stepPage(m, dx < 0 ? 1 : -1)) swipeStamp = Date.now();
+  }, { passive: true });
+
+  /* 刚滑完的那一下 click 不要落到卡片 / 链接上 */
+  document.addEventListener("click", function (ev) {
+    if (swipeStamp && Date.now() - swipeStamp < 400) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
   }, true);
 
   /* ------- 热榜板：桌面左「新收录 / 高价值榜」· 右「即将截止 / 抽奖」，手机合成一块 ------- */
@@ -805,14 +846,17 @@
     else openCard(card);
   });
 
-  /* 把某张卡带到视野中央：先横向翻到它所在的那一页（手机 / 桌面） */
+  /* 把某张卡带到视野中央：先切到它所在的那一页（手机 / 桌面） */
   function revealDeal(target, behavior, offset) {
     var track = target.closest("[data-track]");
     var page = target.closest(".page");
     if (track && page) {
-      track.scrollLeft = page.offsetLeft;
       var m = modules.filter(function (x) { return x.track === track; })[0];
-      if (m) updateBar(m);
+      if (m) {
+        var pages = $$(".page", track);
+        var idx = pages.indexOf(page);
+        if (idx >= 0) showPage(m, idx);
+      }
     }
     var rect = target.getBoundingClientRect();
     var top = window.scrollY + rect.top - (offset == null ? 80 : offset);
