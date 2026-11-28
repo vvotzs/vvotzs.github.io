@@ -13031,6 +13031,50 @@
   "utility": 0
  },
  {
+  "id": "youplay-adblock-lifetime-free",
+  "dedup_key": "youplay|software|multi|adblock-lifetime-free",
+  "title": "[多区]YouPlay广告拦截视频浏览器：iOS终身Premium内购价归零免费领（原$6.99，需iOS18+）",
+  "brand": "YouPlay",
+  "domain": "apps.apple.com",
+  "category": "software",
+  "value": "≈$6.99（终身Premium内购价降为$0.00）",
+  "value_num": 7,
+  "cost": "真正免费",
+  "highlight": "App Store里YouPlay的「Premium Lifetime」内购黑五限时从$6.99降为$0.00：装好App点左上角皇冠图标选终身档，Apple确认页显示0.00就白拿，广告拦截、后台播放、画中画永久解锁",
+  "regions": "[多区] 全球App Store（美/英/澳/韩/荷/波等区实测可领），仅iPhone/iPad",
+  "start": "2026-11-26",
+  "end": null,
+  "verified": true,
+  "last_verified": "2026-11-28",
+  "added": "2026-11-28",
+  "added_at": "2026-11-28T08:45:00+08:00",
+  "content": "YouPlay是iOS/iPadOS上的视频浏览器，把广告拦截、后台播放和画中画做在一起。黑五期间App Store的「YouPlay Premium Lifetime」内购价从$6.99降为$0.00：装好App后点左上角皇冠，选终身档，确认Apple弹窗价格是0.00再付款，即0元入账，删掉重装Premium仍绑在Apple ID上。官方只标「限时、送完为止」，未公布截止日，随时可能恢复原价；台区/韩区社区11/26–11/27实测可领，部分旧iPad需iPadOS18以上。",
+  "conditions": "需iOS/iPadOS 18.0以上、支持eSIM无关；必须走App内皇冠图标的终身档内购，Apple确认页价格须显示0.00，误点月付$0.99–1.99或年付$5.99–9.99会照常扣费；限时活动，随时结束，官方未公布具体截止。",
+  "steps": [
+   "在App Store搜YouPlay: AdBlock Video Browser（id6751497996）并安装",
+   "打开App，点左上角皇冠图标进入Premium页面",
+   "选「Lifetime/终身」档，确认Apple内购弹窗价格显示0.00后再确认",
+   "领取后可继续用免费版即可，Premium权益绑定Apple ID，重装仍在"
+  ],
+  "url": "https://apps.apple.com/us/app/youplay-adblock-video-browser/id6751497996",
+  "source": "Slickdeals首页帖 2026-11-27（Lifetime Premium $6.99→免费领取，需在App内点皇冠领取，评论区用户实测0.00成功）+ App Store美区商品页 2026-11-28 实读（In-App Purchases 列表含「YouPlay Premium Lifetime $0.00」，另有月付$1.99/$0.99、年付$5.99/$9.99）+ 荷兰Pepper 2026-11-26、波兰kupse 2026-11-27、韩国Clien 2026-11-27帖（同一步骤，重装后Premium保留）",
+  "source_url": "https://slickdeals.net/f/20420985-youplay-adblock-video-browser-free-lifetime-premium-at-apple-app-store-6-99",
+  "risk": "限时活动、官方未写明截止日，可能随时恢复$6.99；领取时务必看清Apple内购弹窗是0.00，选错档会按订阅价扣费；App只做视频网页浏览与广告拦截，不含YouTube会员内容；地区区服价格显示不同（部分区显示₩0/€0），以App Store结算页为准；作者为个人开发者，长期维护不确定。",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "account",
+  "residency_requirement": "none",
+  "phone_requirement": "none",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "ios"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ]
+ },
+ {
   "id": "singlife-nomad-free-1gb-esim",
   "dedup_key": "singlife|esim|sg|nomad-free-1gb-esim",
   "title": "[新加坡]Singlife旅险×Nomad：投保免费送1GB全球eSIM（至12/31）",
@@ -18951,11 +18995,11 @@
   ],
   "url": "https://www.raisin.com/en-us/stack/",
   "source_url": "https://www.fool.com/money/banks/articles/act-fast-to-get-up-to-a-1000-bonus-from-this-435-apy-savings-account/",
-  "source": "Raisin 官方 STACK 活动页与条款（2026-11-30 截止）+ Motley Fool（2026-11-18）与 BankingPicks 复核；2026-11-23 复核 raisin.com/en-us/stack/ 条款未变；2026-11-26 复核：官网 STACK 页仍在线，码 STACK、首笔入金须在 2026-09-01 至 2026-11-30 23:59 ET 之间、存满 $10,000 锁 90 天；档位 $40/$100/$200/$425/$900，叠 SavCD Boost 最高 $1,000，页面 APY 数据标注 as of November 26, 2026；2026-11-27复核：raisin.com/en-us/stack 仍写 9/1–11/30 注册用码 STACK、存入$10,000并保持90天，二级品类至少$1,000",
+  "source": "Raisin 官方 STACK 活动页与条款（2026-11-30 截止）+ Motley Fool（2026-11-18）与 BankingPicks 复核；2026-11-23 复核 raisin.com/en-us/stack/ 条款未变；2026-11-26 复核：官网 STACK 页仍在线，码 STACK、首笔入金须在 2026-09-01 至 2026-11-30 23:59 ET 之间、存满 $10,000 锁 90 天；档位 $40/$100/$200/$425/$900，叠 SavCD Boost 最高 $1,000，页面 APY 数据标注 as of November 26, 2026；2026-11-27复核：raisin.com/en-us/stack 仍写 9/1–11/30 注册用码 STACK、存入$10,000并保持90天，二级品类至少$1,000；2026-11-28 复核：raisin.com/stack 页面条款仍写「first deposit must be initiated between September 1, 2026, and November 30, 2026, by 11:59 PM ET」，STACK码、$10,000入金、14天窗口、锁90天不变",
   "risk": "资金要锁 90 天，中途取出会掉档；奖励按最低余额算，不是按最高；合作银行利率与产品会变；奖励属应税利息，美国报税要申报；$10,000 档只拿 $40，性价比很低，主要适合本来就要搬钱进高息账户的人。",
   "added_at": "2026-11-19T19:12:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "added": "2026-11-19",
   "status": "expiring_soon",
   "kyc_level": "foreign_only",
@@ -19147,6 +19191,50 @@
   "residency_requirement": "local_resident",
   "phone_requirement": "local_number",
   "funding_requirement": "min_deposit",
+  "geo_restriction": [
+   "SG"
+  ]
+ },
+ {
+  "id": "uob-evol-singsaver-400-sg",
+  "dedup_key": "uob|bank|sg|evol-singsaver-400-sg",
+  "title": "[新加坡]UOB EVOL卡经SingSaver申请：S$400现金或S$80保底（11/3–11/30，每天14:00限前3名）",
+  "brand": "UOB",
+  "domain": "singsaver.com.sg",
+  "category": "bank",
+  "value": "S$400（≈$300）或保底S$80（≈$60）",
+  "value_num": 300,
+  "cost": "需要交易量",
+  "highlight": "SingSaver黑五闪购：11/3–11/30经SingSaver申请UOB EVOL信用卡，每天14:00前3名申请并在批卡30天内消费S$500，可得S$400现金（PayNow发放）；其余合格申请者保底S$80，可与UOB官方开户礼叠加",
+  "regions": "[新加坡] 仅新客户（new-to-UOB信用卡持有人）、21岁以上、年收入≥S$30,000；须用新加坡地址与本地手机号申请",
+  "start": "2026-11-03",
+  "end": "2026-11-30",
+  "verified": true,
+  "last_verified": "2026-11-28",
+  "added": "2026-11-28",
+  "added_at": "2026-11-28T09:05:00+08:00",
+  "content": "UOB EVOL是新加坡无年费的返现卡（本地网购与手机闪付10%、外币0手续费），SingSaver这轮黑五闪购把它做成开户礼：11/3–11/30经SingSaver链接申请，每天新加坡时间14:00起前3名递件、并在批卡后30天内累计消费S$500，即得S$400现金（PayNow）；没抢到名额的合格申请者保底S$80。奖励可与UOB自家Welcome Offer叠加。EVOL月消费满S$800才享10%加速返现（每月上限S$80），否则主要是0.3%–1%基础返现。",
+  "conditions": "仅限从未持有UOB信用卡的新客，21岁以上、年收入S$30,000起；必须经SingSaver链接申请、批卡30天内刷满S$500；S$400档每天14:00只取前3名，其余为S$80；不可与其它SingSaver闪购重复；暂无独立社区实测DP。",
+  "steps": [
+   "在SingSaver的UOB EVOL页面点申请链接（黑五闪购入口）",
+   "填写新加坡住址、收入与准证信息，提交UOB信用卡申请",
+   "批卡后30天内累计消费满S$500",
+   "奖励以PayNow现金形式发放，留意SingSaver邮件通知"
+  ],
+  "url": "https://www.singsaver.com.sg/credit-card/products/uob-evol-card",
+  "source": "SingSaver官网UOB EVOL卡页 2026-11-28 实读（Updated 17 Nov 2026：SingSaver Flash Deal 3–30 November 2026、每天14:00前3名S$400、其余S$80、批卡30天内消费S$500、new-to-UOB）",
+  "source_url": "https://www.singsaver.com.sg/credit-card/products/uob-evol-card",
+  "risk": "S$400档每天只取前3名，抢不到只有S$80；必须新客且收入达标，非新加坡居民无法申请；批卡30天内要刷满S$500，撤销或逾期不发奖；返现加速档要求月消费S$800，刷不满只有0.3%基础返现；本条目暂无独立社区实测，条款以SingSaver与UOB官网为准，建议7天内再核。",
+  "status": "expiring_soon",
+  "kyc_level": "foreign_only",
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "purchase",
+  "platform_requirement": [
+   "web"
+  ],
   "geo_restriction": [
    "SG"
   ]
@@ -19550,11 +19638,11 @@
   ],
   "url": "https://chatgpt.com/?promo_campaign=team-1-month-free#pricing",
   "source_url": "https://linux.do/t/topic/3242161",
-  "source": "OpenAI 活动链接行为（2026-11-26 复核：promo_campaign=team-1-month-free 直达价格页）+ OpenAI 帮助中心 Business 注册页（2026-11-25 实读：11/23–11/30 新建工作区双倍周额度至 12/31）+ linux.do 2026-11-25 教程与 11 条跟帖实测（Bybit 哈萨克卡被拒、Starryblu 与 Infini 通过、多数号无资格）+ NodeLoc 2026-11-25 券状态自查脚本帖 + AI 优惠雷达 2026-11-25 整理；2026-11-27 复核：活动链接与 chatgpt.com/pricing 均在线（HTTP 200），资格继续按账号灰度",
+  "source": "OpenAI 活动链接行为（2026-11-26 复核：promo_campaign=team-1-month-free 直达价格页）+ OpenAI 帮助中心 Business 注册页（2026-11-25 实读：11/23–11/30 新建工作区双倍周额度至 12/31）+ linux.do 2026-11-25 教程与 11 条跟帖实测（Bybit 哈萨克卡被拒、Starryblu 与 Infini 通过、多数号无资格）+ NodeLoc 2026-11-25 券状态自查脚本帖 + AI 优惠雷达 2026-11-25 整理；2026-11-27 复核：活动链接与 chatgpt.com/pricing 均在线（HTTP 200），资格继续按账号灰度；2026-11-28 复核：chatgpt.com 定价页仍挂「Sign up for ChatGPT Business by Nov 30 and get 2x included usage and fast mode at no extra cost for all seats through Dec 31」，双倍用量与首月$0口径不变",
   "risk": "资格灰度且随时收紧，社区已有批量开号，官方随时可能关闸；外层显示$0但结账跳原价是常态，多数账号拿不到；虚拟卡拒付率高，反复试卡可能触发风控；首月后自动扣$125，忘关续订就是实付；团队/企业邮箱账号规则不同。",
   "added_at": "2026-11-26T07:55:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "added": "2026-11-26",
   "status": "expiring_soon",
   "kyc_level": "none",
@@ -20171,6 +20259,50 @@
   "utility": 0
  },
  {
+  "id": "uob-my-ringgitplus-tng-300",
+  "dedup_key": "uob-malaysia|bank|my|ringgitplus-tng-300",
+  "title": "[马来西亚]UOB信用卡经RinggitPlus申请：TNG钱包RM300/RM188保底（11/16–11/30）",
+  "brand": "UOB Malaysia",
+  "domain": "ringgitplus.com",
+  "category": "bank",
+  "value": "RM300（≈$72）或RM188（≈$45），另设RM5,555/RM1,888最高消费奖",
+  "value_num": 72,
+  "cost": "需要交易量",
+  "highlight": "RinggitPlus黑五档：11/16–11/30经链接申请UOB马来西亚卡，12/30前批卡激活并在60天内刷满RM400（白金级）或RM200（其余卡），即得RM300或RM188的TNG电子钱包额；两档另各设1名最高消费奖RM5,555与RM1,888",
+  "regions": "[马来西亚] 仅UOB新卡户、21岁以上；须马来西亚地址与本地手机号",
+  "start": "2026-11-16",
+  "end": "2026-11-30",
+  "verified": true,
+  "last_verified": "2026-11-28",
+  "added": "2026-11-28",
+  "added_at": "2026-11-28T09:22:00+08:00",
+  "content": "UOB马来西亚黑五申请礼直接给TNG钱包额：11/16–11/30经RinggitPlus链接申请，12/30前批卡激活，60天内刷满RM400（Visa Infinite、PRVI Miles Elite、World、Lady's Solitaire、Platinum Business）得RM300；ONE、EVOL、Preferred、Lady's、Lazada、Simple等刷满RM200得RM188。两档另各设1名最高消费奖RM5,555与RM1,888，按2027-02-28前累计零售额评选。",
+  "conditions": "仅UOB新卡户，12个月内未持卡或销卡者不算；21岁以上，年收入RM24,000起（Visa Infinite需RM120,000）；须经RinggitPlus链接申请、12/30前批卡激活、60天内刷满RM400或RM200；暂无独立社区实测。",
+  "steps": [
+   "在RinggitPlus的UOB卡页面点申请链接",
+   "填写马来西亚住址、收入与联系方式，提交UOB信用卡申请",
+   "2026-12-30前获批并激活卡片",
+   "批卡后60天内刷满RM400（白金级）或RM200（其余卡），奖励以TNG电子钱包额发放"
+  ],
+  "url": "https://ringgitplus.com/en/credit-card/UOB/",
+  "source_url": "https://ringgitplus.com/en/credit-card/UOB/",
+  "source": "RinggitPlus UOB卡页2026-11-28实读（Campaign FAQs：16–30 November 2026；RM300保证额限Visa Infinite/PRVI Miles Elite/World/Lady's Solitaire/Platinum Business、RM188限其余6卡；RM5,555与RM1,888为最高零售额奖各1名；12/30前批卡激活、60天内刷RM400/RM200）+ RinggitPlus活动条款PDF（media.ringgitplus.com/s/pdf/campaigns/UOB_2026.11.16_RPCH_CRCD_RM5555TNG_RM1888TNG_RM300TNG_RM188TNG.pdf）",
+  "risk": "只限马来西亚新卡户，需本地收入与住址，海外申请无法通过；RM5,555与RM1,888是按累计零售额评选的1名最高者，常规只能拿RM300或RM188；60天内刷不满或撤卡不发奖；TNG钱包额是否有使用期限以银行通知为准；本条目暂无独立社区实测，条款以RinggitPlus与UOB官网为准，建议7天内再核。",
+  "status": "expiring_soon",
+  "kyc_level": "foreign_only",
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "purchase",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "MY"
+  ]
+ },
+ {
   "id": "kazakhstan-eresidency-freedom-49",
   "dedup_key": "freedom-bank|bank|multi|kazakhstan-eresidency-freedom-49",
   "title": "[哈萨克斯坦]49美元办eResidency开Freedom Bank账户：0费用多币种MasterCard（直办$120）",
@@ -20672,6 +20804,50 @@
   "funding_requirement": "min_deposit",
   "geo_restriction": [
    "GB"
+  ]
+ },
+ {
+  "id": "ambank-my-ringgitplus-tng-200",
+  "dedup_key": "ambank|bank|my|ringgitplus-tng-200",
+  "title": "[马来西亚]AmBank信用卡经RinggitPlus申请：TNG钱包RM200/RM100（11/2–11/30）",
+  "brand": "AmBank Malaysia",
+  "domain": "ringgitplus.com",
+  "category": "bank",
+  "value": "RM200（≈$48）或RM100（≈$24）",
+  "value_num": 48,
+  "cost": "需要交易量",
+  "highlight": "11/2–11/30经RinggitPlus申请AmBank马来西亚卡，12/30前批卡并激活，60天内刷满RM400（Visa Signature/Infinite等）得RM200的TNG钱包额、刷满RM200（白金卡等）得RM100；每第38名合格申请者另送iPad Air M4（最多2台）",
+  "regions": "[马来西亚] 仅AmBank新卡户、21岁以上；须马来西亚地址与本地手机号",
+  "start": "2026-11-02",
+  "end": "2026-11-30",
+  "verified": true,
+  "last_verified": "2026-11-28",
+  "added": "2026-11-28",
+  "added_at": "2026-11-28T09:22:00+08:00",
+  "content": "AmBank马来西亚黑五申请礼是TNG钱包额：11/2–11/30经RinggitPlus链接申请，12/30前批卡激活，60天内刷满RM400（Visa Infinite、Visa Signature、BonusLink Visa Signature等）得RM200；Cash Rebate Visa Platinum、BonusLink Visa Platinum、Visa Platinum CARz、Visa Platinum、UnionPay Platinum刷满RM200得RM100。每第38名合格申请者另送iPad Air M4，全活动上限2台。",
+  "conditions": "仅AmBank新卡户，12个月内持卡或销卡者不算；21岁以上，年收入自RM24,000起（Visa Infinite需RM120,000）；须经RinggitPlus链接申请、12/30前批卡激活、60天内刷满RM400或RM200；iPad Air M4每38名1台、上限2台；暂无独立社区实测。",
+  "steps": [
+   "在RinggitPlus的AmBank卡页面点申请链接",
+   "填写马来西亚住址、收入与联系方式，提交AmBank信用卡申请",
+   "2026-12-30前获批并激活卡片",
+   "批卡后60天内刷满RM400或RM200，奖励以TNG电子钱包额发放"
+  ],
+  "url": "https://ringgitplus.com/en/credit-card/AmBank/",
+  "source_url": "https://ringgitplus.com/en/credit-card/AmBank/",
+  "source": "RinggitPlus AmBank卡页2026-11-28实读（活动期2–30 November 2026；RM200保证额限Visa Infinite/Visa Signature/BonuLink Visa Signature及伊斯兰卡、RM100限白金卡与UnionPay Platinum；每第38名合格者送iPad Air M4、上限2台；12/30前批卡激活、60天内刷RM400/RM200）+ RinggitPlus活动条款PDF（media.ringgitplus.com/s/pdf/campaigns/AmBank_2026.11.02_RPCH_CRCD_APPLEIPADAIRM4_RM200TNG_RM100TNG.pdf）",
+  "risk": "只限马来西亚新卡户，需本地收入与住址；iPad Air M4是每38名合格者1台的抽送、全活动仅2台，实际几乎拿不到，常规收益就是RM200或RM100；60天内刷不满或撤卡不发奖；本条目暂无独立社区实测，条款以RinggitPlus与AmBank官网为准，建议7天内再核。",
+  "status": "expiring_soon",
+  "kyc_level": "foreign_only",
+  "utility": 0,
+  "identity_requirement": "photo_id",
+  "residency_requirement": "local_resident",
+  "phone_requirement": "local_number",
+  "funding_requirement": "purchase",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "MY"
   ]
  },
  {
@@ -22062,11 +22238,11 @@
   ],
   "url": "https://bitel.com.pe/promocion/esim-digital.html",
   "source_url": "https://bitel.com.pe/promocion/esim-digital.html",
-  "source": "Bitel 官方促销页与条款（Promoción válida 01/11/2026–30/11/2026）；2026-11-26 复核：Bitel 官方 eSIM 推广页仍在线（HTTP 200），页面 FAQ 仍写「7 días totalmente gratis」：Perú 内流量无限、本地通话与短信无限，另加 30 天常规后付费套餐；须用 Mi Bitel App 新开 eSIM 线并订后付费套餐，携号转入/补卡/漫游不适用；2026-11-27复核：bitel.com.pe 活动页仍在线，新开/加开 eSIM 线送7天无限流量+30天套餐期，条件（后付费、Mi Bitel 激活）未变",
+  "source": "Bitel 官方促销页与条款（Promoción válida 01/11/2026–30/11/2026）；2026-11-26 复核：Bitel 官方 eSIM 推广页仍在线（HTTP 200），页面 FAQ 仍写「7 días totalmente gratis」：Perú 内流量无限、本地通话与短信无限，另加 30 天常规后付费套餐；须用 Mi Bitel App 新开 eSIM 线并订后付费套餐，携号转入/补卡/漫游不适用；2026-11-27复核：bitel.com.pe 活动页仍在线，新开/加开 eSIM 线送7天无限流量+30天套餐期，条件（后付费、Mi Bitel 激活）未变；2026-11-28 复核：bitel.com.pe 活动页 FAQ 仍在（新客或现客加开eSIM线、7天秘鲁无限流量+全网无限通话短信+再送30天常规套餐期；不适用携号转入、eSIM补发与漫游）",
   "risk": "本质是签约后付费套餐再送 7 天，不是纯免费流量；7 天后不付款会停机；只限秘鲁本地使用；外国人办理所需的证件与付款方式官方未写明（待核实）。",
   "added_at": "2026-11-19T19:20:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "added": "2026-11-19",
   "status": "expiring_soon",
   "kyc_level": "foreign_only",
@@ -22429,50 +22605,6 @@
   ]
  },
  {
-  "id": "youplay-adblock-lifetime-free",
-  "dedup_key": "youplay|software|multi|adblock-lifetime-free",
-  "title": "[多区]YouPlay广告拦截视频浏览器：iOS终身Premium内购价归零免费领（原$6.99，需iOS18+）",
-  "brand": "YouPlay",
-  "domain": "apps.apple.com",
-  "category": "software",
-  "value": "≈$6.99（终身Premium内购价降为$0.00）",
-  "value_num": 7,
-  "cost": "真正免费",
-  "highlight": "App Store里YouPlay的「Premium Lifetime」内购黑五限时从$6.99降为$0.00：装好App点左上角皇冠图标选终身档，Apple确认页显示0.00就白拿，广告拦截、后台播放、画中画永久解锁",
-  "regions": "[多区] 全球App Store（美/英/澳/韩/荷/波等区实测可领），仅iPhone/iPad",
-  "start": "2026-11-26",
-  "end": null,
-  "verified": true,
-  "last_verified": "2026-11-28",
-  "added": "2026-11-28",
-  "added_at": "2026-11-28T08:45:00+08:00",
-  "content": "YouPlay是iOS/iPadOS上的视频浏览器，把广告拦截、后台播放和画中画做在一起。黑五期间App Store的「YouPlay Premium Lifetime」内购价从$6.99降为$0.00：装好App后点左上角皇冠，选终身档，确认Apple弹窗价格是0.00再付款，即0元入账，删掉重装Premium仍绑在Apple ID上。官方只标「限时、送完为止」，未公布截止日，随时可能恢复原价；台区/韩区社区11/26–11/27实测可领，部分旧iPad需iPadOS18以上。",
-  "conditions": "需iOS/iPadOS 18.0以上、支持eSIM无关；必须走App内皇冠图标的终身档内购，Apple确认页价格须显示0.00，误点月付$0.99–1.99或年付$5.99–9.99会照常扣费；限时活动，随时结束，官方未公布具体截止。",
-  "steps": [
-   "在App Store搜YouPlay: AdBlock Video Browser（id6751497996）并安装",
-   "打开App，点左上角皇冠图标进入Premium页面",
-   "选「Lifetime/终身」档，确认Apple内购弹窗价格显示0.00后再确认",
-   "领取后可继续用免费版即可，Premium权益绑定Apple ID，重装仍在"
-  ],
-  "url": "https://apps.apple.com/us/app/youplay-adblock-video-browser/id6751497996",
-  "source": "Slickdeals首页帖 2026-11-27（Lifetime Premium $6.99→免费领取，需在App内点皇冠领取，评论区用户实测0.00成功）+ App Store美区商品页 2026-11-28 实读（In-App Purchases 列表含「YouPlay Premium Lifetime $0.00」，另有月付$1.99/$0.99、年付$5.99/$9.99）+ 荷兰Pepper 2026-11-26、波兰kupse 2026-11-27、韩国Clien 2026-11-27帖（同一步骤，重装后Premium保留）",
-  "source_url": "https://slickdeals.net/f/20420985-youplay-adblock-video-browser-free-lifetime-premium-at-apple-app-store-6-99",
-  "risk": "限时活动、官方未写明截止日，可能随时恢复$6.99；领取时务必看清Apple内购弹窗是0.00，选错档会按订阅价扣费；App只做视频网页浏览与广告拦截，不含YouTube会员内容；地区区服价格显示不同（部分区显示₩0/€0），以App Store结算页为准；作者为个人开发者，长期维护不确定。",
-  "status": "expiring_soon",
-  "kyc_level": "none",
-  "utility": 0,
-  "identity_requirement": "account",
-  "residency_requirement": "none",
-  "phone_requirement": "none",
-  "funding_requirement": "none",
-  "platform_requirement": [
-   "ios"
-  ],
-  "geo_restriction": [
-   "GLOBAL"
-  ]
- },
- {
   "id": "workbuddy-hy4-flash-free-nov2026",
   "dedup_key": "tencentcloud|ai|global|workbuddy-hy4-flash-free-nov2026",
   "title": "[中国区/国际版]腾讯WorkBuddy：混元Hy4 Flash限时免费（11/16–11/30，额度每日发放）",
@@ -22815,9 +22947,9 @@
   "end": "2026-11-30",
   "url": "https://docs.bt.cn/notices/bt-panel-13-2-0-free-ssl/",
   "source_url": "https://www.nodeloc.com/t/119384",
-  "source": "宝塔官方文档《新用户首次安装宝塔面板13.2.0免费领取DV单域名商用SSL证书》（2026-11-26实读：限量4,000张、领取截止11-30 23:59、签发截止12-30 23:59、每账号1张、不支持.su）+ NodeLoc官方推广帖2026-11-25；2026-11-27复核：docs.bt.cn 公告仍在，4,000 张、领取截止 2026-11-30 23:59、签发截止 2026-12-30 未变",
+  "source": "宝塔官方文档《新用户首次安装宝塔面板13.2.0免费领取DV单域名商用SSL证书》（2026-11-26实读：限量4,000张、领取截止11-30 23:59、签发截止12-30 23:59、每账号1张、不支持.su）+ NodeLoc官方推广帖2026-11-25；2026-11-27复核：docs.bt.cn 公告仍在，4,000 张、领取截止 2026-11-30 23:59、签发截止 2026-12-30 未变；2026-11-28 复核：docs.bt.cn 公告仍写「限量 4,000 张，领取截止 2026 年 11 月 30 日 23:59，签发截止 2026 年 12 月 30 日 23:59」，名额未耗尽",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "added": "2026-11-26",
   "added_at": "2026-11-26T11:44:00+08:00",
   "content": "宝塔面板13.2.0新用户权益：新注册账号首次安装并登录Linux面板正式版后，在左侧「SSL」里切到「证书管理→商用SSL」页签会弹出权益窗口，点「点击领取」就得到一张一年期指定DV单域名商用SSL证书。领取后到商用SSL列表里点「完善资料」，填域名（可从现有站点选或自定义单域名）、验证方式（推荐DNS的CNAME解析）与联系人信息，再按提示加CNAME或放验证文件，状态变成「已签发」后一键部署即可给站点开HTTPS。",
@@ -24125,50 +24257,6 @@
   "funding_requirement": "purchase",
   "geo_restriction": [
    "GLOBAL"
-  ]
- },
- {
-  "id": "uob-evol-singsaver-400-sg",
-  "dedup_key": "uob|bank|sg|evol-singsaver-400",
-  "title": "[新加坡]UOB EVOL卡经SingSaver申请：S$400现金或S$80保底（11/3–11/30，每天14:00限前3名）",
-  "brand": "UOB",
-  "domain": "singsaver.com.sg",
-  "category": "bank",
-  "value": "S$400（≈$300）或保底S$80（≈$60）",
-  "value_num": 300,
-  "cost": "需要交易量",
-  "highlight": "SingSaver黑五闪购：11/3–11/30经SingSaver申请UOB EVOL信用卡，每天14:00前3名申请并在批卡30天内消费S$500，可得S$400现金（PayNow发放）；其余合格申请者保底S$80，可与UOB官方开户礼叠加",
-  "regions": "[新加坡] 仅新客户（new-to-UOB信用卡持有人）、21岁以上、年收入≥S$30,000；须用新加坡地址与本地手机号申请",
-  "start": "2026-11-03",
-  "end": "2026-11-30",
-  "verified": true,
-  "last_verified": "2026-11-28",
-  "added": "2026-11-28",
-  "added_at": "2026-11-28T09:05:00+08:00",
-  "content": "UOB EVOL是新加坡无年费的返现卡（本地网购与手机闪付10%、外币0手续费），SingSaver这轮黑五闪购把它做成开户礼：11/3–11/30经SingSaver链接申请，每天新加坡时间14:00起前3名递件、并在批卡后30天内累计消费S$500，即得S$400现金（PayNow）；没抢到名额的合格申请者保底S$80。奖励可与UOB自家Welcome Offer叠加。EVOL月消费满S$800才享10%加速返现（每月上限S$80），否则主要是0.3%–1%基础返现。",
-  "conditions": "仅限从未持有UOB信用卡的新客，21岁以上、年收入S$30,000起；必须经SingSaver链接申请、批卡30天内刷满S$500；S$400档每天14:00只取前3名，其余为S$80；不可与其它SingSaver闪购重复；暂无独立社区实测DP。",
-  "steps": [
-   "在SingSaver的UOB EVOL页面点申请链接（黑五闪购入口）",
-   "填写新加坡住址、收入与准证信息，提交UOB信用卡申请",
-   "批卡后30天内累计消费满S$500",
-   "奖励以PayNow现金形式发放，留意SingSaver邮件通知"
-  ],
-  "url": "https://www.singsaver.com.sg/credit-card/products/uob-evol-card",
-  "source": "SingSaver官网UOB EVOL卡页 2026-11-28 实读（Updated 17 Nov 2026：SingSaver Flash Deal 3–30 November 2026、每天14:00前3名S$400、其余S$80、批卡30天内消费S$500、new-to-UOB）",
-  "source_url": "https://www.singsaver.com.sg/credit-card/products/uob-evol-card",
-  "risk": "S$400档每天只取前3名，抢不到只有S$80；必须新客且收入达标，非新加坡居民无法申请；批卡30天内要刷满S$500，撤销或逾期不发奖；返现加速档要求月消费S$800，刷不满只有0.3%基础返现；本条目暂无独立社区实测，条款以SingSaver与UOB官网为准，建议7天内再核。",
-  "status": "expiring_soon",
-  "kyc_level": "foreign_only",
-  "utility": 0,
-  "identity_requirement": "photo_id",
-  "residency_requirement": "local_resident",
-  "phone_requirement": "local_number",
-  "funding_requirement": "purchase",
-  "platform_requirement": [
-   "web"
-  ],
-  "geo_restriction": [
-   "SG"
   ]
  }
 ]
