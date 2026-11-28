@@ -9595,5 +9595,21 @@
   ],
   "risk": "Open to Malaysian new cardmembers only, with local income and address. The iPad Air M4 goes to one in every 38 qualified applicants with two units in total, so the real reward is RM200 or RM100. Missing the 60-day spend or cancelling the card forfeits the reward. No independent community data point exists yet, so treat RinggitPlus and AmBank terms as the source of truth and re-check within a week.",
   "source": "RinggitPlus AmBank page read on 2026-11-28 (Campaign FAQs: November 2-30, 2026; RM200 guaranteed for Visa Infinite/Visa Signature/BonusLink Visa Signature and the Islamic cards, RM100 for the platinum and UnionPay cards; iPad Air M4 for every 38th qualified applicant capped at 2 units; approval and activation by Dec 30 with RM400/RM200 spend within 60 days) plus the RinggitPlus campaign terms PDF"
+ },
+ "instabridge-free-esim-us": {
+  "title": "[US] Instabridge free eSIM: data for ads plus a US number with 1,000 minutes a month",
+  "highlight": "A US number with 1,000 minutes and 1,000 texts a month and 1GB in the first month, then free data earned in Rewards through ads, games and referrals",
+  "regions": "[US] US mainland only, with a +1 number and no international roaming",
+  "value": "About $10 a month",
+  "content": "Instabridge is a Swedish Wi-Fi map and eSIM app, and its US product, Instabridge Mobile, hands out a +1 number with 1,000 minutes and 1,000 texts a month plus 1GB in the first month. After that you earn data in the Rewards section: an ad is labelled about 50MB, a daily mini-game gives 15MB, and referrals add more, with earned data lasting to the end of the billing cycle. When data runs out an unlimited 125kbps fallback stays on. Sign in with Google or Apple, enter a US address and a card for identity verification (nothing is charged), and the eSIM installs entirely in the app.",
+  "conditions": "Needs a US address and a card that passes verification (not charged); works on US networks only; unlocked eSIM phone; the terms exclude hotspot on the Free plan.",
+  "steps": [
+   "Install Instabridge from the App Store or Google Play and sign in with Google or Apple",
+   "On the home screen open Instabridge Mobile, tap Get started, check compatibility and enter a US address and a card",
+   "Install and enable the eSIM, then wait for the SMS with your US number; 1GB and 1,000 minutes and texts start with the first month",
+   "Once the first-month data is used, keep earning in Rewards at the bottom of the home screen through ads, the daily game and referrals"
+  ],
+  "risk": "Ad rewards are inconsistent: in November 2026 users reported a panel promising 50MB while 4MB arrived, and others got nothing or lost the ad option for hours. In early October some users in California and Massachusetts saw no Free plan at all, only a 7-day Pro trial that then bills $19.99 a month, so do not tap the Pro trial if you only want the Free plan. Community reports on Android describe 3GB a month without a number, which does not match the official number-included plan. Traffic routes through Europe, measuring about 10Mbps with around 400ms latency in the US.",
+  "source": "Instabridge terms 13.b.1 (Free Monthly Plan, US mainland only) and 13.d.3 (service for rewarded actions such as ads, games and referrals, with suspension if not completed), help centre How to Get Started (updated 2025-11-23: 1,000 minutes and texts, 1GB first month, address and card verification), Do I get a phone number, How do I get my free 1 GB data (read 2026-11-28), plus a 2026-07-17 forum report and App Store reviews from November 2026 (about 50MB an ad, 125kbps fallback, 3GB a month on Android)"
  }
 }
