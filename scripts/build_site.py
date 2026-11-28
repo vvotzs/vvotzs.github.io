@@ -2252,9 +2252,8 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 <header class="topbar">
   <div class="shell topbar-in">
     <a class="brand" href="{home}" {al(*U['brand_aria'])}>
-      <span class="brand-mark" aria-hidden="true">
-        {mascot_svg(gid='dpMintHead')}
-      </span>
+      <img class="brand-mark" src="/assets/favicon-96.png" alt=""
+           width="30" height="30" decoding="async">
       <span class="brand-text">
         <span class="brand-name">{ui('brand')}</span>
         <span class="brand-sub">{ui('brand_sub')}</span>
@@ -2725,9 +2724,8 @@ def render_legal_page(kind: str, lang: str, today) -> str:
 <header class="topbar">
   <div class="shell topbar-in">
     <a class="brand" href="{home}" {al(*U['brand_aria'])}>
-      <span class="brand-mark" aria-hidden="true">
-        {mascot_svg(gid='dpLegalHead')}
-      </span>
+      <img class="brand-mark" src="/assets/favicon-96.png" alt=""
+           width="30" height="30" decoding="async">
       <span class="brand-text">
         <span class="brand-name">{ui('brand')}</span>
         <span class="brand-sub">{ui('brand_sub')}</span>
@@ -3453,9 +3451,8 @@ def render_category_page(
 <header class="topbar">
   <div class="shell topbar-in">
     <a class="brand" href="{home}" {al(*U['brand_aria'])}>
-      <span class="brand-mark" aria-hidden="true">
-        {mascot_svg(gid='dpCatHead')}
-      </span>
+      <img class="brand-mark" src="/assets/favicon-96.png" alt=""
+           width="30" height="30" decoding="async">
       <span class="brand-text">
         <span class="brand-name">{ui('brand')}</span>
         <span class="brand-sub">{ui('brand_sub')}</span>
@@ -4318,9 +4315,8 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
 <header class="topbar">
   <div class="shell topbar-in">
     <a class="brand" href="{home}" {al(*U['brand_aria'])}>
-      <span class="brand-mark" aria-hidden="true">
-        {mascot_svg(gid='mintBodyHead')}
-      </span>
+      <img class="brand-mark" src="/assets/favicon-96.png" alt=""
+           width="30" height="30" decoding="async">
       <span class="brand-text">
         <span class="brand-name">{ui('brand')}</span>
         <span class="brand-sub">{ui('brand_sub')}</span>

@@ -166,16 +166,14 @@ button{ font-family: inherit; }
   height: var(--topbar);
 }
 .brand{ display: flex; align-items: center; gap: 10px; min-width: 0; }
+/* 顶栏站标：橙金礼券 favicon（透明底 PNG），不带圆角底框，避免裁掉票券的斜角 */
 .brand-mark{
   width: 30px; height: 30px;
-  border-radius: 11px;
-  display: grid; place-items: center;
-  background: #ECFDF5;
-  border: 1px solid #BBF7D0;
-  box-shadow: 0 3px 10px -7px rgba(5,150,105,.5), inset 0 1px 0 #FFFFFF;
+  display: block;
+  object-fit: contain;
   flex: none;
+  filter: drop-shadow(0 2px 6px rgba(180,83,9,.20));
 }
-.brand-mark svg{ width: 23px; height: 23px; display: block; }
 .brand-text{ display: block; min-width: 0; }
 .brand-name{
   display: block;
@@ -2687,8 +2685,7 @@ footer{
   .topbar-in{ height: var(--topbar); gap: 6px; }
   /* 站名不参与收缩：顶栏本来放得下，一收缩就会因 1px 取整出现省略号 */
   .brand{ gap: 6px; min-width: 0; flex: 0 0 auto; }
-  .brand-mark{ width: 26px; height: 26px; border-radius: 9px; }
-  .brand-mark svg{ width: 20px; height: 20px; }
+  .brand-mark{ width: 26px; height: 26px; }
   .brand-name{
     display: block;
     font-size: 14px;
