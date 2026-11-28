@@ -9691,5 +9691,21 @@
   ],
   "risk": "This is a merchant that opened in 2026, and public reviews describe the routes as sometimes fast and sometimes slow with high retransmission, so keep stability-critical production databases elsewhere. The renewal price and the claim that traffic over the cap drops you to 1Mbps instead of suspending the server both come from third parties; the official pages only list the traffic reset price, so renewal and throttling terms are unverified. The official pages name no campaign or end date, so prices can revert at any time. A year is paid up front, so a shutdown or exit costs you the rest of the term. The 512MB plan is only enough for networking; panels and databases need a larger plan.",
   "source": "PanstarCloud official product pages read on 28 November 2026 (DEPro Festival $47.88 a year, HKPro Festival $99 a year, with specs, traffic, bandwidth and stock Available) + the official Coupons page (by then only usdc3290, a 10% recurring coupon for LAX Premium DC2; the Hong Kong 15% coupon in third-party posts is no longer on the official page) + the official Refund Policy (6-hour full-refund terms) + an Agent.sb forum thread (24 November 2026)"
+ },
+ "dewlance-free-web-hosting": {
+  "title": "[Global]Dewlance free web hosting: 1GB disk, 50GB a month, DirectAdmin and free SSL, set up instantly (bring your own domain)",
+  "highlight": "The official Free Basic plan is $0: 1GB of disk, 50GB of traffic a month, the DirectAdmin panel, free SSL and the Softaculous one-click installer for WordPress, with no ads on your own site and instant setup. It runs only in the USA and has no email accounts or WordPress Manager; the paid plan at $6/yr raises this to 3GB NVMe and 500GB of traffic",
+  "regions": "[Global] US servers only on the free plan, open to sign-ups worldwide with your own domain; the paid plan also offers the UK, the US and Australia",
+  "value": "Free (1GB disk, 50GB a month)",
+  "content": "The official Free Basic plan costs $0 and gives 1GB of disk, 50GB of traffic a month, the DirectAdmin panel, free SSL and the Softaculous one-click installer for WordPress, with no ads placed on your site and setup as soon as you order. The free plan runs only on US servers and has no email accounts or WordPress Manager; $6 a year upgrades to 3GB NVMe, 500GB of monthly traffic, email accounts, WordPress Manager and locations in the UK, the US and Australia. Dewlance states that the free plan is paid for by upgrades and by advertising on its community forum, and asks that you order without a proxy or VPN and give fully accurate details to get instant setup.",
+  "conditions": "The free plan needs a domain of your own or a subdomain of one, since no free subdomain is provided; US servers only, no email accounts and no WordPress Manager; order without a proxy or VPN and with accurate details, or you will not get instant setup; illegal content is banned and you must keep software and plugins updated; support on the free plan is tickets and a community forum only.",
+  "steps": [
+   "Open dewlance.com/free-web-hosting and click Order Free Hosting (cart product id 419)",
+   "Register an account with accurate details and stay off any proxy or VPN",
+   "Attach your own domain or a subdomain of it at checkout and confirm the total is $0",
+   "After setup, upload files through DirectAdmin or install WordPress with Softaculous, then enable the free SSL"
+  ],
+  "risk": "Free hosting is funded by paid upgrades and forum ads, so limits and terms can tighten at any time; 1GB fills up fast once WordPress and a few plugins are installed; there are no email accounts and no stated automatic backups, so keep your own copies; it is a single US location, so speed from China depends on the route; free support is tickets and a forum only, so answers are slow.",
+  "source": "Dewlance official Free Web Hosting page read on 28 November 2026 (Free Basic $0, 1GB disk, 50GB a month, DirectAdmin, free SSL, Softaculous, instant setup, US only, no email or WordPress Manager; paid $6/yr for 3GB NVMe and 500GB; the official explanation of how free hosting is funded and the request to order without a proxy or VPN and with accurate details) + an Agent.sb forum thread (27 November 2026, quoting a NodeSeek post)"
  }
 }
