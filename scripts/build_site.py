@@ -2228,11 +2228,12 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 <meta name="twitter:image" content="{og_image}">
 
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 <meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">
@@ -2703,11 +2704,12 @@ def render_legal_page(kind: str, lang: str, today) -> str:
 <meta name="twitter:image" content="{og_image}">
 
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 
@@ -3430,11 +3432,12 @@ def render_category_page(
 <meta name="twitter:image" content="{og_image}">
 
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 <meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">
@@ -4158,7 +4161,7 @@ def main() -> None:
         index_url = f"/data/{index_name}?v={hashlib.sha1(index_bytes).hexdigest()[:8]}"
 
 
-        title = EN_TITLE if is_en else "羊毛情报局 - 全球免费资源、AI额度、VPS与开户奖励"
+        title = EN_TITLE if is_en else "羊毛情报局 - 全球免费资源、AI额度、VPS、eSIM与返现奖励"
         desc = EN_DESC if is_en else ZH_DESC
         og_title = "Deal Hunter · Global deals & free credits" if is_en else "羊毛情报局 · 全球优惠与免费额度情报"
         og_desc = EN_OG_DESC if is_en else "每日核验的全球优惠导航：AI 工具大全、Crypto 空投与积分、海外银行·U卡·跨境汇款、全球 VPS 与云资源、全球 eSIM 指南、软件与数字服务。价值、门槛、截止时间一眼看清，直达官方链接。"
@@ -4285,11 +4288,12 @@ def main() -> None:
 <meta name="twitter:image" content="{og_image}">
 
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 <meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">

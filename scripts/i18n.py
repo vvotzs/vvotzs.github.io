@@ -44,7 +44,7 @@ U: dict[str, tuple[str, str]] = {
     "lang_switch": ("EN", "中文"),
     "lang_switch_aria": ("切换为英文版", "Switch to Chinese"),
     # 首屏
-    "hero_h1": ("全球免费资源与优惠情报", "Deal Hunter"),
+    "hero_h1": ("羊毛情报局•全球免费资源与优惠情报", "Deal Hunter"),
     "hero_tag": ("发现值得领取的全球优惠、免费额度和限时活动。每条情报人工核验，清楚标注参与门槛、适用地区、实际价值与截止时间。",
                  "Verified freebies & rewards"),
     # 首屏行内的 Telegram 群徽标是纯 SVG 图形（无可见文字），文案只用在 aria-label / title 上
