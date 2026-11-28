@@ -375,23 +375,10 @@ SENDWAVE_URL = "https://sw-JZHANG.antideploy.app"
 # 链接必须是干净 URL：不带参数、括号或任何标点。
 TRANSFERGO_URL = "https://tsg-202688.antideploy.app/"
 
-# 薄荷绿 Pickle 小精灵（页头 / 页脚直接内联，不走 sprite）。
-# 渐变必须写在可见的 <svg> 自己的 <defs> 里：放进 display:none 的 sprite 后，
-# Chrome/Android 的 <use> 会让 url(#id) 失效，身体变透明只剩一张白脸。
-# 每处内联用一个独立的渐变 id，避免同一页出现重复 id。
-_MASCOT_BODY = (
-    '<path d="M20 3.6c8.6 0 13.1 5.9 13.1 14.2 0 9.6-5.4 18.6-13.1 18.6S6.9 27.4 6.9 17.8C6.9 9.5 11.4 3.6 20 3.6Z" fill="url(#{gid})"/>'
-    '<path d="M20 3.6c-2.6 0-4.9.6-6.8 1.7 2.4 2 8.9 2.1 12.9.2-1.8-1.2-3.9-1.9-6.1-1.9Z" fill="#5FD3A6" opacity=".55"/>'
-    '<ellipse cx="20" cy="20.4" rx="9.1" ry="8.4" fill="#F3FFF9"/>'
-    '<circle cx="16.8" cy="19.3" r="1.35" fill="#14532D"/>'
-    '<circle cx="23.2" cy="19.3" r="1.35" fill="#14532D"/>'
-    '<circle cx="15.9" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9"/>'
-    '<circle cx="22.3" cy="18.7" r=".4" fill="#FFFFFF" opacity=".9"/>'
-    '<ellipse cx="13.6" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5"/>'
-    '<ellipse cx="26.4" cy="22.4" rx="1.6" ry="1.1" fill="#FCA5A5" opacity=".5"/>'
-    '<path d="M18.3 22.7c.5.85 2.9.85 3.4 0" fill="none" stroke="#14532D" stroke-width="1.25" stroke-linecap="round"/>'
-    '<path d="M20 3.9c.1-1.5.9-2.5 2.3-2.9-.1 1.5-.9 2.5-2.3 2.9Z" fill="#34D399"/>'
-)
+# OG / Twitter 分享封面（og-cover*.png）的缓存版本参数。
+# Telegram、X、WhatsApp 等平台会把抓过的封面长缓存，换图后不加新参数就不会重抓；
+# 每次重制 og-cover.png / og-cover-en.png 时，把这里改成当天日期（YYYYMMDD）。
+OG_IMAGE_VER = "20261128"
 
 
 def sprite_svg(keys: tuple[str, ...] | None = None) -> str:
@@ -692,17 +679,6 @@ def calendar_badge(num: int, tone: str = "amber") -> str:
         f'<rect x="9.4" y="1" width="1.5" height="2.9" rx=".75" fill="{ink}"/>'
         f'<text x="7.5" y="13.8" text-anchor="middle" font-family="Menlo, Consolas, monospace" '
         f'font-size="7" font-weight="700" fill="{ink}">{num}</text></svg>'
-    )
-
-
-def mascot_svg(cls: str = "", gid: str = "mintBody") -> str:
-    """内联完整的小精灵：渐变、腮红、高光都在，直接画在页面上（不走 <use>）。"""
-    body = _MASCOT_BODY.replace("{gid}", gid)
-    return (
-        f'<svg class="i{" " + cls if cls else ""}" viewBox="0 0 40 40" aria-hidden="true">'
-        f'<defs><linearGradient id="{gid}" x1="0" y1="0" x2="0.4" y2="1">'
-        '<stop offset="0" stop-color="#B7F5DA"/><stop offset="1" stop-color="#7FE3B8"/>'
-        f"</linearGradient></defs>{body}</svg>"
     )
 
 
@@ -2218,14 +2194,14 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 <meta property="og:title" content="{e(seo_title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{canon}">
-<meta property="og:image" content="{og_image}">
+<meta property="og:image" content="{og_image}?v={OG_IMAGE_VER}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{e(seo_title)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{e(seo_title)}">
 <meta name="twitter:description" content="{e(desc)}">
-<meta name="twitter:image" content="{og_image}">
+<meta name="twitter:image" content="{og_image}?v={OG_IMAGE_VER}">
 
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -2694,13 +2670,13 @@ def render_legal_page(kind: str, lang: str, today) -> str:
 <meta property="og:title" content="{e(page["title"])}">
 <meta property="og:description" content="{e(page["desc"])}">
 <meta property="og:url" content="{canon}">
-<meta property="og:image" content="{og_image}">
+<meta property="og:image" content="{og_image}?v={OG_IMAGE_VER}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{e(page["title"])}">
 <meta name="twitter:description" content="{e(page["desc"])}">
-<meta name="twitter:image" content="{og_image}">
+<meta name="twitter:image" content="{og_image}?v={OG_IMAGE_VER}">
 
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -3420,14 +3396,14 @@ def render_category_page(
 <meta property="og:title" content="{e(seo_title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{canon}">
-<meta property="og:image" content="{og_image}">
+<meta property="og:image" content="{og_image}?v={OG_IMAGE_VER}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{e(h1)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{e(seo_title)}">
 <meta name="twitter:description" content="{e(desc)}">
-<meta name="twitter:image" content="{og_image}">
+<meta name="twitter:image" content="{og_image}?v={OG_IMAGE_VER}">
 
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -4275,14 +4251,14 @@ def main() -> None:
 <meta property="og:title" content="{og_title}">
 <meta property="og:description" content="{og_desc}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{og_image}">
+<meta property="og:image" content="{og_image}?v={OG_IMAGE_VER}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{site_name} · {'verified global deals' if is_en else '每日核验的全球优惠情报'}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{og_title}">
 <meta name="twitter:description" content="{og_desc}">
-<meta name="twitter:image" content="{og_image}">
+<meta name="twitter:image" content="{og_image}?v={OG_IMAGE_VER}">
 
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -4494,7 +4470,8 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
               {al(*U['close'])}>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"/><path d="m11.5 19-7-7 7-7"/></svg>
       </button>
-      <span class="sd-avatar" aria-hidden="true">{mascot_svg(gid='mintBodySubmit')}</span>
+      <img class="sd-avatar" src="/assets/favicon-96.png" alt="" width="20" height="20"
+           decoding="async">
       <h2 id="submit-title">{ui('submit_title')}</h2>
       <!-- 二选一开关（圆点单选）：◉ 投稿 / ○ 反馈。与「交流群」胶囊排在同一行右侧，不另占一行高度；
            弄成原生 <input type="radio"> + <label>，点圆点或点文字都能切；

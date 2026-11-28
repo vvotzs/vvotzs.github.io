@@ -3288,7 +3288,7 @@ html.dialog-open{ overflow: hidden; }
 .sd-back:focus-visible{ outline: 2px solid rgba(22,163,74,.5); outline-offset: 1px; }
 
 .sd-avatar{ flex: none; width: 20px; height: 20px; margin-left: 0; }
-.sd-avatar svg{ width: 20px; height: 20px; display: block; }
+.sd-avatar svg, .sd-avatar img{ width: 20px; height: 20px; display: block; object-fit: contain; }
 
 .sd-top h2{
   margin: 0;
