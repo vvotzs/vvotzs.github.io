@@ -1,0 +1,39 @@
+{
+  "id": "/",
+  "name": "羊毛情报局",
+  "short_name": "羊毛情报局",
+  "description": "全球优惠与免费资源情报平台：免费 AI Token、Crypto 空投、海外银行开户奖励、跨境汇款优惠、免费 VPS 与 eSIM 流量，逐条人工核验。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F5",
+  "theme_color": "#FAF7F2",
+  "icons": [
+    {
+      "src": "/assets/favicon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

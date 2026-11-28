@@ -115,6 +115,16 @@ FAV_SKIP = {"nodaroo.com"}
 # 已同意 / 已拒绝的访客不会再被重复打扰。
 CONSENT_REQUIRED = "0"
 
+# ------------------------------------------------ 站点身份（Google 站点名 / 图标）
+# Google 每个 hostname（域或子域）只认一个站点名，而且不支持子目录级：/en/ 是子目录，
+# 只能沿用根域的名字。所以两个首页共用同一个 WebSite 节点——@id 固定在根域 #website，
+# name 用中文主名，alternateName 依次给出英文名与其他写法，让 Google 自己挑。
+# /en/ 不再单独声明 "Deal Hunter" 版 WebSite（那会跟根域的站点名互相打架，
+# Google 打架时直接退回平台名 GitHub）。改主名只需要动这三行。
+SITE_WEB_ID = SITE_URL + "#website"
+SITE_WEB_NAME = "羊毛情报局"
+SITE_WEB_ALT = ["Deal Hunter", "羊毛情报局 · 全球优惠情报"]
+
 # ------------------------------------------------ 首页瘦身（2026-11-21 第七轮定稿）
 # 分类区只内联按 S 分排序的前 N 条，其余全部交给分类目录页 /category/<slug>/ 承接；
 # 四个聚合分区（新收录 / 高价值榜 / 即将截止 / 抽奖）用到的条目另外并入对应分类，
@@ -745,7 +755,7 @@ ZH_DESC = (
 )
 EN_TITLE = "Deal Hunter · Verified global deals, free credits & sign-up bonuses"
 EN_DESC = (
-    "Deal Hunter: a directory of global offers, refreshed every 2 hours — AI tools and credits, crypto airdrops "
+    "Deal Hunter: a directory of global offers, checked every hour — AI tools and credits, crypto airdrops "
     "and points, overseas bank, card and remittance bonuses, VPS and cloud credits, free eSIM data and student "
     "software. Value, requirements and deadline on one card, straight to the official page."
 )
@@ -2080,7 +2090,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
             "name": seo_title,
             "description": desc,
             "inLanguage": "en" if is_en else "zh-CN",
-            "isPartOf": {"@type": "WebSite", "name": site_name, "url": SITE_URL + ("en/" if is_en else "")},
+            "isPartOf": {"@type": "WebSite", "@id": SITE_WEB_ID},
             "breadcrumb": {"@id": canon + "#breadcrumb"},
             "mainEntity": {"@id": canon + "#offer"},
             "datePublished": added_day(deal, today),
@@ -2214,11 +2224,13 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 <meta name="twitter:description" content="{e(desc)}">
 <meta name="twitter:image" content="{og_image}">
 
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 <meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">
 <meta name="dh-copy" content="{e(ui('copy_done'))}|{e(ui('copy_manual'))}">
@@ -2633,7 +2645,7 @@ def render_legal_page(kind: str, lang: str, today) -> str:
                 "name": page["title"],
                 "description": page["desc"],
                 "inLanguage": "en" if is_en else "zh-CN",
-                "isPartOf": {"@type": "WebSite", "name": site_name, "url": SITE_URL + ("en/" if is_en else "")},
+                "isPartOf": {"@type": "WebSite", "@id": SITE_WEB_ID},
                 "breadcrumb": {"@id": canon + "#breadcrumb"},
                 "dateModified": LEGAL_UPDATED,
             },
@@ -2687,11 +2699,13 @@ def render_legal_page(kind: str, lang: str, today) -> str:
 <meta name="twitter:description" content="{e(page["desc"])}">
 <meta name="twitter:image" content="{og_image}">
 
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 
 <script type="application/ld+json">
@@ -3348,11 +3362,7 @@ def render_category_page(
                 "name": seo_title,
                 "description": desc,
                 "inLanguage": "en" if is_en else "zh-CN",
-                "isPartOf": {
-                    "@type": "WebSite",
-                    "name": site_name,
-                    "url": SITE_URL + ("en/" if is_en else ""),
-                },
+                "isPartOf": {"@type": "WebSite", "@id": SITE_WEB_ID},
                 "breadcrumb": {"@id": canon + "#breadcrumb"},
                 "mainEntity": {"@id": canon + "#itemlist"},
                 "dateModified": lastmod,
@@ -3416,11 +3426,13 @@ def render_category_page(
 <meta name="twitter:description" content="{e(desc)}">
 <meta name="twitter:image" content="{og_image}">
 
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 <meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">
 
@@ -4167,32 +4179,50 @@ def main() -> None:
                 item["description"] = desc_text
             item_list.append(item)
 
-        jsonld = json.dumps(
-            [
+        # 站点节点只挂在根首页：Google 每个 hostname（域或子域）只认一个站点名，
+        # /en/ 是子目录、不支持独立站点名，如果再在英文首页声明一个 "Deal Hunter" 版
+        # WebSite，两个名字就互相打架，Google 干脆退回平台名 GitHub。英文名改由
+        # alternateName 提供。英文首页因此不带中文：用一个 CollectionPage 说明
+        # 「本页属于这个站点」，isPartOf 指向根首页那个唯一的 WebSite 节点。
+        ld_nodes: list[dict] = []
+        if not is_en:
+            ld_nodes.append(
                 {
                     "@context": "https://schema.org",
                     "@type": "WebSite",
-                    "name": site_name,
-                    "alternateName": "Deal Hunter · global deals" if is_en else "羊毛情报局 · 全球优惠情报",
-                    "url": canonical,
-                    "inLanguage": "en" if is_en else "zh-CN",
-                    "description": desc,
+                    "@id": SITE_WEB_ID,
+                    "name": SITE_WEB_NAME,
+                    "alternateName": SITE_WEB_ALT,
+                    "url": SITE_URL,
+                    "inLanguage": ["zh-CN", "en"],
                     "potentialAction": {
                         "@type": "SearchAction",
-                        "target": canonical + "?q={search_term_string}",
+                        "target": SITE_URL + "?q={search_term_string}",
                         "query-input": "required name=search_term_string",
                     },
-                },
-                {
-                    "@context": "https://schema.org",
-                    "@type": "ItemList",
-                    "name": "Top value deals" if is_en else "高价值优惠排行榜",
-                    "itemListElement": item_list,
-                },
-            ],
-            ensure_ascii=False,
-            indent=2,
-        ).replace("</", "<\\/")   # 防止数据里的 </script> 提前结束 JSON-LD 块
+                }
+            )
+        ld_nodes.append(
+            {
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                "@id": canonical + "#webpage",
+                "url": canonical,
+                "name": og_title,
+                "description": desc,
+                "inLanguage": "en" if is_en else "zh-CN",
+                "isPartOf": {"@type": "WebSite", "@id": SITE_WEB_ID},
+            }
+        )
+        ld_nodes.append(
+            {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "name": "Top value deals" if is_en else "高价值优惠排行榜",
+                "itemListElement": item_list,
+            }
+        )
+        jsonld = json.dumps(ld_nodes, ensure_ascii=False, indent=2).replace("</", "<\\/")
 
         def pht(key: str) -> str:
             """placeholder 只能是一个字符串：按当前页面语言取。"""
@@ -4251,11 +4281,13 @@ def main() -> None:
 <meta name="twitter:description" content="{og_desc}">
 <meta name="twitter:image" content="{og_image}">
 
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="stylesheet" href="/assets/css/style.css?v={asset_ver('assets/css/style.css')}">
 <meta name="dh-votes-base" content="{SUBMIT_ENDPOINT}">
 <meta name="dh-copy" content="{e(ui('copy_done'))}|{e(ui('copy_manual'))}">

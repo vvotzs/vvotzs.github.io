@@ -484,7 +484,7 @@ LEGAL_PAGES: dict[str, dict[str, dict]] = {
                     "两边对不上时以官方条款为准，差异写进「风险」一栏；确实核不到的部分标为待核实，不写成确定事实。",
                 ]),
                 ("更新频率", [
-                    "站点每 2.5 小时自动巡检一轮：发现新活动、回溯官网核验、把 7 天内即将截止的条目单独标出。"
+                    "站点每小时自动巡检一轮：发现新活动、回溯官网核验、把 7 天内即将截止的条目单独标出。"
                     "过期活动不会被删掉，而是移入归档页并保留历史记录，旧链接继续可访问。",
                 ]),
                 ("投稿与纠错", [
@@ -521,7 +521,7 @@ LEGAL_PAGES: dict[str, dict[str, dict]] = {
                     "Anything we cannot confirm is marked unverified instead of being stated as fact.",
                 ]),
                 ("Update cadence", [
-                    "The site re-checks every 2.5 hours: new offers are found and verified against the official "
+                    "The site re-checks every hour: new offers are found and verified against the official "
                     "page, and entries ending within 7 days are flagged separately. Expired offers are moved to "
                     "the archive rather than deleted, so their links keep working.",
                 ]),
