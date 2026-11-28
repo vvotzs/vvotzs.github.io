@@ -1261,11 +1261,12 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{
   transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
   overflow: hidden;
   scroll-margin-top: 78px;
-  /* 性能：屏幕外的卡片跳过布局与绘制，139 张的长列表只算首屏那几张 */
-  content-visibility: auto;
-  /* 占位高度写的是「内容区」，不含上下各 1px 边框：桌面实测外高 99.5px（→97.5px）、
-     手机 81px（→79px，见手机媒体查询）。占位和真实高度对齐，滚动或横滑翻页才不会抖 */
-  contain-intrinsic-size: auto 97.5px;
+  /* 这里曾经用 content-visibility: auto + contain-intrinsic-size 跳过屏外卡片。
+     2026-11-28 撤掉：卡片装在「横滑吸附翻页」的 .track 里，Chrome（手机端实测）
+     在翻页滚动中去跳过/恢复卡片内容时，会把卡片内容按旧的滚动偏移重绘——
+     表现为卡片左侧被裁掉一截、整张卡向左/右错位、收起展开卡后同一张卡出现残影重影；
+     点开任意一张卡强制重排后又会立刻恢复。宁可放弃这份屏外跳过，也不能让翻页画面错位。
+     屏外跳过改为不再作用于卡片，性能靠 .page 的分页本身（每页 5 / 8 张）控制。 */
 }
 .card:hover{
   border-color: rgba(28,25,23,.13);
@@ -1277,8 +1278,6 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{
   box-shadow: 0 2px 6px rgba(28,25,23,.05), 0 20px 44px -22px rgba(120,70,10,.35);
   grid-column: 1 / -1;
   transform: none;
-  /* 展开态会被锚点跳转 / 深链接测高，必须真实渲染，不能只按占位高度算 */
-  content-visibility: visible;
 }
 .card.open::after{
   content: "";
@@ -2813,8 +2812,6 @@ footer{
   .hit-t{ font-size: 12px; }
   .more{ display: none !important; }
 
-  /* 手机端未展开卡片外高实测 78px（含上下各 1px 边框）→ 内容区 76px */
-  .card{ contain-intrinsic-size: auto 76px; }
   .card-head{ padding: 8px 10px; gap: 8px; }
   .card-head .fav,
   .card-head .fav-fallback{ width: 22px; height: 22px; border-radius: 6px; margin-top: 0; }
