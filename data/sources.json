@@ -234,7 +234,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T05:59:35Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-27T12:20:03Z",
       "tool": "gog-gmail",
       "query": "in:anywhere (subject:\"[羊毛情报投稿]\" OR subject:\"[投稿]\" OR from:tally.so) newer_than:2d",
@@ -258,8 +258,8 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T05:59:35Z",
-      "last_hit_at": "2026-11-27T23:12:35Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
+      "last_hit_at": "2026-11-28T07:32:05Z",
       "search_domains": [
         "x.com"
       ],
@@ -282,7 +282,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T05:59:35Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-27T03:17:15Z",
       "entry_url": "https://mini.appdo.xyz/rss.json",
       "zero_streak": 0
@@ -302,7 +302,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T05:59:35Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "entry_url": "https://news.ycombinator.com/rss",
       "zero_streak": 0
@@ -322,7 +322,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T05:59:35Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-27T21:17:17Z",
       "zero_streak": 0
     },
@@ -344,7 +344,7 @@
       "entry_url": "https://www.promodescuentos.com/rss/todas",
       "zero_streak": 0,
       "note": "RSS 直连 200（普通 UA，无 Cloudflare），30 条/次，item 带 <category> 与 pepper:merchant 商家+价格；分组 feed 可补读 /rss/grupo/gratis（免单）、/rss/grupo/telefonia-celular（手机通讯）",
-      "last_crawled_at": "2026-11-28T05:59:35Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-27T23:12:35Z"
     },
     {
@@ -402,7 +402,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T02:12:54Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T16:29:05Z",
       "entry_url": "https://www.uscardforum.com/latest.md",
       "zero_streak": 0
@@ -422,7 +422,7 @@
       "status": "active",
       "added_at": "2026-11-22T05:10:00Z",
       "note": "首页约 203 个卡片、10 个分区（最新福利/跨境券商/香港数字银行/香港实体银行/澳门银行/虚拟银行卡/加密货币/行情工具/跨境工具），每张卡多半指向站内 /post/<id>/ 详情页。站内大量「邀请码：××」「?ref=」「?invite_code=」为站长个人返佣码，收录时必须回溯品牌官网，不得照搬。",
-      "last_crawled_at": "2026-11-28T03:29:08Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "zero_streak": 0,
       "last_hit_at": "2026-11-26T12:14:58Z"
     },
@@ -440,7 +440,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T02:12:54Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-27T05:10:02Z",
       "search_domains": [
         "shuzijumin.com"
@@ -539,7 +539,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T03:29:08Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T10:30:23Z",
       "entry_url": "https://www.v2ex.com/index.xml",
       "zero_streak": 0
@@ -558,7 +558,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T02:24:20Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-18T04:30:00Z",
       "search_domains": [
         "www.1point3acres.com"
@@ -711,7 +711,7 @@
       "lang": "zh",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T03:29:08Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-16T17:30:00Z",
       "entry_url": "https://tg.okhk.net/rss.json"
     },
@@ -730,7 +730,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T03:29:08Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T14:45:14Z",
       "entry_url": "https://www.ozbargain.com.au/feed",
       "zero_streak": 0
@@ -767,7 +767,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T03:29:08Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T12:14:58Z",
       "zero_streak": 0
     },
@@ -784,7 +784,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T03:29:08Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-15T21:30:00Z"
     },
     {
@@ -822,7 +822,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T03:29:08Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "entry_url": "https://www.usdailyrewards.com/feed",
       "zero_streak": 0
@@ -841,7 +841,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T03:29:08Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T12:14:58Z",
       "entry_url": "https://budgetfitter.uk/feed",
       "zero_streak": 0
@@ -860,7 +860,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T02:18:30Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T12:14:58Z",
       "zero_streak": 0
     },
@@ -878,7 +878,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T02:18:30Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T12:14:58Z",
       "zero_streak": 0
     },
@@ -896,7 +896,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T02:12:54Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "zero_streak": 0
     },
@@ -982,8 +982,8 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-28T03:29:08Z",
-      "last_hit_at": "2026-11-27T23:12:35Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
+      "last_hit_at": "2026-11-28T07:32:05Z",
       "zero_streak": 0
     },
     {
@@ -1016,7 +1016,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-28T02:18:30Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T13:30:12Z",
       "keyword_pool": "topup",
       "entries": [
@@ -1037,8 +1037,8 @@
         "ding.com": "https://www.ding.com/promotions"
       },
       "note": "两域名直连 403/429（2026-11-21 实测），只做核验不抓取：优先运营商官方公告，否则每天最多 1 次浏览器开 verify_urls",
-      "zero_streak": 0,
-      "last_zero_at": "2026-11-26T09:02:04Z"
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-28T07:32:05Z"
     },
     {
       "id": "topup-game",
@@ -1053,7 +1053,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T10:45:00Z",
-      "last_crawled_at": "2026-11-28T02:18:30Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-23T19:57:07Z",
       "keyword_pool": "topup",
       "entries": [
@@ -1069,8 +1069,8 @@
         }
       ],
       "note": "Codashop 活动页路径未摸清（/en/promotions 404），暂不写 verify_urls；候选以游戏商/发行方官方公告为准",
-      "zero_streak": 4,
-      "last_zero_at": "2026-11-27T20:08:44Z"
+      "zero_streak": 5,
+      "last_zero_at": "2026-11-28T07:32:05Z"
     },
     {
       "id": "topup-giftcard",
@@ -1497,7 +1497,7 @@
       "lang": "ko",
       "status": "active",
       "added_at": "2026-11-21T10:30:00Z",
-      "last_crawled_at": "2026-11-27T02:24:20Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-10-11T10:30:00Z",
       "search_domains": [
         "www.fmkorea.com"
@@ -1986,7 +1986,7 @@
       "lang": "en",
       "status": "active",
       "added_at": "2026-11-21T12:30:00Z",
-      "last_crawled_at": "2026-11-28T02:12:54Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-28T02:12:54Z",
       "keyword_pool": "ota_airline",
       "entries": [
@@ -2007,7 +2007,8 @@
         "agoda.com": "https://www.agoda.com/press/agoda-launches-free-global-esims-for-vip-diamond-members/"
       },
       "note": "2026-11-21 深挖新增：显式写了 free eSIM 的 OTA 会员 / 联名入口优先（Klook Rewards、Trip.com 白金+、Agoda VIP Diamond、Omio × Kolet）；纯满减码（Klook 99% off、$1 eSIM）不收录",
-      "zero_streak": 0
+      "zero_streak": 1,
+      "last_zero_at": "2026-11-28T07:32:05Z"
     },
     {
       "id": "hotukdeals",
@@ -2107,7 +2108,7 @@
       "entry_url": "https://www.pepper.pl/rss/wszystkie",
       "zero_streak": 0,
       "note": "Pepper 家族波兰站；/rss/wszystkie 直连 200、30 条/次",
-      "last_crawled_at": "2026-11-28T02:12:54Z"
+      "last_crawled_at": "2026-11-28T07:32:05Z"
     },
     {
       "id": "pepper-nl",
@@ -2127,7 +2128,7 @@
       "entry_url": "https://nl.pepper.com/rss/nieuw",
       "zero_streak": 0,
       "note": "Pepper 家族荷兰站（pepper.com 主域已跳 nl.pepper.com）；/rss/nieuw 直连 200、30 条/次，免费分组 /rss/groep/gratis 亦 200",
-      "last_crawled_at": "2026-11-28T02:12:54Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-27T23:12:35Z"
     },
     {
@@ -2148,7 +2149,7 @@
       "entry_url": "https://www.preisjaeger.at/rss/alle",
       "zero_streak": 0,
       "note": "Pepper 家族奥地利站；/rss/alle 直连 200、30 条/次",
-      "last_crawled_at": "2026-11-28T02:12:54Z",
+      "last_crawled_at": "2026-11-28T07:32:05Z",
       "last_hit_at": "2026-11-26T13:30:22Z"
     },
     {
@@ -2169,7 +2170,7 @@
       "entry_url": "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1",
       "zero_streak": 0,
       "note": "首页 rel=alternate 官方 RSS；直连 200、25 条/次；另有 mode=popdeals 人气榜 feed",
-      "last_crawled_at": "2026-11-28T02:12:54Z"
+      "last_crawled_at": "2026-11-28T07:32:05Z"
     },
     {
       "id": "youtube-ddktricks",
@@ -2187,7 +2188,7 @@
       "entry_url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwvqKV96OXClu581qZZ_0Uw",
       "zero_streak": 0,
       "note": "channel_id UCwvqKV96OXClu581qZZ_0Uw（1.07K 订阅、115,763 总观看，2025-03-22 建号，41 支视频/30 条在架）。官方 videos.xml 实测 200（27,377 B，最近 15 条，覆盖 2026-02-03 至 2026-11-17）；裸 UA 与连续请求会间歇 503，须带浏览器 UA 并重试。更新约 1–2 条/月，以免费 eSIM 教程为主。视频简介常挂 Telegram 机器人/转售链接（t.me/ddktrick2、t.me/Ukesimbot）与第三方分销（zamesims 等），只作线索：收录必须回溯品牌官网条款，频道本身不作 source_url；标题含 Trick/Unlimited 的绕过类内容不收。",
-      "last_crawled_at": "2026-11-28T03:29:08Z"
+      "last_crawled_at": "2026-11-28T07:32:05Z"
     },
     {
       "id": "airline-esim-partners",

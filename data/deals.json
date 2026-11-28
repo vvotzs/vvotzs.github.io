@@ -7480,6 +7480,51 @@
   ]
  },
  {
+  "id": "cn-university-free-token-2026",
+  "dedup_key": "cn|ai|multi|university-free-token-2026",
+  "title": "[中国大陆]高校免费发AI Token：中科大每天1亿、同济每周1亿、北大Qoder每月3,000credits",
+  "brand": "中国科大等高校",
+  "domain": "llm.ustc.edu.cn",
+  "category": "ai",
+  "value": "中科大每天1亿tokens；同济/上财每周1亿；北大3,000credits/月",
+  "value_num": 30,
+  "cost": "真正免费",
+  "highlight": "在校师生用统一身份认证就能领，不花钱、不用买API Key：中科大「词元计划」每人每天1亿Token、次日0点重置，DeepSeek/GLM/千问等主流模型兼容OpenAI与Anthropic协议",
+  "regions": "[中国大陆] 仅限各校在校师生；中科大等平台限校园网IP，校外需连iWAN/学校VPN",
+  "start": "2026-05-07",
+  "end": "",
+  "verified": true,
+  "last_verified": "2026-11-28",
+  "added": "2026-11-28",
+  "content": "多所高校已把Token当公共资源发给师生：中科大5月7日上线「词元计划」，统一身份认证登录即在每人每天1亿Token（不区分输入输出、次日0点重置），提供DeepSeek-V4、GLM5.2、千问等模型，兼容OpenAI/Anthropic协议，可接进各类编程工具自建智能体；同济10月26日平台每人每周1,000积分折合1亿Token并下发专属API Key；上财11月21日起每周最高1亿；北大与阿里云合作的Qoder编程智能体免费一年、每月3,000credits；北邮给约万名新生开虚拟服务器式算力账户；湖南大学经国家超算长沙中心每人每天200万Token。",
+  "conditions": "必须是名单内高校的在校师生，用学校统一身份认证登录；部分平台只对校园网IP开放，校外需先连学校VPN/iWAN；额度按日或按周清零、不累计、不能转让转卖；不得用于挖矿、攻击或涉密数据。（中科大平台对校外 IP 直接 403，必须先连 iWAN/校园网）",
+  "steps": [
+   "确认自己学校是否在列（中科大 llm.ustc.edu.cn、同济 ai.tongji.edu.cn 等校内平台入口）",
+   "用统一身份认证登录，校外先连学校VPN或iWAN隧道",
+   "在平台里选模型或取API Key，接进VS Code、Cherry Studio、Codex等客户端",
+   "当天/当周额度用完即止，等下个周期重置"
+  ],
+  "url": "https://id.ustc.edu.cn/tokenworks/",
+  "source_url": "https://news.ustc.edu.cn/info/1056/96873.htm",
+  "source": "中国科大新闻网2026-06-03「词元计划」与2026-11-10转载科技日报（每人每日1亿Token、平台llm.ustc.edu.cn、校外走iWAN）+ 中国科大词元工坊页（2026-11-28实读：统一身份认证、网关仅校园网IP）+ CERNET 2026-11-26汇总（同济每周1,000积分=1亿Token、上财每周最高1亿、北大×阿里云Qoder每月3,000credits、北邮万名新生算力账户、湖大单日200万Token）",
+  "risk": "仅本校师生可领，代认证属违规；不同学校额度、模型与限制差别大，以本校通知为准；毕业或学籍失效后额度可能被收回；平台是校内服务，不保证SLA，敏感数据别上传。",
+  "status": "active",
+  "kyc_level": "cn_ok",
+  "utility": 1,
+  "identity_requirement": "email",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web",
+   "macos",
+   "windows",
+   "linux"
+  ],
+  "geo_restriction": [
+   "CN"
+  ],
+  "added_at": "2026-11-28T15:50:00+08:00"
+ },
+ {
   "id": "boc-unionpay-overseas-3pct",
   "dedup_key": "boc|bank|cn|unionpay-overseas-3pct",
   "title": "[中国区]中国银行银联信用卡境外线下消费返3%消费金：每月上限¥200（至12/31，需报名）",
@@ -8152,6 +8197,47 @@
   "geo_restriction": [
    "MM"
   ]
+ },
+ {
+  "id": "voyage-ai-200m-free-embedding-tokens",
+  "dedup_key": "voyage-ai|ai|global|200m-free-embedding-tokens",
+  "title": "[全球]Voyage AI新账号送2亿嵌入tokens：voyage-4全系与rerank-3同额免费",
+  "brand": "Voyage AI",
+  "domain": "voyageai.com",
+  "category": "ai",
+  "value": "≈$12–24（2亿tokens按voyage-4 $0.06–0.12/百万折算）",
+  "value_num": 24,
+  "cost": "真正免费",
+  "highlight": "每个账号前2亿tokens免费，覆盖voyage-4-large/4/4-lite、context-4、code-4与rerank-3，多模态另有2亿文本tokens+1500亿像素免费；建向量库、RAG检索不用先掏钱",
+  "regions": "[全球] Voyage AI官网注册即可，按账号计（不是按模型各发一份）；纯API，无地区限制",
+  "start": "",
+  "end": "",
+  "verified": true,
+  "last_verified": "2026-11-28",
+  "added": "2026-11-28",
+  "content": "Voyage AI官方定价页写明：每个账号前2亿tokens免费，覆盖voyage-4-large、voyage-4、voyage-4-lite、voyage-context-4与voyage-code-4；voyage-finance-2、voyage-law-2为前5,000万tokens免费。多模态voyage-multimodal-3/3.5另有前2亿文本tokens+1,500亿像素免费，rerank-3与rerank-3-lite同样是前2亿tokens免费。超出后按量计费（voyage-4-lite $0.02、voyage-4 $0.06、4-large $0.12每百万tokens），嵌入用于RAG、语义检索、去重聚类，不是对话模型。",
+  "conditions": "需注册账号并创建API Key；免费额度按账号累计、用完即转按量计费，不按月重置；只做embedding与rerank，不含生成式对话；是否需绑卡以控制台实际流程为准。",
+  "steps": [
+   "到 voyageai.com 用邮箱或GitHub注册，创建API Key",
+   "pip install voyageai，用 voyage-4 或 voyage-4-lite 调 embed() 建向量",
+   "检索重排再加 rerank-3；在用量页确认还剩多少免费tokens"
+  ],
+  "url": "https://docs.voyageai.com/docs/pricing",
+  "source_url": "https://docs.voyageai.com/docs/pricing",
+  "source": "Voyage AI官方Pricing页（2026-11-28实读：voyage-4-large/4/4-lite/context-4/code-4「the first 200 million tokens ... are free for every account」，finance-2/law-2为5,000万，多模态为2亿文本tokens+1,500亿像素，rerank-3/3-lite为2亿）+ X @vanedotai 2026-11-28 提及「Voyage AI: first 200M embedding tokens free」",
+  "risk": "免费额度一次性、不重置，跑大规模索引很容易用完；超出自动按量计费，需自己设预算；嵌入模型不能当对话模型用；暂无社区实测DP，实际限速与是否要绑卡以控制台为准。",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 0,
+  "identity_requirement": "email",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "added_at": "2026-11-28T15:41:00+08:00"
  },
  {
   "id": "unicom-cloud-free-ai-desktop",
@@ -10824,6 +10910,48 @@
   ],
   "dedup_key": "visible|esim|us|free-trial-15d",
   "vowifi": "n/a"
+ },
+ {
+  "id": "extraorbital-free-tier-agents",
+  "dedup_key": "extraorbital|cloud|global|free-tier-agents",
+  "title": "[全球]ExtraOrbital免费云资源：MongoDB 512MB、Redis 256MB、S3 1GB、AI额度$5，免注册免绑卡",
+  "brand": "ExtraOrbital",
+  "domain": "extraorbital.dev",
+  "category": "cloud",
+  "value": "≈$13（$5 AI额度+数据库/存储/向量免费额度）",
+  "value_num": 13,
+  "cost": "真正免费",
+  "highlight": "一条 npx 命令给项目配齐数据库与对象存储：MongoDB 512MB、Redis 256MB/50万命令每月、S3 1GB、Postgres 1个、向量库1GB，凭证直接写进 .env；免注册、免绑卡、无签名表单",
+  "regions": "[全球] 纯API/CLI开通，无需地区证明；单可用区，无SLA",
+  "start": "",
+  "end": "",
+  "verified": true,
+  "last_verified": "2026-11-28",
+  "added": "2026-11-28",
+  "content": "ExtraOrbital给每个账号一套预算内的免费额度（全账号共享、不按资源各发一份）：MongoDB 512MB、Redis 256MB+50万命令/月、S3 1GB+1万次简单请求、Postgres 1个库（存储从$5账户额度扣）、向量索引1GB（每天1万查询+1万更新）、Git 30个仓库（实验）。AI走OpenRouter网关，前$5额度只能用便宜模型，一次性；转写可用whisper-1/gpt-4o-mini-transcribe。npx extraorbital add mongo 之类命令会把MONGODB_URI、REDIS_URL、OPENROUTER_API_KEY写进 .env，适合给coding agent临时搭环境。",
+  "conditions": "Free计划免信用卡、免注册表单；额度全账号共享，只属于Free计划（付费计划从第一单位起计费）；资源30天不用先预警再删除；桶内文件上传30天后删除；无备份、无SLA、单可用区；服务处于developer preview，额度与价格随时可能调整。",
+  "steps": [
+   "在项目目录跑 npx extraorbital add mongo（或 redis/s3/vector/ai）",
+   "按提示读 .env 里自动写入的连接串与密钥",
+   "代码里直连使用；30天内至少用一次避免资源被回收",
+   "需要备份或长期保存再升级到 $20/人/月 的按量计划"
+  ],
+  "url": "https://extraorbital.dev/pricing",
+  "source_url": "https://extraorbital.dev/pricing",
+  "source": "ExtraOrbital官方Pricing与Resources页（2026-11-28实读：MongoDB 512MB、Redis 256MB/500K、S3 1GB/10K、向量1GB/10K每日、Postgres 1库、Free计划无卡无注册、$5.00一次性模型额度、30天闲置删除）+ AGENTS.md 同级说明",
+  "risk": "developer preview，条款与价格可随时改；无备份，删了不恢复；文件30天内必删，不能当网盘；免费额度是「账号一套」而非每个资源一份；单可用区无SLA，不要放生产数据。",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 1,
+  "identity_requirement": "none",
+  "funding_requirement": "none",
+  "platform_requirement": [
+   "web"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "added_at": "2026-11-28T15:44:00+08:00"
  },
  {
   "id": "etisalat-wasel-flexi-10gb-esim",
@@ -19025,6 +19153,50 @@
   ]
  },
  {
+  "id": "hub-icons8-agent-dispatcher",
+  "dedup_key": "hub-icons8|software|global|agent-dispatcher",
+  "title": "[全球]Hub：Icons8开源多路Claude Code/Codex调度器，Apache-2.0免费自托管",
+  "brand": "Hub (Icons8)",
+  "domain": "github.com",
+  "category": "software",
+  "value": "免费（Apache-2.0，自带Claude/ChatGPT订阅即可）",
+  "value_num": 0,
+  "cost": "真正免费",
+  "highlight": "一条命令装在自己电脑或服务器上，浏览器或Telegram里说目标，协调器把活拆给多个agent，短任务各自在独立git worktree里跑完汇报；只把需要你拍板的问题推回来，软件本身不收钱",
+  "regions": "[全球] macOS 13.5+、Linux(glibc 2.28+)、Windows 10/11；默认只听 127.0.0.1:8787",
+  "start": "",
+  "end": "",
+  "verified": true,
+  "last_verified": "2026-11-28",
+  "added": "2026-11-28",
+  "content": "Hub由Icons8开源（Apache-2.0），把Claude Code或Codex的会话当工人管：你只跟一个协调会话说话，它启动对应session、跟踪进度、把问题与结果拎回来。执行者各在自己的git worktree里干活，权限、工具、笔记独立；会话崩溃会带着上下文重启。安装是一行curl/irm脚本，不用先装依赖、不需要管理员权限（Linux无git时例外），装完打开127.0.0.1:8787登录自己的Claude账号或Codex即可，Telegram、语音、电话接入按需开。模型用量走你自己的订阅，Hub本身不卖模型、不收费。",
+  "conditions": "需自备Claude或ChatGPT订阅（Hub不给模型访问权）；一行安装适用于macOS 13.5+/Linux glibc 2.28+/Windows 10/11；页面默认无密码，同机其他用户可直接接管；会话以你的系统用户身份、bypassPermissions模式运行，无沙箱。",
+  "steps": [
+   "在要跑的机器上执行 curl -fsSL https://icons8.github.io/hub/install.sh | bash（Windows用 irm 的那一行）",
+   "打开 http://127.0.0.1:8787/ ，点 Sign in to Claude（或 Codex）完成登录",
+   "在设置里给本机每个hub加访问密码，需要远程再开Tailscale或Cloudflare Tunnel",
+   "在页面用大白话写目标，协调器自己分派；只在它推回决策时回一句"
+  ],
+  "url": "https://github.com/icons8/hub",
+  "source_url": "https://github.com/icons8/hub",
+  "source": "GitHub icons8/hub README（2026-11-28实读：Apache-2.0、一行安装、bypassPermissions且无沙箱、页面默认无密码、支持Claude Code与Codex；仓库2026-11-19创建、62 stars）+ Product Hunt 2026-11-28日榜第1（413票、169条评论）+ FollowAgents与agent-orchestrators目录收录（2026-11-23）",
+  "risk": "作者自标「实验性」：所有session以你的OS用户身份跑、不逐次询问权限，读到恶意文本可能被诱导执行命令；它不是沙箱，也不隔离会话；页面不设密码时同机任何用户都能操作、还能浏览整盘；建议放独立VM/容器、只挂需要的仓库、不存生产凭据。",
+  "status": "active",
+  "kyc_level": "none",
+  "utility": 1,
+  "identity_requirement": "none",
+  "funding_requirement": "own_model",
+  "platform_requirement": [
+   "macos",
+   "linux",
+   "windows"
+  ],
+  "geo_restriction": [
+   "GLOBAL"
+  ],
+  "added_at": "2026-11-28T15:47:00+08:00"
+ },
+ {
   "id": "immunefi-base-everest-audit-comp",
   "dedup_key": "immunefi|crypto|global|base-everest-audit-comp",
   "title": "[全球]Immunefi Base Everest审计赛：最高$250,000",
@@ -21398,10 +21570,10 @@
   ],
   "url": "https://www.shopback.com/signup-referred",
   "source_url": "https://www.referralworldnews.com/bonuses/shopbacks-increased-30-signup-and-30-referral-bonuses-plus-15-quest-ends-1130-multiple-countries",
-  "source": "Referral World News（2026-11-24：$30 注册＋$30 推荐、13 国、11/30 截止、180 天消费 $10＋攒 $10 返现＋绑 PayPal、Refer 3 Friends 额外 $15）+ ShopBack 官方帮助中心 Refer a friend 与 raf-content-system 条款（同一设备、排除商家、180 天窗口、须加提现方式）+ 北美羊毛快报 2026-11-25 更新（美西 11/30 23:59 截止）｜2026-11-27 重核：shopback.com/signup-referred 页面在线，黑五加码返现仍在（多个商家标 Ends in 4 days），但未登录状态看不到 $30 数额，金额仍以 referralworldnews 报道与注册后页面为准，标注待本人到账核实",
+  "source": "Referral World News（2026-11-24：$30 注册＋$30 推荐、13 国、11/30 截止、180 天消费 $10＋攒 $10 返现＋绑 PayPal、Refer 3 Friends 额外 $15）+ ShopBack 官方帮助中心 Refer a friend 与 raf-content-system 条款（同一设备、排除商家、180 天窗口、须加提现方式）+ 北美羊毛快报 2026-11-25 更新（美西 11/30 23:59 截止）｜2026-11-27 重核：shopback.com/signup-referred 页面在线，黑五加码返现仍在（多个商家标 Ends in 4 days），但未登录状态看不到 $30 数额，金额仍以 referralworldnews 报道与注册后页面为准，标注待本人到账核实; 2026-11-28 复核：官方 /signup-referred 页仍在（$30 邀请好友入口），Referral World News 11-24 更新写明 $30 注册奖励需消费满 $10 且 180 天内累积 $10 确认返现、$30 推荐奖励至 11/30、注册奖励窗口至 12/1",
   "risk": "不是现金立得：返现要等商家确认（Walmart 约 75 天），且必须累计 $10 已确认返现才解锁 $30；同设备多号、把邀请链贴到商家页面等会被判无效并取消全部奖励；各区金额与币种不同，新加坡等区远低于 $30；优惠结束后回落到 $15。",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "added": "2026-11-26",
   "added_at": "2026-11-26T09:06:00+08:00",
   "status": "expiring_soon",
@@ -21691,7 +21863,7 @@
   "start": "2026-11-12",
   "end": "2026-11-30",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "added": "2026-11-19",
   "content": "Bitget交易所用户专属活动：2026-11-12 12:00至11-30 23:59（UTC+8），在Bitget Wallet App邀请中心绑定邀请码Bitget2026，首次申请并激活Bitget Wallet Card，累计有效消费满$5，可获5 USDC（限前1,000名），并可叠加卡片原有的新客消费奖励最高$20；每满1,000名合格用户随机抽1人送500 USDC。卡片本身每笔消费最高3% Assetback。2026-10起新版Mastercard卡段（BIN 53710058，Sutton Bank）在钱包内可选居住地「中国大陆」：官方帮助中心有「中国大陆」卡激活指引，社区实测护照KYC+无需地址证明即可下卡，与旧Visa卡段（需海外地址证明）不是同一产品；以申卡页当期可选项为准。",
   "conditions": "需使用邀请码Bitget2026首次申卡；须完成KYC并激活卡片；累计有效消费≥$5（取现、P2P转账、换汇、税费、礼品卡、房租等不计）；每人一次，同人多账号视为同一用户；地区受限。",
@@ -21702,7 +21874,7 @@
    "活动结束后 7 个工作日内到奖励账户查看 USDC"
   ],
   "url": "https://www.bitget.com/zh-CN/support/articles/12560603900389",
-  "source": "Bitget 官方帮助中心公告（2026-11-17） + 数字居民论坛《bitget 新 u 卡来啦，居住地可以选择中国大陆，无需地址证明》(2026-10-09) + Bitget Wallet 官方帮助中心《如何激活银行卡 | 中国大陆》｜2026-11-26 重核：Bitget 支持页仍在，活动 2026-11-12 12:00–11-30 23:59（UTC+8），$5 有效消费得 5 USDC + 原有最高 $20，前 1,000 名，另抽 500 USDC｜2026-11-27 重核：Bitget 官方帮助页仍在（2026-11-17 发布），活动时间 11/12 12:00–11/30 23:59（UTC+8），5 USDC 限前 1,000 名、每满 1,000 人抽 1 人送 500 USDC、可叠卡片原有最高 $20 新客奖励，规则未变",
+  "source": "Bitget 官方帮助中心公告（2026-11-17） + 数字居民论坛《bitget 新 u 卡来啦，居住地可以选择中国大陆，无需地址证明》(2026-10-09) + Bitget Wallet 官方帮助中心《如何激活银行卡 | 中国大陆》｜2026-11-26 重核：Bitget 支持页仍在，活动 2026-11-12 12:00–11-30 23:59（UTC+8），$5 有效消费得 5 USDC + 原有最高 $20，前 1,000 名，另抽 500 USDC｜2026-11-27 重核：Bitget 官方帮助页仍在（2026-11-17 发布），活动时间 11/12 12:00–11/30 23:59（UTC+8），5 USDC 限前 1,000 名、每满 1,000 人抽 1 人送 500 USDC、可叠卡片原有最高 $20 新客奖励，规则未变; 2026-11-28 复核：官方帮助中心仍写明 11-12 12:00 至 11-30 23:59（UTC+8），满 $5 有效消费送 5 USDC（限前 1,000 名）并可叠加原有最高 $20 新客奖励，另抽 500 USDC",
   "risk": "需要真实消费与 KYC，奖励名额先到先得；中国大陆等地区不支持申卡；加密资产与卡片账户存在合规与冻结风险。",
   "status": "expiring_soon",
   "added_at": "2026-11-19T02:16:53+08:00",
@@ -21816,13 +21988,13 @@
   ],
   "url": "https://saily.com/esim-black-friday/",
   "source_url": "https://saily.com/esim-black-friday/",
-  "source": "Saily官方黑五页（2026-11-27实读：20%off全套餐、码Sailybf26、11月23–29、180天内激活，逾期自动激活）+ Cybernews 2026-11-25折后价样例 + Les Numériques 2026-11-26；暂无社区实测",
+  "source": "Saily官方黑五页（2026-11-27实读：20%off全套餐、码Sailybf26、11月23–29、180天内激活，逾期自动激活）+ Cybernews 2026-11-25折后价样例 + Les Numériques 2026-11-26；暂无社区实测; 2026-11-28 复核：官方黑五页仍写「20% off all plans with code Sailybf26, November 23-29」，180 天内激活；esim-urlaub 当日复核同价",
   "risk": "只是8折不是免费，且必须手动输码，忘输就按原价扣款；180天内不激活会自动启用、流量到期即失效；Ultra是订阅，后续会续扣；小红书/论坛暂无折后价与机型实测DP。",
   "status": "expiring_soon",
   "added": "2026-11-27",
   "added_at": "2026-11-27T05:44:00+08:00",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "kyc_level": "none",
   "vowifi": "n/a",
   "utility": 0,
@@ -22817,10 +22989,10 @@
   ],
   "url": "https://avoro.eu/en/black-friday",
   "source_url": "https://x.com/Leo_zhang2018/status/2124690894725247296",
-  "source": "AVORO 官方黑周页（2026-11-23 实读：三档配置、€2.24/月季付、截止 11-30 23:59 柏林时间、售罄不补）+ X 黑五汇总（2026-11-23）; 2026-11-26 复核：官方黑周页仍在线（标题改为 up to and including Cyber Monday，页内倒计时写明 2026-11-30 23:59 柏林时间结束），Nano €2.24/月季付、Allrounder €10.92/月、Storage €19.75/月三档价格未变，全部 excl. VAT；RTX PRO 6000 GPU 款已显示 Sold out。｜2026-11-27 重核：avoro.eu/en/black-friday 仍在，倒计时写「Ends on 30 November 2026 at 23:59 (Berlin time)」；Nano 1C/1G/15GB €2.24 月付（季付）、Allrounder €10.92、Storage €19.75 与原文一致；GPU 款（RTX PRO 6000 96GB、16C/128GB/500GB/20TB）公开价 €839.50/月起并显示 Sold out",
+  "source": "AVORO 官方黑周页（2026-11-23 实读：三档配置、€2.24/月季付、截止 11-30 23:59 柏林时间、售罄不补）+ X 黑五汇总（2026-11-23）; 2026-11-26 复核：官方黑周页仍在线（标题改为 up to and including Cyber Monday，页内倒计时写明 2026-11-30 23:59 柏林时间结束），Nano €2.24/月季付、Allrounder €10.92/月、Storage €19.75/月三档价格未变，全部 excl. VAT；RTX PRO 6000 GPU 款已显示 Sold out。｜2026-11-27 重核：avoro.eu/en/black-friday 仍在，倒计时写「Ends on 30 November 2026 at 23:59 (Berlin time)」；Nano 1C/1G/15GB €2.24 月付（季付）、Allrounder €10.92、Storage €19.75 与原文一致；GPU 款（RTX PRO 6000 96GB、16C/128GB/500GB/20TB）公开价 €839.50/月起并显示 Sold out; 2026-11-28 复核：官方黑五页仍挂 Black Week Nano（1C1G/15GB NVMe/1TB，季付 €2.24/月）与 Allrounder（4C16G/60GB，€10.92/月），写明到 2026-11-30 23:59（柏林时间），GPU 档已售罄",
   "risk": "标价不含税，德国地址实付约高 19%；特价只到 11/30，之后回常规价（Basic €4.07/月起）；售罄不补；小商家，长期稳定性没有大规模实测。",
   "verified": true,
-  "last_verified": "2026-11-27",
+  "last_verified": "2026-11-28",
   "added": "2026-11-23",
   "added_at": "2026-11-23T13:44:00+08:00",
   "status": "expiring_soon",
