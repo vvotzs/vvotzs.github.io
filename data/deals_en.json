@@ -9610,6 +9610,54 @@
    "Once the first-month data is used, keep earning in Rewards at the bottom of the home screen through ads, the daily game and referrals"
   ],
   "risk": "Ad rewards are inconsistent: in November 2026 users reported a panel promising 50MB while 4MB arrived, and others got nothing or lost the ad option for hours. In early October some users in California and Massachusetts saw no Free plan at all, only a 7-day Pro trial that then bills $19.99 a month, so do not tap the Pro trial if you only want the Free plan. Community reports on Android describe 3GB a month without a number, which does not match the official number-included plan. Traffic routes through Europe, measuring about 10Mbps with around 400ms latency in the US.",
-  "source": "Instabridge terms 13.b.1 (Free Monthly Plan, US mainland only) and 13.d.3 (service for rewarded actions such as ads, games and referrals, with suspension if not completed), help centre How to Get Started (updated 2025-11-23: 1,000 minutes and texts, 1GB first month, address and card verification), Do I get a phone number, How do I get my free 1 GB data (read 2026-11-28), plus a 2026-07-17 forum report and App Store reviews from November 2026 (about 50MB an ad, 125kbps fallback, 3GB a month on Android)"
+  "source": "Instabridge terms 13.b.1 (Free Monthly Plan, US mainland only) and 13.d.3 (service for rewarded actions such as ads, games and referrals, with suspension if not completed), help centre How to Get Started (updated 2025-11-23: 1,000 minutes and texts, 1GB first month, address and card verification), Do I get a phone number, How do I get my free 1 GB data (read 2026-11-28), plus a 2026-07-17 forum report (number on iOS, 15MB a day from games, 3GB a month on Android) and App Store reviews (February and November 2026: about 50MB an ad; July 2026: unlimited 125kbps fallback)"
+ },
+ "etihad-abu-dhabi-pass-free-sim": {
+  "title": "[UAE]Etihad Abu Dhabi Pass: free 10GB tourist SIM plus free shuttle and attraction discounts for passengers",
+  "highlight": "Book an Etihad flight to Abu Dhabi (stopovers count) and claim the official city pass free: Etihad lists a 10GB tourist SIM collected at Zayed airport or city outlets, free tourist shuttles and up to 15% off attractions, while the pass site describes a free tourist eSIM you scan on landing",
+  "regions": "[UAE] Etihad passengers arriving in or stopping over in Abu Dhabi only; the SIM is collected at Zayed International Airport or selected city outlets",
+  "value": "10GB tourist data (about $15) plus free shuttle and attraction discounts",
+  "content": "A free Etihad edition of the official Abu Dhabi city pass, run by the Department of Culture and Tourism and Alike. Book an Etihad flight to Abu Dhabi, open theabudhabipass.com/etihad, tap Get Pass Now and verify your booking email with a one-time code. Etihad's own page lists a 10GB tourist SIM collected at Zayed International Airport or selected outlets, free Abu Dhabi tourist shuttle rides and up to 15% off attractions; the pass site instead lists a complimentary tourist eSIM that works on landing, up to 50% off attractions and free entry to selected gems. Stopover passengers get a separate Stopover Pass.",
+  "conditions": "Hold an Etihad booking to or through Abu Dhabi. Verify the booking email with the OTP; no account is needed. The physical SIM is collected after landing with the pass, and the eSIM route depends on what the claim page offers. Validity is stated as 14 days from activation by Etihad and 60 days by the pass site, so check the email.",
+  "steps": [
+   "Book an Etihad flight to Abu Dhabi, including a stopover, and keep the booking email",
+   "Open theabudhabipass.com/etihad, tap Get Pass Now and enter the OTP sent to that email",
+   "After landing, collect the 10GB tourist SIM at Zayed airport or a selected outlet, or install the eSIM if the claim page gives you one",
+   "Use the pass for the free tourist shuttle and attraction discounts, keeping the 14/60-day validity in mind"
+  ],
+  "risk": "Two descriptions coexist: Etihad says a 10GB physical SIM collected on arrival, while the pass site says a free tourist eSIM you scan on landing, so follow the claim page and email. Attraction discounts are quoted as both 15% and 50%, and validity as both 14 and 60 days. The data lasts for the trip only and cannot serve as a long-term keep-alive line. A real flight booking is required, and short layovers may not leave time to collect the SIM.",
+  "source": "Etihad official Abu Dhabi Pass page (read 2026-11-28: free pass for Etihad flyers, 10GB tourist SIM, airport and city pickup, free tourist shuttle, up to 15% off attractions, 14-day validity, separate Stopover Pass) plus the Abu Dhabi Pass Etihad page (read 2026-11-28: free tourist eSIM, up to 50% off, 16,000+ claimed) and the 2025-03-06 DCT and Etihad launch release"
+ },
+ "povo-sukatto-park-esim-ticket": {
+  "title": "[Japan]povo Sukatto Park venues: free eSIM ticket with 0.1GB plus ten 24-hour unlimited-data passes (11/28-1/31, five cities)",
+  "highlight": "povo2.0's fifth-anniversary tour is free to enter: every visitor gets an eSIM ticket with 0.1GB for 24 hours and ten 24-hour unlimited-data promo codes, usable when signing up for povo2.0 as a new line",
+  "regions": "[Japan] Attend in person at five venues: Yokohama 11/28-29, Sapporo 12/5-6, Kobe 12/19-20, Fukuoka 2027-1/16-17, Sendai 1/30-31",
+  "value": "Ten 24-hour unlimited passes plus 0.1GB (about 3,300 yen of value)",
+  "content": "A free touring event by KDDI and KDDI Digital Life marking povo2.0's fifth anniversary. Every visitor is handed an eSIM ticket: 0.1GB for 24 hours applies as soon as you enter the campaign code and activate the SIM, and ten 24-hour unlimited-data promo codes are emailed to the address registered with povo2.0 and can be used at any time, though each must be entered by the end of the month after SIM activation. Both are valid only for a new povo2.0 registration, not for an existing line. The venues also have sign-up support desks, games and stickers.",
+  "conditions": "You must attend a venue in Japan in person; Yokohama runs 11/28-29 from 11:00 to 18:00, and other cities' hours are not yet set. Only new povo2.0 registrations can use the ticket. Promo codes must be entered by the end of the month after SIM activation. Unlimited data may be throttled at peak times and for video or cloud gaming. Gifts are limited and end when stock runs out.",
+  "steps": [
+   "Go to a venue on its dates and get the eSIM ticket with the 0.1GB code and the ten unlimited-data codes",
+   "Register a new povo2.0 line on site or from your phone, with an eSIM-capable handset and a payment method that works in Japan",
+   "Activate the SIM, then enter the 0.1GB campaign code; the ten unlimited codes arrive by email for use whenever you like",
+   "Use the promo codes before the end of the month following SIM activation, or they expire"
+  ],
+  "risk": "This is a Japan-only, in-person event, so proxies and gifts do not work. The ticket is useless on an existing povo line. Unlimited data is throttled at busy times and for video or cloud gaming. Gifts are limited and popular venues may run out early. Promo codes expire and cannot be reissued.",
+  "source": "KDDI Digital Life press release (2026-11-24: five-city tour 11/28-2027-1/31, free entry, eSIM ticket with 0.1GB and ten 24-hour unlimited passes, new registrations only, codes valid until the end of the month after activation, limited stock) plus ITmedia Mobile 2026-11-24 and venue listings"
+ },
+ "hsbc-my-ringgitplus-tng-800": {
+  "title": "[Malaysia]HSBC card via RinggitPlus: guaranteed RM800 Touch 'n Go credit (Visa Signature, apply by 11/30 11:00)",
+  "highlight": "RinggitPlus flash deal: apply for the HSBC Visa Signature through its link, then spend RM1,000 within 60 days of approval for a guaranteed RM800 Touch 'n Go e-wallet credit; Live+ and TravelOne pay RM500, with draws for up to RM5,555 and an iPad Air M4",
+  "regions": "[Malaysia] New-to-HSBC applicants holding a Malaysian MyKad, applying through the RinggitPlus link only",
+  "value": "RM800 (about $170); RM500 on Live+ or TravelOne",
+  "content": "A RinggitPlus weekly flash deal ending 11/30 11:00: register and apply for the HSBC Visa Signature through RinggitPlus, then activate the approved card and spend at least RM1,000 in retail transactions within 60 days for a guaranteed RM800 Touch 'n Go e-wallet credit. HSBC Live+ and TravelOne pay RM500. The same batch includes draws for up to RM5,555 in Touch 'n Go credit from UOB, an iPad Air M4 from AmBank and an Apple Watch Ultra 4 from OCBC. Note that HSBC's card page still shows a standing RM500 for RM3,000 of spending, so the application page and T&C govern.",
+  "conditions": "Hold a valid Malaysian MyKad and be at least 21. Existing HSBC cardholders and anyone approved, declined or cancelled within the last 6 to 12 months is excluded. You must register through RinggitPlus first, since applying directly on hsbc.com.my does not count. Activate and spend RM1,000 within 60 days of approval, and claim the Touch 'n Go credit before the notified deadline.",
+  "steps": [
+   "Open the HSBC Visa Signature page on RinggitPlus and start the application there, registering eligibility first",
+   "Once approved and activated, spend at least RM1,000 in retail within 60 days, excluding refunds and cash advances",
+   "Watch the registered mobile number and email for the claim instructions and credit the Touch 'n Go e-wallet in time",
+   "Pay each statement in full so interest does not eat the reward"
+  ],
+  "risk": "Two sets of numbers conflict: the flash page says RM800 for RM1,000 of spending while the card page says RM500 for RM3,000, so check the application page and T&C before applying. MyKad is mandatory, so non-Malaysians cannot apply. A credit card brings annual fees and a hard credit check, so do not apply purely for the gift. Forum users report quota cuts after applying, and the credit must be claimed before the deadline. The flash deal ends 11/30 at 11:00.",
+  "source": "RinggitPlus official blog (2026-11-23: guaranteed RM800 Touch 'n Go credit on HSBC Visa Signature, RM500 on Live+ and TravelOne, spend RM1,000 within 60 days, new customers only, flash deal ends 11/30 11:00) plus the RinggitPlus HSBC Visa Signature card page (live in November 2026: iPhone 18 Pro draw or guaranteed RM500 with RM3,000 spend, 18-30 November) and the campaign T&C PDF requiring a MyKad and a RinggitPlus application, with Lowyat forum reports of RM800 credits received in March 2025"
  }
 }
