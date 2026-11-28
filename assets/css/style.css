@@ -2596,14 +2596,11 @@ footer{
 .foot-brand{
   display: inline-flex;
   align-items: center;
-  gap: 7px;
   color: var(--ink);
   font-weight: 650;
   font-size: 12.2px;
   white-space: nowrap;
 }
-.foot-brand .brand-mark{ width: 20px; height: 20px; border-radius: 7px; }
-.foot-brand .brand-mark svg{ width: 16px; height: 16px; }
 .foot-up{ white-space: nowrap; }
 .foot-top{
   margin-left: auto;
@@ -3182,15 +3179,18 @@ footer{
   .rail a.rail-top svg{ width: 15px; height: 15px; }
   .rail-sep{ margin: 3px 5px; }
 
-  /* 第一行：品牌（143px）+ 关于·隐私·披露·Cookie 设置（9px 下英 154 / 中 112）一行放得下；
-     第二行：萌ICP备号独占（见下面的规则），页脚从首页 41 / 其余 37 变成 55.6 / 51.6。
-     右下角滑轨本身有「顶部」，页脚这颗在手机上省掉，不重复。分隔点两侧各收 1px，英文页也留出安全余量。 */
-  .foot-line{ gap: 5px; row-gap: 2px; font-size: 11px; flex-wrap: wrap; }
+  /* 手机端页脚压成一行：品牌（左侧绿标已去掉）+ 关于·隐私·披露·Cookie 设置 + 萌ICP备号。
+     正文宽只有 vw-54px（375 屏 = 321px、360 屏 = 306px），平板宽得多，所以字号分两档：
+     ≤768px 打通结构（单行、备案号不再独占第二行），≤480px 才收小字号——
+     中文 11.4 / 9 / 9 ≈ 300px；英文行更长，品牌 10.4、合规链接与备案号 7.4 ≈ 303px。
+     行尾都落在右下角语言圆钮（right 7 + 32，即 375 屏左缘 336px）之前，不遮挡、不横向溢出。
+     更窄的屏仍靠 flex-wrap 落到第二行，不挤压变形。右下角滑轨自带「顶部」，页脚这颗在手机上省掉。 */
+  .foot-line{ gap: 4px; row-gap: 2px; font-size: 11px; flex-wrap: wrap; }
   .foot-up{ display: none; }
   .foot-legal{ gap: 2px; font-size: 9px; }
   .foot-legal-sep{ margin: 0 -1px; }
-  /* 手机上固定让备案号独占第二行：各页一致，不会看宽度一半换行一半不换 */
-  .foot-icp{ flex-basis: 100%; font-size: 9px; }
+  /* 备案号不再独占第二行：flex-basis 回到 auto，紧跟前面版权/链接排在同一行 */
+  .foot-icp{ flex-basis: auto; font-size: 9px; }
   .foot-top{ display: none; }
   /* 手机端两个 .shell 各带 4px 底边距（共 8px），页脚再让 4px，档案区到页脚收到 ~12px */
   footer{ margin-top: 4px; }
@@ -3210,6 +3210,16 @@ footer{
   .topbar-stats .stats-pill.stone{ display: none; }
   /* 「即将截止」现在只有一颗迷你日历，窄屏上把 tab 字号收半号，四个 tab 一行不换不溢 */
   .hot-tabs-mobile .hot-tab{ font-size: 12px; --tab-badge-space: 14px; }
+}
+
+/* 手机页脚的字号：平板（481～768）留得下，保持 12.2 / 9 / 9；
+   480 以下（iPhone 各尺寸、主流安卓）才收一档，把版权、合规链接、萌ICP备号 收进同一行。
+   英文行更长，各再小一档；7.4px 是 Chrome 字体步进下的稳定档（8～9px 反而同宽）。 */
+@media (max-width: 480px){
+  .foot-brand{ font-size: 11.4px; }
+  html[lang="en"] .foot-brand{ font-size: 10.4px; }
+  html[lang="en"] .foot-legal,
+  html[lang="en"] .foot-icp{ font-size: 7.4px; }
 }
 
 @media (prefers-reduced-motion: reduce){

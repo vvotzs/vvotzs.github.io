@@ -2311,12 +2311,7 @@ def render_deal_page(deal: dict, en: dict, lang: str, today, en_map: dict, relat
 
 <footer>
   <div class="shell foot-line">
-    <span class="foot-brand">
-      <span class="brand-mark" aria-hidden="true">
-        {mascot_svg(gid='dpMintFoot')}
-      </span>
-      {ui('foot_brand', y=today.year)}
-    </span>
+    <span class="foot-brand">{ui('foot_brand', y=today.year)}</span>
     <span class="foot-up">{ui('f_last_verified')} {e(deal.get('last_verified') or added_day(deal, today))}</span>
     {legal_footer(lang)}
     {icp_footer()}
@@ -2596,9 +2591,9 @@ ICP_BEIAN_TEXT = "萌ICP备20260970号"
 def icp_footer() -> str:
     """页脚紧接合规链接的备案小字（电脑端与手机端都显示，不隐藏）。
 
-    单独一颗 .foot-icp：电脑端/平板并进页脚同一行末位，手机端（≤768px）由
-    .foot-icp{flex-basis:100%} 固定独占第二行，各页高度一致，也不会把
-    「关于 · 隐私 · 披露」那组链接拆散。
+    单独一颗 .foot-icp，电脑端/平板/手机都并进页脚同一行末位：手机端（≤768px）
+    由 .foot-icp{flex-basis:auto} 跟着版权与合规链接同排，不占第二行，也不挡
+    右下角语言切换圆钮（只看更窄的屏才靠 flex-wrap 回落成两行）。
     """
     return (
         f'<span class="foot-icp">'
@@ -2751,12 +2746,7 @@ def render_legal_page(kind: str, lang: str, today) -> str:
 
 <footer>
   <div class="shell foot-line">
-    <span class="foot-brand">
-      <span class="brand-mark" aria-hidden="true">
-        {mascot_svg(gid='dpLegalFoot')}
-      </span>
-      {ui('foot_brand', y=today.year)}
-    </span>
+    <span class="foot-brand">{ui('foot_brand', y=today.year)}</span>
     {legal_footer(lang)}
     {icp_footer()}
     <a class="foot-top" href="#top">{ui('foot_top')}</a>
@@ -3492,12 +3482,7 @@ def render_category_page(
 
 <footer>
   <div class="shell foot-line">
-    <span class="foot-brand">
-      <span class="brand-mark" aria-hidden="true">
-        {mascot_svg(gid='dpCatFoot')}
-      </span>
-      {ui('foot_brand', y=today.year)}
-    </span>
+    <span class="foot-brand">{ui('foot_brand', y=today.year)}</span>
     {legal_footer(lang)}
     {icp_footer()}
     <a class="foot-top" href="#top">↑</a>
@@ -4547,12 +4532,7 @@ html:not(.js) .module:not(.hot-strip) .pager-bar{{ display: none; }}</style></no
 
 <footer>
   <div class="shell foot-line">
-    <span class="foot-brand">
-      <span class="brand-mark" aria-hidden="true">
-        {mascot_svg(gid='mintBodyFoot')}
-      </span>
-      {ui('foot_brand', y=today.year)}
-    </span>
+    <span class="foot-brand">{ui('foot_brand', y=today.year)}</span>
     <span class="foot-up">{ui('foot_updated', t=e(last_updated))}</span>
     {legal_footer(lang)}
     {icp_footer()}
