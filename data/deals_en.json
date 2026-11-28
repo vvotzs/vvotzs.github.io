@@ -2878,7 +2878,7 @@
    "Promote the LoRA adapter to a model; open an on-demand deployment only if you need to serve it"
   ],
   "risk": "Only training is free; inference and evaluation sampling are charged and a large eval run will create a bill. Serving the tuned model bills per GPU-hour. The blog and docs differ on whether DPO and RL are covered. Jobs started after 11-30 are no longer free.",
-  "source": "Fireworks official blog (2026-10-20, updated 2026-11-17) + official cookbook and model page promotion notes (checked 2026-11-20) + that.promo and Token Thrift re-checks 2026-11-19"
+  "source": "Fireworks official blog (2026-10-20, updated 2026-11-17) + official cookbook and model page promotion notes (checked 2026-11-20) + that.promo and Token Thrift re-checks 2026-11-19 | Re-checked 2026-11-28: the blog still says free SFT, DPO, and RL through November 30."
  },
  "tabstack-free-10k-credits": {
   "title": "[Global] Tabstack by Mozilla: 10,000 free credits for new accounts, no card",
@@ -6400,8 +6400,8 @@
    "Call Dialog-RSN-1 with short test conversations to measure latency",
    "Confirm the credit before 1 December so usage does not fall to pay-as-you-go"
   ],
-  "risk": "The page names 1 December without a year and does not state credit validity; usage past the credit switches to metered billing; free voice output also stops on 1 December; telephony is extra.",
-  "source": "PolyAI official pricing page (read 2026-11-23: free credit was $20, now $100 for sign-ups before 1 Dec; voice output free until 1 Dec; concurrency 2 to 10) + Cekura pricing review (2026-11-18) + X announcement by @raw_logits (2026-11-22)"
+  "risk": "[Expired / withdrawn] Checked on 2026-11-28 in a real browser at poly.ai/pricing: the Platform card now reads only \"$20 of free credit to get started\" and the Developer tab lists just 2c per minute plus text-token rates; the page no longer carries \"$100 for sign-ups before 1 Dec\" or \"was $20 now $100\". Archived as withdrawn; a $100 showing in some account back offices would be gray-area, so do not plan usage around $100. The page names 1 December without a year and does not state credit validity; usage past the credit switches to metered billing; free voice output also stops on 1 December; telephony is extra.",
+  "source": "PolyAI official pricing page (read 2026-11-23: free credit was $20, now $100 for sign-ups before 1 Dec; voice output free until 1 Dec; concurrency 2 to 10) + Cekura pricing review (2026-11-18) + X announcement by @raw_logits (2026-11-22) | Re-checked 2026-11-28: poly.ai/pricing read in a browser (Platform and Developer tabs) shows no $100/1 Dec text, only $20 free credit; third-party trackers (perq.sh, that.promo) still listed $100 as of 11-27, later than the official page."
  },
  "iflytek-spark-x26-1b-free-tokens": {
   "title": "[CN] iFlytek Spark-X2.6: verified new accounts get 1 billion free tokens (31 days)",
@@ -8817,7 +8817,7 @@
    "Install the eSIM from the email or app and activate it after you land"
   ],
   "risk": "This is 30% off, not free, and forgetting the code or a dead code means full price. The official page gives no end date; December 4 comes from third parties and it may end earlier. It cannot stack with plans already on sale, regional auto-discounts or referral codes, so the checkout total is the real price. Double data covers only 30-day US plans of 10GB or more, not short plans, and claiming the 1GB free trial forfeits the first-purchase discount.",
-  "source": "Nomad official homepage banners (read 2026-11-27: Our Biggest Travel Sale Is Here, save 30% with code FRIDAY30, and USA Double Data Deal, a free same-size add-on with a 30-day US plan of 10GB or more, both limited time with no stated end date) + Rangka 2026-11-19 (FRIDAY30 dated to 12-04, no stacking with regional discounts) + Dealhack checkout test 2026-11-26 (worked in 14 of 18 checks); no community DP on discounted prices yet"
+  "source": "Nomad official homepage banners (read 2026-11-27: Our Biggest Travel Sale Is Here, save 30% with code FRIDAY30, and USA Double Data Deal, a free same-size add-on with a 30-day US plan of 10GB or more, both limited time with no stated end date) + Rangka 2026-11-19 (FRIDAY30 dated to 12-04, no stacking with regional discounts) + Dealhack checkout test 2026-11-26 (worked in 14 of 18 checks); no community DP on discounted prices yet | Re-checked 2026-11-28: homepage banners still show save 30% with code FRIDAY30 and the USA Double Data Deal (still no end date on site)."
  },
  "uplus-umobile-8month-free-code": {
   "title": "[KR]U+ Mobile code 8-month free trial: 40,000 KRW of Naver Pay on popular plans (Nov 27-30)",
@@ -8896,8 +8896,8 @@
    "Apply code BFVPS at checkout and confirm the price shows $0.79 a month before paying",
    "After activation test latency from your location before keeping it long term"
   ],
-  "risk": "The site is currently down under sale traffic and behind a bot check, so the ordering window is short and stock can vanish. $0.79 a month is an extreme price from a small host: overselling and business risk are real, so keep production off it. Whether it renews at $0.79 is unconfirmed, and ordering through a proxy easily trips fraud checks.",
-  "source": "NodeSeek post-1085054 (2026-11-27 06:06 UTC: Basic-1, code BFVPS, $0.79/month) and post-1085041 (same, with review link) | LowEndTalk Black Friday 2026 master list entry for 2026-11-27: Cloudnium $0.79/m 2GB VPS in US/CA | portal.cloudnium.net hit a Cloudflare challenge at 15:38 on 2026-11-27 so the official page could not be re-checked; community reported 504s at the same time"
+  "risk": "[Expired / withdrawn] Read on portal.cloudnium.net in a browser at 14:53 JST on 2026-11-28: Dal-1 now lists at $3.99 a month or $40.20 a year with 2TB a month (not the 1TB this entry first recorded), and the cart rejects code BFVPS on both monthly and annual billing with \"This coupon cannot be applied to your order\", so the $0.79 tier can no longer be ordered. The site is currently down under sale traffic and behind a bot check, so the ordering window is short and stock can vanish. $0.79 a month is an extreme price from a small host: overselling and business risk are real, so keep production off it. Whether it renews at $0.79 is unconfirmed, and ordering through a proxy easily trips fraud checks.",
+  "source": "NodeSeek post-1085054 (2026-11-27 06:06 UTC: Basic-1, code BFVPS, $0.79/month) and post-1085041 (same, with review link) | LowEndTalk Black Friday 2026 master list entry for 2026-11-27: Cloudnium $0.79/m 2GB VPS in US/CA | portal.cloudnium.net hit a Cloudflare challenge at 15:38 on 2026-11-27 so the official page could not be re-checked; community reported 504s at the same time | Re-checked 2026-11-28 in a browser: the portal now loads without the Cloudflare wall, Dal-1 shows $3.99/mo, $40.20/yr and 2TB/mo, and BFVPS is rejected in both monthly and annual carts."
  },
  "porkbun-black-friday-2026": {
   "title": "[Global] Porkbun Black Friday domains from $1.03 for the first year: .asia $1.03, .xyz $1.29, .one $1.53, .io $20.91",
