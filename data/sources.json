@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-27T18:48:00+08:00",
+  "generated_at": "2026-11-28T15:15:00+08:00",
   "_meta": {
     "title": "羊毛情报局采集源表（P0/P1/P2 分层调度）",
-    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets；第十轮（2026-11-22）：新增 banknav（P1，list，海外银行卡/eSIM/券商导航），1point3acres 因 403 拦截与零产出降为 P2；第十一轮（2026-11-23）：Jun 拍板改为 24 小时整点每小时一轮、取消夜间休眠，分级周期改为 P0=1h / P1=3h / P2=24h（x-deals 起 P0 cadence 1h），每轮源位 12→30、P2 每轮保底 1→2；第十二轮（2026-11-26，Jun 指令）：接入 promodescuentos.com（P0 1h，RSS /rss/todas）与 Pepper 家族 hotukdeals / mydealz / dealabs / chollometro / pepper.pl / nl.pepper.com / preisjaeger.at 及 slickdeals（P1 3h，均实测 RSS 直连 200）；pepper.it 2025-08-14 停站、pelando.com.br 与 desidime.com 为 Cloudflare 403、redflagdeals.com 无可用 RSS，三者只走 web_search / 浏览器兜底；第十三轮（2026-11-27，Jun 指令）：接入 YouTube 频道 @ddktricks（channel_id UCwvqKV96OXClu581qZZ_0Uw，P1 3h，官方 videos.xml RSS 实测 200/15 条）——该频道以免费 eSIM 教程为主，视频只作线索，收录一律回溯品牌官网条款，排除 Telegram 转售与订阅陷阱。第十四轮（2026-11-27，Jun 指令）：接入萌社区 moe.one 福利版（forum-4，P2 24h，list，无 RSS，最新优先列表 forum-4-1.htm?digest=5）——近 30 天帖子以自建节点/长效接码/公益 AI 中转为主，只作线索，收录一律回溯官方源。",
+    "basis": "Hark 第七轮合并定稿 + 第八轮充值平台整合（2026-11-21）：18 个数字充值/礼品卡平台合并为 4 个 search_group + 1 个 rss，二手 key 五家（Eneba/G2A/Kinguin/G2G/U7BUY）转 status=manual；第九轮（2026-11-21 深夜深挖 OTA / 航司 / 媒体联名）：新增 ota-airline-esim（P1）、airline-esim-partners（P2）、media-event-esim（P2）三个 search_group 与同名 term_sets；第十轮（2026-11-22）：新增 banknav（P1，list，海外银行卡/eSIM/券商导航），1point3acres 因 403 拦截与零产出降为 P2；第十一轮（2026-11-23）：Jun 拍板改为 24 小时整点每小时一轮、取消夜间休眠，分级周期改为 P0=1h / P1=3h / P2=24h（x-deals 起 P0 cadence 1h），每轮源位 12→30、P2 每轮保底 1→2；第十二轮（2026-11-26，Jun 指令）：接入 promodescuentos.com（P0 1h，RSS /rss/todas）与 Pepper 家族 hotukdeals / mydealz / dealabs / chollometro / pepper.pl / nl.pepper.com / preisjaeger.at 及 slickdeals（P1 3h，均实测 RSS 直连 200）；pepper.it 2025-08-14 停站、pelando.com.br 与 desidime.com 为 Cloudflare 403、redflagdeals.com 无可用 RSS，三者只走 web_search / 浏览器兜底；第十三轮（2026-11-27，Jun 指令）：接入 YouTube 频道 @ddktricks（channel_id UCwvqKV96OXClu581qZZ_0Uw，P1 3h，官方 videos.xml RSS 实测 200/15 条）——该频道以免费 eSIM 教程为主，视频只作线索，收录一律回溯品牌官网条款，排除 Telegram 转售与订阅陷阱。第十四轮（2026-11-27，Jun 指令）：接入萌社区 moe.one 福利版（forum-4，P2 24h，list，无 RSS，最新优先列表 forum-4-1.htm?digest=5）——近 30 天帖子以自建节点/长效接码/公益 AI 中转为主，只作线索，收录一律回溯官方源；第十五轮（2026-11-28，Jun 拍板 #21016）：接入 yeeach 每日分享（P0 1h，rss，/category/daily/feed/ 实测 200/15 条，WordPress 分类 feed）与 Agent.sb 羊毛论坛（P0 1h，list，Flarum JSON:API /api/discussions?sort=-createdAt 实测 200、首页亦已恢复 200，此前 500 为临时故障）——两站均为线索站，收录一律回溯品牌官网；agent.sb 帖内的裸卡号、拼车代充与 MITM 绕过资格一律不采。",
     "cadence": {
       "rounds_per_day": 24,
       "round_times_local": [
@@ -55,16 +55,16 @@
     },
     "capacity": {
       "slots_per_day": 720,
-      "P0_slots_per_day": 168,
+      "P0_slots_per_day": 192,
       "P1_slots_per_day": 344,
       "P2_slots_per_day": 48,
-      "note": "每小时 30 个源位 × 24 轮；P0 6 个×24=144，P1 44 个每 3h 一轮、每日需求约 352 个源位，P2 45 个每日 45 个源位，均在 720 源位容量内"
+      "note": "每小时 30 个源位 × 24 轮；P0 8 个×24=192，P1 44 个每 3h 一轮、每日需求约 352 个源位，P2 45 个每日 45 个源位，合计 589 个，均在 720 源位容量内"
     },
     "writeback": "plan_round.py --mark-done / --mark-hit / --mark-zero 回写 last_crawled_at、last_hit_at 与 zero_streak；P0 14 天无产出→P1、P1 30 天→P2、P2 90 天→paused（manual 源不参与；升级只能人工）",
     "paused_policy": "paused_sources 不进调度、不占 P2 配额；恢复用 plan_round.py 的 --activate 或人工移回 sources",
     "counts": {
-      "scheduled": 95,
-      "P0": 6,
+      "scheduled": 97,
+      "P0": 8,
       "P1": 44,
       "P2": 45,
       "manual": 5,
@@ -72,7 +72,7 @@
     },
     "search_group": "entries[].kind=search_group：domains 最多 4 个，整组每轮只发 1 条 `(site:a OR site:b …) (词集)` 查询；after_date = last_crawled_at − 1 天（首抓取今天 − 30 天）；blocked 域名只核验不抓取（优先合作方/发行方官方页，否则每天最多 1 次浏览器开 verify_urls）；「这组有产出」= 至少 1 条结果 URL 落在组内域名、其 url 与 dedup_key 都不在 deals/candidates，且按 Q4(e) 写成候选/条目，满足才 --mark-hit；discovered_from 写 `<组id>:<域名>`；零结果用 --mark-zero，下次自动改用 fallback 词集",
     "manual_policy": "status=manual 的源留在表内注明手动，但不进调度、不占 P1/P2 源位、不参与降频，只在线索出现时人工核",
-    "updated_at": "2026-11-27T18:48:00+08:00"
+    "updated_at": "2026-11-28T15:15:00+08:00"
   },
   "keyword_groups": [
     {
@@ -346,6 +346,47 @@
       "note": "RSS 直连 200（普通 UA，无 Cloudflare），30 条/次，item 带 <category> 与 pepper:merchant 商家+价格；分组 feed 可补读 /rss/grupo/gratis（免单）、/rss/grupo/telefonia-celular（手机通讯）",
       "last_crawled_at": "2026-11-28T05:59:35Z",
       "last_hit_at": "2026-11-27T23:12:35Z"
+    },
+    {
+      "id": "yeeach-daily",
+      "name": "yeeach「要福利每日分享」（每日优惠日报）",
+      "url": "https://yeeach.com/category/daily/",
+      "tier": "P0",
+      "entry_type": "rss",
+      "cadence_h": 1,
+      "categories": [
+        "ai",
+        "software",
+        "esim"
+      ],
+      "lang": "zh",
+      "status": "active",
+      "added_at": "2026-11-28T07:15:00Z",
+      "entry_url": "https://yeeach.com/category/daily/feed/",
+      "zero_streak": 0,
+      "note": "WordPress 分类 feed 直连 200（2026-11-28 实测两次，无 Cloudflare），15 条/次，北京时间每天约 05:00 发一篇「要福利每日分享」。feed 的 description 只有开头摘要，正文要读文章页（/?p=<id> 会 301 到 /<id>/<slug>/）。日报主体是开源软件 / AI 工具，优惠部分常引自乐无限 lewuxian.com 频道，这类条目多半已被其他源收过，收录一律回溯品牌官网。2026-11-28 首读最近 6 篇（11-23~11-28）无新增：PrivJet 1GB eSIM、Kiro 1 万积分、AWS Quick 30 天、IPv64 免费 DynDNS、URnetwork 住宅出口均已收录；11-28 篇里还盘点了本站 vvotzs.github.io。",
+      "last_crawled_at": "2026-11-28T07:23:02Z"
+    },
+    {
+      "id": "agent-sb",
+      "name": "Agent.sb 羊毛论坛（Flarum）",
+      "url": "https://agent.sb/",
+      "tier": "P0",
+      "entry_type": "list",
+      "cadence_h": 1,
+      "categories": [
+        "ai",
+        "cloud",
+        "esim"
+      ],
+      "lang": "zh",
+      "status": "active",
+      "added_at": "2026-11-28T07:15:00Z",
+      "entry_url": "https://agent.sb/api/discussions?sort=-createdAt&page%5Blimit%5D=20",
+      "zero_streak": 0,
+      "note": "Flarum 论坛，JSON:API 直连 200、约 0.35s，带不带 UA 都可（2026-11-28 实测 4 次）；首页 HTML 同日也已恢复 200，此前 HTTP 500 应为临时故障，故不走首页抓取。列表按发帖时间倒序，用 attributes.title / createdAt / slug 筛线索，正文读 /api/discussions/<id> 的 included.posts[].attributes.contentHtml（首帖常被截断，长贴要开原文）。帖内套路多：裸贴虚拟卡 / 接码卡号（11-26 Vultr 帖贴了三张）、账号拼车与代充转售、MITM 绕过资格（「免费 1 个月 Gemini Ultra」即此类）、linux.sb/jump 带签名的返佣跳转——只作线索，收录一律回溯品牌官网，卡号与跳转码不得转载。",
+      "last_crawled_at": "2026-11-28T07:23:02Z",
+      "last_hit_at": "2026-11-28T07:23:02Z"
     },
     {
       "id": "uscardforum",
